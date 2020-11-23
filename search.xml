@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Conda channel setting</title>
+    <url>/2020/11/23/Conda%20channel%20setting/</url>
+    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
+<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
+<h1 id="delete-channel">2 Delete channel</h1>
+<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="add-channel">3 Add channel</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
+<h1 id="install-package-offline">4 Install package offline</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br></pre></td></tr></table></figure>
+<h1 id="other-command">5 Other command</h1>
+<p><code>conda install &lt;包名&gt;</code> 安装指定包 <code>conda remove &lt;包名&gt;</code> 移除指定包 <code>conda update &lt;包名&gt;</code> 更新指定包</p>
+]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Anaconda</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/11/22/Hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
@@ -25,14 +51,11 @@
       </tags>
   </entry>
   <entry>
-    <title>My first blog</title>
-    <url>/2020/11/22/My-first-blog/</url>
-    <content><![CDATA[<h1 id="Python-code"><a href="#Python-code" class="headerlink" title="Python code"></a>Python code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># View more python learning tutorial on my Youtube and Youku channel!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Youtube video tutorial: https://www.youtube.com/channel/UCdyjiB5H8Pu7aDTNVXTTpcg</span></span><br><span class="line"><span class="comment"># Youku video tutorial: http://i.youku.com/pythontutorial</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Please note, this code is only for python 3+. If you are using python 2+, please modify the code accordingly.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># test train split #</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">4</span>)</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">y_pred = knn.predict(X_test)</span><br><span class="line">print(knn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is cross_val_score #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">scores = cross_val_score(knn, X, y, cv=<span class="number">5</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">print(scores)</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is how to use cross_val_score to choose model and configs #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">k_range = <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">31</span>)</span><br><span class="line">k_scores = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"><span class="comment">##    loss = -cross_val_score(knn, X, y, cv=10, scoring=&#x27;mean_squared_error&#x27;) # for regression</span></span><br><span class="line">    scores = cross_val_score(knn, X, y, cv=<span class="number">10</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># for classification</span></span><br><span class="line">    k_scores.append(scores.mean())</span><br><span class="line"></span><br><span class="line">plt.plot(k_range, k_scores)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Value of K for KNN&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Cross-Validated Accuracy&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
     <title>Git notes</title>
     <url>/2020/11/22/Git-notes/</url>
-    <content><![CDATA[<h1 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1. 版本控制"></a>1. 版本控制</h1><h2 id="1-1-版本控制（迭代）"><a href="#1-1-版本控制（迭代）" class="headerlink" title="1.1 版本控制（迭代）"></a>1.1 版本控制（迭代）</h2><p>版本控制（Revision control）是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
+    <content><![CDATA[<h1 id="版本控制">1. 版本控制</h1>
+<h2 id="版本控制迭代">1.1 版本控制（迭代）</h2>
+<p>版本控制（Revision control）是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
 <ul>
 <li>实现跨区域多人协同开发</li>
 <li>追踪和记载一个或者多个文件的历史记录</li>
@@ -42,7 +65,10 @@
 <li>跟踪记录整个软件的开发过程</li>
 <li>减轻开发人员的负担，节省时间，同时降低人为错误</li>
 </ul>
-<h2 id="1-2-版本控制工具"><a href="#1-2-版本控制工具" class="headerlink" title="1.2 版本控制工具"></a>1.2 版本控制工具</h2><h3 id="1-2-1-主流的版本控制器："><a href="#1-2-1-主流的版本控制器：" class="headerlink" title="1.2.1 主流的版本控制器："></a>1.2.1 主流的版本控制器：</h3><ul>
+<a id="more"></a>
+<h2 id="版本控制工具">1.2 版本控制工具</h2>
+<h3 id="主流的版本控制器">1.2.1 主流的版本控制器：</h3>
+<ul>
 <li><strong>Git</strong></li>
 <li><strong>SVN</strong>（Subversion）</li>
 <li><strong>CVS</strong>（Concurrent Versions System）</li>
@@ -50,44 +76,47 @@
 <li><strong>TFS</strong>（Team Foundation Server）</li>
 <li>Visual Studio Online</li>
 </ul>
-<h3 id="1-2-2-版本控制分类"><a href="#1-2-2-版本控制分类" class="headerlink" title="1.2.2 版本控制分类"></a>1.2.2 版本控制分类</h3><ul>
+<h3 id="版本控制分类">1.2.2 版本控制分类</h3>
+<ul>
 <li>本地版本控制：RCS</li>
 </ul>
 <blockquote>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/1?raw=true" alt="1" style="zoom:80%;" />
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/1?raw=true" alt="1" style="zoom:80%;" /></p>
 </blockquote>
-<center> 图 1-1 本地版本控制 </center>
-
+<center>
+图 1-1 本地版本控制
+</center>
 <ul>
 <li>集中版本控制：SVN</li>
 </ul>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/2?raw=true" style="zoom:67%;" />
-
-<center> 图 1-2 集中版本控制 </center>
-
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/2?raw=true" style="zoom:67%;" /></p>
+<center>
+图 1-2 集中版本控制
+</center>
 <ul>
 <li>分布式版本控制：Git</li>
 </ul>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/3?raw=true" alt="Distribute" style="zoom:67%;" />
-
-<center> 图 1-3 分布式版本控制 </center>
-
-<h3 id="1-2-3-Git-与-SVN-的区别"><a href="#1-2-3-Git-与-SVN-的区别" class="headerlink" title="1.2.3 Git 与 SVN 的区别"></a>1.2.3 Git 与 SVN 的区别</h3><blockquote>
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/3?raw=true" alt="Distribute" style="zoom:67%;" /></p>
+<center>
+图 1-3 分布式版本控制
+</center>
+<h3 id="git-与-svn-的区别">1.2.3 Git 与 SVN 的区别</h3>
+<blockquote>
 <ul>
-<li><p>SVN是集中式版本控制系统，版本库集中放在中央服务器的，工作时，需要从中央服务器得到最新的版本，完成工作后，把做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，对网络带宽要求较高。</p>
-</li>
-<li><p>Git是分布式版本控制系统，没有中央服务器，每个人的电脑就是一个完整的版本库</p>
-</li>
+<li><p>SVN是集中式版本控制系统，版本库集中放在中央服务器的，工作时，需要从中央服务器得到最新的版本，完成工作后，把做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，对网络带宽要求较高。</p></li>
+<li><p>Git是分布式版本控制系统，没有中央服务器，每个人的电脑就是一个完整的版本库</p></li>
 </ul>
 </blockquote>
-<h1 id="2-Git-环境配置"><a href="#2-Git-环境配置" class="headerlink" title="2. Git 环境配置"></a>2. Git 环境配置</h1><h2 id="2-1-Git配置"><a href="#2-1-Git配置" class="headerlink" title="2.1 Git配置"></a>2.1 Git配置</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">git config -l</span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line"></span><br><span class="line">git config --system --<span class="built_in">list</span></span><br><span class="line"><span class="comment"># 系统配置</span></span><br><span class="line"></span><br><span class="line">git config --<span class="keyword">global</span> --<span class="built_in">list</span></span><br><span class="line"><span class="comment"># 查看当前用户 (global) 配置</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="git-环境配置">2. Git 环境配置</h1>
+<h2 id="git配置">2.1 Git配置</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">git config -l</span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line"></span><br><span class="line">git config --system --<span class="built_in">list</span></span><br><span class="line"><span class="comment"># 系统配置</span></span><br><span class="line"></span><br><span class="line">git config --<span class="keyword">global</span> --<span class="built_in">list</span></span><br><span class="line"><span class="comment"># 查看当前用户 (global) 配置</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Git 相关的配置文件</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">D:\Program files\Git\Git\etc：</span><br><span class="line"><span class="comment"># Git 安装目录下的 gitconfig --system 系统级</span></span><br><span class="line"></span><br><span class="line">C:\Users\YangSu\.gitconfig</span><br><span class="line"><span class="comment">#  只适用于当前登录用户的配置  --global 全局</span></span><br><span class="line"></span><br><span class="line">git config --<span class="keyword">global</span> user.name <span class="string">&quot;YS&quot;</span> <span class="comment">#名称</span></span><br><span class="line">git config --<span class="keyword">global</span> user.email num@qq.com   <span class="comment"># 邮箱</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="3-Git-基本理论"><a href="#3-Git-基本理论" class="headerlink" title="3. Git 基本理论"></a>3. Git 基本理论</h1><h2 id="3-1-工作区域"><a href="#3-1-工作区域" class="headerlink" title="3.1 工作区域"></a>3.1 工作区域</h2><blockquote>
+<h1 id="git-基本理论">3. Git 基本理论</h1>
+<h2 id="工作区域">3.1 工作区域</h2>
+<blockquote>
 <p>四个工作区域：</p>
 <ul>
 <li>工作目录 (Working Directory)</li>
@@ -96,10 +125,10 @@
 <li>远程 Git 仓库 (Remote Directory)</li>
 </ul>
 </blockquote>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/4?raw=true" alt="workspace" style="zoom:80%;" />
-
-<center> 图 1-4 工作区域（核心） </center>
-
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/4?raw=true" alt="workspace" style="zoom:80%;" /></p>
+<center>
+图 1-4 工作区域（核心）
+</center>
 <ul>
 <li>Workspace：工作区，就是你平时存放项目代码的地方</li>
 <li>Index / Stage：暂存区，用于临时存放你的改动，事实上它只是一个文件，保存即将提交到文件列表信息</li>
@@ -107,10 +136,10 @@
 <li>Remote：远程仓库，托管代码的服务器，可以简单的认为是你项目组中的一台电脑用于远程数据交换</li>
 </ul>
 <p>本地的三个区域确切的说应该是git仓库中HEAD指向的版本：</p>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/5?raw=true" alt="demo" style="zoom:80%;" />
-
-<center> 图 1-5 Git示意图 </center>
-
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/5?raw=true" alt="demo" style="zoom:80%;" /></p>
+<center>
+图 1-5 Git示意图
+</center>
 <ul>
 <li>Directory：使用Git管理的一个目录，也就是一个仓库，包含我们的工作空间和Git的管理空间。</li>
 <li>WorkSpace：需要通过Git进行版本控制的目录和文件，这些目录和文件组成了工作空间。</li>
@@ -119,69 +148,73 @@
 <li>Local Repo：本地仓库，一个存放在本地的版本库；HEAD会只是当前的开发分支（branch）。</li>
 <li>Stash：隐藏，是一个工作状态保存栈，用于保存/恢复WorkSpace中的临时状态。</li>
 </ul>
-<h2 id="3-2-工作流程"><a href="#3-2-工作流程" class="headerlink" title="3.2 工作流程"></a>3.2 工作流程</h2><ol>
+<h2 id="工作流程">3.2 工作流程</h2>
+<ol type="1">
 <li>在工作目录中添加、修改文件；</li>
 <li>将需要进行版本管理的文件放入暂存区域；</li>
 <li>将暂存区域的文件提交到git仓库。</li>
 </ol>
 <p>因此，git管理的文件有三种状态：已修改（modified）,已暂存（staged）,已提交(committed)</p>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/6?raw=true" alt="process" style="zoom:80%;" />
-
-<center> 1-6 工作流程 </center>
-
-<h1 id="4-项目搭建"><a href="#4-项目搭建" class="headerlink" title="4. 项目搭建"></a>4. 项目搭建</h1><h2 id="4-1-创建工作目录"><a href="#4-1-创建工作目录" class="headerlink" title="4.1 创建工作目录"></a>4.1 创建工作目录</h2><p>工作目录（WorkSpace)一般就是你希望Git帮助你管理的文件夹，可以是你项目的目录，也可以是一个空目录，建议不要有中文。</p>
-<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/7?raw=true" alt="Command" style="zoom:80%;" />
-
-<center> 1-7 常用命令 </center>
-
-<h2 id="4-2-创建本地仓库"><a href="#4-2-创建本地仓库" class="headerlink" title="4.2 创建本地仓库"></a>4.2 创建本地仓库</h2><ul>
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/6?raw=true" alt="process" style="zoom:80%;" /></p>
+<center>
+1-6 工作流程
+</center>
+<h1 id="项目搭建">4. 项目搭建</h1>
+<h2 id="创建工作目录">4.1 创建工作目录</h2>
+<p>工作目录（WorkSpace)一般就是你希望Git帮助你管理的文件夹，可以是你项目的目录，也可以是一个空目录，建议不要有中文。</p>
+<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Git-notes/7?raw=true" alt="Command" style="zoom:80%;" /></p>
+<center>
+1-7 常用命令
+</center>
+<h2 id="创建本地仓库">4.2 创建本地仓库</h2>
+<ul>
 <li>创建全新的仓库</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></span><br><span class="line">$ git init</span><br><span class="line"><span class="comment"># 执行后，项目目录多出了一个.git目录</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>克隆远程仓库</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆一个项目和它的整个代码历史(版本信息)</span></span><br><span class="line">$ git clone [url]  </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">从 gitee 或 github 中克隆</span></span><br><span class="line"><span class="string">https://gitee.com/kuangstudy/openclass.git</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="5-Git-文件操作"><a href="#5-Git-文件操作" class="headerlink" title="5. Git 文件操作"></a>5. Git 文件操作</h1><h2 id="5-1-文件的四种状态"><a href="#5-1-文件的四种状态" class="headerlink" title="5.1 文件的四种状态"></a>5.1 文件的四种状态</h2><ul>
+<h1 id="git-文件操作">5. Git 文件操作</h1>
+<h2 id="文件的四种状态">5.1 文件的四种状态</h2>
+<ul>
 <li>Untracked: 未跟踪, 此文件在文件夹中, 但并没有加入到git 库, 不参与版本控制. 通过 git add 状态变为 Staged.</li>
 <li>Unmodify: 文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改, 而变为 Modified. 如果使用git rm移出版本库, 则成为 Untracked 文件</li>
 <li>Modified: 文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过git add可进入暂存staged状态, 使用git checkout 则丢弃修改过, 返回到unmodify状态, 这个git checkout即从库中取出文件, 覆盖当前修改 !</li>
 <li>Staged: 暂存状态. 执行git commit则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态. 执行git reset HEAD filename取消暂存, 文件状态为Modified</li>
 </ul>
-<h2 id="5-2-查看文件状态"><a href="#5-2-查看文件状态" class="headerlink" title="5.2 查看文件状态"></a>5.2 查看文件状态</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch hello.py</span><br><span class="line"></span><br><span class="line">git status hello.py <span class="comment"># 产看指定文件状态</span></span><br><span class="line">git status <span class="comment"># 查看所有文件状态</span></span><br><span class="line"></span><br><span class="line">git add hello.py <span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line">git add . <span class="comment"># 添加所有文件到暂存区 (repository)</span></span><br><span class="line"></span><br><span class="line">git rm --cached hello.py <span class="comment"># 将文件从暂存区移除</span></span><br><span class="line">git restore -staged add.py <span class="comment"># 将文件从暂存区移除</span></span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;a new file named hello.py&quot;</span> </span><br><span class="line"><span class="comment"># 提交暂存区内容至本地仓库</span></span><br><span class="line"></span><br><span class="line">git push -u origin master -f</span><br><span class="line"><span class="comment"># 第一次使用push的时候加上-u,以后可不加，-f强制上传</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-3-忽略文件"><a href="#5-3-忽略文件" class="headerlink" title="5.3 忽略文件"></a>5.3 忽略文件</h2><p>有些时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等</p>
-<p>在主目录下建立”.gitignore”文件，此文件有如下规则：</p>
+<h2 id="查看文件状态">5.2 查看文件状态</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch hello.py</span><br><span class="line"></span><br><span class="line">git status hello.py <span class="comment"># 产看指定文件状态</span></span><br><span class="line">git status <span class="comment"># 查看所有文件状态</span></span><br><span class="line"></span><br><span class="line">git add hello.py <span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line">git add . <span class="comment"># 添加所有文件到暂存区 (repository)</span></span><br><span class="line"></span><br><span class="line">git rm --cached hello.py <span class="comment"># 将文件从暂存区移除</span></span><br><span class="line">git restore -staged add.py <span class="comment"># 将文件从暂存区移除</span></span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">&quot;a new file named hello.py&quot;</span> </span><br><span class="line"><span class="comment"># 提交暂存区内容至本地仓库</span></span><br><span class="line"></span><br><span class="line">git push -u origin master -f</span><br><span class="line"><span class="comment"># 第一次使用push的时候加上-u,以后可不加，-f强制上传</span></span><br></pre></td></tr></table></figure>
+<h2 id="忽略文件">5.3 忽略文件</h2>
+<p>有些时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等</p>
+<p>在主目录下建立".gitignore"文件，此文件有如下规则：</p>
 <ul>
 <li>忽略文件中的空行或以井号（#）开始的行将会被忽略。</li>
-<li>可以使用Linux通配符。例如：星号（*）代表任意多个字符，问号（？）代表一个字符，方括号（[abc]）代表可选字符范围，大括号（{string1,string2,…}）代表可选的字符串等。</li>
+<li>可以使用Linux通配符。例如：星号（*）代表任意多个字符，问号（？）代表一个字符，方括号（[abc]）代表可选字符范围，大括号（{string1,string2,...}）代表可选的字符串等。</li>
 <li>如果名称的最前面有一个感叹号（!），表示例外规则，将不被忽略。</li>
 <li>如果名称的最前面是一个路径分隔符（/），表示要忽略的文件在此目录下，而子目录中的文件不忽略。</li>
 <li>如果名称的最后面是一个路径分隔符（/），表示要忽略的是此目录下该名称的子目录，而非文件（默认文件或目录都忽略）。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为注释</span></span><br><span class="line">*.txt  <span class="comment"># 忽略.txt结尾的文件,上传时不会被选中！</span></span><br><span class="line">!lib.txt     <span class="comment"># 但lib.txt除外</span></span><br><span class="line">/temp        <span class="comment">#仅忽略项目根目录下的TODO文件,不包括其它目录temp</span></span><br><span class="line">build/       <span class="comment">#忽略build/目录下的所有文件</span></span><br><span class="line">doc/*.txt    <span class="comment">#忽略doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="6-使用码云"><a href="#6-使用码云" class="headerlink" title="6. 使用码云"></a>6. 使用码云</h1><blockquote>
+<h1 id="使用码云">6. 使用码云</h1>
+<blockquote>
 <p>github 是有墙的，比较慢，国内一般用 gitee</p>
 </blockquote>
-<h2 id="6-1-设置免密码登录"><a href="#6-1-设置免密码登录" class="headerlink" title="6.1 设置免密码登录"></a>6.1 设置免密码登录</h2><ol>
+<h2 id="设置免密码登录">6.1 设置免密码登录</h2>
+<ol type="1">
 <li><p>设置本机绑定SSH公钥，实现免密码登录！</p>
 <p>免密码登录，这一步挺重要的，码云是远程仓库，我们是平时工作在本地仓库！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入 C:\Users\YangSu\.ssh 目录</span></span><br><span class="line"><span class="comment"># 生成公钥</span></span><br><span class="line">ssh-keygen -t rsa <span class="comment"># 加密算法</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入 C:\Users\YangSu\.ssh 目录</span></span><br><span class="line"><span class="comment"># 生成公钥</span></span><br><span class="line">ssh-keygen -t rsa <span class="comment"># 加密算法</span></span><br></pre></td></tr></table></figure></li>
 <li><p>将公钥信息public key 添加到码云账户中</p>
-<p>密钥信息存储在 id_rsa.pub 文件中</p>
-</li>
+<p>密钥信息存储在 id_rsa.pub 文件中</p></li>
 <li><p>使用 gitee 创建一个自己的仓库</p>
-<p><strong>许可证：</strong>开源是否可以随意转载，开源但是不能商业使用，不能转载，…  限制！</p>
-</li>
+<p><strong>许可证：</strong>开源是否可以随意转载，开源但是不能商业使用，不能转载，... 限制！</p></li>
 </ol>
-<h2 id="7-2-添加远程库"><a href="#7-2-添加远程库" class="headerlink" title="7.2 添加远程库"></a>7.2 添加远程库</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">git remote add origin https://gitee.com/yangsuoly/GitStudy.git</span><br><span class="line"><span class="comment"># 添加远程库, HTTPS方式，ssh可以免密</span></span><br><span class="line"></span><br><span class="line">git remote -v <span class="comment"># 查看 clone 的地址</span></span><br><span class="line">git remote rm origin <span class="comment"># 移除远程库地址</span></span><br><span class="line">git remote add origin git@gitee.com:yangsuoly/GitStudy.git <span class="comment"># 添加远程库地址，SSH方式</span></span><br><span class="line"></span><br><span class="line">cat /c/Users/YangSu/.ssh/id_rsa.pub <span class="comment"># 查看公玥</span></span><br><span class="line">    </span><br><span class="line">git push -u origin master -f <span class="comment"># 首次使用</span></span><br><span class="line">git push <span class="comment"># 之后</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="8-Git-分支"><a href="#8-Git-分支" class="headerlink" title="8. Git 分支"></a>8. Git 分支</h1><h2 id="8-1-Git-常用指令"><a href="#8-1-Git-常用指令" class="headerlink" title="8.1 Git 常用指令"></a>8.1 Git 常用指令</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line">git branch [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line">git checkout -b [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line">$ git merge [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">$ git branch -d [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line">$ git push origin --delete [branch-name]</span><br><span class="line">$ git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
-
+<h2 id="添加远程库">7.2 添加远程库</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">git remote add origin https://gitee.com/yangsuoly/GitStudy.git</span><br><span class="line"><span class="comment"># 添加远程库, HTTPS方式，ssh可以免密</span></span><br><span class="line"></span><br><span class="line">git remote -v <span class="comment"># 查看 clone 的地址</span></span><br><span class="line">git remote rm origin <span class="comment"># 移除远程库地址</span></span><br><span class="line">git remote add origin git@gitee.com:yangsuoly/GitStudy.git <span class="comment"># 添加远程库地址，SSH方式</span></span><br><span class="line"></span><br><span class="line">cat /c/Users/YangSu/.ssh/id_rsa.pub <span class="comment"># 查看公玥</span></span><br><span class="line">    </span><br><span class="line">git push -u origin master -f <span class="comment"># 首次使用</span></span><br><span class="line">git push <span class="comment"># 之后</span></span><br></pre></td></tr></table></figure>
+<h1 id="git-分支">8. Git 分支</h1>
+<h2 id="git-常用指令">8.1 Git 常用指令</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line">git branch [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line">git checkout -b [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line">$ git merge [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">$ git branch -d [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除远程分支</span></span><br><span class="line">$ git push origin --delete [branch-name]</span><br><span class="line">$ git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Notes</category>
@@ -191,146 +224,308 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux notes</title>
+    <url>/2020/11/23/Linux/</url>
+    <content><![CDATA[<h1 id="command">1. Command</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
+<h2 id="cd">1.1 cd</h2>
+<p>即 current directory，切换目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
+<h4 id="绝对路径">绝对路径</h4>
+<p>/home/YangSu/Desktop</p>
+<h4 id="相对路径">相对路径</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="pwd">1.2 pwd</h2>
+<p>即 print working directory 显示当前工作目录</p>
+<h2 id="ls">1.3 ls</h2>
+<p>即 list，列出文件和目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
+<h2 id="mkdir">1.4 mkdir</h2>
+<p>即 make directory，创建目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
+<h2 id="touch">1.5 touch</h2>
+<p>新建一个文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
+<h2 id="rm">1.6 rm</h2>
+<h3 id="rm-1">rm</h3>
+<p>即 remove 删除文件或目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
+<h3 id="rmdir">rmdir</h3>
+<p>即 remove directory，删除空目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
+<h2 id="cp">1.7 cp</h2>
+<p>即 copy，复制文件或者目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
+<h2 id="mv">1.8 mv</h2>
+<p>即 move，移动文件或目录（重命名）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
+<h2 id="tar">1.9 tar</h2>
+<p>即 tape archive档案打包</p>
+<h3 id="创建档案包">创建档案包</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
+<h4 id="还原档案包">还原档案包</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
+<h4 id="归档并压缩">归档并压缩</h4>
+<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
+<h2 id="man">1.10 man</h2>
+<p>即 manual，手册</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
+<h2 id="ln">1.11 ln</h2>
+<p>软链接，即Windows中的 “ 快捷方式 ”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
+<h2 id="other">1.12 other</h2>
+<ul>
+<li>reset：重新初始化终端，即清屏</li>
+<li>clear：清屏</li>
+<li>history：查看命令历史</li>
+<li>help：帮助</li>
+<li>exit：推出</li>
+<li>#：表示注释</li>
+</ul>
+<h1 id="management">2 Management</h1>
+<h2 id="switch-user">2.1 Switch user</h2>
+<ul>
+<li>su</li>
+</ul>
+<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
+<h2 id="user-operation">2.2 User operation</h2>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>passwd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>userdel</li>
+</ul>
+<p>即 user delete</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
+<h2 id="group-operation">2.3 Group operation</h2>
+<ul>
+<li>groupadd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>groupdel</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>usermod</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>cat</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="file-permission">2.4 File permission</h2>
+<ul>
+<li>View Permission</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chmod</li>
+</ul>
+<p>即 Change file mode，修改文件的访问权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chown</li>
+</ul>
+<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
+<h2 id="script">2.5 Script</h2>
+<ul>
+<li>Shell 脚本： *.sh</li>
+<li>Perl 脚本： *.pl</li>
+<li>Python 脚本：*.py</li>
+</ul>
+<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Shell 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Perl 脚本</li>
+<li>Py 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell">2.6 Shell</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
+<h1 id="enviroment">3 Enviroment</h1>
+<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
+<p>使用环境变量：</p>
+<ul>
+<li>在当前命令行中使用</li>
+<li>在 Shell 脚本中使用</li>
+</ul>
+<h2 id="user-viriables">3.2 User Viriables</h2>
+<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="system-variables">3.3 System Variables</h2>
+<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
+<h2 id="path-variables">3.4 PATH Variables</h2>
+<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
+<h2 id="network">3.5 Network</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Scikit-learn</title>
     <url>/2020/11/22/Scikit-learn/</url>
-    <content><![CDATA[<h1 id="1-Installing-scikit-learn"><a href="#1-Installing-scikit-learn" class="headerlink" title="1 Installing scikit-learn"></a>1 Installing scikit-learn</h1><ul>
+    <content><![CDATA[<h1 id="installing-scikit-learn">1 Installing scikit-learn</h1>
+<ul>
 <li><p>Windows</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
 <li><p>macOS</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
 <li><p>Linux</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -U scikit-learn</span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>Check installation: </p>
+<p>Check installation:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip show scikit-learn</span><br></pre></td></tr></table></figure>
-
 <p>See more about scikit-learn via clicking <a href="https://scikit-learn.org/stable/index.html#">here</a>.</p>
-<h1 id="2-General-study-mode"><a href="#2-General-study-mode" class="headerlink" title="2 General study mode"></a>2 General study mode</h1><p>Steps:</p>
-<ol>
+<a id="more"></a>
+<h1 id="general-study-mode">2 General study mode</h1>
+<p>Steps:</p>
+<ol type="1">
 <li>Load datas</li>
 <li>Split datas into two part: train and test part</li>
 <li>Training model</li>
 <li>Testing and evaluating model</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for iris</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">iris_x = iris.data <span class="comment"># features</span></span><br><span class="line">iris_y = iris.target <span class="comment"># types</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(iris_X[:2, :])</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(iris_x, iris_y, test_size = <span class="number">0.3</span>) <span class="comment"># split original data into train and test part</span></span><br><span class="line"><span class="comment"># the percentage of test sets is 30%</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(y_train) # 会打乱原始数据</span></span><br><span class="line">knn = KNeighborsClassifier() <span class="comment"># Classifier</span></span><br><span class="line">knn.fit(x_train, y_train) <span class="comment"># Train</span></span><br><span class="line">print(knn.predict(x_test)) <span class="comment"># Use trained model to predict</span></span><br><span class="line">print(y_test)</span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span>]</span><br><span class="line">[<span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-Sklearn-datasets"><a href="#3-Sklearn-datasets" class="headerlink" title="3 Sklearn.datasets"></a>3 Sklearn.datasets</h1><h2 id="3-1-Generate-regressiong-datas"><a href="#3-1-Generate-regressiong-datas" class="headerlink" title="3.1 Generate regressiong datas"></a>3.1 Generate regressiong datas</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for making datasets</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X, y = datasets.make_regression(n_samples = <span class="number">100</span>, </span><br><span class="line">                n_features = <span class="number">1</span>, n_targets = <span class="number">1</span>, noise = <span class="number">2</span>)</span><br><span class="line"><span class="comment"># X, y = datasets.make_regression(n_samples = 100, </span></span><br><span class="line"><span class="comment">#                 n_features = 1, n_targets = 1, noise = 10)</span></span><br><span class="line"></span><br><span class="line">plt.scatter(X, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
+<h1 id="sklearn.datasets">3 Sklearn.datasets</h1>
+<h2 id="generate-regressiong-datas">3.1 Generate regressiong datas</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for making datasets</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X, y = datasets.make_regression(n_samples = <span class="number">100</span>, </span><br><span class="line">                n_features = <span class="number">1</span>, n_targets = <span class="number">1</span>, noise = <span class="number">2</span>)</span><br><span class="line"><span class="comment"># X, y = datasets.make_regression(n_samples = 100, </span></span><br><span class="line"><span class="comment">#                 n_features = 1, n_targets = 1, noise = 10)</span></span><br><span class="line"></span><br><span class="line">plt.scatter(X, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p>Result:<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122161644131.png?raw=true" alt="image-20201122161644131" style="zoom:80%;" /></p>
-<center> fig. 3-1 Synthetic data </center>
-
-<h2 id="3-2-Load-datasets-of-Linear-Regression"><a href="#3-2-Load-datasets-of-Linear-Regression" class="headerlink" title="3.2 Load datasets of Linear Regression"></a>3.2 Load datasets of Linear Regression</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for loading boston datasets</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression example</span></span><br><span class="line">loaded_data = datasets.load_boston()</span><br><span class="line"><span class="comment"># X, y = datasets_loadboston(retern_X_y = true)</span></span><br><span class="line">data_X, data_y = loaded_data.data, loaded_data.target</span><br><span class="line"></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(data_X, data_y)</span><br><span class="line"></span><br><span class="line">print(data_y[:<span class="number">4</span>])</span><br><span class="line">print(model.predict(data_X[:<span class="number">4</span>, :]))</span><br></pre></td></tr></table></figure>
-
+<center>
+fig. 3-1 Synthetic data
+</center>
+<h2 id="load-datasets-of-linear-regression">3.2 Load datasets of Linear Regression</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for loading boston datasets</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression example</span></span><br><span class="line">loaded_data = datasets.load_boston()</span><br><span class="line"><span class="comment"># X, y = datasets_loadboston(retern_X_y = true)</span></span><br><span class="line">data_X, data_y = loaded_data.data, loaded_data.target</span><br><span class="line"></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(data_X, data_y)</span><br><span class="line"></span><br><span class="line">print(data_y[:<span class="number">4</span>])</span><br><span class="line">print(model.predict(data_X[:<span class="number">4</span>, :]))</span><br></pre></td></tr></table></figure>
 <p>Result:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">24.</span>  <span class="number">21.6</span> <span class="number">34.7</span> <span class="number">33.4</span>]</span><br><span class="line">[<span class="number">30.00384338</span> <span class="number">25.02556238</span> <span class="number">30.56759672</span> <span class="number">28.60703649</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-3-Normalization"><a href="#3-3-Normalization" class="headerlink" title="3.3 Normalization"></a>3.3 Normalization</h2><ul>
+<h2 id="normalization">3.3 Normalization</h2>
+<ul>
 <li><p>Demo</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="comment"># cross_validation 更新为 model_selection</span></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"> a = np.array([[<span class="number">10</span>, <span class="number">2.7</span>, <span class="number">3.6</span>],</span><br><span class="line">               [-<span class="number">100</span>, <span class="number">5</span>, <span class="number">2</span>],</span><br><span class="line">               [<span class="number">120</span>, <span class="number">20</span>, <span class="number">40</span>]], dtype = np.float64)</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line">print(preprocessing.scale(a)) <span class="comment"># normalization</span></span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[  <span class="number">10.</span>     <span class="number">2.7</span>    <span class="number">3.6</span>]</span><br><span class="line"> [-<span class="number">100.</span>     <span class="number">5.</span>     <span class="number">2.</span> ]</span><br><span class="line"> [ <span class="number">120.</span>    <span class="number">20.</span>    <span class="number">40.</span> ]]</span><br><span class="line">[[ <span class="number">0.</span>         -<span class="number">0.85170713</span> -<span class="number">0.66102858</span>]</span><br><span class="line"> [-<span class="number">1.22474487</span> -<span class="number">0.55187146</span> -<span class="number">0.75220493</span>]</span><br><span class="line"> [ <span class="number">1.22474487</span>  <span class="number">1.40357859</span>  <span class="number">1.41323351</span>]]</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[  <span class="number">10.</span>     <span class="number">2.7</span>    <span class="number">3.6</span>]</span><br><span class="line"> [-<span class="number">100.</span>     <span class="number">5.</span>     <span class="number">2.</span> ]</span><br><span class="line"> [ <span class="number">120.</span>    <span class="number">20.</span>    <span class="number">40.</span> ]]</span><br><span class="line">[[ <span class="number">0.</span>         -<span class="number">0.85170713</span> -<span class="number">0.66102858</span>]</span><br><span class="line"> [-<span class="number">1.22474487</span> -<span class="number">0.55187146</span> -<span class="number">0.75220493</span>]</span><br><span class="line"> [ <span class="number">1.22474487</span>  <span class="number">1.40357859</span>  <span class="number">1.41323351</span>]]</span><br></pre></td></tr></table></figure></li>
 <li><p>Comparison of accuracy before and after normalization</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="comment"># cross_validation 更新为 model_selection</span></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X, y = make_classification(n_samples = <span class="number">300</span>, n_features = <span class="number">2</span>, n_redundant = <span class="number">0</span>,n_informative = <span class="number">2</span>, random_state = <span class="number">22</span>, n_clusters_per_class = <span class="number">1</span>, scale = <span class="number">100</span>)</span><br><span class="line"><span class="comment"># random_state: 固定随机数</span></span><br><span class="line"></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c = y)</span><br><span class="line">plt.title(<span class="string">&#x27;Classification samples&#x27;</span>)</span><br><span class="line">plt.show() <span class="comment"># </span></span><br></pre></td></tr></table></figure>
-
-<p>Plot the generated samples:<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122163732848.png?raw=true" alt="image-20201122163732848"></p>
-<center> fig. 3-2 Samples</center>
-
+<p>Plot the generated samples:<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122163732848.png?raw=true" alt="image-20201122163732848" /></p>
+<center>
+<p>fig. 3-2 Samples</p>
+</center>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y ,test_size = <span class="number">.3</span>)</span><br><span class="line">clf = SVC()</span><br><span class="line">clf.fit(X_train, y_train)</span><br><span class="line">print(clf.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line">X = preprocessing.scale(X) <span class="comment"># normalization</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y ,test_size = <span class="number">.3</span>)</span><br><span class="line">clf = SVC()</span><br><span class="line">clf.fit(X_train, y_train)</span><br><span class="line">print(clf.score(X_test, y_test))</span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">0.9111111111111111</span></span><br><span class="line"><span class="number">0.9555555555555556</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">0.9111111111111111</span></span><br><span class="line"><span class="number">0.9555555555555556</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="4-Model-features-and-attributes"><a href="#4-Model-features-and-attributes" class="headerlink" title="4 Model features and attributes"></a>4 Model features and attributes</h1><h2 id="4-1-Basic-parameters"><a href="#4-1-Basic-parameters" class="headerlink" title="4.1 Basic parameters"></a>4.1 Basic parameters</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression example</span></span><br><span class="line">loaded_data = datasets.load_boston()</span><br><span class="line"><span class="comment"># X, y = datasets_loadboston(retern_X_y = true)</span></span><br><span class="line">data_X, data_y = loaded_data.data, loaded_data.target</span><br><span class="line"></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(data_X, data_y)</span><br><span class="line"></span><br><span class="line">print(data_y[:<span class="number">4</span>])</span><br><span class="line">print(model.predict(data_X[:<span class="number">4</span>, :]))</span><br><span class="line"></span><br><span class="line">print(model.coef_) <span class="comment"># 系数</span></span><br><span class="line">print(model.intercept_) <span class="comment"># 截距</span></span><br><span class="line">print(model.get_params) <span class="comment"># 参数</span></span><br><span class="line">print(model.score(data_X, data_y)) <span class="comment"># default is R^2 coefficietn of determination</span></span><br></pre></td></tr></table></figure>
-
+<h1 id="model-features-and-attributes">4 Model features and attributes</h1>
+<h2 id="basic-parameters">4.1 Basic parameters</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression example</span></span><br><span class="line">loaded_data = datasets.load_boston()</span><br><span class="line"><span class="comment"># X, y = datasets_loadboston(retern_X_y = true)</span></span><br><span class="line">data_X, data_y = loaded_data.data, loaded_data.target</span><br><span class="line"></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(data_X, data_y)</span><br><span class="line"></span><br><span class="line">print(data_y[:<span class="number">4</span>])</span><br><span class="line">print(model.predict(data_X[:<span class="number">4</span>, :]))</span><br><span class="line"></span><br><span class="line">print(model.coef_) <span class="comment"># 系数</span></span><br><span class="line">print(model.intercept_) <span class="comment"># 截距</span></span><br><span class="line">print(model.get_params) <span class="comment"># 参数</span></span><br><span class="line">print(model.score(data_X, data_y)) <span class="comment"># default is R^2 coefficietn of determination</span></span><br></pre></td></tr></table></figure>
 <p>Result:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[24.  21.6 34.7 33.4]</span><br><span class="line">[30.00384338 25.02556238 30.56759672 28.60703649]</span><br><span class="line">[-1.08011358e-01  4.64204584e-02  2.05586264e-02  2.68673382e+00</span><br><span class="line"> -1.77666112e+01  3.80986521e+00  6.92224640e-04 -1.47556685e+00</span><br><span class="line">  3.06049479e-01 -1.23345939e-02 -9.52747232e-01  9.31168327e-03</span><br><span class="line"> -5.24758378e-01]</span><br><span class="line">36.459488385089855</span><br><span class="line">&lt;bound method BaseEstimator.get_params of LinearRegression()&gt;</span><br><span class="line">0.7406426641094095</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-2-Cross-validation"><a href="#4-2-Cross-validation" class="headerlink" title="4.2 Cross validation"></a>4.2 Cross validation</h2><ul>
+<h2 id="cross-validation">4.2 Cross validation</h2>
+<ul>
 <li><p>Evaluate the NN</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors = <span class="number">5</span>)</span><br><span class="line"><span class="comment"># knn.fit(X_train, y_train)</span></span><br><span class="line"><span class="comment"># print(knn.score(X_test, y_test))</span></span><br><span class="line">scores = cross_val_score(knn, X, y, cv = <span class="number">5</span>, scoring = <span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># 将test进行5次划分</span></span><br><span class="line">print(scores.mean()) <span class="comment"># 取平均值</span></span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">0.9733333333333334</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">0.9733333333333334</span></span><br></pre></td></tr></table></figure></li>
 <li><p>Cross validation</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span>  learning_curve</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">digits = load_digits()</span><br><span class="line">X = digits.data</span><br><span class="line">y = digits.target</span><br><span class="line">train_sizes, train_loss, test_loss= learning_curve( SVC(gamma=<span class="number">0.01</span>), X, y, cv=<span class="number">10</span>, scoring=<span class="string">&#x27;neg_mean_squared_error&#x27;</span>, train_sizes=[<span class="number">0.1</span>, <span class="number">0.25</span>, <span class="number">0.5</span>, <span class="number">0.75</span>, <span class="number">1</span>])</span><br><span class="line"><span class="comment"># &#x27;neg_mean_squared_error&#x27; 非 &#x27;mean_squared_error&#x27;</span></span><br><span class="line"></span><br><span class="line">train_loss_mean = -np.mean(train_loss, axis=<span class="number">1</span>)</span><br><span class="line">test_loss_mean = -np.mean(test_loss, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">plt.plot(train_sizes, train_loss_mean, <span class="string">&#x27;o-&#x27;</span>, color=<span class="string">&quot;r&quot;</span>,</span><br><span class="line">             label=<span class="string">&quot;Training&quot;</span>)</span><br><span class="line">plt.plot(train_sizes, test_loss_mean, <span class="string">&#x27;o-&#x27;</span>, color=<span class="string">&quot;g&quot;</span>,</span><br><span class="line">             label=<span class="string">&quot;Cross-validation&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;Training examples&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Loss&quot;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&quot;best&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122170425665.png?raw=true" alt="image-20201122170425665"></p>
-<center> fig 4-1 Vross-validation</center>
-</li>
+<figure>
+<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122170425665.png?raw=true" alt="" /><figcaption>image-20201122170425665</figcaption>
+</figure>
+<center>
+<p>fig 4-1 Vross-validation</p>
+</center></li>
 <li><p>Adjustment parameter-1</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># test train split #</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">4</span>)</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">y_pred = knn.predict(X_test)</span><br><span class="line">print(knn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is how to use cross_val_score to choose model and configs #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">k_range = <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">31</span>)</span><br><span class="line">k_scores = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"><span class="comment">##    loss = -cross_val_score(knn, X, y, cv=10, scoring=&#x27;mean_squared_error&#x27;) # for regression</span></span><br><span class="line">    scores = cross_val_score(knn, X, y, cv=<span class="number">10</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># for classification</span></span><br><span class="line">    k_scores.append(scores.mean())</span><br><span class="line"></span><br><span class="line">plt.plot(k_range, k_scores)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Value of K for KNN&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Cross-Validated Accuracy&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122164729522.png?raw=true" alt="image-20201122164729522"></p>
-<center> fig. 4-2 Adjustment parameters</center>
-</li>
+<figure>
+<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122164729522.png?raw=true" alt="" /><figcaption>image-20201122164729522</figcaption>
+</figure>
+<center>
+<p>fig. 4-2 Adjustment parameters</p>
+</center></li>
 <li><p>Adjustment parameter-2</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> validation_curve</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">digits = load_digits()</span><br><span class="line">X = digits.data</span><br><span class="line">y = digits.target</span><br><span class="line">param_range = np.logspace(-<span class="number">6</span>, -<span class="number">2.3</span>, <span class="number">5</span>)</span><br><span class="line">train_loss, test_loss = validation_curve(</span><br><span class="line">        SVC(), X, y, param_name=<span class="string">&#x27;gamma&#x27;</span>, param_range=param_range, cv=<span class="number">10</span>,</span><br><span class="line">        scoring= <span class="string">&#x27;neg_mean_squared_error&#x27;</span>)</span><br><span class="line">train_loss_mean = -np.mean(train_loss, axis=<span class="number">1</span>)</span><br><span class="line">test_loss_mean = -np.mean(test_loss, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">plt.plot(param_range, train_loss_mean, <span class="string">&#x27;o-&#x27;</span>, color=<span class="string">&quot;r&quot;</span>,</span><br><span class="line">             label=<span class="string">&quot;Training&quot;</span>)</span><br><span class="line">plt.plot(param_range, test_loss_mean, <span class="string">&#x27;o-&#x27;</span>, color=<span class="string">&quot;g&quot;</span>,</span><br><span class="line">             label=<span class="string">&quot;Cross-validation&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&quot;gamma&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;Loss&quot;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Overfitting problem&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&quot;best&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122170846740.png?raw=true" alt="image-20201122170846740"></p>
-<center> fig 4-3 Adjustment parameters </center>
-
-</li>
+<figure>
+<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201122170846740.png?raw=true" alt="" /><figcaption>image-20201122170846740</figcaption>
+</figure>
+<center>
+<p>fig 4-3 Adjustment parameters</p>
+</center></li>
 </ul>
-<h2 id="4-3-Transform-target-in-regression-model"><a href="#4-3-Transform-target-in-regression-model" class="headerlink" title="4.3 Transform target in regression model"></a>4.3 Transform target in regression model</h2><p>将原始数据转化为分类模式，可以有效地提高预测的精度，效果如下：</p>
+<h2 id="transform-target-in-regression-model">4.3 Transform target in regression model</h2>
+<p>将原始数据转化为分类模式，可以有效地提高预测的精度，效果如下：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(__doc__)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_regression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> RidgeCV</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> TransformedTargetRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> median_absolute_error, r2_score</span><br><span class="line"><span class="keyword">from</span> sklearn.utils.fixes <span class="keyword">import</span> parse_version</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> parse_version(matplotlib.__version__) &gt;= parse_version(<span class="string">&#x27;2.1&#x27;</span>):</span><br><span class="line">    desity_param = &#123;<span class="string">&#x27;density&#x27;</span>: <span class="literal">True</span>&#125;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    density_param = &#123;<span class="string">&#x27;normed&#x27;</span>: <span class="literal">True</span>&#125;</span><br><span class="line">    </span><br><span class="line">X, y = make_regression(n_samples = <span class="number">10000</span>, noise = <span class="number">100</span>, random_state = <span class="number">0</span>)</span><br><span class="line">y = np.exp((y + <span class="built_in">abs</span>(y.<span class="built_in">min</span>()))/<span class="number">200</span>)</span><br><span class="line">y_trans = np.log1p(y)</span><br><span class="line"></span><br><span class="line">f, (ax0, ax1) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># density: normalization</span></span><br><span class="line">ax0.hist(y, bins = <span class="number">100</span>, density = <span class="literal">True</span>)</span><br><span class="line">ax0.set_xlim([<span class="number">0</span>, <span class="number">2000</span>])</span><br><span class="line">ax0.set_ylabel(<span class="string">&#x27;Probability&#x27;</span>)</span><br><span class="line">ax0.set_xlabel(<span class="string">&#x27;Target&#x27;</span>)</span><br><span class="line">ax0.set_title(<span class="string">&#x27;Target distribution&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax1.hist(y_trans, bins = <span class="number">100</span>, density = <span class="literal">True</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">&#x27;Probability&#x27;</span>)</span><br><span class="line">ax1.set_xlabel(<span class="string">&#x27;Target&#x27;</span>)</span><br><span class="line">ax1.set_title(<span class="string">&#x27;Transformed target distribution&#x27;</span>)</span><br><span class="line"></span><br><span class="line">f.suptitle(<span class="string">&#x27;Synthetic data&#x27;</span>, y = <span class="number">0.035</span>)</span><br><span class="line">f.tight_layout(rect = [<span class="number">0.05</span>, <span class="number">0.05</span>, <span class="number">0.95</span>, <span class="number">0.95</span>])</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
 <p>Result:</p>
-<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201121212045258.png?raw=true" alt="image-20201121212045258"></p>
-<center> fig.4-4 Comparison of Transformation</center>
-
+<figure>
+<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201121212045258.png?raw=true" alt="" /><figcaption>image-20201121212045258</figcaption>
+</figure>
+<center>
+fig.4-4 Comparison of Transformation
+</center>
 <p>然后，再来测试其对预测精度的影响：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">f, (ax0, ax1) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, sharey=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">regr = RidgeCV()</span><br><span class="line">regr.fit(X_train, y_train)</span><br><span class="line">y_pred = regr.predict(X_test)</span><br><span class="line"></span><br><span class="line">ax0.scatter(y_test, y_pred)</span><br><span class="line">ax0.plot([<span class="number">0</span>, <span class="number">2000</span>], [<span class="number">0</span>, <span class="number">2000</span>], <span class="string">&#x27;--k&#x27;</span>)</span><br><span class="line">ax0.set_ylabel(<span class="string">&#x27;Target predicted&#x27;</span>)</span><br><span class="line">ax0.set_xlabel(<span class="string">&#x27;True Target&#x27;</span>)</span><br><span class="line">ax0.set_title(<span class="string">&#x27;Ridge regression \n without target transformation&#x27;</span>)</span><br><span class="line">ax0.text(<span class="number">100</span>, <span class="number">1750</span>, <span class="string">r&#x27;$R^2$=%.2f, MAE=%.2f&#x27;</span> % (</span><br><span class="line">    r2_score(y_test, y_pred), median_absolute_error(y_test, y_pred)))</span><br><span class="line">ax0.set_xlim([<span class="number">0</span>, <span class="number">2000</span>])</span><br><span class="line">ax0.set_ylim([<span class="number">0</span>, <span class="number">2000</span>])</span><br><span class="line"></span><br><span class="line">regr_trans = TransformedTargetRegressor(regressor=RidgeCV(), func=np.log1p,inverse_func=np.expm1)</span><br><span class="line"></span><br><span class="line">regr_trans.fit(X_train, y_train)</span><br><span class="line">y_pred = regr_trans.predict(X_test)</span><br><span class="line"></span><br><span class="line">ax1.scatter(y_test, y_pred)</span><br><span class="line">ax1.plot([<span class="number">0</span>, <span class="number">2000</span>], [<span class="number">0</span>, <span class="number">2000</span>], <span class="string">&#x27;--k&#x27;</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">&#x27;Target predicted&#x27;</span>)</span><br><span class="line">ax1.set_xlabel(<span class="string">&#x27;True Target&#x27;</span>)</span><br><span class="line">ax1.set_title(<span class="string">&#x27;Ridge regression \n with target transformation&#x27;</span>)</span><br><span class="line">ax1.text(<span class="number">100</span>, <span class="number">1750</span>, <span class="string">r&#x27;$R^2$=%.2f, MAE=%.2f&#x27;</span> % (</span><br><span class="line">    r2_score(y_test, y_pred), median_absolute_error(y_test, y_pred)))</span><br><span class="line">ax1.set_xlim([<span class="number">0</span>, <span class="number">2000</span>])</span><br><span class="line">ax1.set_ylim([<span class="number">0</span>, <span class="number">2000</span>])</span><br><span class="line"></span><br><span class="line">f.suptitle(<span class="string">&quot;Synthetic data&quot;</span>, y=<span class="number">0.035</span>)</span><br><span class="line">f.tight_layout(rect=[<span class="number">0.05</span>, <span class="number">0.05</span>, <span class="number">0.95</span>, <span class="number">0.95</span>])</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201121212351459.png?raw=true" alt="image-20201121212351459"></p>
-<center> fig. 4-5 Comparison before and after transforming</center>
-
+<figure>
+<img src="https://github.com/YangSuoly/Images/blob/master/typora-image/Scikit-learn/image-20201121212351459.png?raw=true" alt="" /><figcaption>image-20201121212351459</figcaption>
+</figure>
+<center>
+fig. 4-5 Comparison before and after transforming
+</center>
 <p>从结果可以看出，经过预处理转化后的数据集能有效地提高预测的精度，降低 <code>MAE</code> 的值。</p>
-<h1 id="5-Save-model"><a href="#5-Save-model" class="headerlink" title="5 Save model"></a>5 Save model</h1><p>Train model</p>
+<h1 id="save-model">5 Save model</h1>
+<p>Train model</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">clf = svm.SVC()</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">clf.fit(X, y)</span><br></pre></td></tr></table></figure>
-
 <p>Then, we can use two methods to save our trained models:</p>
-<ol>
+<ol type="1">
 <li><p>pickle</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="comment"># Save</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;save/clf.pickle&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(clf, f)</span><br><span class="line"><span class="comment"># Restore</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;save/clf.pickle&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	clf2 = pickle.load(f)</span><br><span class="line">print(clf2.predict(X[<span class="number">0</span>:<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="comment"># Save</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;save/clf.pickle&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    pickle.dump(clf, f)</span><br><span class="line"><span class="comment"># Restore</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;save/clf.pickle&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	clf2 = pickle.load(f)</span><br><span class="line">print(clf2.predict(X[<span class="number">0</span>:<span class="number">1</span>]))</span><br></pre></td></tr></table></figure></li>
 <li><p>joblib</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> joblib</span><br><span class="line"><span class="comment"># Save</span></span><br><span class="line">joblib.dump(clf, <span class="string">&#x27;./save/clf.pkl&#x27;</span>)</span><br><span class="line"><span class="comment"># restore</span></span><br><span class="line">clf3 = joblib.load(<span class="string">&#x27;save/clf.pkl&#x27;</span>)</span><br><span class="line">print(clf3.predict(X[<span class="number">0</span>:<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> joblib</span><br><span class="line"><span class="comment"># Save</span></span><br><span class="line">joblib.dump(clf, <span class="string">&#x27;./save/clf.pkl&#x27;</span>)</span><br><span class="line"><span class="comment"># restore</span></span><br><span class="line">clf3 = joblib.load(<span class="string">&#x27;save/clf.pkl&#x27;</span>)</span><br><span class="line">print(clf3.predict(X[<span class="number">0</span>:<span class="number">1</span>]))</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
         <category>Machine learning</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
+        <tag>Notes</tag>
       </tags>
   </entry>
   <entry>
-    <title>test1</title>
-    <url>/2020/11/23/test1/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>test2</title>
-    <url>/2020/11/23/test2/</url>
-    <content><![CDATA[]]></content>
+    <title>My first blog</title>
+    <url>/2020/11/22/My-first-blog/</url>
+    <content><![CDATA[<h1 id="python-code">Python code</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># View more python learning tutorial on my Youtube and Youku channel!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Youtube video tutorial: https://www.youtube.com/channel/UCdyjiB5H8Pu7aDTNVXTTpcg</span></span><br><span class="line"><span class="comment"># Youku video tutorial: http://i.youku.com/pythontutorial</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Please note, this code is only for python 3+. If you are using python 2+, please modify the code accordingly.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># test train split #</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">4</span>)</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">y_pred = knn.predict(X_test)</span><br><span class="line">print(knn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is cross_val_score #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">scores = cross_val_score(knn, X, y, cv=<span class="number">5</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">print(scores)</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is how to use cross_val_score to choose model and configs #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">k_range = <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">31</span>)</span><br><span class="line">k_scores = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"><span class="comment">##    loss = -cross_val_score(knn, X, y, cv=10, scoring=&#x27;mean_squared_error&#x27;) # for regression</span></span><br><span class="line">    scores = cross_val_score(knn, X, y, cv=<span class="number">10</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># for classification</span></span><br><span class="line">    k_scores.append(scores.mean())</span><br><span class="line"></span><br><span class="line">plt.plot(k_range, k_scores)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Value of K for KNN&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Cross-Validated Accuracy&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
 </search>
