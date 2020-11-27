@@ -26,61 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Eviews notes</title>
-    <url>/2020/11/22/Eviews/</url>
-    <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
-<p>Eviews 10 创建时间序列工作文件，界面如下</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUNDeA.png" /></p>
-<center>
-figure 1-1 时间序列类型
-</center>
-<p>参数释义为：</p>
-<a id="more"></a>
-<ul>
-<li>Annual：年度数据</li>
-<li>Semi-annual：半年(2010S1 - 2019S1)</li>
-<li>Quarteryly：季度 （2010Q3 - 2019Q2）</li>
-<li>Monthly：月度（2010M01 - 2019M11）</li>
-<li>Bimonthly：半月（2010-3-01 - 2019-8-8）</li>
-<li>Fortnightly：两周</li>
-<li>Daily-custom week：用户自定义选择周几</li>
-<li>Intraday：当日数据，精确到每天每隔多少时间</li>
-<li>Integer data：可以是年度（eg：2001 - 2012），也可以是哪一期（eg：3 - 33）</li>
-</ul>
-<p>创建平衡面板数据：</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUN0Ld.png" /></p>
-<center>
-figure 1-2 平衡面板数据
-</center>
-<h1 id="least-squares最小二乘法">2 Least Squares（最小二乘法）</h1>
-<p>Command中输入 <code>ls y c x</code>即可得到如下结果：</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUNrdI.md.png" /></p>
-<center>
-figure 1-3 Parameters
-</center>
-<p>Parameters:</p>
-<ul>
-<li>Coefficient：系数，参数估计值</li>
-<li>Std. Error：参数估计量标准差估计值</li>
-<li>t-Statistic：<span class="math inline">\(t\)</span> 统计量的值</li>
-<li>Prob: <span class="math inline">\(P\)</span> 值</li>
-<li>R-squared: $ R^2$</li>
-<li>Adjusted R-squared: $^ - $</li>
-<li>S.E. of regression: <span class="math inline">\(\sigma ^2\)</span></li>
-<li>Sum squared resid: $ RSS$，残差平方和</li>
-<li>Mean dependent var: <span class="math inline">\(\overset{-}{Y}\)</span>，被解释变量的均值</li>
-<li>S.D. dependent var: 被解释变量的标准差</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Notes</category>
-      </categories>
-      <tags>
-        <tag>Eviews</tag>
-        <tag>Software</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git notes</title>
     <url>/2020/11/22/Git-notes/</url>
     <content><![CDATA[<h1 id="版本控制">1. 版本控制</h1>
@@ -251,6 +196,61 @@ figure 1-3 Parameters
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Eviews notes</title>
+    <url>/2020/11/22/Eviews/</url>
+    <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
+<p>Eviews 10 创建时间序列工作文件，界面如下</p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUNDeA.png" /></p>
+<center>
+figure 1-1 时间序列类型
+</center>
+<p>参数释义为：</p>
+<a id="more"></a>
+<ul>
+<li>Annual：年度数据</li>
+<li>Semi-annual：半年(2010S1 - 2019S1)</li>
+<li>Quarteryly：季度 （2010Q3 - 2019Q2）</li>
+<li>Monthly：月度（2010M01 - 2019M11）</li>
+<li>Bimonthly：半月（2010-3-01 - 2019-8-8）</li>
+<li>Fortnightly：两周</li>
+<li>Daily-custom week：用户自定义选择周几</li>
+<li>Intraday：当日数据，精确到每天每隔多少时间</li>
+<li>Integer data：可以是年度（eg：2001 - 2012），也可以是哪一期（eg：3 - 33）</li>
+</ul>
+<p>创建平衡面板数据：</p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUN0Ld.png" /></p>
+<center>
+figure 1-2 平衡面板数据
+</center>
+<h1 id="least-squares最小二乘法">2 Least Squares（最小二乘法）</h1>
+<p>Command中输入 <code>ls y c x</code>即可得到如下结果：</p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUNrdI.md.png" /></p>
+<center>
+figure 1-3 Parameters
+</center>
+<p>Parameters:</p>
+<ul>
+<li>Coefficient：系数，参数估计值</li>
+<li>Std. Error：参数估计量标准差估计值</li>
+<li>t-Statistic：<span class="math inline">\(t\)</span> 统计量的值</li>
+<li>Prob: <span class="math inline">\(P\)</span> 值</li>
+<li>R-squared: $ R^2$</li>
+<li>Adjusted R-squared: $^ - $</li>
+<li>S.E. of regression: <span class="math inline">\(\sigma ^2\)</span></li>
+<li>Sum squared resid: $ RSS$，残差平方和</li>
+<li>Mean dependent var: <span class="math inline">\(\overset{-}{Y}\)</span>，被解释变量的均值</li>
+<li>S.D. dependent var: 被解释变量的标准差</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>Eviews</tag>
+        <tag>Software</tag>
       </tags>
   </entry>
   <entry>
@@ -451,75 +451,6 @@ figure 1-3 Parameters
     <content><![CDATA[<h1 id="python-code">Python code</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># View more python learning tutorial on my Youtube and Youku channel!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Youtube video tutorial: https://www.youtube.com/channel/UCdyjiB5H8Pu7aDTNVXTTpcg</span></span><br><span class="line"><span class="comment"># Youku video tutorial: http://i.youku.com/pythontutorial</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Please note, this code is only for python 3+. If you are using python 2+, please modify the code accordingly.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># test train split #</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">4</span>)</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">y_pred = knn.predict(X_test)</span><br><span class="line">print(knn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is cross_val_score #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">scores = cross_val_score(knn, X, y, cv=<span class="number">5</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">print(scores)</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is how to use cross_val_score to choose model and configs #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">k_range = <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">31</span>)</span><br><span class="line">k_scores = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"><span class="comment">##    loss = -cross_val_score(knn, X, y, cv=10, scoring=&#x27;mean_squared_error&#x27;) # for regression</span></span><br><span class="line">    scores = cross_val_score(knn, X, y, cv=<span class="number">10</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># for classification</span></span><br><span class="line">    k_scores.append(scores.mean())</span><br><span class="line"></span><br><span class="line">plt.plot(k_range, k_scores)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Value of K for KNN&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Cross-Validated Accuracy&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Pandas</title>
-    <url>/2020/11/25/Pandas/</url>
-    <content><![CDATA[<h1 id="series">1 Series</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">t = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>) <span class="comment"># time type</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># np.nan means NaN</span></span><br><span class="line">s = pd.Series([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.nan, <span class="number">44</span>, <span class="number">1</span>])</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates = pd.date_range(<span class="string">&#x27;20200101&#x27;</span>, periods = <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates</span><br><span class="line">DatetimeIndex([<span class="string">&#x27;2020-01-01&#x27;</span>, <span class="string">&#x27;2020-01-02&#x27;</span>, <span class="string">&#x27;2020-01-03&#x27;</span>, <span class="string">&#x27;2020-01-04&#x27;</span>,<span class="string">&#x27;2020-01-05&#x27;</span>, <span class="string">&#x27;2020-01-06&#x27;</span>],dtype=<span class="string">&#x27;datetime64[ns]&#x27;</span>, freq=<span class="string">&#x27;D&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li><strong>DataFrame</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># create a dataframe based on imported array</span></span><br><span class="line">df0 = pd.DataFrame(np.random.randn(<span class="number">6</span>,<span class="number">4</span>), index = dates, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">df1 = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a dataframe based on dict</span></span><br><span class="line">df3 = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line">print(df0, df1, df3, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df3.dtypes <span class="comment"># dimensional type</span></span><br><span class="line">df3.index <span class="comment"># row index name</span></span><br><span class="line">df3.columns <span class="comment"># column name</span></span><br><span class="line">df3.describe() <span class="comment"># describe numerical characteristics, including count, mean, std, min etc.</span></span><br><span class="line">df3.T </span><br><span class="line">df3.transpose() <span class="comment"># transpose array</span></span><br><span class="line">df3.sort_index(axis = <span class="number">1</span>, ascending = <span class="literal">False</span>)</span><br><span class="line"><span class="comment"># horizontal descending sort</span></span><br></pre></td></tr></table></figure>
-<h1 id="choose-data">2 Choose data</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(arange(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">df1 = df.A <span class="comment"># same sa df.[&#x27;A&#x27;]</span></span><br><span class="line">df2 = df[<span class="number">0</span>:<span class="number">3</span>] <span class="comment"># row operation, 0-3 row</span></span><br><span class="line">df2_1 = df[<span class="number">0</span>:<span class="number">1</span>] <span class="comment"># single row</span></span><br><span class="line">df2_2 = df[<span class="string">&#x27;A&#x27;</span>] <span class="comment"># single column</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># select by label based index: loc</span></span><br><span class="line">df3 = df.loc[<span class="number">1</span>] <span class="comment"># the second row</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># selct by postitional index: iloc</span></span><br><span class="line">df4 = df.iloc[:,<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># 1-3 column</span></span><br><span class="line"><span class="comment"># mixed selection: ix</span></span><br><span class="line">df5 = df.ix[:<span class="number">2</span>,[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;D&#x27;</span>]] <span class="comment"># deprecated</span></span><br><span class="line"></span><br><span class="line">df6 = df[df[<span class="string">&#x27;A&#x27;</span>] &gt; <span class="number">4</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">df[&#x27;A&#x27;] &gt; 4 return the row index which number is bigger than 4, let me name this index as iRow, then df[iRow] return the row date that meets above filter condition</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="set-value">3 Set Value</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(arange(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">df.iloc[<span class="number">2</span>, <span class="number">2</span>] = <span class="number">111</span></span><br><span class="line">df.loc[<span class="number">0</span>,<span class="string">&#x27;B&#x27;</span>] = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>)</span><br><span class="line"><span class="comment"># Note: below command will create a new column named (0, &#x27;B&#x27;) which values are given</span></span><br><span class="line">df[<span class="number">0</span>,<span class="string">&#x27;B&#x27;</span>] = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="process-default-value">4 Process default value</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(arange(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># let (0,2) become default value</span></span><br><span class="line">df.iloc[<span class="number">2</span>, <span class="number">2</span>] = <span class="number">111</span></span><br><span class="line">df.loc[<span class="number">0</span>,<span class="string">&#x27;C&#x27;</span>] = np.nan </span><br><span class="line"></span><br><span class="line"><span class="comment"># Drop NaN</span></span><br><span class="line">df.dropna(axis =<span class="number">0</span>, how = <span class="string">&#x27;any&#x27;</span>) </span><br><span class="line"><span class="comment"># how = [&#x27;any, &#x27;all&#x27;], default is any</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Fill NaN, can&#x27;t do it with df.fillna(0)</span></span><br><span class="line">df[<span class="string">&#x27;C&#x27;</span>] = df[<span class="string">&#x27;C&#x27;</span>].fillna(<span class="number">0</span>)</span><br><span class="line">print(df)</span><br><span class="line"><span class="comment"># maybe below command also can work?</span></span><br><span class="line">df_1 = df.fillna(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">df.isnull() <span class="comment"># find which position is null, return a dataframe same size as df</span></span><br><span class="line">np.<span class="built_in">any</span>(df.isnull()) == <span class="literal">True</span> </span><br></pre></td></tr></table></figure>
-<h1 id="read-and-save-file">5 Read and save file</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;xx.csv&#x27;</span>) <span class="comment"># read</span></span><br><span class="line">data.to_csv(<span class="string">&#x27;xxx.csv&#x27;</span>) <span class="comment"># save file</span></span><br></pre></td></tr></table></figure>
-<h1 id="merge-dataframes">6 Merge dataframes</h1>
-<h2 id="concatenation">6.1 Concatenation</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 array multiply o is o</span></span><br><span class="line">df1 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">0</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">df2 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">1</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">df3 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">2</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">res = pd.concat([df1, df2, df3], axis = <span class="number">0</span>, ignore_index = <span class="literal">True</span>) <span class="comment"># default don&#x27;t ignore index, the difference seen in below pic</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s3.ax1x.com/2020/11/25/DamaCR.png" /></p>
-<center>
-fig. 1 differenc of ignoring index
-</center>
-<ul>
-<li><strong>join, ['inner', 'outer']</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">0</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>], index = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">df2 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">1</span>, columns = [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>], index = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># default join is outer, fill the null space with NaN</span></span><br><span class="line">df3 = pd.concat([df1, df2], axis = <span class="number">0</span>, join = <span class="string">&#x27;outer&#x27;</span>, sort=<span class="literal">False</span>, ignore_index = <span class="literal">True</span>)</span><br><span class="line"><span class="comment"># inner will take the intersection index of two arrays</span></span><br><span class="line">df4 = pd.concat([df1, df2], axis = <span class="number">0</span>, join = <span class="string">&#x27;inner&#x27;</span>, sort=<span class="literal">False</span>, ignore_index = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 df2 合并到 df1，并基于 index 去掉 df2 中有而 df1 没有的数据， 并填充 NaN</span></span><br><span class="line">df5 = pd.concat([df1, df2], axis = <span class="number">1</span>, join_axes = [df1.index])</span><br></pre></td></tr></table></figure>
-<h2 id="append">6.2 append</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">df1 &#x3D; pd.DataFrame(np.ones((3, 4)) * 0, columns &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line">df2 &#x3D; pd.DataFrame(np.ones((3, 4)) * 1, columns &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line">df3 &#x3D; pd.DataFrame(np.ones((3, 4)) * 1, columns &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line"> </span><br><span class="line">res &#x3D; df1.append([df2, df3], ignore_index &#x3D; True)</span><br><span class="line"></span><br><span class="line"># add a row series into a df</span><br><span class="line">s1 &#x3D; pd.Series([1, 2, 3, 4], index &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line">res1 &#x3D; df1.append(s1, ignore_index &#x3D; True)</span><br></pre></td></tr></table></figure>
-<h2 id="merge">6.3 merge</h2>
-<ul>
-<li>1 merged by single key</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">left = pd.DataFrame(&#123;<span class="string">&#x27;key&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>, <span class="string">&#x27;K3&#x27;</span>],<span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;A0&#x27;</span>, <span class="string">&#x27;A1&#x27;</span>, <span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;A3&#x27;</span>],<span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;B0&#x27;</span>, <span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;B2&#x27;</span>, <span class="string">&#x27;B3&#x27;</span>]&#125;)</span><br><span class="line">right = pd.DataFrame(&#123;<span class="string">&#x27;key&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>, <span class="string">&#x27;K3&#x27;</span>],<span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;C0&#x27;</span>, <span class="string">&#x27;C1&#x27;</span>, <span class="string">&#x27;C2&#x27;</span>, <span class="string">&#x27;C3&#x27;</span>],<span class="string">&#x27;D&#x27;</span>: [<span class="string">&#x27;D0&#x27;</span>, <span class="string">&#x27;D1&#x27;</span>, <span class="string">&#x27;D2&#x27;</span>, <span class="string">&#x27;D3&#x27;</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># merge two dfs based on the same key value</span></span><br><span class="line">res = pd.merge(left, right, on = <span class="string">&#x27;key&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2 merged by multiple keys</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">left = pd.DataFrame(&#123;<span class="string">&#x27;key1&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>],<span class="string">&#x27;key2&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>],<span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;A0&#x27;</span>, <span class="string">&#x27;A1&#x27;</span>, 		<span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;A3&#x27;</span>],<span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;B0&#x27;</span>, <span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;B2&#x27;</span>, <span class="string">&#x27;B3&#x27;</span>]&#125;)</span><br><span class="line">right = pd.DataFrame(&#123;<span class="string">&#x27;key1&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>],<span class="string">&#x27;key2&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K0&#x27;</span>],<span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;C0&#x27;</span>, <span class="string">&#x27;C1&#x27;</span>, 		<span class="string">&#x27;C2&#x27;</span>, <span class="string">&#x27;C3&#x27;</span>],<span class="string">&#x27;D&#x27;</span>: [<span class="string">&#x27;D0&#x27;</span>, <span class="string">&#x27;D1&#x27;</span>, <span class="string">&#x27;D2&#x27;</span>, <span class="string">&#x27;D3&#x27;</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># merge two dfs based the same key value, default how = inner</span></span><br><span class="line">res1 = pd.merge(left, right, on = [<span class="string">&#x27;key1&#x27;</span>,<span class="string">&#x27;key2&#x27;</span>])</span><br><span class="line">res2 = pd.merge(left, right, on = [<span class="string">&#x27;key1&#x27;</span>,<span class="string">&#x27;key2&#x27;</span>], how = <span class="string">&#x27;inner&#x27;</span>)</span><br><span class="line">res2 = pd.merge(left, right, on = [<span class="string">&#x27;key1&#x27;</span>,<span class="string">&#x27;key2&#x27;</span>], indicator = <span class="literal">True</span>) </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">how = [&#x27;inner, &#x27;outer&#x27;,&#x27;left&#x27;,&#x27;right&#x27;]</span></span><br><span class="line"><span class="string">if how = &#x27;right&#x27;, this operation will fill left void space with NaN when left haven&#x27;t same key value with right, then merge into right</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">default indicator is False, this parameter will create a new column named _merge(indicator = &#x27;indicator_column&#x27;, then the new column&#x27;s name is indicator_column), which show if both arrays have a meanful value. </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>3 merged by index</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">left = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;A0&#x27;</span>, <span class="string">&#x27;A1&#x27;</span>, <span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;A3&#x27;</span>],<span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;B0&#x27;</span>, <span class="string">&#x27;B1&#x27;</span>, <span class="string">&#x27;B2&#x27;</span>, <span class="string">&#x27;B3&#x27;</span>]&#125;, index = [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>,<span class="string">&#x27;K4&#x27;</span>])</span><br><span class="line">right = pd.DataFrame(&#123;<span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;C0&#x27;</span>, <span class="string">&#x27;C1&#x27;</span>, <span class="string">&#x27;C2&#x27;</span>, <span class="string">&#x27;C3&#x27;</span>],<span class="string">&#x27;D&#x27;</span>: [<span class="string">&#x27;D0&#x27;</span>, <span class="string">&#x27;D1&#x27;</span>, <span class="string">&#x27;D2&#x27;</span>, <span class="string">&#x27;D3&#x27;</span>]&#125;, index = [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K3&#x27;</span>,<span class="string">&#x27;K5&#x27;</span>])</span><br><span class="line">print(left, right, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># left_index and right_index</span></span><br><span class="line">res1 = pd.merge(left, right, left_index = <span class="literal">True</span>, right_index = <span class="literal">True</span>, how = <span class="string">&#x27;inner&#x27;</span>) <span class="comment"># based on left_index = right_index</span></span><br><span class="line">res2 = pd.merge(left, right, left_index = <span class="literal">True</span>, right_index = <span class="literal">True</span>, how = <span class="string">&#x27;outer&#x27;</span>) <span class="comment"># fill the blank with NaN</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>4 suffixes para</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">boys = pd.DataFrame(&#123;<span class="string">&#x27;K&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>,<span class="string">&#x27;K4&#x27;</span>],<span class="string">&#x27;age&#x27;</span>: [<span class="number">11</span>, <span class="number">23</span>, <span class="number">32</span>, <span class="number">12</span>]&#125;)</span><br><span class="line">girls = pd.DataFrame(&#123;<span class="string">&#x27;K&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>,<span class="string">&#x27;K4&#x27;</span>],<span class="string">&#x27;age&#x27;</span>: [<span class="number">14</span>, <span class="number">43</span>, <span class="number">12</span>, <span class="number">22</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># suffixex means the named methods of same positional column</span></span><br><span class="line">res = pd.merge(boys, girls, on = <span class="string">&#x27;K&#x27;</span>, suffixes = [<span class="string">&#x27;_boys&#x27;</span>, <span class="string">&#x27;_girls&#x27;</span>], how = <span class="string">&#x27;inner&#x27;</span>)</span><br><span class="line">print(res) <span class="comment">#  age_boys  age_girls</span></span><br></pre></td></tr></table></figure>
-<h1 id="matplotlib">3.7 matplotlib</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">data1 = pd.Series(np.random.randn(<span class="number">1000</span>), index = np.arange(<span class="number">1000</span>))</span><br><span class="line">data2 = pd.DataFrame(np.random.randn(<span class="number">1000</span>, <span class="number">4</span>), index = np.arange(<span class="number">1000</span>), columns = <span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>))</span><br><span class="line"><span class="comment"># print(data1, data2, sep = &#x27;\n&#x27;)</span></span><br><span class="line">data1 = data1.cumsum()</span><br><span class="line">data2 = data2.cumsum()</span><br><span class="line"><span class="comment"># print(data)</span></span><br><span class="line">data1.plot()</span><br><span class="line">data2.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>plot methods</p>
-<p>bar, hist, box, kde, area, scatter, hexbin, pie</p></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">data = pd.DataFrame(np.random.randn(<span class="number">1000</span>, <span class="number">4</span>), index = np.arange(<span class="number">1000</span>), columns = <span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>))</span><br><span class="line"></span><br><span class="line">data = data.cumsum()</span><br><span class="line"></span><br><span class="line">ax = data.plot.scatter(x = <span class="string">&#x27;A&#x27;</span>, y = <span class="string">&#x27;B&#x27;</span>,color = <span class="string">&#x27;DarkBlue&#x27;</span>, label = <span class="string">&#x27;Class1&#x27;</span>)</span><br><span class="line">data.plot.scatter(x = <span class="string">&#x27;A&#x27;</span>, y = <span class="string">&#x27;C&#x27;</span>,color = <span class="string">&#x27;DarkGreen&#x27;</span>,label = <span class="string">&#x27;Class2&#x27;</span>,ax = ax)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/Damd81.png" /></p>
-<center>
-fig. 2 scatter figure
-</center>
-]]></content>
-      <categories>
-        <category>Notes</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Data analysis</tag>
-      </tags>
   </entry>
   <entry>
     <title>Scikit-learn</title>
