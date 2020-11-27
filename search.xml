@@ -1,6 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Conda channel setting</title>
+    <url>/2020/11/23/Conda%20channel%20setting/</url>
+    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
+<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
+<h1 id="delete-channel">2 Delete channel</h1>
+<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="add-channel">3 Add channel</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
+<h1 id="install-package-offline">4 Install package offline</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br></pre></td></tr></table></figure>
+<h1 id="other-command">5 Other command</h1>
+<p><code>conda install &lt;包名&gt;</code> 安装指定包 <code>conda remove &lt;包名&gt;</code> 移除指定包 <code>conda update &lt;包名&gt;</code> 更新指定包</p>
+]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Anaconda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/11/22/Hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>other</category>
+      </categories>
+      <tags>
+        <tag>Hello</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux notes</title>
+    <url>/2020/11/23/Linux/</url>
+    <content><![CDATA[<h1 id="command">1. Command</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
+<h2 id="cd">1.1 cd</h2>
+<p>即 current directory，切换目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
+<h4 id="绝对路径">绝对路径</h4>
+<p>/home/YangSu/Desktop</p>
+<h4 id="相对路径">相对路径</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="pwd">1.2 pwd</h2>
+<p>即 print working directory 显示当前工作目录</p>
+<h2 id="ls">1.3 ls</h2>
+<p>即 list，列出文件和目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
+<h2 id="mkdir">1.4 mkdir</h2>
+<p>即 make directory，创建目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
+<h2 id="touch">1.5 touch</h2>
+<p>新建一个文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
+<h2 id="rm">1.6 rm</h2>
+<h3 id="rm-1">rm</h3>
+<p>即 remove 删除文件或目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
+<h3 id="rmdir">rmdir</h3>
+<p>即 remove directory，删除空目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
+<h2 id="cp">1.7 cp</h2>
+<p>即 copy，复制文件或者目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
+<h2 id="mv">1.8 mv</h2>
+<p>即 move，移动文件或目录（重命名）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
+<h2 id="tar">1.9 tar</h2>
+<p>即 tape archive档案打包</p>
+<h3 id="创建档案包">创建档案包</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
+<h4 id="还原档案包">还原档案包</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
+<h4 id="归档并压缩">归档并压缩</h4>
+<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
+<h2 id="man">1.10 man</h2>
+<p>即 manual，手册</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
+<h2 id="ln">1.11 ln</h2>
+<p>软链接，即Windows中的 “ 快捷方式 ”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
+<h2 id="other">1.12 other</h2>
+<ul>
+<li>reset：重新初始化终端，即清屏</li>
+<li>clear：清屏</li>
+<li>history：查看命令历史</li>
+<li>help：帮助</li>
+<li>exit：推出</li>
+<li>#：表示注释</li>
+</ul>
+<h1 id="management">2 Management</h1>
+<h2 id="switch-user">2.1 Switch user</h2>
+<ul>
+<li>su</li>
+</ul>
+<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
+<h2 id="user-operation">2.2 User operation</h2>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>passwd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>userdel</li>
+</ul>
+<p>即 user delete</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
+<h2 id="group-operation">2.3 Group operation</h2>
+<ul>
+<li>groupadd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>groupdel</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>usermod</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>cat</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="file-permission">2.4 File permission</h2>
+<ul>
+<li>View Permission</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chmod</li>
+</ul>
+<p>即 Change file mode，修改文件的访问权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chown</li>
+</ul>
+<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
+<h2 id="script">2.5 Script</h2>
+<ul>
+<li>Shell 脚本： *.sh</li>
+<li>Perl 脚本： *.pl</li>
+<li>Python 脚本：*.py</li>
+</ul>
+<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Shell 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Perl 脚本</li>
+<li>Py 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell">2.6 Shell</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
+<h1 id="enviroment">3 Enviroment</h1>
+<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
+<p>使用环境变量：</p>
+<ul>
+<li>在当前命令行中使用</li>
+<li>在 Shell 脚本中使用</li>
+</ul>
+<h2 id="user-viriables">3.2 User Viriables</h2>
+<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="system-variables">3.3 System Variables</h2>
+<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
+<h2 id="path-variables">3.4 PATH Variables</h2>
+<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
+<h2 id="network">3.5 Network</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Eviews notes</title>
     <url>/2020/11/22/Eviews/</url>
     <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
@@ -53,31 +270,6 @@ figure 1-3 Parameters
       <tags>
         <tag>Eviews</tag>
         <tag>Software</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Conda channel setting</title>
-    <url>/2020/11/23/Conda%20channel%20setting/</url>
-    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
-<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
-<h1 id="delete-channel">2 Delete channel</h1>
-<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="add-channel">3 Add channel</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
-<h1 id="install-package-offline">4 Install package offline</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br></pre></td></tr></table></figure>
-<h1 id="other-command">5 Other command</h1>
-<p><code>conda install &lt;包名&gt;</code> 安装指定包 <code>conda remove &lt;包名&gt;</code> 移除指定包 <code>conda update &lt;包名&gt;</code> 更新指定包</p>
-]]></content>
-      <categories>
-        <category>Software</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Anaconda</tag>
       </tags>
   </entry>
   <entry>
@@ -254,31 +446,6 @@ figure 1-3 Parameters
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/11/22/Hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>other</category>
-      </categories>
-      <tags>
-        <tag>Hello</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>My first blog</title>
     <url>/2020/11/22/My-first-blog/</url>
     <content><![CDATA[<h1 id="python-code">Python code</h1>
@@ -286,192 +453,25 @@ figure 1-3 Parameters
 ]]></content>
   </entry>
   <entry>
-    <title>Linux notes</title>
-    <url>/2020/11/23/Linux/</url>
-    <content><![CDATA[<h1 id="command">1. Command</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
-<h2 id="cd">1.1 cd</h2>
-<p>即 current directory，切换目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
-<h4 id="绝对路径">绝对路径</h4>
-<p>/home/YangSu/Desktop</p>
-<h4 id="相对路径">相对路径</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="pwd">1.2 pwd</h2>
-<p>即 print working directory 显示当前工作目录</p>
-<h2 id="ls">1.3 ls</h2>
-<p>即 list，列出文件和目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
-<h2 id="mkdir">1.4 mkdir</h2>
-<p>即 make directory，创建目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
-<h2 id="touch">1.5 touch</h2>
-<p>新建一个文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
-<h2 id="rm">1.6 rm</h2>
-<h3 id="rm-1">rm</h3>
-<p>即 remove 删除文件或目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
-<h3 id="rmdir">rmdir</h3>
-<p>即 remove directory，删除空目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
-<h2 id="cp">1.7 cp</h2>
-<p>即 copy，复制文件或者目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
-<h2 id="mv">1.8 mv</h2>
-<p>即 move，移动文件或目录（重命名）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
-<h2 id="tar">1.9 tar</h2>
-<p>即 tape archive档案打包</p>
-<h3 id="创建档案包">创建档案包</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
-<h4 id="还原档案包">还原档案包</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
-<h4 id="归档并压缩">归档并压缩</h4>
-<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
-<h2 id="man">1.10 man</h2>
-<p>即 manual，手册</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
-<h2 id="ln">1.11 ln</h2>
-<p>软链接，即Windows中的 “ 快捷方式 ”</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
-<h2 id="other">1.12 other</h2>
-<ul>
-<li>reset：重新初始化终端，即清屏</li>
-<li>clear：清屏</li>
-<li>history：查看命令历史</li>
-<li>help：帮助</li>
-<li>exit：推出</li>
-<li>#：表示注释</li>
-</ul>
-<h1 id="management">2 Management</h1>
-<h2 id="switch-user">2.1 Switch user</h2>
-<ul>
-<li>su</li>
-</ul>
-<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
-<h2 id="user-operation">2.2 User operation</h2>
-<ul>
-<li>useradd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
-<ul>
-<li>passwd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
-<ul>
-<li>userdel</li>
-</ul>
-<p>即 user delete</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
-<h2 id="group-operation">2.3 Group operation</h2>
-<ul>
-<li>groupadd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>groupdel</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>useradd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>usermod</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>cat</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="file-permission">2.4 File permission</h2>
-<ul>
-<li>View Permission</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>chmod</li>
-</ul>
-<p>即 Change file mode，修改文件的访问权限</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>chown</li>
-</ul>
-<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
-<h2 id="script">2.5 Script</h2>
-<ul>
-<li>Shell 脚本： *.sh</li>
-<li>Perl 脚本： *.pl</li>
-<li>Python 脚本：*.py</li>
-</ul>
-<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Shell 脚本</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Perl 脚本</li>
-<li>Py 脚本</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
-<h2 id="shell">2.6 Shell</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
-<h1 id="enviroment">3 Enviroment</h1>
-<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
-<p>使用环境变量：</p>
-<ul>
-<li>在当前命令行中使用</li>
-<li>在 Shell 脚本中使用</li>
-</ul>
-<h2 id="user-viriables">3.2 User Viriables</h2>
-<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="system-variables">3.3 System Variables</h2>
-<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
-<h2 id="path-variables">3.4 PATH Variables</h2>
-<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
-<h2 id="network">3.5 Network</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Notes</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pandas</title>
     <url>/2020/11/27/Pandas/</url>
-    <content><![CDATA[<h1 id="series">Series</h1>
+    <content><![CDATA[<h1 id="series">1 Series</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">t = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>) <span class="comment"># time type</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># np.nan means NaN</span></span><br><span class="line">s = pd.Series([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.nan, <span class="number">44</span>, <span class="number">1</span>])</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates = pd.date_range(<span class="string">&#x27;20200101&#x27;</span>, periods = <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates</span><br><span class="line">DatetimeIndex([<span class="string">&#x27;2020-01-01&#x27;</span>, <span class="string">&#x27;2020-01-02&#x27;</span>, <span class="string">&#x27;2020-01-03&#x27;</span>, <span class="string">&#x27;2020-01-04&#x27;</span>,<span class="string">&#x27;2020-01-05&#x27;</span>, <span class="string">&#x27;2020-01-06&#x27;</span>],dtype=<span class="string">&#x27;datetime64[ns]&#x27;</span>, freq=<span class="string">&#x27;D&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <ul>
 <li><strong>DataFrame</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># create a dataframe based on imported array</span></span><br><span class="line">df0 = pd.DataFrame(np.random.randn(<span class="number">6</span>,<span class="number">4</span>), index = dates, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">df1 = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a dataframe based on dict</span></span><br><span class="line">df3 = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line">print(df0, df1, df3, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">df3.dtypes <span class="comment"># dimensional type</span></span><br><span class="line">df3.index <span class="comment"># row index name</span></span><br><span class="line">df3.columns <span class="comment"># column name</span></span><br><span class="line">df3.describe() <span class="comment"># describe numerical characteristics, including count, mean, std, min etc.</span></span><br><span class="line">df3.T </span><br><span class="line">df3.transpose() <span class="comment"># transpose array</span></span><br><span class="line">df3.sort_index(axis = <span class="number">1</span>, ascending = <span class="literal">False</span>)</span><br><span class="line"><span class="comment"># horizontal descending sort</span></span><br></pre></td></tr></table></figure>
-<h1 id="choose-data">Choose data</h1>
+<h1 id="choose-data">2 Choose data</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(arange(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">df1 = df.A <span class="comment"># same sa df.[&#x27;A&#x27;]</span></span><br><span class="line">df2 = df[<span class="number">0</span>:<span class="number">3</span>] <span class="comment"># row operation, 0-3 row</span></span><br><span class="line">df2_1 = df[<span class="number">0</span>:<span class="number">1</span>] <span class="comment"># single row</span></span><br><span class="line">df2_2 = df[<span class="string">&#x27;A&#x27;</span>] <span class="comment"># single column</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># select by label based index: loc</span></span><br><span class="line">df3 = df.loc[<span class="number">1</span>] <span class="comment"># the second row</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># selct by postitional index: iloc</span></span><br><span class="line">df4 = df.iloc[:,<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># 1-3 column</span></span><br><span class="line"><span class="comment"># mixed selection: ix</span></span><br><span class="line">df5 = df.ix[:<span class="number">2</span>,[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;D&#x27;</span>]] <span class="comment"># deprecated</span></span><br><span class="line"></span><br><span class="line">df6 = df[df[<span class="string">&#x27;A&#x27;</span>] &gt; <span class="number">4</span>]</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">df[&#x27;A&#x27;] &gt; 4 return the row index which number is bigger than 4, let me name this index as iRow, then df[iRow] return the row date that meets above filter condition</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="set-value">Set Value</h1>
+<h1 id="set-value">3 Set Value</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(arange(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line">df.iloc[<span class="number">2</span>, <span class="number">2</span>] = <span class="number">111</span></span><br><span class="line">df.loc[<span class="number">0</span>,<span class="string">&#x27;B&#x27;</span>] = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>)</span><br><span class="line"><span class="comment"># Note: below command will create a new column named (0, &#x27;B&#x27;) which values are given</span></span><br><span class="line">df[<span class="number">0</span>,<span class="string">&#x27;B&#x27;</span>] = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="process-default-value">Process default value</h1>
+<h1 id="process-default-value">4 Process default value</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:<span class="number">1.</span>, <span class="string">&#x27;B&#x27;</span>:pd.Timestamp(<span class="string">&#x27;20160901&#x27;</span>), <span class="string">&#x27;C&#x27;</span>:pd.Series(<span class="number">1</span>,index=<span class="built_in">list</span>(arange(<span class="number">4</span>)),dtype=<span class="string">&#x27;float32&#x27;</span>), <span class="string">&#x27;D&#x27;</span>:np.array([<span class="number">3</span>]*<span class="number">4</span>, dtype =<span class="string">&#x27;int32&#x27;</span>),<span class="string">&#x27;E&#x27;</span>:pd.Categorical([<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>,<span class="string">&#x27;test&#x27;</span>,<span class="string">&#x27;train&#x27;</span>]),<span class="string">&#x27;F&#x27;</span>:<span class="string">&#x27;foo&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># let (0,2) become default value</span></span><br><span class="line">df.iloc[<span class="number">2</span>, <span class="number">2</span>] = <span class="number">111</span></span><br><span class="line">df.loc[<span class="number">0</span>,<span class="string">&#x27;C&#x27;</span>] = np.nan </span><br><span class="line"></span><br><span class="line"><span class="comment"># Drop NaN</span></span><br><span class="line">df.dropna(axis =<span class="number">0</span>, how = <span class="string">&#x27;any&#x27;</span>) </span><br><span class="line"><span class="comment"># how = [&#x27;any, &#x27;all&#x27;], default is any</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Fill NaN, can&#x27;t do it with df.fillna(0)</span></span><br><span class="line">df[<span class="string">&#x27;C&#x27;</span>] = df[<span class="string">&#x27;C&#x27;</span>].fillna(<span class="number">0</span>)</span><br><span class="line">print(df)</span><br><span class="line"><span class="comment"># maybe below command also can work?</span></span><br><span class="line">df_1 = df.fillna(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">df.isnull() <span class="comment"># find which position is null, return a dataframe same size as df</span></span><br><span class="line">np.<span class="built_in">any</span>(df.isnull()) == <span class="literal">True</span> </span><br></pre></td></tr></table></figure>
-<h1 id="read-and-save-file">Read and save file</h1>
+<h1 id="read-and-save-file">5 Read and save file</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;xx.csv&#x27;</span>) <span class="comment"># read</span></span><br><span class="line">data.to_csv(<span class="string">&#x27;xxx.csv&#x27;</span>) <span class="comment"># save file</span></span><br></pre></td></tr></table></figure>
-<h1 id="merge-dataframes">Merge dataframes</h1>
-<h2 id="concatenation">Concatenation</h2>
+<h1 id="merge-dataframes">6 Merge dataframes</h1>
+<h2 id="concatenation">6.1 Concatenation</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 array multiply o is o</span></span><br><span class="line">df1 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">0</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">df2 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">1</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">df3 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">2</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])</span><br><span class="line">res = pd.concat([df1, df2, df3], axis = <span class="number">0</span>, ignore_index = <span class="literal">True</span>) <span class="comment"># default don&#x27;t ignore index, the difference seen in below pic</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://s3.ax1x.com/2020/11/25/DamaCR.png" /></p>
 <center>
@@ -481,9 +481,9 @@ fig. 1 differenc of ignoring index
 <li><strong>join = ['inner', 'outer']</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">df1 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">0</span>, columns = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>], index = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">df2 = pd.DataFrame(np.ones((<span class="number">3</span>, <span class="number">4</span>)) * <span class="number">1</span>, columns = [<span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>], index = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># default join is outer, fill the null space with NaN</span></span><br><span class="line">df3 = pd.concat([df1, df2], axis = <span class="number">0</span>, join = <span class="string">&#x27;outer&#x27;</span>, sort=<span class="literal">False</span>, ignore_index = <span class="literal">True</span>)</span><br><span class="line"><span class="comment"># inner will take the intersection index of two arrays</span></span><br><span class="line">df4 = pd.concat([df1, df2], axis = <span class="number">0</span>, join = <span class="string">&#x27;inner&#x27;</span>, sort=<span class="literal">False</span>, ignore_index = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 df2 合并到 df1，并基于 index 去掉 df2 中有而 df1 没有的数据， 并填充 NaN</span></span><br><span class="line">df5 = pd.concat([df1, df2], axis = <span class="number">1</span>, join_axes = [df1.index])</span><br></pre></td></tr></table></figure>
-<h2 id="append">append</h2>
+<h2 id="append">6.2 append</h2>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">df1 &#x3D; pd.DataFrame(np.ones((3, 4)) * 0, columns &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line">df2 &#x3D; pd.DataFrame(np.ones((3, 4)) * 1, columns &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line">df3 &#x3D; pd.DataFrame(np.ones((3, 4)) * 1, columns &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line"> </span><br><span class="line">res &#x3D; df1.append([df2, df3], ignore_index &#x3D; True)</span><br><span class="line"></span><br><span class="line"># add a row series into a df</span><br><span class="line">s1 &#x3D; pd.Series([1, 2, 3, 4], index &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])</span><br><span class="line">res1 &#x3D; df1.append(s1, ignore_index &#x3D; True)</span><br></pre></td></tr></table></figure>
-<h2 id="merge">merge</h2>
+<h2 id="merge">6.3 merge</h2>
 <ul>
 <li>merged by single key</li>
 </ul>
@@ -500,7 +500,7 @@ fig. 1 differenc of ignoring index
 <li>suffixes para</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">boys = pd.DataFrame(&#123;<span class="string">&#x27;K&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>,<span class="string">&#x27;K4&#x27;</span>],<span class="string">&#x27;age&#x27;</span>: [<span class="number">11</span>, <span class="number">23</span>, <span class="number">32</span>, <span class="number">12</span>]&#125;)</span><br><span class="line">girls = pd.DataFrame(&#123;<span class="string">&#x27;K&#x27;</span>: [<span class="string">&#x27;K0&#x27;</span>, <span class="string">&#x27;K1&#x27;</span>, <span class="string">&#x27;K2&#x27;</span>,<span class="string">&#x27;K4&#x27;</span>],<span class="string">&#x27;age&#x27;</span>: [<span class="number">14</span>, <span class="number">43</span>, <span class="number">12</span>, <span class="number">22</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># suffixex means the named methods of same positional column</span></span><br><span class="line">res = pd.merge(boys, girls, on = <span class="string">&#x27;K&#x27;</span>, suffixes = [<span class="string">&#x27;_boys&#x27;</span>, <span class="string">&#x27;_girls&#x27;</span>], how = <span class="string">&#x27;inner&#x27;</span>)</span><br><span class="line">print(res) <span class="comment">#  age_boys  age_girls</span></span><br></pre></td></tr></table></figure>
-<h1 id="matplotlib">matplotlib</h1>
+<h1 id="matplotlib">7 matplotlib</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">data1 = pd.Series(np.random.randn(<span class="number">1000</span>), index = np.arange(<span class="number">1000</span>))</span><br><span class="line">data2 = pd.DataFrame(np.random.randn(<span class="number">1000</span>, <span class="number">4</span>), index = np.arange(<span class="number">1000</span>), columns = <span class="built_in">list</span>(<span class="string">&#x27;ABCD&#x27;</span>))</span><br><span class="line"><span class="comment"># print(data1, data2, sep = &#x27;\n&#x27;)</span></span><br><span class="line">data1 = data1.cumsum()</span><br><span class="line">data2 = data2.cumsum()</span><br><span class="line"><span class="comment"># print(data)</span></span><br><span class="line">data1.plot()</span><br><span class="line">data2.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>plot methods</p>
@@ -524,7 +524,7 @@ fig. 2 scatter figure
   <entry>
     <title>Scikit-learn</title>
     <url>/2020/11/22/Scikit-learn/</url>
-    <content><![CDATA[<h1 id="installing-scikit-learn">Installing scikit-learn</h1>
+    <content><![CDATA[<h1 id="installing-scikit-learn">1 Installing scikit-learn</h1>
 <ul>
 <li><p>Windows</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
@@ -537,7 +537,7 @@ fig. 2 scatter figure
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip show scikit-learn</span><br></pre></td></tr></table></figure>
 <p>See more about scikit-learn via clicking <a href="https://scikit-learn.org/stable/index.html#">here</a>.</p>
 <a id="more"></a>
-<h1 id="general-study-mode">General study mode</h1>
+<h1 id="general-study-mode">2 General study mode</h1>
 <p>Steps:</p>
 <ol type="1">
 <li>Load datas</li>
@@ -548,18 +548,18 @@ fig. 2 scatter figure
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for iris</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">iris_x = iris.data <span class="comment"># features</span></span><br><span class="line">iris_y = iris.target <span class="comment"># types</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(iris_X[:2, :])</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(iris_x, iris_y, test_size = <span class="number">0.3</span>) <span class="comment"># split original data into train and test part</span></span><br><span class="line"><span class="comment"># the percentage of test sets is 30%</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(y_train) # 会打乱原始数据</span></span><br><span class="line">knn = KNeighborsClassifier() <span class="comment"># Classifier</span></span><br><span class="line">knn.fit(x_train, y_train) <span class="comment"># Train</span></span><br><span class="line">print(knn.predict(x_test)) <span class="comment"># Use trained model to predict</span></span><br><span class="line">print(y_test)</span><br></pre></td></tr></table></figure>
 <p>Result:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span>]</span><br><span class="line">[<span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="sklearn.datasets">Sklearn.datasets</h1>
-<h2 id="generate-regressiong-datas">Generate regressiong datas</h2>
+<h1 id="sklearn.datasets">3 Sklearn.datasets</h1>
+<h2 id="generate-regressiong-datas">3.1 Generate regressiong datas</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for making datasets</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">X, y = datasets.make_regression(n_samples = <span class="number">100</span>, </span><br><span class="line">                n_features = <span class="number">1</span>, n_targets = <span class="number">1</span>, noise = <span class="number">2</span>)</span><br><span class="line"><span class="comment"># X, y = datasets.make_regression(n_samples = 100, </span></span><br><span class="line"><span class="comment">#                 n_features = 1, n_targets = 1, noise = 10)</span></span><br><span class="line"></span><br><span class="line">plt.scatter(X, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p>Result:<img src="https://s3.ax1x.com/2020/11/25/DUaqr4.png" /></p>
 <center>
 fig. 3-1 Synthetic data
 </center>
-<h2 id="load-datasets-of-linear-regression">Load datasets of Linear Regression</h2>
+<h2 id="load-datasets-of-linear-regression">3.2 Load datasets of Linear Regression</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># instance for loading boston datasets</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression example</span></span><br><span class="line">loaded_data = datasets.load_boston()</span><br><span class="line"><span class="comment"># X, y = datasets_loadboston(retern_X_y = true)</span></span><br><span class="line">data_X, data_y = loaded_data.data, loaded_data.target</span><br><span class="line"></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(data_X, data_y)</span><br><span class="line"></span><br><span class="line">print(data_y[:<span class="number">4</span>])</span><br><span class="line">print(model.predict(data_X[:<span class="number">4</span>, :]))</span><br></pre></td></tr></table></figure>
 <p>Result:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">24.</span>  <span class="number">21.6</span> <span class="number">34.7</span> <span class="number">33.4</span>]</span><br><span class="line">[<span class="number">30.00384338</span> <span class="number">25.02556238</span> <span class="number">30.56759672</span> <span class="number">28.60703649</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="normalization">Normalization</h2>
+<h2 id="normalization">3.3 Normalization</h2>
 <ul>
 <li><p>Demo</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="comment"># cross_validation 更新为 model_selection</span></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"> a = np.array([[<span class="number">10</span>, <span class="number">2.7</span>, <span class="number">3.6</span>],</span><br><span class="line">               [-<span class="number">100</span>, <span class="number">5</span>, <span class="number">2</span>],</span><br><span class="line">               [<span class="number">120</span>, <span class="number">20</span>, <span class="number">40</span>]], dtype = np.float64)</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line">print(preprocessing.scale(a)) <span class="comment"># normalization</span></span><br></pre></td></tr></table></figure>
@@ -575,12 +575,12 @@ fig. 3-1 Synthetic data
 <p>Result:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">0.9111111111111111</span></span><br><span class="line"><span class="number">0.9555555555555556</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="model-features-and-attributes">Model features and attributes</h1>
-<h2 id="basic-parameters">Basic parameters</h2>
+<h1 id="model-features-and-attributes">4 Model features and attributes</h1>
+<h2 id="basic-parameters">4.1 Basic parameters</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># LinearRegression example</span></span><br><span class="line">loaded_data = datasets.load_boston()</span><br><span class="line"><span class="comment"># X, y = datasets_loadboston(retern_X_y = true)</span></span><br><span class="line">data_X, data_y = loaded_data.data, loaded_data.target</span><br><span class="line"></span><br><span class="line">model = LinearRegression()</span><br><span class="line">model.fit(data_X, data_y)</span><br><span class="line"></span><br><span class="line">print(data_y[:<span class="number">4</span>])</span><br><span class="line">print(model.predict(data_X[:<span class="number">4</span>, :]))</span><br><span class="line"></span><br><span class="line">print(model.coef_) <span class="comment"># 系数</span></span><br><span class="line">print(model.intercept_) <span class="comment"># 截距</span></span><br><span class="line">print(model.get_params) <span class="comment"># 参数</span></span><br><span class="line">print(model.score(data_X, data_y)) <span class="comment"># default is R^2 coefficietn of determination</span></span><br></pre></td></tr></table></figure>
 <p>Result:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[24.  21.6 34.7 33.4]</span><br><span class="line">[30.00384338 25.02556238 30.56759672 28.60703649]</span><br><span class="line">[-1.08011358e-01  4.64204584e-02  2.05586264e-02  2.68673382e+00</span><br><span class="line"> -1.77666112e+01  3.80986521e+00  6.92224640e-04 -1.47556685e+00</span><br><span class="line">  3.06049479e-01 -1.23345939e-02 -9.52747232e-01  9.31168327e-03</span><br><span class="line"> -5.24758378e-01]</span><br><span class="line">36.459488385089855</span><br><span class="line">&lt;bound method BaseEstimator.get_params of LinearRegression()&gt;</span><br><span class="line">0.7406426641094095</span><br></pre></td></tr></table></figure>
-<h2 id="cross-validation">Cross validation</h2>
+<h2 id="cross-validation">4.2 Cross validation</h2>
 <ul>
 <li><p>Evaluate the NN</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors = <span class="number">5</span>)</span><br><span class="line"><span class="comment"># knn.fit(X_train, y_train)</span></span><br><span class="line"><span class="comment"># print(knn.score(X_test, y_test))</span></span><br><span class="line">scores = cross_val_score(knn, X, y, cv = <span class="number">5</span>, scoring = <span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># 将test进行5次划分</span></span><br><span class="line">print(scores.mean()) <span class="comment"># 取平均值</span></span><br></pre></td></tr></table></figure>
@@ -608,7 +608,7 @@ fig. 3-1 Synthetic data
 <p>fig 4-3 Adjustment parameters</p>
 </center></li>
 </ul>
-<h2 id="transform-target-in-regression-model">Transform target in regression model</h2>
+<h2 id="transform-target-in-regression-model">4.3 Transform target in regression model</h2>
 <p>将原始数据转化为分类模式，可以有效地提高预测的精度，效果如下：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(__doc__)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_regression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> RidgeCV</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> TransformedTargetRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> median_absolute_error, r2_score</span><br><span class="line"><span class="keyword">from</span> sklearn.utils.fixes <span class="keyword">import</span> parse_version</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> parse_version(matplotlib.__version__) &gt;= parse_version(<span class="string">&#x27;2.1&#x27;</span>):</span><br><span class="line">    desity_param = &#123;<span class="string">&#x27;density&#x27;</span>: <span class="literal">True</span>&#125;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    density_param = &#123;<span class="string">&#x27;normed&#x27;</span>: <span class="literal">True</span>&#125;</span><br><span class="line">    </span><br><span class="line">X, y = make_regression(n_samples = <span class="number">10000</span>, noise = <span class="number">100</span>, random_state = <span class="number">0</span>)</span><br><span class="line">y = np.exp((y + <span class="built_in">abs</span>(y.<span class="built_in">min</span>()))/<span class="number">200</span>)</span><br><span class="line">y_trans = np.log1p(y)</span><br><span class="line"></span><br><span class="line">f, (ax0, ax1) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># density: normalization</span></span><br><span class="line">ax0.hist(y, bins = <span class="number">100</span>, density = <span class="literal">True</span>)</span><br><span class="line">ax0.set_xlim([<span class="number">0</span>, <span class="number">2000</span>])</span><br><span class="line">ax0.set_ylabel(<span class="string">&#x27;Probability&#x27;</span>)</span><br><span class="line">ax0.set_xlabel(<span class="string">&#x27;Target&#x27;</span>)</span><br><span class="line">ax0.set_title(<span class="string">&#x27;Target distribution&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax1.hist(y_trans, bins = <span class="number">100</span>, density = <span class="literal">True</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">&#x27;Probability&#x27;</span>)</span><br><span class="line">ax1.set_xlabel(<span class="string">&#x27;Target&#x27;</span>)</span><br><span class="line">ax1.set_title(<span class="string">&#x27;Transformed target distribution&#x27;</span>)</span><br><span class="line"></span><br><span class="line">f.suptitle(<span class="string">&#x27;Synthetic data&#x27;</span>, y = <span class="number">0.035</span>)</span><br><span class="line">f.tight_layout(rect = [<span class="number">0.05</span>, <span class="number">0.05</span>, <span class="number">0.95</span>, <span class="number">0.95</span>])</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p>Result:</p>
@@ -623,7 +623,7 @@ fig.4-4 Comparison of Transformation
 fig. 4-5 Comparison before and after transforming
 </center>
 <p>从结果可以看出，经过预处理转化后的数据集能有效地提高预测的精度，降低 <code>MAE</code> 的值。</p>
-<h1 id="save-model">Save model</h1>
+<h1 id="save-model">5 Save model</h1>
 <p>Train model</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">clf = svm.SVC()</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">clf.fit(X, y)</span><br></pre></td></tr></table></figure>
 <p>Then, we can use two methods to save our trained models:</p>
