@@ -26,6 +26,61 @@
       </tags>
   </entry>
   <entry>
+    <title>Eviews notes</title>
+    <url>/2020/11/22/Eviews/</url>
+    <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
+<p>Eviews 10 创建时间序列工作文件，界面如下</p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUNDeA.png" /></p>
+<center>
+figure 1-1 时间序列类型
+</center>
+<p>参数释义为：</p>
+<a id="more"></a>
+<ul>
+<li>Annual：年度数据</li>
+<li>Semi-annual：半年(2010S1 - 2019S1)</li>
+<li>Quarteryly：季度 （2010Q3 - 2019Q2）</li>
+<li>Monthly：月度（2010M01 - 2019M11）</li>
+<li>Bimonthly：半月（2010-3-01 - 2019-8-8）</li>
+<li>Fortnightly：两周</li>
+<li>Daily-custom week：用户自定义选择周几</li>
+<li>Intraday：当日数据，精确到每天每隔多少时间</li>
+<li>Integer data：可以是年度（eg：2001 - 2012），也可以是哪一期（eg：3 - 33）</li>
+</ul>
+<p>创建平衡面板数据：</p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUN0Ld.png" /></p>
+<center>
+figure 1-2 平衡面板数据
+</center>
+<h1 id="least-squares最小二乘法">2 Least Squares（最小二乘法）</h1>
+<p>Command中输入 <code>ls y c x</code>即可得到如下结果：</p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUNrdI.md.png" /></p>
+<center>
+figure 1-3 Parameters
+</center>
+<p>Parameters:</p>
+<ul>
+<li>Coefficient：系数，参数估计值</li>
+<li>Std. Error：参数估计量标准差估计值</li>
+<li>t-Statistic：<span class="math inline">\(t\)</span> 统计量的值</li>
+<li>Prob: <span class="math inline">\(P\)</span> 值</li>
+<li>R-squared: $ R^2$</li>
+<li>Adjusted R-squared: $^ - $</li>
+<li>S.E. of regression: <span class="math inline">\(\sigma ^2\)</span></li>
+<li>Sum squared resid: $ RSS$，残差平方和</li>
+<li>Mean dependent var: <span class="math inline">\(\overset{-}{Y}\)</span>，被解释变量的均值</li>
+<li>S.D. dependent var: 被解释变量的标准差</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>Eviews</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git notes</title>
     <url>/2020/11/22/Git-notes/</url>
     <content><![CDATA[<h1 id="版本控制">1. 版本控制</h1>
@@ -196,61 +251,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Eviews notes</title>
-    <url>/2020/11/22/Eviews/</url>
-    <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
-<p>Eviews 10 创建时间序列工作文件，界面如下</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUNDeA.png" /></p>
-<center>
-figure 1-1 时间序列类型
-</center>
-<p>参数释义为：</p>
-<a id="more"></a>
-<ul>
-<li>Annual：年度数据</li>
-<li>Semi-annual：半年(2010S1 - 2019S1)</li>
-<li>Quarteryly：季度 （2010Q3 - 2019Q2）</li>
-<li>Monthly：月度（2010M01 - 2019M11）</li>
-<li>Bimonthly：半月（2010-3-01 - 2019-8-8）</li>
-<li>Fortnightly：两周</li>
-<li>Daily-custom week：用户自定义选择周几</li>
-<li>Intraday：当日数据，精确到每天每隔多少时间</li>
-<li>Integer data：可以是年度（eg：2001 - 2012），也可以是哪一期（eg：3 - 33）</li>
-</ul>
-<p>创建平衡面板数据：</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUN0Ld.png" /></p>
-<center>
-figure 1-2 平衡面板数据
-</center>
-<h1 id="least-squares最小二乘法">2 Least Squares（最小二乘法）</h1>
-<p>Command中输入 <code>ls y c x</code>即可得到如下结果：</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUNrdI.md.png" /></p>
-<center>
-figure 1-3 Parameters
-</center>
-<p>Parameters:</p>
-<ul>
-<li>Coefficient：系数，参数估计值</li>
-<li>Std. Error：参数估计量标准差估计值</li>
-<li>t-Statistic：<span class="math inline">\(t\)</span> 统计量的值</li>
-<li>Prob: <span class="math inline">\(P\)</span> 值</li>
-<li>R-squared: $ R^2$</li>
-<li>Adjusted R-squared: $^ - $</li>
-<li>S.E. of regression: <span class="math inline">\(\sigma ^2\)</span></li>
-<li>Sum squared resid: $ RSS$，残差平方和</li>
-<li>Mean dependent var: <span class="math inline">\(\overset{-}{Y}\)</span>，被解释变量的均值</li>
-<li>S.D. dependent var: 被解释变量的标准差</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Notes</category>
-      </categories>
-      <tags>
-        <tag>Eviews</tag>
-        <tag>Software</tag>
       </tags>
   </entry>
   <entry>
@@ -450,6 +450,12 @@ figure 1-3 Parameters
     <url>/2020/11/22/My-first-blog/</url>
     <content><![CDATA[<h1 id="python-code">Python code</h1>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># View more python learning tutorial on my Youtube and Youku channel!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Youtube video tutorial: https://www.youtube.com/channel/UCdyjiB5H8Pu7aDTNVXTTpcg</span></span><br><span class="line"><span class="comment"># Youku video tutorial: http://i.youku.com/pythontutorial</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Please note, this code is only for python 3+. If you are using python 2+, please modify the code accordingly.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># test train split #</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">4</span>)</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">knn.fit(X_train, y_train)</span><br><span class="line">y_pred = knn.predict(X_test)</span><br><span class="line">print(knn.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is cross_val_score #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">scores = cross_val_score(knn, X, y, cv=<span class="number">5</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">print(scores)</span><br><span class="line"></span><br><span class="line"><span class="comment"># this is how to use cross_val_score to choose model and configs #</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">k_range = <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">31</span>)</span><br><span class="line">k_scores = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line"><span class="comment">##    loss = -cross_val_score(knn, X, y, cv=10, scoring=&#x27;mean_squared_error&#x27;) # for regression</span></span><br><span class="line">    scores = cross_val_score(knn, X, y, cv=<span class="number">10</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>) <span class="comment"># for classification</span></span><br><span class="line">    k_scores.append(scores.mean())</span><br><span class="line"></span><br><span class="line">plt.plot(k_range, k_scores)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Value of K for KNN&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Cross-Validated Accuracy&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Pandas</title>
+    <url>/2020/11/27/Pandas/</url>
+    <content><![CDATA[
 ]]></content>
   </entry>
   <entry>
