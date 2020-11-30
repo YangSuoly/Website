@@ -18,6 +18,7 @@
 <p><code>conda install &lt;包名&gt;</code> 安装指定包 <code>conda remove &lt;包名&gt;</code> 移除指定包 <code>conda update &lt;包名&gt;</code> 更新指定包</p>
 ]]></content>
       <categories>
+        <category>Notes</category>
         <category>Software</category>
       </categories>
       <tags>
