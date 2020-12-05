@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Command 1234cd &#x2F; pwd &#x2F; lsmkdir &#x2F; rmdircp &#x2F; rm &#x2F; mvtar &#x2F; zip &#x2F; unzip">
+  <meta name="description" content="1. Command 1234cd &#x2F; pwd &#x2F; lsmkdir &#x2F; rmdircp &#x2F; rm &#x2F; mvtar &#x2F; zip &#x2F; unzip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux notes">
 <meta property="og:url" content="http://yangsuoly.com/2020/11/23/Linux/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Command 1234cd &#x2F; pwd &#x2F; lsmkdir &#x2F; rmdircp &#x2F; rm &#x2F; mvtar &#x2F; zip &#x2F; unzip">
+<meta property="og:description" content="1. Command 1234cd &#x2F; pwd &#x2F; lsmkdir &#x2F; rmdircp &#x2F; rm &#x2F; mvtar &#x2F; zip &#x2F; unzip">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-23T05:40:17.000Z">
 <meta property="article:modified_time" content="2020-11-30T02:31:31.288Z">
@@ -291,56 +291,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="command">1. Command</h1>
+        <h1 id="1-command"><a class="markdownIt-Anchor" href="#1-command"></a> 1. Command</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="cd">1.1 cd</h2>
+<h2 id="11-cd"><a class="markdownIt-Anchor" href="#11-cd"></a> 1.1 cd</h2>
 <p>即 current directory，切换目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
-<h4 id="绝对路径">绝对路径</h4>
+<h4 id="绝对路径"><a class="markdownIt-Anchor" href="#绝对路径"></a> 绝对路径</h4>
 <p>/home/YangSu/Desktop</p>
-<h4 id="相对路径">相对路径</h4>
+<h4 id="相对路径"><a class="markdownIt-Anchor" href="#相对路径"></a> 相对路径</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
-<h2 id="pwd">1.2 pwd</h2>
+<h2 id="12-pwd"><a class="markdownIt-Anchor" href="#12-pwd"></a> 1.2 pwd</h2>
 <p>即 print working directory 显示当前工作目录</p>
-<h2 id="ls">1.3 ls</h2>
+<h2 id="13-ls"><a class="markdownIt-Anchor" href="#13-ls"></a> 1.3 ls</h2>
 <p>即 list，列出文件和目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
-<h2 id="mkdir">1.4 mkdir</h2>
+<h2 id="14-mkdir"><a class="markdownIt-Anchor" href="#14-mkdir"></a> 1.4 mkdir</h2>
 <p>即 make directory，创建目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
-<h2 id="touch">1.5 touch</h2>
+<h2 id="15-touch"><a class="markdownIt-Anchor" href="#15-touch"></a> 1.5 touch</h2>
 <p>新建一个文件</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
-<h2 id="rm">1.6 rm</h2>
-<h3 id="rm-1">rm</h3>
+<h2 id="16-rm"><a class="markdownIt-Anchor" href="#16-rm"></a> 1.6 rm</h2>
+<h3 id="rm"><a class="markdownIt-Anchor" href="#rm"></a> rm</h3>
 <p>即 remove 删除文件或目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
-<h3 id="rmdir">rmdir</h3>
+<h3 id="rmdir"><a class="markdownIt-Anchor" href="#rmdir"></a> rmdir</h3>
 <p>即 remove directory，删除空目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
-<h2 id="cp">1.7 cp</h2>
+<h2 id="17-cp"><a class="markdownIt-Anchor" href="#17-cp"></a> 1.7 cp</h2>
 <p>即 copy，复制文件或者目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
-<h2 id="mv">1.8 mv</h2>
+<h2 id="18-mv"><a class="markdownIt-Anchor" href="#18-mv"></a> 1.8 mv</h2>
 <p>即 move，移动文件或目录（重命名）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
-<h2 id="tar">1.9 tar</h2>
+<h2 id="19-tar"><a class="markdownIt-Anchor" href="#19-tar"></a> 1.9 tar</h2>
 <p>即 tape archive档案打包</p>
-<h3 id="创建档案包">创建档案包</h3>
+<h3 id="创建档案包"><a class="markdownIt-Anchor" href="#创建档案包"></a> 创建档案包</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
-<h4 id="还原档案包">还原档案包</h4>
+<h4 id="还原档案包"><a class="markdownIt-Anchor" href="#还原档案包"></a> 还原档案包</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
-<h4 id="归档并压缩">归档并压缩</h4>
+<h4 id="归档并压缩"><a class="markdownIt-Anchor" href="#归档并压缩"></a> 归档并压缩</h4>
 <p>上述的tar格式并没有对文件进行压缩，体积较大</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
-<h2 id="man">1.10 man</h2>
+<h2 id="110-man"><a class="markdownIt-Anchor" href="#110-man"></a> 1.10 man</h2>
 <p>即 manual，手册</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
-<h2 id="ln">1.11 ln</h2>
+<h2 id="111-ln"><a class="markdownIt-Anchor" href="#111-ln"></a> 1.11 ln</h2>
 <p>软链接，即Windows中的 “ 快捷方式 ”</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
-<h2 id="other">1.12 other</h2>
+<h2 id="112-other"><a class="markdownIt-Anchor" href="#112-other"></a> 1.12 other</h2>
 <ul>
 <li>reset：重新初始化终端，即清屏</li>
 <li>clear：清屏</li>
@@ -349,14 +349,14 @@
 <li>exit：推出</li>
 <li>#：表示注释</li>
 </ul>
-<h1 id="management">2 Management</h1>
-<h2 id="switch-user">2.1 Switch user</h2>
+<h1 id="2-management"><a class="markdownIt-Anchor" href="#2-management"></a> 2 Management</h1>
+<h2 id="21-switch-user"><a class="markdownIt-Anchor" href="#21-switch-user"></a> 2.1 Switch user</h2>
 <ul>
 <li>su</li>
 </ul>
 <p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
-<h2 id="user-operation">2.2 User operation</h2>
+<h2 id="22-user-operation"><a class="markdownIt-Anchor" href="#22-user-operation"></a> 2.2 User operation</h2>
 <ul>
 <li>useradd</li>
 </ul>
@@ -370,7 +370,7 @@
 </ul>
 <p>即 user delete</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
-<h2 id="group-operation">2.3 Group operation</h2>
+<h2 id="23-group-operation"><a class="markdownIt-Anchor" href="#23-group-operation"></a> 2.3 Group operation</h2>
 <ul>
 <li>groupadd</li>
 </ul>
@@ -391,7 +391,7 @@
 <li>cat</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="file-permission">2.4 File permission</h2>
+<h2 id="24-file-permission"><a class="markdownIt-Anchor" href="#24-file-permission"></a> 2.4 File permission</h2>
 <ul>
 <li>View Permission</li>
 </ul>
@@ -406,7 +406,7 @@
 </ul>
 <p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
-<h2 id="script">2.5 Script</h2>
+<h2 id="25-script"><a class="markdownIt-Anchor" href="#25-script"></a> 2.5 Script</h2>
 <ul>
 <li>Shell 脚本： *.sh</li>
 <li>Perl 脚本： *.pl</li>
@@ -423,28 +423,28 @@
 <li>Py 脚本</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
-<h2 id="shell">2.6 Shell</h2>
+<h2 id="26-shell"><a class="markdownIt-Anchor" href="#26-shell"></a> 2.6 Shell</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
-<h1 id="enviroment">3 Enviroment</h1>
-<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
+<h1 id="3-enviroment"><a class="markdownIt-Anchor" href="#3-enviroment"></a> 3 Enviroment</h1>
+<h2 id="31-enviromental-viriables"><a class="markdownIt-Anchor" href="#31-enviromental-viriables"></a> 3.1 Enviromental Viriables</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
 <p>使用环境变量：</p>
 <ul>
 <li>在当前命令行中使用</li>
 <li>在 Shell 脚本中使用</li>
 </ul>
-<h2 id="user-viriables">3.2 User Viriables</h2>
+<h2 id="32-user-viriables"><a class="markdownIt-Anchor" href="#32-user-viriables"></a> 3.2 User Viriables</h2>
 <p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="system-variables">3.3 System Variables</h2>
+<h2 id="33-system-variables"><a class="markdownIt-Anchor" href="#33-system-variables"></a> 3.3 System Variables</h2>
 <p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
-<h2 id="path-variables">3.4 PATH Variables</h2>
+<h2 id="34-path-variables"><a class="markdownIt-Anchor" href="#34-path-variables"></a> 3.4 PATH Variables</h2>
 <p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
-<h2 id="network">3.5 Network</h2>
+<h2 id="35-network"><a class="markdownIt-Anchor" href="#35-network"></a> 3.5 Network</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
+<h1 id="4-centos8-图形界面和命令行切换"><a class="markdownIt-Anchor" href="#4-centos8-图形界面和命令行切换"></a> 4 CentOS8 图形界面和命令行切换</h1>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -563,7 +563,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#command"><span class="nav-number">1.</span> <span class="nav-text">1. Command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cd"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 cd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">绝对路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">相对路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 touch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 rm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir"><span class="nav-number">1.6.2.</span> <span class="nav-text">rmdir</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv"><span class="nav-number">1.8.</span> <span class="nav-text">1.8 mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar"><span class="nav-number">1.9.</span> <span class="nav-text">1.9 tar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">1.9.1.</span> <span class="nav-text">创建档案包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">1.9.1.1.</span> <span class="nav-text">还原档案包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%92%E6%A1%A3%E5%B9%B6%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.9.1.2.</span> <span class="nav-text">归档并压缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man"><span class="nav-number">1.10.</span> <span class="nav-text">1.10 man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ln"><span class="nav-number">1.11.</span> <span class="nav-text">1.11 ln</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other"><span class="nav-number">1.12.</span> <span class="nav-text">1.12 other</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#management"><span class="nav-number">2.</span> <span class="nav-text">2 Management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-user"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Switch user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-operation"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 User operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-operation"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Group operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-permission"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 File permission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#script"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enviroment"><span class="nav-number">3.</span> <span class="nav-text">3 Enviroment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#enviromental-viriables"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Enviromental Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-viriables"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 User Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#system-variables"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 System Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-variables"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 PATH Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 Network</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos8-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%92%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%87%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">4 CentOS8 图形界面和命令行切换</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-command"><span class="nav-number">1.</span> <span class="nav-text"> 1. Command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-cd"><span class="nav-number">1.1.</span> <span class="nav-text"> 1.1 cd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.0.1.</span> <span class="nav-text"> 绝对路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.0.2.</span> <span class="nav-text"> 相对路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-pwd"><span class="nav-number">1.2.</span> <span class="nav-text"> 1.2 pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-ls"><span class="nav-number">1.3.</span> <span class="nav-text"> 1.3 ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-mkdir"><span class="nav-number">1.4.</span> <span class="nav-text"> 1.4 mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-touch"><span class="nav-number">1.5.</span> <span class="nav-text"> 1.5 touch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-rm"><span class="nav-number">1.6.</span> <span class="nav-text"> 1.6 rm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rm"><span class="nav-number">1.6.1.</span> <span class="nav-text"> rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir"><span class="nav-number">1.6.2.</span> <span class="nav-text"> rmdir</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-cp"><span class="nav-number">1.7.</span> <span class="nav-text"> 1.7 cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-mv"><span class="nav-number">1.8.</span> <span class="nav-text"> 1.8 mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-tar"><span class="nav-number">1.9.</span> <span class="nav-text"> 1.9 tar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">1.9.1.</span> <span class="nav-text"> 创建档案包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">1.9.1.1.</span> <span class="nav-text"> 还原档案包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%92%E6%A1%A3%E5%B9%B6%E5%8E%8B%E7%BC%A9"><span class="nav-number">1.9.1.2.</span> <span class="nav-text"> 归档并压缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#110-man"><span class="nav-number">1.10.</span> <span class="nav-text"> 1.10 man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#111-ln"><span class="nav-number">1.11.</span> <span class="nav-text"> 1.11 ln</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#112-other"><span class="nav-number">1.12.</span> <span class="nav-text"> 1.12 other</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-management"><span class="nav-number">2.</span> <span class="nav-text"> 2 Management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-switch-user"><span class="nav-number">2.1.</span> <span class="nav-text"> 2.1 Switch user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-user-operation"><span class="nav-number">2.2.</span> <span class="nav-text"> 2.2 User operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-group-operation"><span class="nav-number">2.3.</span> <span class="nav-text"> 2.3 Group operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-file-permission"><span class="nav-number">2.4.</span> <span class="nav-text"> 2.4 File permission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-script"><span class="nav-number">2.5.</span> <span class="nav-text"> 2.5 Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-shell"><span class="nav-number">2.6.</span> <span class="nav-text"> 2.6 Shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-enviroment"><span class="nav-number">3.</span> <span class="nav-text"> 3 Enviroment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#31-enviromental-viriables"><span class="nav-number">3.1.</span> <span class="nav-text"> 3.1 Enviromental Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-user-viriables"><span class="nav-number">3.2.</span> <span class="nav-text"> 3.2 User Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-system-variables"><span class="nav-number">3.3.</span> <span class="nav-text"> 3.3 System Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-path-variables"><span class="nav-number">3.4.</span> <span class="nav-text"> 3.4 PATH Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-network"><span class="nav-number">3.5.</span> <span class="nav-text"> 3.5 Network</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-centos8-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%92%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%87%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text"> 4 CentOS8 图形界面和命令行切换</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -579,20 +579,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/Tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
