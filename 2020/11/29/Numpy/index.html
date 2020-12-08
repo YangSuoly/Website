@@ -30,7 +30,7 @@
 <meta property="og:description" content="1 NumPy version 12import numpy as npprint(np.__version__) # 查看 numpy 版本 NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N 维数组对象 ndarray ( N-dimensional array )。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-29T06:00:50.000Z">
-<meta property="article:modified_time" content="2020-11-30T02:34:42.553Z">
+<meta property="article:modified_time" content="2020-12-07T02:49:32.850Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Data analysis">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-30 10:34:42" itemprop="dateModified" datetime="2020-11-30T10:34:42+08:00">2020-11-30</time>
+                <time title="Modified: 2020-12-07 10:49:32" itemprop="dateModified" datetime="2020-12-07T10:49:32+08:00">2020-12-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -299,7 +299,23 @@
 <h1 id="create-ndarray">2 Create ndarray</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array_1x6 = np.array([<span class="number">1.0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], dtype = np.float64) <span class="comment"># 用 list 创建 array，可以通过 dtype 参数指定元素的类型  </span></span><br><span class="line"></span><br><span class="line">print(array_1x6.dtype)</span><br><span class="line"></span><br><span class="line"><span class="comment"># number of dimension</span></span><br><span class="line">print(<span class="string">&#x27;number of dim: &#x27;</span>,array_1x6.ndim)</span><br><span class="line">print(<span class="string">&#x27;shape: &#x27;</span>,array_1x6.shape)</span><br><span class="line">print(<span class="string">&#x27;size: &#x27;</span>,array_1x6.size) </span><br><span class="line"><span class="comment"># total number of elements </span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(array_1x6) <span class="comment"># 空格分隔元素</span></span><br><span class="line">[<span class="number">1.</span> <span class="number">2.</span> <span class="number">3.</span> <span class="number">4.</span> <span class="number">5.</span> <span class="number">6.</span>]</span><br></pre></td></tr></table></figure>
 <h1 id="special-ndarray">4 Special ndarray</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a1 = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 零矩阵</span></span><br><span class="line">a2 = np.ones((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 1 矩阵</span></span><br><span class="line">a3 = np.empty((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 未初始化的矩阵</span></span><br><span class="line">a4 = arange(<span class="number">10</span>, <span class="number">20</span>, <span class="number">2</span>) <span class="comment"># 步长为 2 的数列</span></span><br><span class="line">a5 = np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">a6 = np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>) <span class="comment"># 5 个元素的线段</span></span><br><span class="line">print(a1, a2, a3, a4, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(a6 &lt; <span class="number">5</span>) <span class="comment"># 返回布尔类型的矩阵</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机矩阵</span></span><br><span class="line">a = np.random.random((<span class="number">2</span>, <span class="number">4</span>)) <span class="comment"># 0-1的随机数</span></span><br><span class="line">print(np.<span class="built_in">sum</span>(a), np.<span class="built_in">min</span>(a), np.<span class="built_in">max</span>(a))</span><br><span class="line">np.<span class="built_in">sum</span>(a, axis = <span class="number">0</span>) <span class="comment"># 列操作，axis = 1行操作，the default, axis = None，will sum all of the elements of the input array</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>零矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a1 = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 零矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>1 矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a2 = np.ones((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 1 矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>1空矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a3 = np.empty((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 未初始化的空矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>线段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a5 = np.arange(<span class="number">12</span>)</span><br><span class="line">a6 = np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>) <span class="comment"># 5 个元素的线段</span></span><br><span class="line">print(a6 &lt; <span class="number">5</span>) <span class="comment"># 返回布尔类型的矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>随机矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = np.random.random((<span class="number">2</span>, <span class="number">4</span>)) <span class="comment"># 0-1的随机数</span></span><br><span class="line">print(np.<span class="built_in">sum</span>(a), np.<span class="built_in">min</span>(a), np.<span class="built_in">max</span>(a))</span><br><span class="line">np.<span class="built_in">sum</span>(a, axis = <span class="number">0</span>) <span class="comment"># 列操作，axis = 1行操作，the default, axis = None，will sum all of the elements of the input array</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 <h1 id="array-operations">4 Array operations</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(a, b, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(<span class="string">&#x27;-------------&#x27;</span>)</span><br><span class="line">c1 = a + b</span><br><span class="line">c2 = a * b <span class="comment"># 对应元素相乘</span></span><br><span class="line"></span><br><span class="line">c3 = np.dot(a, b) <span class="comment"># 矩阵相乘，点乘</span></span><br><span class="line">c4 = a.dot(b) <span class="comment"># 和上式相同，a 值不改变</span></span><br><span class="line">print(c1, c2, c3, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <h1 id="array-basic-methods">5 Array basic methods</h1>
@@ -455,14 +471,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
