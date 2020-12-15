@@ -56,6 +56,240 @@
       </tags>
   </entry>
   <entry>
+    <title>Econometrics</title>
+    <url>/2020/12/15/Econometrics/</url>
+    <content><![CDATA[<h1 id="introduction">1 Introduction</h1>
+<p>本文为参考 洪永淼《高级计量学》复习高级计量经济学的学习笔记。</p>
+<a id="more"></a>
+<h1 id="一般回归分析和模型设定">2 一般回归分析和模型设定</h1>
+<h2 id="条件概率分别">2.1 条件概率分别</h2>
+<ul>
+<li><p>边际概率密度函数 （<span class="math inline">\(\rm{P}_{18}\)</span>） <span class="math display">\[
+\begin{align*}
+f_x(x) = \int_{-\infty}^\infty f_{XY}(x,y)\rm{d}y
+\end{align*}
+\]</span></p></li>
+<li><p>给定 <span class="math inline">\(X = x\)</span>，<span class="math inline">\(Y\)</span> 的条件概率密度函数 （<span class="math inline">\(\rm{P}_{18}\)</span>） <span class="math display">\[
+\begin{align*}
+f_{Y|X}(y|x) = \frac{f_{XY}(x,y)}{f_X{(x)}}
+\end{align*}
+\]</span></p></li>
+<li><p>条件均值（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+E(Y|x) \equiv E(Y|X=x) = \int_{-\infty}^{\infty} y f_{Y|X}(y|x)\rm{d}y
+\end{align*}
+\]</span></p></li>
+<li><p>条件方差（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+var(Y|x) \equiv var(Y|X=x) &amp;= \int_{-\infty}^{\infty} [y-E(Y|x)]^2f_{Y|X}(y|x)\rm{d}y  \\
+&amp;= E(Y^2|x)-[E(Y|x)]^2
+\end{align*}
+\]</span></p></li>
+<li><p>条件偏度（Conditional skewness）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+S(Y|x) \equiv \frac{E[(Y-E(Y|x))^3|x)}{[var(Y|x)]^{3/2}}
+\end{align*}
+\]</span></p></li>
+<li><p>条件峰度（Conditional kurtosis）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+K(Y|x) \equiv \frac{E[(Y-E(Y|x))^4|x)}{[var(Y|x)]^{2}}
+\end{align*}
+\]</span></p></li>
+<li><p>条件 $$ - 分位数（Conditional <span class="math inline">\(\alpha\)</span>-quantile）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+P[Y \leq Q(X, \alpha)|X = x] = \alpha \in (0,1)
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="条件均值与回归分析">2.2 条件均值与回归分析</h2>
+<h3 id="定义">2.2.1 定义</h3>
+<ul>
+<li><strong>定义 2.1</strong>（<span class="math inline">\(\rm{P}_{20}\)</span>）&lt; 回归函数 (Regression Function) &gt;：条件均值 <span class="math inline">\(E(Y|X)\)</span> 成为 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(X\)</span> 的回归函数;</li>
+</ul>
+<h3 id="定理">2.2.2 定理</h3>
+<ul>
+<li><p><strong>定理 2.1</strong>（<span class="math inline">\(\rm{P}_{21}\)</span>）：<span class="math inline">\(E(E(Y|X)) = E(Y)\)</span>；</p></li>
+<li><p><strong>定理 2.2</strong>（<span class="math inline">\(\rm{P}_{21}\)</span>） &lt; 重复期望法则 (Law of Interated Expectations, LIE) &gt;：对给定的可测函数 <span class="math inline">\(G(X,Y)\)</span>，假设期望 <span class="math inline">\(E[G(X,Y)]\)</span> 存在，则： <span class="math display">\[
+\begin{align*}
+E[G(X, Y)] = E\{E[G(X,Y)|X])\}
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 2.3</strong>（<span class="math inline">\(\rm{P}_{23}\)</span>）&lt; <span class="math inline">\(MSE\)</span> 最优解 &gt;：条件均值 <span class="math inline">\(E(Y|X)\)</span> 是下列问题的最优解： <span class="math display">\[
+\begin{align*}
+E(Y|X = \arg \min_{g\ \in\ \mathbb{F}} E[Y - g(X)]^2
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\mathbb{F}\)</span> 是所有可测和平方可积函数的集合 (Space of all measurable and quare-integrable functions)，即： <span class="math display">\[
+\begin{align*}
+\mathbb{F} = \left\{g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\int g^2(x) f_X(x) \rm{b}x &lt; \infty \right\}
+\end{align*}
+\]</span> &lt; 注：可通过中间变量 <span class="math inline">\(g_0(X) \equiv E(Y|X)\)</span> 证明 &gt;</p></li>
+<li><p><strong>定理 2.4</strong>（<span class="math inline">\(\rm{P}_{25}\)</span>）&lt; 回归等式 (Regression Identity) &gt;：给定条件均值 <span class="math inline">\(E(Y|X)\)</span>，总有： <span class="math display">\[
+\begin{align*}
+Y = E(Y|X) + \varepsilon
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\varepsilon\)</span> 称为回归扰动项（Regression disturbance），满足： <span class="math display">\[
+\begin{align*}
+E(\varepsilon|X) = 0
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="线性回归建模">2.3 线性回归建模</h2>
+<h3 id="定义-1">2.3.1 定义</h3>
+<ul>
+<li><p><strong>定义 2.3</strong>（<span class="math inline">\(\rm{P}_{29}\)</span>）&lt; 仿射函数 (Affine Function) &gt;：记 <span class="math inline">\(X = (1, X_1, \dots , X_k)^\prime\)</span>，<span class="math inline">\(\beta = (\beta_0, \beta_1, \dots, \beta_k)^\prime\)</span>。则仿射函数族定义为： <span class="math display">\[
+\begin{align*}
+\mathbb{A} &amp;= \left\{ g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\ g(X) = \beta_0 + \sum_{j=1}^{k} \beta_jX_j, \beta_j \in \mathbb{R} \right\} \\
+&amp;= \left\{ g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\ g(X) = X^\prime\beta \right\}
+\end{align*}
+\]</span> 这里，对参数向量 <span class="math inline">\(\beta\)</span> 的值没有限制。对于这族函数，函数形式一致，分别是解释变量和参数 <span class="math inline">\(\beta\)</span> 的线性函数；</p></li>
+<li><p><strong>定义 2.4</strong>（<span class="math inline">\(\rm{P}_{32}\)</span>）&lt; 线性回归模型 (Linear Regression Model) &gt;：方程： <span class="math display">\[
+\begin{align*}
+Y = X^\prime \beta + u, \beta \in \mathbb{R}^{k+1}
+\end{align*}
+\]</span> 称为 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(X\)</span> 的线性回归模型，其中 <span class="math inline">\(u\)</span> 是回归模型误差 (Regression model error)。如果 <span class="math inline">\(k=1\)</span>，称为二元线性回归模型 (Bivariate linear regression model) 或直线回归模型 (Straight linere gression model)。如果 <span class="math inline">\(k&gt;1\)</span>，则称为多元线性回归模型 (Multiple linear regression model)；</p></li>
+</ul>
+<h3 id="定理-1">2.3.2 定理</h3>
+<ul>
+<li><p><strong>定理 2.5</strong>（<span class="math inline">\(\rm{P}_{30}\)</span>）&lt; 最优线性最小二乘预测 (Best Linear Least Squares Predictstion) &gt; ：假设<span class="math inline">\(E(Y^2) &lt; \infty\)</span>，且<span class="math inline">\((k+1) \times (k+1)\)</span> 矩阵 <span class="math inline">\(E(X^\prime X)\)</span> 是非奇异的。则以下优化问题： <span class="math display">\[
+\begin{align*}
+\min_{g\ \in\ \mathbb{A} }E[Y - g(X)]^2 = \min_{\beta\ \in \mathbb{R}^{k+1}}E(Y - X^\prime \beta)^2
+\end{align*}
+\]</span> 的解，即最优线性最小二乘法预测值为： <span class="math display">\[
+\begin{align*}
+g^*(X) = X^\prime\beta^*
+\end{align*}
+\]</span> 其中最优系数向量为（<span class="math inline">\(\star \star \star\)</span>）： <span class="math display">\[
+\begin{align*}
+\beta^* = [E(X X^\prime)]^{-1}E(XY)
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 2.6</strong>（<span class="math inline">\(\rm{P}_{32}\)</span>）：假设定理 2.5 的条件成立。令： <span class="math display">\[
+\begin{align*}
+Y =  X^\prime \beta + u
+\end{align*}
+\]</span> 并令 <span class="math inline">\(\beta^* = [E(XX^\prime)]^{-1}E(XY)\)</span> 为最优线性最小二乘近似系数。则： <span class="math display">\[
+\begin{align*}
+\beta = \beta^*
+\end{align*}
+\]</span> 当且仅当以下正交条件成立： <span class="math display">\[
+\begin{align*}
+E(Xu) = 0
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="条件均值的模型设定">2.4 条件均值的模型设定</h2>
+<h3 id="定义-2">2.4.1 定义</h3>
+<ul>
+<li><strong>定义 2.5</strong>（<span class="math inline">\(\rm{P}_{34}\)</span>）&lt; 条件均值模型的正确设定 &gt;：线性回归模型： <span class="math display">\[
+\begin{align*}
+Y = X^\prime \beta + u, \beta \in \mathbb{R^{k+1}}
+\end{align*}
+\]</span> 是条件均值 <span class="math inline">\(E(Y|X)\)</span> 的正确设定，如果存在某个参数值 <span class="math inline">\(\beta^o \in \mathbb{R^{k+1}}\)</span>，有： <span class="math display">\[
+\begin{align*}
+E(Y|X) = X^\prime \beta^o
+\end{align*}
+\]</span> 另一方面，如果对于任意的参数值 <span class="math inline">\(\beta \in \mathbb{R^{k+1}}\)</span>， <span class="math display">\[
+\begin{align*}
+E(Y|X) \neq X^\prime \beta
+\end{align*}
+\]</span> 则称线性回归模型是对 <span class="math inline">\(E(Y|X)\)</span> 的错误设定 (Misspecified)；</li>
+</ul>
+<h3 id="定理-2">2.4.2 定理</h3>
+<ul>
+<li><p><strong>定理 2.7</strong>（<span class="math inline">\(\rm{P}_{35}\)</span>）：如果线性回归模型： <span class="math display">\[
+\begin{align*}
+Y =  X^\prime \beta + u
+\end{align*}
+\]</span> 是对条件均值<span class="math inline">\(E(Y|X)\)</span> 的正确设定则：</p>
+<p>1）存在一个参数 <span class="math inline">\(\beta^o\)</span> 和一个随机变量 <span class="math inline">\(\varepsilon\)</span>，有 <span class="math inline">\(Y = X^\prime \beta^o+\varepsilon\)</span>，其中 <span class="math inline">\(E(\varepsilon|X) = 0\)</span>；</p>
+<p>2）<span class="math inline">\(\beta^* = \beta^o\)</span></p></li>
+</ul>
+<h1 id="经典线性回归模型">3. 经典线性回归模型</h1>
+<h2 id="假设">3.1 假设</h2>
+<ul>
+<li><p><strong>假设 3.1</strong>（<span class="math inline">\(\rm{P}_{45}\)</span>）&lt; 线性 (Linearity) &gt;：<span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span> 是一个可观测的随机样本，且： <span class="math display">\[
+Y_t = X_t^\prime \beta^o + \varepsilon_t, t = 1, \dots, n
+\]</span> 其中，<span class="math inline">\(\beta^o\)</span> 是一个 <span class="math inline">\(K \times 1\)</span> 未知参数向量，<span class="math inline">\(\varepsilon_t\)</span> 是一个不可观测的随机扰动项；</p>
+<p>令： <span class="math display">\[
+\begin{align*}
+Y &amp; = (Y_1, \dots , Y_n)^\prime, &amp;n \times 1 \\
+\varepsilon &amp; = (\varepsilon_1, \dots , \varepsilon_n)^\prime, &amp;n \times 1 \\
+X &amp; = (X_1, \dots , X_n)^\prime, &amp;n \times K \\
+\end{align*}
+\]</span> 这里 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(t\)</span> 行是 <span class="math inline">\(K\)</span> 维行向量 <span class="math inline">\(X_t^\prime = (1, X_{1t},\dots,X_{kt})\)</span>。从而，(1) 式可以表示为： <span class="math display">\[
+\begin{align*}
+Y = X \beta^o + \varepsilon
+\end{align*}
+\]</span></p></li>
+<li><p><strong>假设 3.2</strong>（<span class="math inline">\(\rm{P}_{46}\)</span>）&lt; 严格外生性 (Strict Exogeneity) &gt;：<span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span> <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t|X) = E(\varepsilon_t|X_1, \dots, X_t,\dots,X_n) = 0 \qquad t = 1,\dots,n
+\end{align*}
+\]</span> 这一假设隐含着 <span class="math inline">\(E(Y_t|X_t)\)</span> 的模型设定正确；</p></li>
+<li><p><strong>假设 3.3</strong>（<span class="math inline">\(\rm{P}_{48}\)</span>）&lt; 非奇异性 (Nonsingularity) &gt;：</p>
+<p>1）<span class="math inline">\(K \times K\)</span> 方阵 <span class="math inline">\(X^\prime X = \sum_\limits{t=1}^n X_t X_t^\prime\)</span> 是非奇异的（排除了 <span class="math inline">\(X_t\)</span> 中存在多重共线性）；</p>
+<p>2）当 <span class="math inline">\(n \to \infty\)</span> 时，<span class="math inline">\(X^\prime X\)</span> 的最小特征值: <span class="math display">\[
+\begin{align*}
+\lambda_{min}(X^\prime X) \to \infty
+\end{align*}
+\]</span> 的概率为 1;</p></li>
+<li><p><strong>假设 3.4</strong>（<span class="math inline">\(\rm{P}_{49}\)</span>）&lt; 球形误差方差 (Spherical Error Variance) &gt;：</p>
+<p>1）条件同方差: <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t^2|X) = \sigma^2 &gt; 0, \quad t =1,\dots,n
+\end{align*}
+\]</span> 2）条件不相关： <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t\varepsilon_s|X) = 0, t \neq s, \quad t,s \in \{1,\dots,n\}
+\end{align*}
+\]</span> 上述可写为： <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t\varepsilon_s|X) = \sigma^2 \delta_{ts}, t \neq s, \quad t,s \in \{1,\dots,n\}
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\delta_{ts} = 1\)</span> 当且仅当 <span class="math inline">\(t=s\)</span>；</p></li>
+</ul>
+<h3 id="总结">3.1.1 总结</h3>
+<p>给定假设 3.2 和 3.4 意味着 <span class="math inline">\(\varepsilon_t\)</span> 存在条件同方差，即： <span class="math display">\[
+\begin{align*}
+var(\varepsilon_t|X) = E(\varepsilon_t^2|X) - [E(\varepsilon_t|X)]^2 = E(\varepsilon_t^2|X) = \sigma^2
+\end{align*}
+\]</span> 同样的，对于所有的 <span class="math inline">\(t \neq s\)</span>，有： <span class="math display">\[
+\begin{align*}
+cov(\varepsilon_t,\varepsilon_s|X) = E(\varepsilon_t\varepsilon_s|X) = 0
+\end{align*}
+\]</span> 如果 <span class="math inline">\(t\)</span> 表示个体单元，这意味着 <strong>横截面不相关</strong>，如果 <span class="math inline">\(t\)</span> 表示时间，这意味着 <strong>序列不相关</strong>，为方便起见，这两种情况均称为 <span class="math inline">\(\{\varepsilon_t\}\)</span> <strong>不存在自相关</strong>；</p>
+<h2 id="普通最小二乘法">3.2 普通最小二乘法</h2>
+<h3 id="定义-3">3.2.1 定义</h3>
+<ul>
+<li><strong>定义 3.1</strong>（<span class="math inline">\(\rm{P}_{50}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量 &gt;：定义线性回归模型 <span class="math inline">\(Y_t = X_t^\prime \beta + u_t\)</span> 的残差平方和 (Sum of squared residuals, SSR) 为： <span class="math display">\[
+\begin{align*}
+SSR(\beta) \equiv (Y - X\beta)^\prime(Y - X\beta) = \sum_{t=1}^{n}(Y_t - X_t^\prime\beta)^2
+\end{align*}
+\]</span> 则普通最小二乘法 ( <span class="math inline">\(OLS\)</span> ) 估计量 <span class="math inline">\(\hat\beta\)</span> 是以下优化问题的解： <span class="math display">\[
+\begin{align*}
+\hat \beta = \arg \min_{\beta\ \in \mathbb{R}^K} SSR(\beta)
+\end{align*}
+\]</span></li>
+</ul>
+<h3 id="定理-3">3.2.2 定理</h3>
+<ul>
+<li><strong>定理 3.1</strong>（<span class="math inline">\(\rm{P}_{50}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 的存在性 &gt;：在假设 3.1 和 3.3 (1) 下， <span class="math inline">\(OLS\)</span> 估计量 <span class="math inline">\(\hat \beta\)</span> 存在，并且： <span class="math display">\[
+\begin{align*}
+\hat \beta &amp;= (X^\prime  X)^{-1} \frac{1}{n} \sum_{t=1}^{n} X_t Y_t \\
+ &amp; = \left\{\frac{1}{n} \sum_{t = 1}^{n} X_t X_t^\prime\right\}^{-1} \frac{1}{n} \sum_{t=1}^{n} X_t Y_t
+\end{align*}
+\]</span> 其中第二个表达式在后面章节的渐近分析中将经常用到。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Class Notes</category>
+        <category>Econometrics</category>
+      </categories>
+      <tags>
+        <tag>Econometrics</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Eviews notes</title>
     <url>/2020/11/22/Eviews/</url>
     <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
@@ -733,6 +967,209 @@ fig. 4-5 Comparison before and after transforming
       </tags>
   </entry>
   <entry>
+    <title>Stata</title>
+    <url>/2020/12/15/Stata/</url>
+    <content><![CDATA[<h1 id="stata-operation">1 Stata operation</h1>
+<h2 id="import-data">1.1 Import data</h2>
+<ul>
+<li><p>use</p>
+<p><code>grilic_small.dta</code> 文件的目录请根据自己的文件目录填写，数据文件可在陈强老师的网站下载，<a href="http://www.econometrics-stata.com/col.jsp?id=101">Click here</a>，选择《计量经济学及Stata应用》中的数据集下载。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">use <span class="string">&quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Data-Finished-bachelor\grilic_small.dta&quot;</span>, clear</span><br></pre></td></tr></table></figure></li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>clear</p>
+<p>关闭一个数据集，以便使用另外一个数据集</p></li>
+<li><p><code>d</code>escribe</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看数据集中的变量名称、标签等</span></span><br><span class="line">describe <span class="keyword">or</span> d </span><br></pre></td></tr></table></figure></li>
+<li><p>set more off/on</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连续滚屏显示命令运行结果</span></span><br><span class="line"><span class="built_in">set</span> more off </span><br><span class="line"></span><br><span class="line"><span class="comment"># 分页显示命令运行结果</span></span><br><span class="line"><span class="built_in">set</span> more on</span><br></pre></td></tr></table></figure></li>
+<li><p><code>l</code>ist</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看变量 s 和 lnw 的前 5 个数据</span></span><br><span class="line"><span class="built_in">list</span> s lnw <span class="keyword">in</span> <span class="number">1</span>/<span class="number">5</span> <span class="comment"># or</span></span><br><span class="line">l s lnw <span class="keyword">in</span> <span class="number">1</span>/<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 罗列第 11-15 个观测值</span></span><br><span class="line"><span class="built_in">list</span> ss lnw <span class="keyword">in</span> <span class="number">11</span>/<span class="number">15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出满足条件 ‘s&gt;=16&#x27; 的数据</span></span><br><span class="line"><span class="built_in">list</span> s lnw <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br><span class="line"><span class="comment"># &gt;=: 等于  &lt;=：小于等于  ==：等于  ~= or !=：不等于  =：赋值</span></span><br></pre></td></tr></table></figure></li>
+<li><p>drop / keep</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除满足 ’s&gt;=16&#x27; 的观测值</span></span><br><span class="line">drop <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只保留满足 &#x27;s&gt;=16&#x27; 的观测值</span></span><br><span class="line">keep <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p>注：Stata 并不提供 undo 功能，故需慎重删除数据，最好保留备份-</p></li>
+<li><p>sort / gsort</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将数据按照变量 s 的升序排列</span></span><br><span class="line">sort s</span><br><span class="line">lsit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 降序排列</span></span><br><span class="line">gsort -s</span><br><span class="line"><span class="built_in">list</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="plot">1.2 Plot</h2>
+<h3 id="直方图">1.3.1 直方图</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">histogram s, width(<span class="number">1</span>) frequency</span><br><span class="line">hist s, w(<span class="number">1</span>) freq</span><br><span class="line"><span class="comment"># histogram: 直方图, </span></span><br><span class="line"><span class="comment"># 选择项 &#x27;width(1)&#x27; 表示将组宽设为 1（否则将使用 Stata 根据样本容量计算的默认分组数）</span></span><br><span class="line"><span class="comment"># 选择项 ‘frequency&#x27; 表示将纵坐标定为频数（默认使用密度）</span></span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKz0OK.png" alt="image-20201210163044446" style="zoom:80%;" /></p>
+<center>
+Fig. 1-1 Histogram figure
+</center>
+<ul>
+<li>查看帮助文档</li>
+</ul>
+<p>对于任何 <code>Stata</code> 命令，只需要输入 <code>help command_name</code> 即可查看该命令的帮助文档，<strong>初学者应养成经常查看帮助文档的习惯</strong>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">help</span> histogram</span><br><span class="line">h hist</span><br><span class="line"><span class="comment"># 查看 histogram 命令的帮助文档</span></span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">histogram varname [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, [continuous_opts | discrete_opts] options]</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[if], [in]: 条件操作</span></span><br><span class="line"><span class="string">[weight]: 权重</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[continuous_opts]: 连续型变量选择项</span></span><br><span class="line"><span class="string">[discrete_opts]: 离散型选择项</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">continuous_opts        Description</span></span><br><span class="line"><span class="string">----------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  bin(#)               set number of bins to #</span></span><br><span class="line"><span class="string">  width(#)             set width of bins to #</span></span><br><span class="line"><span class="string">  start(#)         	   set lower limit of first bin to #</span></span><br><span class="line"><span class="string">-------------------------------------------</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">discrete_opts          Description</span></span><br><span class="line"><span class="string">------------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  discrete             specify that data are discrete</span></span><br><span class="line"><span class="string">  width(#)             set width of bins to #</span></span><br><span class="line"><span class="string">  start(#)             set theoretical minimum value to #</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">options                Description</span></span><br><span class="line"><span class="string">-------------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  density               draw as density; the default</span></span><br><span class="line"><span class="string">  fraction              draw as fractions</span></span><br><span class="line"><span class="string">  frequency             draw as frequencies</span></span><br><span class="line"><span class="string">  percent               draw as percentages</span></span><br><span class="line"><span class="string">  bar_options           rendition of bars</span></span><br><span class="line"><span class="string">  binrescale  | recalculate bin sizes when by() is specified</span></span><br><span class="line"><span class="string">  addlabels             add height labels to bars</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Density plots</span></span><br><span class="line"><span class="string">  normal                  add a normal density to the graph</span></span><br><span class="line"><span class="string">  normopts(line_options)  affect rendition of normal density</span></span><br><span class="line"><span class="string">  kdensity     | add a kernel density estimate to the graph</span></span><br><span class="line"><span class="string">  kdenopts(kdensity_options) | affect rendition of kernel density</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Add plots</span></span><br><span class="line"><span class="string">  addplot(plot)           add other plots to the histogram</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="散点图">1.3.2 散点图</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scatter lnw s</span><br><span class="line">sc lnw s</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzrwD.png" alt="image-20201210163409860" style="zoom:80%;" /></p>
+<center>
+Fig. 1-2 Scatter between lnw and s
+</center>
+<ul>
+<li>标签</li>
+</ul>
+<p>如果想在散点图上标注每个点对应于哪个观测值，可先定义变量 <span class="math inline">\(n\)</span>，表示第 <span class="math inline">\(n\)</span> 个观测值：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen n = _n</span><br><span class="line">scatter lnw s, mlabel(n) <span class="comment"># 选择变量 n 作为标签（mark label）</span></span><br></pre></td></tr></table></figure>
+<p>其中，<code>_n</code> 表示第 <span class="math inline">\(n\)</span> 个观测值。然后以变量作为每个点的标签来画散点图。结果如下：</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzsTe.png" alt="image-20201210164351554" style="zoom:80%;" /></p>
+<center>
+Fig. 1-3 Scatter with mark label
+</center>
+<h3 id="核密度估计图">1.3.3 核密度估计图</h3>
+<p>直方图必然是不连续的，如果想得到密度函数的连续估计，可输入命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">kdensity lnw, normal normop (lpattern (dash))</span><br><span class="line">kdensity lnw, normal normop (lp (dash)) </span><br></pre></td></tr></table></figure>
+<p>其中</p>
+<ul>
+<li><code>kdensity</code>：核密度估计（kernel density estimation）；</li>
+<li><code>normal</code>：画正态分布的密度函数作为对比；</li>
+<li><code>normop (lp (Dash))</code>：将正态密度用虚线来画。
+<ul>
+<li><code>normop</code>：normal options</li>
+<li><code>lpattern</code>： line pattern.</li>
+</ul></li>
+</ul>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzRSI.md.png" alt="image-20201210224215508" style="zoom:80%;" /></p>
+<center>
+Fig. 1-4 Kernel density estimate
+</center>
+<h2 id="statistical-analysis">1.3 Statistical analysis</h2>
+<ul>
+<li><p>统计特征</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">summarize s</span><br><span class="line">su s</span><br><span class="line"></span><br><span class="line"><span class="built_in">sum</span> lnw, detail <span class="comment"># 显示更多统计指标，如偏度、峰度</span></span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzDeO.png" alt="image-20201210164927010" style="zoom:80%;" /></p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzgfA.png" alt="image-20201210223033995" style="zoom:80%;" /></p>
+<center>
+<p>Fig. 1-4 Statistical description</p>
+</center>
+<p>显示了变量 <span class="math inline">\(s\)</span> 的样本容量、平均值、标准差、最小值于最大值。如 <strong>不指明变量</strong>，则显示 <strong>所有变量</strong> 的统计指标。</p></li>
+<li><p>经验累计分布函数（Empirical cumulative distribution function）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tabulate s <span class="comment"># 显示 s 的经验累积分布番薯</span></span><br><span class="line">ta s</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzwy6.png" alt="image-20201210165710687" style="zoom:80%;" /></p>
+<center>
+<p>Fig. 1-5 Empirical cummlative distribution</p>
+</center>
+<p>其中，<code>Freq</code> 表示频数，<code>Percent</code> 表示百分比，而 <code>Cum.</code> 表示累积百分比。</p></li>
+<li><p>相关系数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pwcorr lnw s expr, sig star(<span class="number">.05</span>)</span><br><span class="line"><span class="comment"># 对工资对数、教育年限于工龄之间的相关系数</span></span><br></pre></td></tr></table></figure>
+<p>其中，</p>
+<ul>
+<li><code>pwcorr</code> ： <code>pairwise correlation</code>，即两两相关；</li>
+<li>选择项 <code>sig</code> ：相关系数的显著性水平，即 <code>p-value</code>，列在相关系数的下方 ；</li>
+<li>选择项 <code>star (.05)</code> ：所有显著性水平小于或等于 5% 的相关系数打赏星号。</li>
+</ul>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKz6FH.png" alt="image-20201210170540089" style="zoom:80%;" /></p>
+<center>
+<p>Fig.1-6 Correlation coefficient</p>
+</center>
+<p>结果显示，<span class="math inline">\(\rm{ln} w\)</span> 与 <span class="math inline">\(s\)</span> 的相关系数为 0.5368，且在 1% 水平上显著（ <span class="math inline">\(p\)</span> 值为0.0022）；<span class="math inline">\(\rm{ln} w\)</span> 与 <span class="math inline">\(expr\)</span> 的相关系数为 -0.1132，但此相关关系也不显著（<span class="math inline">\(p-value\)</span> 为0.5514）</p></li>
+</ul>
+<h2 id="generate-new-variable">1.4 Generate new variable</h2>
+<h3 id="basic-operation">1.4.1 Basic operation</h3>
+<ul>
+<li>对数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">generate lns = log(s)</span><br><span class="line">g lns = log(s) <span class="comment"># 对数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>平方</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen s2 = s ^<span class="number">2</span> <span class="comment"># 平方项</span></span><br></pre></td></tr></table></figure></li>
+<li><p>互动项（乘法）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen exprs = s * expr <span class="comment"># s 与 expr 的互动项</span></span><br></pre></td></tr></table></figure></li>
+<li><p>指数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen w = exp(lnw) <span class="comment"># 指数</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="虚拟变量">1.4.2 虚拟变量</h3>
+<p>假设定义 <span class="math inline">\(s \geq 16\)</span> 为 ”受过高等教育“，并使用 变量 <span class="math inline">\(college\)</span> 来表示:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen colleg = (s &gt;= <span class="number">16</span>)</span><br></pre></td></tr></table></figure>
+<p>其中，括弧 <code>()</code> 表示对括弧中的表达式进行逻辑评估：如果此表达式为真，则取值为1；如果为假，则取值为0。</p>
+<ul>
+<li><p>变量重命名</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rename colleg college</span><br><span class="line">ren colleg college</span><br></pre></td></tr></table></figure></li>
+<li><p>变量重定义</p>
+<p>将 ”受过高等教育“的定义改为 <span class="math inline">\(s \geq 15\)</span>，但仍用 <span class="math inline">\(college\)</span> 作为变量名：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Method one</span></span><br><span class="line">drop college</span><br><span class="line">gen college = (s &gt;= <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method two</span></span><br><span class="line">replace college = (s &gt;= <span class="number">15</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>变量输入</p>
+<p>对于较长的变量，一一输入较为麻烦，，有如下简便方式：</p>
+<ul>
+<li><p>在变量 窗口双击需要的变量；</p></li>
+<li><p><span class="math inline">\(s1 - s5\)</span> 来选择这 5 个变量；</p></li>
+<li><p>用 <code>*</code> 来简化变量名的书写。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">drop s* <span class="comment"># 去掉所有以 s 开头的变量</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h2 id="other">1.5 Other</h2>
+<h3 id="calculator">1.5.1 Calculator</h3>
+<p><code>Stata</code> 也可作为计算器来使用，命令格式为 <code>display expression</code>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display log(<span class="number">2</span>) <span class="comment"># 计算 ln2</span></span><br><span class="line">di log(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">dis <span class="number">2</span>^<span class="number">0.5</span> <span class="comment"># 计算 $\sqrt&#123;2&#125;$</span></span><br></pre></td></tr></table></figure>
+<h3 id="invoke-and-terminate-commands">1.5.2 Invoke and terminate commands</h3>
+<ul>
+<li>调用旧命令
+<ul>
+<li>使用键盘上的 <code>Pg Up</code> 和 <code>Pg Dn</code> 键；</li>
+<li>在历史命令窗口 <strong>单击</strong> 旧命令，将命令调入命令窗口；</li>
+<li>在历史命令窗口 <strong>双击</strong> 旧命令，再次执行此命令。</li>
+</ul></li>
+<li>停止执行当前执行命令
+<ul>
+<li>点击 <code>Break</code> 图标的快捷键；</li>
+<li>同时按住 <code>Ctrl + Break</code>。</li>
+</ul></li>
+</ul>
+<h3 id="log-file">1.5.3 Log file</h3>
+<p><code>Stata</code> 日志文件的扩展名为 <code>smcl</code>。可通过快捷键 <code>Log</code> 图标使用，也可通过输入如下命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log using today <span class="comment"># 在当前路径中生成一个名为 &#x27;today.smcl&#x27; 的日志文件</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"># Result:</span></span><br><span class="line"><span class="string">log using &quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Test\Test-log.smcl&quot;</span></span><br><span class="line"><span class="string">--------------------------------------------</span></span><br><span class="line"><span class="string">name:  &lt;unnamed&gt;</span></span><br><span class="line"><span class="string">log:  D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Test\Test-log.smcl</span></span><br><span class="line"><span class="string">log type:  smcl</span></span><br><span class="line"><span class="string">opened on:  10 Dec 2020, 19:10:30</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>暂时关闭日志</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log off</span><br></pre></td></tr></table></figure></li>
+<li><p>恢复使用日志</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log on</span><br></pre></td></tr></table></figure></li>
+<li><p>彻底退出日志</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log close</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="updata-stata-lib">1.5.4 Updata stata lib</h3>
+<p>更新 <code>Stata</code> 命令库（ <code>Stata "ado"</code>文件及其他可执行文件）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">updata <span class="built_in">all</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>非官方命令</p>
+<p>最流行的非官方命令下载平台为 <a href="https://ideas.repec.org/s/boc/bocode.html">统计软件成分</a> (Statistical Software Components, SSC)，从 <code>SCC</code> 下载 <code>Stata</code> 程序的命令为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scc install newcommand</span><br></pre></td></tr></table></figure>
+<p>如果非官方命令不是来自 <code>SSC</code>，则需要手工安装。只需要将所有相关文件下载到制定的 <code>Stata</code> 文件夹中即可（通常为 <code>ado\plus\</code>）。如果不清楚应把文件复制到哪个文件夹，可输入以下命令，显示 <code>Stata</code> 的系统路径（System directories）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sysdir</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. sysdir</span><br><span class="line">   STATA:  D:\Program files\Stata <span class="number">16</span>\</span><br><span class="line">    BASE:  D:\Program files\Stata <span class="number">16</span>\ado\base\</span><br><span class="line">    SITE:  D:\Program files\Stata <span class="number">16</span>\ado\site\</span><br><span class="line">    PLUS:  C:\Users\YangSu\ado\plus\ <span class="comment"># 复制到此文件夹</span></span><br><span class="line">PERSONAL:  C:\Users\YangSu\ado\personal\</span><br><span class="line">OLDPLACE:  c:\ado\</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="search-and-findit">1.5.5 Search and findit</h3>
+<ul>
+<li><p>Search command</p>
+<p>如果想使用某种估计方法，但不知道它是否存在，可输入命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">search keyword</span><br></pre></td></tr></table></figure>
+<p>此命令搜索 <code>Stata</code> 帮助文件、<code>Stata</code> 常见问题、<code>Stata</code> 案例、<code>Stata Journal</code>、<code>Stata Technical Bulletin</code>等。</p></li>
+<li><p>Findit keyword</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">findit keyword</span><br></pre></td></tr></table></figure>
+<p><code>findit</code>搜索范围更广，还包括 <code>Stata</code> 的网络资源。</p></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Class Notes</category>
+        <category>Econometrics</category>
+      </categories>
+      <tags>
+        <tag>Econometrics</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Energy Economic Codes</title>
     <url>/2020/12/08/Energy-Economic/</url>
     <content><![CDATA[<h1 id="markov-model">1 Markov model</h1>
@@ -740,6 +1177,9 @@ fig. 4-5 Comparison before and after transforming
 <ul>
 <li><p>Import modules</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> linalg <span class="keyword">as</span> la</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error, r2_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot module</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line"><span class="comment"># Microsoft YaHei, Times New Roman</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>Plot results</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_result</span>(<span class="params">test_Y, pred_Y, Title</span>):</span></span><br><span class="line">    ylim_min = np.<span class="built_in">round</span>(test_Y.<span class="built_in">min</span>()) - <span class="number">1</span></span><br><span class="line">    ylim_max = np.<span class="built_in">round</span>(test_Y.<span class="built_in">max</span>()) + <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># plot comparison results</span></span><br><span class="line">    fig = plt.figure(figsize = (<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">    ax0 = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">    ax0.scatter(test_Y, pred_Y)</span><br><span class="line">    ax0.plot([ylim_min, ylim_max], [ylim_min, ylim_max], <span class="string">&#x27;--k&#x27;</span>)</span><br><span class="line">    ax0.set_xlabel(<span class="string">&#x27;True Target&#x27;</span>, fontsize = <span class="number">15</span>)</span><br><span class="line">    ax0.set_ylabel(<span class="string">&#x27;Target predicted&#x27;</span>, fontsize = <span class="number">15</span>)</span><br><span class="line">    ax0.set_title(Title , fontsize = <span class="number">16</span>)</span><br><span class="line">    ax0.text(ylim_min + <span class="number">2</span>, ylim_max - <span class="number">4</span>, <span class="string">r&#x27;$R^2$ = %.2f, $MAE$ = %.2f&#x27;</span> %(r2_score(test_Y, pred_Y), </span><br><span class="line">                mean_absolute_error(test_Y, pred_Y)), fontsize = <span class="number">14</span>)</span><br><span class="line">    ax0.text(ylim_min + <span class="number">2</span>, ylim_max - <span class="number">5</span>, <span class="string">r&#x27;$MSE$ = %.2f, $RMSE$ = %.2f&#x27;</span> %(mean_squared_error(test_Y, pred_Y), </span><br><span class="line">                mean_squared_error(test_Y, pred_Y, squared=<span class="literal">False</span>)), fontsize = <span class="number">14</span>)</span><br><span class="line">    </span><br><span class="line">    ax0.set_xlim([ylim_min, ylim_max])</span><br><span class="line">    ax0.set_ylim([ylim_min, ylim_max])</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Plot prediction and real values</span></span><br><span class="line">    plt.figure(figsize = (<span class="number">8</span>, <span class="number">6</span>)) <span class="comment"># length x width</span></span><br><span class="line">    plt.plot(pred_Y, <span class="string">&#x27;r&#x27;</span>, label=<span class="string">&#x27;prediction&#x27;</span>, lw = <span class="number">0.8</span>)</span><br><span class="line">    plt.plot(test_Y, <span class="string">&#x27;b&#x27;</span>, label=<span class="string">&#x27;real&#x27;</span>, lw = <span class="number">0.8</span>)</span><br><span class="line">    plt.xticks(<span class="built_in">range</span>(<span class="number">19</span>), fontsize = <span class="number">15</span>)</span><br><span class="line">    plt.yticks(fontsize = <span class="number">15</span>)</span><br><span class="line">    plt.title(Title, fontsize = <span class="number">16</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">&#x27;best&#x27;</span>, fontsize  = <span class="number">15</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 <p>绘制结果图（可选，可通过调整 <code>plot_b</code> 的值来选择是否绘图），包含两个:</p>
@@ -793,7 +1233,7 @@ fig. 4-5 Comparison before and after transforming
 ]]></content>
       <categories>
         <category>Class Notes</category>
-        <category>Codes</category>
+        <category>Energy economics</category>
       </categories>
       <tags>
         <tag>Deep learning</tag>

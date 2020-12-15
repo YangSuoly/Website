@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://s3.ax1x.com/2020/12/08/rpDV56.md.png">
 <meta property="og:image" content="https://s3.ax1x.com/2020/12/08/rpDePK.png">
 <meta property="article:published_time" content="2020-12-08T12:10:42.000Z">
-<meta property="article:modified_time" content="2020-12-08T12:20:02.853Z">
+<meta property="article:modified_time" content="2020-12-15T07:17:36.965Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Deep learning">
 <meta property="article:tag" content="Prediction">
@@ -238,10 +238,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-12-08 20:10:42 / Modified: 20:20:02" itemprop="dateCreated datePublished" datetime="2020-12-08T20:10:42+08:00">2020-12-08</time>
+              <time title="Created: 2020-12-08 20:10:42" itemprop="dateCreated datePublished" datetime="2020-12-08T20:10:42+08:00">2020-12-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-15 15:17:36" itemprop="dateModified" datetime="2020-12-15T15:17:36+08:00">2020-12-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -252,7 +258,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Class-Notes/Codes/" itemprop="url" rel="index"><span itemprop="name">Codes</span></a>
+                  <a href="/Categories/Class-Notes/Energy-economics/" itemprop="url" rel="index"><span itemprop="name">Energy economics</span></a>
                 </span>
             </span>
 
@@ -293,6 +299,9 @@
 <ul>
 <li><p>Import modules</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> linalg <span class="keyword">as</span> la</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error, r2_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot module</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line"><span class="comment"># Microsoft YaHei, Times New Roman</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>Plot results</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_result</span>(<span class="params">test_Y, pred_Y, Title</span>):</span></span><br><span class="line">    ylim_min = np.<span class="built_in">round</span>(test_Y.<span class="built_in">min</span>()) - <span class="number">1</span></span><br><span class="line">    ylim_max = np.<span class="built_in">round</span>(test_Y.<span class="built_in">max</span>()) + <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># plot comparison results</span></span><br><span class="line">    fig = plt.figure(figsize = (<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">    ax0 = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">    ax0.scatter(test_Y, pred_Y)</span><br><span class="line">    ax0.plot([ylim_min, ylim_max], [ylim_min, ylim_max], <span class="string">&#x27;--k&#x27;</span>)</span><br><span class="line">    ax0.set_xlabel(<span class="string">&#x27;True Target&#x27;</span>, fontsize = <span class="number">15</span>)</span><br><span class="line">    ax0.set_ylabel(<span class="string">&#x27;Target predicted&#x27;</span>, fontsize = <span class="number">15</span>)</span><br><span class="line">    ax0.set_title(Title , fontsize = <span class="number">16</span>)</span><br><span class="line">    ax0.text(ylim_min + <span class="number">2</span>, ylim_max - <span class="number">4</span>, <span class="string">r&#x27;$R^2$ = %.2f, $MAE$ = %.2f&#x27;</span> %(r2_score(test_Y, pred_Y), </span><br><span class="line">                mean_absolute_error(test_Y, pred_Y)), fontsize = <span class="number">14</span>)</span><br><span class="line">    ax0.text(ylim_min + <span class="number">2</span>, ylim_max - <span class="number">5</span>, <span class="string">r&#x27;$MSE$ = %.2f, $RMSE$ = %.2f&#x27;</span> %(mean_squared_error(test_Y, pred_Y), </span><br><span class="line">                mean_squared_error(test_Y, pred_Y, squared=<span class="literal">False</span>)), fontsize = <span class="number">14</span>)</span><br><span class="line">    </span><br><span class="line">    ax0.set_xlim([ylim_min, ylim_max])</span><br><span class="line">    ax0.set_ylim([ylim_min, ylim_max])</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Plot prediction and real values</span></span><br><span class="line">    plt.figure(figsize = (<span class="number">8</span>, <span class="number">6</span>)) <span class="comment"># length x width</span></span><br><span class="line">    plt.plot(pred_Y, <span class="string">&#x27;r&#x27;</span>, label=<span class="string">&#x27;prediction&#x27;</span>, lw = <span class="number">0.8</span>)</span><br><span class="line">    plt.plot(test_Y, <span class="string">&#x27;b&#x27;</span>, label=<span class="string">&#x27;real&#x27;</span>, lw = <span class="number">0.8</span>)</span><br><span class="line">    plt.xticks(<span class="built_in">range</span>(<span class="number">19</span>), fontsize = <span class="number">15</span>)</span><br><span class="line">    plt.yticks(fontsize = <span class="number">15</span>)</span><br><span class="line">    plt.title(Title, fontsize = <span class="number">16</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">&#x27;best&#x27;</span>, fontsize  = <span class="number">15</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
 <p>绘制结果图（可选，可通过调整 <code>plot_b</code> 的值来选择是否绘图），包含两个:</p>
@@ -394,7 +403,10 @@
     <a href="/2020/12/05/Prediction-methods/" rel="prev" title="Prediction methods">
       <i class="fa fa-chevron-left"></i> Prediction methods
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/15/Econometrics/" rel="next" title="Econometrics">
+      Econometrics <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -473,20 +485,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/Tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
