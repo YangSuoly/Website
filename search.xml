@@ -56,240 +56,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Econometrics</title>
-    <url>/2020/12/15/Econometrics/</url>
-    <content><![CDATA[<h1 id="introduction">1 Introduction</h1>
-<p>本文为参考 洪永淼《高级计量学》复习高级计量经济学的学习笔记。</p>
-<a id="more"></a>
-<h1 id="一般回归分析和模型设定">2 一般回归分析和模型设定</h1>
-<h2 id="条件概率分别">2.1 条件概率分别</h2>
-<ul>
-<li><p>边际概率密度函数 （<span class="math inline">\(\rm{P}_{18}\)</span>） <span class="math display">\[
-\begin{align*}
-f_x(x) = \int_{-\infty}^\infty f_{XY}(x,y)\rm{d}y
-\end{align*}
-\]</span></p></li>
-<li><p>给定 <span class="math inline">\(X = x\)</span>，<span class="math inline">\(Y\)</span> 的条件概率密度函数 （<span class="math inline">\(\rm{P}_{18}\)</span>） <span class="math display">\[
-\begin{align*}
-f_{Y|X}(y|x) = \frac{f_{XY}(x,y)}{f_X{(x)}}
-\end{align*}
-\]</span></p></li>
-<li><p>条件均值（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
-\begin{align*}
-E(Y|x) \equiv E(Y|X=x) = \int_{-\infty}^{\infty} y f_{Y|X}(y|x)\rm{d}y
-\end{align*}
-\]</span></p></li>
-<li><p>条件方差（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
-\begin{align*}
-var(Y|x) \equiv var(Y|X=x) &amp;= \int_{-\infty}^{\infty} [y-E(Y|x)]^2f_{Y|X}(y|x)\rm{d}y  \\
-&amp;= E(Y^2|x)-[E(Y|x)]^2
-\end{align*}
-\]</span></p></li>
-<li><p>条件偏度（Conditional skewness）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
-\begin{align*}
-S(Y|x) \equiv \frac{E[(Y-E(Y|x))^3|x)}{[var(Y|x)]^{3/2}}
-\end{align*}
-\]</span></p></li>
-<li><p>条件峰度（Conditional kurtosis）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
-\begin{align*}
-K(Y|x) \equiv \frac{E[(Y-E(Y|x))^4|x)}{[var(Y|x)]^{2}}
-\end{align*}
-\]</span></p></li>
-<li><p>条件 $$ - 分位数（Conditional <span class="math inline">\(\alpha\)</span>-quantile）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
-\begin{align*}
-P[Y \leq Q(X, \alpha)|X = x] = \alpha \in (0,1)
-\end{align*}
-\]</span></p></li>
-</ul>
-<h2 id="条件均值与回归分析">2.2 条件均值与回归分析</h2>
-<h3 id="定义">2.2.1 定义</h3>
-<ul>
-<li><strong>定义 2.1</strong>（<span class="math inline">\(\rm{P}_{20}\)</span>）&lt; 回归函数 (Regression Function) &gt;：条件均值 <span class="math inline">\(E(Y|X)\)</span> 成为 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(X\)</span> 的回归函数;</li>
-</ul>
-<h3 id="定理">2.2.2 定理</h3>
-<ul>
-<li><p><strong>定理 2.1</strong>（<span class="math inline">\(\rm{P}_{21}\)</span>）：<span class="math inline">\(E(E(Y|X)) = E(Y)\)</span>；</p></li>
-<li><p><strong>定理 2.2</strong>（<span class="math inline">\(\rm{P}_{21}\)</span>） &lt; 重复期望法则 (Law of Interated Expectations, LIE) &gt;：对给定的可测函数 <span class="math inline">\(G(X,Y)\)</span>，假设期望 <span class="math inline">\(E[G(X,Y)]\)</span> 存在，则： <span class="math display">\[
-\begin{align*}
-E[G(X, Y)] = E\{E[G(X,Y)|X])\}
-\end{align*}
-\]</span></p></li>
-<li><p><strong>定理 2.3</strong>（<span class="math inline">\(\rm{P}_{23}\)</span>）&lt; <span class="math inline">\(MSE\)</span> 最优解 &gt;：条件均值 <span class="math inline">\(E(Y|X)\)</span> 是下列问题的最优解： <span class="math display">\[
-\begin{align*}
-E(Y|X = \arg \min_{g\ \in\ \mathbb{F}} E[Y - g(X)]^2
-\end{align*}
-\]</span> 其中，<span class="math inline">\(\mathbb{F}\)</span> 是所有可测和平方可积函数的集合 (Space of all measurable and quare-integrable functions)，即： <span class="math display">\[
-\begin{align*}
-\mathbb{F} = \left\{g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\int g^2(x) f_X(x) \rm{b}x &lt; \infty \right\}
-\end{align*}
-\]</span> &lt; 注：可通过中间变量 <span class="math inline">\(g_0(X) \equiv E(Y|X)\)</span> 证明 &gt;</p></li>
-<li><p><strong>定理 2.4</strong>（<span class="math inline">\(\rm{P}_{25}\)</span>）&lt; 回归等式 (Regression Identity) &gt;：给定条件均值 <span class="math inline">\(E(Y|X)\)</span>，总有： <span class="math display">\[
-\begin{align*}
-Y = E(Y|X) + \varepsilon
-\end{align*}
-\]</span> 其中，<span class="math inline">\(\varepsilon\)</span> 称为回归扰动项（Regression disturbance），满足： <span class="math display">\[
-\begin{align*}
-E(\varepsilon|X) = 0
-\end{align*}
-\]</span></p></li>
-</ul>
-<h2 id="线性回归建模">2.3 线性回归建模</h2>
-<h3 id="定义-1">2.3.1 定义</h3>
-<ul>
-<li><p><strong>定义 2.3</strong>（<span class="math inline">\(\rm{P}_{29}\)</span>）&lt; 仿射函数 (Affine Function) &gt;：记 <span class="math inline">\(X = (1, X_1, \dots , X_k)^\prime\)</span>，<span class="math inline">\(\beta = (\beta_0, \beta_1, \dots, \beta_k)^\prime\)</span>。则仿射函数族定义为： <span class="math display">\[
-\begin{align*}
-\mathbb{A} &amp;= \left\{ g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\ g(X) = \beta_0 + \sum_{j=1}^{k} \beta_jX_j, \beta_j \in \mathbb{R} \right\} \\
-&amp;= \left\{ g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\ g(X) = X^\prime\beta \right\}
-\end{align*}
-\]</span> 这里，对参数向量 <span class="math inline">\(\beta\)</span> 的值没有限制。对于这族函数，函数形式一致，分别是解释变量和参数 <span class="math inline">\(\beta\)</span> 的线性函数；</p></li>
-<li><p><strong>定义 2.4</strong>（<span class="math inline">\(\rm{P}_{32}\)</span>）&lt; 线性回归模型 (Linear Regression Model) &gt;：方程： <span class="math display">\[
-\begin{align*}
-Y = X^\prime \beta + u, \beta \in \mathbb{R}^{k+1}
-\end{align*}
-\]</span> 称为 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(X\)</span> 的线性回归模型，其中 <span class="math inline">\(u\)</span> 是回归模型误差 (Regression model error)。如果 <span class="math inline">\(k=1\)</span>，称为二元线性回归模型 (Bivariate linear regression model) 或直线回归模型 (Straight linere gression model)。如果 <span class="math inline">\(k&gt;1\)</span>，则称为多元线性回归模型 (Multiple linear regression model)；</p></li>
-</ul>
-<h3 id="定理-1">2.3.2 定理</h3>
-<ul>
-<li><p><strong>定理 2.5</strong>（<span class="math inline">\(\rm{P}_{30}\)</span>）&lt; 最优线性最小二乘预测 (Best Linear Least Squares Predictstion) &gt; ：假设<span class="math inline">\(E(Y^2) &lt; \infty\)</span>，且<span class="math inline">\((k+1) \times (k+1)\)</span> 矩阵 <span class="math inline">\(E(X^\prime X)\)</span> 是非奇异的。则以下优化问题： <span class="math display">\[
-\begin{align*}
-\min_{g\ \in\ \mathbb{A} }E[Y - g(X)]^2 = \min_{\beta\ \in \mathbb{R}^{k+1}}E(Y - X^\prime \beta)^2
-\end{align*}
-\]</span> 的解，即最优线性最小二乘法预测值为： <span class="math display">\[
-\begin{align*}
-g^*(X) = X^\prime\beta^*
-\end{align*}
-\]</span> 其中最优系数向量为（<span class="math inline">\(\star \star \star\)</span>）： <span class="math display">\[
-\begin{align*}
-\beta^* = [E(X X^\prime)]^{-1}E(XY)
-\end{align*}
-\]</span></p></li>
-<li><p><strong>定理 2.6</strong>（<span class="math inline">\(\rm{P}_{32}\)</span>）：假设定理 2.5 的条件成立。令： <span class="math display">\[
-\begin{align*}
-Y =  X^\prime \beta + u
-\end{align*}
-\]</span> 并令 <span class="math inline">\(\beta^* = [E(XX^\prime)]^{-1}E(XY)\)</span> 为最优线性最小二乘近似系数。则： <span class="math display">\[
-\begin{align*}
-\beta = \beta^*
-\end{align*}
-\]</span> 当且仅当以下正交条件成立： <span class="math display">\[
-\begin{align*}
-E(Xu) = 0
-\end{align*}
-\]</span></p></li>
-</ul>
-<h2 id="条件均值的模型设定">2.4 条件均值的模型设定</h2>
-<h3 id="定义-2">2.4.1 定义</h3>
-<ul>
-<li><strong>定义 2.5</strong>（<span class="math inline">\(\rm{P}_{34}\)</span>）&lt; 条件均值模型的正确设定 &gt;：线性回归模型： <span class="math display">\[
-\begin{align*}
-Y = X^\prime \beta + u, \beta \in \mathbb{R^{k+1}}
-\end{align*}
-\]</span> 是条件均值 <span class="math inline">\(E(Y|X)\)</span> 的正确设定，如果存在某个参数值 <span class="math inline">\(\beta^o \in \mathbb{R^{k+1}}\)</span>，有： <span class="math display">\[
-\begin{align*}
-E(Y|X) = X^\prime \beta^o
-\end{align*}
-\]</span> 另一方面，如果对于任意的参数值 <span class="math inline">\(\beta \in \mathbb{R^{k+1}}\)</span>， <span class="math display">\[
-\begin{align*}
-E(Y|X) \neq X^\prime \beta
-\end{align*}
-\]</span> 则称线性回归模型是对 <span class="math inline">\(E(Y|X)\)</span> 的错误设定 (Misspecified)；</li>
-</ul>
-<h3 id="定理-2">2.4.2 定理</h3>
-<ul>
-<li><p><strong>定理 2.7</strong>（<span class="math inline">\(\rm{P}_{35}\)</span>）：如果线性回归模型： <span class="math display">\[
-\begin{align*}
-Y =  X^\prime \beta + u
-\end{align*}
-\]</span> 是对条件均值<span class="math inline">\(E(Y|X)\)</span> 的正确设定则：</p>
-<p>1）存在一个参数 <span class="math inline">\(\beta^o\)</span> 和一个随机变量 <span class="math inline">\(\varepsilon\)</span>，有 <span class="math inline">\(Y = X^\prime \beta^o+\varepsilon\)</span>，其中 <span class="math inline">\(E(\varepsilon|X) = 0\)</span>；</p>
-<p>2）<span class="math inline">\(\beta^* = \beta^o\)</span></p></li>
-</ul>
-<h1 id="经典线性回归模型">3. 经典线性回归模型</h1>
-<h2 id="假设">3.1 假设</h2>
-<ul>
-<li><p><strong>假设 3.1</strong>（<span class="math inline">\(\rm{P}_{45}\)</span>）&lt; 线性 (Linearity) &gt;：<span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span> 是一个可观测的随机样本，且： <span class="math display">\[
-Y_t = X_t^\prime \beta^o + \varepsilon_t, t = 1, \dots, n
-\]</span> 其中，<span class="math inline">\(\beta^o\)</span> 是一个 <span class="math inline">\(K \times 1\)</span> 未知参数向量，<span class="math inline">\(\varepsilon_t\)</span> 是一个不可观测的随机扰动项；</p>
-<p>令： <span class="math display">\[
-\begin{align*}
-Y &amp; = (Y_1, \dots , Y_n)^\prime, &amp;n \times 1 \\
-\varepsilon &amp; = (\varepsilon_1, \dots , \varepsilon_n)^\prime, &amp;n \times 1 \\
-X &amp; = (X_1, \dots , X_n)^\prime, &amp;n \times K \\
-\end{align*}
-\]</span> 这里 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(t\)</span> 行是 <span class="math inline">\(K\)</span> 维行向量 <span class="math inline">\(X_t^\prime = (1, X_{1t},\dots,X_{kt})\)</span>。从而，(1) 式可以表示为： <span class="math display">\[
-\begin{align*}
-Y = X \beta^o + \varepsilon
-\end{align*}
-\]</span></p></li>
-<li><p><strong>假设 3.2</strong>（<span class="math inline">\(\rm{P}_{46}\)</span>）&lt; 严格外生性 (Strict Exogeneity) &gt;：<span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span> <span class="math display">\[
-\begin{align*}
-E(\varepsilon_t|X) = E(\varepsilon_t|X_1, \dots, X_t,\dots,X_n) = 0 \qquad t = 1,\dots,n
-\end{align*}
-\]</span> 这一假设隐含着 <span class="math inline">\(E(Y_t|X_t)\)</span> 的模型设定正确；</p></li>
-<li><p><strong>假设 3.3</strong>（<span class="math inline">\(\rm{P}_{48}\)</span>）&lt; 非奇异性 (Nonsingularity) &gt;：</p>
-<p>1）<span class="math inline">\(K \times K\)</span> 方阵 <span class="math inline">\(X^\prime X = \sum_\limits{t=1}^n X_t X_t^\prime\)</span> 是非奇异的（排除了 <span class="math inline">\(X_t\)</span> 中存在多重共线性）；</p>
-<p>2）当 <span class="math inline">\(n \to \infty\)</span> 时，<span class="math inline">\(X^\prime X\)</span> 的最小特征值: <span class="math display">\[
-\begin{align*}
-\lambda_{min}(X^\prime X) \to \infty
-\end{align*}
-\]</span> 的概率为 1;</p></li>
-<li><p><strong>假设 3.4</strong>（<span class="math inline">\(\rm{P}_{49}\)</span>）&lt; 球形误差方差 (Spherical Error Variance) &gt;：</p>
-<p>1）条件同方差: <span class="math display">\[
-\begin{align*}
-E(\varepsilon_t^2|X) = \sigma^2 &gt; 0, \quad t =1,\dots,n
-\end{align*}
-\]</span> 2）条件不相关： <span class="math display">\[
-\begin{align*}
-E(\varepsilon_t\varepsilon_s|X) = 0, t \neq s, \quad t,s \in \{1,\dots,n\}
-\end{align*}
-\]</span> 上述可写为： <span class="math display">\[
-\begin{align*}
-E(\varepsilon_t\varepsilon_s|X) = \sigma^2 \delta_{ts}, t \neq s, \quad t,s \in \{1,\dots,n\}
-\end{align*}
-\]</span> 其中，<span class="math inline">\(\delta_{ts} = 1\)</span> 当且仅当 <span class="math inline">\(t=s\)</span>；</p></li>
-</ul>
-<h3 id="总结">3.1.1 总结</h3>
-<p>给定假设 3.2 和 3.4 意味着 <span class="math inline">\(\varepsilon_t\)</span> 存在条件同方差，即： <span class="math display">\[
-\begin{align*}
-var(\varepsilon_t|X) = E(\varepsilon_t^2|X) - [E(\varepsilon_t|X)]^2 = E(\varepsilon_t^2|X) = \sigma^2
-\end{align*}
-\]</span> 同样的，对于所有的 <span class="math inline">\(t \neq s\)</span>，有： <span class="math display">\[
-\begin{align*}
-cov(\varepsilon_t,\varepsilon_s|X) = E(\varepsilon_t\varepsilon_s|X) = 0
-\end{align*}
-\]</span> 如果 <span class="math inline">\(t\)</span> 表示个体单元，这意味着 <strong>横截面不相关</strong>，如果 <span class="math inline">\(t\)</span> 表示时间，这意味着 <strong>序列不相关</strong>，为方便起见，这两种情况均称为 <span class="math inline">\(\{\varepsilon_t\}\)</span> <strong>不存在自相关</strong>；</p>
-<h2 id="普通最小二乘法">3.2 普通最小二乘法</h2>
-<h3 id="定义-3">3.2.1 定义</h3>
-<ul>
-<li><strong>定义 3.1</strong>（<span class="math inline">\(\rm{P}_{50}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量 &gt;：定义线性回归模型 <span class="math inline">\(Y_t = X_t^\prime \beta + u_t\)</span> 的残差平方和 (Sum of squared residuals, SSR) 为： <span class="math display">\[
-\begin{align*}
-SSR(\beta) \equiv (Y - X\beta)^\prime(Y - X\beta) = \sum_{t=1}^{n}(Y_t - X_t^\prime\beta)^2
-\end{align*}
-\]</span> 则普通最小二乘法 ( <span class="math inline">\(OLS\)</span> ) 估计量 <span class="math inline">\(\hat\beta\)</span> 是以下优化问题的解： <span class="math display">\[
-\begin{align*}
-\hat \beta = \arg \min_{\beta\ \in \mathbb{R}^K} SSR(\beta)
-\end{align*}
-\]</span></li>
-</ul>
-<h3 id="定理-3">3.2.2 定理</h3>
-<ul>
-<li><strong>定理 3.1</strong>（<span class="math inline">\(\rm{P}_{50}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 的存在性 &gt;：在假设 3.1 和 3.3 (1) 下， <span class="math inline">\(OLS\)</span> 估计量 <span class="math inline">\(\hat \beta\)</span> 存在，并且： <span class="math display">\[
-\begin{align*}
-\hat \beta &amp;= (X^\prime  X)^{-1} \frac{1}{n} \sum_{t=1}^{n} X_t Y_t \\
- &amp; = \left\{\frac{1}{n} \sum_{t = 1}^{n} X_t X_t^\prime\right\}^{-1} \frac{1}{n} \sum_{t=1}^{n} X_t Y_t
-\end{align*}
-\]</span> 其中第二个表达式在后面章节的渐近分析中将经常用到。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Class Notes</category>
-        <category>Econometrics</category>
-      </categories>
-      <tags>
-        <tag>Econometrics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Eviews notes</title>
     <url>/2020/11/22/Eviews/</url>
     <content><![CDATA[<h1 id="create-workfile">1 Create workfile</h1>
@@ -343,6 +109,18 @@ figure 1-3 Parameters
       <tags>
         <tag>Eviews</tag>
         <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Group-Pictures</title>
+    <url>/2020/12/02/Group-Pictures/</url>
+    <content><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWRZ6.png" /></div><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div></div></div></div>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>Pics</tag>
       </tags>
   </entry>
   <entry>
@@ -517,18 +295,6 @@ figure 1-3 Parameters
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Group-Pictures</title>
-    <url>/2020/12/02/Group-Pictures/</url>
-    <content><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWRZ6.png" /></div><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div><div class="group-picture-column" style="width: 50%;"><img src="https://s3.ax1x.com/2020/11/30/DgWA8H.png" /></div></div></div></div>
-]]></content>
-      <categories>
-        <category>Notes</category>
-      </categories>
-      <tags>
-        <tag>Pics</tag>
       </tags>
   </entry>
   <entry>
@@ -2232,6 +1998,642 @@ p_1 + p_2 + p_3 = 1,
       <tags>
         <tag>Deep learning</tag>
         <tag>Prediction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Econometrics</title>
+    <url>/2020/12/15/Econometrics/</url>
+    <content><![CDATA[<h1 id="introduction">1 Introduction</h1>
+<p>本文为参考 洪永淼《高级计量学》复习高级计量经济学的学习笔记。</p>
+<a id="more"></a>
+<h1 id="一般回归分析和模型设定">2 一般回归分析和模型设定</h1>
+<h2 id="条件概率分别">2.1 条件概率分别</h2>
+<ul>
+<li><p>边际概率密度函数 （<span class="math inline">\(\rm{P}_{18}\)</span>） <span class="math display">\[
+\begin{align*}
+f_x(x) = \int_{-\infty}^\infty f_{XY}(x,y)\rm{d}y
+\end{align*}
+\]</span></p></li>
+<li><p>给定 <span class="math inline">\(X = x\)</span>，<span class="math inline">\(Y\)</span> 的条件概率密度函数 （<span class="math inline">\(\rm{P}_{18}\)</span>） <span class="math display">\[
+\begin{align*}
+f_{Y|X}(y|x) = \frac{f_{XY}(x,y)}{f_X{(x)}}
+\end{align*}
+\]</span></p></li>
+<li><p>条件均值（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+E(Y|x) \equiv E(Y|X=x) = \int_{-\infty}^{\infty} y f_{Y|X}(y|x)\rm{d}y
+\end{align*}
+\]</span></p></li>
+<li><p>条件方差（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+var(Y|x) \equiv var(Y|X=x) &amp;= \int_{-\infty}^{\infty} [y-E(Y|x)]^2f_{Y|X}(y|x)\rm{d}y  \\
+&amp;= E(Y^2|x)-[E(Y|x)]^2
+\end{align*}
+\]</span></p></li>
+<li><p>条件偏度（Conditional skewness）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+S(Y|x) \equiv \frac{E[(Y-E(Y|x))^3|x)}{[var(Y|x)]^{3/2}}
+\end{align*}
+\]</span></p></li>
+<li><p>条件峰度（Conditional kurtosis）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+K(Y|x) \equiv \frac{E[(Y-E(Y|x))^4|x)}{[var(Y|x)]^{2}}
+\end{align*}
+\]</span></p></li>
+<li><p>条件 $$ - 分位数（Conditional <span class="math inline">\(\alpha\)</span>-quantile）（<span class="math inline">\(\rm{P}_{19}\)</span>） <span class="math display">\[
+\begin{align*}
+P[Y \leq Q(X, \alpha)|X = x] = \alpha \in (0,1)
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="条件均值与回归分析">2.2 条件均值与回归分析</h2>
+<h3 id="定义">2.2.1 定义</h3>
+<ul>
+<li><strong>定义 2.1</strong>（<span class="math inline">\(\rm{P}_{20}\)</span>）&lt; 回归函数 (Regression Function) &gt;：条件均值 <span class="math inline">\(E(Y|X)\)</span> 成为 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(X\)</span> 的回归函数;</li>
+</ul>
+<h3 id="定理">2.2.2 定理</h3>
+<ul>
+<li><p><strong>定理 2.1</strong>（<span class="math inline">\(\rm{P}_{21}\)</span>）：<span class="math inline">\(E(E(Y|X)) = E(Y)\)</span>；</p></li>
+<li><p><strong>定理 2.2</strong>（<span class="math inline">\(\rm{P}_{21}\)</span>） &lt; 重复期望法则 (Law of Interated Expectations, LIE) &gt;：对给定的可测函数 <span class="math inline">\(G(X,Y)\)</span>，假设期望 <span class="math inline">\(E[G(X,Y)]\)</span> 存在，则： <span class="math display">\[
+\begin{align*}
+E[G(X, Y)] = E\{E[G(X,Y)|X])\}
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 2.3</strong>（<span class="math inline">\(\rm{P}_{23}\)</span>）&lt; <span class="math inline">\(MSE\)</span> 最优解 &gt;：条件均值 <span class="math inline">\(E(Y|X)\)</span> 是下列问题的最优解： <span class="math display">\[
+\begin{align*}
+E(Y|X = \arg \min_{g\ \in\ \mathbb{F}} E[Y - g(X)]^2
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\mathbb{F}\)</span> 是所有可测和平方可积函数的集合 (Space of all measurable and quare-integrable functions)，即： <span class="math display">\[
+\begin{align*}
+\mathbb{F} = \left\{g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\int g^2(x) f_X(x) \rm{b}x &lt; \infty \right\}
+\end{align*}
+\]</span> &lt; 注：可通过中间变量 <span class="math inline">\(g_0(X) \equiv E(Y|X)\)</span> 证明 &gt;</p></li>
+<li><p><strong>定理 2.4</strong>（<span class="math inline">\(\rm{P}_{25}\)</span>）&lt; 回归等式 (Regression Identity) &gt;：给定条件均值 <span class="math inline">\(E(Y|X)\)</span>，总有： <span class="math display">\[
+\begin{align*}
+Y = E(Y|X) + \varepsilon
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\varepsilon\)</span> 称为回归扰动项（Regression disturbance），满足： <span class="math display">\[
+\begin{align*}
+E(\varepsilon|X) = 0
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="线性回归建模">2.3 线性回归建模</h2>
+<h3 id="定义-1">2.3.1 定义</h3>
+<ul>
+<li><p><strong>定义 2.3</strong>（<span class="math inline">\(\rm{P}_{29}\)</span>）&lt; 仿射函数 (Affine Function) &gt;：记 <span class="math inline">\(X = (1, X_1, \dots , X_k)^\prime\)</span>，<span class="math inline">\(\beta = (\beta_0, \beta_1, \dots, \beta_k)^\prime\)</span>。则仿射函数族定义为： <span class="math display">\[
+\begin{align*}
+\mathbb{A} &amp;= \left\{ g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\ g(X) = \beta_0 + \sum_{j=1}^{k} \beta_jX_j, \beta_j \in \mathbb{R} \right\} \\
+&amp;= \left\{ g:\mathbb{R}^{k+1} \to \mathbb{R}\ |\ g(X) = X^\prime\beta \right\}
+\end{align*}
+\]</span> 这里，对参数向量 <span class="math inline">\(\beta\)</span> 的值没有限制。对于这族函数，函数形式一致，分别是解释变量和参数 <span class="math inline">\(\beta\)</span> 的线性函数；</p></li>
+<li><p><strong>定义 2.4</strong>（<span class="math inline">\(\rm{P}_{32}\)</span>）&lt; 线性回归模型 (Linear Regression Model) &gt;：方程： <span class="math display">\[
+\begin{align*}
+Y = X^\prime \beta + u, \beta \in \mathbb{R}^{k+1}
+\end{align*}
+\]</span> 称为 <span class="math inline">\(Y\)</span> 对 <span class="math inline">\(X\)</span> 的线性回归模型，其中 <span class="math inline">\(u\)</span> 是回归模型误差 (Regression model error)。如果 <span class="math inline">\(k=1\)</span>，称为二元线性回归模型 (Bivariate linear regression model) 或直线回归模型 (Straight linere gression model)。如果 <span class="math inline">\(k&gt;1\)</span>，则称为多元线性回归模型 (Multiple linear regression model)；</p></li>
+</ul>
+<h3 id="定理-1">2.3.2 定理</h3>
+<ul>
+<li><p><strong>定理 2.5</strong>（<span class="math inline">\(\rm{P}_{30}\)</span>）&lt; 最优线性最小二乘预测 (Best Linear Least Squares Predictstion) &gt; ：假设<span class="math inline">\(E(Y^2) &lt; \infty\)</span>，且<span class="math inline">\((k+1) \times (k+1)\)</span> 矩阵 <span class="math inline">\(E(X^\prime X)\)</span> 是非奇异的。则以下优化问题： <span class="math display">\[
+\begin{align*}
+\min_{g\ \in\ \mathbb{A} }E[Y - g(X)]^2 = \min_{\beta\ \in \mathbb{R}^{k+1}}E(Y - X^\prime \beta)^2
+\end{align*}
+\]</span> 的解，即最优线性最小二乘法预测值为： <span class="math display">\[
+\begin{align*}
+g^*(X) = X^\prime\beta^*
+\end{align*}
+\]</span> 其中最优系数向量为（<span class="math inline">\(\star \star \star\)</span>）： <span class="math display">\[
+\begin{align*}
+\beta^* = [E(X X^\prime)]^{-1}E(XY)
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 2.6</strong>（<span class="math inline">\(\rm{P}_{32}\)</span>）：假设定理 2.5 的条件成立。令： <span class="math display">\[
+\begin{align*}
+Y =  X^\prime \beta + u
+\end{align*}
+\]</span> 并令 <span class="math inline">\(\beta^* = [E(XX^\prime)]^{-1}E(XY)\)</span> 为最优线性最小二乘近似系数。则： <span class="math display">\[
+\begin{align*}
+\beta = \beta^*
+\end{align*}
+\]</span> 当且仅当以下正交条件成立： <span class="math display">\[
+\begin{align*}
+E(Xu) = 0
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="条件均值的模型设定">2.4 条件均值的模型设定</h2>
+<h3 id="定义-2">2.4.1 定义</h3>
+<ul>
+<li><strong>定义 2.5</strong>（<span class="math inline">\(\rm{P}_{34}\)</span>）&lt; 条件均值模型的正确设定 &gt;：线性回归模型： <span class="math display">\[
+\begin{align*}
+Y = X^\prime \beta + u, \beta \in \mathbb{R^{k+1}}
+\end{align*}
+\]</span> 是条件均值 <span class="math inline">\(E(Y|X)\)</span> 的正确设定，如果存在某个参数值 <span class="math inline">\(\beta^o \in \mathbb{R^{k+1}}\)</span>，有： <span class="math display">\[
+\begin{align*}
+E(Y|X) = X^\prime \beta^o
+\end{align*}
+\]</span> 另一方面，如果对于任意的参数值 <span class="math inline">\(\beta \in \mathbb{R^{k+1}}\)</span>， <span class="math display">\[
+\begin{align*}
+E(Y|X) \neq X^\prime \beta
+\end{align*}
+\]</span> 则称线性回归模型是对 <span class="math inline">\(E(Y|X)\)</span> 的错误设定 (Misspecified)；</li>
+</ul>
+<h3 id="定理-2">2.4.2 定理</h3>
+<ul>
+<li><p><strong>定理 2.7</strong>（<span class="math inline">\(\rm{P}_{35}\)</span>）：如果线性回归模型： <span class="math display">\[
+\begin{align*}
+Y =  X^\prime \beta + u
+\end{align*}
+\]</span> 是对条件均值<span class="math inline">\(E(Y|X)\)</span> 的正确设定则：</p>
+<p>1）存在一个参数 <span class="math inline">\(\beta^o\)</span> 和一个随机变量 <span class="math inline">\(\varepsilon\)</span>，有 <span class="math inline">\(Y = X^\prime \beta^o+\varepsilon\)</span>，其中 <span class="math inline">\(E(\varepsilon|X) = 0\)</span>；</p>
+<p>2）<span class="math inline">\(\beta^* = \beta^o\)</span></p></li>
+</ul>
+<h1 id="经典线性回归模型">3. 经典线性回归模型</h1>
+<h2 id="假设">3.1 假设</h2>
+<ul>
+<li><p><strong>假设 3.1</strong>（<span class="math inline">\(\rm{P}_{45}\)</span>）&lt; 线性 (Linearity) &gt;：<span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span> 是一个可观测的随机样本，且： <span class="math display">\[
+Y_t = X_t^\prime \beta^o + \varepsilon_t, t = 1, \dots, n
+\]</span> 其中，<span class="math inline">\(\beta^o\)</span> 是一个 <span class="math inline">\(K \times 1\)</span> 未知参数向量，<span class="math inline">\(\varepsilon_t\)</span> 是一个不可观测的随机扰动项；</p>
+<p>令： <span class="math display">\[
+\begin{align*}
+Y &amp; = (Y_1, \dots , Y_n)^\prime, &amp;n \times 1 \\
+\varepsilon &amp; = (\varepsilon_1, \dots , \varepsilon_n)^\prime, &amp;n \times 1 \\
+X &amp; = (X_1, \dots , X_n)^\prime, &amp;n \times K \\
+\end{align*}
+\]</span> 这里 <span class="math inline">\(X\)</span> 的第 <span class="math inline">\(t\)</span> 行是 <span class="math inline">\(K\)</span> 维行向量 <span class="math inline">\(X_t^\prime = (1, X_{1t},\dots,X_{kt})\)</span>。从而，(1) 式可以表示为： <span class="math display">\[
+\begin{align*}
+Y = X \beta^o + \varepsilon
+\end{align*}
+\]</span></p></li>
+<li><p><strong>假设 3.2</strong>（<span class="math inline">\(\rm{P}_{46}\)</span>）&lt; 严格外生性 (Strict Exogeneity) &gt;：<span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span> <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t|X) = E(\varepsilon_t|X_1, \dots, X_t,\dots,X_n) = 0 \qquad t = 1,\dots,n
+\end{align*}
+\]</span> 这一假设隐含着 <span class="math inline">\(E(Y_t|X_t)\)</span> 的模型设定正确；</p></li>
+<li><p><strong>假设 3.3</strong>（<span class="math inline">\(\rm{P}_{48}\)</span>）&lt; 非奇异性 (Nonsingularity) &gt;：</p>
+<p>1）<span class="math inline">\(K \times K\)</span> 方阵 <span class="math inline">\(X^\prime X = \sum_\limits{t=1}^n X_t X_t^\prime\)</span> 是非奇异的（排除了 <span class="math inline">\(X_t\)</span> 中存在多重共线性）；</p>
+<p>2）当 <span class="math inline">\(n \to \infty\)</span> 时，<span class="math inline">\(X^\prime X\)</span> 的最小特征值: <span class="math display">\[
+\begin{align*}
+\lambda_{min}(X^\prime X) \to \infty
+\end{align*}
+\]</span> 的概率为 1;</p></li>
+<li><p><strong>假设 3.4</strong>（<span class="math inline">\(\rm{P}_{49}\)</span>）&lt; 球形误差方差 (Spherical Error Variance) &gt;：</p>
+<p>1）条件同方差: <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t^2|X) = \sigma^2 &gt; 0, \quad t =1,\dots,n
+\end{align*}
+\]</span> 2）条件不相关： <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t\varepsilon_s|X) = 0, t \neq s, \quad t,s \in \{1,\dots,n\}
+\end{align*}
+\]</span> 上述可写为： <span class="math display">\[
+\begin{align*}
+E(\varepsilon_t\varepsilon_s|X) = \sigma^2 \delta_{ts}, t \neq s, \quad t,s \in \{1,\dots,n\}
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\delta_{ts} = 1\)</span> 当且仅当 <span class="math inline">\(t=s\)</span>；</p></li>
+</ul>
+<h3 id="总结">3.1.1 总结</h3>
+<p>给定假设 3.2 和 3.4 意味着 <span class="math inline">\(\varepsilon_t\)</span> 存在条件同方差，即： <span class="math display">\[
+\begin{align*}
+var(\varepsilon_t|X) = E(\varepsilon_t^2|X) - [E(\varepsilon_t|X)]^2 = E(\varepsilon_t^2|X) = \sigma^2
+\end{align*}
+\]</span> 同样的，对于所有的 <span class="math inline">\(t \neq s\)</span>，有： <span class="math display">\[
+\begin{align*}
+cov(\varepsilon_t,\varepsilon_s|X) = E(\varepsilon_t\varepsilon_s|X) = 0
+\end{align*}
+\]</span> 如果 <span class="math inline">\(t\)</span> 表示个体单元，这意味着 <strong>横截面不相关</strong>，如果 <span class="math inline">\(t\)</span> 表示时间，这意味着 <strong>序列不相关</strong>，为方便起见，这两种情况均称为 <span class="math inline">\(\{\varepsilon_t\}\)</span> <strong>不存在自相关</strong>；</p>
+<h2 id="普通最小二乘法">3.2 普通最小二乘法</h2>
+<h3 id="定义-3">3.2.1 定义</h3>
+<ul>
+<li><p><strong>定义 3.1</strong>（<span class="math inline">\(\rm{P}_{50}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量 &gt;：定义线性回归模型 <span class="math inline">\(Y_t = X_t^\prime \beta + u_t\)</span> 的残差平方和 (Sum of squared residuals, SSR) 为： <span class="math display">\[
+\begin{align*}
+SSR(\beta) \equiv (Y - X\beta)^\prime(Y - X\beta) = \sum_{t=1}^{n}(Y_t - X_t^\prime\beta)^2
+\end{align*}
+\]</span> 则普通最小二乘法 ( <span class="math inline">\(OLS\)</span> ) 估计量 <span class="math inline">\(\hat\beta\)</span> 是以下优化问题的解： <span class="math display">\[
+\begin{align*}
+\hat \beta = \arg \min_{\beta\ \in \mathbb{R}^K} SSR(\beta)
+\end{align*}
+\]</span></p></li>
+<li></li>
+</ul>
+<h3 id="定理-3">3.2.2 定理</h3>
+<ul>
+<li><p><strong>定理 3.1</strong>（<span class="math inline">\(\rm{P}_{50}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 的存在性 &gt;：在假设 3.1 和 3.3 (1) 下， <span class="math inline">\(OLS\)</span> 估计量 <span class="math inline">\(\hat \beta\)</span> 存在，并且： <span class="math display">\[
+\begin{align*}
+\hat \beta &amp;= (X^\prime  X)^{-1} \frac{1}{n} \sum_{t=1}^{n} X_t Y_t \\
+ &amp; = \left\{\frac{1}{n} \sum_{t = 1}^{n} X_t X_t^\prime\right\}^{-1} \frac{1}{n} \sum_{t=1}^{n} X_t Y_t
+\end{align*}
+\]</span> 其中第二个表达式在后面章节的渐近分析中将经常用到。</p>
+<p><strong>注：</strong> <span class="math inline">\(\hat Y_t \equiv X_t^\prime \hat\beta\)</span> 称为观测值 <span class="math inline">\(Y_t\)</span> 的 <strong>拟合值或者预测值</strong>，而 <span class="math inline">\(e_t \equiv Y_t - \hat Y_t\)</span> 是观测值 <span class="math inline">\(Y_t\)</span> 的 <strong>估计残差或预测误差</strong>。被解释变量 <span class="math inline">\(Y_t\)</span> 可以分解为相互正交的拟合值 <span class="math inline">\(\hat Y\)</span> 与残差 <span class="math inline">\(e\)</span> 之和，参见 Fig. 3-1。</p>
+<p><img src="D:\Demo\Markdown\Econometrics notes.assets\微信图片_20201218101116.jpg" alt="微信图片_20201218101116" style="zoom:80%;" /></p>
+<center>
+<p>Fig. 3-1 OLS 的正交性</p>
+</center></li>
+<li><p><strong>定理 3.2</strong>（<span class="math inline">\(\rm{P}_{52}\)</span>）：给定假设 3.1 和 3.3 (1)，有：</p>
+<ol type="1">
+<li><p><span class="math display">\[
+\begin{align*}
+X ^\prime e = 0
+\end{align*}
+\]</span></p></li>
+<li><p><span class="math display">\[
+\begin{align*}
+\hat \beta - \beta^o = (X^\prime X)^{-1}X^{\prime}\varepsilon
+\end{align*}
+\]</span> <strong>注：</strong>上式可变为 <span class="math inline">\(C\varepsilon\)</span>，其中 <span class="math inline">\(C\)</span> 是权重向量，因此，给定 <span class="math inline">\(X, \hat\beta-\beta^o\)</span> 是 <span class="math inline">\(\varepsilon\)</span> 的线性组合，当 <span class="math inline">\(\varepsilon\)</span> 服从联合正态分布时，<span class="math inline">\(\hat\beta-\beta^o\)</span> 也服从正态分布。</p></li>
+<li><p>定义 <span class="math inline">\(n \times n\)</span> 投影矩阵 <span class="math display">\[
+\begin{align*}
+P = X(X^\prime X)^{-1}X^{\prime}
+\end{align*}
+\]</span> 和 <span class="math display">\[
+\begin{align*}
+M = I_n - P
+\end{align*}
+\]</span> 则 <span class="math inline">\(P\)</span> 和 <span class="math inline">\(M\)</span> 是对称的（即 <span class="math inline">\(P = P^{\prime},\ M = M^{\prime}\)</span>）幂等矩阵（即 <span class="math inline">\(P = P^{2},\ M = M^{2}\)</span>），并且 <span class="math display">\[
+\begin{align*}
+PX = X \\
+MX = 0
+\end{align*}
+\]</span></p></li>
+<li><p><span class="math display">\[
+\begin{align*}
+SSR(\hat \beta) = e^\prime e = Y^{-1} MY = \varepsilon^{\prime} M \varepsilon
+\end{align*}
+\]</span> <strong>注：</strong><span class="math inline">\(e = M \varepsilon\)</span>（<span class="math inline">\(\star\star\star\)</span>）</p></li>
+</ol></li>
+</ul>
+<h2 id="拟合优度和模型选择准则">3.3 拟合优度和模型选择准则</h2>
+<h3 id="定义-4">3.3.1 定义</h3>
+<ul>
+<li><p><strong>定义 3.2</strong>（<span class="math inline">\(\rm{P}_{54}\)</span>）&lt; 非中心化 <span class="math inline">\(R^2\)</span> &gt;：非中心化多元相关系数平方 <span class="math inline">\(R^2\)</span> 定义为： <span class="math display">\[
+\begin{align*}
+R^2_{uc} = \frac{\hat Y{}^\prime \hat Y}{Y^\prime Y} = 1 - \frac{e^\prime e}{Y^\prime Y}
+\end{align*}
+\]</span> <span class="math inline">\(R^2\)</span> 的含义是因变量 <span class="math inline">\({Y_t}\)</span> 的非中心化的样本二次型变动可以被预测值 <span class="math inline">\(\{\hat Y{}^\prime\}\)</span> 的非中心化样本二次型变动所预测的比例。由定义可知，总有 <span class="math inline">\(0 \leq R^2_{uc} \leq 1\)</span>。</p></li>
+<li><p><strong>定义 3.3</strong>（<span class="math inline">\(\rm{P}_{54}\)</span>）&lt; 中心化 <span class="math inline">\(R^2\)</span> 或决定系数 (Coefficient of Determination) &gt;：决定系数定义为： <span class="math display">\[
+\begin{align*}
+R^2 \equiv 1 - \frac{\sum_\limits{t=1}^{n} e_t^2}{\sum_\limits{t=1}^{n} (Y_t - \overline Y)^2}
+\end{align*}
+\]</span> 其中 <span class="math inline">\(\overline Y = n^{-1}\sum_\limits{t=1}^{n}Y_t\)</span> 是样本均值。</p>
+<p><strong>注：</strong></p>
+<ul>
+<li><p>当 <span class="math inline">\(X_t\)</span> 包括截距项，即 <span class="math inline">\(X_{0t} = 1\)</span> 时，可进行如下正交分解： <span class="math display">\[
+\begin{align*}
+\sum_{t=1}^{n}(Y_t - \overline Y)^2 &amp;= \sum_{t=1}^{n}(\hat Y_t - \overline Y + Y_t - \hat Y_t)^2 \\
+&amp; = \sum_{t=1}^{n}(\hat Y_t - \overline Y)^2 + \sum_{t=1}^{n}e_t^2
+\end{align*}
+\]</span> 此时（<span class="math inline">\(\star \star\star\)</span>）： <span class="math display">\[
+\begin{align*}
+R^2 &amp;\equiv 1 - \frac{e^\prime e}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}\\
+&amp;= \frac{\sum_\limits{t=1}^{n}(\hat Y_t - \overline Y)^2}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}
+\end{align*}
+\]</span></p></li>
+<li><p>如果 <span class="math inline">\(X_t\)</span> 不包括截距项，此时： <span class="math display">\[
+\begin{align*}
+\sum_{t=1}^{n}(Y_t - \overline Y)^2 &amp;= \sum_{t=1}^{n}(\hat Y_t - \overline Y)^2 + \sum_{t=1}^{n}e_t^2 + 2 \sum_{t=1}^{n}(\hat Y_t - \overline Y)e_t \\
+&amp;\neq \sum_{t=1}^{n}(\hat Y_t - \overline Y)^2 + \sum_{t=1}^{n}e_t^2
+\end{align*}
+\]</span> 在这种情况下，<strong><span class="math inline">\(R^2\)</span> 可能为负值</strong>，因为交叉项 <span class="math inline">\(\sum_\limits{t=1}^{n}(\hat Y_t - \overline Y)e_t\)</span> 可能为负值。</p></li>
+</ul></li>
+</ul>
+<h3 id="定理-4">3.3.2 定理</h3>
+<ul>
+<li><p><strong>定理 3.3</strong>（<span class="math inline">\(\rm{P}_{56}\)</span>）：<span class="math inline">\(R^2 = \hat \rho_{Y\hat Y}^2\)</span>，这里 <span class="math inline">\(\hat \rho_{Y\hat Y}^2\)</span> 是 <span class="math inline">\(\{Y_t\}\)</span> 和 <span class="math inline">\(\{\hat Y_t\}\)</span> 的样本相关系数。</p></li>
+<li><p><strong>定理 3.4</strong>（<span class="math inline">\(\rm{P}_{56}\)</span>）：假设 <span class="math inline">\(\{Y_t, X_{1t}, \dots, X_{ (k+q)t}\}_{t=1}^n\)</span> 是一容量为 <span class="math inline">\(n\)</span> 的随机样本，<span class="math inline">\(R_1^2\)</span> 是下列线性回归模型的中心化拟合度： <span class="math display">\[
+\begin{align*}
+Y_t= X_t^{\prime}\beta + \varepsilon_t
+\end{align*}
+\]</span> 其中， <span class="math inline">\(X_t = (1, X_{1t}, \dots, X_{kt})^\prime\)</span>，<span class="math inline">\(\beta\)</span> 是 <span class="math inline">\(K \times 1\)</span> 未知参数向量；<span class="math inline">\(R_2^2\)</span> 是下面扩展的线性回归模型的中心化扰合优度： <span class="math display">\[
+\begin{align*}
+Y_t = \tilde X_t^\prime \gamma + u_t
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\tilde X_t = (1, X_{1t}, \dots, X_{kt}, X_{(k+1)t)})^\prime\)</span>，<span class="math inline">\(\gamma\)</span> 是 <span class="math inline">\((K+q) \times 1\)</span> 未知参数向量，<span class="math inline">\(q\)</span> 是正整数。则： <span class="math display">\[
+\begin{align*}
+R_2^2 \geq R_1^2
+\end{align*}
+\]</span> <strong>注：</strong>定理 3.4 有重要含义：</p>
+<ul>
+<li><span class="math inline">\(R^2\)</span> 可用于 <strong>解释变量数目相等</strong> 的线性回归模型的比较，但它不适用于 <strong>比较不同解释变量数目</strong> 的线性模型，因为 <strong>模型的解释变量越多，<span class="math inline">\(R^2\)</span> 就会越大</strong>。</li>
+<li><span class="math inline">\(R^2\)</span> 也不是正确模型设定的判断标准。<span class="math inline">\(R^2\)</span> 高并不意味着模型设定正确，事实上，给定解释变量 <span class="math inline">\(X_t\)</span>，<span class="math inline">\(R_2\)</span> 值的大小 <strong>与线性回归模型的信噪比</strong> 有关</li>
+</ul></li>
+</ul>
+<h3 id="模型选择准则">3.3.3 模型选择准则</h3>
+<ol type="1">
+<li><p><strong>Akaike 信息准则</strong>（Akaike information criterion, AIC）</p>
+<p>线性回归模型可通过选择合适的解释变量数模 <span class="math inline">\(K\)</span>，以最小化下面的 Akaike 信息准则来选择模型。 <span class="math display">\[
+\begin{align*}
+AIC = {\rm{ln}}(s^2) + \frac{2K}{n}
+\end{align*}
+\]</span> 其中， <span class="math display">\[
+\begin{align*}
+s^2 = e^\prime e / (n - K)
+\end{align*}
+\]</span> <span class="math inline">\(K = k+1\)</span> 是自变量 <span class="math inline">\(X_t\)</span> 的数目，第一项 <span class="math inline">\({\rm{ln}} s^2\)</span> 测度模型的拟合优度，而第二项 <span class="math inline">\(2K/n\)</span> 测度模型的复杂程度。另外，<span class="math inline">\(s^2\)</span> 是 <span class="math inline">\(E(\varepsilon_t^2) = \sigma^2\)</span> 的残差方差估计量（Residual variance estimator）。</p></li>
+<li><p><strong>Bayesian 信息准则</strong>（Bayesian information criterion, BIC）</p>
+<p>线性模型也可以通过选择合适的 <span class="math inline">\(K\)</span>，以最小化以下 <span class="math inline">\(Bayesian\)</span> 信息准则来选择模型： <span class="math display">\[
+\begin{align*}
+BIC = {\rm{ln}} (s^2) +\frac{K {\rm{ln}}(n)}{n}
+\end{align*}
+\]</span></p></li>
+<li><p><span class="math inline">\(\overline R^2\)</span></p>
+<p>我们知道 <span class="math inline">\(R^2\)</span> 的定义为： <span class="math display">\[
+\begin{align*}
+R^2 = 1 - \frac{e^\prime e / n}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2 / n}
+\end{align*}
+\]</span> 其中，<span class="math inline">\(e^\prime e / n\)</span> 和 <span class="math inline">\(\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2 / n\)</span> 分别是方差 <span class="math inline">\(\sigma^2 = var(\varepsilon_t)\)</span> 和 <span class="math inline">\(\sigma_Y^2 = var  (Y_t)\)</span> 的有偏估计。调整的 <span class="math inline">\(R^2\)</span> 为：</p></li>
+</ol>
+<p><span class="math display">\[
+   \begin{align*}
+   \overline R^2 = 1 - \frac{e^\prime e / (n-K)}{(n-1)^{-1}\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}
+   \end{align*}
+\]</span></p>
+<p>此时有：<span class="math inline">\(E(e^\prime e / (n-K)) = \sigma^2\)</span> 和 <span class="math inline">\(E[(n-1)^{-1}\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2] = \sigma_Y^2\)</span> ，在 <span class="math inline">\(\overline R^2\)</span> 中，调整的是自由度。</p>
+<h2 id="ols-估计量的无偏性和有效性">3.4 <span class="math inline">\(OLS\)</span> 估计量的无偏性和有效性</h2>
+<h3 id="定理-5">3.4.1 定理</h3>
+<ul>
+<li><p><strong>定理 3.5</strong>（<span class="math inline">\(\rm{P}_{60}\)</span>）：如果假设 3.1、3.3 (1) 和 3.4 成立，则：</p>
+<p>1）<strong>无偏性</strong> &lt; Unbiasedness &gt; ：<span class="math inline">\(E(\hat \beta|X) = \beta^o\)</span>，并且 <span class="math inline">\(E(\hat\beta) = \beta^o\)</span>；</p>
+<p><strong>注：将 <span class="math inline">\((X^\prime X)^{-1} X^\prime\)</span> 视为系数矩阵</strong>（<span class="math inline">\(\star\star\star\)</span>）。</p>
+<p>2）<strong>方差偏小性</strong> &lt; Vanishing variance &gt; ： <span class="math display">\[
+\begin{align*}
+var(\hat \beta |X) = E\{[\hat\beta - E(\hat \beta|X)][\hat\beta - E(\hat\beta|X)]^\prime |X\} = \sigma^2(X^\prime X)^{-1}
+\end{align*}
+\]</span> 如果假设 3.3 (2) 也成立，那么对于任意的 <span class="math inline">\(K \times 1\)</span> 向量 <span class="math inline">\(\tau\)</span>，满足 <span class="math inline">\(\tau^\prime \tau = 1\)</span>，有： <span class="math display">\[
+\begin{align*}
+  \mathsf{当} n \to \infty \mathsf{时，}\tau^\prime var(\hat\beta|X)\tau \to 0
+  \end{align*}
+\]</span> 3）<strong>正交性</strong> &lt; Orthogonality between <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> &gt; ： <span class="math display">\[
+\begin{align*}
+  cov(\hat \beta, e|X) = 0
+\end{align*}
+\]</span> 4）<strong>Gauss - Markov 定理</strong>：对于任意的线性无偏估计量 <span class="math inline">\(\hat b, var(\hat b|X) - var(\hat\beta|X  )\)</span> 是半正定 (Positive semi-definite, PSD) 的。</p>
+<p>5）<strong>残差方差估计量</strong> &lt; Residual variance estimator &gt;： <span class="math display">\[
+\begin{align*}
+  s^2 = e^\prime e/(n - K) = \frac{1}{n - K }\sum_\limits{t = 1}^{n} e_t^2
+\end{align*}
+\]</span> 是 <span class="math inline">\(\sigma^2 = E(\varepsilon_t^2)\)</span> 的无偏估计量，即 <span class="math inline">\(E(s^2 | X) = \sigma^2\)</span>。</p>
+<p><strong>注：</strong> <strong>由于随机变量 <span class="math inline">\(\{e_t\}\)</span> 必须满足 <span class="math inline">\(K\)</span> 个正规方程 <span class="math inline">\(X^\prime e = 0\)</span>，故其中只有 <span class="math inline">\((n - K)\)</span> 个残差是（自由）独立的，</strong>经过自由度校正后，才是无偏估计。如果样本容量 <span class="math inline">\(n\)</span> 很大，当 <span class="math inline">\(n \to \infty\)</span> 时，<span class="math inline">\(\frac{n - K}{n} \to 1\)</span>，是否进行“小样本校正”并无多大区别。</p></li>
+</ul>
+<h2 id="ols-估计量的抽样分布">3.5 <span class="math inline">\(OLS\)</span> 估计量的抽样分布</h2>
+<h3 id="假设-1">3.5.1 假设</h3>
+<ul>
+<li><p><strong>假设 3.5</strong>（<span class="math inline">\(\rm{P}_{65}\)</span>）&lt; 条件正态分布 (Conditional Normality) &gt;：<span class="math inline">\(\varepsilon|X \sim N(0, \sigma^2 I)\)</span> 。</p>
+<p>假设 3.5 可以推出假设 3.2（<span class="math inline">\(E(\varepsilon|X) = 0\)</span>） 和假设 3.4 （<span class="math inline">\(E(\varepsilon_t\varepsilon_s|X) = \sigma^2I\)</span>）。事实上，在假设 3.5 下，<span class="math inline">\(\varepsilon\)</span> 的条件概率密度函数： <span class="math display">\[
+\begin{align*}
+  f(\varepsilon|X) = \frac{1}{(\sqrt{2 \pi \sigma^2})^n}exp(-\frac{\varepsilon^\prime \varepsilon} {2\sigma^2}) = f(\varepsilon)
+\end{align*}
+\]</span> 不依赖于 <span class="math inline">\(X\)</span>，从而随机扰动项 <span class="math inline">\(\varepsilon\)</span> 独立于 <span class="math inline">\(X\)</span>。因此， <span class="math inline">\(\varepsilon\)</span> 的任何条件矩均不依赖于 <span class="math inline">\(X\)</span>。</p></li>
+</ul>
+<h3 id="定理-6">3.5.2 定理</h3>
+<ul>
+<li><p><strong>定理 3.6</strong>（<span class="math inline">\(\rm{P}_{65}\)</span>）&lt; <span class="math inline">\(\hat\beta\)</span> 的条件正态分布 &gt;：给定假设 3.1、3.3 (1) 和 3.5，对所有的 <span class="math inline">\(n&gt;K\)</span>： <span class="math display">\[
+\begin{align*}
+  (\hat \beta - \beta^o)|X \sim N[0, \sigma^2(X^\prime X)^{-1}]
+\end{align*}
+\]</span></p></li>
+<li><p><strong>推论 3.7</strong>（<span class="math inline">\(\rm{P}_{66}\)</span>）&lt; <span class="math inline">\(R(\hat\beta - \beta^o)\)</span> 的条件正态分布 &gt;：给定假设 3.1、3.3 (1) 和 3.5，则对于任何非随机的 <span class="math inline">\(J \times K\)</span> 矩阵 <span class="math inline">\(R\)</span>，有： <span class="math display">\[
+  \begin{align*}
+  R(\hat \beta - \beta^o)|X \sim N[0, R \sigma^2(X^\prime X)^{-1} R^\prime]
+  \end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="ols-估计量的方差---协方差矩阵的估计">3.6 <span class="math inline">\(OLS\)</span> 估计量的方差 - 协方差矩阵的估计</h2>
+<h3 id="定理-7">3.6.1 定理</h3>
+<ul>
+<li><p><strong>引理 3.8</strong>（<span class="math inline">\(\rm{P}_{66}\)</span>）&lt; 正态随机变量的二次型 (Quadratic Form of Normal Random Variables) &gt;：如果一个 <span class="math inline">\(m\times 1\)</span> 随机变量 <span class="math inline">\(v \sim N(0, 1)\)</span>，并且 <span class="math inline">\(Q\)</span> 是一个 <span class="math inline">\(m \times m\)</span> 非随机对称幂等矩阵， 秩 <span class="math inline">\(1\leq m\)</span>，则二次型： <span class="math display">\[
+ \begin{align*}
+  v^\prime Q v \sim \chi^2_q
+  \end{align*}
+\]</span> 在以下引用中，<span class="math inline">\(v = \varepsilon/\sigma\sim N(0,1), Q = M\)</span>。因为 <span class="math inline">\(rank(M) = n - K\)</span>，所以： <span class="math display">\[
+  \begin{align*}
+  \left.\frac{e^\prime e}{\sigma^2} \right|X \sim \chi^2_{n-K}
+  \end{align*}
+\]</span></p></li>
+<li><p><strong>引理 3.9</strong>（<span class="math inline">\(\rm{P}_{67}\)</span>）&lt; 残差方差的估计量 (Residual Variance Estimator) &gt;：给定假设 3.1、3.3 (1) 和 3.5，则对于任意的 <span class="math inline">\(n\leq K\)</span>，有：</p>
+<p>1） <span class="math display">\[
+\begin{align*}
+  \left.\frac{(n-K)s^2}{\sigma^2} \right|X = \left.\frac{e^\prime e}{\sigma^2} \right|X \sim \chi^2_{n-K}
+\end{align*}
+\]</span> 2）给定 <span class="math inline">\(X\)</span> 的条件下，<span class="math inline">\(s^2\)</span> 和 <span class="math inline">\(\hat\beta\)</span> 是独立的。</p></li>
+</ul>
+<h2 id="参数假设检验">3.7 参数假设检验</h2>
+<h3 id="定义-5">3.7.1 定义</h3>
+<ul>
+<li><strong>定义 3.4</strong>（<span class="math inline">\(\rm{P}_{73}\)</span>）&lt; 依分布收敛 (Convergence in Distribution) &gt; ：假设 <span class="math inline">\(\{Z_n, n= 1, 2, \dots\}\)</span> 是一个分布函数为<span class="math inline">\(\{F_n(z) = P(Z_n \leq z)\}\)</span> 的随机变量或随机向量的序列，<span class="math inline">\(Z\)</span> 是一个不依赖于 <span class="math inline">\(n\)</span> 的分布函数为 <span class="math inline">\(F(z) = P(Z \leq z)\)</span> 的随机变量或随机向量。称 <span class="math inline">\(Z_n\)</span> 依分布收敛于 <span class="math inline">\(Z\)</span>，如果在分布函数 <span class="math inline">\(F(z)\)</span> 的任何连续点，<span class="math inline">\(Z_n\)</span> 的分布函数值均收敛于 <span class="math inline">\(Z\)</span> 的分布函数值，即： <span class="math display">\[
+\begin{align*}
+  \lim_{n\to\infty} F_n(z) = F(z)
+\end{align*}
+\]</span> 或等价地： <span class="math display">\[
+\begin{align*}
+  \mathsf{当}\ n\to\infty\ \mathsf{时}, F_n(z) \to F(z)
+\end{align*}
+\]</span> 用符号 <span class="math inline">\(Z_n \overset{d}{\to} Z\)</span> 表示。<span class="math inline">\(Z\)</span> 的分布称为 <span class="math inline">\(Z_n\)</span> 的渐近分布或极限分布。</li>
+</ul>
+<h3 id="定理-8">3.7.2 定理</h3>
+<ul>
+<li><strong>推论 3.10</strong>（<span class="math inline">\(\rm{P}_{71}\)</span>）：给定假设 3.1、3.3 (1) 和 3.5，当原假设 <span class="math inline">\(\mathbb{H}_0: R\beta^o = r\)</span> 成立时，对于每一个 <span class="math inline">\(n\geq K\)</span>，有：</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+  (R\hat\beta - r)|X \sim N[0, \sigma^2 R(X^\prime X)^{-1}R^\prime]
+\end{align*}
+\]</span></p>
+<ul>
+<li><p><strong>推论 3.11</strong>（<span class="math inline">\(\rm{P}_{76}\)</span>）：如果 <span class="math inline">\(q \times 1\)</span> 随机向量 <span class="math inline">\(Z \sim N(0, V)\)</span>，其中 <span class="math inline">\(V = var(Z)\)</span> 是一个 <span class="math inline">\(q\times q\)</span> 对称、非奇异的方差 - 协方差矩阵，则： <span class="math display">\[
+\begin{align*}
+  Z^\prime V^{-1}Z \sim \chi_q^2
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 3.12</strong>（<span class="math inline">\(\rm{P}_{78}\)</span>）：给定假设 3.1、3.3 (1) 和 3.5，当原假设 <span class="math inline">\(\mathbb{H}_0: R\beta^o = r\)</span> 成立时，对于每一个 <span class="math inline">\(n\geq K\)</span>，有： <span class="math display">\[
+\begin{align*}
+F = \frac{(R \hat\beta - r)^\prime[R(X^\prime X)^{-1}R^\prime]^{-1}(R \hat\beta - r)/J}{s^2} \sim F_{J,n-K}
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 3.13</strong>（<span class="math inline">\(\rm{P}_{79}\)</span>）：给定假设 3.1、3.3 (1) ，令 <span class="math inline">\(SSR_u = e^\prime e\)</span> 是以下无约束回归模型的残差平方和： <span class="math display">\[
+\begin{align*}
+Y = X\beta^o + \varepsilon
+\end{align*}
+\]</span> 令 <span class="math inline">\(SSR_r = \tilde e^\prime \tilde e\)</span> 是以下有约束模型的残差平方和 ： <span class="math display">\[
+\begin{align*}
+Y = X\beta^o + \varepsilon
+\end{align*}
+\]</span> 其约束条件为： <span class="math display">\[
+\begin{align*}
+R \beta^o = r
+\end{align*}
+\]</span> 这里 <span class="math inline">\(\tilde e = Y - X \tilde \beta\)</span>，<span class="math inline">\(\tilde \beta\)</span> 是有约束回归模型的 <span class="math inline">\(OLS\)</span> 估计量。则 <span class="math inline">\(F\)</span> 检验统计量可写为： <span class="math display">\[
+\begin{align*}
+F = \frac{(\tilde e^\prime \tilde e - e^\prime e)/J}{e^\prime e/(n - K)}
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 3.14</strong>（<span class="math inline">\(\rm{P}_{81}\)</span>）：给定假设 3.1、3.3 (1) 和 3.5，则当原假设是<span class="math inline">\(\mathbb{H}_0: R\beta^o = r\)</span> 成立且 <span class="math inline">\(n \to \infty\)</span> 时，<span class="math inline">\(Wald\)</span> 检验统计量： <span class="math display">\[
+\begin{align*}
+\mathcal{W} = \frac{R\hat\beta - r)^\prime[R(X^\prime X)^{-1} R^\prime]^{-1}(R\hat\beta  - r)}{s^2} = J \cdot F \overset{d}{\to}\chi^2_J
+\end{align*}
+\]</span> 可以发现，这里定义的 <span class="math inline">\(Wald\)</span> 检验统计量与 <span class="math inline">\(F\)</span> 检验统计量 <strong>只相差一个比例常数</strong> <span class="math inline">\(J\)</span>，这是因为目前考虑条件同方差的情形。如果存在条件异方差，仍然可以定义 <span class="math inline">\(Wald\)</span> 检验统计量，但是 <span class="math inline">\(W = J \cdot F\)</span> 这一关系将不再成立。</p></li>
+</ul>
+<h2 id="广义最小二乘估计">3.9 广义最小二乘估计</h2>
+<p>经典线性回归模型依赖于关键假设—假设 3.5（<span class="math inline">\(\varepsilon|X \sim N(0, \sigma^2 I)\)</span> ）。除了条件正态分布外，还隐含不存在条件异方差和自相关性。</p>
+<h3 id="假设-2">3.9.1 假设</h3>
+<ul>
+<li><p><strong>假设 3.6</strong>（<span class="math inline">\(\rm{P}_{87}\)</span>）：<span class="math inline">\(\varepsilon|X \sim N(0, \sigma^2 V)\)</span>，其中 <span class="math inline">\(0 &lt; \sigma^2 &lt; \infty\)</span> 是未知的，但 <span class="math inline">\(V = V(X)\)</span> 是一个已知的堆成与有限的 <span class="math inline">\(n \times n\)</span> 正定矩阵。</p>
+<p>从假设可知条件方差（<span class="math inline">\(\star\star\star\)</span>）： <span class="math display">\[
+\begin{align*}
+var(\varepsilon|X) = E(\varepsilon^\prime\varepsilon|X) = \sigma^2V = \sigma^2 V(X)
+\end{align*}
+\]</span> 虽然 <span class="math inline">\(var(\varepsilon|X)\)</span> 仅包含一个未知常熟 <span class="math inline">\(\sigma^2\)</span>，但它允许存在已知形式的条件异方差 <span class="math inline">\(V(X)\)</span>。</p></li>
+</ul>
+<h3 id="定义-6">3.9.2 定义</h3>
+<h3 id="定理-9">3.9.3 定理</h3>
+<ul>
+<li><p><strong>定理 3.15</strong>（<span class="math inline">\(\rm{P}_{87}\)</span>）：给定假设 3.1、3.3 (1) 和 3.6，则：</p>
+<p>1）<strong>无偏性</strong>：<span class="math inline">\(E(\hat\beta|X) = \beta^o\)</span>；</p>
+<p>2）<strong>方差</strong>：<span class="math inline">\(var(\hat\beta|X) = \sigma^2(X^\prime X)^{-1} X^\prime VX(X^\prime X)^{-1} \neq \sigma^2(X^\prime X)^{-1}\)</span>；</p>
+<p>3）<strong>正态分布</strong>：<span class="math inline">\((\hat\beta - \beta^o)|X \sim N[0,\sigma^2 (X^\prime X)^{-1}X^\prime VX(X^\prime X)^{-1}]\)</span>；</p>
+<p>4）<strong>相关性</strong>：<span class="math inline">\(cov(\hat\beta,e|X) \neq 0\)</span>。</p></li>
+<li><p><strong>引理 3.16</strong>（<span class="math inline">\(\rm{P}_{88}\)</span>）：对于任意的 <span class="math inline">\(n \times n\)</span> 对称正定矩阵 <span class="math inline">\(V\)</span>，总可以写成： <span class="math display">\[
+\begin{align*}
+V^{-1} &amp;= C^\prime C \\
+V &amp;= C^{-1}(C^\prime)^{-1}
+\end{align*}
+\]</span> 这里，<span class="math inline">\(C\)</span> 是一个 <span class="math inline">\(n \times n\)</span> 非奇异矩阵。这称为 Cholesky 分解（Cholesky factorization），其中 C 可能是非对称矩阵。</p>
+<p>考虑线性回归模型： <span class="math display">\[
+\begin{align*}
+CY = (CX)\beta^o + C \varepsilon
+\end{align*}
+\]</span> 令 <span class="math inline">\(Y^* = CY, X^* = CX, \varepsilon^* = C\varepsilon\)</span>。变换后的回归模型的 <span class="math inline">\(OLS\)</span> 估计量为： <span class="math display">\[
+\begin{align*}
+\hat\beta{}^* = (X^{*\prime}X^*)^{-1}(X^{*\prime}Y^*) = (X^\prime V^{-1}X)^{-1} X^\prime V^{-1} Y
+\end{align*}
+\]</span> 称为广义最小二乘 (<span class="math inline">\(GLS\)</span>) 估计量。</p></li>
+<li><p><strong>定理 3.17</strong>（<span class="math inline">\(\rm{P}_{91}\)</span>）：给定假设 3.1、3.3 (1) 和 3.6，则：</p>
+<p>1）<strong>无偏性</strong>：<span class="math inline">\(E(\hat\beta{}^*|X) = \beta^o\)</span>；</p>
+<p>2）<strong>方差</strong>：<span class="math inline">\(var(\hat\beta{}^*|X) = \sigma^2(X^{*\prime} X^*)^{-1} = \sigma^2(X^\prime V^{-1} X)^{-1}\)</span>；</p>
+<p>3）<strong>相关性</strong>：<span class="math inline">\(cov(\hat\beta{}^*,e^*|X) = 0\)</span>，其中 <span class="math inline">\(e^* = Y^* - X^* \hat\beta{}^*\)</span>；</p>
+<p>4）<span class="math inline">\(\hat\beta{}^*\)</span> 是最优线性无偏估计量(BLUE);</p>
+<p>5）<span class="math inline">\((s^{*2}|X) = \sigma^2\)</span>，其中 <span class="math inline">\(S^{*2} = e^{*\prime}e^*/(n-K)\)</span>。</p></li>
+</ul>
+<h1 id="独立同分布随机样本的线性回归模型">4 独立同分布随机样本的线性回归模型</h1>
+<h2 id="渐近理论导论">4.1 渐近理论导论</h2>
+<h3 id="定义-7">4.1.1 定义</h3>
+<ul>
+<li><p><strong>定义 4.1</strong>（<span class="math inline">\(\rm{P}_{103}\)</span>）&lt; 依均方收敛或依二次方均值收敛 (Convergence in Mean Squares or in Quadratic Mean) &gt; ：一个随机变量（或固定维数的随机向量，即 <span class="math inline">\(Z_n\)</span> 的维数不随 <span class="math inline">\(n\)</span> 的增加而变化）序列 <span class="math inline">\(\{Z_n, n = 1, 2, \dots\}\)</span> 依均方收敛于随机变量（或随机向量） <span class="math inline">\(Z\)</span>，如果当 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+E\ \Vert Z_n - Z \Vert^2 \to 0
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\Vert \cdot \Vert\)</span> 是随机变量或随机向量的模。记 <span class="math inline">\(Z_n \overset{q.m.}{\to} Z\)</span>。</p>
+<p><strong>注：</strong>当 <span class="math inline">\(Z_n\)</span> 是一个固定维数的随机向量时，可理解为 <span class="math inline">\(Z_n\)</span> 的每一个元素的序列收敛于 <span class="math inline">\(Z\)</span> 的相对应元素。如果 <span class="math inline">\(Z_n - Z\)</span> 是一个 <span class="math inline">\(l \times m\)</span> 的矩阵时，可将平方模定义为： <span class="math display">\[
+\begin{align*}
+\Vert Z_n - Z \Vert^2 = \sum_{t=1}^{l}\sum_{s = 1}^{m} [Z_n - Z]^2_{(t, s)}
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定义 4.2</strong>（<span class="math inline">\(\rm{P}_{103}\)</span>）&lt; 依概率收敛 (Convergence in Probability) &gt; ：一个随机变量序列 <span class="math inline">\(\{Z_n, n = 1, 2, \dots\}\)</span> 依概率收敛于 <span class="math inline">\(Z\)</span>，如果对任意给定的常数 <span class="math inline">\(\epsilon &gt; 0\)</span>，有： <span class="math display">\[
+\begin{align*}
+\mathsf{当}\ n\to \infty \mathsf{时},\ Pr[\ \Vert Z_n - Z \Vert &gt;\epsilon] \to 0
+\end{align*}
+\]</span> 或等价地： <span class="math display">\[
+\begin{align*}
+\mathsf{当}\ n\to \infty \mathsf{时},\ Pr[\ \Vert Z_n - Z \Vert \leq \epsilon] \to 1
+\end{align*}
+\]</span> 对于依概率收敛，可记为 <span class="math inline">\(Z_n - Z \overset{p}{\to} 0\)</span> 或 <span class="math inline">\(Z_n - Z = O_P(1)\)</span>。</p></li>
+<li><p><strong>定义 4.3</strong>（<span class="math inline">\(\rm{P}_{106}\)</span>）&lt; 依概率有界 (Boundedness in Probability) &gt; ：一个随机变量序列 <span class="math inline">\(\{Z_n, n = 1, 2, \dots\}\)</span> 依概率有界的，如果对任意小的常数 <span class="math inline">\(\delta &gt; 0\)</span>，存在常数 <span class="math inline">\(C= C(\delta)&lt; \infty\)</span>，使得，当 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+P(\ \Vert Z_n \Vert &gt; C\ ) \leq \delta
+\end{align*}
+\]</span> 记为 <span class="math inline">\(Z_n = O_P(1)\)</span>。 <span class="math display">\[
+\begin{align*}
+\mathsf{当}\ n\to \infty \mathsf{时},\ Pr[\ \Vert Z_n - Z \Vert \leq \epsilon] \to 1
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\Vert \cdot \Vert\)</span> 是随机变量或随机向量的模。记 <span class="math inline">\(Z_n \overset{q.m.}{\to} Z\)</span>。</p></li>
+<li><p><strong>定义 4.4</strong>（<span class="math inline">\(\rm{P}_{108}\)</span>）&lt; 几乎必然收敛 (Almost sure convergence)) &gt; ：<span class="math inline">\(\{Z_n, n = 1, 2, \dots\}\)</span> 几乎必然收敛于 <span class="math inline">\(Z\)</span>，如果： <span class="math display">\[
+\begin{align*}
+\Pr[\lim_{n\to\infty}\Vert Z_n - Z \Vert = 0] = 1
+\end{align*}
+\]</span> 记为 <span class="math inline">\(Z_n - Z \overset{a.s.}{\to}\)</span> 或 <span class="math inline">\(Z_n - Z = o_{a.s.}(1)\)</span>。</p>
+<p><strong>注：</strong>几乎必然收敛可以推出依概率收敛，但依概率收敛不一定能推出几乎必然收敛。</p></li>
+</ul>
+<h3 id="定理-10">4.1.2 定理</h3>
+<ul>
+<li><p><strong>引理 4.1</strong>（<span class="math inline">\(\rm{P}_{105}\)</span>）&lt; 独立同分布样本的弱大数定律 (Weak Law of Large Numbers (WLLN) for I.I.D Samples) &gt; ：假设随机样本 <span class="math inline">\(\{Z_t\}^n_{t=1}\)</span> 服从 <span class="math inline">\(i.i.d.(\mu,\sigma^2)\)</span>，并定义 <span class="math inline">\(\bar Z_n = n^{-1} \sum_\limits{t=1}^{n} Z_t\)</span>，这里 <span class="math inline">\(n = 1,2,\cdots\)</span>。则当 <span class="math inline">\(n \to \infty\)</span> 时： <span class="math display">\[
+\begin{align*}
+\bar Z_n \overset{p}{\to} \mu
+\end{align*}
+\]</span></p></li>
+<li><p><strong>引理 4.2</strong>（<span class="math inline">\(\rm{P}_{105}\)</span>）&lt; 独立同分布随机样本的弱大数定律 (WLLN for I.I.D Samples) &gt; ：假设 <span class="math inline">\(\{Z_t\}^n_{t=1}\)</span> 是一个独立同分布随机样本，<span class="math inline">\(E(Z_t) = \mu\)</span> 且 <span class="math inline">\(E |Z_t| &lt; \infty\)</span>。定义 <span class="math inline">\(\bar Z_n = n^{-1} \sum_\limits{t=1}^{n} Z_t\)</span>，则当 <span class="math inline">\(n \to \infty\)</span> 时： <span class="math display">\[
+\begin{align*}
+\bar Z_n \overset{p}{\to} \mu
+\end{align*}
+\]</span></p></li>
+<li><p><strong>引理 4.3</strong>（<span class="math inline">\(\rm{P}_{106}\)</span>）：如果 <span class="math inline">\(Z_t - Z \overset{q.m.}{\to} 0\)</span>，则 <span class="math inline">\(Z_t - Z \overset{p}{\to} 0\)</span>。</p></li>
+<li><p><strong>引理 4.4</strong>（<span class="math inline">\(\rm{P}_{109}\)</span>）&lt; 独立同分布随机样本的弱强数定律 (Strong Law of Large Numbers (SLLN) for I.I.D Samples) &gt; ：假设 <span class="math inline">\(\{Z_t\}^n_{t=1}\)</span> 是一个独立同分布随机样本，<span class="math inline">\(E(Z_t) = \mu\)</span> 且 <span class="math inline">\(E |Z_t| &lt; \infty\)</span>。则当 <span class="math inline">\(n \to \infty\)</span> 时： <span class="math display">\[
+\begin{align*}
+\bar Z_n \overset{a.s.}{\to} \mu
+\end{align*}
+\]</span></p></li>
+<li><p><strong>引理 4.5</strong>（<span class="math inline">\(\rm{P}_{109}\)</span>）&lt; 连续性 (Continuity) &gt; ：</p>
+<p>1）假设当 <span class="math inline">\(n \to \infty\)</span> 时，<span class="math inline">\(A_n - A \overset{p}{\to} 0, B_n - B \overset{p}{\to} 0\)</span>，且 <span class="math inline">\(g(\cdot)\)</span> 和 <span class="math inline">\(h(\cdot)\)</span> 是连续函数。则： <span class="math display">\[
+\begin{align*}
+[g(A_n) + h(B_n)] - [g(A) + h(B)] \overset{p}{\to} 0 \\
+g(A_n)h(B_n) - g(A)h(B) \overset{p}{\to} 0
+\end{align*}
+\]</span> 2）对于几乎必然收敛，也有类似结论。</p></li>
+<li><p><strong>引理 4.6</strong>（<span class="math inline">\(\rm{P}_{110}\)</span>）&lt; 独立同分布随机样本的中心极限定理 (CLT for I.I.D Random Samples) &gt;：假设 <span class="math inline">\(\{Z_t\}_{t=1}^{n}\)</span> 是一个 <span class="math inline">\(i.i.d.(\mu, \sigma^2)\)</span> 随机样本呢，这里 <span class="math inline">\(Z_t\)</span> 是随机变量。定义 <span class="math inline">\(\bar Z_n = n^{-1} \sum_\limits{t=1}^n Z_t\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+\frac{\bar Z_n - E(\bar Z_n)}{\sqrt{var(\bar Z_n)}} = \frac{\sqrt{n}(\bar Z_n - \mu)}{\sigma} \overset{d}{\to} N(0,1)
+\end{align*}
+\]</span></p></li>
+<li><p><strong>引理 4.7</strong>（<span class="math inline">\(\rm{P}_{112}\)</span>）&lt; Cramer-Wold 方法 &gt; ：假设 <span class="math inline">\(Z_n\)</span> 和 <span class="math inline">\(Z\)</span> 均是 <span class="math inline">\(p \times 1\)</span> 随机向量，这里 <span class="math inline">\(p\)</span> 是一个固定正整数。令 <span class="math inline">\(n \to \infty\)</span>。则 <span class="math inline">\(Z_n \overset{d}{\to} Z\)</span>，当且仅当对于任意非零的 <span class="math inline">\(\tau \in R^p\)</span>，且满足 <span class="math inline">\(\tau^\prime\tau = 1\)</span>，使得： <span class="math display">\[
+\begin{align*}
+\tau^\prime Z_n \overset{d}{\to} \tau^\prime Z
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 4.8</strong>（<span class="math inline">\(\rm{P}_{112}\)</span>）&lt; Slitsky 定理 &gt; ：令 <span class="math inline">\(Z_n \overset{d}{\to}Z, a_n \overset{d}{\to} a\)</span> 且 <span class="math inline">\(b_n \overset{d}{\to}b\)</span>, 其中 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 是常数。则当 <span class="math inline">\(n \to \infty\)</span> 时，有 ： <span class="math display">\[
+\begin{align*}
+a_n + b_n Z_n \overset{d}{\to} a + bZ
+\end{align*}
+\]</span></p></li>
+<li><p><strong>定理 4.9</strong>（<span class="math inline">\(\rm{P}_{112}\)</span>）&lt; Delta 方法 &gt; ：假设 <span class="math inline">\(\sqrt n(Z_n - \mu)/\sigma \overset{d}{\to} N(0,1)\)</span>，<span class="math inline">\(g(\cdot)\)</span> 是连续可导的函数。且 <span class="math inline">\(g^\prime(\mu) \neq 0\)</span>。则当 <span class="math inline">\(n \to \infty\)</span> 时，有 <span class="math inline">\(\sqrt n [g(\bar Z_n) - g(\mu)] = g^\prime(\mu)\sqrt n(\bar Z_n - \mu) + O_P(1)\)</span>，且： <span class="math display">\[
+\begin{align*}
+\sqrt n [g(\bar Z_n) - g(\mu)] \overset{d}{\to} N\{0,\sigma^2[g^\prime(\mu)]^2\}
+\end{align*}
+\]</span></p></li>
+</ul>
+<h2 id="线性回归模型假设">4.2 线性回归模型假设</h2>
+<h3 id="假设-3">4.2.1 假设</h3>
+<ul>
+<li><p><strong>假设 4.1</strong>（<span class="math inline">\(\rm{P}_{114}\)</span>）&lt; 独立同分布 (I.I.D) &gt; ：<span class="math inline">\(\{Y_t,X_t^\prime\}\)</span> 是一个可观测的独立同分布随机样本；</p></li>
+<li><p><strong>假设 4.2</strong>（<span class="math inline">\(\rm{P}_{114}\)</span>）&lt; 线性 (Linearity) &gt; ： <span class="math display">\[
+\begin{align*}
+Y_t = X_t^\prime \beta^o + \varepsilon_t \qquad t = 1,\cdots,n
+\end{align*}
+\]</span></p></li>
+<li><p><strong>假设 4.3</strong>（<span class="math inline">\(\rm{P}_{114}\)</span>）&lt; 正确模型设定 (Correct Model Specification) &gt; ：<span class="math inline">\(E(\varepsilon_t|X_t) = 0\)</span> 且 <span class="math inline">\(E(\varepsilon_t^2) = \sigma^2 &lt; \infty\)</span>；</p></li>
+<li><p><strong>假设 4.4</strong>（<span class="math inline">\(\rm{P}_{114}\)</span>）&lt; 非奇异性同分布 (Nonsingularity) &gt; ： <span class="math inline">\(K\times K\)</span> 阶矩阵 <span class="math inline">\(Q = E(X_t X_t^\prime)\)</span> 是对称、有限与非奇异的；</p></li>
+<li><p><strong>假设 4.5</strong>（<span class="math inline">\(\rm{P}_{114}\)</span>）： <span class="math inline">\(K\times K\)</span> 阶矩阵 $ =V var(X_t _t) = E(X_t X_t^_t^2)$ 是对称、有限与正定 (PD) 的；</p></li>
+</ul>
+<h2 id="ols-估计量的一致性">4.3 <span class="math inline">\(OLS\)</span> 估计量的一致性</h2>
+<h3 id="定理-11">4.3.1 定理</h3>
+<ul>
+<li><strong>定理 4.10</strong>（<span class="math inline">\(\rm{P}_{116}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量的一致性 (Consistency of OLS) &gt; ：给定假设 4.1-4.4，且当 <span class="math inline">\(n\to\infty\)</span> 时，有： ： <span class="math display">\[
+\begin{align*}
+\hat\beta \overset{d}{\to} \beta^o \mathsf{或} \hat\beta - \beta^o = O_P(1)
+\end{align*}
+\]</span></li>
+</ul>
+<h3 id="ols-估计量的渐近正态性">4.4 <span class="math inline">\(OLS\)</span> 估计量的渐近正态性</h3>
+<h3 id="假设-4">4.4.1 假设</h3>
+<h3 id="定理-12">4.4.2 定理</h3>
+<ul>
+<li><strong>引理 4.11</strong>（<span class="math inline">\(\rm{P}_{116}\)</span>）&lt; 独立同分布随机样本的多元中心极限定理汇报</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Class Notes</category>
+        <category>Econometrics</category>
+      </categories>
+      <tags>
+        <tag>Econometrics</tag>
       </tags>
   </entry>
   <entry>
