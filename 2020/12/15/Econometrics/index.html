@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="独孤诗人的学习驿站">
 <meta property="og:description" content="1 Introduction 本文为参考 洪永淼《高级计量学》复习高级计量经济学的学习笔记。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="d:/Demo/Markdown/Econometrics%20notes.assets/微信图片_20201218101116.jpg">
+<meta property="og:image" content="https://s3.ax1x.com/2020/12/21/r03CND.jpg">
 <meta property="article:published_time" content="2020-12-15T07:16:40.000Z">
-<meta property="article:modified_time" content="2020-12-20T06:07:06.168Z">
+<meta property="article:modified_time" content="2020-12-21T08:39:18.464Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Econometrics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/Demo/Markdown/Econometrics%20notes.assets/微信图片_20201218101116.jpg">
+<meta name="twitter:image" content="https://s3.ax1x.com/2020/12/21/r03CND.jpg">
 
 <link rel="canonical" href="http://yangsuoly.com/2020/12/15/Econometrics/">
 
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-20 14:07:06" itemprop="dateModified" datetime="2020-12-20T14:07:06+08:00">2020-12-20</time>
+                <time title="Modified: 2020-12-21 16:39:18" itemprop="dateModified" datetime="2020-12-21T16:39:18+08:00">2020-12-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,14 +273,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>21k</span>
+              <span>29k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>19 mins.</span>
+              <span>27 mins.</span>
             </span>
 
         </div>
@@ -515,7 +515,7 @@ SSR(\beta) \equiv (Y - X\beta)^\prime(Y - X\beta) = \sum_{t=1}^{n}(Y_t - X_t^\pr
 \end{align*}
 \]</span> 其中第二个表达式在后面章节的渐近分析中将经常用到。</p>
 <p><strong>注：</strong> <span class="math inline">\(\hat Y_t \equiv X_t^\prime \hat\beta\)</span> 称为观测值 <span class="math inline">\(Y_t\)</span> 的 <strong>拟合值或者预测值</strong>，而 <span class="math inline">\(e_t \equiv Y_t - \hat Y_t\)</span> 是观测值 <span class="math inline">\(Y_t\)</span> 的 <strong>估计残差或预测误差</strong>。被解释变量 <span class="math inline">\(Y_t\)</span> 可以分解为相互正交的拟合值 <span class="math inline">\(\hat Y\)</span> 与残差 <span class="math inline">\(e\)</span> 之和，参见 Fig. 3-1。</p>
-<p><img src="D:\Demo\Markdown\Econometrics notes.assets\微信图片_20201218101116.jpg" alt="微信图片_20201218101116" style="zoom:80%;" /></p>
+<p><img src="https://s3.ax1x.com/2020/12/21/r03CND.jpg" alt="微信图片_20201218101116" style="zoom:80%;" /></p>
 <center>
 <p>Fig. 3-1 OLS 的正交性</p>
 </center></li>
@@ -902,9 +902,25 @@ Y_t = X_t^\prime \beta^o + \varepsilon_t \qquad t = 1,\cdots,n
 <li><p><strong>假设 4.5</strong>（<span class="math inline">\(\rm{P}_{114}\)</span>）： <span class="math inline">\(K\times K\)</span> 阶矩阵 <span class="math inline">\(V \equiv var(X_t \varepsilon_t) = E(X_t X_t^\prime\varepsilon_t^2)\)</span> 是对称、有限与正定 (PD) 的；</p></li>
 </ul>
 <h2 id="ols-估计量的一致性">4.3 <span class="math inline">\(OLS\)</span> 估计量的一致性</h2>
-<h3 id="定理-11">4.3.1 定理</h3>
+<p>由假设 4.4 可知，对于所有的 <span class="math inline">\(j\in\{0, 1, \cdots, k\}, E(X_{jt}^2)&lt;\infty\)</span>。根据对立同分布随机样本的强大数据定律（引理 4.4），当 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+\frac{X^\prime X}{n} = \frac{1}{n}\sum_{t=1}^{n} X_t X_t^\prime \overset{a.s.}{\to}E(X_t X_t^\prime) = Q \qquad (\star\star\star)
+\end{align*}
+\]</span> 假设有一个随机样本 <span class="math inline">\(\{Y_t, X_t^\prime\}_{t=1}^n\)</span>。回忆 #OLS$ 估计量： <span class="math display">\[
+\begin{align*}
+\hat \beta = (X^\prime X)^{-1}X^\prime Y = \hat Q{}^{-1} n^{-1} \sum_{t=1}{n} X_t Y_t
+\end{align*}
+\]</span> 其中， <span class="math display">\[
+\begin{align*}
+\hat Q{}^{-1} = n^{-1} \sum_{t=1}^{n} X_t X_t^\prime
+\end{align*}
+\]</span> 将 <span class="math inline">\(Y_t = X_t^\prime \beta^o + \varepsilon_t\)</span>（参见假设 4.2）代入，得： <span class="math display">\[
+\begin{align*}
+\hat \beta  = \beta^o + \hat Q{}^{-1} n^{-1}\sum_{t=1}^{n} X_t \varepsilon_t
+\end{align*}
+\]</span> 下面考察 <span class="math inline">\(\hat\beta\)</span> 的一致性。 ### 4.3.1 定理</p>
 <ul>
-<li><strong>定理 4.10</strong>（<span class="math inline">\(\rm{P}_{116}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量的一致性 (Consistency of OLS) &gt; ：给定假设 4.1-4.4，且当 <span class="math inline">\(n\to\infty\)</span> 时，有： ： <span class="math display">\[
+<li><strong>定理 4.10</strong>（<span class="math inline">\(\rm{P}_{116}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量的一致性 (Consistency of OLS) &gt; ：给定假设 4.1-4.4，且当 <span class="math inline">\(n\to\infty\)</span> 时，有： <span class="math display">\[
 \begin{align*}
 \hat\beta \overset{d}{\to} \beta^o \mathsf{或} \hat\beta - \beta^o = O_P(1)
 \end{align*}
@@ -912,10 +928,198 @@ Y_t = X_t^\prime \beta^o + \varepsilon_t \qquad t = 1,\cdots,n
 </ul>
 <h3 id="ols-估计量的渐近正态性">4.4 <span class="math inline">\(OLS\)</span> 估计量的渐近正态性</h3>
 <h3 id="假设-4">4.4.1 假设</h3>
-<h3 id="定理-12">4.4.2 定理</h3>
 <ul>
-<li><strong>引理 4.11</strong>（<span class="math inline">\(\rm{P}_{116}\)</span>）&lt; 独立同分布随机样本的多元中心极限定理汇报</li>
+<li><strong>假设 4.6</strong>（<span class="math inline">\(\rm{P}_{119}\)</span>）&lt; 条件同方差 (Conditional Homoskedasticity) &gt;：<span class="math inline">\(E(\varepsilon_t^2|X_t) = \sigma^2\)</span>。</li>
 </ul>
+<h3 id="定理-11">4.4.2 定理</h3>
+<ul>
+<li><strong>引理 4.11</strong>（<span class="math inline">\(\rm{P}_{117}\)</span>）&lt; 独立同分布随机样本的多元中心极限定理 (Multivariate CLT for I.I.D. Random Samples) &gt;：假设 <span class="math inline">\(\{Z_t\}^n_{t=1}\)</span> 是一个独立同分布随机样本，且 <span class="math inline">\(E(Z_t) = 0, var(Z_t) = E(Z_t Z_t^\prime) = V\)</span> 是一个有限、对称与正定的矩阵，定义： <span class="math display">\[
+\begin{align*}
+\bar Z_n = n^{-1} \sum_{t=1}^n Z_t
+\end{align*}
+\]</span> 则当 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+\sqrt n \bar Z_n \overset{d}{\to} N(0, V)
+\end{align*}
+\]</span> 或等价地： <span class="math display">\[
+\begin{align*}
+V^{-\frac{1}{2}} \sqrt n \bar Z_n \overset{d}{\to} N(0, I)
+\end{align*}
+\]</span> 其中，<span class="math inline">\(I\)</span> 是一个维数与 <span class="math inline">\(V\)</span> 相同的单位矩阵。引理 4.11 表明，<span class="math inline">\(V \equiv var(Z_t)\)</span> 是 <span class="math inline">\(\sqrt n \bar Z_n\)</span> 的渐近分布的方差，简称 <span class="math inline">\(\sqrt n \bar Z_n\)</span> 的渐近方差，记为 <span class="math inline">\(avar(\sqrt n \bar Z_n) = V\)</span>。</li>
+<li><strong>定理 4.12</strong>（<span class="math inline">\(\rm{P}_{118}\)</span>）&lt; <span class="math inline">\(OLS\)</span> 估计量的渐近正态分布 (Asymptotic Normality of OLS) &gt;：给定假设 4.1-4.5，则当 <span class="math inline">\(n\to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+\sqrt n (\bar \beta - \beta^o) \overset{d}{\to} N(0, Q^{-1}VQ^{-1})
+\end{align*}
+\]</span> 其中 <span class="math inline">\(V \equiv var(X_t\varepsilon_t) = E(X_t X_t^\prime \varepsilon_t^2)\)</span>。</li>
+<li><strong>定理 4.13</strong>（<span class="math inline">\(\rm{P}_{119}\)</span>）：给定假设 4.1-4.6，则当 <span class="math inline">\(n\to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+\sqrt n (\bar \beta - \beta^o) \overset{d}{\to} N(0, \sigma^2Q^{-1})
+\end{align*}
+\]</span> 定理 4.13 表明，当存在条件同方差时，<span class="math inline">\(\sqrt n(\bar \beta - \beta^o)\)</span> 的渐近方差 (<span class="math inline">\(\star\star\star\)</span>) 为： <span class="math display">\[
+\begin{align*}
+avar(n (\bar \beta) = \sigma^2Q^{-1}
+\end{align*}
+\]</span> ## 4.5 渐近方差估计量 ### 4.5.1 定理 <strong>1. 条件同法差</strong></li>
+</ul>
+<p>在这种情况下，由定理 4.13，<span class="math inline">\(\sqrt{n}(\hat\beta - \beta^o)\)</span> 渐近方差为： <span class="math display">\[
+\begin{align*}
+avar(\sqrt n \hat \beta) = \sigma^2 Q^{-1}
+\end{align*}
+\]</span> - <strong>引理 4.14</strong>（<span class="math inline">\(\rm{P}_{120}\)</span>）：给定假设 4.1、4.2 和 4.4，则： <span class="math display">\[
+  \begin{align*}
+  \hat Q = n^{-1} \sum_{t=1}^n X_t X_t^\prime \overset{p}{\to} Q
+  \end{align*}
+  \]</span> 其次，考虑估计 <span class="math inline">\(\sigma^2\)</span>。因为 <span class="math inline">\(\sigma^2 = E(\varepsilon_t^2)\)</span>，可使用样本残差方差估计量： <span class="math display">\[
+  \begin{align*}
+  s^2 = e^\prime e/(n-K) = \frac{1}{n-K} \sum_{t=1}{n} e_t^2
+  \end{align*}
+  \]</span></p>
+<ul>
+<li><strong>定理 4.15</strong>（<span class="math inline">\(\rm{P}_{120}\)</span>）：&lt; <span class="math inline">\(\sigma^2\)</span> 的一致估计量 (Consistent Estimator of <span class="math inline">\(\sigma^2\)</span>)&gt;：给定假设 4.1-4.4，当 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+s^2 \overset{p}{\to} \sigma^2
+\end{align*}
+\]</span></li>
+<li><strong>定理 4.16</strong>（<span class="math inline">\(\rm{P}_{121}\)</span>）：&lt; 条件同方差下 <span class="math inline">\(\sqrt n (\hat\beta - \beta^o)\)</span> 的渐近方差估计量 (Asymototic Variance Estimator of OLS Under Conditional Homoskedasticity) &gt;：给定假设 4.1-4.4，当 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+s^2 \hat Q {}^{-1} \overset{p}{\to} avar(\sqrt n \hat \beta) = \sigma^2 Q^{-1}
+\end{align*}
+\]</span> <span class="math inline">\(\sqrt n (\hat\beta - \beta^o)\)</span> 的渐近方差估计量是： <span class="math display">\[
+\begin{align*}
+s^2 \hat Q {}^{-1} = s^2(X^\prime X /n)^{-1}
+\end{align*}
+\]</span> 这等价于，当 <span class="math inline">\(n\)</span> 很大时，<span class="math inline">\((\hat\beta - \beta^o)\)</span> 的方差估计量近似为： <span class="math display">\[
+\begin{align*}
+s^2 \hat Q {}^{-1}/n = s^2(X^\prime X)^{-1}
+\end{align*}
+\]</span> <strong>2. 条件异方差</strong></li>
+</ul>
+<p>在存在条件异方差（即 <span class="math inline">\(E(\varepsilon_t^2|X_t) \neq \sigma^2\)</span>) 时，<span class="math inline">\(\sqrt n (\hat\beta - \beta^o)\)</span> 的渐近方差为： <span class="math display">\[
+\begin{align*}
+avar(\sqrt n \hat \beta) = Q^{-1} V Q^{-1}
+\end{align*}
+\]</span> 其中，<span class="math inline">\(V = E(X_t X_t^\prime \varepsilon_t^2)\)</span>。 - <strong>引理 4.17</strong>（<span class="math inline">\(\rm{P}_{122}\)</span>）：给定假设 4.1-4.5 和 4.7，则当 <span class="math inline">\(n \to \infty\)</span> 时，有 <span class="math display">\[
+  \begin{align*}
+  \hat V = \frac{1}{n} \sum_{t = 1}^{n} X_t X_t^\prime e_t^2 \overset{p}{\to} V
+  \end{align*}
+  \]</span></p>
+<ul>
+<li><strong>引理 4.18</strong>（<span class="math inline">\(\rm{P}_{123}\)</span>）&lt; 条件异方差下 <span class="math inline">\(\sqrt n \hat \beta\)</span> 的渐近方差估计量 (Asymptotic Variance Estimator of OLS Under Conditional Heteroskedasticity) &gt;：给定假设 4.1-4.5 和 4.7，则当 <span class="math inline">\(n \to \infty\)</span> 时，有 <span class="math display">\[
+\begin{align*}
+\hat Q{}^{-1} \hat V \hat Q{}^{-1} \overset{p}{\to} avar{\sqrt n \hat \beta} = Q^{-1} V Q^{-1}
+\end{align*}
+\]</span> 这就是 <span class="math inline">\(\sqrt n \hat \beta\)</span> 的 <span class="math inline">\(White (1980)\)</span> 异方差一致性方差 - 协方差矩阵估计量 (Heteroskedasticity-consistent variance-covariance matrix estimator)。因此，当存在条件异方差及 <span class="math inline">\(n\)</span> 很大时，<span class="math inline">\(\hat \beta - \beta^o\)</span> 的方差估计量为: <span class="math display">\[
+\begin{align*}
+\frac{\hat Q{}^{-1} \hat V \hat Q{}^{-1}}{n} &amp;= \frac{(X^\prime X /n)^{-1} \hat V (X^\prime X /n)^{-1}}{n}\\
+&amp;=  (X^\prime X)^{-1} X^\prime D(e) D(e)^\prime X (X^\prime X)^{-1}\\
+&amp;\neq s^2(X^\prime X)^{-1}
+\end{align*}
+\]</span></li>
+</ul>
+<h3 id="假设-5">4.5.2 假设</h3>
+<ul>
+<li><strong>假设 4.7</strong>（<span class="math inline">\(\rm{P}_{122}\)</span>）：(1) 对于所有的 <span class="math inline">\(j \in \{0,1,\cdots,k\}, E(X_{jt}^4)&lt;\infty\)</span>。(2) <span class="math inline">\(E(X\varepsilon_{t}^4)&lt;\infty\)</span>。 <span class="math display">\[
+\begin{align*}
+s^2 \hat Q {}^{-1} \overset{p}{\to} avar(\sqrt n \hat \beta) = \sigma^2 Q^{-1}
+\end{align*}
+\]</span></li>
+</ul>
+<h2 id="参数假设检验-1">4.6 参数假设检验</h2>
+<p>下面考虑如何构建统计量以检验原假设： <span class="math display">\[
+\begin{align*}
+\mathbb{H}: R\beta^o = r
+\end{align*}
+\]</span> 其中 <span class="math inline">\(R\)</span> 时 <span class="math inline">\(J \times K\)</span> 满秩矩阵，<span class="math inline">\(r\)</span> 是 <span class="math inline">\(J \times 1\)</span> 常向量，且 <span class="math inline">\(J \leq K\)</span>。</p>
+<p>首先考虑统计量 <span class="math inline">\(R \hat\beta - r = R(\hat\beta - \beta^o) + R\beta^o - r\)</span>，所以再原假设 <span class="math inline">\(\mathbb{H}: R\beta^o = r\)</span> 下有： <span class="math display">\[
+\begin{align*}
+\sqrt n (R \hat\beta - r) &amp;= R\sqrt n(\hat\beta - \beta^o) \\
+&amp;\overset{d}{\to} N(0, RQ^{-1}VQ^{-1}R^\prime)
+\end{align*}
+\]</span> <strong>1. 条件同方差情形</strong></p>
+<ul>
+<li><strong>定理 4.19</strong>（<span class="math inline">\(\rm{P}_{125}\)</span>）&lt; <span class="math inline">\(t\)</span> 检验 &gt;：给定假设 4.1-4.4 和 4.6，则当假设 <span class="math inline">\(\mathbb{H}_0: R\beta^o = r\)</span> 成立， <span class="math inline">\(J = 1\)</span>，且 <span class="math inline">\(n\to \infty\)</span> 时，经典 <span class="math inline">\(t\)</span> 检验统计量： <span class="math display">\[
+\begin{align*}
+T = \frac{R\beta^o - r}{\sqrt{s^2 R(X^\prime X)^{-1}R^\prime}}   \overset{p}{\to} N(0, 1)
+\end{align*}
+\]</span></li>
+<li><strong>定理 4.20</strong>（<span class="math inline">\(\rm{P}_{125}\)</span>）&lt; 渐近 <span class="math inline">\(\chi^2\)</span> 检验 &gt;：给定假设 4.1-4.4 和 4.6，则当假设 <span class="math inline">\(\mathbb{H}_0: R\beta^o = r\)</span> 成立， <span class="math inline">\(J \leq 1\)</span>，且 <span class="math inline">\(n\to \infty\)</span>, <span class="math inline">\(Wald\)</span> 检验统计量： <span class="math display">\[
+\begin{align*}
+\mathcal{W} &amp;\equiv (R\beta^o - r)^\prime[s^2 R(X^\prime X)^{-1}R]^{-1}(R\beta^o - r) \\
+&amp;= J \cdot F \overset{d}{\to} \chi^2_J
+\end{align*}
+\]</span></li>
+<li><strong>定理 4.21</strong>（<span class="math inline">\(\rm{P}_{126}\)</span>）&lt; <span class="math inline">\((n-K)\mathcal{R}^2\)</span> 检验 &gt;：给定假设 4.1-4.6，检验以下原假设： <span class="math display">\[
+\begin{align*}
+\mathbb{H}_0:\beta^o_0 = \beta^o_1 = \cdots = \beta^o_k = 0
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\beta^o_0, \beta^o_1, \cdots, \beta^o_k\)</span> 是线性回归方程: <span class="math display">\[
+\begin{align*}
+Y = \beta^o_0 + \beta^o_1 X_{1t} + \cdots + \beta^o_k X_{kt} + \varepsilon_t
+\end{align*}
+\]</span> 除截距项 <span class="math inline">\(\beta_0^o\)</span> 意外的所有回归系数。令 <span class="math inline">\(\mathcal{R}^2\)</span> 是无约束线性回归模型的决定系数，则当原假设 <span class="math inline">\(\mathbb{H}_0\)</span> 成立及 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+(n - K) \mathcal{R}^2 \overset{d}{\to} \chi^2_k
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\mathcal{R}^2\)</span> 的定义（<span class="math inline">\(\rm{P}_{82}\)</span>）为： <span class="math display">\[
+\begin{align*}
+\mathcal{R}^2 = 1 - \frac{e^\prime e}{(Y - \bar Y l)^\prime (Y - \bar Y l)} = 1 - \frac{e^\prime e}{\tilde e{}^\prime \tilde e}
+\end{align*}
+\]</span></li>
+</ul>
+<p><strong>2. 条件异方差情形</strong> 在原假设 <span class="math inline">\(\mathbb{H}_0: R \beta^o = r\)</span> 成立的条件下，有： <span class="math display">\[
+\begin{align*}
+\sqrt n (R \hat\beta - r) \overset{d}{\to} N(0, RQ^{-1}VQ^{-1}R^\prime)
+\end{align*}
+\]</span> 其中，<span class="math inline">\(V = E(x_t X_T^\prime \varepsilon_t^2)\)</span>，因此有 <span class="math display">\[
+\begin{align*}
+\frac{R\beta^o - r}{\sqrt{R Q^{-1} V Q^{-1} R^\prime}} \overset{p}{\to} N(0, 1)
+\end{align*}
+\]</span> 给定 <span class="math inline">\(\hat Q \overset{p}{\to} Q, \hat V \overset{p}{\to} V\)</span>，这里 <span class="math inline">\(\hat V = X^\prime D(e) D(e)^\prime X/n\)</span>，并由 Slutsky 定理，可定义稳健性 <span class="math inline">\(t\)</span> 检验统计量： <span class="math display">\[
+\begin{align*}
+T_r \equiv \frac{\sqrt n(R \hat\beta - r)}{\sqrt{R \hat Q{}^{-1} \hat V \hat Q{}^{-1} R^\prime}}
+\end{align*}
+\]</span> 当 <span class="math inline">\(\mathbb{H}_0:R\beta^o = r\)</span> 成立，且 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+T_r \overset{p}{\to} N(0, 1)
+\end{align*}
+\]</span> 这里，稳健性 (Robustness) 是指，当存在条件异方差时，<span class="math inline">\(T_r\)</span> 也是渐近有效的。 - <strong>定理 4.22</strong>（<span class="math inline">\(\rm{P}_{128}\)</span>）&lt; 条件异方差下的稳健 <span class="math inline">\(t\)</span> 检验 (Robust t-Test Under Conditional Heteroskedasticity) &gt;：给定假设 4.1-4.5 和 4.7，则当原假设 <span class="math inline">\(\mathbb{H}_0: R \beta^o = r\)</span> 成立。</p>
+<p>当 <span class="math inline">\(J = 1\)</span>，且 <span class="math inline">\(n \to \infty\)</span> 时，稳健 <span class="math inline">\(t\)</span> 检验统计量为： <span class="math display">\[
+  \begin{align*}
+  T_r \equiv \frac{\sqrt n(R \hat\beta - r)}{\sqrt{R \hat Q{}^{-1} \hat V \hat Q{}^{-1} R^\prime}} \overset{p}{\to} N(0, 1)
+  \end{align*}
+  \]</span> 当 <span class="math inline">\(J \geq 1\)</span>，在原假设 <span class="math inline">\(\mathbb{H}_0: R \beta^o = r\)</span> 下，有二次型： <span class="math display">\[
+  \begin{align*}
+  \mathcal{W} &amp;\equiv \sqrt n (R\beta^o - r)^\prime[R \hat Q{}^{-1} \hat V \hat Q{}^{-1} R^\prime)^{-1}R]^{-1}\sqrt n(R\beta^o - r) \\
+  &amp;\overset{d}{\to} \chi^2_J
+  \end{align*}
+  \]</span> 其中， <span class="math display">\[
+  \begin{align*}
+  \hat Q &amp;= \frac{X^\prime X}{n}\\
+  \hat V &amp;= var(X_t e_t) = \frac{X^\prime D(e)D(e)^\prime X}{n}
+  \end{align*}
+  \]</span> 这里，<span class="math inline">\(D(e) = diag\{e_1, 2_2, \cdots,e_n\}\)</span>。</p>
+<ul>
+<li><strong>定理 4.23</strong>（<span class="math inline">\(\rm{P}_{128}\)</span>）&lt; 条件异方差下的稳健 <span class="math inline">\(Wald\)</span> 检验 (Robust Wald Test Under Conditional Heteroskedasticity) &gt;：给定假设 4.1-4.5 和 4.7，则当原假设 <span class="math inline">\(\mathbb{H}_0: R \beta^o = r\)</span> 成立，且 <span class="math inline">\(n \to \infty\)</span> 时，有： <span class="math display">\[
+\begin{align*}
+\mathcal{W} &amp;\equiv \sqrt n (R\beta^o - r)^\prime[R \hat Q{}^{-1} \hat V \hat Q{}^{-1} R^\prime)^{-1}R]^{-1}\sqrt n(R\beta^o - r) \\
+&amp;\overset{d}{\to} \chi^2_J
+\end{align*}
+\]</span></li>
+</ul>
+<h2 id="条件异方差检验">4.7 条件异方差检验</h2>
+<p><strong><span class="math inline">\(White\)</span> 条件异方差检验</strong></p>
+<p>考虑原假设：<span class="math inline">\(\mathbb{H}_0: E(\varepsilon_t^2|X_t) = \sigma^2\)</span>，其中，<span class="math inline">\(\varepsilon_t\)</span> 是 <span class="math inline">\(Y_t = X_t^\prime \beta^o + \varepsilon_t\)</span> 的随机扰动项。</p>
+<p>非零假设为： <span class="math display">\[
+\begin{align*}
+\varepsilon_t^2 = \gamma^\prime \rm{vech}(X_t X_t^\prime) + v_t
+\end{align*}
+\]</span> 其中，<span class="math inline">\(\rm{vech}(X_t X_t^\prime)\)</span> 是一个向量化算子，它将 <span class="math inline">\(K \times K\)</span> 对称矩阵 <span class="math inline">\(X_t X_t^\prime\)</span> 下三角元素转变为一个 <span class="math inline">\(\frac{K(K+1)}{2} \times 1\)</span> 向量。在 <span class="math inline">\(mathbb{H}\)</span> 下，除截距项外，所有斜率系数均为零。</p>
+<p>假设 <span class="math inline">\(E(\varepsilon_t^4|X_t) = \mu_4\)</span>，可以得到： <span class="math display">\[
+\begin{align*}
+(n-J-1)\tilde{\mathcal{R}} \overset{d}{\to} \chi_J^2
+\end{align*}
+\]</span></p>
+<h1 id="平稳时间序列的线性回归模型">5 平稳时间序列的线性回归模型</h1>
 
     </div>
 
@@ -1032,7 +1236,7 @@ Y_t = X_t^\prime \beta^o + \varepsilon_t \qquad t = 1,\cdots,n
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1 Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">2 一般回归分析和模型设定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%88%86%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 条件概率分别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%9D%87%E5%80%BC%E4%B8%8E%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 条件均值与回归分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 线性回归建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%9D%87%E5%80%BC%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 条件均值的模型设定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-2"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">3. 经典线性回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 假设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 普通最小二乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-3"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%9F%E5%90%88%E4%BC%98%E5%BA%A6%E5%92%8C%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%87%86%E5%88%99"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 拟合优度和模型选择准则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-4"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-4"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%87%86%E5%88%99"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 模型选择准则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%97%A0%E5%81%8F%E6%80%A7%E5%92%8C%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 \(OLS\) 估计量的无偏性和有效性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-5"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 \(OLS\) 估计量的抽样分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-6"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%96%B9%E5%B7%AE---%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 \(OLS\) 估计量的方差 - 协方差矩阵的估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-7"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.6.1 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 参数假设检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-5"><span class="nav-number">3.7.1.</span> <span class="nav-text">3.7.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-8"><span class="nav-number">3.7.2.</span> <span class="nav-text">3.7.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E4%BC%B0%E8%AE%A1"><span class="nav-number">3.8.</span> <span class="nav-text">3.9 广义最小二乘估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-2"><span class="nav-number">3.8.1.</span> <span class="nav-text">3.9.1 假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-6"><span class="nav-number">3.8.2.</span> <span class="nav-text">3.9.2 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-9"><span class="nav-number">3.8.3.</span> <span class="nav-text">3.9.3 定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E5%90%8C%E5%88%86%E5%B8%83%E9%9A%8F%E6%9C%BA%E6%A0%B7%E6%9C%AC%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">4 独立同分布随机样本的线性回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%90%E8%BF%91%E7%90%86%E8%AE%BA%E5%AF%BC%E8%AE%BA"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 渐近理论导论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-7"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-10"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E5%81%87%E8%AE%BE"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 线性回归模型假设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-3"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 假设</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 \(OLS\) 估计量的一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-11"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%B8%90%E8%BF%91%E6%AD%A3%E6%80%81%E6%80%A7"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.4 \(OLS\) 估计量的渐近正态性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-4"><span class="nav-number">4.3.3.</span> <span class="nav-text">4.4.1 假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-12"><span class="nav-number">4.3.4.</span> <span class="nav-text">4.4.2 定理</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1 Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">2 一般回归分析和模型设定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%88%86%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 条件概率分别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%9D%87%E5%80%BC%E4%B8%8E%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 条件均值与回归分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 线性回归建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%9D%87%E5%80%BC%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 条件均值的模型设定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-2"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">3. 经典线性回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%87%E8%AE%BE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 假设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 普通最小二乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-3"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%9F%E5%90%88%E4%BC%98%E5%BA%A6%E5%92%8C%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%87%86%E5%88%99"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 拟合优度和模型选择准则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-4"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-4"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%87%86%E5%88%99"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 模型选择准则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%97%A0%E5%81%8F%E6%80%A7%E5%92%8C%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 \(OLS\) 估计量的无偏性和有效性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-5"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 \(OLS\) 估计量的抽样分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-6"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%96%B9%E5%B7%AE---%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 \(OLS\) 估计量的方差 - 协方差矩阵的估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-7"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.6.1 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 参数假设检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-5"><span class="nav-number">3.7.1.</span> <span class="nav-text">3.7.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-8"><span class="nav-number">3.7.2.</span> <span class="nav-text">3.7.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E4%BC%B0%E8%AE%A1"><span class="nav-number">3.8.</span> <span class="nav-text">3.9 广义最小二乘估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-2"><span class="nav-number">3.8.1.</span> <span class="nav-text">3.9.1 假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-6"><span class="nav-number">3.8.2.</span> <span class="nav-text">3.9.2 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-9"><span class="nav-number">3.8.3.</span> <span class="nav-text">3.9.3 定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E5%90%8C%E5%88%86%E5%B8%83%E9%9A%8F%E6%9C%BA%E6%A0%B7%E6%9C%AC%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">4 独立同分布随机样本的线性回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%90%E8%BF%91%E7%90%86%E8%AE%BA%E5%AF%BC%E8%AE%BA"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 渐近理论导论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-7"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-10"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E5%81%87%E8%AE%BE"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 线性回归模型假设</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-3"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 假设</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 \(OLS\) 估计量的一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ols-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E6%B8%90%E8%BF%91%E6%AD%A3%E6%80%81%E6%80%A7"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.4 \(OLS\) 估计量的渐近正态性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-4"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.4.1 假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%90%86-11"><span class="nav-number">4.3.3.</span> <span class="nav-text">4.4.2 定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%87%E8%AE%BE-5"><span class="nav-number">4.3.4.</span> <span class="nav-text">4.5.2 假设</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C-1"><span class="nav-number">4.4.</span> <span class="nav-text">4.6 参数假设检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E5%BC%82%E6%96%B9%E5%B7%AE%E6%A3%80%E9%AA%8C"><span class="nav-number">4.5.</span> <span class="nav-text">4.7 条件异方差检验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E7%A8%B3%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">5 平稳时间序列的线性回归模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
