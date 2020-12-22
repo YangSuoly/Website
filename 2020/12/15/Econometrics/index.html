@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s3.ax1x.com/2020/12/21/r03CND.jpg">
 <meta property="article:published_time" content="2020-12-15T07:16:40.000Z">
-<meta property="article:modified_time" content="2020-12-21T12:26:41.841Z">
+<meta property="article:modified_time" content="2020-12-22T03:25:35.106Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Econometrics">
 <meta name="twitter:card" content="summary">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-21 20:26:41" itemprop="dateModified" datetime="2020-12-21T20:26:41+08:00">2020-12-21</time>
+                <time title="Modified: 2020-12-22 11:25:35" itemprop="dateModified" datetime="2020-12-22T11:25:35+08:00">2020-12-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -555,56 +555,71 @@ SSR(\hat \beta) = e^\prime e = Y^{-1} MY = \varepsilon^{\prime} M \varepsilon
 <h2 id="拟合优度和模型选择准则">3.3 拟合优度和模型选择准则</h2>
 <h3 id="定义-4">3.3.1 定义</h3>
 <ul>
-<li><p><strong>定义 3.2</strong>（<span class="math inline">\(\rm{P}_{54}\)</span>）&lt; 非中心化 <span class="math inline">\(R^2\)</span> &gt;：非中心化多元相关系数平方 <span class="math inline">\(R^2\)</span> 定义为： <span class="math display">\[
+<li><p><strong>定义 3.2</strong>（<span class="math inline">\(\rm{P}_{54}\)</span>）&lt; 非中心化 <span class="math inline">\(\mathcal{R}^2\)</span> &gt;：非中心化多元相关系数平方 <span class="math inline">\(\mathcal{R}^2\)</span> 定义为：</p>
+<p><span class="math display">\[
 \begin{align*}
-R^2_{uc} = \frac{\hat Y{}^\prime \hat Y}{Y^\prime Y} = 1 - \frac{e^\prime e}{Y^\prime Y}
+\mathcal{R}^2_{uc} = \frac{\hat Y{}^\prime \hat Y}{Y^\prime Y} = 1 - \frac{e^\prime e}{Y^\prime Y}
 \end{align*}
-\]</span> <span class="math inline">\(R^2\)</span> 的含义是因变量 <span class="math inline">\({Y_t}\)</span> 的非中心化的样本二次型变动可以被预测值 <span class="math inline">\(\{\hat Y{}^\prime\}\)</span> 的非中心化样本二次型变动所预测的比例。由定义可知，总有 <span class="math inline">\(0 \leq R^2_{uc} \leq 1\)</span>。</p></li>
-<li><p><strong>定义 3.3</strong>（<span class="math inline">\(\rm{P}_{54}\)</span>）&lt; 中心化 <span class="math inline">\(R^2\)</span> 或决定系数 (Coefficient of Determination) &gt;：决定系数定义为： <span class="math display">\[
+\]</span></p>
+<p><span class="math inline">\(\mathcal{R}^2\)</span> 的含义是因变量 <span class="math inline">\({Y_t}\)</span> 的非中心化的样本二次型变动可以被预测值 <span class="math inline">\(\{\hat Y{}^\prime\}\)</span> 的非中心化样本二次型变动所预测的比例。由定义可知，总有 <span class="math inline">\(0 \leq \mathcal{R}^2_{uc} \leq 1\)</span>。</p></li>
+<li><p><strong>定义 3.3</strong>（<span class="math inline">\(\rm{P}_{54}\)</span>）&lt; 中心化 <span class="math inline">\(\mathcal{R}^2\)</span> 或决定系数 (Coefficient of Determination) &gt;：决定系数定义为：</p>
+<p><span class="math display">\[
 \begin{align*}
-R^2 \equiv 1 - \frac{\sum_\limits{t=1}^{n} e_t^2}{\sum_\limits{t=1}^{n} (Y_t - \overline Y)^2}
+\mathcal{R}^2 \equiv 1 - \frac{\sum_\limits{t=1}^{n} e_t^2}{\sum_\limits{t=1}^{n} (Y_t - \overline Y)^2}
 \end{align*}
-\]</span> 其中 <span class="math inline">\(\overline Y = n^{-1}\sum_\limits{t=1}^{n}Y_t\)</span> 是样本均值。</p>
+\]</span></p>
+<p>其中 <span class="math inline">\(\overline Y = n^{-1}\sum_\limits{t=1}^{n}Y_t\)</span> 是样本均值。</p>
 <p><strong>注：</strong></p>
 <ul>
-<li><p>当 <span class="math inline">\(X_t\)</span> 包括截距项，即 <span class="math inline">\(X_{0t} = 1\)</span> 时，可进行如下正交分解： <span class="math display">\[
+<li><p>当 <span class="math inline">\(X_t\)</span> 包括截距项，即 <span class="math inline">\(X_{0t} = 1\)</span> 时，可进行如下正交分解：</p>
+<p><span class="math display">\[
 \begin{align*}
 \sum_{t=1}^{n}(Y_t - \overline Y)^2 &amp;= \sum_{t=1}^{n}(\hat Y_t - \overline Y + Y_t - \hat Y_t)^2 \\
 &amp; = \sum_{t=1}^{n}(\hat Y_t - \overline Y)^2 + \sum_{t=1}^{n}e_t^2
 \end{align*}
-\]</span> 此时（<span class="math inline">\(\star \star\star\)</span>）： <span class="math display">\[
+\]</span></p>
+<p>此时（<span class="math inline">\(\star \star\star\)</span>）：</p>
+<p><span class="math display">\[
 \begin{align*}
-R^2 &amp;\equiv 1 - \frac{e^\prime e}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}\\
+\mathcal{R}^2 &amp;\equiv 1 - \frac{e^\prime e}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}\\
 &amp;= \frac{\sum_\limits{t=1}^{n}(\hat Y_t - \overline Y)^2}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}
 \end{align*}
 \]</span></p></li>
-<li><p>如果 <span class="math inline">\(X_t\)</span> 不包括截距项，此时： <span class="math display">\[
+<li><p>如果 <span class="math inline">\(X_t\)</span> 不包括截距项，此时：</p>
+<p><span class="math display">\[
 \begin{align*}
 \sum_{t=1}^{n}(Y_t - \overline Y)^2 &amp;= \sum_{t=1}^{n}(\hat Y_t - \overline Y)^2 + \sum_{t=1}^{n}e_t^2 + 2 \sum_{t=1}^{n}(\hat Y_t - \overline Y)e_t \\
 &amp;\neq \sum_{t=1}^{n}(\hat Y_t - \overline Y)^2 + \sum_{t=1}^{n}e_t^2
 \end{align*}
-\]</span> 在这种情况下，<strong><span class="math inline">\(R^2\)</span> 可能为负值</strong>，因为交叉项 <span class="math inline">\(\sum_\limits{t=1}^{n}(\hat Y_t - \overline Y)e_t\)</span> 可能为负值。</p></li>
+\]</span></p>
+<p>在这种情况下，<strong><span class="math inline">\(\mathcal{R}^2\)</span> 可能为负值</strong>，因为交叉项 <span class="math inline">\(\sum_\limits{t=1}^{n}(\hat Y_t - \overline Y)e_t\)</span> 可能为负值。</p></li>
 </ul></li>
 </ul>
 <h3 id="定理-4">3.3.2 定理</h3>
 <ul>
-<li><p><strong>定理 3.3</strong>（<span class="math inline">\(\rm{P}_{56}\)</span>）：<span class="math inline">\(R^2 = \hat \rho_{Y\hat Y}^2\)</span>，这里 <span class="math inline">\(\hat \rho_{Y\hat Y}^2\)</span> 是 <span class="math inline">\(\{Y_t\}\)</span> 和 <span class="math inline">\(\{\hat Y_t\}\)</span> 的样本相关系数。</p></li>
-<li><p><strong>定理 3.4</strong>（<span class="math inline">\(\rm{P}_{56}\)</span>）：假设 <span class="math inline">\(\{Y_t, X_{1t}, \dots, X_{ (k+q)t}\}_{t=1}^n\)</span> 是一容量为 <span class="math inline">\(n\)</span> 的随机样本，<span class="math inline">\(R_1^2\)</span> 是下列线性回归模型的中心化拟合度： <span class="math display">\[
+<li><p><strong>定理 3.3</strong>（<span class="math inline">\(\rm{P}_{56}\)</span>）：<span class="math inline">\(\mathcal{R}^2 = \hat \rho_{Y\hat Y}^2\)</span>，这里 <span class="math inline">\(\hat \rho_{Y\hat Y}^2\)</span> 是 <span class="math inline">\(\{Y_t\}\)</span> 和 <span class="math inline">\(\{\hat Y_t\}\)</span> 的样本相关系数。</p></li>
+<li><p><strong>定理 3.4</strong>（<span class="math inline">\(\rm{P}_{56}\)</span>）：假设 <span class="math inline">\(\{Y_t, X_{1t}, \dots, X_{ (k+q)t}\}_{t=1}^n\)</span> 是一容量为 <span class="math inline">\(n\)</span> 的随机样本，<span class="math inline">\(\mathcal{R}_1^2\)</span> 是下列线性回归模型的中心化拟合度：</p>
+<p><span class="math display">\[
 \begin{align*}
 Y_t= X_t^{\prime}\beta + \varepsilon_t
 \end{align*}
-\]</span> 其中， <span class="math inline">\(X_t = (1, X_{1t}, \dots, X_{kt})^\prime\)</span>，<span class="math inline">\(\beta\)</span> 是 <span class="math inline">\(K \times 1\)</span> 未知参数向量；<span class="math inline">\(R_2^2\)</span> 是下面扩展的线性回归模型的中心化扰合优度： <span class="math display">\[
+\]</span></p>
+<p>其中， <span class="math inline">\(X_t = (1, X_{1t}, \dots, X_{kt})^\prime\)</span>，<span class="math inline">\(\beta\)</span> 是 <span class="math inline">\(K \times 1\)</span> 未知参数向量；<span class="math inline">\(\mathcal{R}_2^2\)</span> 是下面扩展的线性回归模型的中心化扰合优度：</p>
+<p><span class="math display">\[
 \begin{align*}
 Y_t = \tilde X_t^\prime \gamma + u_t
 \end{align*}
-\]</span> 其中，<span class="math inline">\(\tilde X_t = (1, X_{1t}, \dots, X_{kt}, X_{(k+1)t)})^\prime\)</span>，<span class="math inline">\(\gamma\)</span> 是 <span class="math inline">\((K+q) \times 1\)</span> 未知参数向量，<span class="math inline">\(q\)</span> 是正整数。则： <span class="math display">\[
+\]</span></p>
+<p>其中，<span class="math inline">\(\tilde X_t = (1, X_{1t}, \dots, X_{kt}, X_{(k+1)t)})^\prime\)</span>，<span class="math inline">\(\gamma\)</span> 是 <span class="math inline">\((K+q) \times 1\)</span> 未知参数向量，<span class="math inline">\(q\)</span> 是正整数。则：</p>
+<p><span class="math display">\[
 \begin{align*}
-R_2^2 \geq R_1^2
+\mathcal{R}_2^2 \geq \mathcal{R}_1^2
 \end{align*}
-\]</span> <strong>注：</strong>定理 3.4 有重要含义：</p>
+\]</span></p>
+<p><strong>注：</strong>定理 3.4 有重要含义：</p>
 <ul>
-<li><span class="math inline">\(R^2\)</span> 可用于 <strong>解释变量数目相等</strong> 的线性回归模型的比较，但它不适用于 <strong>比较不同解释变量数目</strong> 的线性模型，因为 <strong>模型的解释变量越多，<span class="math inline">\(R^2\)</span> 就会越大</strong>。</li>
-<li><span class="math inline">\(R^2\)</span> 也不是正确模型设定的判断标准。<span class="math inline">\(R^2\)</span> 高并不意味着模型设定正确，事实上，给定解释变量 <span class="math inline">\(X_t\)</span>，<span class="math inline">\(R_2\)</span> 值的大小 <strong>与线性回归模型的信噪比</strong> 有关</li>
+<li><p><span class="math inline">\(\mathcal{R}^2\)</span> 可用于 <strong>解释变量数目相等</strong> 的线性回归模型的比较，但它不适用于 <strong>比较不同解释变量数目</strong> 的线性模型，因为 <strong>模型的解释变量越多，<span class="math inline">\(\mathcal{R}^2\)</span> 就会越大</strong>。</p></li>
+<li><p><span class="math inline">\(\mathcal{R}^2\)</span> 也不是正确模型设定的判断标准。<span class="math inline">\(\mathcal{R}^2\)</span> 高并不意味着模型设定正确，事实上，给定解释变量 <span class="math inline">\(X_t\)</span>，<span class="math inline">\(\mathcal{R}_2\)</span> 值的大小 <strong>与线性回归模型的信噪比</strong> 有关。</p></li>
 </ul></li>
 </ul>
 <h3 id="模型选择准则">3.3.3 模型选择准则</h3>
@@ -625,19 +640,18 @@ s^2 = e^\prime e / (n - K)
 BIC = {\rm{ln}} (s^2) +\frac{K {\rm{ln}}(n)}{n}
 \end{align*}
 \]</span></p></li>
-<li><p><span class="math inline">\(\overline R^2\)</span></p>
-<p>我们知道 <span class="math inline">\(R^2\)</span> 的定义为： <span class="math display">\[
+<li><p><span class="math inline">\(\overline{\mathcal{R}}{}^2\)</span></p>
+<p>我们知道 <span class="math inline">\(\mathcal{R}^2\)</span> 的定义为： <span class="math display">\[
 \begin{align*}
-R^2 = 1 - \frac{e^\prime e / n}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2 / n}
+\mathcal{R}^2 = 1 - \frac{e^\prime e / n}{\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2 / n}
 \end{align*}
-\]</span> 其中，<span class="math inline">\(e^\prime e / n\)</span> 和 <span class="math inline">\(\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2 / n\)</span> 分别是方差 <span class="math inline">\(\sigma^2 = var(\varepsilon_t)\)</span> 和 <span class="math inline">\(\sigma_Y^2 = var  (Y_t)\)</span> 的有偏估计。调整的 <span class="math inline">\(R^2\)</span> 为：</p></li>
+\]</span> 其中，<span class="math inline">\(e^\prime e / n\)</span> 和 <span class="math inline">\(\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2 / n\)</span> 分别是方差 <span class="math inline">\(\sigma^2 = var(\varepsilon_t)\)</span> 和 <span class="math inline">\(\sigma_Y^2 = var  (Y_t)\)</span> 的有偏估计。调整的 <span class="math inline">\(\mathcal{R}^2\)</span> 为： <span class="math display">\[
+\begin{align*}
+  \overline{\mathcal{R}}{}^2 = 1 - \frac{e^\prime e / (n-K)}{(n-1)^{-1}\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}
+  \end{align*}
+\]</span></p></li>
 </ol>
-<p><span class="math display">\[
-   \begin{align*}
-   \overline R^2 = 1 - \frac{e^\prime e / (n-K)}{(n-1)^{-1}\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2}
-   \end{align*}
-\]</span></p>
-<p>此时有：<span class="math inline">\(E(e^\prime e / (n-K)) = \sigma^2\)</span> 和 <span class="math inline">\(E[(n-1)^{-1}\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2] = \sigma_Y^2\)</span> ，在 <span class="math inline">\(\overline R^2\)</span> 中，调整的是自由度。</p>
+<p>此时有：<span class="math inline">\(E(e^\prime e / (n-K)) = \sigma^2\)</span> 和 <span class="math inline">\(E[(n-1)^{-1}\sum_\limits{t=1}^{n}(Y_t - \overline Y)^2] = \sigma_Y^2\)</span> ，在 <span class="math inline">\(\overline{\mathcal{R}}{}^2\)</span> 中，调整的是自由度。</p>
 <h2 id="ols-估计量的无偏性和有效性">3.4 <span class="math inline">\(OLS\)</span> 估计量的无偏性和有效性</h2>
 <h3 id="定理-5">3.4.1 定理</h3>
 <ul>
