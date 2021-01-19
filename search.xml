@@ -2721,7 +2721,7 @@ a+\rlap{\overbrace{\phantom{b+c+d}}^m}b+\underbrace{c+d+e}_n +f
 </tbody>
 </table>
 <p>注：如果字符形式中的字符是特殊字符，则需要在前面加<code>\</code>进行转义。</p>
-<div class="pdfobject-container" data-target="./Latex/Latex.pdf" data-height="500px"></div></li>
+<div class="pdfobject-container" data-target="./Latex.pdf" data-height="600px"></div></li>
 </ul></li>
 </ul>
 ]]></content>
