@@ -234,7 +234,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-03-18 15:03:25 / Modified: 15:44:07" itemprop="dateCreated datePublished" datetime="2021-03-18T15:03:25+08:00">2021-03-18</time>
+              <time title="Created: 2021-03-18 15:03:25 / Modified: 16:01:47" itemprop="dateCreated datePublished" datetime="2021-03-18T15:03:25+08:00">2021-03-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1318,7 +1318,7 @@ Fig. 时间序列
 <p><code>ARIMAX</code> 模型，分别是名称 <code>ARMA</code> 和 <code>ARIMA</code> 的扩展，<code>ARMAX</code> 和 <code>ARIMAX</code>。添加到末尾 <code>X</code> 代表“外源”。它表示建议添加一个单独的不同外部变量以帮助测量内生变量。基本语法:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">arima</span> depvar [indepvars] [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, options]</span><br></pre></td></tr></table></figure>
 <h2 id="自助法">5.3 自助法</h2>
-<p>自助法 (<code>Bootstrap</code>) 是一种从给定训练样本集中有放回的均匀抽样。每当选中一个样本，它等可能地被再次选中并被再次添加到训练集中。自助法有点是不必对模型的数据生成过程做出假定。基本语法：</p>
+<p>自助法 (<code>Bootstrap</code>) 是一种从给定训练样本集中有放回的均匀抽样。每当选中一个样本，它等可能地被再次选中并被再次添加到训练集中。自助法优点是不必对模型的数据生成过程做出假定。基本语法：</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bootstrap</span> exp_list [, options eform_option] : command</span><br><span class="line"></span><br><span class="line"><span class="keyword">sysuse</span> auto</span><br><span class="line"><span class="keyword">bootstrap</span>, reps(100) seed(123): <span class="keyword">regress</span> mpg weight gear foreign</span><br><span class="line"><span class="keyword">estat</span> <span class="keyword">bootstrap</span>, all</span><br></pre></td></tr></table></figure>
 <p>Result:</p>
 <img src="https://s3.ax1x.com/2021/03/18/62AWZV.md.png" />
