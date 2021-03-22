@@ -551,7 +551,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-21 19:47:49" itemprop="dateModified" datetime="2021-03-21T19:47:49+08:00">2021-03-21</time>
+                <time title="Modified: 2021-03-22 16:51:27" itemprop="dateModified" datetime="2021-03-22T16:51:27+08:00">2021-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -573,14 +573,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>10k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>9 mins.</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -593,7 +593,20 @@
 
       
           <h1 id="1-series"><a class="markdownIt-Anchor" href="#1-series"></a> 1 Series</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">t = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>) <span class="comment"># time type</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># np.nan means NaN</span></span><br><span class="line">s = pd.Series([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, np.nan, <span class="number">44</span>, <span class="number">1</span>])</span><br><span class="line">print(s)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates = pd.date_range(<span class="string">&#x27;20200101&#x27;</span>, periods = <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates</span><br><span class="line">DatetimeIndex([<span class="string">&#x27;2020-01-01&#x27;</span>, <span class="string">&#x27;2020-01-02&#x27;</span>, <span class="string">&#x27;2020-01-03&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;2020-01-04&#x27;</span>,<span class="string">&#x27;2020-01-05&#x27;</span>, <span class="string">&#x27;2020-01-06&#x27;</span>],</span><br><span class="line">           dtype=<span class="string">&#x27;datetime64[ns]&#x27;</span>, freq=<span class="string">&#x27;D&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="11-preparation"><a class="markdownIt-Anchor" href="#11-preparation"></a> 1.1 Preparation</h2>
+<ul>
+<li>Import modules<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="12-different-data-type"><a class="markdownIt-Anchor" href="#12-different-data-type"></a> 1.2 Different data type</h2>
+<ul>
+<li>
+<p>Time type</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>) <span class="comment"># time type</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">Timestamp(<span class="string">&#x27;2018-09-01 00:00:00&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Created by means of <code>data_range</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates = pd.date_range(<span class="string">&#x27;20200101&#x27;</span>, periods = <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates</span><br><span class="line">DatetimeIndex([<span class="string">&#x27;2020-01-01&#x27;</span>, <span class="string">&#x27;2020-01-02&#x27;</span>, <span class="string">&#x27;2020-01-03&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;2020-01-04&#x27;</span>,<span class="string">&#x27;2020-01-05&#x27;</span>, <span class="string">&#x27;2020-01-06&#x27;</span>],</span><br><span class="line">           dtype=<span class="string">&#x27;datetime64[ns]&#x27;</span>, freq=<span class="string">&#x27;D&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/27/Pandas/#more" rel="contents">
