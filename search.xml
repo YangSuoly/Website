@@ -56,6 +56,52 @@
       </tags>
   </entry>
   <entry>
+    <title>Ensemble-Blending</title>
+    <url>/2021/05/11/Ensemble-Blending/</url>
+    <content><![CDATA[<h1 id="introduction">1. Introduction</h1>
+<p>Blending 方法可以看是一个简化版的 Stacking 方法，blend 的中文意思是 “混合”，这就很好地诠释了 Blending 方法的思想 —— 不同模型的混合，也就是集成的本意。该方法仅在验证集中进行预测，如下为 Blending 的步骤：</p>
+<a id="more"></a>
+<ol type="1">
+<li>将数据划分为 train set 和 test set，其中，train set 需要进一步被细分为 Training set 和 validation set (见 Fig. 1 (i)，图片来源：<a href="https://courses.analyticsvidhya.com/courses/take/ensemble-learning-and-ensemble-learning-techniques/texts/11126029-blending">Analytics vidhya</a>)；</li>
+<li>构建多个模型 （第一层），并使用细分后的 Training set 作为输入数据来训练这些模型，并用训练好的模型来预测 validation set 和 test set，得到 val_pred 和 test_pred；</li>
+<li>再次构建模型（第二层），并将 val_pred 视为训练集来训练该层的模型(见 Fig. 1 (ii)；</li>
+<li>用训练好的模型来对测试集 (test_pred) 进行预测，得到预测结果 test prediction 记为整个 Blending 集成学习的预测结果。</li>
+</ol>
+<img src="https://z3.ax1x.com/2021/05/11/gUN4RU.png" />
+<center>
+Fig.1 Bleding procedutre
+</center>
+<h1 id="sample">2. Sample</h1>
+<h2 id="steps">2.1 Steps</h2>
+<p>为了对 Blending 有进一步的了解，参考 Analytics vidhya, 构建了一个两层的 Blending 模型，其中第一层由决策树和 KNN 组成，对这两个模型用 Training set 进行预测，并用训练好的模型预测 Valitation set 和 test set。之后构建一个逻辑回归利用上述两个预测结果进行预测训练。具体步骤如下：</p>
+<ul>
+<li><p>Import Module</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br></pre></td></tr></table></figure></li>
+<li><p>Creating Datasets</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;The shape of training X:&quot;</span>, x_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of training y:&quot;</span>, y_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test set:&quot;</span>, x_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test y:&quot;</span>, y_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation X:&quot;</span>, x_val.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation y:&quot;</span>, y_val.shape)</span><br></pre></td></tr></table></figure>
+<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">The shape of training X: (<span class="number">5600</span>, <span class="number">2</span>)</span><br><span class="line">The shape of training y: (<span class="number">5600</span>,)</span><br><span class="line">The shape of test <span class="built_in">set</span>: (<span class="number">2000</span>, <span class="number">2</span>)</span><br><span class="line">The shape of test y: (<span class="number">2000</span>,)</span><br><span class="line">The shape of validation X: (<span class="number">2400</span>, <span class="number">2</span>)</span><br><span class="line">The shape of validation y: (<span class="number">2400</span>,)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>First Layer</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br></pre></td></tr></table></figure></li>
+<li><p>Second Layer</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br></pre></td></tr></table></figure></li>
+<li><p>Forecasting Results</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.0</span></span><br><span class="line">array([<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>])</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="complete-codes">2.2 Complete codes</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Inporting modules</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating datasets</span></span><br><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Constructing model</span></span><br><span class="line"><span class="comment">## First layer</span></span><br><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Second layer</span></span><br><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print forecasting results</span></span><br><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Ensemble</category>
+        <category>Blending</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Ensemble</tag>
+        <tag>Sklearn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ensemble-Stacking</title>
     <url>/2021/05/13/Ensemble-Stacking/</url>
     <content><![CDATA[<h1 id="introduction">1. Introduction</h1>
@@ -148,44 +194,59 @@
       </tags>
   </entry>
   <entry>
-    <title>Ensemble-Blending</title>
-    <url>/2021/05/11/Ensemble-Blending/</url>
-    <content><![CDATA[<h1 id="introduction">1. Introduction</h1>
-<p>Blending 方法可以看是一个简化版的 Stacking 方法，blend 的中文意思是 “混合”，这就很好地诠释了 Blending 方法的思想 —— 不同模型的混合，也就是集成的本意。该方法仅在验证集中进行预测，如下为 Blending 的步骤：</p>
+    <title>Ensemble-happiness</title>
+    <url>/2021/05/18/Ensemble-happiness/</url>
+    <content><![CDATA[<h1 id="data-process">Data process</h1>
+<h2 id="load-data">Load data</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">train = pd.read_csv(<span class="string">&quot;train.csv&quot;</span>, parse_dates=[<span class="string">&#x27;survey_time&#x27;</span>],encoding=<span class="string">&#x27;latin-1&#x27;</span>)</span><br><span class="line">test = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>, parse_dates=[<span class="string">&#x27;survey_time&#x27;</span>],encoding=<span class="string">&#x27;latin-1&#x27;</span>) </span><br><span class="line"><span class="comment">#latin-1向下兼容ASCII</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<ol type="1">
-<li>将数据划分为 train set 和 test set，其中，train set 需要进一步被细分为 Training set 和 validation set (见 Fig. 1 (i)，图片来源：<a href="https://courses.analyticsvidhya.com/courses/take/ensemble-learning-and-ensemble-learning-techniques/texts/11126029-blending">Analytics vidhya</a>)；</li>
-<li>构建多个模型 （第一层），并使用细分后的 Training set 作为输入数据来训练这些模型，并用训练好的模型来预测 validation set 和 test set，得到 val_pred 和 test_pred；</li>
-<li>再次构建模型（第二层），并将 val_pred 视为训练集来训练该层的模型(见 Fig. 1 (ii)；</li>
-<li>用训练好的模型来对测试集 (test_pred) 进行预测，得到预测结果 test prediction 记为整个 Blending 集成学习的预测结果。</li>
-</ol>
-<img src="https://z3.ax1x.com/2021/05/11/gUN4RU.png" />
-<center>
-Fig.1 Bleding procedutre
-</center>
-<h1 id="sample">2. Sample</h1>
-<h2 id="steps">2.1 Steps</h2>
-<p>为了对 Blending 有进一步的了解，参考 Analytics vidhya, 构建了一个两层的 Blending 模型，其中第一层由决策树和 KNN 组成，对这两个模型用 Training set 进行预测，并用训练好的模型预测 Valitation set 和 test set。之后构建一个逻辑回归利用上述两个预测结果进行预测训练。具体步骤如下：</p>
 <ul>
-<li><p>Import Module</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br></pre></td></tr></table></figure></li>
-<li><p>Creating Datasets</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;The shape of training X:&quot;</span>, x_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of training y:&quot;</span>, y_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test set:&quot;</span>, x_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test y:&quot;</span>, y_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation X:&quot;</span>, x_val.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation y:&quot;</span>, y_val.shape)</span><br></pre></td></tr></table></figure>
-<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">The shape of training X: (<span class="number">5600</span>, <span class="number">2</span>)</span><br><span class="line">The shape of training y: (<span class="number">5600</span>,)</span><br><span class="line">The shape of test <span class="built_in">set</span>: (<span class="number">2000</span>, <span class="number">2</span>)</span><br><span class="line">The shape of test y: (<span class="number">2000</span>,)</span><br><span class="line">The shape of validation X: (<span class="number">2400</span>, <span class="number">2</span>)</span><br><span class="line">The shape of validation y: (<span class="number">2400</span>,)</span><br></pre></td></tr></table></figure></p></li>
-<li><p>First Layer</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br></pre></td></tr></table></figure></li>
-<li><p>Second Layer</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br></pre></td></tr></table></figure></li>
-<li><p>Forecasting Results</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.0</span></span><br><span class="line">array([<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>])</span><br></pre></td></tr></table></figure></p></li>
+<li>Deleting the rows that happiness values equal to -8</li>
 </ul>
-<h2 id="complete-codes">2.2 Complete codes</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Inporting modules</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating datasets</span></span><br><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Constructing model</span></span><br><span class="line"><span class="comment">## First layer</span></span><br><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Second layer</span></span><br><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print forecasting results</span></span><br><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deleting the rows that happiness values equal to -8</span></span><br><span class="line">target_name = <span class="string">&#x27;happiness&#x27;</span></span><br><span class="line">train_copy = train.copy()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Train and target set</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train = train[train[target_name] != -<span class="number">8</span>].reset_index(drop = <span class="literal">True</span>)</span><br><span class="line">target = train_copy[target_name] <span class="comment"># Target</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Concatenation</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> train_copy[target_name] <span class="comment"># Drop the target column </span></span><br><span class="line"><span class="comment"># Store the train set(without happiness values)</span></span><br><span class="line"></span><br><span class="line">data = pd.concat([train_copy, test], axis = <span class="number">0</span>, ignore_index = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="information">Information</h2>
+<ul>
+<li><code>describe</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train.happiness.describe()</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<pre><code>count    7988.000000
+mean        3.867927
+std         0.818717
+min         1.000000
+25%         4.000000
+50%         4.000000
+75%         4.000000
+max         5.000000
+Name: happiness, dtype: float64</code></pre>
+<ul>
+<li><code>info</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train.info()</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 8000 entries, 0 to 7999
+Columns: 140 entries, id to public_service_9
+dtypes: datetime64[ns](1), float64(25), int64(111), object(3)
+memory usage: 8.5+ MB</code></pre>
+<h2 id="data-preparation">Data preparation</h2>
+<p>对数据中的连续出现的负的数值进行处理。由于数据中的负值只有 -1, -2, -3, -8，故进行如下处理：</p>
+<ul>
+<li>Self definition function</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># make feature +5</span></span><br><span class="line"><span class="comment">#csv中有复数值：-1、-2、-3、-8，将他们视为有问题的特征，但是不删去</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres1</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x&lt;<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres2</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres3</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres4</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres5</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#检查数据</span></span><br><span class="line">data[<span class="string">&#x27;neg1&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres1(row),axis=<span class="number">1</span>)</span><br><span class="line">data.loc[data[<span class="string">&#x27;neg1&#x27;</span>]&gt;<span class="number">20</span>,<span class="string">&#x27;neg1&#x27;</span>] = <span class="number">20</span> <span class="comment">#平滑处理,最多出现20次</span></span><br><span class="line">data[<span class="string">&#x27;neg2&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres2(row),axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;neg3&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres3(row),axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;neg4&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres4(row),axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;neg5&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres5(row),axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Ensemble</category>
-        <category>Blending</category>
+        <category>Cases</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -436,6 +497,120 @@ figure 1-3 Parameters
       </tags>
   </entry>
   <entry>
+    <title>Markdown</title>
+    <url>/2021/01/19/Markdown/</url>
+    <content><![CDATA[<h1 id="markdown">Markdown</h1>
+<h2 id="title">1. Title</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<p>格式及快捷键如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="font">2. Font</h2>
+<p><strong>加粗 </strong></p>
+<p><em>斜体</em></p>
+<p><u>下划线</u></p>
+<p><del>删除线</del></p>
+<p>==高亮==</p>
+<p><code>底纹</code></p>
+<p>$ _i = w x_i + b $ <span class="math display">\[
+\hat{y}_i = w x_i + b
+\]</span></p>
+<p>格式及快捷键如下（其中 <code>#</code> 开头的行为注释行）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**加粗 ** (快捷键 ctrl + B)</span><br><span class="line">*斜体* (快捷键 ctrl + I)</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;  (快捷键 ctrl + U)</span><br><span class="line">~~删除线~~</span><br><span class="line">==高亮==</span><br><span class="line">`底纹`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行内公式 (In-line formula)</span></span><br><span class="line">$ \hat&#123;y&#125;_i = w x_i + b $ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示公式 (Display formula)</span></span><br><span class="line">$$</span><br><span class="line">\hat&#123;y&#125;_i = w x_i + b</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<h2 id="citation">3. Citation</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用语法</span></span><br><span class="line">&gt; Author</span><br><span class="line">&gt;&gt; Author</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<blockquote>
+<p>Author</p>
+<blockquote>
+<p>Author</p>
+</blockquote>
+</blockquote>
+<h2 id="分割线">4. 分割线</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># 分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+<hr />
+<hr />
+<h2 id="inset-image">5. Inset image</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在线图片/本地图片</span></span><br><span class="line">![My image1](/image/me.png) --image <span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczP2Q.png" /></p>
+<center>
+Fig. 1 Image demo
+</center>
+<p>注：Typora 支持直接复制粘贴图片，可以省去敲格式的环节，但注意在复制粘贴之前将图片储存的设置为自动保存，设置如下：</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczkKs.png" /></p>
+<center>
+Fig. 2 Typora image auto-save setting
+</center>
+<h2 id="link">6. Link</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 超链接语法，其中 [] 中为文字内容，()内为想要插入的连接</span></span><br><span class="line">[My link](https://www.bilibili.com/)</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.bilibili.com/">My bilibili</a></p>
+<h2 id="list">7. List</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 无序列表</span></span><br><span class="line">- 目录<span class="number">1</span></span><br><span class="line">- 目录<span class="number">2</span></span><br><span class="line">- 目录<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序列表，在目录 4 后键入回车，会自动生成有序列表</span></span><br><span class="line"><span class="number">1.</span> 目录<span class="number">4</span></span><br><span class="line"><span class="number">2.</span> 目录<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>目录1</li>
+<li>目录2</li>
+<li>目录3</li>
+</ul>
+<ol type="1">
+<li>目录4</li>
+<li>目录5</li>
+</ol>
+<h2 id="grid">8. Grid</h2>
+<p>在 Typora 中按 <code>Ctrl + T</code> 快捷键，会出现对话框，便可以快速插入表格，如下：</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczivj.png" />)</p>
+<center>
+Fig. 3 Insert table
+</center>
+<table>
+<thead>
+<tr class="header">
+<th>成绩</th>
+<th>语文</th>
+<th>数学</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>45</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<h2 id="段落格式">9. 段落格式</h2>
+<p>以下为一下 <code>html</code> 语法，<code>Markdown</code> 可以兼容 <span class="math inline">\(\TeX\)</span> 数学公式和 <code>html</code> 语法，可以扩充已有的功能。</p>
+<ul>
+<li>居中</li>
+</ul>
+<center>
+center
+</center>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span> 内容居中 <span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>字体</li>
+</ul>
+<p><font face = "黑体">我是黑体</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span> = <span class="string">&quot;黑体&quot;</span>&gt;</span>我是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><font face="黑体" size=10>我是黑体10号字体</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 字体颜色更改为红色</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Html 标签</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczC8g.png" /></p>
+<center>
+<p>Fig. 4 HTML Label</p>
+</center></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux notes</title>
     <url>/2020/11/23/Linux/</url>
     <content><![CDATA[<h1 id="command">1. Command</h1>
@@ -604,134 +779,6 @@ figure 1-3 Parameters
       </tags>
   </entry>
   <entry>
-    <title>Markdown</title>
-    <url>/2021/01/19/Markdown/</url>
-    <content><![CDATA[<h1 id="markdown">Markdown</h1>
-<h2 id="title">1. Title</h2>
-<h3 id="三级标题">三级标题</h3>
-<h4 id="四级标题">四级标题</h4>
-<p>格式及快捷键如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="font">2. Font</h2>
-<p><strong>加粗 </strong></p>
-<p><em>斜体</em></p>
-<p><u>下划线</u></p>
-<p><del>删除线</del></p>
-<p>==高亮==</p>
-<p><code>底纹</code></p>
-<p>$ _i = w x_i + b $ <span class="math display">\[
-\hat{y}_i = w x_i + b
-\]</span></p>
-<p>格式及快捷键如下（其中 <code>#</code> 开头的行为注释行）：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**加粗 ** (快捷键 ctrl + B)</span><br><span class="line">*斜体* (快捷键 ctrl + I)</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;  (快捷键 ctrl + U)</span><br><span class="line">~~删除线~~</span><br><span class="line">==高亮==</span><br><span class="line">`底纹`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行内公式 (In-line formula)</span></span><br><span class="line">$ \hat&#123;y&#125;_i = w x_i + b $ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示公式 (Display formula)</span></span><br><span class="line">$$</span><br><span class="line">\hat&#123;y&#125;_i = w x_i + b</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-<h2 id="citation">3. Citation</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用语法</span></span><br><span class="line">&gt; Author</span><br><span class="line">&gt;&gt; Author</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<blockquote>
-<p>Author</p>
-<blockquote>
-<p>Author</p>
-</blockquote>
-</blockquote>
-<h2 id="分割线">4. 分割线</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># 分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
-<hr />
-<hr />
-<h2 id="inset-image">5. Inset image</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在线图片/本地图片</span></span><br><span class="line">![My image1](/image/me.png) --image <span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczP2Q.png" /></p>
-<center>
-Fig. 1 Image demo
-</center>
-<p>注：Typora 支持直接复制粘贴图片，可以省去敲格式的环节，但注意在复制粘贴之前将图片储存的设置为自动保存，设置如下：</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczkKs.png" /></p>
-<center>
-Fig. 2 Typora image auto-save setting
-</center>
-<h2 id="link">6. Link</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 超链接语法，其中 [] 中为文字内容，()内为想要插入的连接</span></span><br><span class="line">[My link](https://www.bilibili.com/)</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.bilibili.com/">My bilibili</a></p>
-<h2 id="list">7. List</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 无序列表</span></span><br><span class="line">- 目录<span class="number">1</span></span><br><span class="line">- 目录<span class="number">2</span></span><br><span class="line">- 目录<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序列表，在目录 4 后键入回车，会自动生成有序列表</span></span><br><span class="line"><span class="number">1.</span> 目录<span class="number">4</span></span><br><span class="line"><span class="number">2.</span> 目录<span class="number">5</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>目录1</li>
-<li>目录2</li>
-<li>目录3</li>
-</ul>
-<ol type="1">
-<li>目录4</li>
-<li>目录5</li>
-</ol>
-<h2 id="grid">8. Grid</h2>
-<p>在 Typora 中按 <code>Ctrl + T</code> 快捷键，会出现对话框，便可以快速插入表格，如下：</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczivj.png" />)</p>
-<center>
-Fig. 3 Insert table
-</center>
-<table>
-<thead>
-<tr class="header">
-<th>成绩</th>
-<th>语文</th>
-<th>数学</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>45</td>
-<td>35</td>
-</tr>
-</tbody>
-</table>
-<h2 id="段落格式">9. 段落格式</h2>
-<p>以下为一下 <code>html</code> 语法，<code>Markdown</code> 可以兼容 <span class="math inline">\(\TeX\)</span> 数学公式和 <code>html</code> 语法，可以扩充已有的功能。</p>
-<ul>
-<li>居中</li>
-</ul>
-<center>
-center
-</center>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span> 内容居中 <span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>字体</li>
-</ul>
-<p><font face = "黑体">我是黑体</font></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span> = <span class="string">&quot;黑体&quot;</span>&gt;</span>我是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><font face="黑体" size=10>我是黑体10号字体</font></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 字体颜色更改为红色</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Html 标签</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczC8g.png" /></p>
-<center>
-<p>Fig. 4 HTML Label</p>
-</center></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Markdown</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Numpy</title>
     <url>/2020/11/29/Numpy/</url>
     <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
@@ -812,6 +859,20 @@ center
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
