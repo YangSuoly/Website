@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Problem1.1 Introduction of background幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？">
+  <meta name="description" content="1. Problem 1.1 Introduction of background 幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ensemble-happiness">
 <meta property="og:url" content="http://yangsuoly.com/2021/05/18/Ensemble-happiness/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Problem1.1 Introduction of background幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？">
+<meta property="og:description" content="1. Problem 1.1 Introduction of background 幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-18T15:49:56.000Z">
-<meta property="article:modified_time" content="2021-05-18T16:07:09.625Z">
+<meta property="article:modified_time" content="2021-05-19T03:02:15.372Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Ensemble">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-19 00:07:09" itemprop="dateModified" datetime="2021-05-19T00:07:09+08:00">2021-05-19</time>
+                <time title="Modified: 2021-05-19 11:02:15" itemprop="dateModified" datetime="2021-05-19T11:02:15+08:00">2021-05-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,14 +273,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.4k</span>
+              <span>5.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -292,13 +292,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1. Problem"></a>1. Problem</h1><h2 id="1-1-Introduction-of-background"><a href="#1-1-Introduction-of-background" class="headerlink" title="1.1 Introduction of background"></a>1.1 Introduction of background</h2><p>幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？</p>
+        <h1 id="problem">1. Problem</h1>
+<h2 id="introduction-of-background">1.1 Introduction of background</h2>
+<p>幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？</p>
 <a id="more"></a>
 <p>该案例为幸福感预测这一经典课题，希望在现有社会科学研究外有其他维度的算法尝试，结合多学科各自优势，挖掘潜在的影响因素，发现更多可解释、可理解的相关关系。</p>
 <p>具体来说，该案例就是一个数据挖掘类型的比赛——幸福感预测的baseline。具体来说，我们需要使用包括个体变量（性别、年龄、地域、职业、健康、婚姻与政治面貌等等）、家庭变量（父母、配偶、子女、家庭资本等等）、社会态度（公平、信用、公共服务等等）等139维度的信息来预测其对幸福感的影响。</p>
 <p>数据来源于国家官方的《中国综合社会调查（CGSS）》文件中的调查结果中的数据，数据来源可靠可依赖。</p>
 <p>数据包下载地址: <a href="https://yangsuoly.com/file/Data-of-forcasting-happiness.rar">Data of case</a>。</p>
-<h1 id="Data-process"><a href="#Data-process" class="headerlink" title="Data process"></a>Data process</h1><h2 id="Load-data"><a href="#Load-data" class="headerlink" title="Load data"></a>Load data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">train = pd.read_csv(<span class="string">&quot;train.csv&quot;</span>, parse_dates=[<span class="string">&#x27;survey_time&#x27;</span>],encoding=<span class="string">&#x27;latin-1&#x27;</span>)</span><br><span class="line">test = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>, parse_dates=[<span class="string">&#x27;survey_time&#x27;</span>],encoding=<span class="string">&#x27;latin-1&#x27;</span>) </span><br><span class="line"><span class="comment">#latin-1向下兼容ASCII</span></span><br></pre></td></tr></table></figure>
+<h2 id="data-information">1.2 Data information</h2>
+<p>要求使用以上 139 维的特征，使用 8000 余组数据进行对于个人幸福感的预测（预测值为1，2，3，4，5，其中1代表幸福感最低，5代 表幸福感最高）。 因为考虑到变量个数较多，部分变量间关系复杂，数据分为完整版和精简版两类。同时给出了 <code>index</code> 文件中包含每个变量对应的问卷题目，以及变量取值的含义；<code>survey</code> 文件中为原版问卷，作为补充以方便理解问题背景。</p>
+<h1 id="data-process">2. Data process</h1>
+<h2 id="load-data">2.1 Load data</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">train = pd.read_csv(<span class="string">&quot;train.csv&quot;</span>, parse_dates=[<span class="string">&#x27;survey_time&#x27;</span>],encoding=<span class="string">&#x27;latin-1&#x27;</span>)</span><br><span class="line">test = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>, parse_dates=[<span class="string">&#x27;survey_time&#x27;</span>],encoding=<span class="string">&#x27;latin-1&#x27;</span>) </span><br><span class="line"><span class="comment">#latin-1向下兼容ASCII</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Deleting the rows that happiness values equal to -8</li>
 </ul>
@@ -311,7 +317,8 @@
 <li>Concatenation</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> train_copy[target_name] <span class="comment"># Drop the target column </span></span><br><span class="line"><span class="comment"># Store the train set(without happiness values)</span></span><br><span class="line"></span><br><span class="line">data = pd.concat([train_copy, test], axis = <span class="number">0</span>, ignore_index = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="Information"><a href="#Information" class="headerlink" title="Information"></a>Information</h2><ul>
+<h2 id="information">2.2 Information</h2>
+<ul>
 <li><code>describe</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.happiness.describe()</span><br></pre></td></tr></table></figure>
@@ -324,8 +331,8 @@ min         1.000000
 50%         4.000000
 75%         4.000000
 max         5.000000
-Name: happiness, dtype: float64
-</code></pre><ul>
+Name: happiness, dtype: float64</code></pre>
+<ul>
 <li><code>info</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.info()</span><br></pre></td></tr></table></figure>
@@ -333,8 +340,97 @@ Name: happiness, dtype: float64
 RangeIndex: 8000 entries, 0 to 7999
 Columns: 140 entries, id to public_service_9
 dtypes: datetime64[ns](1), float64(25), int64(111), object(3)
-memory usage: 8.5+ MB
-</code></pre><h2 id="Data-preparation"><a href="#Data-preparation" class="headerlink" title="Data preparation"></a>Data preparation</h2><p>对数据中的连续出现的负的数值进行处理。由于数据中的负值只有 -1, -2, -3, -8，故进行如下处理：</p>
+memory usage: 8.5+ MB</code></pre>
+<h2 id="data-preparation">2.3 Data preparation</h2>
+<h3 id="missing-values">2.3.1 Missing values</h3>
+<ul>
+<li>Number of columns having missing values</li>
+</ul>
+<p>通过如下代码了解数据中的缺省值信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data_nomiss = data.dropna(axis=<span class="number">1</span>, inplace = <span class="literal">False</span>) <span class="comment"># 没有缺失值的数据信息</span></span><br><span class="line"></span><br><span class="line">name_data = data.columns</span><br><span class="line">name_miss = name_data.drop(data_nomiss.columns) <span class="comment"># 含有缺失值的列名称</span></span><br><span class="line"></span><br><span class="line">data_miss = data.loc[:, name_miss] <span class="comment"># 存储含有缺失值的数据，方便查看数据</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>data_miss.shape</span><br><span class="line"></span><br><span class="line">(<span class="number">10968</span>, <span class="number">25</span>)</span><br></pre></td></tr></table></figure>
+<p>可以发现，数据集中 25 列中含有缺失值，具体的列名称如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>miss_name</span><br><span class="line"></span><br><span class="line">Index([<span class="string">&#x27;edu_other&#x27;</span>, <span class="string">&#x27;edu_status&#x27;</span>, <span class="string">&#x27;edu_yr&#x27;</span>, <span class="string">&#x27;join_party&#x27;</span>, <span class="string">&#x27;property_other&#x27;</span>, <span class="string">&#x27;hukou_loc&#x27;</span>, <span class="string">&#x27;social_neighbor&#x27;</span>, <span class="string">&#x27;social_friend&#x27;</span>, <span class="string">&#x27;work_status&#x27;</span>, <span class="string">&#x27;work_yr&#x27;</span>, <span class="string">&#x27;work_type&#x27;</span>, <span class="string">&#x27;work_manage&#x27;</span>, <span class="string">&#x27;family_income&#x27;</span>, <span class="string">&#x27;invest_other&#x27;</span>, <span class="string">&#x27;minor_child&#x27;</span>, <span class="string">&#x27;marital_1st&#x27;</span>, <span class="string">&#x27;s_birth&#x27;</span>, <span class="string">&#x27;marital_now&#x27;</span>, <span class="string">&#x27;s_edu&#x27;</span>, <span class="string">&#x27;s_political&#x27;</span>, <span class="string">&#x27;s_hukou&#x27;</span>, <span class="string">&#x27;s_income&#x27;</span>, <span class="string">&#x27;s_work_exper&#x27;</span>, <span class="string">&#x27;s_work_status&#x27;</span>, <span class="string">&#x27;s_work_type&#x27;</span>], dtype=<span class="string">&#x27;object&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Processing</li>
+</ul>
+<p>进一步查看缺失数据的信息：</p>
+<pre><code>&gt;&gt;&gt; data_miss.info()
+
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 10968 entries, 0 to 10967
+Data columns (total 25 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   edu_other        6 non-null      object 
+ 1   edu_status       9399 non-null   float64
+ 2   edu_yr           8212 non-null   float64
+ 3   join_party       1126 non-null   float64
+ 4   property_other   89 non-null     object 
+ 5   hukou_loc        10964 non-null  float64
+ 6   social_neighbor  9871 non-null   float64
+ 7   social_friend    9871 non-null   float64
+ 8   work_status      4029 non-null   float64
+ 9   work_yr          4029 non-null   float64
+ 10  work_type        4030 non-null   float64
+ 11  work_manage      4030 non-null   float64
+ 12  family_income    10967 non-null  float64
+ 13  invest_other     45 non-null     object 
+ 14  minor_child      9520 non-null   float64
+ 15  marital_1st      9839 non-null   float64
+ 16  s_birth          8601 non-null   float64
+ 17  marital_now      8521 non-null   float64
+ 18  s_edu            8601 non-null   float64
+ 19  s_political      8601 non-null   float64
+ 20  s_hukou          8601 non-null   float64
+ 21  s_income         8601 non-null   float64
+ 22  s_work_exper     8601 non-null   float64
+ 23  s_work_status    3524 non-null   float64
+ 24  s_work_type      3524 non-null   float64
+dtypes: float64(22), object(3)
+memory usage: 2.1+ MB</code></pre>
+<p>可以发现，<code>edu_other</code>, <code>join_party</code>, <code>property_other</code>, <code>invest_other</code>, 四列含有缺失值较多，占到了样本总体的90%以上，综合考虑后，选择将这四个变量从分析中剔除。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name_del = [<span class="string">&#x27;edu_other&#x27;</span>, <span class="string">&#x27;join_party&#x27;</span>, <span class="string">&#x27;property_other&#x27;</span>, <span class="string">&#x27;invest_other&#x27;</span>]</span><br><span class="line">name_data = name_data.drop(name_del)</span><br><span class="line">name_miss = name_miss.drop(name_del) <span class="comment"># 剔除上述四个变量</span></span><br><span class="line"></span><br><span class="line">data_miss = data_miss.loc[:, name_miss]</span><br><span class="line">data = data.copy().loc[:, name_miss]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Information</li>
+</ul>
+<p>查看每列缺失值的数量：</p>
+<pre><code>&gt;&gt;&gt; data_miss.isnull().sum()
+
+edu_status         0
+edu_yr             0
+hukou_loc          0
+social_neighbor    0
+social_friend      0
+work_status        0
+work_yr            0
+work_type          0
+work_manage        0
+family_income      0
+minor_child        0
+marital_1st        0
+s_birth            0
+marital_now        0
+s_edu              0
+s_political        0
+s_hukou            0
+s_income           0
+s_work_exper       0
+s_work_status      0
+s_work_type        0
+dtype: int64</code></pre>
+<ul>
+<li>Fillna</li>
+</ul>
+<p>可以发现，部分列缺失值比较多，部分缺失值较少，为此，我们对缺失值做如下处理：</p>
+<ul>
+<li>缺失值数量少于总数的 20% (即 2193.6)的列，用该列的众数进行填充；</li>
+<li>缺失值数量大于2193的列，用0进行填充，防止过分干预数据而导致失真。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(name_miss)):</span><br><span class="line">    num_nulls = data_miss.isnull().<span class="built_in">sum</span>() <span class="comment"># 对缺失值进行计数</span></span><br><span class="line">    num_null = num_nulls[i] <span class="comment"># 当前列的缺失值数</span></span><br><span class="line">    name = name_miss[i] <span class="comment"># 当前列的名称</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> num_null &lt; <span class="number">0.2</span>*data.shape[<span class="number">0</span>]:</span><br><span class="line">        data.loc[:, name].fillna(data_miss.mode().loc[<span class="number">0</span>, name], inplace = <span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        data.loc[:, name].fillna(<span class="number">0</span>, inplace = <span class="literal">True</span>)                    </span><br><span class="line">data_miss = data.loc[:, name_miss]</span><br></pre></td></tr></table></figure>
+<p>至此，缺失值处理完成。</p>
+<h3 id="negative-values">2.3.2 Negative values</h3>
+<p>对数据中的连续出现的负的数值进行处理。由于数据中的负值只有 -1, -2, -3, -8，故进行如下处理：</p>
 <ul>
 <li>Self definition function</li>
 </ul>
@@ -455,7 +551,7 @@ memory usage: 8.5+ MB
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Problem"><span class="nav-number">1.</span> <span class="nav-text">1. Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Introduction-of-background"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Introduction of background</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-process"><span class="nav-number">2.</span> <span class="nav-text">Data process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-data"><span class="nav-number">2.1.</span> <span class="nav-text">Load data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Information"><span class="nav-number">2.2.</span> <span class="nav-text">Information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-preparation"><span class="nav-number">2.3.</span> <span class="nav-text">Data preparation</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text">1. Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-of-background"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Introduction of background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-information"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Data information</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-process"><span class="nav-number">2.</span> <span class="nav-text">2. Data process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#load-data"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Load data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-preparation"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Data preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#missing-values"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 Missing values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negative-values"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 Negative values</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
