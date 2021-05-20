@@ -30,7 +30,7 @@
 <meta property="og:description" content="1. Problem 1.1 Introduction of background 幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-18T15:49:56.000Z">
-<meta property="article:modified_time" content="2021-05-19T03:02:15.372Z">
+<meta property="article:modified_time" content="2021-05-20T14:19:17.059Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Ensemble">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-19 11:02:15" itemprop="dateModified" datetime="2021-05-19T11:02:15+08:00">2021-05-19</time>
+                <time title="Modified: 2021-05-20 22:19:17" itemprop="dateModified" datetime="2021-05-20T22:19:17+08:00">2021-05-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,14 +273,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.8k</span>
+              <span>13k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>5 mins.</span>
+              <span>11 mins.</span>
             </span>
 
         </div>
@@ -436,6 +436,209 @@ dtype: int64</code></pre>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make feature +5</span></span><br><span class="line"><span class="comment">#csv中有复数值：-1、-2、-3、-8，将他们视为有问题的特征，但是不删去</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres1</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x&lt;<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres2</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres3</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres4</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getres5</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> row.values <span class="keyword">if</span> <span class="built_in">type</span>(x)==<span class="built_in">int</span> <span class="keyword">and</span> x==-<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#检查数据</span></span><br><span class="line">data[<span class="string">&#x27;neg1&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres1(row),axis=<span class="number">1</span>)</span><br><span class="line">data.loc[data[<span class="string">&#x27;neg1&#x27;</span>]&gt;<span class="number">20</span>,<span class="string">&#x27;neg1&#x27;</span>] = <span class="number">20</span> <span class="comment">#平滑处理,最多出现20次</span></span><br><span class="line">data[<span class="string">&#x27;neg2&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres2(row),axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;neg3&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres3(row),axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;neg4&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres4(row),axis=<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;neg5&#x27;</span>] = data[data.columns].apply(<span class="keyword">lambda</span> row:getres5(row),axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Process</li>
+</ul>
+<p>记录下含有负值的列名称，然后对比 index.csv 中的信息对这些负值进行填充性处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">neg_name = data.<span class="built_in">min</span>()[data.<span class="built_in">min</span>()&lt;<span class="number">0</span>].index <span class="comment"># 存储 data 中最小的值小于 0 的列名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助 index.csv 查看缺失值的信息</span></span><br><span class="line">data_index = pd.read_csv(<span class="string">&quot;index.csv&quot;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">data_index.set_index(<span class="string">&#x27;变量名&#x27;</span>, inplace = <span class="literal">True</span>)</span><br><span class="line">data_index_column = data_index.columns </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_index.loc[neg_name, data_index_column[<span class="number">1</span>:<span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+问题
+</th>
+<th>
+取值含义
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+nationality
+</th>
+<td>
+您的民族
+</td>
+<td>
+1 = 汉; 2 = 蒙; 3 = 满; 4 = 回; 5 = 藏; 6 = 壮; 7 = ...
+</td>
+</tr>
+<tr>
+<th>
+religion
+</th>
+<td>
+您的宗教信仰-不信仰宗教
+</td>
+<td>
+0 = 否; 1 = 是;
+</td>
+</tr>
+<tr>
+<th>
+religion_freq
+</th>
+<td>
+您参加宗教活动的频繁程度
+</td>
+<td>
+1 = 从来没有参加过; 2 = 一年不到1次; 3 = 一年大概1到2次; 4 = 一年几...
+</td>
+</tr>
+<tr>
+<th>
+edu
+</th>
+<td>
+您目前的最高教育程度（包括目前在读的）
+</td>
+<td>
+1 = 没有受过任何教育; 2 = 私塾、扫盲班; 3 = 小学; 4 = 初中; 5 = ...
+</td>
+</tr>
+<tr>
+<th>
+edu_status
+</th>
+<td>
+您目前的最高教育程度的状态
+</td>
+<td>
+1 = 正在读; 2 = 辍学和中途退学; 3 = 肄业; 4 = 毕业;
+</td>
+</tr>
+<tr>
+<th>
+...
+</th>
+<td>
+...
+</td>
+<td>
+...
+</td>
+</tr>
+<tr>
+<th>
+public_service_5
+</th>
+<td>
+您对下列公共服务其他各领域的满意度-劳动就业
+</td>
+<td>
+总分100
+</td>
+</tr>
+<tr>
+<th>
+public_service_6
+</th>
+<td>
+您对下列公共服务其他各领域的满意度-社会保障
+</td>
+<td>
+总分100
+</td>
+</tr>
+<tr>
+<th>
+public_service_7
+</th>
+<td>
+您对下列公共服务其他各领域的满意度-低保，灾害，流浪乞讨，残疾，孤儿救助等
+</td>
+<td>
+总分100
+</td>
+</tr>
+<tr>
+<th>
+public_service_8
+</th>
+<td>
+您对下列公共服务其他各领域的满意度-公共文化与体育
+</td>
+<td>
+总分100
+</td>
+</tr>
+<tr>
+<th>
+public_service_9
+</th>
+<td>
+您对下列公共服务其他各领域的满意度-城乡基础设施
+</td>
+<td>
+总分100
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+100 rows × 2 columns
+</p>
+<ul>
+<li><p>填充</p>
+<p>根据实际情况，对数据进行填充处理，填充分为如下几种方式：</p>
+<ul>
+<li>根据生活常识进行填充</li>
+<li>根据非负数中的众数进行填充</li>
+<li>根据非负数中的均值进行填充</li>
+</ul></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> neg_name:</span><br><span class="line">    <span class="keyword">if</span>(data[col].loc[data[col]&lt;<span class="number">0</span>].count()&gt;<span class="number">1000</span>):</span><br><span class="line">        print(col, data[col].loc[data[col]&lt;<span class="number">0</span>].count(), sep = <span class="string">&#x27; | &#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>edu_yr | 1679
+marital_1st | 1901
+f_birth | 4664
+m_birth | 4448
+inc_ability | 1325
+inc_exp | 1501
+trust_3 | 1399
+trust_4 | 1413
+trust_6 | 1562
+trust_8 | 1381
+trust_10 | 2451
+trust_11 | 5456
+trust_12 | 3382</code></pre>
+<p>通过上述预处理，可以发现，仅有 5列数据中的负值多余2000</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ===================== 生活常识 ========================</span></span><br><span class="line"><span class="comment"># 民族</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;nationality&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;nationality&#x27;</span>] = <span class="number">1</span> <span class="comment"># 1为汉族</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 宗教</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;religion&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;religion&#x27;</span>] = <span class="number">1</span> <span class="comment"># 1为不信仰宗教</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;religion_freq&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;religion_freq&#x27;</span>] = <span class="number">1</span> <span class="comment"># 1为从来没参加过宗教活动</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ======================= 众数 ============================</span></span><br><span class="line"><span class="comment"># 教育</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;edu&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;edu&#x27;</span>] = data[<span class="string">&#x27;edu&#x27;</span>].mode()[<span class="number">0</span>]  <span class="comment"># 众数为 4，初中</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;edu_status&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;edu_status&#x27;</span>] = data[<span class="string">&#x27;edu_status&#x27;</span>].mode()[<span class="number">0</span>] <span class="comment"># 众数为 4，毕业</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;edu_yr&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;edu_yr&#x27;</span>] = <span class="number">0</span> <span class="comment"># 毕业年份</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 政治面貌</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;political&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;political&#x27;</span>] = data[<span class="string">&#x27;political&#x27;</span>].mode()[<span class="number">0</span>] <span class="comment"># 众数为 1，群众</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 健康</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;health&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;health&#x27;</span>] = data[<span class="string">&#x27;health&#x27;</span>].mode()[<span class="number">0</span>] <span class="comment"># 众数为 4，比较健康</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;health_problem&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;health_problem&#x27;</span>] = data[<span class="string">&#x27;health_problem&#x27;</span>].mode()[<span class="number">0</span>] <span class="comment"># 众数为 4，比较健康</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 沮丧</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;depression&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;depression&#x27;</span>] = data[<span class="string">&#x27;depression&#x27;</span>].mode()[<span class="number">0</span>] <span class="comment"># 众数为 4，很少</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 媒体：报纸、杂志、广播、电视、互联网、手机定值消息</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">    col = <span class="string">&#x27;media_&#x27;</span> + <span class="built_in">str</span>(i+<span class="number">1</span>)</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>] <span class="comment"># 以众数填充</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">data.loc[data[&#x27;media_1&#x27;]&lt;0,&#x27;media_1&#x27;] = data[&#x27;media_1&#x27;].mode().values # 众数为1，从不</span></span><br><span class="line"><span class="string">data.loc[data[&#x27;media_2&#x27;]&lt;0,&#x27;media_2&#x27;] = data[&#x27;media_2&#x27;].mode().values # 众数为1，从不</span></span><br><span class="line"><span class="string">data.loc[data[&#x27;media_3&#x27;]&lt;0,&#x27;media_3&#x27;] = data[&#x27;media_3&#x27;].mode().values # 众数为1，从不</span></span><br><span class="line"><span class="string">data.loc[data[&#x27;media_4&#x27;]&lt;0,&#x27;media_4&#x27;] = data[&#x27;media_4&#x27;].mode().values # 众数为4，经常</span></span><br><span class="line"><span class="string">data.loc[data[&#x27;media_5&#x27;]&lt;0,&#x27;media_5&#x27;] = data[&#x27;media_5&#x27;].mode().values # 众数为1，从不</span></span><br><span class="line"><span class="string">data.loc[data[&#x27;media_6&#x27;]&lt;0,&#x27;media_6&#x27;] = data[&#x27;media_6&#x27;].mode().values # 众数为1，经常</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 空闲：看碟、看电影、逛街购物、读书、文化活动等共12项</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">12</span>):</span><br><span class="line">    col = <span class="string">&#x27;leisure_&#x27;</span> + <span class="built_in">str</span>(i+<span class="number">1</span>)</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>] <span class="comment"># 以众数填充</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">socialize、relax、learn、social_neighbor、learn、social_neighbor、</span></span><br><span class="line"><span class="string">social_friend、socia_outing、equity、class、class_10_before、</span></span><br><span class="line"><span class="string">class_10_after、class_14、work_status、work_yr、work_type、work_manage、</span></span><br><span class="line"><span class="string">insur_1、insur_2、insur_3、insur_4</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">29</span>, <span class="number">48</span>):</span><br><span class="line">    col = neg_name[i]</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>] <span class="comment"># 以众数填充</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;socialize&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;socialize&#x27;</span>] = data[<span class="string">&#x27;socialize&#x27;</span>].mode()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 收入状态</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">49</span>, <span class="number">56</span>):</span><br><span class="line">    col = neg_name[i]</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>] <span class="comment"># 以众数填充</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;socialize&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;socialize&#x27;</span>] = data[<span class="string">&#x27;socialize&#x27;</span>].mode()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">58</span>, <span class="number">64</span>):</span><br><span class="line">    col = neg_name[i]</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 信任</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">77</span>, <span class="number">100</span>):</span><br><span class="line">    col = neg_name[i]</span><br><span class="line">    <span class="comment"># 考虑到 trust 中包含较多负数，故考虑在大于零的数中取众数</span></span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[name].loc[data[name]&gt;<span class="number">0</span>].mode()[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># ========================= 均值 ==========================</span></span><br><span class="line"><span class="comment"># 收入</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;income&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;income&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>].mean() <span class="comment"># 取均值填充收入</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 家庭收入：49列</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;family_income&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;family_income&#x27;</span>] = data[<span class="string">&#x27;family_income&#x27;</span>].mean() </span><br><span class="line"></span><br><span class="line"><span class="comment"># 预期收入：76</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;inc_exp&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;inc_exp&#x27;</span>] = data[<span class="string">&#x27;inc_exp&#x27;</span>].mean() </span><br><span class="line"></span><br><span class="line"><span class="comment"># ======================== 0 填充 ===========================</span></span><br><span class="line"><span class="comment"># 婚姻：56-57</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;marital_1st&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;marital_1st&#x27;</span>] = <span class="number">0</span> <span class="comment"># 首次结婚</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;marital_now&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;marital_now&#x27;</span>] = <span class="number">0</span> <span class="comment"># 现在</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 父亲：64</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;f_birth&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;f_birth&#x27;</span>] = <span class="number">0</span> <span class="comment"># 出生年份</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">65</span>, <span class="number">68</span>):</span><br><span class="line">    col = neg_name[i]</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>]<span class="comment"># 众数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 母亲：68</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;m_birth&#x27;</span>]&lt;<span class="number">0</span>,<span class="string">&#x27;m_birth&#x27;</span>] = <span class="number">0</span> <span class="comment"># 出生年份</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">69</span>, <span class="number">76</span>):</span><br><span class="line">    col = neg_name[i]</span><br><span class="line">    data.loc[data[col]&lt;<span class="number">0</span>,col] = data[col].mode()[<span class="number">0</span>] <span class="comment"># 众数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>确认负值处理完成</li>
+</ul>
+<p>对所有的列进行查看，确认是否所有的列中的负值都已处理完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">neg_count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> name_data: <span class="comment"># 对所有列名称进行迭代</span></span><br><span class="line">    <span class="keyword">if</span>(data[col].loc[data[col]&lt;<span class="number">0</span>].count()&gt;<span class="number">0</span>):</span><br><span class="line">        neg_count += <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> neg_count != <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">&#x27;&#123;&#125; columns still have Negative values!&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;Congratulations! No columns have negative values!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Congratulations! No columns have negative values!</code></pre>
+<p>可以发现所有的负值都已处理完成</p>
+<h3 id="special-infromation-process">2.3.3 Special infromation process</h3>
+<ul>
+<li>Age strafitication</li>
+</ul>
+<p>考虑到年龄对于收入水平、教育水平等都有重要的影响，因此，根据表格信息<code>survey_time</code> 和 <code>birth</code> 两列的信息计算年龄，并对年龄进行分段。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Calculate age</span></span><br><span class="line">data[<span class="string">&#x27;survey_time&#x27;</span>] = pd.to_datetime(data[<span class="string">&#x27;survey_time&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%Y-%m-%d&#x27;</span>, </span><br><span class="line">                                errors = <span class="string">&#x27;coerce&#x27;</span>) <span class="comment"># 强制转换</span></span><br><span class="line">data[<span class="string">&#x27;survey_time&#x27;</span>] = data[<span class="string">&#x27;survey_time&#x27;</span>].dt.year <span class="comment"># 截取年份，用于计算年龄</span></span><br><span class="line">data[<span class="string">&#x27;age&#x27;</span>] = data[<span class="string">&#x27;survey_time&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Age strafitication</span></span><br><span class="line">bins = [<span class="number">0</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">50</span>, <span class="number">63</span>, <span class="number">100</span>]</span><br><span class="line">data[<span class="string">&#x27;age_bin&#x27;</span>] = pd.cut(data[<span class="string">&#x27;age&#x27;</span>], bins, labels = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) <span class="comment"># 分层</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Data augmentation</p>
+<p>为了挖掘更多信息，我们需要进一步分析每个特征之间的关系，进行数据增广。经过仔细分析，加入了如下特征：</p>
+<ul>
+<li>第一次结婚年龄</li>
+<li>最近结婚年龄</li>
+<li>是否再婚</li>
+<li>配偶年龄</li>
+<li>配偶年龄差</li>
+<li>各种收入比（与配偶之间的收入比、十年后预期收入与现在的收入比等）</li>
+<li>收入与住房买诺记比（包括10年后期望收入等）</li>
+<li>社会阶级（10年后的社会阶级、14年后的社会阶级等）</li>
+<li>悠闲指数</li>
+<li>满意指数</li>
+<li>信任指数</li>
+</ul></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一次结婚年龄</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_1stbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_1st&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line">data.loc[data[new_col]&lt;<span class="number">0</span>, new_col] = data[new_col].mode()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近结婚年龄</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_nowtbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_now&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line">data.loc[data[new_col]&lt;<span class="number">0</span>, new_col] = data[new_col].mode()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否再婚</span></span><br><span class="line">new_col = <span class="string">&#x27;mar&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_nowtbir&#x27;</span>] - data[<span class="string">&#x27;marital_1stbir&#x27;</span>]</span><br><span class="line">data.loc[data[new_col]&lt;<span class="number">0</span>, new_col] = data[new_col].mode()[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -551,7 +754,7 @@ dtype: int64</code></pre>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text">1. Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-of-background"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Introduction of background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-information"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Data information</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-process"><span class="nav-number">2.</span> <span class="nav-text">2. Data process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#load-data"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Load data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-preparation"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Data preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#missing-values"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 Missing values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negative-values"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 Negative values</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text">1. Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-of-background"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Introduction of background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-information"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Data information</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-process"><span class="nav-number">2.</span> <span class="nav-text">2. Data process</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#load-data"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Load data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-preparation"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Data preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#missing-values"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 Missing values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negative-values"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 Negative values</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#special-infromation-process"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 Special infromation process</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
