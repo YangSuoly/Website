@@ -70,6 +70,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Ensemble-Blending</title>
+    <url>/2021/05/11/Ensemble-Blending/</url>
+    <content><![CDATA[<h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
+<p>Blending 方法可以看是一个简化版的 Stacking 方法，blend 的中文意思是 “混合”，这就很好地诠释了 Blending 方法的思想 —— 不同模型的混合，也就是集成的本意。该方法仅在验证集中进行预测，如下为 Blending 的步骤：</p>
+<a id="more"></a>
+<ol>
+<li>将数据划分为 train set 和 test set，其中，train set 需要进一步被细分为 Training set 和 validation set (见 Fig. 1 (i)，图片来源：<a href="https://courses.analyticsvidhya.com/courses/take/ensemble-learning-and-ensemble-learning-techniques/texts/11126029-blending">Analytics vidhya</a>)；</li>
+<li>构建多个模型 （第一层），并使用细分后的 Training set 作为输入数据来训练这些模型，并用训练好的模型来预测 validation set 和 test set，得到 val_pred 和 test_pred；</li>
+<li>再次构建模型（第二层），并将 val_pred 视为训练集来训练该层的模型(见 Fig. 1 (ii)；</li>
+<li>用训练好的模型来对测试集 (test_pred) 进行预测，得到预测结果 test prediction 记为整个 Blending 集成学习的预测结果。</li>
+</ol>
+<p><img src="https://z3.ax1x.com/2021/05/11/gUN4RU.png" alt="" /></p>
+<center>Fig.1 Bleding procedutre</center>
+<h1 id="2-sample"><a class="markdownIt-Anchor" href="#2-sample"></a> 2. Sample</h1>
+<h2 id="21-steps"><a class="markdownIt-Anchor" href="#21-steps"></a> 2.1 Steps</h2>
+<p>为了对 Blending 有进一步的了解，参考 Analytics vidhya, 构建了一个两层的 Blending 模型，其中第一层由决策树和 KNN 组成，对这两个模型用 Training set 进行预测，并用训练好的模型预测 Valitation set 和 test set。之后构建一个逻辑回归利用上述两个预测结果进行预测训练。具体步骤如下：</p>
+<ul>
+<li>
+<p>Import Module</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Creating Datasets</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;The shape of training X:&quot;</span>, x_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of training y:&quot;</span>, y_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test set:&quot;</span>, x_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test y:&quot;</span>, y_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation X:&quot;</span>, x_val.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation y:&quot;</span>, y_val.shape)</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">The shape of training X: (<span class="number">5600</span>, <span class="number">2</span>)</span><br><span class="line">The shape of training y: (<span class="number">5600</span>,)</span><br><span class="line">The shape of test <span class="built_in">set</span>: (<span class="number">2000</span>, <span class="number">2</span>)</span><br><span class="line">The shape of test y: (<span class="number">2000</span>,)</span><br><span class="line">The shape of validation X: (<span class="number">2400</span>, <span class="number">2</span>)</span><br><span class="line">The shape of validation y: (<span class="number">2400</span>,)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>First Layer</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Second Layer</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Forecasting Results</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.0</span></span><br><span class="line">array([<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="22-complete-codes"><a class="markdownIt-Anchor" href="#22-complete-codes"></a> 2.2 Complete codes</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Inporting modules</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating datasets</span></span><br><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Constructing model</span></span><br><span class="line"><span class="comment">## First layer</span></span><br><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Second layer</span></span><br><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print forecasting results</span></span><br><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Ensemble</category>
+        <category>Blending</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Ensemble</tag>
+        <tag>Sklearn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ensemble-Stacking</title>
     <url>/2021/05/13/Ensemble-Stacking/</url>
     <content><![CDATA[<h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
@@ -200,62 +256,6 @@
       <categories>
         <category>Ensemble</category>
         <category>Stacking</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Ensemble</tag>
-        <tag>Sklearn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ensemble-Blending</title>
-    <url>/2021/05/11/Ensemble-Blending/</url>
-    <content><![CDATA[<h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
-<p>Blending 方法可以看是一个简化版的 Stacking 方法，blend 的中文意思是 “混合”，这就很好地诠释了 Blending 方法的思想 —— 不同模型的混合，也就是集成的本意。该方法仅在验证集中进行预测，如下为 Blending 的步骤：</p>
-<a id="more"></a>
-<ol>
-<li>将数据划分为 train set 和 test set，其中，train set 需要进一步被细分为 Training set 和 validation set (见 Fig. 1 (i)，图片来源：<a href="https://courses.analyticsvidhya.com/courses/take/ensemble-learning-and-ensemble-learning-techniques/texts/11126029-blending">Analytics vidhya</a>)；</li>
-<li>构建多个模型 （第一层），并使用细分后的 Training set 作为输入数据来训练这些模型，并用训练好的模型来预测 validation set 和 test set，得到 val_pred 和 test_pred；</li>
-<li>再次构建模型（第二层），并将 val_pred 视为训练集来训练该层的模型(见 Fig. 1 (ii)；</li>
-<li>用训练好的模型来对测试集 (test_pred) 进行预测，得到预测结果 test prediction 记为整个 Blending 集成学习的预测结果。</li>
-</ol>
-<p><img src="https://z3.ax1x.com/2021/05/11/gUN4RU.png" alt="" /></p>
-<center>Fig.1 Bleding procedutre</center>
-<h1 id="2-sample"><a class="markdownIt-Anchor" href="#2-sample"></a> 2. Sample</h1>
-<h2 id="21-steps"><a class="markdownIt-Anchor" href="#21-steps"></a> 2.1 Steps</h2>
-<p>为了对 Blending 有进一步的了解，参考 Analytics vidhya, 构建了一个两层的 Blending 模型，其中第一层由决策树和 KNN 组成，对这两个模型用 Training set 进行预测，并用训练好的模型预测 Valitation set 和 test set。之后构建一个逻辑回归利用上述两个预测结果进行预测训练。具体步骤如下：</p>
-<ul>
-<li>
-<p>Import Module</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Creating Datasets</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;The shape of training X:&quot;</span>, x_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of training y:&quot;</span>, y_train.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test set:&quot;</span>, x_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of test y:&quot;</span>, y_test.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation X:&quot;</span>, x_val.shape)</span><br><span class="line">print(<span class="string">&quot;The shape of validation y:&quot;</span>, y_val.shape)</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">The shape of training X: (<span class="number">5600</span>, <span class="number">2</span>)</span><br><span class="line">The shape of training y: (<span class="number">5600</span>,)</span><br><span class="line">The shape of test <span class="built_in">set</span>: (<span class="number">2000</span>, <span class="number">2</span>)</span><br><span class="line">The shape of test y: (<span class="number">2000</span>,)</span><br><span class="line">The shape of validation X: (<span class="number">2400</span>, <span class="number">2</span>)</span><br><span class="line">The shape of validation y: (<span class="number">2400</span>,)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>First Layer</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Second Layer</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Forecasting Results</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.0</span></span><br><span class="line">array([<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="22-complete-codes"><a class="markdownIt-Anchor" href="#22-complete-codes"></a> 2.2 Complete codes</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Inporting modules</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_blobs</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating datasets</span></span><br><span class="line">data, target = make_blobs(n_samples = <span class="number">10000</span>, centers = <span class="number">2</span>,</span><br><span class="line">                    random_state = <span class="number">1</span>, cluster_std = <span class="number">1.0</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creatint test set and temporary train set, test_percent = 20%</span></span><br><span class="line">x_train1,x_test,y_train1,y_test = train_test_split(data,</span><br><span class="line">                  target, test_size = <span class="number">0.2</span>, random_state = <span class="number">1</span>)</span><br><span class="line"><span class="comment"># Spliting temporary train set into train set and validation set, validation_percent = 80%*30%</span></span><br><span class="line">x_train,x_val,y_train,y_val = train_test_split(X_train1,</span><br><span class="line">                  y_train1, test_size = <span class="number">0.3</span>, random_state = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Constructing model</span></span><br><span class="line"><span class="comment">## First layer</span></span><br><span class="line">model1 = tree.DecisionTreeClassifier()</span><br><span class="line">model1.fit(x_train, y_train)</span><br><span class="line">val_pred1=model1.predict(x_val)</span><br><span class="line">test_pred1=model1.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred1=pd.DataFrame(val_pred1)</span><br><span class="line">test_pred1=pd.DataFrame(test_pred1)</span><br><span class="line"></span><br><span class="line">model2 = KNeighborsClassifier()</span><br><span class="line">model2.fit(x_train,y_train)</span><br><span class="line">val_pred2=model2.predict(x_val)</span><br><span class="line">test_pred2=model2.predict(x_test)</span><br><span class="line"></span><br><span class="line">val_pred2=pd.DataFrame(val_pred2)</span><br><span class="line">test_pred2=pd.DataFrame(test_pred2)</span><br><span class="line"></span><br><span class="line"><span class="comment">## Second layer</span></span><br><span class="line">df_val=pd.concat([pd.DataFrame(x_val), val_pred1, val_pred2],axis=<span class="number">1</span>)</span><br><span class="line">df_test=pd.concat([pd.DataFrame(x_test),test_pred1,test_pred2],axis=<span class="number">1</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(df_val,y_val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print forecasting results</span></span><br><span class="line">model.score(df_test,y_test)</span><br><span class="line">cross_val_score(model,df_test,y_test,cv=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Ensemble</category>
-        <category>Blending</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -905,6 +905,19 @@
       </tags>
   </entry>
   <entry>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pandas</title>
     <url>/2020/11/27/Pandas/</url>
     <content><![CDATA[<h1 id="1-series"><a class="markdownIt-Anchor" href="#1-series"></a> 1 Series</h1>
@@ -1156,19 +1169,6 @@
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
