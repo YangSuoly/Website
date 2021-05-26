@@ -801,6 +801,20 @@ center
       </tags>
   </entry>
   <entry>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pandas</title>
     <url>/2020/11/27/Pandas/</url>
     <content><![CDATA[<h1 id="series">1 Series</h1>
@@ -940,20 +954,6 @@ fig. 1 difference of ignoring index
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -2666,9 +2666,14 @@ dtype: int64</code></pre>
 <li>Process</li>
 </ul>
 <p>记录下含有负值的列名称，然后对比 index.csv 中的信息对这些负值进行填充性处理。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">neg_name = data.<span class="built_in">min</span>()[data.<span class="built_in">min</span>()&lt;<span class="number">0</span>].index <span class="comment"># 存储 data 中最小的值小于 0 的列名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助 index.csv 查看缺失值的信息</span></span><br><span class="line">data_index = pd.read_csv(<span class="string">&quot;index.csv&quot;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">data_index.set_index(<span class="string">&#x27;变量名&#x27;</span>, inplace = <span class="literal">True</span>)</span><br><span class="line">data_index_column = data_index.columns </span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data_index.loc[neg_name, data_index_column[<span class="number">1</span>:<span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
-<p>Results:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先将问卷时间变为年份</span></span><br><span class="line">data[<span class="string">&#x27;survey_time&#x27;</span>] = pd.to_datetime(data[<span class="string">&#x27;survey_time&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%Y-%m-%d&#x27;</span>, </span><br><span class="line">                                errors = <span class="string">&#x27;coerce&#x27;</span>) <span class="comment"># 强制转换</span></span><br><span class="line">data[<span class="string">&#x27;survey_time&#x27;</span>] = data[<span class="string">&#x27;survey_time&#x27;</span>].dt.year <span class="comment"># 截取年份，用于计算年龄</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有含有负值的列</span></span><br><span class="line">neg_name = data.<span class="built_in">min</span>()[data.<span class="built_in">min</span>()&lt;<span class="number">0</span>].index <span class="comment"># 存储 data 中最小的值小于 0 的列名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 借助 index.csv 查看缺失值的信息</span></span><br><span class="line">data_index = pd.read_csv(<span class="string">&quot;index.csv&quot;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">data_index.set_index(<span class="string">&#x27;变量名&#x27;</span>, inplace = <span class="literal">True</span>)</span><br><span class="line">data_index_column = data_index.columns </span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;There are &#123;&#125; columns have negative values&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(neg_name)))</span><br></pre></td></tr></table></figure>
+<pre><code>There are 100 columns have negative values</code></pre>
+<p>可以到整个数据表中有 <code>100</code> 列中含有负值。</p>
+<ul>
+<li>查看字段详细信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data_index.loc[neg_name, data_index_column[<span class="number">1</span>:<span class="number">3</span>]].head()</span><br></pre></td></tr></table></figure>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -2738,77 +2743,8 @@ edu_status
 1 = 正在读; 2 = 辍学和中途退学; 3 = 肄业; 4 = 毕业;
 </td>
 </tr>
-<tr>
-<th>
-...
-</th>
-<td>
-...
-</td>
-<td>
-...
-</td>
-</tr>
-<tr>
-<th>
-public_service_5
-</th>
-<td>
-您对下列公共服务其他各领域的满意度-劳动就业
-</td>
-<td>
-总分100
-</td>
-</tr>
-<tr>
-<th>
-public_service_6
-</th>
-<td>
-您对下列公共服务其他各领域的满意度-社会保障
-</td>
-<td>
-总分100
-</td>
-</tr>
-<tr>
-<th>
-public_service_7
-</th>
-<td>
-您对下列公共服务其他各领域的满意度-低保，灾害，流浪乞讨，残疾，孤儿救助等
-</td>
-<td>
-总分100
-</td>
-</tr>
-<tr>
-<th>
-public_service_8
-</th>
-<td>
-您对下列公共服务其他各领域的满意度-公共文化与体育
-</td>
-<td>
-总分100
-</td>
-</tr>
-<tr>
-<th>
-public_service_9
-</th>
-<td>
-您对下列公共服务其他各领域的满意度-城乡基础设施
-</td>
-<td>
-总分100
-</td>
-</tr>
 </tbody>
 </table>
-<p>
-100 rows × 2 columns
-</p>
 <ul>
 <li><p>填充</p>
 <p>根据实际情况，对数据进行填充处理，填充分为如下几种方式：</p>
@@ -2838,15 +2774,15 @@ trust_12 | 3382</code></pre>
 <li>确认负值处理完成</li>
 </ul>
 <p>对所有的列进行查看，确认是否所有的列中的负值都已处理完成。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">neg_count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> name_data: <span class="comment"># 对所有列名称进行迭代</span></span><br><span class="line">    <span class="keyword">if</span>(data[col].loc[data[col]&lt;<span class="number">0</span>].count()&gt;<span class="number">0</span>):</span><br><span class="line">        neg_count += <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> neg_count != <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">&#x27;&#123;&#125; columns still have Negative values!&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;Congratulations! No columns have negative values!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">neg_count = <span class="built_in">len</span>(data.<span class="built_in">min</span>()[data.<span class="built_in">min</span>()&lt;<span class="number">0</span>].index) <span class="comment"># 记录负值列的个数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> neg_count != <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">&#x27;&#123;&#125; columns still have Negative values!&#x27;</span>.<span class="built_in">format</span>(neg_count))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;Congratulations! No columns have negative values!&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>Congratulations! No columns have negative values!</code></pre>
 <p>可以发现所有的负值都已处理完成</p>
-<h3 id="special-infromation-process">2.3.3 Special infromation process</h3>
+<h3 id="special-infromation-process">Special infromation process</h3>
 <ul>
 <li>Age strafitication</li>
 </ul>
 <p>考虑到年龄对于收入水平、教育水平等都有重要的影响，因此，根据表格信息<code>survey_time</code> 和 <code>birth</code> 两列的信息计算年龄，并对年龄进行分段。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Calculate age</span></span><br><span class="line">data[<span class="string">&#x27;survey_time&#x27;</span>] = pd.to_datetime(data[<span class="string">&#x27;survey_time&#x27;</span>], <span class="built_in">format</span> = <span class="string">&#x27;%Y-%m-%d&#x27;</span>, </span><br><span class="line">                                errors = <span class="string">&#x27;coerce&#x27;</span>) <span class="comment"># 强制转换</span></span><br><span class="line">data[<span class="string">&#x27;survey_time&#x27;</span>] = data[<span class="string">&#x27;survey_time&#x27;</span>].dt.year <span class="comment"># 截取年份，用于计算年龄</span></span><br><span class="line">data[<span class="string">&#x27;age&#x27;</span>] = data[<span class="string">&#x27;survey_time&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Age strafitication</span></span><br><span class="line">bins = [<span class="number">0</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">50</span>, <span class="number">63</span>, <span class="number">100</span>]</span><br><span class="line">data[<span class="string">&#x27;age_bin&#x27;</span>] = pd.cut(data[<span class="string">&#x27;age&#x27;</span>], bins, labels = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) <span class="comment"># 分层</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Calculate age</span></span><br><span class="line">data[<span class="string">&#x27;age&#x27;</span>] = data[<span class="string">&#x27;survey_time&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Age strafitication</span></span><br><span class="line">bins = [<span class="number">0</span>, <span class="number">17</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">50</span>, <span class="number">63</span>, <span class="number">100</span>]</span><br><span class="line">data[<span class="string">&#x27;age_bin&#x27;</span>] = pd.cut(data[<span class="string">&#x27;age&#x27;</span>], bins, labels = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) <span class="comment"># 分层</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>Data augmentation</p>
 <p>为了挖掘更多信息，我们需要进一步分析每个特征之间的关系，进行数据增广。经过仔细分析，加入了如下特征：</p>
@@ -2864,7 +2800,7 @@ trust_12 | 3382</code></pre>
 <li>信任指数</li>
 </ul></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 第一次结婚年龄</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_1stbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_1st&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line">data.loc[data[new_col]&lt;<span class="number">0</span>, new_col] = data[new_col].mode()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近结婚年龄</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_nowtbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_now&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line">data.loc[data[new_col]&lt;<span class="number">0</span>, new_col] = data[new_col].mode()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否再婚</span></span><br><span class="line">new_col = <span class="string">&#x27;mar&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_nowtbir&#x27;</span>] - data[<span class="string">&#x27;marital_1stbir&#x27;</span>]</span><br><span class="line">data.loc[data[new_col]&lt;<span class="number">0</span>, new_col] = data[new_col].mode()[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 第一次结婚年龄 143</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_1stbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_1st&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最近结婚年龄 144</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_nowtbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_now&#x27;</span>] - data[<span class="string">&#x27;birth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否再婚 145</span></span><br><span class="line">new_col = <span class="string">&#x27;mar&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_nowtbir&#x27;</span>] - data[<span class="string">&#x27;marital_1stbir&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配偶年龄 146</span></span><br><span class="line">new_col = <span class="string">&#x27;marital_sbir&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_now&#x27;</span>]-data[<span class="string">&#x27;s_birth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配偶年龄差 147</span></span><br><span class="line">new_col = <span class="string">&#x27;age__&#x27;</span></span><br><span class="line">data[new_col] = data[<span class="string">&#x27;marital_nowtbir&#x27;</span>] - data[<span class="string">&#x27;marital_sbir&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 收入比 147+7 = 154</span></span><br><span class="line">data[<span class="string">&#x27;income/s_income&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]/(data[<span class="string">&#x27;s_income&#x27;</span>]+<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;income+s_income&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]+(data[<span class="string">&#x27;s_income&#x27;</span>]+<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;income/family_income&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]/(data[<span class="string">&#x27;family_income&#x27;</span>]+<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;all_income/family_income&#x27;</span>] = (data[<span class="string">&#x27;income&#x27;</span>]+data[<span class="string">&#x27;s_income&#x27;</span>])/(data[<span class="string">&#x27;family_income&#x27;</span>]+<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;income/inc_exp&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]/(data[<span class="string">&#x27;inc_exp&#x27;</span>]+<span class="number">1</span>)</span><br><span class="line">data[<span class="string">&#x27;family_income/m&#x27;</span>] = data[<span class="string">&#x27;family_income&#x27;</span>]/(data[<span class="string">&#x27;family_m&#x27;</span>]+<span class="number">0.01</span>)</span><br><span class="line">data[<span class="string">&#x27;income/m&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]/(data[<span class="string">&#x27;family_m&#x27;</span>]+<span class="number">0.01</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 收入/面积比 154+4=158</span></span><br><span class="line">data[<span class="string">&#x27;income/floor_area&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]/(data[<span class="string">&#x27;floor_area&#x27;</span>]+<span class="number">0.01</span>)</span><br><span class="line">data[<span class="string">&#x27;all_income/floor_area&#x27;</span>] = (data[<span class="string">&#x27;income&#x27;</span>]+data[<span class="string">&#x27;s_income&#x27;</span>])/(data[<span class="string">&#x27;floor_area&#x27;</span>]+<span class="number">0.01</span>)</span><br><span class="line">data[<span class="string">&#x27;family_income/floor_area&#x27;</span>] = data[<span class="string">&#x27;family_income&#x27;</span>]/(data[<span class="string">&#x27;floor_area&#x27;</span>]+<span class="number">0.01</span>)</span><br><span class="line">data[<span class="string">&#x27;floor_area/m&#x27;</span>] = data[<span class="string">&#x27;floor_area&#x27;</span>]/(data[<span class="string">&#x27;family_m&#x27;</span>]+<span class="number">0.01</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># class 158+3=161</span></span><br><span class="line">data[<span class="string">&#x27;class_10_diff&#x27;</span>] = (data[<span class="string">&#x27;class_10_after&#x27;</span>] - data[<span class="string">&#x27;class&#x27;</span>])</span><br><span class="line">data[<span class="string">&#x27;class_diff&#x27;</span>] = data[<span class="string">&#x27;class&#x27;</span>] - data[<span class="string">&#x27;class_10_before&#x27;</span>]</span><br><span class="line">data[<span class="string">&#x27;class_14_diff&#x27;</span>] = data[<span class="string">&#x27;class&#x27;</span>] - data[<span class="string">&#x27;class_14&#x27;</span>]</span><br><span class="line"><span class="comment"># 悠闲指数 162</span></span><br><span class="line">leisure_fea_lis = [<span class="string">&#x27;leisure_&#x27;</span>+<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">13</span>)]</span><br><span class="line">data[<span class="string">&#x27;leisure_sum&#x27;</span>] = data[leisure_fea_lis].<span class="built_in">sum</span>(axis=<span class="number">1</span>) <span class="comment">#skew</span></span><br><span class="line"><span class="comment"># 满意指数 163</span></span><br><span class="line">public_service_fea_lis = [<span class="string">&#x27;public_service_&#x27;</span>+<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10</span>)]</span><br><span class="line">data[<span class="string">&#x27;public_service_sum&#x27;</span>] = data[public_service_fea_lis].<span class="built_in">sum</span>(axis=<span class="number">1</span>) <span class="comment">#skew</span></span><br><span class="line"><span class="comment"># 信任指数 164</span></span><br><span class="line">trust_fea_lis = [<span class="string">&#x27;trust_&#x27;</span>+<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">14</span>)]</span><br><span class="line">data[<span class="string">&#x27;trust_sum&#x27;</span>] = data[trust_fea_lis].<span class="built_in">sum</span>(axis=<span class="number">1</span>) <span class="comment">#skew</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># province mean 164+13=177</span></span><br><span class="line">data[<span class="string">&#x27;province_income_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;income&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_family_income_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;family_income&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_equity_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;equity&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_depression_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;depression&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_floor_area_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;floor_area&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_health_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;health&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_class_10_diff_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;class_10_diff&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_class_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;class&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_health_problem_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;health_problem&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_family_status_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;family_status&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_leisure_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;leisure_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_public_service_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])</span><br><span class="line">[<span class="string">&#x27;public_service_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;province_trust_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;province&#x27;</span>])[<span class="string">&#x27;trust_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line"></span><br><span class="line"><span class="comment"># city mean 177+13=190</span></span><br><span class="line">data[<span class="string">&#x27;city_income_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;income&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_family_income_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;family_income&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_equity_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;equity&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_depression_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;depression&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_floor_area_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;floor_area&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_health_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;health&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_class_10_diff_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;class_10_diff&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_class_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;class&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_health_problem_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;health_problem&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_family_status_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;family_status&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_leisure_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;leisure_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_public_service_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;public_service_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;city_trust_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;city&#x27;</span>])[<span class="string">&#x27;trust_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line"></span><br><span class="line"><span class="comment"># county mean 190 + 13 = 203</span></span><br><span class="line">data[<span class="string">&#x27;county_income_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;income&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_family_income_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;family_income&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_equity_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;equity&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_depression_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;depression&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_floor_area_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;floor_area&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_health_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;health&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_class_10_diff_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;class_10_diff&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_class_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;class&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_health_problem_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;health_problem&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_family_status_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;family_status&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_leisure_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;leisure_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_public_service_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])</span><br><span class="line">[<span class="string">&#x27;public_service_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line">data[<span class="string">&#x27;county_trust_sum_mean&#x27;</span>] = data.groupby([<span class="string">&#x27;county&#x27;</span>])[<span class="string">&#x27;trust_sum&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>).values</span><br><span class="line"></span><br><span class="line"><span class="comment"># ratio 相比同省 203 + 13 =216</span></span><br><span class="line">data[<span class="string">&#x27;income/province&#x27;</span>] = data[<span class="string">&#x27;income&#x27;</span>]/(data[<span class="string">&#x27;province_income_mean&#x27;</span>])</span><br><span class="line">data[<span class="string">&#x27;family_income/province&#x27;</span>] = data[<span class="string">&#x27;family_income&#x27;</span>]/(data[<span class="string">&#x27;province_family_income_mean&#x27;</span>])</span><br><span class="line">data[<span class="string">&#x27;equity/province&#x27;</span>] = data[<span class="string">&#x27;equity&#x27;</span>]/(data[<span class="string">&#x27;province_equity_mean&#x27;</span>])</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Ensemble</category>
