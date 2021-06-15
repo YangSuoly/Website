@@ -1,58 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Conda channel setting</title>
-    <url>/2020/11/23/Conda%20channel%20setting/</url>
-    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
-<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="delete-channel">2 Delete channel</h1>
-<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
-<h1 id="add-channel">3 Add channel</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
-<h1 id="install-package-offline">4 Install package offline</h1>
-<h3 id="conda-install">4.1 Conda install</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
-<h3 id="pip-install-.whl-package">4.2 pip install '.whl' package</h3>
-<p>再命令行窗口用 <code>cd</code> 命令跳转到 <code>whl</code> 文件所在目录，然后使用命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install ***.whl</span><br></pre></td></tr></table></figure>
-<h1 id="virtual-environment">5 Virtual environment</h1>
-<h2 id="steps">5.1 Steps</h2>
-<ul>
-<li><p>Open <code>terminal</code> or <code>Command prompt</code></p></li>
-<li><p>Input <code>D:</code> to enter drive D</p></li>
-<li><p>Then input <code>cd project_dir</code></p></li>
-<li><p>Create a virtual environment</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -m venv &lt;venv name&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="activate-venv">5.2 Activate venv</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.\&lt;venv name&gt;\Scripts\activate <span class="comment"># activate venv</span></span><br><span class="line"></span><br><span class="line">.\venv\Scripts\deactivate <span class="comment"># exit the current venv</span></span><br></pre></td></tr></table></figure>
-<h2 id="import-module">5.3 Import module</h2>
-<ul>
-<li><p>主程序和模块程序在同一目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    `-- test.py</span><br></pre></td></tr></table></figure>
-<p><code>test.py</code>导入模块 <code>mod1</code>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">from</span> mod1 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
-<li><p>主程序所在目录是模块所在目录的父(或祖辈)目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
-<p><code>test1.py</code>中导入模块<code>mod2</code>，需要在<code>mod2</code>文件夹中创建<code>__init__.py</code>文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mod2.mod2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
-<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    |-- sub</span><br><span class="line">    |   `-- test2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
-<p><code>test2.py</code> 中导入模块 <code>mod1</code> 和 <code>mod2</code>，首先需要在 <code>mod2</code> 下建立 <code>__init__.py</code> 文件，<code>src</code> 下不必建立该文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&quot;..&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>从上面可以看出，导入模块关键是能够根据sys.path环境变量的值，找到具体模块的路径</p>
+    <title>DataAnalysis-Describe</title>
+    <url>/2021/06/15/DataAnalysis-Describe/</url>
+    <content><![CDATA[<p><strong>复习</strong>:这门课程得主要目的是通过真实的数据，以实战的方式了解数据分析的流程和熟悉数据分析python的基本操作。知道了课程的目的之后，我们接下来我们要正式的开始数据分析的实战教学，完成kaggle上<a href="https://www.kaggle.com/c/titanic/overview">泰坦尼克的任务</a>，实战数据分析全流程。 这里有两份资料： 教材《Python for Data Analysis》和 baidu.com &amp; google.com（善用搜索引擎）</p>
+<h2 id="第一章数据载入及初步观察">1 第一章：数据载入及初步观察</h2>
+<h3 id="载入数据">1.1 载入数据</h3>
+<p>数据集下载 https://www.kaggle.com/c/titanic/overview</p>
+<h4 id="任务一导入numpy和pandas">1.1.1 任务一：导入numpy和pandas</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> nnp</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<p>【提示】如果加载失败，学会如何在你的python环境下安装numpy和pandas这两个库</p>
+<h4 id="任务二载入数据">1.1.2 任务二：载入数据</h4>
+<ol type="1">
+<li>使用相对路径载入数据<br />
+</li>
+<li>使用绝对路径载入数据</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line">data = pd.read_csv(<span class="string">r&quot;D:\Demo\University\XMU\Python\Artificial-intelligence\Data analysis\第一单元项目集合\train_chinese.csv&quot;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>【提示】相对路径载入报错时，尝试使用os.getcwd()查看当前工作目录。<br />
+【思考】知道数据加载的方法后，试试pd.read_csv()和pd.read_table()的不同，如果想让他们效果一样，需要怎么做？了解一下'.tsv'和'.csv'的不同，如何加载这两个数据集？<br />
+【总结】加载的数据是所有工作的第一步，我们的工作会接触到不同的数据格式（eg:.csv;.tsv;.xlsx）,但是加载的方法和思路都是一样的，在以后工作和做项目的过程中，遇到之前没有碰到的问题，要多多查资料吗，使用googel，了解业务逻辑，明白输入和输出是什么。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure>
+<pre><code>D:\Demo\University\XMU\Python\Artificial-intelligence\Data analysis\第一单元项目集合</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">E 设置 sep</span><br><span class="line">data1 = pd.read_table(<span class="string">&#x27;./train.csv&#x27;</span>, sep = <span class="string">&#x27;,&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="任务三每1000行为一个数据模块逐块读取">1.1.3 任务三：每1000行为一个数据模块，逐块读取</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>【思考】什么是逐块读取？为什么要逐块读取呢？</p>
+<p>【提示】大家可以chunker(数据块)是什么类型？用<code>for</code>循环打印出来出处具体的样子是什么？</p>
+<h4 id="任务四将表头改成中文索引改为乘客id-对于某些英文资料我们可以通过翻译来更直观的熟悉我们的数据">1.1.4 任务四：将表头改成中文，索引改为乘客ID [对于某些英文资料，我们可以通过翻译来更直观的熟悉我们的数据]</h4>
+<p>PassengerId =&gt; 乘客ID<br />
+Survived =&gt; 是否幸存<br />
+Pclass =&gt; 乘客等级(1/2/3等舱位)<br />
+Name =&gt; 乘客姓名<br />
+Sex =&gt; 性别<br />
+Age =&gt; 年龄<br />
+SibSp =&gt; 堂兄弟/妹个数<br />
+Parch =&gt; 父母与小孩个数<br />
+Ticket =&gt; 船票信息<br />
+Fare =&gt; 票价<br />
+Cabin =&gt; 客舱<br />
+Embarked =&gt; 登船港口</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>【思考】所谓将表头改为中文其中一个思路是：将英文列名表头替换成中文。还有其他的方法吗？</p>
+<h3 id="初步观察">1.2 初步观察</h3>
+<p>导入数据后，你可能要对数据的整体结构和样例进行概览，比如说，数据大小、有多少列，各列都是什么格式的，是否包含null等</p>
+<h4 id="任务一查看数据的基本信息">1.2.1 任务一：查看数据的基本信息</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<p>【提示】有多个函数可以这样做，你可以做一下总结</p>
+<h4 id="任务二观察表格前10行的数据和后15行的数据">1.2.2 任务二：观察表格前10行的数据和后15行的数据</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<h4 id="任务三判断数据是否为空为空的地方返回true其余地方返回false">1.2.4 任务三：判断数据是否为空，为空的地方返回True，其余地方返回False</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<p>【总结】上面的操作都是数据分析中对于数据本身的观察</p>
+<p>【思考】对于一个数据，还可以从哪些方面来观察？找找答案，这个将对下面的数据分析有很大的帮助</p>
+<h3 id="保存数据">1.3 保存数据</h3>
+<h4 id="任务一将你加载并做出改变的数据在工作目录下保存为一个新文件train_chinese.csv">1.3.1 任务一：将你加载并做出改变的数据，在工作目录下保存为一个新文件train_chinese.csv</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#写入代码# 注意：不同的操作系统保存下来可能会有乱码。大家可以加入`encoding=&#x27;GBK&#x27; 或者 ’encoding = ’uft-8‘‘`</span></span><br></pre></td></tr></table></figure>
+<p>【总结】数据的加载以及入门，接下来就要接触数据本身的运算，我们将主要掌握numpy和pandas在工作和项目场景的运用。</p>
 ]]></content>
       <categories>
-        <category>Notes</category>
-        <category>Software</category>
+        <category>Data Analysis</category>
+        <category>Descibe</category>
       </categories>
       <tags>
+        <tag>Data Analysis</tag>
         <tag>Python</tag>
-        <tag>Anaconda</tag>
       </tags>
   </entry>
   <entry>
@@ -718,103 +732,6 @@ center
       </tags>
   </entry>
   <entry>
-    <title>Numpy</title>
-    <url>/2020/11/29/Numpy/</url>
-    <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.__version__) <span class="comment"># 查看 numpy 版本</span></span><br></pre></td></tr></table></figure>
-<p>NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N 维数组对象 ndarray ( N-dimensional array )。</p>
-<a id="more"></a>
-<h1 id="create-ndarray">2 Create ndarray</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array_1x6 = np.array([<span class="number">1.0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], dtype = np.float64) <span class="comment"># 用 list 创建 array，可以通过 dtype 参数指定元素的类型  </span></span><br><span class="line"></span><br><span class="line">print(array_1x6.dtype)</span><br><span class="line"></span><br><span class="line"><span class="comment"># number of dimension</span></span><br><span class="line">print(<span class="string">&#x27;number of dim: &#x27;</span>,array_1x6.ndim)</span><br><span class="line">print(<span class="string">&#x27;shape: &#x27;</span>,array_1x6.shape)</span><br><span class="line">print(<span class="string">&#x27;size: &#x27;</span>,array_1x6.size)</span><br><span class="line"><span class="comment"># total number of elements</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(array_1x6) <span class="comment"># 空格分隔元素</span></span><br><span class="line">[<span class="number">1.</span> <span class="number">2.</span> <span class="number">3.</span> <span class="number">4.</span> <span class="number">5.</span> <span class="number">6.</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="special-ndarray">4 Special ndarray</h1>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>零矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a1 = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 零矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a2 = np.ones((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 1 矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>空矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a3 = np.empty((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 未初始化的空矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>对角矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
-<li><p>线段</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a5 = np.arange(<span class="number">12</span>)</span><br><span class="line">a6 = np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>) <span class="comment"># 5 个元素的线段</span></span><br><span class="line">print(a6 &lt; <span class="number">5</span>) <span class="comment"># 返回布尔类型的矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>对角矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
-<li><p>随机矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.random.random((<span class="number">2</span>, <span class="number">4</span>)) <span class="comment"># 0-1的随机数</span></span><br><span class="line">print(np.<span class="built_in">sum</span>(a), np.<span class="built_in">min</span>(a), np.<span class="built_in">max</span>(a))</span><br><span class="line">np.<span class="built_in">sum</span>(a, axis = <span class="number">0</span>) <span class="comment"># 列操作，axis = 1行操作，the default, axis = None，will sum all of the elements of the input array</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="array-operations">4 Array operations</h1>
-<h2 id="preparation">4.1 Preparation</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(a, b, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span> <span class="number">20</span>]</span><br><span class="line"> [<span class="number">30</span> <span class="number">40</span>]]</span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">2</span> <span class="number">3</span>]]</span><br></pre></td></tr></table></figure></p>
-<h2 id="mathematical-operation">4.2 Mathematical operation</h2>
-<ul>
-<li><p>Plus &amp; minus <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c1 = a + b</span><br><span class="line">c2 = a - b</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Multiply &amp; divide</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c3 = a * b <span class="comment"># 对应元素相乘</span></span><br><span class="line">c4 = b / a</span><br></pre></td></tr></table></figure></li>
-<li><p><code>dot</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c5 = np.dot(a, b) <span class="comment"># 矩阵相乘，点乘</span></span><br><span class="line">c6 = a.dot(b) <span class="comment"># 和上式相同，a 值不改变</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="conditional-selection">4.3 Conditional selection</h2>
-<ul>
-<li><p><code>where</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">row, col = np.where(a == <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(row, col, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>Reuslt: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">0</span>]     [<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h1 id="array-basic-methods">5 Array basic methods</h1>
-<ul>
-<li><p>导入模块 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p></li>
-<li><p>统计特征 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># find elements</span></span><br><span class="line">A = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">index = np.argmax(A)  <span class="comment"># 最大值索引or argmin</span></span><br><span class="line">mean = np.mean(A) <span class="comment"># 均值</span></span><br><span class="line">median = np.median(A) <span class="comment"># 中位数</span></span><br><span class="line">print(index, mean, median, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> 上述函数皆默认 <code>axis = None, the index is into the flattened array</code>，若添加参数：<code>axis = 1</code> 则返回每一行的相关操作，<code>axis = 0</code> 则返回每一列的相关操作，具体参照: <code>help(np.mean)</code>。</p></li>
-<li><p>累加和差分 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># A：3x4 的数组</span></span><br><span class="line">cumsum = np.cumsum(A)</span><br><span class="line"><span class="comment"># 累加，axis默认为None，输出1x12数组</span></span><br><span class="line">diff = np.diff(A)</span><br><span class="line"><span class="comment"># 差分，默认axis=-1，即行操作与axis=1效果相同，返回3X3的数组，axis=0，返回2x4数组</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>查找数据 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">non = np.nonzero(A)</span><br></pre></td></tr></table></figure> 查找非零元素的索引，返回两个array，第一个为行索引，第二个为列索引，输出： <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">(array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>], dtype=int64),</span><br><span class="line"> array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=int64))</span><br></pre></td></tr></table></figure></p></li>
-<li><p>矩阵转置 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 矩阵转置, transpose array</span></span><br><span class="line">transpose1 = np.transpose(A)</span><br><span class="line">transpose2 = A.T</span><br><span class="line">print(transpose1, transpose2, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(transpose1.dot(A)) <span class="comment"># $&#123;A * A^T&#125;$</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>数据裁剪<code>clip</code> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">clip = np.clip(a, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">print(a, clip, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> Given an interval [5, 9], values outside this interval are clipped to this interval edges, namely 5 and 9. Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
-<li><p>迭代输出 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment"># 行迭代输出</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> a:</span><br><span class="line">    print(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列迭代输出    </span></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> a.T:</span><br><span class="line">    print(column.T)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素迭代, flat返回迭代器，flatten()返回array</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a.flat: <span class="comment"># or a.flatten()</span></span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure> Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Row</span></span><br><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h1 id="array-joint">6 Array joint</h1>
-<h2 id="vstack-and-hstack">6.1 vstack and hstack</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">c = np.vstack((a, b)) <span class="comment">#vertical stack 纵向</span></span><br><span class="line">d = np.hstack((a, b)) <span class="comment"># horizontal stack 横</span></span><br><span class="line">print(a.shape, c.shape) <span class="comment"># a 的shape为序列</span></span><br><span class="line">print(c, d, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(a.T.shape) <span class="comment"># 并未改变shape，0x3维</span></span><br><span class="line">a1 = a[:, np.newaxis] <span class="comment"># 在后面加维度，3x1维</span></span><br><span class="line">a2 = a[np.newaxis, :] <span class="comment"># add before, 1x3</span></span><br><span class="line">c= np.array([[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]]) <span class="comment"># 2x3</span></span><br><span class="line">c1 = c[np.newaxis, :] <span class="comment"># add before 1x2x3</span></span><br><span class="line">c2 = c[:, np.newaxis] <span class="comment"># same as c3</span></span><br><span class="line">c3 = c[:, np.newaxis, :] <span class="comment"># 2x1x3</span></span><br><span class="line">c4 = c[:, :, np.newaxis] <span class="comment"># 2x3x1</span></span><br></pre></td></tr></table></figure>
-<h2 id="concatenate">6.2 concatenate</h2>
-<p>Join a sequence of arrays along a existing axis, default axis is o, if axis = None, arrays will be flattened before use.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])[:, np.newaxis]</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])[:, np.newaxis]</span><br><span class="line"></span><br><span class="line">c1 = np.concatenate((a,b,b,a)) <span class="comment"># same as c2</span></span><br><span class="line">c2 = np.concatenate((a,b,b,a), axis = <span class="number">0</span>)</span><br><span class="line">c3 = np.concatenate((a,b,b,a), axis = <span class="number">1</span>)</span><br><span class="line">c4 = np.concatenate((a,b,b,a), axis = <span class="literal">None</span>)</span><br><span class="line">print(c1, c2, c3, c4, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="array-split">7 Array split</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>) <span class="comment"># 3x4</span></span><br><span class="line">print(a)</span><br><span class="line">print(np.split(a, <span class="number">3</span>, axis = <span class="number">0</span>)) <span class="comment"># vertical</span></span><br><span class="line">print(np.split(a, <span class="number">2</span>, axis = <span class="number">1</span>)) <span class="comment">#horizontal</span></span><br><span class="line"><span class="comment"># 只能进行相等的分割</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>np.split(ary, indices_or sections, axis = 0)</strong></li>
-</ul>
-<p>Array to be divided into multiple sub-arrays along the given 'axis ', if such split is not possible, then an error will be rasied.</p>
-<h1 id="array-copy">8 Array copy</h1>
-<ul>
-<li><strong>Copy and deep copy</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">b = a <span class="comment"># shallow copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">print(a, b)</span><br><span class="line">b1 = a.copy() <span class="comment"># deep copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">20</span></span><br><span class="line">print(a, b1)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Python module</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Data analysis</tag>
-        <tag>Numpy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pandas</title>
     <url>/2020/11/27/Pandas/</url>
     <content><![CDATA[<h1 id="series">1 Series</h1>
@@ -954,6 +871,173 @@ fig. 1 difference of ignoring index
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Numpy</title>
+    <url>/2020/11/29/Numpy/</url>
+    <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.__version__) <span class="comment"># 查看 numpy 版本</span></span><br></pre></td></tr></table></figure>
+<p>NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N 维数组对象 ndarray ( N-dimensional array )。</p>
+<a id="more"></a>
+<h1 id="create-ndarray">2 Create ndarray</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array_1x6 = np.array([<span class="number">1.0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], dtype = np.float64) <span class="comment"># 用 list 创建 array，可以通过 dtype 参数指定元素的类型  </span></span><br><span class="line"></span><br><span class="line">print(array_1x6.dtype)</span><br><span class="line"></span><br><span class="line"><span class="comment"># number of dimension</span></span><br><span class="line">print(<span class="string">&#x27;number of dim: &#x27;</span>,array_1x6.ndim)</span><br><span class="line">print(<span class="string">&#x27;shape: &#x27;</span>,array_1x6.shape)</span><br><span class="line">print(<span class="string">&#x27;size: &#x27;</span>,array_1x6.size)</span><br><span class="line"><span class="comment"># total number of elements</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(array_1x6) <span class="comment"># 空格分隔元素</span></span><br><span class="line">[<span class="number">1.</span> <span class="number">2.</span> <span class="number">3.</span> <span class="number">4.</span> <span class="number">5.</span> <span class="number">6.</span>]</span><br></pre></td></tr></table></figure>
+<h1 id="special-ndarray">4 Special ndarray</h1>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>零矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a1 = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 零矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a2 = np.ones((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 1 矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>空矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a3 = np.empty((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 未初始化的空矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>线段</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a5 = np.arange(<span class="number">12</span>)</span><br><span class="line">a6 = np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>) <span class="comment"># 5 个元素的线段</span></span><br><span class="line">print(a6 &lt; <span class="number">5</span>) <span class="comment"># 返回布尔类型的矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>随机矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.random.random((<span class="number">2</span>, <span class="number">4</span>)) <span class="comment"># 0-1的随机数</span></span><br><span class="line">print(np.<span class="built_in">sum</span>(a), np.<span class="built_in">min</span>(a), np.<span class="built_in">max</span>(a))</span><br><span class="line">np.<span class="built_in">sum</span>(a, axis = <span class="number">0</span>) <span class="comment"># 列操作，axis = 1行操作，the default, axis = None，will sum all of the elements of the input array</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="array-operations">4 Array operations</h1>
+<h2 id="preparation">4.1 Preparation</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(a, b, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span> <span class="number">20</span>]</span><br><span class="line"> [<span class="number">30</span> <span class="number">40</span>]]</span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">2</span> <span class="number">3</span>]]</span><br></pre></td></tr></table></figure></p>
+<h2 id="mathematical-operation">4.2 Mathematical operation</h2>
+<ul>
+<li><p>Plus &amp; minus <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c1 = a + b</span><br><span class="line">c2 = a - b</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Multiply &amp; divide</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c3 = a * b <span class="comment"># 对应元素相乘</span></span><br><span class="line">c4 = b / a</span><br></pre></td></tr></table></figure></li>
+<li><p><code>dot</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c5 = np.dot(a, b) <span class="comment"># 矩阵相乘，点乘</span></span><br><span class="line">c6 = a.dot(b) <span class="comment"># 和上式相同，a 值不改变</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="conditional-selection">4.3 Conditional selection</h2>
+<ul>
+<li><p><code>where</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">row, col = np.where(a == <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(row, col, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Reuslt: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">0</span>]     [<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h1 id="array-basic-methods">5 Array basic methods</h1>
+<ul>
+<li><p>导入模块 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p></li>
+<li><p>统计特征 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># find elements</span></span><br><span class="line">A = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">index = np.argmax(A)  <span class="comment"># 最大值索引or argmin</span></span><br><span class="line">mean = np.mean(A) <span class="comment"># 均值</span></span><br><span class="line">median = np.median(A) <span class="comment"># 中位数</span></span><br><span class="line">print(index, mean, median, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> 上述函数皆默认 <code>axis = None, the index is into the flattened array</code>，若添加参数：<code>axis = 1</code> 则返回每一行的相关操作，<code>axis = 0</code> 则返回每一列的相关操作，具体参照: <code>help(np.mean)</code>。</p></li>
+<li><p>累加和差分 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># A：3x4 的数组</span></span><br><span class="line">cumsum = np.cumsum(A)</span><br><span class="line"><span class="comment"># 累加，axis默认为None，输出1x12数组</span></span><br><span class="line">diff = np.diff(A)</span><br><span class="line"><span class="comment"># 差分，默认axis=-1，即行操作与axis=1效果相同，返回3X3的数组，axis=0，返回2x4数组</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>查找数据 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">non = np.nonzero(A)</span><br></pre></td></tr></table></figure> 查找非零元素的索引，返回两个array，第一个为行索引，第二个为列索引，输出： <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">(array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>], dtype=int64),</span><br><span class="line"> array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=int64))</span><br></pre></td></tr></table></figure></p></li>
+<li><p>矩阵转置 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 矩阵转置, transpose array</span></span><br><span class="line">transpose1 = np.transpose(A)</span><br><span class="line">transpose2 = A.T</span><br><span class="line">print(transpose1, transpose2, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(transpose1.dot(A)) <span class="comment"># $&#123;A * A^T&#125;$</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>数据裁剪<code>clip</code> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">clip = np.clip(a, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">print(a, clip, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> Given an interval [5, 9], values outside this interval are clipped to this interval edges, namely 5 and 9. Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
+<li><p>迭代输出 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment"># 行迭代输出</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> a:</span><br><span class="line">    print(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列迭代输出    </span></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> a.T:</span><br><span class="line">    print(column.T)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素迭代, flat返回迭代器，flatten()返回array</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a.flat: <span class="comment"># or a.flatten()</span></span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure> Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Row</span></span><br><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h1 id="array-joint">6 Array joint</h1>
+<h2 id="vstack-and-hstack">6.1 vstack and hstack</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">c = np.vstack((a, b)) <span class="comment">#vertical stack 纵向</span></span><br><span class="line">d = np.hstack((a, b)) <span class="comment"># horizontal stack 横</span></span><br><span class="line">print(a.shape, c.shape) <span class="comment"># a 的shape为序列</span></span><br><span class="line">print(c, d, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(a.T.shape) <span class="comment"># 并未改变shape，0x3维</span></span><br><span class="line">a1 = a[:, np.newaxis] <span class="comment"># 在后面加维度，3x1维</span></span><br><span class="line">a2 = a[np.newaxis, :] <span class="comment"># add before, 1x3</span></span><br><span class="line">c= np.array([[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]]) <span class="comment"># 2x3</span></span><br><span class="line">c1 = c[np.newaxis, :] <span class="comment"># add before 1x2x3</span></span><br><span class="line">c2 = c[:, np.newaxis] <span class="comment"># same as c3</span></span><br><span class="line">c3 = c[:, np.newaxis, :] <span class="comment"># 2x1x3</span></span><br><span class="line">c4 = c[:, :, np.newaxis] <span class="comment"># 2x3x1</span></span><br></pre></td></tr></table></figure>
+<h2 id="concatenate">6.2 concatenate</h2>
+<p>Join a sequence of arrays along a existing axis, default axis is o, if axis = None, arrays will be flattened before use.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])[:, np.newaxis]</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])[:, np.newaxis]</span><br><span class="line"></span><br><span class="line">c1 = np.concatenate((a,b,b,a)) <span class="comment"># same as c2</span></span><br><span class="line">c2 = np.concatenate((a,b,b,a), axis = <span class="number">0</span>)</span><br><span class="line">c3 = np.concatenate((a,b,b,a), axis = <span class="number">1</span>)</span><br><span class="line">c4 = np.concatenate((a,b,b,a), axis = <span class="literal">None</span>)</span><br><span class="line">print(c1, c2, c3, c4, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="array-split">7 Array split</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>) <span class="comment"># 3x4</span></span><br><span class="line">print(a)</span><br><span class="line">print(np.split(a, <span class="number">3</span>, axis = <span class="number">0</span>)) <span class="comment"># vertical</span></span><br><span class="line">print(np.split(a, <span class="number">2</span>, axis = <span class="number">1</span>)) <span class="comment">#horizontal</span></span><br><span class="line"><span class="comment"># 只能进行相等的分割</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>np.split(ary, indices_or sections, axis = 0)</strong></li>
+</ul>
+<p>Array to be divided into multiple sub-arrays along the given 'axis ', if such split is not possible, then an error will be rasied.</p>
+<h1 id="array-copy">8 Array copy</h1>
+<ul>
+<li><strong>Copy and deep copy</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">b = a <span class="comment"># shallow copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">print(a, b)</span><br><span class="line">b1 = a.copy() <span class="comment"># deep copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">20</span></span><br><span class="line">print(a, b1)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Python module</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Data analysis</tag>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Conda channel setting</title>
+    <url>/2020/11/23/Python-Figuration/</url>
+    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
+<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="delete-channel">2 Delete channel</h1>
+<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
+<h1 id="add-channel">3 Add channel</h1>
+<h2 id="conda-add-channel">3.1 Conda add channel</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
+<h2 id="pip">3.2 pip</h2>
+<h3 id="temporary-configuration">3.2.1 Temporary configuration</h3>
+<p>可以利用 <code>pip</code> 从镜像源安装第三方库，只需安装后加入 <code>-i source</code>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Install pandas</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">    </span><br><span class="line"><span class="comment"># python-docx</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-docx</span><br></pre></td></tr></table></figure>
+<p>国内还有其他镜像可供选择：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 豆瓣</span></span><br><span class="line">http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+<h3 id="permanently-configuration">3.2.2 Permanently configuration</h3>
+<ul>
+<li><p>自动配置镜像源</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+<li><p>手动配置镜像源</p>
+<p>在 <code>windows</code> 下，直接在 <code>user</code> 目录中创建一个 <code>pip</code> 目录，再新建文件 <code>pip.ini</code>，接着打开 <code>pip.ini</code> 文件，复制粘贴以下内容并保存。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="install-package-offline">4 Install package offline</h1>
+<h3 id="conda-install">4.1 Conda install</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
+<h3 id="pip-install-.whl-package">4.2 pip install '.whl' package</h3>
+<p>再命令行窗口用 <code>cd</code> 命令跳转到 <code>whl</code> 文件所在目录，然后使用命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install ***.whl</span><br></pre></td></tr></table></figure>
+<h1 id="virtual-environment">5 Virtual environment</h1>
+<h2 id="steps">5.1 Steps</h2>
+<ul>
+<li><p>Open <code>terminal</code> or <code>Command prompt</code></p></li>
+<li><p>Input <code>D:</code> to enter drive D</p></li>
+<li><p>Then input <code>cd project_dir</code></p></li>
+<li><p>Create a virtual environment</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -m venv &lt;venv name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="activate-venv">5.2 Activate venv</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.\&lt;venv name&gt;\Scripts\activate <span class="comment"># activate venv</span></span><br><span class="line"></span><br><span class="line">.\venv\Scripts\deactivate <span class="comment"># exit the current venv</span></span><br></pre></td></tr></table></figure>
+<h2 id="import-module">5.3 Import module</h2>
+<ul>
+<li><p>主程序和模块程序在同一目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    `-- test.py</span><br></pre></td></tr></table></figure>
+<p><code>test.py</code>导入模块 <code>mod1</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">from</span> mod1 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
+<li><p>主程序所在目录是模块所在目录的父(或祖辈)目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
+<p><code>test1.py</code>中导入模块<code>mod2</code>，需要在<code>mod2</code>文件夹中创建<code>__init__.py</code>文件:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mod2.mod2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    |-- sub</span><br><span class="line">    |   `-- test2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
+<p><code>test2.py</code> 中导入模块 <code>mod1</code> 和 <code>mod2</code>，首先需要在 <code>mod2</code> 下建立 <code>__init__.py</code> 文件，<code>src</code> 下不必建立该文件:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&quot;..&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>从上面可以看出，导入模块关键是能够根据sys.path环境变量的值，找到具体模块的路径</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Anaconda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -5368,9 +5452,36 @@ Fig. 1-2 集合的布尔运算
 <h2 id="sorted">4.6 sorted()</h2>
 <p>sorted() 用于给序列（列表、元组、字典、集合、字符串）进行排序</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">list</span> = <span class="built_in">sorted</span>(iterable, key=<span class="literal">None</span>, reverse=<span class="literal">False</span>)  </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">key 参数可以自定义排序规则</span></span><br><span class="line"><span class="string">reverse 参数指定以升序（False，默认）还是降序（True）进行排序</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="python-虚拟环境">5 Python 虚拟环境</h1>
-<h2 id="创建虚拟环境">5.1 创建虚拟环境</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd D:\Demo\Python\Demo <span class="comment"># 存放虚拟环境的目录</span></span><br><span class="line">python -m venv venv <span class="comment">#创建名为 venv 的虚拟环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活虚拟环境</span></span><br><span class="line">.\venv\Scripts\activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出当前虚拟环境</span></span><br><span class="line">.\venv\Scripts\deactivate.bat</span><br></pre></td></tr></table></figure>
+<h1 id="python-程序打包">5 Python 程序打包</h1>
+<h2 id="需求分析">5.1 需求分析</h2>
+<p>在写 <code>python</code> 程序时，难免会遇到一些需求，比如给别人写一个小工具什么的但是除了写 <code>Python</code> 的，绝大多数人电脑里都没有<code>Python</code> 编译器，所以打包成 <code>exe</code>，让 <code>Windows</code> 用户双击就可以打开，就非常方便了。</p>
+<p>打包最常用的工具有 <code>py2exe</code>, <code>cxfree</code>, <code>pyinstaller</code> 等多种方法，不同方法的优缺点自行谷歌，经过多次尝试和对比，笔者觉得 <code>pyintaller</code> 是最方便使用的，因此本节以 <code>pyintaller</code> 为例介绍如何将 <code>py</code> 文件打包为 <code>exe</code> 可执行文件。</p>
+<h2 id="直接打包">5.2 直接打包</h2>
+<ul>
+<li><p>安装 pyinstaller</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install pyinstaller</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接安装比较慢，建议从国内镜像站进行安装</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyinstaller</span><br></pre></td></tr></table></figure></li>
+<li><p>打包命令</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pyinstaller -F -w py-file-path --distpath=outputpath</span><br><span class="line"><span class="comment"># py-file-path 为需要打包为exe文件的位置</span></span><br><span class="line"><span class="comment"># outputpath 为输出位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For example</span></span><br><span class="line">pyinstaller -F -w <span class="string">&quot;./excel_to_word.py&quot;</span> --distpath=<span class="string">&quot;./output&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>虽然这种方式较为简单，但是打包过程非常缓慢，同时结果文件非常大，笔者写了一个十几行的代码，打包出来的代码有足足 <code>387M</code>。</p>
+<p>有人说，这是因为 <code>Anaconda</code> 里内置了很多库，打包的时候打包了很多不必要的模块进去，要用纯净的 <code>Python</code> 来打包。因此介绍如何给 <code>exe</code> 文件瘦身。</p>
+<h2 id="利用虚拟环境打包">5.2 利用虚拟环境打包</h2>
+<ul>
+<li><p>代码规范</p>
+<p>在写代码时尽量使用 <code>from * import *</code> 的命令，而不是直接使用 <code>import</code> 命令，这样打包时会少导入一些模块内容。</p></li>
+<li><p>创建虚拟环境</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd <span class="string">&quot;D:\Program Datas\Python\Venv&quot;</span> <span class="comment"># 存放虚拟环境的目录</span></span><br><span class="line"></span><br><span class="line">python -m venv pyintall <span class="comment">#创建名为 pyintall 的虚拟环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入虚拟环境目录</span></span><br><span class="line">cd <span class="string">&quot;.\pyintall\Scripts\&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 激活虚拟环境</span></span><br><span class="line"><span class="string">activate.abat</span></span><br></pre></td></tr></table></figure></li>
+<li><p>安装代码中需要的模块</p>
+<p>该安装是在上述创建的虚拟环境中安装，后面的步骤也是在虚拟环境中进行处理。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 建议使用镜像安装和 pyinstaller</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pakage-name</span><br></pre></td></tr></table></figure></li>
+<li><p>打包</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pyinstaller -F -w <span class="string">&quot;./excel_to_word.py&quot;</span> --distpath=<span class="string">&quot;./output&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>退出虚拟环境</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 退出当前虚拟环境</span></span><br><span class="line">.\venv\Scripts\deactivate.bat</span><br></pre></td></tr></table></figure>
+<p>如要删除虚拟环境，仅需将该文件夹直接删除就可。</p></li>
+</ul>
+<p>最后打包出来的文件足足缩小了十几倍，仅剩十几兆，因此，虽然该方法会麻烦些，但建议使用该方法进行打包。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd <span class="string">&quot;D:\Program Datas\Python\Venv&quot;</span> <span class="comment"># 存放虚拟环境的目录</span></span><br><span class="line"></span><br><span class="line">python -m venv pyintall <span class="comment">#创建名为 pyintall 的虚拟环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入虚拟环境目录</span></span><br><span class="line">cd <span class="string">&quot;.\pyintall\Scripts\&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 激活虚拟环境</span></span><br><span class="line"><span class="string">activate.abat</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 退出当前虚拟环境</span></span><br><span class="line"><span class="string">.\venv\Scripts\deactivate.bat</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Notes</category>

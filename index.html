@@ -209,6 +209,151 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2021/06/15/DataAnalysis-Describe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/YangSu.jpg">
+      <meta itemprop="name" content="YangSu">
+      <meta itemprop="description" content="A blog for recording learning notes...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="独孤诗人的学习驿站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/15/DataAnalysis-Describe/" class="post-title-link" itemprop="url">DataAnalysis-Describe</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-15 22:44:35 / Modified: 22:46:34" itemprop="dateCreated datePublished" datetime="2021-06-15T22:44:35+08:00">2021-06-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Categories/Data-Analysis/" itemprop="url" rel="index"><span itemprop="name">Data Analysis</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Categories/Data-Analysis/Descibe/" itemprop="url" rel="index"><span itemprop="name">Descibe</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>复习</strong>:这门课程得主要目的是通过真实的数据，以实战的方式了解数据分析的流程和熟悉数据分析python的基本操作。知道了课程的目的之后，我们接下来我们要正式的开始数据分析的实战教学，完成kaggle上<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/titanic/overview">泰坦尼克的任务</a>，实战数据分析全流程。 这里有两份资料： 教材《Python for Data Analysis》和 baidu.com &amp; google.com（善用搜索引擎）</p>
+<h2 id="第一章数据载入及初步观察">1 第一章：数据载入及初步观察</h2>
+<h3 id="载入数据">1.1 载入数据</h3>
+<p>数据集下载 https://www.kaggle.com/c/titanic/overview</p>
+<h4 id="任务一导入numpy和pandas">1.1.1 任务一：导入numpy和pandas</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> nnp</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<p>【提示】如果加载失败，学会如何在你的python环境下安装numpy和pandas这两个库</p>
+<h4 id="任务二载入数据">1.1.2 任务二：载入数据</h4>
+<ol type="1">
+<li>使用相对路径载入数据<br />
+</li>
+<li>使用绝对路径载入数据</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line">data = pd.read_csv(<span class="string">r&quot;D:\Demo\University\XMU\Python\Artificial-intelligence\Data analysis\第一单元项目集合\train_chinese.csv&quot;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>【提示】相对路径载入报错时，尝试使用os.getcwd()查看当前工作目录。<br />
+【思考】知道数据加载的方法后，试试pd.read_csv()和pd.read_table()的不同，如果想让他们效果一样，需要怎么做？了解一下'.tsv'和'.csv'的不同，如何加载这两个数据集？<br />
+【总结】加载的数据是所有工作的第一步，我们的工作会接触到不同的数据格式（eg:.csv;.tsv;.xlsx）,但是加载的方法和思路都是一样的，在以后工作和做项目的过程中，遇到之前没有碰到的问题，要多多查资料吗，使用googel，了解业务逻辑，明白输入和输出是什么。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure>
+<pre><code>D:\Demo\University\XMU\Python\Artificial-intelligence\Data analysis\第一单元项目集合</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E 设置 sep</span><br><span class="line">data1 = pd.read_table(<span class="string">&#x27;./train.csv&#x27;</span>, sep = <span class="string">&#x27;,&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="任务三每1000行为一个数据模块逐块读取">1.1.3 任务三：每1000行为一个数据模块，逐块读取</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>【思考】什么是逐块读取？为什么要逐块读取呢？</p>
+<p>【提示】大家可以chunker(数据块)是什么类型？用<code>for</code>循环打印出来出处具体的样子是什么？</p>
+<h4 id="任务四将表头改成中文索引改为乘客id-对于某些英文资料我们可以通过翻译来更直观的熟悉我们的数据">1.1.4 任务四：将表头改成中文，索引改为乘客ID [对于某些英文资料，我们可以通过翻译来更直观的熟悉我们的数据]</h4>
+<p>PassengerId =&gt; 乘客ID<br />
+Survived =&gt; 是否幸存<br />
+Pclass =&gt; 乘客等级(1/2/3等舱位)<br />
+Name =&gt; 乘客姓名<br />
+Sex =&gt; 性别<br />
+Age =&gt; 年龄<br />
+SibSp =&gt; 堂兄弟/妹个数<br />
+Parch =&gt; 父母与小孩个数<br />
+Ticket =&gt; 船票信息<br />
+Fare =&gt; 票价<br />
+Cabin =&gt; 客舱<br />
+Embarked =&gt; 登船港口</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>【思考】所谓将表头改为中文其中一个思路是：将英文列名表头替换成中文。还有其他的方法吗？</p>
+<h3 id="初步观察">1.2 初步观察</h3>
+<p>导入数据后，你可能要对数据的整体结构和样例进行概览，比如说，数据大小、有多少列，各列都是什么格式的，是否包含null等</p>
+<h4 id="任务一查看数据的基本信息">1.2.1 任务一：查看数据的基本信息</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<p>【提示】有多个函数可以这样做，你可以做一下总结</p>
+<h4 id="任务二观察表格前10行的数据和后15行的数据">1.2.2 任务二：观察表格前10行的数据和后15行的数据</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<h4 id="任务三判断数据是否为空为空的地方返回true其余地方返回false">1.2.4 任务三：判断数据是否为空，为空的地方返回True，其余地方返回False</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
+<p>【总结】上面的操作都是数据分析中对于数据本身的观察</p>
+<p>【思考】对于一个数据，还可以从哪些方面来观察？找找答案，这个将对下面的数据分析有很大的帮助</p>
+<h3 id="保存数据">1.3 保存数据</h3>
+<h4 id="任务一将你加载并做出改变的数据在工作目录下保存为一个新文件train_chinese.csv">1.3.1 任务一：将你加载并做出改变的数据，在工作目录下保存为一个新文件train_chinese.csv</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码# 注意：不同的操作系统保存下来可能会有乱码。大家可以加入`encoding=&#x27;GBK&#x27; 或者 ’encoding = ’uft-8‘‘`</span></span><br></pre></td></tr></table></figure>
+<p>【总结】数据的加载以及入门，接下来就要接触数据本身的运算，我们将主要掌握numpy和pandas在工作和项目场景的运用。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2021/05/22/Ensemble-Steam/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1142,115 +1287,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2020/12/15/Stata-introduction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/YangSu.jpg">
-      <meta itemprop="name" content="YangSu">
-      <meta itemprop="description" content="A blog for recording learning notes...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="独孤诗人的学习驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/15/Stata-introduction/" class="post-title-link" itemprop="url">Stata Introduction</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-12-15 15:22:38" itemprop="dateCreated datePublished" datetime="2020-12-15T15:22:38+08:00">2020-12-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-18 15:01:44" itemprop="dateModified" datetime="2021-03-18T15:01:44+08:00">2021-03-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Class-Notes/" itemprop="url" rel="index"><span itemprop="name">Class Notes</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Class-Notes/Econometrics/" itemprop="url" rel="index"><span itemprop="name">Econometrics</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>5.4k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>5 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="stata-operation">1 Stata operation</h1>
-<h2 id="import-data">1.1 Import data</h2>
-<ul>
-<li><p>use</p>
-<p><code>grilic_small.dta</code> 文件的目录请根据自己的文件目录填写，数据文件可在陈强老师的网站下载，<a target="_blank" rel="noopener" href="http://www.econometrics-stata.com/col.jsp?id=101">Click here</a>，选择《计量经济学及Stata应用》中的数据集下载。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use <span class="string">&quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Data-Finished-bachelor\grilic_small.dta&quot;</span>, clear</span><br></pre></td></tr></table></figure></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/15/Stata-introduction/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1326,20 +1362,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/Tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

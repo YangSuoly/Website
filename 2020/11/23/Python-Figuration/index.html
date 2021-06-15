@@ -25,18 +25,18 @@
   <meta name="description" content="1 Show channel conda config --show显示所有的 conda 的config 信息，conda config --show channels显示所有 channel 信息 123456&gt;&gt;&gt; conda config --show channelschannels:  - https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Conda channel setting">
-<meta property="og:url" content="http://yangsuoly.com/2020/11/23/Conda%20channel%20setting/index.html">
+<meta property="og:url" content="http://yangsuoly.com/2020/11/23/Python-Figuration/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
 <meta property="og:description" content="1 Show channel conda config --show显示所有的 conda 的config 信息，conda config --show channels显示所有 channel 信息 123456&gt;&gt;&gt; conda config --show channelschannels:  - https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-23T05:40:29.000Z">
-<meta property="article:modified_time" content="2020-12-02T13:37:46.920Z">
+<meta property="article:modified_time" content="2021-06-10T01:44:26.190Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Anaconda">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yangsuoly.com/2020/11/23/Conda%20channel%20setting/">
+<link rel="canonical" href="http://yangsuoly.com/2020/11/23/Python-Figuration/">
 
 
 <script id="page-configurations">
@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2020/11/23/Conda%20channel%20setting/">
+    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2020/11/23/Python-Figuration/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/YangSu.jpg">
@@ -243,7 +243,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-02 21:37:46" itemprop="dateModified" datetime="2020-12-02T21:37:46+08:00">2020-12-02</time>
+                <time title="Modified: 2021-06-10 09:44:26" itemprop="dateModified" datetime="2021-06-10T09:44:26+08:00">2021-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,7 +272,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.8k</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -299,7 +299,22 @@
 <p>Using <code>conda config --remove channels</code> to delete channels from config</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
 <h1 id="add-channel">3 Add channel</h1>
+<h2 id="conda-add-channel">3.1 Conda add channel</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
+<h2 id="pip">3.2 pip</h2>
+<h3 id="temporary-configuration">3.2.1 Temporary configuration</h3>
+<p>可以利用 <code>pip</code> 从镜像源安装第三方库，只需安装后加入 <code>-i source</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install pandas</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">    </span><br><span class="line"><span class="comment"># python-docx</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-docx</span><br></pre></td></tr></table></figure>
+<p>国内还有其他镜像可供选择：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 豆瓣</span></span><br><span class="line">http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+<h3 id="permanently-configuration">3.2.2 Permanently configuration</h3>
+<ul>
+<li><p>自动配置镜像源</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+<li><p>手动配置镜像源</p>
+<p>在 <code>windows</code> 下，直接在 <code>user</code> 目录中创建一个 <code>pip</code> 目录，再新建文件 <code>pip.ini</code>，接着打开 <code>pip.ini</code> 文件，复制粘贴以下内容并保存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h1 id="install-package-offline">4 Install package offline</h1>
 <h3 id="conda-install">4.1 Conda install</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
@@ -362,7 +377,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://yangsuoly.com/2020/11/23/Conda%20channel%20setting/" title="Conda channel setting">http://yangsuoly.com/2020/11/23/Conda channel setting/</a>
+    <a href="http://yangsuoly.com/2020/11/23/Python-Figuration/" title="Conda channel setting">http://yangsuoly.com/2020/11/23/Python-Figuration/</a>
   </li>
 </ul>
 </div>
@@ -450,7 +465,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#show-channel"><span class="nav-number">1.</span> <span class="nav-text">1 Show channel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#delete-channel"><span class="nav-number">2.</span> <span class="nav-text">2 Delete channel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#add-channel"><span class="nav-number">3.</span> <span class="nav-text">3 Add channel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#install-package-offline"><span class="nav-number">4.</span> <span class="nav-text">4 Install package offline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda-install"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 Conda install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pip-install-.whl-package"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 pip install &#39;.whl&#39; package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual-environment"><span class="nav-number">5.</span> <span class="nav-text">5 Virtual environment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#steps"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activate-venv"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Activate venv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import-module"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 Import module</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#show-channel"><span class="nav-number">1.</span> <span class="nav-text">1 Show channel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#delete-channel"><span class="nav-number">2.</span> <span class="nav-text">2 Delete channel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#add-channel"><span class="nav-number">3.</span> <span class="nav-text">3 Add channel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conda-add-channel"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Conda add channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 pip</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#temporary-configuration"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 Temporary configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#permanently-configuration"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 Permanently configuration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#install-package-offline"><span class="nav-number">4.</span> <span class="nav-text">4 Install package offline</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#conda-install"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 Conda install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pip-install-.whl-package"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 pip install &#39;.whl&#39; package</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual-environment"><span class="nav-number">5.</span> <span class="nav-text">5 Virtual environment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#steps"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activate-venv"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Activate venv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import-module"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 Import module</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -466,20 +481,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/Tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -695,7 +710,7 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yangsuoly.com/2020/11/23/Conda%20channel%20setting/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yangsuoly.com/2020/11/23/Python-Figuration/',]
       });
       });
   </script>
