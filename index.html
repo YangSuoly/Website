@@ -209,6 +209,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2021/06/17/DataAnalysis-Cleaning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/YangSu.jpg">
+      <meta itemprop="name" content="YangSu">
+      <meta itemprop="description" content="A blog for recording learning notes...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="独孤诗人的学习驿站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/17/DataAnalysis-Cleaning/" class="post-title-link" itemprop="url">DataAnalysis-Cleaning</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-17 18:27:42 / Modified: 19:04:33" itemprop="dateCreated datePublished" datetime="2021-06-17T18:27:42+08:00">2021-06-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Categories/Data-Analysis/" itemprop="url" rel="index"><span itemprop="name">Data Analysis</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Categories/Data-Analysis/Data-Cleaning/" itemprop="url" rel="index"><span itemprop="name">Data-Cleaning</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前文已经对数据分析的基本操作进行了学习，接下来要进行数据清洗、数据特征提取、数据重构以及数据可视化的学习。</p>
+<h1 id="Data-cleaning"><a href="#Data-cleaning" class="headerlink" title="Data  cleaning"></a>Data  cleaning</h1><h2 id="Load-data"><a href="#Load-data" class="headerlink" title="Load data"></a>Load data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>)</span><br><span class="line">df.head(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/17/DataAnalysis-Cleaning/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2021/06/15/DataAnalysis-Describe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -232,10 +330,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-15 22:44:35 / Modified: 22:46:34" itemprop="dateCreated datePublished" datetime="2021-06-15T22:44:35+08:00">2021-06-15</time>
+              <time title="Created: 2021-06-15 22:44:35" itemprop="dateCreated datePublished" datetime="2021-06-15T22:44:35+08:00">2021-06-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 19:04:37" itemprop="dateModified" datetime="2021-06-17T19:04:37+08:00">2021-06-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -275,63 +379,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>复习</strong>:这门课程得主要目的是通过真实的数据，以实战的方式了解数据分析的流程和熟悉数据分析python的基本操作。知道了课程的目的之后，我们接下来我们要正式的开始数据分析的实战教学，完成kaggle上<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/titanic/overview">泰坦尼克的任务</a>，实战数据分析全流程。 这里有两份资料： 教材《Python for Data Analysis》和 baidu.com &amp; google.com（善用搜索引擎）</p>
-<h2 id="第一章数据载入及初步观察">1 第一章：数据载入及初步观察</h2>
-<h3 id="载入数据">1.1 载入数据</h3>
-<p>数据集下载 https://www.kaggle.com/c/titanic/overview</p>
-<h4 id="任务一导入numpy和pandas">1.1.1 任务一：导入numpy和pandas</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> nnp</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
-<p>【提示】如果加载失败，学会如何在你的python环境下安装numpy和pandas这两个库</p>
-<h4 id="任务二载入数据">1.1.2 任务二：载入数据</h4>
-<ol type="1">
-<li>使用相对路径载入数据<br />
-</li>
-<li>使用绝对路径载入数据</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;./train.csv&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line">data = pd.read_csv(<span class="string">r&quot;D:\Demo\University\XMU\Python\Artificial-intelligence\Data analysis\第一单元项目集合\train_chinese.csv&quot;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>【提示】相对路径载入报错时，尝试使用os.getcwd()查看当前工作目录。<br />
-【思考】知道数据加载的方法后，试试pd.read_csv()和pd.read_table()的不同，如果想让他们效果一样，需要怎么做？了解一下'.tsv'和'.csv'的不同，如何加载这两个数据集？<br />
-【总结】加载的数据是所有工作的第一步，我们的工作会接触到不同的数据格式（eg:.csv;.tsv;.xlsx）,但是加载的方法和思路都是一样的，在以后工作和做项目的过程中，遇到之前没有碰到的问题，要多多查资料吗，使用googel，了解业务逻辑，明白输入和输出是什么。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure>
-<pre><code>D:\Demo\University\XMU\Python\Artificial-intelligence\Data analysis\第一单元项目集合</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E 设置 sep</span><br><span class="line">data1 = pd.read_table(<span class="string">&#x27;./train.csv&#x27;</span>, sep = <span class="string">&#x27;,&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="任务三每1000行为一个数据模块逐块读取">1.1.3 任务三：每1000行为一个数据模块，逐块读取</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>【思考】什么是逐块读取？为什么要逐块读取呢？</p>
-<p>【提示】大家可以chunker(数据块)是什么类型？用<code>for</code>循环打印出来出处具体的样子是什么？</p>
-<h4 id="任务四将表头改成中文索引改为乘客id-对于某些英文资料我们可以通过翻译来更直观的熟悉我们的数据">1.1.4 任务四：将表头改成中文，索引改为乘客ID [对于某些英文资料，我们可以通过翻译来更直观的熟悉我们的数据]</h4>
-<p>PassengerId =&gt; 乘客ID<br />
-Survived =&gt; 是否幸存<br />
-Pclass =&gt; 乘客等级(1/2/3等舱位)<br />
-Name =&gt; 乘客姓名<br />
-Sex =&gt; 性别<br />
-Age =&gt; 年龄<br />
-SibSp =&gt; 堂兄弟/妹个数<br />
-Parch =&gt; 父母与小孩个数<br />
-Ticket =&gt; 船票信息<br />
-Fare =&gt; 票价<br />
-Cabin =&gt; 客舱<br />
-Embarked =&gt; 登船港口</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>【思考】所谓将表头改为中文其中一个思路是：将英文列名表头替换成中文。还有其他的方法吗？</p>
-<h3 id="初步观察">1.2 初步观察</h3>
-<p>导入数据后，你可能要对数据的整体结构和样例进行概览，比如说，数据大小、有多少列，各列都是什么格式的，是否包含null等</p>
-<h4 id="任务一查看数据的基本信息">1.2.1 任务一：查看数据的基本信息</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
-<p>【提示】有多个函数可以这样做，你可以做一下总结</p>
-<h4 id="任务二观察表格前10行的数据和后15行的数据">1.2.2 任务二：观察表格前10行的数据和后15行的数据</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
-<h4 id="任务三判断数据是否为空为空的地方返回true其余地方返回false">1.2.4 任务三：判断数据是否为空，为空的地方返回True，其余地方返回False</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码</span></span><br></pre></td></tr></table></figure>
-<p>【总结】上面的操作都是数据分析中对于数据本身的观察</p>
-<p>【思考】对于一个数据，还可以从哪些方面来观察？找找答案，这个将对下面的数据分析有很大的帮助</p>
-<h3 id="保存数据">1.3 保存数据</h3>
-<h4 id="任务一将你加载并做出改变的数据在工作目录下保存为一个新文件train_chinese.csv">1.3.1 任务一：将你加载并做出改变的数据，在工作目录下保存为一个新文件train_chinese.csv</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入代码# 注意：不同的操作系统保存下来可能会有乱码。大家可以加入`encoding=&#x27;GBK&#x27; 或者 ’encoding = ’uft-8‘‘`</span></span><br></pre></td></tr></table></figure>
-<p>【总结】数据的加载以及入门，接下来就要接触数据本身的运算，我们将主要掌握numpy和pandas在工作和项目场景的运用。</p>
-
+          <p><strong>复习</strong>:这门课程得主要目的是通过真实的数据，以实战的方式了解数据分析的流程和熟悉数据分析python的基本操作。知道了课程的目的之后，我们接下来我们要正式的开始数据分析的实战教学，完成kaggle上<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/titanic/overview">泰坦尼克的任务</a>，实战数据分析全流程。<br>这里有两份资料：<br>教材《Python for Data Analysis》和 baidu.com &amp;<br>google.com（善用搜索引擎）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/15/DataAnalysis-Describe/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -426,9 +482,7 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="problem">1. Problem</h1>
-<h2 id="introduction-of-background">1.1 Introduction of Background</h2>
-<p>火力发电的基本原理是：颜料燃烧时加热水会生成蒸汽，蒸汽压力推动汽轮机旋转，然后汽轮机带动带动发电机旋转，产生电能。在这一系列的能量转化中，影响发电效率的核心是锅炉的燃烧效率，即燃料燃烧加热水产生高温高压蒸汽。锅炉的燃烧效率的影响因素很多，包括锅炉的可调参数，如燃烧给量，一二次风，引风，返料风，给水水量；以及锅炉的工况，比如锅炉床温、床压，炉膛温度、压力，过热器的温度等。我们如何使用以上的信息，根据锅炉的工况，预测产生的蒸汽量，来为我国的工业届的产量预测贡献自己的一份力量呢？</p>
+          <h1 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1. Problem"></a>1. Problem</h1><h2 id="1-1-Introduction-of-Background"><a href="#1-1-Introduction-of-Background" class="headerlink" title="1.1 Introduction of Background"></a>1.1 Introduction of Background</h2><p>火力发电的基本原理是：颜料燃烧时加热水会生成蒸汽，蒸汽压力推动汽轮机旋转，然后汽轮机带动带动发电机旋转，产生电能。在这一系列的能量转化中，影响发电效率的核心是锅炉的燃烧效率，即燃料燃烧加热水产生高温高压蒸汽。锅炉的燃烧效率的影响因素很多，包括锅炉的可调参数，如燃烧给量，一二次风，引风，返料风，给水水量；以及锅炉的工况，比如锅炉床温、床压，炉膛温度、压力，过热器的温度等。我们如何使用以上的信息，根据锅炉的工况，预测产生的蒸汽量，来为我国的工业届的产量预测贡献自己的一份力量呢？</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/22/Ensemble-Steam/#more" rel="contents">
@@ -531,9 +585,7 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="problem">1. Problem</h1>
-<h2 id="introduction-of-background">1.1 Introduction of background</h2>
-<p>幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？</p>
+          <h1 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1. Problem"></a>1. Problem</h1><h2 id="1-1-Introduction-of-background"><a href="#1-1-Introduction-of-background" class="headerlink" title="1.1 Introduction of background"></a>1.1 Introduction of background</h2><p>幸福感是一个古老而深刻的话题，是人类世代追求的方向。与幸福感相关的因素成千上万，这些错综复杂的因素中，我们能找到其中的共性，一窥幸福感的要义吗？</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/18/Ensemble-happiness/#more" rel="contents">
@@ -611,7 +663,7 @@ Embarked =&gt; 登船港口</p>
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>4.7k</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -630,8 +682,7 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="introduction">1. Introduction</h1>
-<p>Blending 集成方法的学习过程中，可以发现 Blending 在集成过程中只使用到了验证集的数据，这就造成了很大的浪费。因此可以靠用使用 Stacking 集成方法进行改进。</p>
+          <h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>Blending 集成方法的学习过程中，可以发现 Blending 在集成过程中只使用到了验证集的数据，这就造成了很大的浪费。因此可以靠用使用 Stacking 集成方法进行改进。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/13/Ensemble-Stacking/#more" rel="contents">
@@ -728,8 +779,7 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="introduction">1. Introduction</h1>
-<p>Blending 方法可以看是一个简化版的 Stacking 方法，blend 的中文意思是 “混合”，这就很好地诠释了 Blending 方法的思想 —— 不同模型的混合，也就是集成的本意。该方法仅在验证集中进行预测，如下为 Blending 的步骤：</p>
+          <h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>Blending 方法可以看是一个简化版的 Stacking 方法，blend 的中文意思是 “混合”，这就很好地诠释了 Blending 方法的思想 —— 不同模型的混合，也就是集成的本意。该方法仅在验证集中进行预测，如下为 Blending 的步骤：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/05/11/Ensemble-Blending/#more" rel="contents">
@@ -826,13 +876,13 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="pytorch-brief">1 Pytorch brief</h1>
-<h2 id="create-tensor">1.1 Create Tensor</h2>
-<ul>
+          <h1 id="1-Pytorch-brief"><a href="#1-Pytorch-brief" class="headerlink" title="1 Pytorch brief"></a>1 Pytorch brief</h1><h2 id="1-1-Create-Tensor"><a href="#1-1-Create-Tensor" class="headerlink" title="1.1 Create Tensor"></a>1.1 Create Tensor</h2><ul>
 <li><p><code>empty</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x1 = torch.empty(<span class="number">5</span>, <span class="number">3</span>) <span class="comment"># 构造未初始化的矩阵</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x1 = torch.empty(<span class="number">5</span>, <span class="number">3</span>) <span class="comment"># 构造未初始化的矩阵</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p><code>rand</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x2 = torch.rand(<span class="number">5</span>, <span class="number">3</span>) <span class="comment"># 构造随机初始化的正态分布矩阵</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x2 = torch.rand(<span class="number">5</span>, <span class="number">3</span>) <span class="comment"># 构造随机初始化的正态分布矩阵</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -936,16 +986,15 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="stata-data-operation">1 Stata data operation</h1>
-<h2 id="data-operation">1.1 Data Operation</h2>
-<h3 id="browse-data">1.1.1 Browse data</h3>
-<ul>
+          <h1 id="1-Stata-data-operation"><a href="#1-Stata-data-operation" class="headerlink" title="1 Stata data operation"></a>1 Stata data operation</h1><h2 id="1-1-Data-Operation"><a href="#1-1-Data-Operation" class="headerlink" title="1.1 Data Operation"></a>1.1 Data Operation</h2><h3 id="1-1-1-Browse-data"><a href="#1-1-1-Browse-data" class="headerlink" title="1.1.1 Browse data"></a>1.1.1 Browse data</h3><ul>
 <li><p>browse / edit</p>
 <p><code>browse</code> 用于打开或编辑数据浏览器，相当于单击数据浏览器或编辑按钮。命令格式:</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">browse</span>/<span class="keyword">edit</span> [<span class="keyword">varlist</span>] [<span class="keyword">if</span>] [<span class="keyword">in</span>]</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">browse</span>/<span class="keyword">edit</span> [<span class="keyword">varlist</span>] [<span class="keyword">if</span>] [<span class="keyword">in</span>]</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>rename</p>
 <p><code>rename</code> 用于对变量重新命名。格式：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rename</span> (oldname) (newname)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rename</span> (oldname) (newname)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -1049,8 +1098,7 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="recognize-latex">1 Recognize <span class="math inline">\(\LaTeX\)</span></h1>
-<p>通过更换文档类型，可以正确显示中文。</p>
+          <h1 id="1-Recognize-LaTeX"><a href="#1-Recognize-LaTeX" class="headerlink" title="1 Recognize $\LaTeX$"></a>1 Recognize $\LaTeX$</h1><p>通过更换文档类型，可以正确显示中文。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/01/19/Latex/#more" rel="contents">
@@ -1147,123 +1195,11 @@ Embarked =&gt; 登船港口</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="markdown">Markdown</h1>
-<h2 id="title">1. Title</h2>
-<h3 id="三级标题">三级标题</h3>
-<h4 id="四级标题">四级标题</h4>
-<p>格式及快捷键如下：</p>
+          <h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><h2 id="1-Title"><a href="#1-Title" class="headerlink" title="1. Title"></a>1. Title</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>格式及快捷键如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/01/19/Markdown/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2021/01/18/Influence-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/YangSu.jpg">
-      <meta itemprop="name" content="YangSu">
-      <meta itemprop="description" content="A blog for recording learning notes...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="独孤诗人的学习驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/18/Influence-1/" class="post-title-link" itemprop="url">Influence</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-18 22:11:01" itemprop="dateCreated datePublished" datetime="2021-01-18T22:11:01+08:00">2021-01-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-01-23 20:46:56" itemprop="dateModified" datetime="2021-01-23T20:46:56+08:00">2021-01-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Book-review/" itemprop="url" rel="index"><span itemprop="name">Book review</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Book-review/Influence/" itemprop="url" rel="index"><span itemprop="name">Influence</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Book-review/Influence/Introduction/" itemprop="url" rel="index"><span itemprop="name">Introduction</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>23k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>21 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="引言">1. 引言</h1>
-<p>影响力，一般认为指的是用一种为别人所乐于接受的方式，改变他人所乐于接受的方式，改变他人的思想和行动的能力。该书由著名社会心理学家 Robert B. Cialdini 所著， Cialdini 倾其职业生涯来研究影响力，在说服、顺从和谈判领域享有广泛的国际声誉。因其在商业道德和政策运用方面所作的前沿研究，常被称为“影响力教父”。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/18/Influence-1/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1362,14 +1298,14 @@ Embarked =&gt; 登船港口</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/Categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
