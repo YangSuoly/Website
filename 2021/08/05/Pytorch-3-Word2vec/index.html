@@ -36,14 +36,15 @@
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCJL4.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZipCt.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCGyF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZC0W6.md.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCwJx.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCsyD.md.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCXYq.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCrQO.md.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCOkn.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/08/05/fZCyOe.md.png">
-<meta property="article:published_time" content="2021-08-05T11:01:06.000Z">
-<meta property="article:modified_time" content="2021-08-05T06:28:28.980Z">
+<meta property="article:published_time" content="2021-08-05T06:23:22.000Z">
+<meta property="article:modified_time" content="2021-08-05T06:36:41.451Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Pytorch">
@@ -252,7 +253,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-05 19:01:06 / Modified: 14:28:28" itemprop="dateCreated datePublished" datetime="2021-08-05T19:01:06+08:00">2021-08-05</time>
+              <time title="Created: 2021-08-05 14:23:22 / Modified: 14:36:41" itemprop="dateCreated datePublished" datetime="2021-08-05T14:23:22+08:00">2021-08-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -325,7 +326,14 @@
 <h1 id="word-vector">2. Word vector</h1>
 <p>在计算机中如何表示一个词：</p>
 <p><img src="https://z3.ax1x.com/2021/08/05/fZCUoR.png" style="zoom:80%;" /></p>
-<p>可以使用一些上位词或同义词来形容某个词。但这样表示存在如下问题： - 不能分辨细节的差别 - 需要大量人为劳动 - 主观 - 无法发现新词 - 难以精确计算词之间的相似度</p>
+<p>可以使用一些上位词或同义词来形容某个词。但这样表示存在如下问题：</p>
+<ul>
+<li>不能分辨细节的差别</li>
+<li>需要大量人为劳动</li>
+<li>主观</li>
+<li>无法发现新词</li>
+<li>难以精确计算词之间的相似度</li>
+</ul>
 <h2 id="discrete-representation">2.1 Discrete representation</h2>
 <h3 id="one-hot">2.1.1 One-hot</h3>
 <p>使用 <code>One-hot</code> 来离散表示词向量。</p>
@@ -348,7 +356,10 @@ John also likes to watch football games.</p></li>
 <li><p>文档的向量表示可以直接将各词的词向量表示加和。如：</p>
 <p><img src="https://z3.ax1x.com/2021/08/05/fZPM0H.png" /></p></li>
 </ul>
-<p>词权重表示（词在文档中的顺序没有被考虑）： 1. <code>TF-IDF</code>(Term Frequency - Inverse Document Frequency)</p>
+<p>词权重表示（词在文档中的顺序没有被考虑）：</p>
+<ol type="1">
+<li><code>TF-IDF</code>(Term Frequency - Inverse Document Frequency)</li>
+</ol>
 <p>Specifically, <code>TF-IDF</code> is defines as: <span class="math display">\[ {\rm{tf}\text{-}\rm{idf}}(t, d, D) = f _{t,d} \cdot \log \frac{N}{n_t} \]</span></p>
 <p>where <span class="math inline">\(f_{t, d}\)</span> is the raw frequency of term <span class="math inline">\(t\)</span> in document <span class="math inline">\(d\)</span>, <span class="math inline">\(N\)</span> is the total number of documents in the corpus, and <span class="math inline">\(n_t\)</span> is the total number of documents containing at least one occurrence of term <span class="math inline">\(t\)</span>.</p>
 <p><img src="https://z3.ax1x.com/2021/08/05/fZCNw9.png" /></p>
@@ -372,8 +383,11 @@ John also likes to watch football games.</p></li>
 </ul>
 <h2 id="distributed-representation">2.3 Distributed representation</h2>
 <h3 id="preface">2.3.1 Preface</h3>
-<p>从上一小节可以发现离散表示存在如下问题： 1. 无法衡量词向量之间的关系</p>
-<pre><code>太稀疏，难以捕捉文本的含义。各种度量（与或非、距离）都不合适.</code></pre>
+<p>从上一小节可以发现离散表示存在如下问题：</p>
+<ol type="1">
+<li><p>无法衡量词向量之间的关系</p>
+<p>太稀疏，难以捕捉文本的含义。各种度量（与或非、距离）都不合适.</p></li>
+</ol>
 <center>
 <img src="https://z3.ax1x.com/2021/08/05/fZCGyF.png" style="zoom:50%;" />
 </center>
@@ -382,26 +396,32 @@ John also likes to watch football games.</p></li>
 <li><code>N-gram</code> 词序列随着语料库膨胀更快</li>
 <li>数据稀疏性问题</li>
 </ol>
-<p>为了弥补这些不足，对词编码表示提出如下要求： 1. 词编码需要保证词的相似性。</p>
-<pre><code>![](https://z3.ax1x.com/2021/08/05/fZC0W6.md.png)</code></pre>
-<ol start="2" type="1">
+<p>为了弥补这些不足，对词编码表示提出如下要求：</p>
+<ol type="1">
+<li><p>词编码需要保证词的相似性。</p>
+<p><img src="https://z3.ax1x.com/2021/08/05/fZC0W6.md.png" /></p></li>
 <li><p>向量空间分布的相似性</p>
 <p><img src="https://z3.ax1x.com/2021/08/05/fZCwJx.png" /></p></li>
 <li><p>向量空间子结构</p>
 <p><img src="https://z3.ax1x.com/2021/08/05/fZCsyD.md.png" /></p>
 <p><span class="math display">\[
- \begin{align}
- V_{King} - V_{Queen} + V_{Women} &amp;= V_{Man} \\
- V_{Paris} - V_{France} + V_{German} &amp;= V_{Berlin}
- \end{align}
- \]</span></p></li>
+\begin{align}
+V_{King} - V_{Queen} + V_{Women} &amp;= V_{Man} \\
+V_{Paris} - V_{France} + V_{German} &amp;= V_{Berlin}
+\end{align}
+\]</span></p></li>
 </ol>
 <p><strong>最终目标</strong>：词向量表示作为机器学习、特别是深度学习的输入和表示空间。</p>
 <p>因此，有学者考虑使用分布式表示来生成词向量。分布式表示即用一个词附近的其他词来表示该词。这也是现代统计自然语言处理中最有创意的想法之一。</p>
 <p>如， <code>banking</code> 附近的词将会代表 <code>banking</code> 的含义。</p>
 <p><img src="https://z3.ax1x.com/2021/08/05/fZCXYq.png" /></p>
 <h3 id="word2vec-skip-gram-model">2.3.2 Word2Vec: Skip-Gram model</h3>
-<p>该模型具有以下特点： 1. 无隐层 2. 投影层也可省略 3. 每个词向量作为log-linear模型的输入</p>
+<p>该模型具有以下特点：</p>
+<ol type="1">
+<li>无隐层</li>
+<li>投影层也可省略</li>
+<li>每个词向量作为log-linear模型的输入</li>
+</ol>
 <center>
 <img src = "https://z3.ax1x.com/2021/08/05/fZCDSK.png" style = "zoom:60%" />
 </center>
@@ -472,7 +492,10 @@ P(D=1 \mid w, c, \theta) &amp;= \frac{1}{1+e^{\left(-v_{c}^{T} v_{w}\right)}} \\
 <p>该文档中使用的训练数据可从如下方式下载：<a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/SVoAJqKvsME">Click Here</a>。</p>
 <p>在本节的代码中，尽可能尝试复现论文 <a target="_blank" rel="noopener" href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed Representations of Words and Phrases and their Compositionality</a> 中训练词向量的方法. 我们会实现 <code>Skip-gram</code> 模型，并且使用论文中 <code>noice contrastive sampling</code> 的目标函数。</p>
 <p>这篇论文有很多模型实现的细节，这些细节对于词向量的好坏至关重要。虽然无法完全复现论文中的实验结果，主要是由于计算资源等各种细节原因，但是我们还是可以大致展示如何训练词向量。</p>
-<p>以下是没有实现的细节: - subsampling：参考论文section 2.3</p>
+<p>以下是没有实现的细节:</p>
+<ul>
+<li>subsampling：参考论文section 2.3</li>
+</ul>
 <p>本章节的代码主要借助 <a target="_blank" rel="noopener" href="https://colab.research.google.com/notebooks/intro.ipynb">Google colab</a> 平台进行实现。</p>
 <h2 id="implementation">3.2 Implementation</h2>
 <h3 id="platform-and-enviroment-setting">3.2.1 Platform and enviroment setting</h3>
@@ -537,11 +560,12 @@ P(D=1 \mid w, c, \theta) &amp;= \frac{1}{1+e^{\left(-v_{c}^{T} v_{w}\right)}} \\
 <li><code>__len__</code> <span class="math inline">\(\rm Function\)</span> 需要返回整个数据集中有多少个 <code>item</code></li>
 <li><code>__get__</code> 根据给定的 <code>index</code> 返回一个 <code>item</code></li>
 </ul>
-<p>先创建 <code>Dataset</code> 类： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordEmbeddingDataset</span>(<span class="params">tud.Dataset</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, text, word_to_idx, idx_to_word, word_freqs, word_counts</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; text: a list of words, all text from the training dataset</span></span><br><span class="line"><span class="string">            word_to_idx: the dictionary from word to idx</span></span><br><span class="line"><span class="string">            idx_to_word: idx to word mapping</span></span><br><span class="line"><span class="string">            word_freq: the frequency of each word</span></span><br><span class="line"><span class="string">            word_counts: the word counts</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">super</span>(WordEmbeddingDataset, self).__init__()</span><br><span class="line">        self.text_encoded = [word_to_idx.get(t, VOCAB_SIZE-<span class="number">1</span>) <span class="keyword">for</span> t <span class="keyword">in</span> text]</span><br><span class="line">        self.text_encoded = torch.Tensor(self.text_encoded).long()</span><br><span class="line">        self.word_to_idx = word_to_idx</span><br><span class="line">        self.idx_to_word = idx_to_word</span><br><span class="line">        self.word_freqs = torch.Tensor(word_freqs)</span><br><span class="line">        self.word_counts = torch.Tensor(word_counts)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; 返回整个数据集（所有单词）的长度</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.text_encoded)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, idx</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; 这个function返回以下数据用于训练</span></span><br><span class="line"><span class="string">            - 中心词</span></span><br><span class="line"><span class="string">            - 这个单词附近的(positive)单词</span></span><br><span class="line"><span class="string">            - 随机采样的K个单词作为negative sample</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        center_word = self.text_encoded[idx]</span><br><span class="line">        pos_indices = <span class="built_in">list</span>(<span class="built_in">range</span>(idx-C, idx)) + <span class="built_in">list</span>(<span class="built_in">range</span>(idx+<span class="number">1</span>, idx+C+<span class="number">1</span>)) <span class="comment"># window 内单词的 index</span></span><br><span class="line">        pos_indices = [i%<span class="built_in">len</span>(self.text_encoded) <span class="keyword">for</span> i <span class="keyword">in</span> pos_indices] <span class="comment"># 取余，防止超出 text 长度，将文本闭环 -1%10 = 9</span></span><br><span class="line">        pos_words = self.text_encoded[pos_indices]  <span class="comment"># 周围单词</span></span><br><span class="line">        neg_words = torch.multinomial(self.word_freqs, K * pos_words.shape[<span class="number">0</span>], <span class="literal">True</span>) <span class="comment"># 负采样单词</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> center_word, pos_words, neg_words</span><br></pre></td></tr></table></figure></p>
+<p>先创建 <code>Dataset</code> 类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordEmbeddingDataset</span>(<span class="params">tud.Dataset</span>):</span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, text, word_to_idx, idx_to_word, word_freqs, word_counts</span>):</span>        <span class="string">&#x27;&#x27;&#x27; text: a list of words, all text from the training dataset            word_to_idx: the dictionary from word to idx            idx_to_word: idx to word mapping            word_freq: the frequency of each word            word_counts: the word counts        &#x27;&#x27;&#x27;</span>        <span class="built_in">super</span>(WordEmbeddingDataset, self).__init__()        self.text_encoded = [word_to_idx.get(t, VOCAB_SIZE-<span class="number">1</span>) <span class="keyword">for</span> t <span class="keyword">in</span> text]        self.text_encoded = torch.Tensor(self.text_encoded).long()        self.word_to_idx = word_to_idx        self.idx_to_word = idx_to_word        self.word_freqs = torch.Tensor(word_freqs)        self.word_counts = torch.Tensor(word_counts)    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>):</span>        <span class="string">&#x27;&#x27;&#x27; 返回整个数据集（所有单词）的长度        &#x27;&#x27;&#x27;</span>        <span class="keyword">return</span> <span class="built_in">len</span>(self.text_encoded)    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, idx</span>):</span>        <span class="string">&#x27;&#x27;&#x27; 这个function返回以下数据用于训练            - 中心词            - 这个单词附近的(positive)单词            - 随机采样的K个单词作为negative sample        &#x27;&#x27;&#x27;</span>        center_word = self.text_encoded[idx]        pos_indices = <span class="built_in">list</span>(<span class="built_in">range</span>(idx-C, idx)) + <span class="built_in">list</span>(<span class="built_in">range</span>(idx+<span class="number">1</span>, idx+C+<span class="number">1</span>)) <span class="comment"># window 内单词的 index        pos_indices = [i%len(self.text_encoded) for i in pos_indices] # 取余，防止超出 text 长度，将文本闭环 -1%10 = 9        pos_words = self.text_encoded[pos_indices]  # 周围单词        neg_words = torch.multinomial(self.word_freqs, K * pos_words.shape[0], True) # 负采样单词        return center_word, pos_words, neg_words</span></span><br></pre></td></tr></table></figure>
 <p>创建 <code>Dataset</code> 和 <code>Dataloader</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataset = WordEmbeddingDataset(text, word_to_idx, idx_to_word, word_freqs, word_counts)</span><br><span class="line">dataloader = tud.DataLoader(dataset, batch_size = BATCH_SIZE, shuffle = <span class="literal">True</span>, num_workers = <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset = WordEmbeddingDataset(text, word_to_idx, idx_to_word, word_freqs, word_counts)dataloader = tud.DataLoader(dataset, batch_size = BATCH_SIZE, shuffle = <span class="literal">True</span>, num_workers = <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <p>为了更好理解 <code>Dataloader</code> 中返回的内容，查看其信息：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(NUM_EPOCHS):</span><br><span class="line">  <span class="keyword">for</span> i, (input_labels, pos_labels, neg_labels) <span class="keyword">in</span> <span class="built_in">enumerate</span>(dataloader):</span><br><span class="line">    print(input_labels, pos_labels, neg_labels)</span><br><span class="line">    <span class="keyword">if</span> i &gt; <span class="number">0</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(NUM_EPOCHS):  <span class="keyword">for</span> i, (input_labels, pos_labels, neg_labels) <span class="keyword">in</span> <span class="built_in">enumerate</span>(dataloader):    print(input_labels, pos_labels, neg_labels)    <span class="keyword">if</span> i &gt; <span class="number">0</span>:      <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <p>Results:</p>
 <pre><code>tensor([ 1769,    62,    11, 21115,  6716, 29999,  1045,   138,   460, 29999,
         29999, 29999,     1,    18,  9235,     2,  8312,     9, 13824, 29999,
@@ -1161,12 +1185,12 @@ epoch 1 iteration 90000 31.634069442749023
 epoch 1 iteration 100000 31.78694725036621
 epoch 1 iteration 110000 32.359596252441406</code></pre></li>
 <li><p>保存参数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">embedding_weights = model.input_embeddings()</span><br><span class="line">np.save(<span class="string">&quot;/content/drive/MyDrive/Word_embedding/embedding-&#123;&#125;&quot;</span>.<span class="built_in">format</span>(EMBEDDING_SIZE), embedding_weights)</span><br><span class="line">torch.save(model.state_dict(), <span class="string">&quot;/content/drive/MyDrive/Word_embedding/embedding-&#123;&#125;.th&quot;</span>.<span class="built_in">format</span>(EMBEDDING_SIZE))</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">embedding_weights = model.input_embeddings()np.save(<span class="string">&quot;/content/drive/MyDrive/Word_embedding/embedding-&#123;&#125;&quot;</span>.<span class="built_in">format</span>(EMBEDDING_SIZE), embedding_weights)torch.save(model.state_dict(), <span class="string">&quot;/content/drive/MyDrive/Word_embedding/embedding-&#123;&#125;.th&quot;</span>.<span class="built_in">format</span>(EMBEDDING_SIZE))</span><br></pre></td></tr></table></figure></li>
 <li><p>加载保存的模型</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.load_state_dict(torch.load(<span class="string">&quot;/content/drive/MyDrive/Word_embedding/embedding-&#123;&#125;.th&quot;</span>.<span class="built_in">format</span>(EMBEDDING_SIZE)))</span><br></pre></td></tr></table></figure></li>
 <li><p>模型评估</p>
 <p>下面是评估模型的代码，以及训练模型的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluate</span>(<span class="params">filename, embedding_weights</span>):</span></span><br><span class="line">  <span class="keyword">if</span> filename.endswith(<span class="string">&quot;.csv&quot;</span>):</span><br><span class="line">      data = pd.read_csv(filename, sep=<span class="string">&quot;,&quot;</span>)</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">      data = pd.read_csv(filename, sep=<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">  human_similarity = []</span><br><span class="line">  model_similarity = []</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> data.iloc[:, <span class="number">0</span>:<span class="number">2</span>].index:</span><br><span class="line">      word1, word2 = data.iloc[i, <span class="number">0</span>], data.iloc[i, <span class="number">1</span>]</span><br><span class="line">      <span class="keyword">if</span> word1 <span class="keyword">not</span> <span class="keyword">in</span> word_to_idx <span class="keyword">or</span> word2 <span class="keyword">not</span> <span class="keyword">in</span> word_to_idx:</span><br><span class="line">          <span class="keyword">continue</span></span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">          word1_idx, word2_idx = word_to_idx[word1], word_to_idx[word2]</span><br><span class="line">          word1_embed, word2_embed = embedding_weights[[word1_idx]], embedding_weights[[word2_idx]]</span><br><span class="line">          model_similarity.append(<span class="built_in">float</span>(sklearn.metrics.pairwise.cosine_similarity(word1_embed, word2_embed)))</span><br><span class="line">          human_similarity.append(<span class="built_in">float</span>(data.iloc[i, <span class="number">2</span>]))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> scipy.stats.spearmanr(human_similarity, model_similarity)<span class="comment"># , model_similarity</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_nearest</span>(<span class="params">word</span>):</span></span><br><span class="line">    index = word_to_idx[word]</span><br><span class="line">    embedding = embedding_weights[index]</span><br><span class="line">    cos_dis = np.array([scipy.spatial.distance.cosine(e, embedding) <span class="keyword">for</span> e <span class="keyword">in</span> embedding_weights])</span><br><span class="line">    <span class="keyword">return</span> [idx_to_word[i] <span class="keyword">for</span> i <span class="keyword">in</span> cos_dis.argsort()[:<span class="number">10</span>]]</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluate</span>(<span class="params">filename, embedding_weights</span>):</span>  <span class="keyword">if</span> filename.endswith(<span class="string">&quot;.csv&quot;</span>):      data = pd.read_csv(filename, sep=<span class="string">&quot;,&quot;</span>)  <span class="keyword">else</span>:      data = pd.read_csv(filename, sep=<span class="string">&quot;\t&quot;</span>)  human_similarity = []  model_similarity = []  <span class="keyword">for</span> i <span class="keyword">in</span> data.iloc[:, <span class="number">0</span>:<span class="number">2</span>].index:      word1, word2 = data.iloc[i, <span class="number">0</span>], data.iloc[i, <span class="number">1</span>]      <span class="keyword">if</span> word1 <span class="keyword">not</span> <span class="keyword">in</span> word_to_idx <span class="keyword">or</span> word2 <span class="keyword">not</span> <span class="keyword">in</span> word_to_idx:          <span class="keyword">continue</span>      <span class="keyword">else</span>:          word1_idx, word2_idx = word_to_idx[word1], word_to_idx[word2]          word1_embed, word2_embed = embedding_weights[[word1_idx]], embedding_weights[[word2_idx]]          model_similarity.append(<span class="built_in">float</span>(sklearn.metrics.pairwise.cosine_similarity(word1_embed, word2_embed)))          human_similarity.append(<span class="built_in">float</span>(data.iloc[i, <span class="number">2</span>]))  <span class="keyword">return</span> scipy.stats.spearmanr(human_similarity, model_similarity)<span class="comment"># , model_similaritydef find_nearest(word):    index = word_to_idx[word]    embedding = embedding_weights[index]    cos_dis = np.array([scipy.spatial.distance.cosine(e, embedding) for e in embedding_weights])    return [idx_to_word[i] for i in cos_dis.argsort()[:10]]</span></span><br></pre></td></tr></table></figure></li>
 <li><p>训练模型步骤：</p>
 <ul>
 <li>模型一般需要训练若干个 <code>epoch</code></li>
