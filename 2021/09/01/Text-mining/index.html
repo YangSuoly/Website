@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/01/hwsiDA.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/01/hwsPud.png">
 <meta property="article:published_time" content="2021-09-01T03:20:19.000Z">
-<meta property="article:modified_time" content="2021-09-01T12:38:25.119Z">
+<meta property="article:modified_time" content="2021-09-01T12:39:14.644Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Prediction">
 <meta property="article:tag" content="NLP">
@@ -243,7 +243,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-09-01 11:20:19 / Modified: 20:38:25" itemprop="dateCreated datePublished" datetime="2021-09-01T11:20:19+08:00">2021-09-01</time>
+              <time title="Created: 2021-09-01 11:20:19 / Modified: 20:39:14" itemprop="dateCreated datePublished" datetime="2021-09-01T11:20:19+08:00">2021-09-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -866,19 +866,17 @@ M = \left\{
 <p>Where, <span class="math inline">\(p_t\)</span> denotes the oil price at the end of day <span class="math inline">\(t\)</span>.</p>
 <p>In this way, the CNN model is trained to learn hidden patterns embedded within news headlines that affect the oil price. to improve our understanding of the CNN algorithm. The procedures are described as follows:</p>
 <ul>
-<li>Step 1: Data preprocessing. The dataset is divided into training data (2011.08.01 - 2018.07.31) and testing data (2018.08.01 - 2021.07.31).</li>
-<li>Step 2: Text vectorization. Convert news text to word vector with pretrainded word embedding. In this research, we utlize an unsupervised learning algorithm for word representation call GloVe (<a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Glove%3A+Global+vectors+for+word+representation.+In+Proceedings+of+the+2014+conference+on+empirical+methods+in+natural+language+processing&amp;btnG=">Pennington et al., 2014</a>) proposed by Stanford University and is a new global log-bilinear regression model that aims to combine the advantages of the global matrix and local context window methods.</li>
-</ul>
+<li><p>Step 1: Data preprocessing. The dataset is divided into training data (2011.08.01 - 2018.07.31) and testing data (2018.08.01 - 2021.07.31).</p></li>
+<li><p>Step 2: Text vectorization. Convert news text to word vector with pretrainded word embedding. In this research, we utlize an unsupervised learning algorithm for word representation call GloVe (<a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Glove%3A+Global+vectors+for+word+representation.+In+Proceedings+of+the+2014+conference+on+empirical+methods+in+natural+language+processing&amp;btnG=">Pennington et al., 2014</a>) proposed by Stanford University and is a new global log-bilinear regression model that aims to combine the advantages of the global matrix and local context window methods.</p>
 <blockquote>
-<p>Word embedding is a dimension reduction technique that maps high-dimensional words (unstructured information) to low-dimensional numerical vectors (structured information). In other words, word embedding aims to convert documents into mathematical representations as computer-readable input and thus is essential for text analysis problems (<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai et al.</a>).<br />
-- Step 3: Train CNN model using the training sample. Word vector is feed into CNN model. The process of CNN model includes “Convolutional operation,” “Max Pooling,” and “Softmax classification”. A concise and complete flowchart is shown in Fig. 4.</p>
-</blockquote>
+<p>Word embedding is a dimension reduction technique that maps high-dimensional words (unstructured information) to low-dimensional numerical vectors (structured information). In other words, word embedding aims to convert documents into mathematical representations as computer-readable input and thus is essential for text analysis problems (<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai et al.</a>).</p>
+</blockquote></li>
+<li><p>Step 3: Train CNN model using the training sample. Word vector is feed into CNN model. The process of CNN model includes “Convolutional operation,” “Max Pooling,” and “Softmax classification”. A concise and complete flowchart is shown in Fig. 4.</p>
 <p><img src="https://z3.ax1x.com/2021/09/01/hwsiDA.png" alt="png" style="zoom:80%;" /></p>
 <center>
-Fig.4 The flowchart of CNN model
-</center>
-<ul>
-<li>Step 3: Using the best trained CNN model classifies the test sample.</li>
+<p>Fig.4 The flowchart of CNN model</p>
+</center></li>
+<li><p>Step 3: Using the best trained CNN model classifies the test sample.</p></li>
 </ul>
 <p>In this study, CNN is coded by Python 3.8. We employ a Python library, PyTorch, which provides convenient APIs for building Deep learning network.</p>
 <h3 id="code-implementation">3.5.2 Code implementation</h3>

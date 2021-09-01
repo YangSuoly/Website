@@ -14600,12 +14600,6 @@ array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
       </tags>
   </entry>
   <entry>
-    <title>Pytorch-4-LanguageModel</title>
-    <url>/2021/08/06/Pytorch-4-LanguageModel/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
     <title>Pytorch-3-Word2vec</title>
     <url>/2021/08/05/Pytorch-3-Word2vec/</url>
     <content><![CDATA[<h1 id="study-goals">1. Study goals</h1>
@@ -15565,6 +15559,12 @@ joseph</code></pre>
         <tag>Deep learning</tag>
         <tag>Pytorch</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Pytorch-4-LanguageModel</title>
+    <url>/2021/08/06/Pytorch-4-LanguageModel/</url>
+    <content><![CDATA[
+]]></content>
   </entry>
   <entry>
     <title>Pytorch</title>
@@ -17085,67 +17085,6 @@ Fig. Bootstrap 自举法
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2021/09/01/test/</url>
-    <content><![CDATA[<p>This is a test file!</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(<span class="string">&#x27;This is a test file&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><span id="inline-yellow">Yellow block</span></p>
-<p><span id="inline-blue">Blue block</span></p>
-<p><span id="inline-green">Green block</span></p>
-<p><span id="inline-purple">Purple block</span></p>
-<p id="div-left-blue">
-左侧蓝色块
-</p>
-<p id="div-border-left-red">
-左侧边框红色块级
-</p>
-<p id="div-border-left-yellow">
-左侧边框黄色块级
-</p>
-<p id="div-border-left-green">
-左侧边框绿色块级
-</p>
-<p id="div-border-left-blue">
-左侧边框蓝色块级
-</p>
-<p id="div-border-left-purple">
-左侧边框紫色块级
-</p>
-<p id="div-border-right-red">
-右侧边框红色块级
-</p>
-<p id="div-border-right-yellow">
-右侧边框黄色块级
-</p>
-<p id="div-border-right-green">
-右侧边框绿色块级
-</p>
-<p id="div-border-right-blue">
-右侧边框蓝色块级
-</p>
-<p id="div-border-right-purple">
-右侧边框紫色块级
-</p>
-<p id="div-border-top-red">
-上侧边框红色块级
-</p>
-<p id="div-border-top-yellow">
-上侧边框黄色块级
-</p>
-<p id="div-border-top-green">
-上侧边框绿色块级
-</p>
-<p id="div-border-top-blue">
-上侧边框蓝色块级
-</p>
-<p id="div-border-top-purple">
-上侧边框紫色块级
-</p>
-<p><a id="download" href="https://www.yangsuoly.com" target="_blank"><i class="fa fa-download"></i><span> Download Now </span> </a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Text-mining</title>
     <url>/2021/09/01/Text-mining/</url>
     <content><![CDATA[<h1 id="introduction">1. Introduction</h1>
@@ -17723,19 +17662,17 @@ M = \left\{
 <p>Where, <span class="math inline">\(p_t\)</span> denotes the oil price at the end of day <span class="math inline">\(t\)</span>.</p>
 <p>In this way, the CNN model is trained to learn hidden patterns embedded within news headlines that affect the oil price. to improve our understanding of the CNN algorithm. The procedures are described as follows:</p>
 <ul>
-<li>Step 1: Data preprocessing. The dataset is divided into training data (2011.08.01 - 2018.07.31) and testing data (2018.08.01 - 2021.07.31).</li>
-<li>Step 2: Text vectorization. Convert news text to word vector with pretrainded word embedding. In this research, we utlize an unsupervised learning algorithm for word representation call GloVe (<a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Glove%3A+Global+vectors+for+word+representation.+In+Proceedings+of+the+2014+conference+on+empirical+methods+in+natural+language+processing&amp;btnG=">Pennington et al., 2014</a>) proposed by Stanford University and is a new global log-bilinear regression model that aims to combine the advantages of the global matrix and local context window methods.</li>
-</ul>
+<li><p>Step 1: Data preprocessing. The dataset is divided into training data (2011.08.01 - 2018.07.31) and testing data (2018.08.01 - 2021.07.31).</p></li>
+<li><p>Step 2: Text vectorization. Convert news text to word vector with pretrainded word embedding. In this research, we utlize an unsupervised learning algorithm for word representation call GloVe (<a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Glove%3A+Global+vectors+for+word+representation.+In+Proceedings+of+the+2014+conference+on+empirical+methods+in+natural+language+processing&amp;btnG=">Pennington et al., 2014</a>) proposed by Stanford University and is a new global log-bilinear regression model that aims to combine the advantages of the global matrix and local context window methods.</p>
 <blockquote>
-<p>Word embedding is a dimension reduction technique that maps high-dimensional words (unstructured information) to low-dimensional numerical vectors (structured information). In other words, word embedding aims to convert documents into mathematical representations as computer-readable input and thus is essential for text analysis problems (<a href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai et al.</a>).<br />
-- Step 3: Train CNN model using the training sample. Word vector is feed into CNN model. The process of CNN model includes “Convolutional operation,” “Max Pooling,” and “Softmax classification”. A concise and complete flowchart is shown in Fig. 4.</p>
-</blockquote>
+<p>Word embedding is a dimension reduction technique that maps high-dimensional words (unstructured information) to low-dimensional numerical vectors (structured information). In other words, word embedding aims to convert documents into mathematical representations as computer-readable input and thus is essential for text analysis problems (<a href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai et al.</a>).</p>
+</blockquote></li>
+<li><p>Step 3: Train CNN model using the training sample. Word vector is feed into CNN model. The process of CNN model includes “Convolutional operation,” “Max Pooling,” and “Softmax classification”. A concise and complete flowchart is shown in Fig. 4.</p>
 <p><img src="https://z3.ax1x.com/2021/09/01/hwsiDA.png" alt="png" style="zoom:80%;" /></p>
 <center>
-Fig.4 The flowchart of CNN model
-</center>
-<ul>
-<li>Step 3: Using the best trained CNN model classifies the test sample.</li>
+<p>Fig.4 The flowchart of CNN model</p>
+</center></li>
+<li><p>Step 3: Using the best trained CNN model classifies the test sample.</p></li>
 </ul>
 <p>In this study, CNN is coded by Python 3.8. We employ a Python library, PyTorch, which provides convenient APIs for building Deep learning network.</p>
 <h3 id="code-implementation">3.5.2 Code implementation</h3>
@@ -20379,5 +20316,66 @@ Topic_KL divergence
         <tag>Prediction</tag>
         <tag>NLP</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/09/01/test/</url>
+    <content><![CDATA[<p>This is a test file!</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(<span class="string">&#x27;This is a test file&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><span id="inline-yellow">Yellow block</span></p>
+<p><span id="inline-blue">Blue block</span></p>
+<p><span id="inline-green">Green block</span></p>
+<p><span id="inline-purple">Purple block</span></p>
+<p id="div-left-blue">
+左侧蓝色块
+</p>
+<p id="div-border-left-red">
+左侧边框红色块级
+</p>
+<p id="div-border-left-yellow">
+左侧边框黄色块级
+</p>
+<p id="div-border-left-green">
+左侧边框绿色块级
+</p>
+<p id="div-border-left-blue">
+左侧边框蓝色块级
+</p>
+<p id="div-border-left-purple">
+左侧边框紫色块级
+</p>
+<p id="div-border-right-red">
+右侧边框红色块级
+</p>
+<p id="div-border-right-yellow">
+右侧边框黄色块级
+</p>
+<p id="div-border-right-green">
+右侧边框绿色块级
+</p>
+<p id="div-border-right-blue">
+右侧边框蓝色块级
+</p>
+<p id="div-border-right-purple">
+右侧边框紫色块级
+</p>
+<p id="div-border-top-red">
+上侧边框红色块级
+</p>
+<p id="div-border-top-yellow">
+上侧边框黄色块级
+</p>
+<p id="div-border-top-green">
+上侧边框绿色块级
+</p>
+<p id="div-border-top-blue">
+上侧边框蓝色块级
+</p>
+<p id="div-border-top-purple">
+上侧边框紫色块级
+</p>
+<p><a id="download" href="https://www.yangsuoly.com" target="_blank"><i class="fa fa-download"></i><span> Download Now </span> </a></p>
+]]></content>
   </entry>
 </search>
