@@ -9285,98 +9285,6 @@ Fig.1 Bleding procedutre
       </tags>
   </entry>
   <entry>
-    <title>Ensemble-Stacking</title>
-    <url>/2021/05/13/Ensemble-Stacking/</url>
-    <content><![CDATA[<h1 id="introduction">1. Introduction</h1>
-<p>Blending 集成方法的学习过程中，可以发现 Blending 在集成过程中只使用到了验证集的数据，这就造成了很大的浪费。因此可以靠用使用 Stacking 集成方法进行改进。</p>
-<a id="more"></a>
-<p>Blending 产生验证集的方式是使用分割的方式，产生一组训练集和验证集，那么是否可以将这种方式改进为交叉验证的方式呢？于是就有了如下的 Stacking 集成方法，其步骤如下：</p>
-<ol type="1">
-<li>记初始训练集为 <code>Train set</code>，测试集为 <code>Test set</code>，shape 分别为 <code>(train_size, 1)</code> 和 <code>(test_size, 1)</code>。 将 <code>Train set</code> 划分为多个部分（如 10 个），如下图 (Source: <a href="https://courses.analyticsvidhya.com/courses/take/ensemble-learning-and-ensemble-learning-techniques/texts/11125921-stacking">Analytics Vidhya</a>)；</li>
-</ol>
-<p><img src="https://z3.ax1x.com/2021/05/13/g0zJv4.png" /></p>
-<ol start="2" type="1">
-<li>用划分后的的 9/10 作为训练集 (<code>train_set</code>) 训练基准模型 (如决策树)，并用训练好的模型对剩下的 1/10 数据 (验证集, <code>val_set</code>) 和测试集 (<code>Test_set</code>) 来预测数据；</li>
-<li>重复迭代训练 10 次直到所有数据都作为 <code>val_set</code>，并将 <code>val_set</code> 的 10 份预测的数据拼接为一个 shape 为 (<code>train_size</code>, 1) 的矩阵 (记为 <code>Trainset</code>)。</li>
-<li>对迭代过程中得到的 10 份测试集 (<code>Test set</code>) 的预测数据取加权平均，得到一个shape 为 (<code>test_size</code>, 1)的矩阵。</li>
-<li>重复步骤 2-4 训练其他基准模型 (如 knn) : <img src="https://z3.ax1x.com/2021/05/13/g0ztKJ.png" /></li>
-<li>将上述训练得到的一系列 Trainset 串联，得到一个形状为 <code>(train_size, num_features)</code> 的矩阵，并用该矩阵训练第二层的模型，然后用训练好的新模型来做测试集的预测，并作为最终预测结果。</li>
-</ol>
-<p>下面借助实例来体验 Stacking 的魅力（参考案例：<a href="https://www.cnblogs.com/Christina-Notebook/p/10063146.html">cnblogs</a>）： 注：<code>sklearn</code> 模块并没有 <code>Stacking</code> 的方法，因此需要使用 <code>mlxtend</code> 工具包。</p>
-<h1 id="a-example-of-stacking-model">2. A example of stacking model</h1>
-<h2 id="data-process">2.1 Data process</h2>
-<ul>
-<li><p>Import modules <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> mlxtend.classifier <span class="keyword">import</span> StackingCVClassifier</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score <span class="keyword">as</span> ac</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Load data 本案例使用了 <code>Kaggle</code> 比赛中的一份泰坦尼克号乘客的数据来进行处理，下载链接：<a href="https://yangsuoly.com/file/titanic-data.csv">Titanic-data.csv</a> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">&#x27;./titanic-data.csv&#x27;</span>)</span><br></pre></td></tr></table></figure> <strong>Information</strong>:</p>
-<ul>
-<li>PassengerId：乘客ID</li>
-<li>Survived：是否获救，用1和Rescued表示获救,用0或者not saved表示没有获救</li>
-<li>Pclass：乘客等级，“1”表示Upper，“2”表示Middle，“3”表示Lower</li>
-<li>Name：乘客姓名</li>
-<li>Sex：性别</li>
-<li>Age：年龄</li>
-<li>SibSp：乘客在船上的配偶数量或兄弟姐妹数量）</li>
-<li>Parch：乘客在船上的父母或子女数量</li>
-<li>Ticket：船票信息</li>
-<li>Fare：票价</li>
-<li>Cabin：是否住在独立的房间，“1”表示是，“0”为否</li>
-<li>embarked：表示乘客上船的码头距离泰坦尼克出发码头的距离，数值越大表示距离越远</li>
-</ul></li>
-<li><p>Statistical description <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.info() <span class="comment"># See datatype</span></span><br></pre></td></tr></table></figure> Results: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br><span class="line"><span class="class"><span class="title">RangeIndex</span>:</span> <span class="number">891</span> entries, <span class="number">0</span> to <span class="number">890</span></span><br><span class="line">Data columns (total <span class="number">12</span> columns):</span><br><span class="line"> <span class="comment">#   Column       Non-Null Count  Dtype  </span></span><br><span class="line">---  ------       --------------  -----  </span><br><span class="line"> <span class="number">0</span>   PassengerId  <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">1</span>   Survived     <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">2</span>   Pclass       <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">3</span>   Name         <span class="number">891</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">4</span>   Sex          <span class="number">891</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">5</span>   Age          <span class="number">714</span> non-null    float64</span><br><span class="line"> <span class="number">6</span>   SibSp        <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">7</span>   Parch        <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">8</span>   Ticket       <span class="number">891</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">9</span>   Fare         <span class="number">891</span> non-null    float64</span><br><span class="line"> <span class="number">10</span>  Cabin        <span class="number">204</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">11</span>  Embarked     <span class="number">889</span> non-null    <span class="built_in">object</span></span><br><span class="line">dtypes: float64(<span class="number">2</span>), int64(<span class="number">5</span>), <span class="built_in">object</span>(<span class="number">5</span>)</span><br><span class="line">memory usage: <span class="number">83.7</span>+ KB</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Missing values processing</p>
-<ul>
-<li><p>Embarked</p>
-<p>Embarked 列仅有两个缺失值，而 'S' 占比最高，故将缺失值用 'S' 填充； <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[<span class="string">&#x27;Embarked&#x27;</span>] = data[<span class="string">&#x27;Embarked&#x27;</span>].fillna(<span class="string">&#x27;S&#x27;</span>)</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Age</p>
-<p>Age 包含较多缺失值，用均值填充； <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dmean_age = data[<span class="string">&#x27;Age&#x27;</span>].mean()</span><br><span class="line">data[<span class="string">&#x27;Age&#x27;</span>] = data[<span class="string">&#x27;Age&#x27;</span>].fillna(mean_age)</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Cabin</p>
-<p>Cabin 值缺失过多，且每位乘客房间号均不一样，且无规律，故舍去。</p></li>
-</ul></li>
-<li><p>Datatype transformation</p>
-<ul>
-<li><p>Sex 将性别转换未数值型数据，用 0 表示男性，1 表示女性</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data[<span class="string">&#x27;Sex&#x27;</span>] == <span class="string">&#x27;male&#x27;</span>, <span class="string">&#x27;Sex&#x27;</span>] = <span class="number">0</span> <span class="comment"># &#x27;male&#x27; -&gt; 0</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;Sex&#x27;</span>] == <span class="string">&#x27;female&#x27;</span>, <span class="string">&#x27;Sex&#x27;</span>] = <span class="number">1</span> <span class="comment"># &#x27;female&#x27; -&gt; 1</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Embarked</p>
-<p>将 'C' 所在位置的值改为 1, 'S' 所在位置的值改为 2, 'Q' 所在位置的值改为 3；</p></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data[<span class="string">&#x27;Embarked&#x27;</span>] == <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>] = <span class="number">1</span> <span class="comment"># &#x27;C&#x27; -&gt; 1</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;Embarked&#x27;</span>] == <span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>] = <span class="number">2</span> <span class="comment"># &#x27;S&#x27; -&gt; 2</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;Embarked&#x27;</span>] == <span class="string">&#x27;Q&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>] = <span class="number">3</span> <span class="comment"># &#x27;Q&#x27; -&gt; 3</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Drop irrelevant variables <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">columns = data.columns</span><br><span class="line">columns = columns.drop([<span class="string">&#x27;PassengerId&#x27;</span>, <span class="string">&#x27;Cabin&#x27;</span>, <span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Ticket&#x27;</span>])</span><br><span class="line">data = data.loc[:, columns]</span><br></pre></td></tr></table></figure></li>
-</ul></li>
-<li><p>Parameters setting 可以直到 data的列名称为 <code>['Survived', 'Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']</code>。选择最后一列作为分类标准。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_percent = <span class="number">0.10</span> <span class="comment"># 测试集大小</span></span><br><span class="line"></span><br><span class="line">train_X = train.loc[:, data.columns[<span class="number">1</span>:]]</span><br><span class="line">train_Y = train.loc[:, data.columns[<span class="number">0</span>]].values.reshape(-<span class="number">1</span>,)</span><br><span class="line">test_X = test.loc[:, data.columns[<span class="number">1</span>:]]</span><br><span class="line">test_Y = test.loc[:, data.columns[<span class="number">0</span>]].values.reshape(-<span class="number">1</span>,)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="creating-stacking-model">2.2 Creating Stacking model</h2>
-<ul>
-<li><p>Stacking <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RANDOM_SEED = <span class="number">42</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The first layer</span></span><br><span class="line">clf1 = KNeighborsClassifier(n_neighbors=<span class="number">1</span>)</span><br><span class="line">clf2 = RandomForestClassifier(random_state=RANDOM_SEED)</span><br><span class="line">clf3 = GaussianNB()</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting from v0.16.0, StackingCVRegressor supports</span></span><br><span class="line"><span class="comment"># `random_state` to get deterministic result.</span></span><br><span class="line">sclf = StackingCVClassifier(</span><br><span class="line">      classifiers=[clf1, clf2, clf3],  <span class="comment"># The first layer</span></span><br><span class="line">      meta_classifier=lr,   <span class="comment"># THe second layer</span></span><br><span class="line">      random_state=RANDOM_SEED)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;3-fold cross validation:\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> clf, label <span class="keyword">in</span> <span class="built_in">zip</span>([clf1, clf2, clf3, sclf], [<span class="string">&#x27;KNN&#x27;</span>, <span class="string">&#x27;Random Forest&#x27;</span>, <span class="string">&#x27;Naive Bayes&#x27;</span>,<span class="string">&#x27;StackingClassifier&#x27;</span>]):</span><br><span class="line">    scores = cross_val_score(clf, train_X, train_Y,</span><br><span class="line">              cv=<span class="number">3</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">    print(<span class="string">&quot;Accuracy: %0.2f (+/- %0.2f) [%s]&quot;</span> % (scores.mean(),</span><br><span class="line">               scores.std(), label))</span><br></pre></td></tr></table></figure> Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span>-fold cross validation:</span><br><span class="line"></span><br><span class="line">Accuracy: <span class="number">0.70</span> (+/- <span class="number">0.02</span>) [KNN]</span><br><span class="line">Accuracy: <span class="number">0.80</span> (+/- <span class="number">0.01</span>) [Random Forest]</span><br><span class="line">Accuracy: <span class="number">0.76</span> (+/- <span class="number">0.02</span>) [Naive Bayes]</span><br><span class="line">Accuracy: <span class="number">0.79</span> (+/- <span class="number">0.01</span>) [StackingClassifier]</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Ploting decision region 由于使用了多维数据，决策边界暂无法成功绘制，有时间了再琢磨。</p></li>
-</ul>
-<h1 id="conclusion">3. Conclusion</h1>
-<h2 id="blending-和-stacking-对比">3.1 Blending 和 Stacking 对比</h2>
-<ul>
-<li>Blending 优点：
-<ul>
-<li>比 Stacking 简单，不用进行 <code>K</code> 次的交叉验证来获得 stacker feature</li>
-</ul></li>
-<li>缺点：
-<ul>
-<li>在训练第二层的模型的时候，仅使用了很少的数据；</li>
-<li>由于第二层训练数据较少，容易导致过拟合</li>
-<li>stacking 使用多测的 CV 会比较文件。</li>
-</ul></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DataWhale</category>
-        <category>Ensemble</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Ensemble</tag>
-        <tag>Sklearn</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ensemble-happiness</title>
     <url>/2021/05/18/Ensemble-Happiness/</url>
     <content><![CDATA[<h1 id="problem">1. Problem</h1>
@@ -9645,6 +9553,98 @@ trust_12 | 3382</code></pre>
         <category>DataWhale</category>
         <category>Ensemble</category>
         <category>Cases</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Ensemble</tag>
+        <tag>Sklearn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ensemble-Stacking</title>
+    <url>/2021/05/13/Ensemble-Stacking/</url>
+    <content><![CDATA[<h1 id="introduction">1. Introduction</h1>
+<p>Blending 集成方法的学习过程中，可以发现 Blending 在集成过程中只使用到了验证集的数据，这就造成了很大的浪费。因此可以靠用使用 Stacking 集成方法进行改进。</p>
+<a id="more"></a>
+<p>Blending 产生验证集的方式是使用分割的方式，产生一组训练集和验证集，那么是否可以将这种方式改进为交叉验证的方式呢？于是就有了如下的 Stacking 集成方法，其步骤如下：</p>
+<ol type="1">
+<li>记初始训练集为 <code>Train set</code>，测试集为 <code>Test set</code>，shape 分别为 <code>(train_size, 1)</code> 和 <code>(test_size, 1)</code>。 将 <code>Train set</code> 划分为多个部分（如 10 个），如下图 (Source: <a href="https://courses.analyticsvidhya.com/courses/take/ensemble-learning-and-ensemble-learning-techniques/texts/11125921-stacking">Analytics Vidhya</a>)；</li>
+</ol>
+<p><img src="https://z3.ax1x.com/2021/05/13/g0zJv4.png" /></p>
+<ol start="2" type="1">
+<li>用划分后的的 9/10 作为训练集 (<code>train_set</code>) 训练基准模型 (如决策树)，并用训练好的模型对剩下的 1/10 数据 (验证集, <code>val_set</code>) 和测试集 (<code>Test_set</code>) 来预测数据；</li>
+<li>重复迭代训练 10 次直到所有数据都作为 <code>val_set</code>，并将 <code>val_set</code> 的 10 份预测的数据拼接为一个 shape 为 (<code>train_size</code>, 1) 的矩阵 (记为 <code>Trainset</code>)。</li>
+<li>对迭代过程中得到的 10 份测试集 (<code>Test set</code>) 的预测数据取加权平均，得到一个shape 为 (<code>test_size</code>, 1)的矩阵。</li>
+<li>重复步骤 2-4 训练其他基准模型 (如 knn) : <img src="https://z3.ax1x.com/2021/05/13/g0ztKJ.png" /></li>
+<li>将上述训练得到的一系列 Trainset 串联，得到一个形状为 <code>(train_size, num_features)</code> 的矩阵，并用该矩阵训练第二层的模型，然后用训练好的新模型来做测试集的预测，并作为最终预测结果。</li>
+</ol>
+<p>下面借助实例来体验 Stacking 的魅力（参考案例：<a href="https://www.cnblogs.com/Christina-Notebook/p/10063146.html">cnblogs</a>）： 注：<code>sklearn</code> 模块并没有 <code>Stacking</code> 的方法，因此需要使用 <code>mlxtend</code> 工具包。</p>
+<h1 id="a-example-of-stacking-model">2. A example of stacking model</h1>
+<h2 id="data-process">2.1 Data process</h2>
+<ul>
+<li><p>Import modules <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> mlxtend.classifier <span class="keyword">import</span> StackingCVClassifier</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score <span class="keyword">as</span> ac</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Load data 本案例使用了 <code>Kaggle</code> 比赛中的一份泰坦尼克号乘客的数据来进行处理，下载链接：<a href="https://yangsuoly.com/file/titanic-data.csv">Titanic-data.csv</a> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">&#x27;./titanic-data.csv&#x27;</span>)</span><br></pre></td></tr></table></figure> <strong>Information</strong>:</p>
+<ul>
+<li>PassengerId：乘客ID</li>
+<li>Survived：是否获救，用1和Rescued表示获救,用0或者not saved表示没有获救</li>
+<li>Pclass：乘客等级，“1”表示Upper，“2”表示Middle，“3”表示Lower</li>
+<li>Name：乘客姓名</li>
+<li>Sex：性别</li>
+<li>Age：年龄</li>
+<li>SibSp：乘客在船上的配偶数量或兄弟姐妹数量）</li>
+<li>Parch：乘客在船上的父母或子女数量</li>
+<li>Ticket：船票信息</li>
+<li>Fare：票价</li>
+<li>Cabin：是否住在独立的房间，“1”表示是，“0”为否</li>
+<li>embarked：表示乘客上船的码头距离泰坦尼克出发码头的距离，数值越大表示距离越远</li>
+</ul></li>
+<li><p>Statistical description <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.info() <span class="comment"># See datatype</span></span><br></pre></td></tr></table></figure> Results: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">pandas</span>.<span class="title">core</span>.<span class="title">frame</span>.<span class="title">DataFrame</span>&#x27;&gt;</span></span><br><span class="line"><span class="class"><span class="title">RangeIndex</span>:</span> <span class="number">891</span> entries, <span class="number">0</span> to <span class="number">890</span></span><br><span class="line">Data columns (total <span class="number">12</span> columns):</span><br><span class="line"> <span class="comment">#   Column       Non-Null Count  Dtype  </span></span><br><span class="line">---  ------       --------------  -----  </span><br><span class="line"> <span class="number">0</span>   PassengerId  <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">1</span>   Survived     <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">2</span>   Pclass       <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">3</span>   Name         <span class="number">891</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">4</span>   Sex          <span class="number">891</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">5</span>   Age          <span class="number">714</span> non-null    float64</span><br><span class="line"> <span class="number">6</span>   SibSp        <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">7</span>   Parch        <span class="number">891</span> non-null    int64  </span><br><span class="line"> <span class="number">8</span>   Ticket       <span class="number">891</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">9</span>   Fare         <span class="number">891</span> non-null    float64</span><br><span class="line"> <span class="number">10</span>  Cabin        <span class="number">204</span> non-null    <span class="built_in">object</span></span><br><span class="line"> <span class="number">11</span>  Embarked     <span class="number">889</span> non-null    <span class="built_in">object</span></span><br><span class="line">dtypes: float64(<span class="number">2</span>), int64(<span class="number">5</span>), <span class="built_in">object</span>(<span class="number">5</span>)</span><br><span class="line">memory usage: <span class="number">83.7</span>+ KB</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Missing values processing</p>
+<ul>
+<li><p>Embarked</p>
+<p>Embarked 列仅有两个缺失值，而 'S' 占比最高，故将缺失值用 'S' 填充； <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data[<span class="string">&#x27;Embarked&#x27;</span>] = data[<span class="string">&#x27;Embarked&#x27;</span>].fillna(<span class="string">&#x27;S&#x27;</span>)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Age</p>
+<p>Age 包含较多缺失值，用均值填充； <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dmean_age = data[<span class="string">&#x27;Age&#x27;</span>].mean()</span><br><span class="line">data[<span class="string">&#x27;Age&#x27;</span>] = data[<span class="string">&#x27;Age&#x27;</span>].fillna(mean_age)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Cabin</p>
+<p>Cabin 值缺失过多，且每位乘客房间号均不一样，且无规律，故舍去。</p></li>
+</ul></li>
+<li><p>Datatype transformation</p>
+<ul>
+<li><p>Sex 将性别转换未数值型数据，用 0 表示男性，1 表示女性</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data[<span class="string">&#x27;Sex&#x27;</span>] == <span class="string">&#x27;male&#x27;</span>, <span class="string">&#x27;Sex&#x27;</span>] = <span class="number">0</span> <span class="comment"># &#x27;male&#x27; -&gt; 0</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;Sex&#x27;</span>] == <span class="string">&#x27;female&#x27;</span>, <span class="string">&#x27;Sex&#x27;</span>] = <span class="number">1</span> <span class="comment"># &#x27;female&#x27; -&gt; 1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Embarked</p>
+<p>将 'C' 所在位置的值改为 1, 'S' 所在位置的值改为 2, 'Q' 所在位置的值改为 3；</p></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.loc[data[<span class="string">&#x27;Embarked&#x27;</span>] == <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>] = <span class="number">1</span> <span class="comment"># &#x27;C&#x27; -&gt; 1</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;Embarked&#x27;</span>] == <span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>] = <span class="number">2</span> <span class="comment"># &#x27;S&#x27; -&gt; 2</span></span><br><span class="line">data.loc[data[<span class="string">&#x27;Embarked&#x27;</span>] == <span class="string">&#x27;Q&#x27;</span>, <span class="string">&#x27;Embarked&#x27;</span>] = <span class="number">3</span> <span class="comment"># &#x27;Q&#x27; -&gt; 3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Drop irrelevant variables <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">columns = data.columns</span><br><span class="line">columns = columns.drop([<span class="string">&#x27;PassengerId&#x27;</span>, <span class="string">&#x27;Cabin&#x27;</span>, <span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Ticket&#x27;</span>])</span><br><span class="line">data = data.loc[:, columns]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Parameters setting 可以直到 data的列名称为 <code>['Survived', 'Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']</code>。选择最后一列作为分类标准。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_percent = <span class="number">0.10</span> <span class="comment"># 测试集大小</span></span><br><span class="line"></span><br><span class="line">train_X = train.loc[:, data.columns[<span class="number">1</span>:]]</span><br><span class="line">train_Y = train.loc[:, data.columns[<span class="number">0</span>]].values.reshape(-<span class="number">1</span>,)</span><br><span class="line">test_X = test.loc[:, data.columns[<span class="number">1</span>:]]</span><br><span class="line">test_Y = test.loc[:, data.columns[<span class="number">0</span>]].values.reshape(-<span class="number">1</span>,)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="creating-stacking-model">2.2 Creating Stacking model</h2>
+<ul>
+<li><p>Stacking <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RANDOM_SEED = <span class="number">42</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The first layer</span></span><br><span class="line">clf1 = KNeighborsClassifier(n_neighbors=<span class="number">1</span>)</span><br><span class="line">clf2 = RandomForestClassifier(random_state=RANDOM_SEED)</span><br><span class="line">clf3 = GaussianNB()</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting from v0.16.0, StackingCVRegressor supports</span></span><br><span class="line"><span class="comment"># `random_state` to get deterministic result.</span></span><br><span class="line">sclf = StackingCVClassifier(</span><br><span class="line">      classifiers=[clf1, clf2, clf3],  <span class="comment"># The first layer</span></span><br><span class="line">      meta_classifier=lr,   <span class="comment"># THe second layer</span></span><br><span class="line">      random_state=RANDOM_SEED)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;3-fold cross validation:\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> clf, label <span class="keyword">in</span> <span class="built_in">zip</span>([clf1, clf2, clf3, sclf], [<span class="string">&#x27;KNN&#x27;</span>, <span class="string">&#x27;Random Forest&#x27;</span>, <span class="string">&#x27;Naive Bayes&#x27;</span>,<span class="string">&#x27;StackingClassifier&#x27;</span>]):</span><br><span class="line">    scores = cross_val_score(clf, train_X, train_Y,</span><br><span class="line">              cv=<span class="number">3</span>, scoring=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">    print(<span class="string">&quot;Accuracy: %0.2f (+/- %0.2f) [%s]&quot;</span> % (scores.mean(),</span><br><span class="line">               scores.std(), label))</span><br></pre></td></tr></table></figure> Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span>-fold cross validation:</span><br><span class="line"></span><br><span class="line">Accuracy: <span class="number">0.70</span> (+/- <span class="number">0.02</span>) [KNN]</span><br><span class="line">Accuracy: <span class="number">0.80</span> (+/- <span class="number">0.01</span>) [Random Forest]</span><br><span class="line">Accuracy: <span class="number">0.76</span> (+/- <span class="number">0.02</span>) [Naive Bayes]</span><br><span class="line">Accuracy: <span class="number">0.79</span> (+/- <span class="number">0.01</span>) [StackingClassifier]</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Ploting decision region 由于使用了多维数据，决策边界暂无法成功绘制，有时间了再琢磨。</p></li>
+</ul>
+<h1 id="conclusion">3. Conclusion</h1>
+<h2 id="blending-和-stacking-对比">3.1 Blending 和 Stacking 对比</h2>
+<ul>
+<li>Blending 优点：
+<ul>
+<li>比 Stacking 简单，不用进行 <code>K</code> 次的交叉验证来获得 stacker feature</li>
+</ul></li>
+<li>缺点：
+<ul>
+<li>在训练第二层的模型的时候，仅使用了很少的数据；</li>
+<li>由于第二层训练数据较少，容易导致过拟合</li>
+<li>stacking 使用多测的 CV 会比较文件。</li>
+</ul></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DataWhale</category>
+        <category>Ensemble</category>
       </categories>
       <tags>
         <tag>Python</tag>
@@ -11058,6 +11058,398 @@ figure 1-3 Parameters
       </tags>
   </entry>
   <entry>
+    <title>Influence</title>
+    <url>/2021/01/18/Influence-1/</url>
+    <content><![CDATA[<h1 id="引言">1. 引言</h1>
+<p>影响力，一般认为指的是用一种为别人所乐于接受的方式，改变他人所乐于接受的方式，改变他人的思想和行动的能力。该书由著名社会心理学家 Robert B. Cialdini 所著， Cialdini 倾其职业生涯来研究影响力，在说服、顺从和谈判领域享有广泛的国际声誉。因其在商业道德和政策运用方面所作的前沿研究，常被称为“影响力教父”。</p>
+<a id="more"></a>
+<p>本书主要谈论了一些社会生活中常见，但我们通常容易忽视的小套路，从互惠、承诺和一致、社会认同、喜好、权威以及稀缺六个方面对这些套路进行归类，通过一番抽丝剥茧式的分析，来阐述人们面对这些套路时会陷入的思维定势以及应对措施。</p>
+<p>在日常生活中，各种销售广告、推销手段层出不穷，一些经不起推敲的广告却有时能够取得奇效，一些看似损害商家自身利益的小套路却能够给商家带来更多利益……这些都是通过影响力这一手段来影响我们的决策。作者通过对影响力的作用方式进行剖析，解释了影响力的厉害关系。因为它，我们可能被无良商家诓骗而蒙受损失，甚至映射到社交生活中，前些年饱受诟病的“PUA”中也能看到影响力这一武器被滥用的影子。</p>
+<p>作者的很多论述朴实无华，但却能在平凡的语言中让我有种感同身受的真实感。比如以承诺与一致为例，前段时间，偶然间翻看了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》。我以前总是以信念、信仰之类的规诫自己，所以当时兴致偶发，记录了一些优秀的品质借以自勉。殊不知时过境迁，再次重温之时，竟发现这些执念已经在不知不觉之中已经深入记忆，成为了个人为人处世的一部分了。不免有些喟叹，如果当初没有记录的冲动，也许这些执念只会在人情世故中泯然消逝罢了。此外，还有其他许多因素，都能带给我发自内心的共鸣感，通过了解它们，可以帮助我更好地剖析遇到的问题，理解社会现象，避开一些本该能够避免的社会损失。</p>
+<h2 id="按一下就播放">1.1 按一下就播放</h2>
+<p>影响力对我们起作用的方式是作者称为“按一下就播放”的一种固定行为模式。这种模式最初是研究动物行为时所提，其基本特点是：构成模式的行为每次都是按照几乎无异的方式或相同的顺序发生，就好像这些方式是记录动物身体里内置的磁带上，只要到了特定环境，相应的行为就得到激活，进而按照标准的顺序展开一整套行为，就如同按下了播放键一样。最有意思的一点在于这个磁带的激活方式，促发者也许并不是对手这个整体，而是对手具备的一些特征。</p>
+<p>而在人类社会中，同样存在按一下就播放的范式，比如别人在请求我们帮忙的时候，要是能给一个理由，我们通常会乐意提供帮助。“因为”这个词可以触发我我们的自动顺从反应，哪怕请求者并没有给出一个说得通的理由，但我们潜意识里会说服自己去帮助对方，就像是“因为”这个词语按下了我们顺从反应的按钮一般。</p>
+<p>事实上，这种模式化的自动行为在人类活动中是相当普遍的。因为很多时候，它是最有效的行为方式。英国著名哲学家怀特海（Alfred North Whitehead） 曾断言：文明的进步，就是人们在不假思索中可以做的事情越来越多。我们都生活在一个极其复杂的环境中，为了应对社会生活的日新月异，我们需要捷径，因为我们没有足够的时间、精力和能力来对每一件事采取“谋定而后动”的策略。所以，我们需要频繁地根据少数关键特征把事情进行分类，以便下次碰到同样的触发特征，就可以不假思索地做出最为有利的反应。</p>
+<h1 id="互惠">2 互惠</h1>
+<h2 id="滴水之恩涌泉相报">2.1 滴水之恩，涌泉相报</h2>
+<p>互惠原理指，当别人帮了我们的忙，给了我们好处，我们应当回报他，也即我们平时所说，滴水之恩，定当以涌泉相报。著名考古学家理查德·利基（Richard Leakey）认为：正是因为有了互惠体系，人类才成为人类。确实，倘若我们没有学会“有债必还”的道理，人类又如何会走上劳动分工的道路呢？更遑论让个体相互依赖，凝结成高效率的单位了。</p>
+<p>该原理告诉我们，超市在希望消费者购买产品时，通常会先向向消费者施加小小的恩惠，如赠送样品，通过这种小技巧，就可以极大地提高消费者依其言行其事的概率。当然，在消费者不断被资本家割韭菜的今日，个人感觉这种小伎俩早已不足以打动消费者了。</p>
+<p>此外，在无关金钱和商业交易的人际关系中，同样也受互惠原理的影响，他人通过硬塞给我们一些好处，就能触发我们的亏欠感。这份亏欠感会驱使我们对别人的付出进行弥补和偿还，而正是这份偿还义务构成了互惠原理的实质。古人云：滴水之恩，当涌泉相报。最初的小小善意会刺激人们报以大得多的恩惠，因为亏欠感会让我们心生内疚。</p>
+<p>这一点让我倍感亲切，我妈从小教育我，不要贪图别人的小便宜，不要亏欠别人。我也一直践行着这一准则，总觉得自己不够强大，总觉得自己无以回报，哪怕自己真的需要，也会尽量避免找人帮忙，即便找人帮忙或者受人人情，最终也一定会以回报大于得到而终。因为我始终以高规格的精神标准要求自己，当心理亏欠的负担落在肩头，有时是比物质损失更难以忍受的折磨。</p>
+<h2 id="互惠式让步">2.2 互惠式让步</h2>
+<p>除了上述滴水之恩，涌泉相报的常规互惠范式之外，还有一种常见的套路“互惠式让步”。它的实现途径也比较简单，首先，它迫使接受了对方让步的人以同样的方式回应；其次，由于接受了让步的人有回报的义务，人们就乐意率先让步，从而启动有益的交换过程。</p>
+<p>简单来说就是，假设你想让我答应你的某个请求，为了增加获胜的概率，你可以先向我提出一个大些的要求，等我拒绝之后，再提出一个稍小的要求，而这个要求才是你真正的目标。倘若你的要求设置巧妙，我会把你的第二个要求看成对我的让步，并有可能感到自己这边也应该让步，于是顺从了你的第二个要求。</p>
+<p>这种手段也叫做“拒绝——后撤术”，常见于谈判和推销过程中，一些经验老道的销售员能够非常娴熟地使用这种手段，诱使消费者进入预先编织好的“陷阱”中，不但赢得了业绩，也引起了消费者对拒绝销售员最初的请求而使销售员蒙受顺势的愧疚中。而实际上也许蒙受损失的是我们自己，尽管该损失对我们造成的影响有时微乎其微。但如果我们能够识别这些伎俩，那么我们就有了更多的选择空间，而不会落入了别人的圈套中而不自知，被别人的话术引导我们做出与初心违背的决策。</p>
+<h2 id="如何拒绝互惠">2.3 如何拒绝互惠</h2>
+<p>正常情况下，我们都会屈从于互惠原理，顺从请求者的愿望；虽然我们也可能会拒绝服从，但这样以来，我们内心深处就会承受因违背互惠原理而带来的公平感和义务感的谴责。所以倘若别人的提议我们确实赞同，那就不妨大胆接受它；但如果该提议别有所图，那么我们就置之不理，并且可以有足够的理由在心理安慰自己。毕竟互惠原理只说要以善意回报善意，可没说用善意回报诡计。</p>
+<p>比如说，有人给了我们恩惠，我们可以安心接受下来，同时认识到将来有回报他的义务，然而如果这个人企图通过互惠原理利用我们，那么我们就应该保持警惕，同时视情况心安理得的盘剥他之前给的恩惠，毕竟互惠原理也说了，公正的意思，就是盘剥的行为要还以盘剥。此外，通过这件事情，可以推测出其行事风格带有极强的目的性，在未来的相关人际交往中，应该敬而远之。</p>
+<h1 id="承诺与一致">3 承诺与一致</h1>
+<h2 id="言出必行">3.1 言出必行</h2>
+<p>承诺和一致指的是，我们们个人都有一种言行一致的愿望。一旦做出了艰难的选择，我们就很乐意相信自己选对了，事实上，我们经常会一次次地欺骗自己，以便在做出选择之后，相信自己做的没错。这也跟社会认同有关，因为在社会中，言行前后不一致的人，很容易会被看成脑筋混乱、表里不一，甚至精神有毛病的人；而与之相对的，言行高度通常跟个性坚强、能力出众挂钩。</p>
+<p>言行一致其实还跟人类进化过程中的经验有关，因为言行一致符合我们这一群体的最佳利益，所以在进化过程中，这些经验不断驱使我们养成保持一致的习惯，哪怕有时候这么做并不明智。在日新月异的信息化时代，我们面临的社会环境远远超过了我们大脑能够处理的维度，如果任何事情都经过深思熟虑之后，再做出与之相应的最优决策，这是不切实际的，所以为了适应复杂的现代生活，我们大脑很容易沉浸在舒适圈中，选择言行一致这样一条捷径。其次，机械地保持一致，有时也能够避免理性上的折磨，避免误入歧途。试想，当一系列重要性程度相差无几的事项需要我们去选择时，毫无疑问，我们会选择自己熟知或者承诺过的事项作优先处理。</p>
+<h2 id="承诺">3.2 承诺</h2>
+<p>一旦我们意识到，我们的行动要受到言行一致的潜在精神动力所指引，那么我们在日常生活中就更加应该注意到承诺的重要性。我们一旦进行了承诺，就有可能会影响自我认知。前一段时间，偶然间看到了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》，写文章的初心假借文章来规诫自己，时过境迁，到现在再去看这篇文章时，发现这些信念已经在不知不觉中对我的为人处世的风格产生了潜移默化的影响，我自己也在不知不觉中成为了一个精神世界饱满的人，这些君子规诫也在不断影响我的言行举止。所以不要小看写作的力量，写作是一种书面宣言，它成了一个行为业已发生的物证，会让我们不自觉中朝着声明里的方向改变态度，不断暗示自己：我们真心相信所写下的事情。</p>
+<p>在知晓了承诺的影响力之后，在日常生活中，我们在接受琐碎请求时务必小心谨慎，因为它不仅能提高我们对分量更大的类似请求的顺从度，还能使我们更乐意去做一些跟先前答应的小要求毫不相关的事情。每当我们当众选择了一种立场，便会产生维持它的动机，因为这样才能显得前后一致。而有时候，维持这一动机所要付出的努力并不轻松，这便牵扯到为承诺付出的额外的努力。</p>
+<p>心理学告诉我们，当我们为一个承诺付出的努力越多，它对承诺的影响力也就越大。这很容易理解：费劲周折才得到某样东西的人，比轻轻松松就得到的人，对这件东西往往更为珍视。这就能够让人理解，在大学校园里，一些社团的凝聚力极强，宛如一捆绳将所有社员凝聚在一起，而有的社团却如一盘散沙。这其实或多或少跟入社团时所付出的努力以及在参与社团活动中的个人参与有关，当你在一个组织中参与度越高，你对其的认同感和归属感也就也强。所以对于组织管理者而言，要想让一个组织具有极强的凝聚力，这种在组织事物参与中形成的羁绊的作用不容忽视。</p>
+<h2 id="内心抉择和抛低球">3.3 内心抉择和抛低球</h2>
+<p>除了承诺之外，还有两种与之相关的现象较为常见。内心抉择是指，我们很容易相信，我们要对自己的所作所为负责，一旦做了就没有借口可找，没有退路可言。但人是理性的，很容易为自己的行为做理由和借口。当外界存在较为强大的压力时，我们很容易为自己的行为找借口。</p>
+<p>就拿我自己来说，我平时爱好十分广泛，喜欢看各种领域的课外书。但是当一种领域内的知识成为我的专业课知识时，我就产生了抵触心理，会厌倦它，虽然我个人并不是很看重课程的成绩，会按照自己的处事风格去处理每一门课程，但终归在学习这一课程时体会不了那种扩充知识面的喜悦感，只会认为这种学习是一种应付，长久下来，心中所剩的只有满目疲倦。所以我很认同作者所说：只有当我们认为外界不存在强大的压力时，我们才会为自己的行为发自内心地负起责任，并对自己言行一致的事实产生骄傲和自豪。</p>
+<p>抛低球行为则更常见了，指的是先给人一个甜头，诱使人做出有利的购买决定。而后，等决定做好了，交易还没最终排版，卖方巧妙地取消了最初的甜头。有点类似于言行不一致，这在人情世故中同样常见，但也同样让人厌恶，这种由得转失的心理落差只会让人心中更为郁闷，有一种被耍了还在帮别人数钱的感觉。我自己就遇见过两回这种事情，也许这种事情对于对方而言只是无关紧要的事情，但对我而言，这不仅仅是小事，而是关乎人性的问题。有时我在想，如果我看不透做个糊涂人多好，可偏偏看透了，之后还是得抬头不见低头见地继续打交道，着实折磨人。</p>
+<h2 id="如何拒绝">3.4 如何拒绝</h2>
+<p>虽然承诺和一致是十分重要的品质，但有时难免被别有用心的人利用，这在以前一般体现在推销过程中，但对于生活在信息化时代，饱受电话推销苦恼的我们而言，这种套路几乎不用过于担心。反而是在社会生活中，我们饱受这一原理的影响，为人所熟知的沉没成本就是这一原理的体现。人们很容易沉浸在已经付出的沉没成本中，无法痛下决心舍弃某一事物。</p>
+<p>正如拉夫尔·沃尔多·爱默生所说：死脑筋地保持一致愚不可及。虽然在现实生活中，保持一致是有逻辑性和智力超群的表现，而缺乏这一特点，则会被看成脑筋不够用，智力有障碍。但我们不能在一件错误的事情上执迷不悟。为了应对这一原理，我们应该跟随直觉：知道了我现在掌握的这些情况，要是时间能够倒流，我还会做出同样的选择吗？如果答案是否定的话，那么我们应该有壮士断腕的胸襟，抛却过去所付出的努力，重新开始新的征程！</p>
+<h1 id="社会认同">4 社会认同</h1>
+<h2 id="模仿">4.1 模仿</h2>
+<p>社会认同原理指出：在判断何为正确时，我们会根据别人的意见行事。大多数时候，我们对社会认同的方式完全是无意识的、条件反射式的。一个很常见的案例是邪教，有时候我们旁人看起来邪教宣扬的教义明显也站不住脚的，但仍然存在着许多教徒，其中很多教徒对邪教本身并没有归属感，而是见到了许多信仰程度极高的人，在“三人成虎”的影响下，这些缺乏主见的人逐渐会开始相信这种信仰，这就是社会认同原理。</p>
+<p>有一个非常有意思的现象，一些邪教会主动创造一些末日预言，在应对预言的过程中，培养教徒对邪教的信赖感，当我们以为这种愚昧的预言落空时，这些教徒会重回正道，现实却并不如此，他们反而会朝着错误的方向渐行渐远。比如小时候有一些邪教大肆宣扬 2012，世界末日，而当我们以为 2013 年的钟声敲响时，这种愚昧的把戏会不攻自破，而邪教本身也会土崩瓦解，然而事实却并非如此。事实是之前大肆宣扬教义的信徒，在预言落空后，反而成为了更加坚定的信徒。</p>
+<p>这其实也不难理解，根据上一节中所说的额外的努力可知，这些信徒心中十分坚定地相信着邪教本身，为了坚守其心中的坚定，他们抛弃了许多，甚至有的抛弃了家庭。当语言落空后，他们其实心中已经有了怀疑，然而沉没成本让他们心有不甘，更为重要的是，一旦确定自己一直以来所坚定的信仰本身就是错误的，那这种前景显得过于可怕。正如作者所说，在预言落空后，驱使信徒们宣扬其信仰的，并不是先前的确定感，而是一种逐渐扩散的怀疑。</p>
+<h2 id="不确定性">4.2 不确定性</h2>
+<p>销售顾问卡维特·罗伯特（Cavett Robert） 总结了社会认同原理：95%的人都爱模仿别人，只有5%的人能首先发起行动，所以要想把人说服，我们提供任何证据的效果都比不上别人的行动。我们模仿别人的初衷就是，当我们处于不确定时，我们很难主动地做出决定，这时我们大脑会不自觉地选择一条捷径 —— 模仿他人。因为我们潜意识里觉得，这些敢于行动的人知道的信息会比我们多，而在更多的先验信息条件下，他们的行为极有可能是正确的。</p>
+<p>我们在观察力与我们相似的人的行为时，社会认同原理能发挥出最大的影响。我们会根据他人的行为来判断自己怎么做才合适，尤其是我们觉得这些人跟自己相似的时候。这有时候其实也会造成一些不利的影响—— <strong>多元无知效应</strong>。多元无知效应揭示了一种乱象：受害者迫切需要帮助，全体旁观者却无动于衷。也许这在法治社会的当下，显得有些过于遥远，但如果说一个熟知的事件：跌倒的老人，扶不扶？当然，在负面新闻的熏染下，这个问题已经不仅仅涉及社会心理了，还跟道德、法律等有关。</p>
+<p><strong>多元无知效应</strong> 讲的是，当现场有大量其他旁观者在场时，人们对紧急情况伸出援手的可能性极低。这是因为： 1. 周围有其他可以帮忙的人，单个人要承担的责任就减少了。 2. 很多时候，紧急情况表面上看起来并不显得十分紧急。</p>
+<p>在公共场合中，我们所有人都喜欢摆出从容不迫的模样来显示我们的成熟稳重，但其实很可能只是暗中瞟着周围的人，不动声色地寻找证据。如果所有人都选择袖手旁观，那么每个人很有可能都得出判断：既然没人在乎，那就应该没什么问题。所以很多时候，旁观者群体没能帮忙，不是因为现在的人变得更为冷漠了，而是因为他们不能确定。这也是为什么现在新闻十分重视宣扬见义勇为的好人好事，因为打破思维定势真的需要很大的勇气。</p>
+<p>多元无知效应在陌生人里显得最为突出：因为我们喜欢在公众面前表现得优雅而成熟，又因为我们不熟悉陌生人的反应，所以，置身于一群素不相识的人里面，我们有可能无法流露出关切的表情，也无法正确地解读他人关切的表情。所以，在一个完全陌生的环境中，当我们需要紧急救助的时候，最佳策略是减少不确定性，让周围人注意到你的状况，搞清楚自己的责任。</p>
+<h2 id="如何拒绝-1">4.3 如何拒绝</h2>
+<p>乍一看，社会认同好像与商业领域并无关联，其实不然，社会认同原理为我们配备了一种奇妙的自动导航仪，而许多商家就会利用我们的导航仪，来为自己的门店营造出十分火爆的场面，比如互联网下的销量为王、刷单刷好评，都是这一原理应用的体现。由于自动导航仪的弊端主要处在系统输入数据错误的时候，所以识别储物数据，就是我们对抗其弊端的最佳方式。面对明显是伪造的社会证据时，我们只要多保持一点警惕感，就能很好的保护自己了。</p>
+<p>总体而言，本章所讲的社会认同原理以及有样学样的模仿行为，为我们提供了一条捷径。虽然绝大多数时候，这个自动导航装置能够给我们带来很多便利，但我们绝对不能完全信任这种捷径，哪怕没有人故意往里面添加错误信息，装置也有可能会发生故障。所以在日常生活中，我们应该时刻保持警惕感，虽然不至于所有事项的决策都与社会认同原理反着来，但清楚了事物发展的背后原理之后再做决策，可以让我们减少蒙受损失的概率。</p>
+<h1 id="喜好">5 喜好</h1>
+<h2 id="喜好的因素">5.1 喜好的因素</h2>
+<p>喜好原理无论是商业领域，还是社会交际过程中，都十分普遍。社会学家一直在研究产生好感的因素，为了获得消费者的好感，这些专业人士几乎把每一个因素都巧妙地运用上了。 - 外表</p>
+<p>一个人的某个正面特征很容易主导他人的看法，这也是为什么我们很容易对外表姣好的人产生好感的原因，所以外表的光环很容易会为顺从专业人士所利用。比如大部分服务业在招聘服务人员时，会选择面容姣好的从业人员。因为这会在潜意识中收获消费者的好感。</p>
+<ul>
+<li><p>相似性</p>
+<p>相似性原理也可以用感同身受来解释，当别人同我们有许多相似之处时，我们心中会不自觉地产生亲近之感。所以在销售领域，常用的套路就是将产品赋予特别的含义，来拉近与消费者之间的距离，从而获得消费者的好感。</p></li>
+<li><p>恭维</p>
+<p>虽然恭维这一词语乍一看仿佛带有贬义，其实不然，现如今很多商业品牌会给自己的品牌赋予一些头衔，比如情怀、富贵的象征等等，归根结底还是恭维原理在起作用。通过赋予品牌和使用品牌的人新的内涵，进而收获消费者的好感。</p></li>
+<li><p>接触与合作</p>
+<p>由于熟悉感会影响人的喜好，因为这种熟悉感会对我们的各种决定都产生着影响。接触与合作更多地是针对群体好感度的快速提升，许多公司会花大笔财力物力给员工举办团建活动，目的就是为了促进团队之间的好感度和对公司的归属感，通过这种好感度的提升，进而促进团队内部办事效率的提升。</p>
+<p>还有一种较为常见的合作是唱红脸和唱白脸，这种手段多用在审讯犯人的时候。但其实在商业竞争中，我们也可以将两个寡头之间的竞争看作是这种手段的翻版。有了差异化的决策，就有了抉择，我们通常会对唱红脸的一方产生好感，所以在商业领域中，我们很容易看见“落井下石”的现象，就是为了在已有“白脸”的衬托下，自己做一回红脸。</p></li>
+<li><p>条件反射和关联</p>
+<p>制造商总是急着把自己的产品跟当前的文化热潮、名人、流行艺人联系起来。通过名人代言来收获好感。在社会交际中，这项原理同样适用，根据关联原理，倘若我们能用一些哪怕是非常表面的方式让自己跟成功联系起来，我们的公共形象也会显得光辉起来。所以我们经常听到别人公开吹嘘与其他成功者的关系，目的就是在于沾染反射而来的荣誉光彩。</p>
+<p>虽然我们或多或少地想沾染一点荣耀的光彩，但有些人走的太远了。主要原因在于他们的自我适应太差。他们内心深处的个人价值感过低，没办法靠推动或实现自身成就来追求荣誉，只能靠着吹嘘自己与他人成就的关系来找回尊严，可悲亦可叹！</p></li>
+</ul>
+<h2 id="如何拒绝-2">5.2 如何拒绝</h2>
+<p>虽然经济学告诉我们消费的目的是满足心中的效用，但我们也不能在被设计好的喜好中渐行渐远。应对喜好原理的关键点在于：把注意力放在效果上，而非成因上。在跟顺从专业人士接触的时候，我们只需关注跟好感有关的一件事就行：我们是不是觉得自己超乎寻常地、迅速地、热烈地喜欢上了对方？如果答案显而易见，那么我们就应该保持警惕了，也许对方只是为了博取你的好感，进而实现其目的罢了，而这些目的通常有可能是建立在你的损失之上的。</p>
+<p>关注喜好原理的产生，并不是说要我们压抑好感因素产生的影响力，相反，我们应该听凭这些因素发挥力量，然后用这股力量反过来对付那些想从中获利的人。这股力量越大，其发作用也就越发明显，对我们的戒备防御也就越有帮助。</p>
+<h1 id="权威">6 权威</h1>
+<h2 id="权威的影响">6.1 权威的影响</h2>
+<p>心理学教授 <a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1611393075&amp;ver=2846&amp;signature=qbwls350egVrZj372FInEd5SLaLArk5jDigKCXJqyBS1wmw8NAucXO2bdGRcCYSC9vj*te2U03nX3lh2bxX7Gt53EEhrlPEyufWVD4HnIncV7yaCEIlpgaNJOwDjhmZI&amp;new=1">米尔格拉姆的实验</a> 揭露了一个事实：在权威的命令下，人们几乎愿意干任何事情。权威表示教化下的敬重，在我们潜意识里，权威意味着正确。所以在不确定的情况下，我们很容易跟着权威走。然而这份顺从有时被别出心裁的商家所利用，让我们掉入商家精心设计的思维定势中。</p>
+<p>每当面对人类行为背后的一种强力推动因素，我们都会很自然地想到，这种推动因素的存在是有着充分的理由的。服从权威人物的命令，总是能给我们带来一些实际的好处，因为它帮助我们节省了思考的时间。这也是为什么一些牙膏、药品广告中通常会出现一些身穿白大褂的人物形象，因为很多情况下，只要有正统的权威说了话，其他本来应该考虑的事情就变得不相关了，即便这种权威是伪装出来的，也会对我们的认知产生或多或少的影响。</p>
+<p>将权威这一含义泛化一下，其实更容易理解。我们在写个人简历的时候，惯用的手法就是写上自身相关经历在上面，其实这也可以看作是权威原理起作用的表现方式之一，因为通过这种头衔、相关经历的阐述，可以传达一个自己在相关事项上的权威能力，这种“权威”通常能让我们在竞争中处于优势地位。除了头衔之外，面试时的衣着、身份标识（豪车、名表）等传达的也是类似的信息，通过这种公开信息，能够让我们在公众中收获特殊的尊重，哪怕这种尊重是单纯的畏惧，也会对当事人产生莫名的自豪和骄傲。</p>
+<h2 id="如何拒绝-3">6.2 如何拒绝</h2>
+<p>为了免受伪权威的误导，防御策略之一就是提前做好心理准备。我们通常会低估权威及其象征对自己行为的影响，然而事实是一旦它出现在要求顺从的场合，我们往往来不及提防。破解伪权威对我们决策的影响，我们只需在脑海中问自己两个问题： 1. 这个权威是真正的专家吗</p>
+<p>这个问题能让我嗯我们把焦点放在：权威的资格，以及这些资格是否跟眼前的主题相关。帮助我们从兴许毫无意义的权威符号上挪开视线，转到真正的权威资格上。通过这种简单的方法，着眼于权威地位的证据，能让我们避免自动顺从带来的大部分问题。</p>
+<ol start="2" type="1">
+<li>这个专家说的是真话吗？</li>
+</ol>
+<p>哪怕是知识最丰富的权威，也不一定会开诚布公地把信息告知我们，因此，我们必须考虑一下他们在当前情形下的真实可信度。多思考一下专家会不会因为我们的顺从而得到好处，通过这样，我们就为自己又设立了一道安全网，防御权威不必要的影响。比较常见的一个小伎俩是——怀柔，即一些看似违背自己利益的做法。这无论是商业领域还是为人处世中，都会不自觉地被人们加以利用，通过这种看似违背自己利益的做法，可以拉近与对方的距离，增强对方对我们的好感度。</p>
+<h1 id="稀缺">7 稀缺</h1>
+<h2 id="物以稀为贵">7.1 物以稀为贵</h2>
+<p>稀缺原理指的是，机会越少见，价值似乎就越高。对失去某种东西的恐惧通常比获得同一物品的渴望，更能激发我们的行动力。而有时，讽刺的地方也在这儿，倘若瑕疵把一样东西变得稀缺了，垃圾也能化身成值钱的宝贝，这在玩物收藏市场几乎是常态了。其实，现实生活中，我们最容易受稀缺原理的影响了，最常见的两种商业套路是： - 数量有限策略</p>
+<ul>
+<li>最后期限战术</li>
+</ul>
+<p>商家惯用的商业套路就是营造一些降价折扣的事由，来刺激消费者对商品进行购买，也许商品本身并不在消费者最初消费计划中，但是在稀缺性的刺激下，商品的认知价值在消费者心中突然有了大幅提升。其实降价也可以算在稀缺性原理中，因为相对于日常的高位价格，暂时性的降价折扣就显得颇为稀缺，错过了当下，以后可能需要花费更高额度的费用，这种期望落差通常会刺激消费者做出不理性的购买决策。</p>
+<p>此外，另一种常见的套路就是有竞争性的稀缺资源，参与竞争稀缺资源的感觉，有着比单纯的稀有资源更为强大的吸引力。渴望拥有一件众人争抢的东西，几乎是出于本能的身体反应。所以在稀缺物品的竞拍中，我们通常能见到类似的现象，通过简单的心理博弈，能够让最终的成交价格朝着卖家预设的价位移动。</p>
+<h2 id="逆反心理">7.2 逆反心理</h2>
+<p>稀缺性原理起作用的力量主要来自两个方面。第一点它钻了我们思维捷径上的漏洞。在我们认知中，难以得到的东西，通常会让我们更为珍视。故此，我们基本可以根据获得一样东西的难易程度，迅速、准确地判断它质量，而这种判断在很大程度上是正确的。</p>
+<p>第二点在于，机会越来越少的话，我们的自由也会随之丧失。每当有东西获取起来比以前难，我们拥有它的自由受了限制，我们就越发地想要得到它。我们痛恨失去本来拥有的自由，这种保住既得利益的愿望是心里逆反理论的核心。</p>
+<p>詹姆斯·戴维斯（James Davies）曾指出，一个国家在经济和社会条件改善后，要是在短期内出现剧烈逆转，最有可能爆发革命。而且最容易企业的，不是那些传统上最受压迫的底层人民，而是品尝过了更美好生活的人。因为该群体得到了以前从来没有的自由，一点有人想要夺走这些自由，就注定要付出一些代价。</p>
+<p>在实际生活中逆反心理也比较常见，最为人所熟知的一种现象就是青少年的叛逆期。通过上述阐述，我们知道自由这种东西，给一点又拿走，比完全不给更危险。所以管教前后不一的父母，更容易教出反叛心强的孩子。所以在教育孩子上，家长应该以身作则，给孩子树立良好的榜样，而不是严于律人，宽以待己。</p>
+<h2 id="如何拒绝-4">7.3 如何拒绝</h2>
+<p>在知晓我们如何拒绝稀缺原理影响我们决策时，我们应该知道一个道理：喜悦并非来自对稀缺商品的体验，而是来自对它的占有。稀缺的东西并不因为难以占有，就变得更好吃、好听、好看、好用了。所以一旦我们觉得我们在短缺影响下产生了高度的情绪波动，我们就应该把这种波动当成暂停的信号，并在心底询问自己，为什么我们想要那件东西，是为了拥有它，还是为了它的价值或功能。</p>
+<p>谈若是因为想拥有它，那么我们应该利用它的稀缺性来判断改为它出多少钱，一旦价格超出该底线，我们应该心生警惕，因为这也许是商家在利用稀缺性原理在谋取的超额收益。如果是为了它的功能，那么我们应该牢记一点：该物品并不会因为稀缺而增强它的功能。换而言之，我们应该积极寻求它的等价替代产品，获取更多信息之后，在做出合理的决策。</p>
+<h1 id="总结">8 总结</h1>
+<p>作者写本书的目的并不是说，让我们对这些简单而常见的小套路避之不及，而是希望我们能洞悉事物发展背后的逻辑，至少在明事理之后，能让我们有了更多选择的权利，不至于让我们在被“戏耍”后而不自知。尽管只靠孤立数据容易做出愚蠢的决定，可现代生活的节奏又要求我们频繁使用这一捷径。</p>
+<p>为了追求效率，有时候我们必须放弃耗时而复杂的全局决策过程，转而使用更简单、由单一特征出发的响应方式。它之所以最为常用，完全是因为它们的可靠性高，在我们人类进化过程中，通常都能指引我们做出正确决定，这也是为什么我们会潜意识里借助这些因素做出顺从决定。在没有意愿、时间、精力或认知资源对情况进行全面分析的时候，使用这些孤立的线索进行决策是简单而保险的决策方式。</p>
+<p>正如作者所说一般，这种便捷的响应方式应当受到尊重。在日新月异的当下，技术的进步速度远远快于我们，所以我们处理信息的天然能力将有可能越来越难于应对当代生活中繁多的变化、选择和挑战。有时我们会发现自己陷入了跟低等动物一样的处境中：外界环境的错综复杂超出了我们心智的处理能力。从这个方面来说，我们的大脑潜意识里依赖可靠而合理的捷径和首选规则来应对生活的紧张节奏也是无可厚非的。</p>
+<p>然而，我们真正值得警惕的是，那些知晓我们的响应机制，但通过别出心裁的设计来破坏我们的心理机制，或者说通过我们的响应机制来蒙蔽我们，来从我们身上谋取私利的人。虽然大多数时候，这种戏弄不会对我们造成太大的损失，但正如《三国志·蜀书·先主传》所说：“勿以善小而不为，勿以恶小而为之”，积小成多，聚沙成塔，终归会有一天对我们的反应机制产生不可逆的影响。</p>
+<p>正如一直以来我对自己的要求：我可以不成为这一领域的专家，但其中的基本原理我得懂，这也是为什么这么多年来，我始终如一地扩充自己的知识面。一方面是因为获取知识的过程能给我带来确实的快感，另一方面则是因为，涉猎各领域的知识能够让我以更多的角度看待事物，不至于让自己的无知中变成一个智慧鹦鹉学舌而不会独立思考的人！</p>
+<p>最后附上我最喜欢的一个著名投资家查理·芒格所说的一句话： &gt; 我这辈子遇到的聪明人（来自各行各业的聪明人）没有不每天阅读的 —— 没有，一个都没有。巴菲特读书之多，我读书之多，可能会让你感到吃惊。孩子们都笑话我，他们觉得我是一本长了两条腿的书。</p>
+<p>很多人读书，追求的是干货，寻求的是立刻行之有效的解决方案。其实这是一种留在舒适区的阅读方法。在这个充满不确定的时代，答案不会简单地出现在书里，因为生活根本就没有标准确切的答案，你也不能期望过去的经验能够解决未来的问题。能简单地出现在书中的答案只有试卷，而这也是我不喜欢以考试来鞭策读书的原因之一，只可惜在现今成绩为王的时代，能做的只有在半顺从下坚持自己原则。除此之外，别无他法，可悲！</p>
+<p>本书主要谈论了一些社会生活中常见，但我们通常容易忽视的小套路，从互惠、承诺和一致、社会认同、喜好、权威以及稀缺六个方面对这些套路进行归类，通过一番抽丝剥茧式的分析，来阐述人们面对这些套路时会陷入的思维定势以及应对措施。</p>
+<p>在日常生活中，各种销售广告、推销手段层出不穷，一些经不起推敲的广告却有时能够取得奇效，一些看似损害商家自身利益的小套路却能够给商家带来更多利益……这些都是通过影响力这一手段来影响我们的决策。作者通过对影响力的作用方式进行剖析，解释了影响力的厉害关系。因为它，我们可能被无良商家诓骗而蒙受损失，甚至映射到社交生活中，前些年饱受诟病的“PUA”中也能看到影响力这一武器被滥用的影子。</p>
+<p>作者的很多论述朴实无华，但却能在平凡的语言中让我有种感同身受的真实感。比如以承诺与一致为例，前段时间，偶然间翻看了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》。我以前总是以信念、信仰之类的规诫自己，所以当时兴致偶发，记录了一些优秀的品质借以自勉。殊不知时过境迁，再次重温之时，竟发现这些执念已经在不知不觉之中已经深入记忆，成为了个人为人处世的一部分了。不免有些喟叹，如果当初没有记录的冲动，也许这些执念只会在人情世故中泯然消逝罢了。此外，还有其他许多因素，都能带给我发自内心的共鸣感，通过了解它们，可以帮助我更好地剖析遇到的问题，理解社会现象，避开一些本该能够避免的社会损失。</p>
+<p>## 1.1 按一下就播放</p>
+<p>影响力对我们起作用的方式是作者称为“按一下就播放”的一种固定行为模式。这种模式最初是研究动物行为时所提，其基本特点是：构成模式的行为每次都是按照几乎无异的方式或相同的顺序发生，就好像这些方式是记录动物身体里内置的磁带上，只要到了特定环境，相应的行为就得到激活，进而按照标准的顺序展开一整套行为，就如同按下了播放键一样。最有意思的一点在于这个磁带的激活方式，促发者也许并不是对手这个整体，而是对手具备的一些特征。</p>
+<p>而在人类社会中，同样存在按一下就播放的范式，比如别人在请求我们帮忙的时候，要是能给一个理由，我们通常会乐意提供帮助。“因为”这个词可以触发我我们的自动顺从反应，哪怕请求者并没有给出一个说得通的理由，但我们潜意识里会说服自己去帮助对方，就像是“因为”这个词语按下了我们顺从反应的按钮一般。</p>
+<p>事实上，这种模式化的自动行为在人类活动中是相当普遍的。因为很多时候，它是最有效的行为方式。英国著名哲学家怀特海（Alfred North Whitehead） 曾断言：文明的进步，就是人们在不假思索中可以做的事情越来越多。我们都生活在一个极其复杂的环境中，为了应对社会生活的日新月异，我们需要捷径，因为我们没有足够的时间、精力和能力来对每一件事采取“谋定而后动”的策略。所以，我们需要频繁地根据少数关键特征把事情进行分类，以便下次碰到同样的触发特征，就可以不假思索地做出最为有利的反应。</p>
+<p># 2 互惠</p>
+<p>## 2.1 滴水之恩，涌泉相报</p>
+<p>互惠原理指，当别人帮了我们的忙，给了我们好处，我们应当回报他，也即我们平时所说，滴水之恩，定当以涌泉相报。著名考古学家理查德·利基（Richard Leakey）认为：正是因为有了互惠体系，人类才成为人类。确实，倘若我们没有学会“有债必还”的道理，人类又如何会走上劳动分工的道路呢？更遑论让个体相互依赖，凝结成高效率的单位了。</p>
+<p>该原理告诉我们，超市在希望消费者购买产品时，通常会先向向消费者施加小小的恩惠，如赠送样品，通过这种小技巧，就可以极大地提高消费者依其言行其事的概率。当然，在消费者不断被资本家割韭菜的今日，个人感觉这种小伎俩早已不足以打动消费者了。</p>
+<p>此外，在无关金钱和商业交易的人际关系中，同样也受互惠原理的影响，他人通过硬塞给我们一些好处，就能触发我们的亏欠感。这份亏欠感会驱使我们对别人的付出进行弥补和偿还，而正是这份偿还义务构成了互惠原理的实质。古人云：滴水之恩，当涌泉相报。最初的小小善意会刺激人们报以大得多的恩惠，因为亏欠感会让我们心生内疚。</p>
+<p>这一点让我倍感亲切，我妈从小教育我，不要贪图别人的小便宜，不要亏欠别人。我也一直践行着这一准则，总觉得自己不够强大，总觉得自己无以回报，哪怕自己真的需要，也会尽量避免找人帮忙，即便找人帮忙或者受人人情，最终也一定会以回报大于得到而终。因为我始终以高规格的精神标准要求自己，当心理亏欠的负担落在肩头，有时是比物质损失更难以忍受的折磨。</p>
+<p>## 2.2 互惠式让步</p>
+<p>除了上述滴水之恩，涌泉相报的常规互惠范式之外，还有一种常见的套路“互惠式让步”。它的实现途径也比较简单，首先，它迫使接受了对方让步的人以同样的方式回应；其次，由于接受了让步的人有回报的义务，人们就乐意率先让步，从而启动有益的交换过程。</p>
+<p>简单来说就是，假设你想让我答应你的某个请求，为了增加获胜的概率，你可以先向我提出一个大些的要求，等我拒绝之后，再提出一个稍小的要求，而这个要求才是你真正的目标。倘若你的要求设置巧妙，我会把你的第二个要求看成对我的让步，并有可能感到自己这边也应该让步，于是顺从了你的第二个要求。</p>
+<p>这种手段也叫做“拒绝——后撤术”，常见于谈判和推销过程中，一些经验老道的销售员能够非常娴熟地使用这种手段，诱使消费者进入预先编织好的“陷阱”中，不但赢得了业绩，也引起了消费者对拒绝销售员最初的请求而使销售员蒙受顺势的愧疚中。而实际上也许蒙受损失的是我们自己，尽管该损失对我们造成的影响有时微乎其微。但如果我们能够识别这些伎俩，那么我们就有了更多的选择空间，而不会落入了别人的圈套中而不自知，被别人的话术引导我们做出与初心违背的决策。</p>
+<p>## 2.3 如何拒绝互惠</p>
+<p>正常情况下，我们都会屈从于互惠原理，顺从请求者的愿望；虽然我们也可能会拒绝服从，但这样以来，我们内心深处就会承受因违背互惠原理而带来的公平感和义务感的谴责。所以倘若别人的提议我们确实赞同，那就不妨大胆接受它；但如果该提议别有所图，那么我们就置之不理，并且可以有足够的理由在心理安慰自己。毕竟互惠原理只说要以善意回报善意，可没说用善意回报诡计。</p>
+<p>比如说，有人给了我们恩惠，我们可以安心接受下来，同时认识到将来有回报他的义务，然而如果这个人企图通过互惠原理利用我们，那么我们就应该保持警惕，同时视情况心安理得的盘剥他之前给的恩惠，毕竟互惠原理也说了，公正的意思，就是盘剥的行为要还以盘剥。此外，通过这件事情，可以推测出其行事风格带有极强的目的性，在未来的相关人际交往中，应该敬而远之。</p>
+<p># 3 承诺与一致</p>
+<p>## 3.1 言出必行</p>
+<p>承诺和一致指的是，我们们个人都有一种言行一致的愿望。一旦做出了艰难的选择，我们就很乐意相信自己选对了，事实上，我们经常会一次次地欺骗自己，以便在做出选择之后，相信自己做的没错。这也跟社会认同有关，因为在社会中，言行前后不一致的人，很容易会被看成脑筋混乱、表里不一，甚至精神有毛病的人；而与之相对的，言行高度通常跟个性坚强、能力出众挂钩。</p>
+<p>言行一致其实还跟人类进化过程中的经验有关，因为言行一致符合我们这一群体的最佳利益，所以在进化过程中，这些经验不断驱使我们养成保持一致的习惯，哪怕有时候这么做并不明智。在日新月异的信息化时代，我们面临的社会环境远远超过了我们大脑能够处理的维度，如果任何事情都经过深思熟虑之后，再做出与之相应的最优决策，这是不切实际的，所以为了适应复杂的现代生活，我们大脑很容易沉浸在舒适圈中，选择言行一致这样一条捷径。其次，机械地保持一致，有时也能够避免理性上的折磨，避免误入歧途。试想，当一系列重要性程度相差无几的事项需要我们去选择时，毫无疑问，我们会选择自己熟知或者承诺过的事项作优先处理。</p>
+<p>## 3.2 承诺</p>
+<p>一旦我们意识到，我们的行动要受到言行一致的潜在精神动力所指引，那么我们在日常生活中就更加应该注意到承诺的重要性。我们一旦进行了承诺，就有可能会影响自我认知。前一段时间，偶然间看到了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》，写文章的初心假借文章来规诫自己，时过境迁，到现在再去看这篇文章时，发现这些信念已经在不知不觉中对我的为人处世的风格产生了潜移默化的影响，我自己也在不知不觉中成为了一个精神世界饱满的人，这些君子规诫也在不断影响我的言行举止。所以不要小看写作的力量，写作是一种书面宣言，它成了一个行为业已发生的物证，会让我们不自觉中朝着声明里的方向改变态度，不断暗示自己：我们真心相信所写下的事情。</p>
+<p>在知晓了承诺的影响力之后，在日常生活中，我们在接受琐碎请求时务必小心谨慎，因为它不仅能提高我们对分量更大的类似请求的顺从度，还能使我们更乐意去做一些跟先前答应的小要求毫不相关的事情。每当我们当众选择了一种立场，便会产生维持它的动机，因为这样才能显得前后一致。而有时候，维持这一动机所要付出的努力并不轻松，这便牵扯到为承诺付出的额外的努力。</p>
+<p>心理学告诉我们，当我们为一个承诺付出的努力越多，它对承诺的影响力也就越大。这很容易理解：费劲周折才得到某样东西的人，比轻轻松松就得到的人，对这件东西往往更为珍视。这就能够让人理解，在大学校园里，一些社团的凝聚力极强，宛如一捆绳将所有社员凝聚在一起，而有的社团却如一盘散沙。这其实或多或少跟入社团时所付出的努力以及在参与社团活动中的个人参与有关，当你在一个组织中参与度越高，你对其的认同感和归属感也就也强。所以对于组织管理者而言，要想让一个组织具有极强的凝聚力，这种在组织事物参与中形成的羁绊的作用不容忽视。</p>
+<p>## 3.3 内心抉择和抛低球</p>
+<p>除了承诺之外，还有两种与之相关的现象较为常见。内心抉择是指，我们很容易相信，我们要对自己的所作所为负责，一旦做了就没有借口可找，没有退路可言。但人是理性的，很容易为自己的行为做理由和借口。当外界存在较为强大的压力时，我们很容易为自己的行为找借口。</p>
+<p>就拿我自己来说，我平时爱好十分广泛，喜欢看各种领域的课外书。但是当一种领域内的知识成为我的专业课知识时，我就产生了抵触心理，会厌倦它，虽然我个人并不是很看重课程的成绩，会按照自己的处事风格去处理每一门课程，但终归在学习这一课程时体会不了那种扩充知识面的喜悦感，只会认为这种学习是一种应付，长久下来，心中所剩的只有满目疲倦。所以我很认同作者所说：只有当我们认为外界不存在强大的压力时，我们才会为自己的行为发自内心地负起责任，并对自己言行一致的事实产生骄傲和自豪。</p>
+<p>抛低球行为则更常见了，指的是先给人一个甜头，诱使人做出有利的购买决定。而后，等决定做好了，交易还没最终排版，卖方巧妙地取消了最初的甜头。有点类似于言行不一致，这在人情世故中同样常见，但也同样让人厌恶，这种由得转失的心理落差只会让人心中更为郁闷，有一种被耍了还在帮别人数钱的感觉。我自己就遇见过两回这种事情，也许这种事情对于对方而言只是无关紧要的事情，但对我而言，这不仅仅是小事，而是关乎人性的问题。有时我在想，如果我看不透做个糊涂人多好，可偏偏看透了，之后还是得抬头不见低头见地继续打交道，着实折磨人。</p>
+<p>## 3.4 如何拒绝</p>
+<p>虽然承诺和一致是十分重要的品质，但有时难免被别有用心的人利用，这在以前一般体现在推销过程中，但对于生活在信息化时代，饱受电话推销苦恼的我们而言，这种套路几乎不用过于担心。反而是在社会生活中，我们饱受这一原理的影响，为人所熟知的沉没成本就是这一原理的体现。人们很容易沉浸在已经付出的沉没成本中，无法痛下决心舍弃某一事物。</p>
+<p>正如拉夫尔·沃尔多·爱默生所说：死脑筋地保持一致愚不可及。虽然在现实生活中，保持一致是有逻辑性和智力超群的表现，而缺乏这一特点，则会被看成脑筋不够用，智力有障碍。但我们不能在一件错误的事情上执迷不悟。为了应对这一原理，我们应该跟随直觉：知道了我现在掌握的这些情况，要是时间能够倒流，我还会做出同样的选择吗？如果答案是否定的话，那么我们应该有壮士断腕的胸襟，抛却过去所付出的努力，重新开始新的征程！</p>
+<p># 4 社会认同</p>
+<p>## 4.1 模仿</p>
+<p>社会认同原理指出：在判断何为正确时，我们会根据别人的意见行事。大多数时候，我们对社会认同的方式完全是无意识的、条件反射式的。一个很常见的案例是邪教，有时候我们旁人看起来邪教宣扬的教义明显也站不住脚的，但仍然存在着许多教徒，其中很多教徒对邪教本身并没有归属感，而是见到了许多信仰程度极高的人，在“三人成虎”的影响下，这些缺乏主见的人逐渐会开始相信这种信仰，这就是社会认同原理。</p>
+<p>有一个非常有意思的现象，一些邪教会主动创造一些末日预言，在应对预言的过程中，培养教徒对邪教的信赖感，当我们以为这种愚昧的预言落空时，这些教徒会重回正道，现实却并不如此，他们反而会朝着错误的方向渐行渐远。比如小时候有一些邪教大肆宣扬 2012，世界末日，而当我们以为 2013 年的钟声敲响时，这种愚昧的把戏会不攻自破，而邪教本身也会土崩瓦解，然而事实却并非如此。事实是之前大肆宣扬教义的信徒，在预言落空后，反而成为了更加坚定的信徒。</p>
+<p>这其实也不难理解，根据上一节中所说的额外的努力可知，这些信徒心中十分坚定地相信着邪教本身，为了坚守其心中的坚定，他们抛弃了许多，甚至有的抛弃了家庭。当语言落空后，他们其实心中已经有了怀疑，然而沉没成本让他们心有不甘，更为重要的是，一旦确定自己一直以来所坚定的信仰本身就是错误的，那这种前景显得过于可怕。正如作者所说，在预言落空后，驱使信徒们宣扬其信仰的，并不是先前的确定感，而是一种逐渐扩散的怀疑。</p>
+<p>## 4.2 不确定性</p>
+<p>销售顾问卡维特·罗伯特（Cavett Robert） 总结了社会认同原理：95%的人都爱模仿别人，只有5%的人能首先发起行动，所以要想把人说服，我们提供任何证据的效果都比不上别人的行动。我们模仿别人的初衷就是，当我们处于不确定时，我们很难主动地做出决定，这时我们大脑会不自觉地选择一条捷径 —— 模仿他人。因为我们潜意识里觉得，这些敢于行动的人知道的信息会比我们多，而在更多的先验信息条件下，他们的行为极有可能是正确的。</p>
+<p>我们在观察力与我们相似的人的行为时，社会认同原理能发挥出最大的影响。我们会根据他人的行为来判断自己怎么做才合适，尤其是我们觉得这些人跟自己相似的时候。这有时候其实也会造成一些不利的影响—— <strong>多元无知效应</strong>。多元无知效应揭示了一种乱象：受害者迫切需要帮助，全体旁观者却无动于衷。也许这在法治社会的当下，显得有些过于遥远，但如果说一个熟知的事件：跌倒的老人，扶不扶？当然，在负面新闻的熏染下，这个问题已经不仅仅涉及社会心理了，还跟道德、法律等有关。</p>
+<p><strong>多元无知效应</strong> 讲的是，当现场有大量其他旁观者在场时，人们对紧急情况伸出援手的可能性极低。这是因为：</p>
+<p>\1. 周围有其他可以帮忙的人，单个人要承担的责任就减少了。</p>
+<p>\2. 很多时候，紧急情况表面上看起来并不显得十分紧急。</p>
+<p>在公共场合中，我们所有人都喜欢摆出从容不迫的模样来显示我们的成熟稳重，但其实很可能只是暗中瞟着周围的人，不动声色地寻找证据。如果所有人都选择袖手旁观，那么每个人很有可能都得出判断：既然没人在乎，那就应该没什么问题。所以很多时候，旁观者群体没能帮忙，不是因为现在的人变得更为冷漠了，而是因为他们不能确定。这也是为什么现在新闻十分重视宣扬见义勇为的好人好事，因为打破思维定势真的需要很大的勇气。</p>
+<p>多元无知效应在陌生人里显得最为突出：因为我们喜欢在公众面前表现得优雅而成熟，又因为我们不熟悉陌生人的反应，所以，置身于一群素不相识的人里面，我们有可能无法流露出关切的表情，也无法正确地解读他人关切的表情。所以，在一个完全陌生的环境中，当我们需要紧急救助的时候，最佳策略是减少不确定性，让周围人注意到你的状况，搞清楚自己的责任。</p>
+<p>## 4.3 如何拒绝</p>
+<p>乍一看，社会认同好像与商业领域并无关联，其实不然，社会认同原理为我们配备了一种奇妙的自动导航仪，而许多商家就会利用我们的导航仪，来为自己的门店营造出十分火爆的场面，比如互联网下的销量为王、刷单刷好评，都是这一原理应用的体现。由于自动导航仪的弊端主要处在系统输入数据错误的时候，所以识别储物数据，就是我们对抗其弊端的最佳方式。面对明显是伪造的社会证据时，我们只要多保持一点警惕感，就能很好的保护自己了。</p>
+<p>总体而言，本章所讲的社会认同原理以及有样学样的模仿行为，为我们提供了一条捷径。虽然绝大多数时候，这个自动导航装置能够给我们带来很多便利，但我们绝对不能完全信任这种捷径，哪怕没有人故意往里面添加错误信息，装置也有可能会发生故障。所以在日常生活中，我们应该时刻保持警惕感，虽然不至于所有事项的决策都与社会认同原理反着来，但清楚了事物发展的背后原理之后再做决策，可以让我们减少蒙受损失的概率。</p>
+<p># 5 喜好</p>
+<p>## 5.1 喜好的因素</p>
+<p>喜好原理无论是商业领域，还是社会交际过程中，都十分普遍。社会学家一直在研究产生好感的因素，为了获得消费者的好感，这些专业人士几乎把每一个因素都巧妙地运用上了。</p>
+<p>- 外表</p>
+<p>一个人的某个正面特征很容易主导他人的看法，这也是为什么我们很容易对外表姣好的人产生好感的原因，所以外表的光环很容易会为顺从专业人士所利用。比如大部分服务业在招聘服务人员时，会选择面容姣好的从业人员。因为这会在潜意识中收获消费者的好感。</p>
+<p>- 相似性</p>
+<p>相似性原理也可以用感同身受来解释，当别人同我们有许多相似之处时，我们心中会不自觉地产生亲近之感。所以在销售领域，常用的套路就是将产品赋予特别的含义，来拉近与消费者之间的距离，从而获得消费者的好感。</p>
+<p>- 恭维</p>
+<p>虽然恭维这一词语乍一看仿佛带有贬义，其实不然，现如今很多商业品牌会给自己的品牌赋予一些头衔，比如情怀、富贵的象征等等，归根结底还是恭维原理在起作用。通过赋予品牌和使用品牌的人新的内涵，进而收获消费者的好感。</p>
+<p>- 接触与合作</p>
+<p>由于熟悉感会影响人的喜好，因为这种熟悉感会对我们的各种决定都产生着影响。接触与合作更多地是针对群体好感度的快速提升，许多公司会花大笔财力物力给员工举办团建活动，目的就是为了促进团队之间的好感度和对公司的归属感，通过这种好感度的提升，进而促进团队内部办事效率的提升。</p>
+<p>还有一种较为常见的合作是唱红脸和唱白脸，这种手段多用在审讯犯人的时候。但其实在商业竞争中，我们也可以将两个寡头之间的竞争看作是这种手段的翻版。有了差异化的决策，就有了抉择，我们通常会对唱红脸的一方产生好感，所以在商业领域中，我们很容易看见“落井下石”的现象，就是为了在已有“白脸”的衬托下，自己做一回红脸。</p>
+<p>- 条件反射和关联</p>
+<p>制造商总是急着把自己的产品跟当前的文化热潮、名人、流行艺人联系起来。通过名人代言来收获好感。在社会交际中，这项原理同样适用，根据关联原理，倘若我们能用一些哪怕是非常表面的方式让自己跟成功联系起来，我们的公共形象也会显得光辉起来。所以我们经常听到别人公开吹嘘与其他成功者的关系，目的就是在于沾染反射而来的荣誉光彩。</p>
+<p>虽然我们或多或少地想沾染一点荣耀的光彩，但有些人走的太远了。主要原因在于他们的自我适应太差。他们内心深处的个人价值感过低，没办法靠推动或实现自身成就来追求荣誉，只能靠着吹嘘自己与他人成就的关系来找回尊严，可悲亦可叹！</p>
+<p>## 5.2 如何拒绝</p>
+<p>虽然经济学告诉我们消费的目的是满足心中的效用，但我们也不能在被设计好的喜好中渐行渐远。应对喜好原理的关键点在于：把注意力放在效果上，而非成因上。在跟顺从专业人士接触的时候，我们只需关注跟好感有关的一件事就行：我们是不是觉得自己超乎寻常地、迅速地、热烈地喜欢上了对方？如果答案显而易见，那么我们就应该保持警惕了，也许对方只是为了博取你的好感，进而实现其目的罢了，而这些目的通常有可能是建立在你的损失之上的。</p>
+<p>关注喜好原理的产生，并不是说要我们压抑好感因素产生的影响力，相反，我们应该听凭这些因素发挥力量，然后用这股力量反过来对付那些想从中获利的人。这股力量越大，其发作用也就越发明显，对我们的戒备防御也就越有帮助。</p>
+<p># 6 权威</p>
+<p>## 6.1 权威的影响</p>
+<p>心理学教授 <a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1611393075&amp;ver=2846&amp;signature=qbwls350egVrZj372FInEd5SLaLArk5jDigKCXJqyBS1wmw8NAucXO2bdGRcCYSC9vj*te2U03nX3lh2bxX7Gt53EEhrlPEyufWVD4HnIncV7yaCEIlpgaNJOwDjhmZI&amp;new=1">米尔格拉姆的实验</a> 揭露了一个事实：在权威的命令下，人们几乎愿意干任何事情。权威表示教化下的敬重，在我们潜意识里，权威意味着正确。所以在不确定的情况下，我们很容易跟着权威走。然而这份顺从有时被别出心裁的商家所利用，让我们掉入商家精心设计的思维定势中。</p>
+<p>每当面对人类行为背后的一种强力推动因素，我们都会很自然地想到，这种推动因素的存在是有着充分的理由的。服从权威人物的命令，总是能给我们带来一些实际的好处，因为它帮助我们节省了思考的时间。这也是为什么一些牙膏、药品广告中通常会出现一些身穿白大褂的人物形象，因为很多情况下，只要有正统的权威说了话，其他本来应该考虑的事情就变得不相关了，即便这种权威是伪装出来的，也会对我们的认知产生或多或少的影响。</p>
+<p>将权威这一含义泛化一下，其实更容易理解。我们在写个人简历的时候，惯用的手法就是写上自身相关经历在上面，其实这也可以看作是权威原理起作用的表现方式之一，因为通过这种头衔、相关经历的阐述，可以传达一个自己在相关事项上的权威能力，这种“权威”通常能让我们在竞争中处于优势地位。除了头衔之外，面试时的衣着、身份标识（豪车、名表）等传达的也是类似的信息，通过这种公开信息，能够让我们在公众中收获特殊的尊重，哪怕这种尊重是单纯的畏惧，也会对当事人产生莫名的自豪和骄傲。</p>
+<p>## 6.2 如何拒绝</p>
+<p>为了免受伪权威的误导，防御策略之一就是提前做好心理准备。我们通常会低估权威及其象征对自己行为的影响，然而事实是一旦它出现在要求顺从的场合，我们往往来不及提防。破解伪权威对我们决策的影响，我们只需在脑海中问自己两个问题：</p>
+<p>\1. 这个权威是真正的专家吗</p>
+<p>这个问题能让我嗯我们把焦点放在：权威的资格，以及这些资格是否跟眼前的主题相关。帮助我们从兴许毫无意义的权威符号上挪开视线，转到真正的权威资格上。通过这种简单的方法，着眼于权威地位的证据，能让我们避免自动顺从带来的大部分问题。</p>
+<p>\2. 这个专家说的是真话吗？</p>
+<p>哪怕是知识最丰富的权威，也不一定会开诚布公地把信息告知我们，因此，我们必须考虑一下他们在当前情形下的真实可信度。多思考一下专家会不会因为我们的顺从而得到好处，通过这样，我们就为自己又设立了一道安全网，防御权威不必要的影响。比较常见的一个小伎俩是——怀柔，即一些看似违背自己利益的做法。这无论是商业领域还是为人处世中，都会不自觉地被人们加以利用，通过这种看似违背自己利益的做法，可以拉近与对方的距离，增强对方对我们的好感度。</p>
+<p># 7 稀缺</p>
+<p>## 7.1 物以稀为贵</p>
+<p>稀缺原理指的是，机会越少见，价值似乎就越高。对失去某种东西的恐惧通常比获得同一物品的渴望，更能激发我们的行动力。而有时，讽刺的地方也在这儿，倘若瑕疵把一样东西变得稀缺了，垃圾也能化身成值钱的宝贝，这在玩物收藏市场几乎是常态了。其实，现实生活中，我们最容易受稀缺原理的影响了，最常见的两种商业套路是：</p>
+<p>- 数量有限策略</p>
+<p>- 最后期限战术</p>
+<p>商家惯用的商业套路就是营造一些降价折扣的事由，来刺激消费者对商品进行购买，也许商品本身并不在消费者最初消费计划中，但是在稀缺性的刺激下，商品的认知价值在消费者心中突然有了大幅提升。其实降价也可以算在稀缺性原理中，因为相对于日常的高位价格，暂时性的降价折扣就显得颇为稀缺，错过了当下，以后可能需要花费更高额度的费用，这种期望落差通常会刺激消费者做出不理性的购买决策。</p>
+<p>此外，另一种常见的套路就是有竞争性的稀缺资源，参与竞争稀缺资源的感觉，有着比单纯的稀有资源更为强大的吸引力。渴望拥有一件众人争抢的东西，几乎是出于本能的身体反应。所以在稀缺物品的竞拍中，我们通常能见到类似的现象，通过简单的心理博弈，能够让最终的成交价格朝着卖家预设的价位移动。</p>
+<p>## 7.2 逆反心理</p>
+<p>稀缺性原理起作用的力量主要来自两个方面。第一点它钻了我们思维捷径上的漏洞。在我们认知中，难以得到的东西，通常会让我们更为珍视。故此，我们基本可以根据获得一样东西的难易程度，迅速、准确地判断它质量，而这种判断在很大程度上是正确的。</p>
+<p>第二点在于，机会越来越少的话，我们的自由也会随之丧失。每当有东西获取起来比以前难，我们拥有它的自由受了限制，我们就越发地想要得到它。我们痛恨失去本来拥有的自由，这种保住既得利益的愿望是心里逆反理论的核心。</p>
+<p>詹姆斯·戴维斯（James Davies）曾指出，一个国家在经济和社会条件改善后，要是在短期内出现剧烈逆转，最有可能爆发革命。而且最容易企业的，不是那些传统上最受压迫的底层人民，而是品尝过了更美好生活的人。因为该群体得到了以前从来没有的自由，一点有人想要夺走这些自由，就注定要付出一些代价。</p>
+<p>在实际生活中逆反心理也比较常见，最为人所熟知的一种现象就是青少年的叛逆期。通过上述阐述，我们知道自由这种东西，给一点又拿走，比完全不给更危险。所以管教前后不一的父母，更容易教出反叛心强的孩子。所以在教育孩子上，家长应该以身作则，给孩子树立良好的榜样，而不是严于律人，宽以待己。</p>
+<p>## 7.3 如何拒绝</p>
+<p>在知晓我们如何拒绝稀缺原理影响我们决策时，我们应该知道一个道理：喜悦并非来自对稀缺商品的体验，而是来自对它的占有。稀缺的东西并不因为难以占有，就变得更好吃、好听、好看、好用了。所以一旦我们觉得我们在短缺影响下产生了高度的情绪波动，我们就应该把这种波动当成暂停的信号，并在心底询问自己，为什么我们想要那件东西，是为了拥有它，还是为了它的价值或功能。</p>
+<p>谈若是因为想拥有它，那么我们应该利用它的稀缺性来判断改为它出多少钱，一旦价格超出该底线，我们应该心生警惕，因为这也许是商家在利用稀缺性原理在谋取的超额收益。如果是为了它的功能，那么我们应该牢记一点：该物品并不会因为稀缺而增强它的功能。换而言之，我们应该积极寻求它的等价替代产品，获取更多信息之后，在做出合理的决策。</p>
+<p># 8 总结</p>
+<p>作者写本书的目的并不是说，让我们对这些简单而常见的小套路避之不及，而是希望我们能洞悉事物发展背后的逻辑，至少在明事理之后，能让我们有了更多选择的权利，不至于让我们在被“戏耍”后而不自知。尽管只靠孤立数据容易做出愚蠢的决定，可现代生活的节奏又要求我们频繁使用这一捷径。</p>
+<p>为了追求效率，有时候我们必须放弃耗时而复杂的全局决策过程，转而使用更简单、由单一特征出发的响应方式。它之所以最为常用，完全是因为它们的可靠性高，在我们人类进化过程中，通常都能指引我们做出正确决定，这也是为什么我们会潜意识里借助这些因素做出顺从决定。在没有意愿、时间、精力或认知资源对情况进行全面分析的时候，使用这些孤立的线索进行决策是简单而保险的决策方式。</p>
+<p>正如作者所说一般，这种便捷的响应方式应当受到尊重。在日新月异的当下，技术的进步速度远远快于我们，所以我们处理信息的天然能力将有可能越来越难于应对当代生活中繁多的变化、选择和挑战。有时我们会发现自己陷入了跟低等动物一样的处境中：外界环境的错综复杂超出了我们心智的处理能力。从这个方面来说，我们的大脑潜意识里依赖可靠而合理的捷径和首选规则来应对生活的紧张节奏也是无可厚非的。</p>
+<p>然而，我们真正值得警惕的是，那些知晓我们的响应机制，但通过别出心裁的设计来破坏我们的心理机制，或者说通过我们的响应机制来蒙蔽我们，来从我们身上谋取私利的人。虽然大多数时候，这种戏弄不会对我们造成太大的损失，但正如《三国志·蜀书·先主传》所说：“勿以善小而不为，勿以恶小而为之”，积小成多，聚沙成塔，终归会有一天对我们的反应机制产生不可逆的影响。</p>
+<p>正如一直以来我对自己的要求：我可以不成为这一领域的专家，但其中的基本原理我得懂，这也是为什么这么多年来，我始终如一地扩充自己的知识面。一方面是因为获取知识的过程能给我带来确实的快感，另一方面则是因为，涉猎各领域的知识能够让我以更多的角度看待事物，不至于让自己的无知中变成一个智慧鹦鹉学舌而不会独立思考的人！</p>
+<p>最后附上我最喜欢的一个著名投资家查理·芒格所说的一句话：</p>
+<p>&gt; 我这辈子遇到的聪明人（来自各行各业的聪明人）没有不每天阅读的 —— 没有，一个都没有。巴菲特读书之多，我读书之多，可能会让你感到吃惊。孩子们都笑话我，他们觉得我是一本长了两条腿的书。</p>
+<p>很多人读书，追求的是干货，寻求的是立刻行之有效的解决方案。其实这是一种留在舒适区的阅读方法。在这个充满不确定的时代，答案不会简单地出现在书里，因为生活根本就没有标准确切的答案，你也不能期望过去的经验能够解决未来的问题。能简单地出现在书中的答案只有试卷，而这也是我不喜欢以考试来鞭策读书的原因之一，只可惜在现今成绩为王的时代，能做的只有在半顺从下坚持自己原则。除此之外，别无他法，可悲！</p>
+]]></content>
+      <categories>
+        <category>Book review</category>
+        <category>Influence</category>
+        <category>Introduction</category>
+      </categories>
+      <tags>
+        <tag>Book review</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux notes</title>
+    <url>/2020/11/23/Linux/</url>
+    <content><![CDATA[<h1 id="command">1. Command</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="cd">1.1 cd</h2>
+<p>即 current directory，切换目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
+<h4 id="绝对路径">绝对路径</h4>
+<p>/home/YangSu/Desktop</p>
+<h4 id="相对路径">相对路径</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
+<h2 id="pwd">1.2 pwd</h2>
+<p>即 print working directory 显示当前工作目录</p>
+<h2 id="ls">1.3 ls</h2>
+<p>即 list，列出文件和目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
+<h2 id="mkdir">1.4 mkdir</h2>
+<p>即 make directory，创建目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
+<h2 id="touch">1.5 touch</h2>
+<p>新建一个文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
+<h2 id="rm">1.6 rm</h2>
+<h3 id="rm-1">rm</h3>
+<p>即 remove 删除文件或目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
+<h3 id="rmdir">rmdir</h3>
+<p>即 remove directory，删除空目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
+<h2 id="cp">1.7 cp</h2>
+<p>即 copy，复制文件或者目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
+<h2 id="mv">1.8 mv</h2>
+<p>即 move，移动文件或目录（重命名）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
+<h2 id="tar">1.9 tar</h2>
+<p>即 tape archive档案打包</p>
+<h3 id="创建档案包">创建档案包</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
+<h4 id="还原档案包">还原档案包</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
+<h4 id="归档并压缩">归档并压缩</h4>
+<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
+<h2 id="man">1.10 man</h2>
+<p>即 manual，手册</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
+<h2 id="ln">1.11 ln</h2>
+<p>软链接，即Windows中的 “ 快捷方式 ”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
+<h2 id="other">1.12 other</h2>
+<ul>
+<li>reset：重新初始化终端，即清屏</li>
+<li>clear：清屏</li>
+<li>history：查看命令历史</li>
+<li>help：帮助</li>
+<li>exit：推出</li>
+<li>#：表示注释</li>
+</ul>
+<h1 id="management">2 Management</h1>
+<h2 id="switch-user">2.1 Switch user</h2>
+<ul>
+<li>su</li>
+</ul>
+<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
+<h2 id="user-operation">2.2 User operation</h2>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>passwd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>userdel</li>
+</ul>
+<p>即 user delete</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
+<h2 id="group-operation">2.3 Group operation</h2>
+<ul>
+<li>groupadd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>groupdel</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>usermod</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>cat</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="file-permission">2.4 File permission</h2>
+<ul>
+<li>View Permission</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chmod</li>
+</ul>
+<p>即 Change file mode，修改文件的访问权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chown</li>
+</ul>
+<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
+<h2 id="script">2.5 Script</h2>
+<ul>
+<li>Shell 脚本： *.sh</li>
+<li>Perl 脚本： *.pl</li>
+<li>Python 脚本：*.py</li>
+</ul>
+<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Shell 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Perl 脚本</li>
+<li>Py 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell">2.6 Shell</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
+<h1 id="enviroment">3 Enviroment</h1>
+<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
+<p>使用环境变量：</p>
+<ul>
+<li>在当前命令行中使用</li>
+<li>在 Shell 脚本中使用</li>
+</ul>
+<h2 id="user-viriables">3.2 User Viriables</h2>
+<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="system-variables">3.3 System Variables</h2>
+<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
+<h2 id="path-variables">3.4 PATH Variables</h2>
+<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
+<h2 id="network">3.5 Network</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>OS</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Latex</title>
     <url>/2021/01/19/Latex/</url>
     <content><![CDATA[<h1 id="recognize-latex">1 Recognize <span class="math inline">\(\LaTeX\)</span></h1>
@@ -11636,398 +12028,6 @@ a+\rlap{\overbrace{\phantom{b+c+d}}^m}b+\underbrace{c+d+e}_n +f
       </categories>
       <tags>
         <tag>Latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Influence</title>
-    <url>/2021/01/18/Influence-1/</url>
-    <content><![CDATA[<h1 id="引言">1. 引言</h1>
-<p>影响力，一般认为指的是用一种为别人所乐于接受的方式，改变他人所乐于接受的方式，改变他人的思想和行动的能力。该书由著名社会心理学家 Robert B. Cialdini 所著， Cialdini 倾其职业生涯来研究影响力，在说服、顺从和谈判领域享有广泛的国际声誉。因其在商业道德和政策运用方面所作的前沿研究，常被称为“影响力教父”。</p>
-<a id="more"></a>
-<p>本书主要谈论了一些社会生活中常见，但我们通常容易忽视的小套路，从互惠、承诺和一致、社会认同、喜好、权威以及稀缺六个方面对这些套路进行归类，通过一番抽丝剥茧式的分析，来阐述人们面对这些套路时会陷入的思维定势以及应对措施。</p>
-<p>在日常生活中，各种销售广告、推销手段层出不穷，一些经不起推敲的广告却有时能够取得奇效，一些看似损害商家自身利益的小套路却能够给商家带来更多利益……这些都是通过影响力这一手段来影响我们的决策。作者通过对影响力的作用方式进行剖析，解释了影响力的厉害关系。因为它，我们可能被无良商家诓骗而蒙受损失，甚至映射到社交生活中，前些年饱受诟病的“PUA”中也能看到影响力这一武器被滥用的影子。</p>
-<p>作者的很多论述朴实无华，但却能在平凡的语言中让我有种感同身受的真实感。比如以承诺与一致为例，前段时间，偶然间翻看了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》。我以前总是以信念、信仰之类的规诫自己，所以当时兴致偶发，记录了一些优秀的品质借以自勉。殊不知时过境迁，再次重温之时，竟发现这些执念已经在不知不觉之中已经深入记忆，成为了个人为人处世的一部分了。不免有些喟叹，如果当初没有记录的冲动，也许这些执念只会在人情世故中泯然消逝罢了。此外，还有其他许多因素，都能带给我发自内心的共鸣感，通过了解它们，可以帮助我更好地剖析遇到的问题，理解社会现象，避开一些本该能够避免的社会损失。</p>
-<h2 id="按一下就播放">1.1 按一下就播放</h2>
-<p>影响力对我们起作用的方式是作者称为“按一下就播放”的一种固定行为模式。这种模式最初是研究动物行为时所提，其基本特点是：构成模式的行为每次都是按照几乎无异的方式或相同的顺序发生，就好像这些方式是记录动物身体里内置的磁带上，只要到了特定环境，相应的行为就得到激活，进而按照标准的顺序展开一整套行为，就如同按下了播放键一样。最有意思的一点在于这个磁带的激活方式，促发者也许并不是对手这个整体，而是对手具备的一些特征。</p>
-<p>而在人类社会中，同样存在按一下就播放的范式，比如别人在请求我们帮忙的时候，要是能给一个理由，我们通常会乐意提供帮助。“因为”这个词可以触发我我们的自动顺从反应，哪怕请求者并没有给出一个说得通的理由，但我们潜意识里会说服自己去帮助对方，就像是“因为”这个词语按下了我们顺从反应的按钮一般。</p>
-<p>事实上，这种模式化的自动行为在人类活动中是相当普遍的。因为很多时候，它是最有效的行为方式。英国著名哲学家怀特海（Alfred North Whitehead） 曾断言：文明的进步，就是人们在不假思索中可以做的事情越来越多。我们都生活在一个极其复杂的环境中，为了应对社会生活的日新月异，我们需要捷径，因为我们没有足够的时间、精力和能力来对每一件事采取“谋定而后动”的策略。所以，我们需要频繁地根据少数关键特征把事情进行分类，以便下次碰到同样的触发特征，就可以不假思索地做出最为有利的反应。</p>
-<h1 id="互惠">2 互惠</h1>
-<h2 id="滴水之恩涌泉相报">2.1 滴水之恩，涌泉相报</h2>
-<p>互惠原理指，当别人帮了我们的忙，给了我们好处，我们应当回报他，也即我们平时所说，滴水之恩，定当以涌泉相报。著名考古学家理查德·利基（Richard Leakey）认为：正是因为有了互惠体系，人类才成为人类。确实，倘若我们没有学会“有债必还”的道理，人类又如何会走上劳动分工的道路呢？更遑论让个体相互依赖，凝结成高效率的单位了。</p>
-<p>该原理告诉我们，超市在希望消费者购买产品时，通常会先向向消费者施加小小的恩惠，如赠送样品，通过这种小技巧，就可以极大地提高消费者依其言行其事的概率。当然，在消费者不断被资本家割韭菜的今日，个人感觉这种小伎俩早已不足以打动消费者了。</p>
-<p>此外，在无关金钱和商业交易的人际关系中，同样也受互惠原理的影响，他人通过硬塞给我们一些好处，就能触发我们的亏欠感。这份亏欠感会驱使我们对别人的付出进行弥补和偿还，而正是这份偿还义务构成了互惠原理的实质。古人云：滴水之恩，当涌泉相报。最初的小小善意会刺激人们报以大得多的恩惠，因为亏欠感会让我们心生内疚。</p>
-<p>这一点让我倍感亲切，我妈从小教育我，不要贪图别人的小便宜，不要亏欠别人。我也一直践行着这一准则，总觉得自己不够强大，总觉得自己无以回报，哪怕自己真的需要，也会尽量避免找人帮忙，即便找人帮忙或者受人人情，最终也一定会以回报大于得到而终。因为我始终以高规格的精神标准要求自己，当心理亏欠的负担落在肩头，有时是比物质损失更难以忍受的折磨。</p>
-<h2 id="互惠式让步">2.2 互惠式让步</h2>
-<p>除了上述滴水之恩，涌泉相报的常规互惠范式之外，还有一种常见的套路“互惠式让步”。它的实现途径也比较简单，首先，它迫使接受了对方让步的人以同样的方式回应；其次，由于接受了让步的人有回报的义务，人们就乐意率先让步，从而启动有益的交换过程。</p>
-<p>简单来说就是，假设你想让我答应你的某个请求，为了增加获胜的概率，你可以先向我提出一个大些的要求，等我拒绝之后，再提出一个稍小的要求，而这个要求才是你真正的目标。倘若你的要求设置巧妙，我会把你的第二个要求看成对我的让步，并有可能感到自己这边也应该让步，于是顺从了你的第二个要求。</p>
-<p>这种手段也叫做“拒绝——后撤术”，常见于谈判和推销过程中，一些经验老道的销售员能够非常娴熟地使用这种手段，诱使消费者进入预先编织好的“陷阱”中，不但赢得了业绩，也引起了消费者对拒绝销售员最初的请求而使销售员蒙受顺势的愧疚中。而实际上也许蒙受损失的是我们自己，尽管该损失对我们造成的影响有时微乎其微。但如果我们能够识别这些伎俩，那么我们就有了更多的选择空间，而不会落入了别人的圈套中而不自知，被别人的话术引导我们做出与初心违背的决策。</p>
-<h2 id="如何拒绝互惠">2.3 如何拒绝互惠</h2>
-<p>正常情况下，我们都会屈从于互惠原理，顺从请求者的愿望；虽然我们也可能会拒绝服从，但这样以来，我们内心深处就会承受因违背互惠原理而带来的公平感和义务感的谴责。所以倘若别人的提议我们确实赞同，那就不妨大胆接受它；但如果该提议别有所图，那么我们就置之不理，并且可以有足够的理由在心理安慰自己。毕竟互惠原理只说要以善意回报善意，可没说用善意回报诡计。</p>
-<p>比如说，有人给了我们恩惠，我们可以安心接受下来，同时认识到将来有回报他的义务，然而如果这个人企图通过互惠原理利用我们，那么我们就应该保持警惕，同时视情况心安理得的盘剥他之前给的恩惠，毕竟互惠原理也说了，公正的意思，就是盘剥的行为要还以盘剥。此外，通过这件事情，可以推测出其行事风格带有极强的目的性，在未来的相关人际交往中，应该敬而远之。</p>
-<h1 id="承诺与一致">3 承诺与一致</h1>
-<h2 id="言出必行">3.1 言出必行</h2>
-<p>承诺和一致指的是，我们们个人都有一种言行一致的愿望。一旦做出了艰难的选择，我们就很乐意相信自己选对了，事实上，我们经常会一次次地欺骗自己，以便在做出选择之后，相信自己做的没错。这也跟社会认同有关，因为在社会中，言行前后不一致的人，很容易会被看成脑筋混乱、表里不一，甚至精神有毛病的人；而与之相对的，言行高度通常跟个性坚强、能力出众挂钩。</p>
-<p>言行一致其实还跟人类进化过程中的经验有关，因为言行一致符合我们这一群体的最佳利益，所以在进化过程中，这些经验不断驱使我们养成保持一致的习惯，哪怕有时候这么做并不明智。在日新月异的信息化时代，我们面临的社会环境远远超过了我们大脑能够处理的维度，如果任何事情都经过深思熟虑之后，再做出与之相应的最优决策，这是不切实际的，所以为了适应复杂的现代生活，我们大脑很容易沉浸在舒适圈中，选择言行一致这样一条捷径。其次，机械地保持一致，有时也能够避免理性上的折磨，避免误入歧途。试想，当一系列重要性程度相差无几的事项需要我们去选择时，毫无疑问，我们会选择自己熟知或者承诺过的事项作优先处理。</p>
-<h2 id="承诺">3.2 承诺</h2>
-<p>一旦我们意识到，我们的行动要受到言行一致的潜在精神动力所指引，那么我们在日常生活中就更加应该注意到承诺的重要性。我们一旦进行了承诺，就有可能会影响自我认知。前一段时间，偶然间看到了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》，写文章的初心假借文章来规诫自己，时过境迁，到现在再去看这篇文章时，发现这些信念已经在不知不觉中对我的为人处世的风格产生了潜移默化的影响，我自己也在不知不觉中成为了一个精神世界饱满的人，这些君子规诫也在不断影响我的言行举止。所以不要小看写作的力量，写作是一种书面宣言，它成了一个行为业已发生的物证，会让我们不自觉中朝着声明里的方向改变态度，不断暗示自己：我们真心相信所写下的事情。</p>
-<p>在知晓了承诺的影响力之后，在日常生活中，我们在接受琐碎请求时务必小心谨慎，因为它不仅能提高我们对分量更大的类似请求的顺从度，还能使我们更乐意去做一些跟先前答应的小要求毫不相关的事情。每当我们当众选择了一种立场，便会产生维持它的动机，因为这样才能显得前后一致。而有时候，维持这一动机所要付出的努力并不轻松，这便牵扯到为承诺付出的额外的努力。</p>
-<p>心理学告诉我们，当我们为一个承诺付出的努力越多，它对承诺的影响力也就越大。这很容易理解：费劲周折才得到某样东西的人，比轻轻松松就得到的人，对这件东西往往更为珍视。这就能够让人理解，在大学校园里，一些社团的凝聚力极强，宛如一捆绳将所有社员凝聚在一起，而有的社团却如一盘散沙。这其实或多或少跟入社团时所付出的努力以及在参与社团活动中的个人参与有关，当你在一个组织中参与度越高，你对其的认同感和归属感也就也强。所以对于组织管理者而言，要想让一个组织具有极强的凝聚力，这种在组织事物参与中形成的羁绊的作用不容忽视。</p>
-<h2 id="内心抉择和抛低球">3.3 内心抉择和抛低球</h2>
-<p>除了承诺之外，还有两种与之相关的现象较为常见。内心抉择是指，我们很容易相信，我们要对自己的所作所为负责，一旦做了就没有借口可找，没有退路可言。但人是理性的，很容易为自己的行为做理由和借口。当外界存在较为强大的压力时，我们很容易为自己的行为找借口。</p>
-<p>就拿我自己来说，我平时爱好十分广泛，喜欢看各种领域的课外书。但是当一种领域内的知识成为我的专业课知识时，我就产生了抵触心理，会厌倦它，虽然我个人并不是很看重课程的成绩，会按照自己的处事风格去处理每一门课程，但终归在学习这一课程时体会不了那种扩充知识面的喜悦感，只会认为这种学习是一种应付，长久下来，心中所剩的只有满目疲倦。所以我很认同作者所说：只有当我们认为外界不存在强大的压力时，我们才会为自己的行为发自内心地负起责任，并对自己言行一致的事实产生骄傲和自豪。</p>
-<p>抛低球行为则更常见了，指的是先给人一个甜头，诱使人做出有利的购买决定。而后，等决定做好了，交易还没最终排版，卖方巧妙地取消了最初的甜头。有点类似于言行不一致，这在人情世故中同样常见，但也同样让人厌恶，这种由得转失的心理落差只会让人心中更为郁闷，有一种被耍了还在帮别人数钱的感觉。我自己就遇见过两回这种事情，也许这种事情对于对方而言只是无关紧要的事情，但对我而言，这不仅仅是小事，而是关乎人性的问题。有时我在想，如果我看不透做个糊涂人多好，可偏偏看透了，之后还是得抬头不见低头见地继续打交道，着实折磨人。</p>
-<h2 id="如何拒绝">3.4 如何拒绝</h2>
-<p>虽然承诺和一致是十分重要的品质，但有时难免被别有用心的人利用，这在以前一般体现在推销过程中，但对于生活在信息化时代，饱受电话推销苦恼的我们而言，这种套路几乎不用过于担心。反而是在社会生活中，我们饱受这一原理的影响，为人所熟知的沉没成本就是这一原理的体现。人们很容易沉浸在已经付出的沉没成本中，无法痛下决心舍弃某一事物。</p>
-<p>正如拉夫尔·沃尔多·爱默生所说：死脑筋地保持一致愚不可及。虽然在现实生活中，保持一致是有逻辑性和智力超群的表现，而缺乏这一特点，则会被看成脑筋不够用，智力有障碍。但我们不能在一件错误的事情上执迷不悟。为了应对这一原理，我们应该跟随直觉：知道了我现在掌握的这些情况，要是时间能够倒流，我还会做出同样的选择吗？如果答案是否定的话，那么我们应该有壮士断腕的胸襟，抛却过去所付出的努力，重新开始新的征程！</p>
-<h1 id="社会认同">4 社会认同</h1>
-<h2 id="模仿">4.1 模仿</h2>
-<p>社会认同原理指出：在判断何为正确时，我们会根据别人的意见行事。大多数时候，我们对社会认同的方式完全是无意识的、条件反射式的。一个很常见的案例是邪教，有时候我们旁人看起来邪教宣扬的教义明显也站不住脚的，但仍然存在着许多教徒，其中很多教徒对邪教本身并没有归属感，而是见到了许多信仰程度极高的人，在“三人成虎”的影响下，这些缺乏主见的人逐渐会开始相信这种信仰，这就是社会认同原理。</p>
-<p>有一个非常有意思的现象，一些邪教会主动创造一些末日预言，在应对预言的过程中，培养教徒对邪教的信赖感，当我们以为这种愚昧的预言落空时，这些教徒会重回正道，现实却并不如此，他们反而会朝着错误的方向渐行渐远。比如小时候有一些邪教大肆宣扬 2012，世界末日，而当我们以为 2013 年的钟声敲响时，这种愚昧的把戏会不攻自破，而邪教本身也会土崩瓦解，然而事实却并非如此。事实是之前大肆宣扬教义的信徒，在预言落空后，反而成为了更加坚定的信徒。</p>
-<p>这其实也不难理解，根据上一节中所说的额外的努力可知，这些信徒心中十分坚定地相信着邪教本身，为了坚守其心中的坚定，他们抛弃了许多，甚至有的抛弃了家庭。当语言落空后，他们其实心中已经有了怀疑，然而沉没成本让他们心有不甘，更为重要的是，一旦确定自己一直以来所坚定的信仰本身就是错误的，那这种前景显得过于可怕。正如作者所说，在预言落空后，驱使信徒们宣扬其信仰的，并不是先前的确定感，而是一种逐渐扩散的怀疑。</p>
-<h2 id="不确定性">4.2 不确定性</h2>
-<p>销售顾问卡维特·罗伯特（Cavett Robert） 总结了社会认同原理：95%的人都爱模仿别人，只有5%的人能首先发起行动，所以要想把人说服，我们提供任何证据的效果都比不上别人的行动。我们模仿别人的初衷就是，当我们处于不确定时，我们很难主动地做出决定，这时我们大脑会不自觉地选择一条捷径 —— 模仿他人。因为我们潜意识里觉得，这些敢于行动的人知道的信息会比我们多，而在更多的先验信息条件下，他们的行为极有可能是正确的。</p>
-<p>我们在观察力与我们相似的人的行为时，社会认同原理能发挥出最大的影响。我们会根据他人的行为来判断自己怎么做才合适，尤其是我们觉得这些人跟自己相似的时候。这有时候其实也会造成一些不利的影响—— <strong>多元无知效应</strong>。多元无知效应揭示了一种乱象：受害者迫切需要帮助，全体旁观者却无动于衷。也许这在法治社会的当下，显得有些过于遥远，但如果说一个熟知的事件：跌倒的老人，扶不扶？当然，在负面新闻的熏染下，这个问题已经不仅仅涉及社会心理了，还跟道德、法律等有关。</p>
-<p><strong>多元无知效应</strong> 讲的是，当现场有大量其他旁观者在场时，人们对紧急情况伸出援手的可能性极低。这是因为： 1. 周围有其他可以帮忙的人，单个人要承担的责任就减少了。 2. 很多时候，紧急情况表面上看起来并不显得十分紧急。</p>
-<p>在公共场合中，我们所有人都喜欢摆出从容不迫的模样来显示我们的成熟稳重，但其实很可能只是暗中瞟着周围的人，不动声色地寻找证据。如果所有人都选择袖手旁观，那么每个人很有可能都得出判断：既然没人在乎，那就应该没什么问题。所以很多时候，旁观者群体没能帮忙，不是因为现在的人变得更为冷漠了，而是因为他们不能确定。这也是为什么现在新闻十分重视宣扬见义勇为的好人好事，因为打破思维定势真的需要很大的勇气。</p>
-<p>多元无知效应在陌生人里显得最为突出：因为我们喜欢在公众面前表现得优雅而成熟，又因为我们不熟悉陌生人的反应，所以，置身于一群素不相识的人里面，我们有可能无法流露出关切的表情，也无法正确地解读他人关切的表情。所以，在一个完全陌生的环境中，当我们需要紧急救助的时候，最佳策略是减少不确定性，让周围人注意到你的状况，搞清楚自己的责任。</p>
-<h2 id="如何拒绝-1">4.3 如何拒绝</h2>
-<p>乍一看，社会认同好像与商业领域并无关联，其实不然，社会认同原理为我们配备了一种奇妙的自动导航仪，而许多商家就会利用我们的导航仪，来为自己的门店营造出十分火爆的场面，比如互联网下的销量为王、刷单刷好评，都是这一原理应用的体现。由于自动导航仪的弊端主要处在系统输入数据错误的时候，所以识别储物数据，就是我们对抗其弊端的最佳方式。面对明显是伪造的社会证据时，我们只要多保持一点警惕感，就能很好的保护自己了。</p>
-<p>总体而言，本章所讲的社会认同原理以及有样学样的模仿行为，为我们提供了一条捷径。虽然绝大多数时候，这个自动导航装置能够给我们带来很多便利，但我们绝对不能完全信任这种捷径，哪怕没有人故意往里面添加错误信息，装置也有可能会发生故障。所以在日常生活中，我们应该时刻保持警惕感，虽然不至于所有事项的决策都与社会认同原理反着来，但清楚了事物发展的背后原理之后再做决策，可以让我们减少蒙受损失的概率。</p>
-<h1 id="喜好">5 喜好</h1>
-<h2 id="喜好的因素">5.1 喜好的因素</h2>
-<p>喜好原理无论是商业领域，还是社会交际过程中，都十分普遍。社会学家一直在研究产生好感的因素，为了获得消费者的好感，这些专业人士几乎把每一个因素都巧妙地运用上了。 - 外表</p>
-<p>一个人的某个正面特征很容易主导他人的看法，这也是为什么我们很容易对外表姣好的人产生好感的原因，所以外表的光环很容易会为顺从专业人士所利用。比如大部分服务业在招聘服务人员时，会选择面容姣好的从业人员。因为这会在潜意识中收获消费者的好感。</p>
-<ul>
-<li><p>相似性</p>
-<p>相似性原理也可以用感同身受来解释，当别人同我们有许多相似之处时，我们心中会不自觉地产生亲近之感。所以在销售领域，常用的套路就是将产品赋予特别的含义，来拉近与消费者之间的距离，从而获得消费者的好感。</p></li>
-<li><p>恭维</p>
-<p>虽然恭维这一词语乍一看仿佛带有贬义，其实不然，现如今很多商业品牌会给自己的品牌赋予一些头衔，比如情怀、富贵的象征等等，归根结底还是恭维原理在起作用。通过赋予品牌和使用品牌的人新的内涵，进而收获消费者的好感。</p></li>
-<li><p>接触与合作</p>
-<p>由于熟悉感会影响人的喜好，因为这种熟悉感会对我们的各种决定都产生着影响。接触与合作更多地是针对群体好感度的快速提升，许多公司会花大笔财力物力给员工举办团建活动，目的就是为了促进团队之间的好感度和对公司的归属感，通过这种好感度的提升，进而促进团队内部办事效率的提升。</p>
-<p>还有一种较为常见的合作是唱红脸和唱白脸，这种手段多用在审讯犯人的时候。但其实在商业竞争中，我们也可以将两个寡头之间的竞争看作是这种手段的翻版。有了差异化的决策，就有了抉择，我们通常会对唱红脸的一方产生好感，所以在商业领域中，我们很容易看见“落井下石”的现象，就是为了在已有“白脸”的衬托下，自己做一回红脸。</p></li>
-<li><p>条件反射和关联</p>
-<p>制造商总是急着把自己的产品跟当前的文化热潮、名人、流行艺人联系起来。通过名人代言来收获好感。在社会交际中，这项原理同样适用，根据关联原理，倘若我们能用一些哪怕是非常表面的方式让自己跟成功联系起来，我们的公共形象也会显得光辉起来。所以我们经常听到别人公开吹嘘与其他成功者的关系，目的就是在于沾染反射而来的荣誉光彩。</p>
-<p>虽然我们或多或少地想沾染一点荣耀的光彩，但有些人走的太远了。主要原因在于他们的自我适应太差。他们内心深处的个人价值感过低，没办法靠推动或实现自身成就来追求荣誉，只能靠着吹嘘自己与他人成就的关系来找回尊严，可悲亦可叹！</p></li>
-</ul>
-<h2 id="如何拒绝-2">5.2 如何拒绝</h2>
-<p>虽然经济学告诉我们消费的目的是满足心中的效用，但我们也不能在被设计好的喜好中渐行渐远。应对喜好原理的关键点在于：把注意力放在效果上，而非成因上。在跟顺从专业人士接触的时候，我们只需关注跟好感有关的一件事就行：我们是不是觉得自己超乎寻常地、迅速地、热烈地喜欢上了对方？如果答案显而易见，那么我们就应该保持警惕了，也许对方只是为了博取你的好感，进而实现其目的罢了，而这些目的通常有可能是建立在你的损失之上的。</p>
-<p>关注喜好原理的产生，并不是说要我们压抑好感因素产生的影响力，相反，我们应该听凭这些因素发挥力量，然后用这股力量反过来对付那些想从中获利的人。这股力量越大，其发作用也就越发明显，对我们的戒备防御也就越有帮助。</p>
-<h1 id="权威">6 权威</h1>
-<h2 id="权威的影响">6.1 权威的影响</h2>
-<p>心理学教授 <a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1611393075&amp;ver=2846&amp;signature=qbwls350egVrZj372FInEd5SLaLArk5jDigKCXJqyBS1wmw8NAucXO2bdGRcCYSC9vj*te2U03nX3lh2bxX7Gt53EEhrlPEyufWVD4HnIncV7yaCEIlpgaNJOwDjhmZI&amp;new=1">米尔格拉姆的实验</a> 揭露了一个事实：在权威的命令下，人们几乎愿意干任何事情。权威表示教化下的敬重，在我们潜意识里，权威意味着正确。所以在不确定的情况下，我们很容易跟着权威走。然而这份顺从有时被别出心裁的商家所利用，让我们掉入商家精心设计的思维定势中。</p>
-<p>每当面对人类行为背后的一种强力推动因素，我们都会很自然地想到，这种推动因素的存在是有着充分的理由的。服从权威人物的命令，总是能给我们带来一些实际的好处，因为它帮助我们节省了思考的时间。这也是为什么一些牙膏、药品广告中通常会出现一些身穿白大褂的人物形象，因为很多情况下，只要有正统的权威说了话，其他本来应该考虑的事情就变得不相关了，即便这种权威是伪装出来的，也会对我们的认知产生或多或少的影响。</p>
-<p>将权威这一含义泛化一下，其实更容易理解。我们在写个人简历的时候，惯用的手法就是写上自身相关经历在上面，其实这也可以看作是权威原理起作用的表现方式之一，因为通过这种头衔、相关经历的阐述，可以传达一个自己在相关事项上的权威能力，这种“权威”通常能让我们在竞争中处于优势地位。除了头衔之外，面试时的衣着、身份标识（豪车、名表）等传达的也是类似的信息，通过这种公开信息，能够让我们在公众中收获特殊的尊重，哪怕这种尊重是单纯的畏惧，也会对当事人产生莫名的自豪和骄傲。</p>
-<h2 id="如何拒绝-3">6.2 如何拒绝</h2>
-<p>为了免受伪权威的误导，防御策略之一就是提前做好心理准备。我们通常会低估权威及其象征对自己行为的影响，然而事实是一旦它出现在要求顺从的场合，我们往往来不及提防。破解伪权威对我们决策的影响，我们只需在脑海中问自己两个问题： 1. 这个权威是真正的专家吗</p>
-<p>这个问题能让我嗯我们把焦点放在：权威的资格，以及这些资格是否跟眼前的主题相关。帮助我们从兴许毫无意义的权威符号上挪开视线，转到真正的权威资格上。通过这种简单的方法，着眼于权威地位的证据，能让我们避免自动顺从带来的大部分问题。</p>
-<ol start="2" type="1">
-<li>这个专家说的是真话吗？</li>
-</ol>
-<p>哪怕是知识最丰富的权威，也不一定会开诚布公地把信息告知我们，因此，我们必须考虑一下他们在当前情形下的真实可信度。多思考一下专家会不会因为我们的顺从而得到好处，通过这样，我们就为自己又设立了一道安全网，防御权威不必要的影响。比较常见的一个小伎俩是——怀柔，即一些看似违背自己利益的做法。这无论是商业领域还是为人处世中，都会不自觉地被人们加以利用，通过这种看似违背自己利益的做法，可以拉近与对方的距离，增强对方对我们的好感度。</p>
-<h1 id="稀缺">7 稀缺</h1>
-<h2 id="物以稀为贵">7.1 物以稀为贵</h2>
-<p>稀缺原理指的是，机会越少见，价值似乎就越高。对失去某种东西的恐惧通常比获得同一物品的渴望，更能激发我们的行动力。而有时，讽刺的地方也在这儿，倘若瑕疵把一样东西变得稀缺了，垃圾也能化身成值钱的宝贝，这在玩物收藏市场几乎是常态了。其实，现实生活中，我们最容易受稀缺原理的影响了，最常见的两种商业套路是： - 数量有限策略</p>
-<ul>
-<li>最后期限战术</li>
-</ul>
-<p>商家惯用的商业套路就是营造一些降价折扣的事由，来刺激消费者对商品进行购买，也许商品本身并不在消费者最初消费计划中，但是在稀缺性的刺激下，商品的认知价值在消费者心中突然有了大幅提升。其实降价也可以算在稀缺性原理中，因为相对于日常的高位价格，暂时性的降价折扣就显得颇为稀缺，错过了当下，以后可能需要花费更高额度的费用，这种期望落差通常会刺激消费者做出不理性的购买决策。</p>
-<p>此外，另一种常见的套路就是有竞争性的稀缺资源，参与竞争稀缺资源的感觉，有着比单纯的稀有资源更为强大的吸引力。渴望拥有一件众人争抢的东西，几乎是出于本能的身体反应。所以在稀缺物品的竞拍中，我们通常能见到类似的现象，通过简单的心理博弈，能够让最终的成交价格朝着卖家预设的价位移动。</p>
-<h2 id="逆反心理">7.2 逆反心理</h2>
-<p>稀缺性原理起作用的力量主要来自两个方面。第一点它钻了我们思维捷径上的漏洞。在我们认知中，难以得到的东西，通常会让我们更为珍视。故此，我们基本可以根据获得一样东西的难易程度，迅速、准确地判断它质量，而这种判断在很大程度上是正确的。</p>
-<p>第二点在于，机会越来越少的话，我们的自由也会随之丧失。每当有东西获取起来比以前难，我们拥有它的自由受了限制，我们就越发地想要得到它。我们痛恨失去本来拥有的自由，这种保住既得利益的愿望是心里逆反理论的核心。</p>
-<p>詹姆斯·戴维斯（James Davies）曾指出，一个国家在经济和社会条件改善后，要是在短期内出现剧烈逆转，最有可能爆发革命。而且最容易企业的，不是那些传统上最受压迫的底层人民，而是品尝过了更美好生活的人。因为该群体得到了以前从来没有的自由，一点有人想要夺走这些自由，就注定要付出一些代价。</p>
-<p>在实际生活中逆反心理也比较常见，最为人所熟知的一种现象就是青少年的叛逆期。通过上述阐述，我们知道自由这种东西，给一点又拿走，比完全不给更危险。所以管教前后不一的父母，更容易教出反叛心强的孩子。所以在教育孩子上，家长应该以身作则，给孩子树立良好的榜样，而不是严于律人，宽以待己。</p>
-<h2 id="如何拒绝-4">7.3 如何拒绝</h2>
-<p>在知晓我们如何拒绝稀缺原理影响我们决策时，我们应该知道一个道理：喜悦并非来自对稀缺商品的体验，而是来自对它的占有。稀缺的东西并不因为难以占有，就变得更好吃、好听、好看、好用了。所以一旦我们觉得我们在短缺影响下产生了高度的情绪波动，我们就应该把这种波动当成暂停的信号，并在心底询问自己，为什么我们想要那件东西，是为了拥有它，还是为了它的价值或功能。</p>
-<p>谈若是因为想拥有它，那么我们应该利用它的稀缺性来判断改为它出多少钱，一旦价格超出该底线，我们应该心生警惕，因为这也许是商家在利用稀缺性原理在谋取的超额收益。如果是为了它的功能，那么我们应该牢记一点：该物品并不会因为稀缺而增强它的功能。换而言之，我们应该积极寻求它的等价替代产品，获取更多信息之后，在做出合理的决策。</p>
-<h1 id="总结">8 总结</h1>
-<p>作者写本书的目的并不是说，让我们对这些简单而常见的小套路避之不及，而是希望我们能洞悉事物发展背后的逻辑，至少在明事理之后，能让我们有了更多选择的权利，不至于让我们在被“戏耍”后而不自知。尽管只靠孤立数据容易做出愚蠢的决定，可现代生活的节奏又要求我们频繁使用这一捷径。</p>
-<p>为了追求效率，有时候我们必须放弃耗时而复杂的全局决策过程，转而使用更简单、由单一特征出发的响应方式。它之所以最为常用，完全是因为它们的可靠性高，在我们人类进化过程中，通常都能指引我们做出正确决定，这也是为什么我们会潜意识里借助这些因素做出顺从决定。在没有意愿、时间、精力或认知资源对情况进行全面分析的时候，使用这些孤立的线索进行决策是简单而保险的决策方式。</p>
-<p>正如作者所说一般，这种便捷的响应方式应当受到尊重。在日新月异的当下，技术的进步速度远远快于我们，所以我们处理信息的天然能力将有可能越来越难于应对当代生活中繁多的变化、选择和挑战。有时我们会发现自己陷入了跟低等动物一样的处境中：外界环境的错综复杂超出了我们心智的处理能力。从这个方面来说，我们的大脑潜意识里依赖可靠而合理的捷径和首选规则来应对生活的紧张节奏也是无可厚非的。</p>
-<p>然而，我们真正值得警惕的是，那些知晓我们的响应机制，但通过别出心裁的设计来破坏我们的心理机制，或者说通过我们的响应机制来蒙蔽我们，来从我们身上谋取私利的人。虽然大多数时候，这种戏弄不会对我们造成太大的损失，但正如《三国志·蜀书·先主传》所说：“勿以善小而不为，勿以恶小而为之”，积小成多，聚沙成塔，终归会有一天对我们的反应机制产生不可逆的影响。</p>
-<p>正如一直以来我对自己的要求：我可以不成为这一领域的专家，但其中的基本原理我得懂，这也是为什么这么多年来，我始终如一地扩充自己的知识面。一方面是因为获取知识的过程能给我带来确实的快感，另一方面则是因为，涉猎各领域的知识能够让我以更多的角度看待事物，不至于让自己的无知中变成一个智慧鹦鹉学舌而不会独立思考的人！</p>
-<p>最后附上我最喜欢的一个著名投资家查理·芒格所说的一句话： &gt; 我这辈子遇到的聪明人（来自各行各业的聪明人）没有不每天阅读的 —— 没有，一个都没有。巴菲特读书之多，我读书之多，可能会让你感到吃惊。孩子们都笑话我，他们觉得我是一本长了两条腿的书。</p>
-<p>很多人读书，追求的是干货，寻求的是立刻行之有效的解决方案。其实这是一种留在舒适区的阅读方法。在这个充满不确定的时代，答案不会简单地出现在书里，因为生活根本就没有标准确切的答案，你也不能期望过去的经验能够解决未来的问题。能简单地出现在书中的答案只有试卷，而这也是我不喜欢以考试来鞭策读书的原因之一，只可惜在现今成绩为王的时代，能做的只有在半顺从下坚持自己原则。除此之外，别无他法，可悲！</p>
-<p>本书主要谈论了一些社会生活中常见，但我们通常容易忽视的小套路，从互惠、承诺和一致、社会认同、喜好、权威以及稀缺六个方面对这些套路进行归类，通过一番抽丝剥茧式的分析，来阐述人们面对这些套路时会陷入的思维定势以及应对措施。</p>
-<p>在日常生活中，各种销售广告、推销手段层出不穷，一些经不起推敲的广告却有时能够取得奇效，一些看似损害商家自身利益的小套路却能够给商家带来更多利益……这些都是通过影响力这一手段来影响我们的决策。作者通过对影响力的作用方式进行剖析，解释了影响力的厉害关系。因为它，我们可能被无良商家诓骗而蒙受损失，甚至映射到社交生活中，前些年饱受诟病的“PUA”中也能看到影响力这一武器被滥用的影子。</p>
-<p>作者的很多论述朴实无华，但却能在平凡的语言中让我有种感同身受的真实感。比如以承诺与一致为例，前段时间，偶然间翻看了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》。我以前总是以信念、信仰之类的规诫自己，所以当时兴致偶发，记录了一些优秀的品质借以自勉。殊不知时过境迁，再次重温之时，竟发现这些执念已经在不知不觉之中已经深入记忆，成为了个人为人处世的一部分了。不免有些喟叹，如果当初没有记录的冲动，也许这些执念只会在人情世故中泯然消逝罢了。此外，还有其他许多因素，都能带给我发自内心的共鸣感，通过了解它们，可以帮助我更好地剖析遇到的问题，理解社会现象，避开一些本该能够避免的社会损失。</p>
-<p>## 1.1 按一下就播放</p>
-<p>影响力对我们起作用的方式是作者称为“按一下就播放”的一种固定行为模式。这种模式最初是研究动物行为时所提，其基本特点是：构成模式的行为每次都是按照几乎无异的方式或相同的顺序发生，就好像这些方式是记录动物身体里内置的磁带上，只要到了特定环境，相应的行为就得到激活，进而按照标准的顺序展开一整套行为，就如同按下了播放键一样。最有意思的一点在于这个磁带的激活方式，促发者也许并不是对手这个整体，而是对手具备的一些特征。</p>
-<p>而在人类社会中，同样存在按一下就播放的范式，比如别人在请求我们帮忙的时候，要是能给一个理由，我们通常会乐意提供帮助。“因为”这个词可以触发我我们的自动顺从反应，哪怕请求者并没有给出一个说得通的理由，但我们潜意识里会说服自己去帮助对方，就像是“因为”这个词语按下了我们顺从反应的按钮一般。</p>
-<p>事实上，这种模式化的自动行为在人类活动中是相当普遍的。因为很多时候，它是最有效的行为方式。英国著名哲学家怀特海（Alfred North Whitehead） 曾断言：文明的进步，就是人们在不假思索中可以做的事情越来越多。我们都生活在一个极其复杂的环境中，为了应对社会生活的日新月异，我们需要捷径，因为我们没有足够的时间、精力和能力来对每一件事采取“谋定而后动”的策略。所以，我们需要频繁地根据少数关键特征把事情进行分类，以便下次碰到同样的触发特征，就可以不假思索地做出最为有利的反应。</p>
-<p># 2 互惠</p>
-<p>## 2.1 滴水之恩，涌泉相报</p>
-<p>互惠原理指，当别人帮了我们的忙，给了我们好处，我们应当回报他，也即我们平时所说，滴水之恩，定当以涌泉相报。著名考古学家理查德·利基（Richard Leakey）认为：正是因为有了互惠体系，人类才成为人类。确实，倘若我们没有学会“有债必还”的道理，人类又如何会走上劳动分工的道路呢？更遑论让个体相互依赖，凝结成高效率的单位了。</p>
-<p>该原理告诉我们，超市在希望消费者购买产品时，通常会先向向消费者施加小小的恩惠，如赠送样品，通过这种小技巧，就可以极大地提高消费者依其言行其事的概率。当然，在消费者不断被资本家割韭菜的今日，个人感觉这种小伎俩早已不足以打动消费者了。</p>
-<p>此外，在无关金钱和商业交易的人际关系中，同样也受互惠原理的影响，他人通过硬塞给我们一些好处，就能触发我们的亏欠感。这份亏欠感会驱使我们对别人的付出进行弥补和偿还，而正是这份偿还义务构成了互惠原理的实质。古人云：滴水之恩，当涌泉相报。最初的小小善意会刺激人们报以大得多的恩惠，因为亏欠感会让我们心生内疚。</p>
-<p>这一点让我倍感亲切，我妈从小教育我，不要贪图别人的小便宜，不要亏欠别人。我也一直践行着这一准则，总觉得自己不够强大，总觉得自己无以回报，哪怕自己真的需要，也会尽量避免找人帮忙，即便找人帮忙或者受人人情，最终也一定会以回报大于得到而终。因为我始终以高规格的精神标准要求自己，当心理亏欠的负担落在肩头，有时是比物质损失更难以忍受的折磨。</p>
-<p>## 2.2 互惠式让步</p>
-<p>除了上述滴水之恩，涌泉相报的常规互惠范式之外，还有一种常见的套路“互惠式让步”。它的实现途径也比较简单，首先，它迫使接受了对方让步的人以同样的方式回应；其次，由于接受了让步的人有回报的义务，人们就乐意率先让步，从而启动有益的交换过程。</p>
-<p>简单来说就是，假设你想让我答应你的某个请求，为了增加获胜的概率，你可以先向我提出一个大些的要求，等我拒绝之后，再提出一个稍小的要求，而这个要求才是你真正的目标。倘若你的要求设置巧妙，我会把你的第二个要求看成对我的让步，并有可能感到自己这边也应该让步，于是顺从了你的第二个要求。</p>
-<p>这种手段也叫做“拒绝——后撤术”，常见于谈判和推销过程中，一些经验老道的销售员能够非常娴熟地使用这种手段，诱使消费者进入预先编织好的“陷阱”中，不但赢得了业绩，也引起了消费者对拒绝销售员最初的请求而使销售员蒙受顺势的愧疚中。而实际上也许蒙受损失的是我们自己，尽管该损失对我们造成的影响有时微乎其微。但如果我们能够识别这些伎俩，那么我们就有了更多的选择空间，而不会落入了别人的圈套中而不自知，被别人的话术引导我们做出与初心违背的决策。</p>
-<p>## 2.3 如何拒绝互惠</p>
-<p>正常情况下，我们都会屈从于互惠原理，顺从请求者的愿望；虽然我们也可能会拒绝服从，但这样以来，我们内心深处就会承受因违背互惠原理而带来的公平感和义务感的谴责。所以倘若别人的提议我们确实赞同，那就不妨大胆接受它；但如果该提议别有所图，那么我们就置之不理，并且可以有足够的理由在心理安慰自己。毕竟互惠原理只说要以善意回报善意，可没说用善意回报诡计。</p>
-<p>比如说，有人给了我们恩惠，我们可以安心接受下来，同时认识到将来有回报他的义务，然而如果这个人企图通过互惠原理利用我们，那么我们就应该保持警惕，同时视情况心安理得的盘剥他之前给的恩惠，毕竟互惠原理也说了，公正的意思，就是盘剥的行为要还以盘剥。此外，通过这件事情，可以推测出其行事风格带有极强的目的性，在未来的相关人际交往中，应该敬而远之。</p>
-<p># 3 承诺与一致</p>
-<p>## 3.1 言出必行</p>
-<p>承诺和一致指的是，我们们个人都有一种言行一致的愿望。一旦做出了艰难的选择，我们就很乐意相信自己选对了，事实上，我们经常会一次次地欺骗自己，以便在做出选择之后，相信自己做的没错。这也跟社会认同有关，因为在社会中，言行前后不一致的人，很容易会被看成脑筋混乱、表里不一，甚至精神有毛病的人；而与之相对的，言行高度通常跟个性坚强、能力出众挂钩。</p>
-<p>言行一致其实还跟人类进化过程中的经验有关，因为言行一致符合我们这一群体的最佳利益，所以在进化过程中，这些经验不断驱使我们养成保持一致的习惯，哪怕有时候这么做并不明智。在日新月异的信息化时代，我们面临的社会环境远远超过了我们大脑能够处理的维度，如果任何事情都经过深思熟虑之后，再做出与之相应的最优决策，这是不切实际的，所以为了适应复杂的现代生活，我们大脑很容易沉浸在舒适圈中，选择言行一致这样一条捷径。其次，机械地保持一致，有时也能够避免理性上的折磨，避免误入歧途。试想，当一系列重要性程度相差无几的事项需要我们去选择时，毫无疑问，我们会选择自己熟知或者承诺过的事项作优先处理。</p>
-<p>## 3.2 承诺</p>
-<p>一旦我们意识到，我们的行动要受到言行一致的潜在精神动力所指引，那么我们在日常生活中就更加应该注意到承诺的重要性。我们一旦进行了承诺，就有可能会影响自我认知。前一段时间，偶然间看到了两年前在简书上写的一篇文章《那些愿意永远坚守的执念》，写文章的初心假借文章来规诫自己，时过境迁，到现在再去看这篇文章时，发现这些信念已经在不知不觉中对我的为人处世的风格产生了潜移默化的影响，我自己也在不知不觉中成为了一个精神世界饱满的人，这些君子规诫也在不断影响我的言行举止。所以不要小看写作的力量，写作是一种书面宣言，它成了一个行为业已发生的物证，会让我们不自觉中朝着声明里的方向改变态度，不断暗示自己：我们真心相信所写下的事情。</p>
-<p>在知晓了承诺的影响力之后，在日常生活中，我们在接受琐碎请求时务必小心谨慎，因为它不仅能提高我们对分量更大的类似请求的顺从度，还能使我们更乐意去做一些跟先前答应的小要求毫不相关的事情。每当我们当众选择了一种立场，便会产生维持它的动机，因为这样才能显得前后一致。而有时候，维持这一动机所要付出的努力并不轻松，这便牵扯到为承诺付出的额外的努力。</p>
-<p>心理学告诉我们，当我们为一个承诺付出的努力越多，它对承诺的影响力也就越大。这很容易理解：费劲周折才得到某样东西的人，比轻轻松松就得到的人，对这件东西往往更为珍视。这就能够让人理解，在大学校园里，一些社团的凝聚力极强，宛如一捆绳将所有社员凝聚在一起，而有的社团却如一盘散沙。这其实或多或少跟入社团时所付出的努力以及在参与社团活动中的个人参与有关，当你在一个组织中参与度越高，你对其的认同感和归属感也就也强。所以对于组织管理者而言，要想让一个组织具有极强的凝聚力，这种在组织事物参与中形成的羁绊的作用不容忽视。</p>
-<p>## 3.3 内心抉择和抛低球</p>
-<p>除了承诺之外，还有两种与之相关的现象较为常见。内心抉择是指，我们很容易相信，我们要对自己的所作所为负责，一旦做了就没有借口可找，没有退路可言。但人是理性的，很容易为自己的行为做理由和借口。当外界存在较为强大的压力时，我们很容易为自己的行为找借口。</p>
-<p>就拿我自己来说，我平时爱好十分广泛，喜欢看各种领域的课外书。但是当一种领域内的知识成为我的专业课知识时，我就产生了抵触心理，会厌倦它，虽然我个人并不是很看重课程的成绩，会按照自己的处事风格去处理每一门课程，但终归在学习这一课程时体会不了那种扩充知识面的喜悦感，只会认为这种学习是一种应付，长久下来，心中所剩的只有满目疲倦。所以我很认同作者所说：只有当我们认为外界不存在强大的压力时，我们才会为自己的行为发自内心地负起责任，并对自己言行一致的事实产生骄傲和自豪。</p>
-<p>抛低球行为则更常见了，指的是先给人一个甜头，诱使人做出有利的购买决定。而后，等决定做好了，交易还没最终排版，卖方巧妙地取消了最初的甜头。有点类似于言行不一致，这在人情世故中同样常见，但也同样让人厌恶，这种由得转失的心理落差只会让人心中更为郁闷，有一种被耍了还在帮别人数钱的感觉。我自己就遇见过两回这种事情，也许这种事情对于对方而言只是无关紧要的事情，但对我而言，这不仅仅是小事，而是关乎人性的问题。有时我在想，如果我看不透做个糊涂人多好，可偏偏看透了，之后还是得抬头不见低头见地继续打交道，着实折磨人。</p>
-<p>## 3.4 如何拒绝</p>
-<p>虽然承诺和一致是十分重要的品质，但有时难免被别有用心的人利用，这在以前一般体现在推销过程中，但对于生活在信息化时代，饱受电话推销苦恼的我们而言，这种套路几乎不用过于担心。反而是在社会生活中，我们饱受这一原理的影响，为人所熟知的沉没成本就是这一原理的体现。人们很容易沉浸在已经付出的沉没成本中，无法痛下决心舍弃某一事物。</p>
-<p>正如拉夫尔·沃尔多·爱默生所说：死脑筋地保持一致愚不可及。虽然在现实生活中，保持一致是有逻辑性和智力超群的表现，而缺乏这一特点，则会被看成脑筋不够用，智力有障碍。但我们不能在一件错误的事情上执迷不悟。为了应对这一原理，我们应该跟随直觉：知道了我现在掌握的这些情况，要是时间能够倒流，我还会做出同样的选择吗？如果答案是否定的话，那么我们应该有壮士断腕的胸襟，抛却过去所付出的努力，重新开始新的征程！</p>
-<p># 4 社会认同</p>
-<p>## 4.1 模仿</p>
-<p>社会认同原理指出：在判断何为正确时，我们会根据别人的意见行事。大多数时候，我们对社会认同的方式完全是无意识的、条件反射式的。一个很常见的案例是邪教，有时候我们旁人看起来邪教宣扬的教义明显也站不住脚的，但仍然存在着许多教徒，其中很多教徒对邪教本身并没有归属感，而是见到了许多信仰程度极高的人，在“三人成虎”的影响下，这些缺乏主见的人逐渐会开始相信这种信仰，这就是社会认同原理。</p>
-<p>有一个非常有意思的现象，一些邪教会主动创造一些末日预言，在应对预言的过程中，培养教徒对邪教的信赖感，当我们以为这种愚昧的预言落空时，这些教徒会重回正道，现实却并不如此，他们反而会朝着错误的方向渐行渐远。比如小时候有一些邪教大肆宣扬 2012，世界末日，而当我们以为 2013 年的钟声敲响时，这种愚昧的把戏会不攻自破，而邪教本身也会土崩瓦解，然而事实却并非如此。事实是之前大肆宣扬教义的信徒，在预言落空后，反而成为了更加坚定的信徒。</p>
-<p>这其实也不难理解，根据上一节中所说的额外的努力可知，这些信徒心中十分坚定地相信着邪教本身，为了坚守其心中的坚定，他们抛弃了许多，甚至有的抛弃了家庭。当语言落空后，他们其实心中已经有了怀疑，然而沉没成本让他们心有不甘，更为重要的是，一旦确定自己一直以来所坚定的信仰本身就是错误的，那这种前景显得过于可怕。正如作者所说，在预言落空后，驱使信徒们宣扬其信仰的，并不是先前的确定感，而是一种逐渐扩散的怀疑。</p>
-<p>## 4.2 不确定性</p>
-<p>销售顾问卡维特·罗伯特（Cavett Robert） 总结了社会认同原理：95%的人都爱模仿别人，只有5%的人能首先发起行动，所以要想把人说服，我们提供任何证据的效果都比不上别人的行动。我们模仿别人的初衷就是，当我们处于不确定时，我们很难主动地做出决定，这时我们大脑会不自觉地选择一条捷径 —— 模仿他人。因为我们潜意识里觉得，这些敢于行动的人知道的信息会比我们多，而在更多的先验信息条件下，他们的行为极有可能是正确的。</p>
-<p>我们在观察力与我们相似的人的行为时，社会认同原理能发挥出最大的影响。我们会根据他人的行为来判断自己怎么做才合适，尤其是我们觉得这些人跟自己相似的时候。这有时候其实也会造成一些不利的影响—— <strong>多元无知效应</strong>。多元无知效应揭示了一种乱象：受害者迫切需要帮助，全体旁观者却无动于衷。也许这在法治社会的当下，显得有些过于遥远，但如果说一个熟知的事件：跌倒的老人，扶不扶？当然，在负面新闻的熏染下，这个问题已经不仅仅涉及社会心理了，还跟道德、法律等有关。</p>
-<p><strong>多元无知效应</strong> 讲的是，当现场有大量其他旁观者在场时，人们对紧急情况伸出援手的可能性极低。这是因为：</p>
-<p>\1. 周围有其他可以帮忙的人，单个人要承担的责任就减少了。</p>
-<p>\2. 很多时候，紧急情况表面上看起来并不显得十分紧急。</p>
-<p>在公共场合中，我们所有人都喜欢摆出从容不迫的模样来显示我们的成熟稳重，但其实很可能只是暗中瞟着周围的人，不动声色地寻找证据。如果所有人都选择袖手旁观，那么每个人很有可能都得出判断：既然没人在乎，那就应该没什么问题。所以很多时候，旁观者群体没能帮忙，不是因为现在的人变得更为冷漠了，而是因为他们不能确定。这也是为什么现在新闻十分重视宣扬见义勇为的好人好事，因为打破思维定势真的需要很大的勇气。</p>
-<p>多元无知效应在陌生人里显得最为突出：因为我们喜欢在公众面前表现得优雅而成熟，又因为我们不熟悉陌生人的反应，所以，置身于一群素不相识的人里面，我们有可能无法流露出关切的表情，也无法正确地解读他人关切的表情。所以，在一个完全陌生的环境中，当我们需要紧急救助的时候，最佳策略是减少不确定性，让周围人注意到你的状况，搞清楚自己的责任。</p>
-<p>## 4.3 如何拒绝</p>
-<p>乍一看，社会认同好像与商业领域并无关联，其实不然，社会认同原理为我们配备了一种奇妙的自动导航仪，而许多商家就会利用我们的导航仪，来为自己的门店营造出十分火爆的场面，比如互联网下的销量为王、刷单刷好评，都是这一原理应用的体现。由于自动导航仪的弊端主要处在系统输入数据错误的时候，所以识别储物数据，就是我们对抗其弊端的最佳方式。面对明显是伪造的社会证据时，我们只要多保持一点警惕感，就能很好的保护自己了。</p>
-<p>总体而言，本章所讲的社会认同原理以及有样学样的模仿行为，为我们提供了一条捷径。虽然绝大多数时候，这个自动导航装置能够给我们带来很多便利，但我们绝对不能完全信任这种捷径，哪怕没有人故意往里面添加错误信息，装置也有可能会发生故障。所以在日常生活中，我们应该时刻保持警惕感，虽然不至于所有事项的决策都与社会认同原理反着来，但清楚了事物发展的背后原理之后再做决策，可以让我们减少蒙受损失的概率。</p>
-<p># 5 喜好</p>
-<p>## 5.1 喜好的因素</p>
-<p>喜好原理无论是商业领域，还是社会交际过程中，都十分普遍。社会学家一直在研究产生好感的因素，为了获得消费者的好感，这些专业人士几乎把每一个因素都巧妙地运用上了。</p>
-<p>- 外表</p>
-<p>一个人的某个正面特征很容易主导他人的看法，这也是为什么我们很容易对外表姣好的人产生好感的原因，所以外表的光环很容易会为顺从专业人士所利用。比如大部分服务业在招聘服务人员时，会选择面容姣好的从业人员。因为这会在潜意识中收获消费者的好感。</p>
-<p>- 相似性</p>
-<p>相似性原理也可以用感同身受来解释，当别人同我们有许多相似之处时，我们心中会不自觉地产生亲近之感。所以在销售领域，常用的套路就是将产品赋予特别的含义，来拉近与消费者之间的距离，从而获得消费者的好感。</p>
-<p>- 恭维</p>
-<p>虽然恭维这一词语乍一看仿佛带有贬义，其实不然，现如今很多商业品牌会给自己的品牌赋予一些头衔，比如情怀、富贵的象征等等，归根结底还是恭维原理在起作用。通过赋予品牌和使用品牌的人新的内涵，进而收获消费者的好感。</p>
-<p>- 接触与合作</p>
-<p>由于熟悉感会影响人的喜好，因为这种熟悉感会对我们的各种决定都产生着影响。接触与合作更多地是针对群体好感度的快速提升，许多公司会花大笔财力物力给员工举办团建活动，目的就是为了促进团队之间的好感度和对公司的归属感，通过这种好感度的提升，进而促进团队内部办事效率的提升。</p>
-<p>还有一种较为常见的合作是唱红脸和唱白脸，这种手段多用在审讯犯人的时候。但其实在商业竞争中，我们也可以将两个寡头之间的竞争看作是这种手段的翻版。有了差异化的决策，就有了抉择，我们通常会对唱红脸的一方产生好感，所以在商业领域中，我们很容易看见“落井下石”的现象，就是为了在已有“白脸”的衬托下，自己做一回红脸。</p>
-<p>- 条件反射和关联</p>
-<p>制造商总是急着把自己的产品跟当前的文化热潮、名人、流行艺人联系起来。通过名人代言来收获好感。在社会交际中，这项原理同样适用，根据关联原理，倘若我们能用一些哪怕是非常表面的方式让自己跟成功联系起来，我们的公共形象也会显得光辉起来。所以我们经常听到别人公开吹嘘与其他成功者的关系，目的就是在于沾染反射而来的荣誉光彩。</p>
-<p>虽然我们或多或少地想沾染一点荣耀的光彩，但有些人走的太远了。主要原因在于他们的自我适应太差。他们内心深处的个人价值感过低，没办法靠推动或实现自身成就来追求荣誉，只能靠着吹嘘自己与他人成就的关系来找回尊严，可悲亦可叹！</p>
-<p>## 5.2 如何拒绝</p>
-<p>虽然经济学告诉我们消费的目的是满足心中的效用，但我们也不能在被设计好的喜好中渐行渐远。应对喜好原理的关键点在于：把注意力放在效果上，而非成因上。在跟顺从专业人士接触的时候，我们只需关注跟好感有关的一件事就行：我们是不是觉得自己超乎寻常地、迅速地、热烈地喜欢上了对方？如果答案显而易见，那么我们就应该保持警惕了，也许对方只是为了博取你的好感，进而实现其目的罢了，而这些目的通常有可能是建立在你的损失之上的。</p>
-<p>关注喜好原理的产生，并不是说要我们压抑好感因素产生的影响力，相反，我们应该听凭这些因素发挥力量，然后用这股力量反过来对付那些想从中获利的人。这股力量越大，其发作用也就越发明显，对我们的戒备防御也就越有帮助。</p>
-<p># 6 权威</p>
-<p>## 6.1 权威的影响</p>
-<p>心理学教授 <a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1611393075&amp;ver=2846&amp;signature=qbwls350egVrZj372FInEd5SLaLArk5jDigKCXJqyBS1wmw8NAucXO2bdGRcCYSC9vj*te2U03nX3lh2bxX7Gt53EEhrlPEyufWVD4HnIncV7yaCEIlpgaNJOwDjhmZI&amp;new=1">米尔格拉姆的实验</a> 揭露了一个事实：在权威的命令下，人们几乎愿意干任何事情。权威表示教化下的敬重，在我们潜意识里，权威意味着正确。所以在不确定的情况下，我们很容易跟着权威走。然而这份顺从有时被别出心裁的商家所利用，让我们掉入商家精心设计的思维定势中。</p>
-<p>每当面对人类行为背后的一种强力推动因素，我们都会很自然地想到，这种推动因素的存在是有着充分的理由的。服从权威人物的命令，总是能给我们带来一些实际的好处，因为它帮助我们节省了思考的时间。这也是为什么一些牙膏、药品广告中通常会出现一些身穿白大褂的人物形象，因为很多情况下，只要有正统的权威说了话，其他本来应该考虑的事情就变得不相关了，即便这种权威是伪装出来的，也会对我们的认知产生或多或少的影响。</p>
-<p>将权威这一含义泛化一下，其实更容易理解。我们在写个人简历的时候，惯用的手法就是写上自身相关经历在上面，其实这也可以看作是权威原理起作用的表现方式之一，因为通过这种头衔、相关经历的阐述，可以传达一个自己在相关事项上的权威能力，这种“权威”通常能让我们在竞争中处于优势地位。除了头衔之外，面试时的衣着、身份标识（豪车、名表）等传达的也是类似的信息，通过这种公开信息，能够让我们在公众中收获特殊的尊重，哪怕这种尊重是单纯的畏惧，也会对当事人产生莫名的自豪和骄傲。</p>
-<p>## 6.2 如何拒绝</p>
-<p>为了免受伪权威的误导，防御策略之一就是提前做好心理准备。我们通常会低估权威及其象征对自己行为的影响，然而事实是一旦它出现在要求顺从的场合，我们往往来不及提防。破解伪权威对我们决策的影响，我们只需在脑海中问自己两个问题：</p>
-<p>\1. 这个权威是真正的专家吗</p>
-<p>这个问题能让我嗯我们把焦点放在：权威的资格，以及这些资格是否跟眼前的主题相关。帮助我们从兴许毫无意义的权威符号上挪开视线，转到真正的权威资格上。通过这种简单的方法，着眼于权威地位的证据，能让我们避免自动顺从带来的大部分问题。</p>
-<p>\2. 这个专家说的是真话吗？</p>
-<p>哪怕是知识最丰富的权威，也不一定会开诚布公地把信息告知我们，因此，我们必须考虑一下他们在当前情形下的真实可信度。多思考一下专家会不会因为我们的顺从而得到好处，通过这样，我们就为自己又设立了一道安全网，防御权威不必要的影响。比较常见的一个小伎俩是——怀柔，即一些看似违背自己利益的做法。这无论是商业领域还是为人处世中，都会不自觉地被人们加以利用，通过这种看似违背自己利益的做法，可以拉近与对方的距离，增强对方对我们的好感度。</p>
-<p># 7 稀缺</p>
-<p>## 7.1 物以稀为贵</p>
-<p>稀缺原理指的是，机会越少见，价值似乎就越高。对失去某种东西的恐惧通常比获得同一物品的渴望，更能激发我们的行动力。而有时，讽刺的地方也在这儿，倘若瑕疵把一样东西变得稀缺了，垃圾也能化身成值钱的宝贝，这在玩物收藏市场几乎是常态了。其实，现实生活中，我们最容易受稀缺原理的影响了，最常见的两种商业套路是：</p>
-<p>- 数量有限策略</p>
-<p>- 最后期限战术</p>
-<p>商家惯用的商业套路就是营造一些降价折扣的事由，来刺激消费者对商品进行购买，也许商品本身并不在消费者最初消费计划中，但是在稀缺性的刺激下，商品的认知价值在消费者心中突然有了大幅提升。其实降价也可以算在稀缺性原理中，因为相对于日常的高位价格，暂时性的降价折扣就显得颇为稀缺，错过了当下，以后可能需要花费更高额度的费用，这种期望落差通常会刺激消费者做出不理性的购买决策。</p>
-<p>此外，另一种常见的套路就是有竞争性的稀缺资源，参与竞争稀缺资源的感觉，有着比单纯的稀有资源更为强大的吸引力。渴望拥有一件众人争抢的东西，几乎是出于本能的身体反应。所以在稀缺物品的竞拍中，我们通常能见到类似的现象，通过简单的心理博弈，能够让最终的成交价格朝着卖家预设的价位移动。</p>
-<p>## 7.2 逆反心理</p>
-<p>稀缺性原理起作用的力量主要来自两个方面。第一点它钻了我们思维捷径上的漏洞。在我们认知中，难以得到的东西，通常会让我们更为珍视。故此，我们基本可以根据获得一样东西的难易程度，迅速、准确地判断它质量，而这种判断在很大程度上是正确的。</p>
-<p>第二点在于，机会越来越少的话，我们的自由也会随之丧失。每当有东西获取起来比以前难，我们拥有它的自由受了限制，我们就越发地想要得到它。我们痛恨失去本来拥有的自由，这种保住既得利益的愿望是心里逆反理论的核心。</p>
-<p>詹姆斯·戴维斯（James Davies）曾指出，一个国家在经济和社会条件改善后，要是在短期内出现剧烈逆转，最有可能爆发革命。而且最容易企业的，不是那些传统上最受压迫的底层人民，而是品尝过了更美好生活的人。因为该群体得到了以前从来没有的自由，一点有人想要夺走这些自由，就注定要付出一些代价。</p>
-<p>在实际生活中逆反心理也比较常见，最为人所熟知的一种现象就是青少年的叛逆期。通过上述阐述，我们知道自由这种东西，给一点又拿走，比完全不给更危险。所以管教前后不一的父母，更容易教出反叛心强的孩子。所以在教育孩子上，家长应该以身作则，给孩子树立良好的榜样，而不是严于律人，宽以待己。</p>
-<p>## 7.3 如何拒绝</p>
-<p>在知晓我们如何拒绝稀缺原理影响我们决策时，我们应该知道一个道理：喜悦并非来自对稀缺商品的体验，而是来自对它的占有。稀缺的东西并不因为难以占有，就变得更好吃、好听、好看、好用了。所以一旦我们觉得我们在短缺影响下产生了高度的情绪波动，我们就应该把这种波动当成暂停的信号，并在心底询问自己，为什么我们想要那件东西，是为了拥有它，还是为了它的价值或功能。</p>
-<p>谈若是因为想拥有它，那么我们应该利用它的稀缺性来判断改为它出多少钱，一旦价格超出该底线，我们应该心生警惕，因为这也许是商家在利用稀缺性原理在谋取的超额收益。如果是为了它的功能，那么我们应该牢记一点：该物品并不会因为稀缺而增强它的功能。换而言之，我们应该积极寻求它的等价替代产品，获取更多信息之后，在做出合理的决策。</p>
-<p># 8 总结</p>
-<p>作者写本书的目的并不是说，让我们对这些简单而常见的小套路避之不及，而是希望我们能洞悉事物发展背后的逻辑，至少在明事理之后，能让我们有了更多选择的权利，不至于让我们在被“戏耍”后而不自知。尽管只靠孤立数据容易做出愚蠢的决定，可现代生活的节奏又要求我们频繁使用这一捷径。</p>
-<p>为了追求效率，有时候我们必须放弃耗时而复杂的全局决策过程，转而使用更简单、由单一特征出发的响应方式。它之所以最为常用，完全是因为它们的可靠性高，在我们人类进化过程中，通常都能指引我们做出正确决定，这也是为什么我们会潜意识里借助这些因素做出顺从决定。在没有意愿、时间、精力或认知资源对情况进行全面分析的时候，使用这些孤立的线索进行决策是简单而保险的决策方式。</p>
-<p>正如作者所说一般，这种便捷的响应方式应当受到尊重。在日新月异的当下，技术的进步速度远远快于我们，所以我们处理信息的天然能力将有可能越来越难于应对当代生活中繁多的变化、选择和挑战。有时我们会发现自己陷入了跟低等动物一样的处境中：外界环境的错综复杂超出了我们心智的处理能力。从这个方面来说，我们的大脑潜意识里依赖可靠而合理的捷径和首选规则来应对生活的紧张节奏也是无可厚非的。</p>
-<p>然而，我们真正值得警惕的是，那些知晓我们的响应机制，但通过别出心裁的设计来破坏我们的心理机制，或者说通过我们的响应机制来蒙蔽我们，来从我们身上谋取私利的人。虽然大多数时候，这种戏弄不会对我们造成太大的损失，但正如《三国志·蜀书·先主传》所说：“勿以善小而不为，勿以恶小而为之”，积小成多，聚沙成塔，终归会有一天对我们的反应机制产生不可逆的影响。</p>
-<p>正如一直以来我对自己的要求：我可以不成为这一领域的专家，但其中的基本原理我得懂，这也是为什么这么多年来，我始终如一地扩充自己的知识面。一方面是因为获取知识的过程能给我带来确实的快感，另一方面则是因为，涉猎各领域的知识能够让我以更多的角度看待事物，不至于让自己的无知中变成一个智慧鹦鹉学舌而不会独立思考的人！</p>
-<p>最后附上我最喜欢的一个著名投资家查理·芒格所说的一句话：</p>
-<p>&gt; 我这辈子遇到的聪明人（来自各行各业的聪明人）没有不每天阅读的 —— 没有，一个都没有。巴菲特读书之多，我读书之多，可能会让你感到吃惊。孩子们都笑话我，他们觉得我是一本长了两条腿的书。</p>
-<p>很多人读书，追求的是干货，寻求的是立刻行之有效的解决方案。其实这是一种留在舒适区的阅读方法。在这个充满不确定的时代，答案不会简单地出现在书里，因为生活根本就没有标准确切的答案，你也不能期望过去的经验能够解决未来的问题。能简单地出现在书中的答案只有试卷，而这也是我不喜欢以考试来鞭策读书的原因之一，只可惜在现今成绩为王的时代，能做的只有在半顺从下坚持自己原则。除此之外，别无他法，可悲！</p>
-]]></content>
-      <categories>
-        <category>Book review</category>
-        <category>Influence</category>
-        <category>Introduction</category>
-      </categories>
-      <tags>
-        <tag>Book review</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux notes</title>
-    <url>/2020/11/23/Linux/</url>
-    <content><![CDATA[<h1 id="command">1. Command</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="cd">1.1 cd</h2>
-<p>即 current directory，切换目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
-<h4 id="绝对路径">绝对路径</h4>
-<p>/home/YangSu/Desktop</p>
-<h4 id="相对路径">相对路径</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
-<h2 id="pwd">1.2 pwd</h2>
-<p>即 print working directory 显示当前工作目录</p>
-<h2 id="ls">1.3 ls</h2>
-<p>即 list，列出文件和目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
-<h2 id="mkdir">1.4 mkdir</h2>
-<p>即 make directory，创建目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
-<h2 id="touch">1.5 touch</h2>
-<p>新建一个文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
-<h2 id="rm">1.6 rm</h2>
-<h3 id="rm-1">rm</h3>
-<p>即 remove 删除文件或目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
-<h3 id="rmdir">rmdir</h3>
-<p>即 remove directory，删除空目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
-<h2 id="cp">1.7 cp</h2>
-<p>即 copy，复制文件或者目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
-<h2 id="mv">1.8 mv</h2>
-<p>即 move，移动文件或目录（重命名）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
-<h2 id="tar">1.9 tar</h2>
-<p>即 tape archive档案打包</p>
-<h3 id="创建档案包">创建档案包</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
-<h4 id="还原档案包">还原档案包</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
-<h4 id="归档并压缩">归档并压缩</h4>
-<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
-<h2 id="man">1.10 man</h2>
-<p>即 manual，手册</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
-<h2 id="ln">1.11 ln</h2>
-<p>软链接，即Windows中的 “ 快捷方式 ”</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
-<h2 id="other">1.12 other</h2>
-<ul>
-<li>reset：重新初始化终端，即清屏</li>
-<li>clear：清屏</li>
-<li>history：查看命令历史</li>
-<li>help：帮助</li>
-<li>exit：推出</li>
-<li>#：表示注释</li>
-</ul>
-<h1 id="management">2 Management</h1>
-<h2 id="switch-user">2.1 Switch user</h2>
-<ul>
-<li>su</li>
-</ul>
-<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
-<h2 id="user-operation">2.2 User operation</h2>
-<ul>
-<li>useradd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
-<ul>
-<li>passwd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
-<ul>
-<li>userdel</li>
-</ul>
-<p>即 user delete</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
-<h2 id="group-operation">2.3 Group operation</h2>
-<ul>
-<li>groupadd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>groupdel</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>useradd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>usermod</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>cat</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="file-permission">2.4 File permission</h2>
-<ul>
-<li>View Permission</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>chmod</li>
-</ul>
-<p>即 Change file mode，修改文件的访问权限</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>chown</li>
-</ul>
-<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
-<h2 id="script">2.5 Script</h2>
-<ul>
-<li>Shell 脚本： *.sh</li>
-<li>Perl 脚本： *.pl</li>
-<li>Python 脚本：*.py</li>
-</ul>
-<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Shell 脚本</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Perl 脚本</li>
-<li>Py 脚本</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
-<h2 id="shell">2.6 Shell</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
-<h1 id="enviroment">3 Enviroment</h1>
-<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
-<p>使用环境变量：</p>
-<ul>
-<li>在当前命令行中使用</li>
-<li>在 Shell 脚本中使用</li>
-</ul>
-<h2 id="user-viriables">3.2 User Viriables</h2>
-<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="system-variables">3.3 System Variables</h2>
-<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
-<h2 id="path-variables">3.4 PATH Variables</h2>
-<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
-<h2 id="network">3.5 Network</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>OS</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -12850,17 +12850,87 @@ fig 5-5 Add text on figure
       </tags>
   </entry>
   <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+    <title>Numpy</title>
+    <url>/2020/11/29/Numpy/</url>
+    <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.__version__) <span class="comment"># 查看 numpy 版本</span></span><br></pre></td></tr></table></figure>
+<p>NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N 维数组对象 ndarray ( N-dimensional array )。</p>
 <a id="more"></a>
+<h1 id="create-ndarray">2 Create ndarray</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array_1x6 = np.array([<span class="number">1.0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], dtype = np.float64) <span class="comment"># 用 list 创建 array，可以通过 dtype 参数指定元素的类型  </span></span><br><span class="line"></span><br><span class="line">print(array_1x6.dtype)</span><br><span class="line"></span><br><span class="line"><span class="comment"># number of dimension</span></span><br><span class="line">print(<span class="string">&#x27;number of dim: &#x27;</span>,array_1x6.ndim)</span><br><span class="line">print(<span class="string">&#x27;shape: &#x27;</span>,array_1x6.shape)</span><br><span class="line">print(<span class="string">&#x27;size: &#x27;</span>,array_1x6.size)</span><br><span class="line"><span class="comment"># total number of elements</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(array_1x6) <span class="comment"># 空格分隔元素</span></span><br><span class="line">[<span class="number">1.</span> <span class="number">2.</span> <span class="number">3.</span> <span class="number">4.</span> <span class="number">5.</span> <span class="number">6.</span>]</span><br></pre></td></tr></table></figure>
+<h1 id="special-ndarray">4 Special ndarray</h1>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>零矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a1 = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 零矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a2 = np.ones((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 1 矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>空矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a3 = np.empty((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 未初始化的空矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>线段</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a5 = np.arange(<span class="number">12</span>)</span><br><span class="line">a6 = np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>) <span class="comment"># 5 个元素的线段</span></span><br><span class="line">print(a6 &lt; <span class="number">5</span>) <span class="comment"># 返回布尔类型的矩阵</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对角矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>随机矩阵</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.random.random((<span class="number">2</span>, <span class="number">4</span>)) <span class="comment"># 0-1的随机数</span></span><br><span class="line">print(np.<span class="built_in">sum</span>(a), np.<span class="built_in">min</span>(a), np.<span class="built_in">max</span>(a))</span><br><span class="line">np.<span class="built_in">sum</span>(a, axis = <span class="number">0</span>) <span class="comment"># 列操作，axis = 1行操作，the default, axis = None，will sum all of the elements of the input array</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="array-operations">4 Array operations</h1>
+<h2 id="preparation">4.1 Preparation</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(a, b, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span> <span class="number">20</span>]</span><br><span class="line"> [<span class="number">30</span> <span class="number">40</span>]]</span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">2</span> <span class="number">3</span>]]</span><br></pre></td></tr></table></figure></p>
+<h2 id="mathematical-operation">4.2 Mathematical operation</h2>
+<ul>
+<li><p>Plus &amp; minus <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c1 = a + b</span><br><span class="line">c2 = a - b</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Multiply &amp; divide</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c3 = a * b <span class="comment"># 对应元素相乘</span></span><br><span class="line">c4 = b / a</span><br></pre></td></tr></table></figure></li>
+<li><p><code>dot</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c5 = np.dot(a, b) <span class="comment"># 矩阵相乘，点乘</span></span><br><span class="line">c6 = a.dot(b) <span class="comment"># 和上式相同，a 值不改变</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="conditional-selection">4.3 Conditional selection</h2>
+<ul>
+<li><p><code>where</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">row, col = np.where(a == <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(row, col, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Reuslt: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">0</span>]     [<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h1 id="array-basic-methods">5 Array basic methods</h1>
+<ul>
+<li><p>导入模块 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p></li>
+<li><p>统计特征 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># find elements</span></span><br><span class="line">A = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">index = np.argmax(A)  <span class="comment"># 最大值索引or argmin</span></span><br><span class="line">mean = np.mean(A) <span class="comment"># 均值</span></span><br><span class="line">median = np.median(A) <span class="comment"># 中位数</span></span><br><span class="line">print(index, mean, median, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> 上述函数皆默认 <code>axis = None, the index is into the flattened array</code>，若添加参数：<code>axis = 1</code> 则返回每一行的相关操作，<code>axis = 0</code> 则返回每一列的相关操作，具体参照: <code>help(np.mean)</code>。</p></li>
+<li><p>累加和差分 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># A：3x4 的数组</span></span><br><span class="line">cumsum = np.cumsum(A)</span><br><span class="line"><span class="comment"># 累加，axis默认为None，输出1x12数组</span></span><br><span class="line">diff = np.diff(A)</span><br><span class="line"><span class="comment"># 差分，默认axis=-1，即行操作与axis=1效果相同，返回3X3的数组，axis=0，返回2x4数组</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>查找数据 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">non = np.nonzero(A)</span><br></pre></td></tr></table></figure> 查找非零元素的索引，返回两个array，第一个为行索引，第二个为列索引，输出： <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">(array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>], dtype=int64),</span><br><span class="line"> array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=int64))</span><br></pre></td></tr></table></figure></p></li>
+<li><p>矩阵转置 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 矩阵转置, transpose array</span></span><br><span class="line">transpose1 = np.transpose(A)</span><br><span class="line">transpose2 = A.T</span><br><span class="line">print(transpose1, transpose2, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(transpose1.dot(A)) <span class="comment"># $&#123;A * A^T&#125;$</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>数据裁剪<code>clip</code> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">clip = np.clip(a, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">print(a, clip, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> Given an interval [5, 9], values outside this interval are clipped to this interval edges, namely 5 and 9. Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
+<li><p>迭代输出 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment"># 行迭代输出</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> a:</span><br><span class="line">    print(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列迭代输出    </span></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> a.T:</span><br><span class="line">    print(column.T)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素迭代, flat返回迭代器，flatten()返回array</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a.flat: <span class="comment"># or a.flatten()</span></span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure> Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Row</span></span><br><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h1 id="array-joint">6 Array joint</h1>
+<h2 id="vstack-and-hstack">6.1 vstack and hstack</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">c = np.vstack((a, b)) <span class="comment">#vertical stack 纵向</span></span><br><span class="line">d = np.hstack((a, b)) <span class="comment"># horizontal stack 横</span></span><br><span class="line">print(a.shape, c.shape) <span class="comment"># a 的shape为序列</span></span><br><span class="line">print(c, d, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(a.T.shape) <span class="comment"># 并未改变shape，0x3维</span></span><br><span class="line">a1 = a[:, np.newaxis] <span class="comment"># 在后面加维度，3x1维</span></span><br><span class="line">a2 = a[np.newaxis, :] <span class="comment"># add before, 1x3</span></span><br><span class="line">c= np.array([[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]]) <span class="comment"># 2x3</span></span><br><span class="line">c1 = c[np.newaxis, :] <span class="comment"># add before 1x2x3</span></span><br><span class="line">c2 = c[:, np.newaxis] <span class="comment"># same as c3</span></span><br><span class="line">c3 = c[:, np.newaxis, :] <span class="comment"># 2x1x3</span></span><br><span class="line">c4 = c[:, :, np.newaxis] <span class="comment"># 2x3x1</span></span><br></pre></td></tr></table></figure>
+<h2 id="concatenate">6.2 concatenate</h2>
+<p>Join a sequence of arrays along a existing axis, default axis is o, if axis = None, arrays will be flattened before use.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])[:, np.newaxis]</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])[:, np.newaxis]</span><br><span class="line"></span><br><span class="line">c1 = np.concatenate((a,b,b,a)) <span class="comment"># same as c2</span></span><br><span class="line">c2 = np.concatenate((a,b,b,a), axis = <span class="number">0</span>)</span><br><span class="line">c3 = np.concatenate((a,b,b,a), axis = <span class="number">1</span>)</span><br><span class="line">c4 = np.concatenate((a,b,b,a), axis = <span class="literal">None</span>)</span><br><span class="line">print(c1, c2, c3, c4, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="array-split">7 Array split</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>) <span class="comment"># 3x4</span></span><br><span class="line">print(a)</span><br><span class="line">print(np.split(a, <span class="number">3</span>, axis = <span class="number">0</span>)) <span class="comment"># vertical</span></span><br><span class="line">print(np.split(a, <span class="number">2</span>, axis = <span class="number">1</span>)) <span class="comment">#horizontal</span></span><br><span class="line"><span class="comment"># 只能进行相等的分割</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>np.split(ary, indices_or sections, axis = 0)</strong></li>
+</ul>
+<p>Array to be divided into multiple sub-arrays along the given 'axis ', if such split is not possible, then an error will be rasied.</p>
+<h1 id="array-copy">8 Array copy</h1>
+<ul>
+<li><strong>Copy and deep copy</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">b = a <span class="comment"># shallow copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">print(a, b)</span><br><span class="line">b1 = a.copy() <span class="comment"># deep copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">20</span></span><br><span class="line">print(a, b1)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Notes</category>
-        <category>Latex</category>
+        <category>Python module</category>
+        <category>Numpy</category>
       </categories>
       <tags>
-        <tag>Latex</tag>
+        <tag>Python</tag>
+        <tag>Data analysis</tag>
+        <tag>Numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -13007,87 +13077,17 @@ fig. 1 difference of ignoring index
       </tags>
   </entry>
   <entry>
-    <title>Numpy</title>
-    <url>/2020/11/29/Numpy/</url>
-    <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.__version__) <span class="comment"># 查看 numpy 版本</span></span><br></pre></td></tr></table></figure>
-<p>NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N 维数组对象 ndarray ( N-dimensional array )。</p>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="create-ndarray">2 Create ndarray</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array_1x6 = np.array([<span class="number">1.0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], dtype = np.float64) <span class="comment"># 用 list 创建 array，可以通过 dtype 参数指定元素的类型  </span></span><br><span class="line"></span><br><span class="line">print(array_1x6.dtype)</span><br><span class="line"></span><br><span class="line"><span class="comment"># number of dimension</span></span><br><span class="line">print(<span class="string">&#x27;number of dim: &#x27;</span>,array_1x6.ndim)</span><br><span class="line">print(<span class="string">&#x27;shape: &#x27;</span>,array_1x6.shape)</span><br><span class="line">print(<span class="string">&#x27;size: &#x27;</span>,array_1x6.size)</span><br><span class="line"><span class="comment"># total number of elements</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(array_1x6) <span class="comment"># 空格分隔元素</span></span><br><span class="line">[<span class="number">1.</span> <span class="number">2.</span> <span class="number">3.</span> <span class="number">4.</span> <span class="number">5.</span> <span class="number">6.</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="special-ndarray">4 Special ndarray</h1>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>零矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a1 = np.zeros((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 零矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a2 = np.ones((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 1 矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>空矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a3 = np.empty((<span class="number">3</span>,<span class="number">4</span>)) <span class="comment"># 未初始化的空矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>对角矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
-<li><p>线段</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a5 = np.arange(<span class="number">12</span>)</span><br><span class="line">a6 = np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">5</span>) <span class="comment"># 5 个元素的线段</span></span><br><span class="line">print(a6 &lt; <span class="number">5</span>) <span class="comment"># 返回布尔类型的矩阵</span></span><br></pre></td></tr></table></figure></li>
-<li><p>对角矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a7 = np.identity(<span class="number">5</span>) <span class="comment"># 5x5 的对角矩阵</span></span><br><span class="line">a8 = np.mat(np.identity(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></li>
-<li><p>随机矩阵</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.random.random((<span class="number">2</span>, <span class="number">4</span>)) <span class="comment"># 0-1的随机数</span></span><br><span class="line">print(np.<span class="built_in">sum</span>(a), np.<span class="built_in">min</span>(a), np.<span class="built_in">max</span>(a))</span><br><span class="line">np.<span class="built_in">sum</span>(a, axis = <span class="number">0</span>) <span class="comment"># 列操作，axis = 1行操作，the default, axis = None，will sum all of the elements of the input array</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="array-operations">4 Array operations</h1>
-<h2 id="preparation">4.1 Preparation</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">b = np.arange(<span class="number">4</span>).reshape(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(a, b, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[<span class="number">10</span> <span class="number">20</span>]</span><br><span class="line"> [<span class="number">30</span> <span class="number">40</span>]]</span><br><span class="line">[[<span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">2</span> <span class="number">3</span>]]</span><br></pre></td></tr></table></figure></p>
-<h2 id="mathematical-operation">4.2 Mathematical operation</h2>
-<ul>
-<li><p>Plus &amp; minus <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c1 = a + b</span><br><span class="line">c2 = a - b</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Multiply &amp; divide</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c3 = a * b <span class="comment"># 对应元素相乘</span></span><br><span class="line">c4 = b / a</span><br></pre></td></tr></table></figure></li>
-<li><p><code>dot</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c5 = np.dot(a, b) <span class="comment"># 矩阵相乘，点乘</span></span><br><span class="line">c6 = a.dot(b) <span class="comment"># 和上式相同，a 值不改变</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="conditional-selection">4.3 Conditional selection</h2>
-<ul>
-<li><p><code>where</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([[<span class="number">10</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">40</span>]])</span><br><span class="line">row, col = np.where(a == <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">print(row, col, sep = <span class="string">&#x27;\t&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>Reuslt: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">0</span>]     [<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h1 id="array-basic-methods">5 Array basic methods</h1>
-<ul>
-<li><p>导入模块 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p></li>
-<li><p>统计特征 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># find elements</span></span><br><span class="line">A = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">index = np.argmax(A)  <span class="comment"># 最大值索引or argmin</span></span><br><span class="line">mean = np.mean(A) <span class="comment"># 均值</span></span><br><span class="line">median = np.median(A) <span class="comment"># 中位数</span></span><br><span class="line">print(index, mean, median, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> 上述函数皆默认 <code>axis = None, the index is into the flattened array</code>，若添加参数：<code>axis = 1</code> 则返回每一行的相关操作，<code>axis = 0</code> 则返回每一列的相关操作，具体参照: <code>help(np.mean)</code>。</p></li>
-<li><p>累加和差分 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># A：3x4 的数组</span></span><br><span class="line">cumsum = np.cumsum(A)</span><br><span class="line"><span class="comment"># 累加，axis默认为None，输出1x12数组</span></span><br><span class="line">diff = np.diff(A)</span><br><span class="line"><span class="comment"># 差分，默认axis=-1，即行操作与axis=1效果相同，返回3X3的数组，axis=0，返回2x4数组</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>查找数据 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">non = np.nonzero(A)</span><br></pre></td></tr></table></figure> 查找非零元素的索引，返回两个array，第一个为行索引，第二个为列索引，输出： <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">(array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>], dtype=int64),</span><br><span class="line"> array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=int64))</span><br></pre></td></tr></table></figure></p></li>
-<li><p>矩阵转置 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 矩阵转置, transpose array</span></span><br><span class="line">transpose1 = np.transpose(A)</span><br><span class="line">transpose2 = A.T</span><br><span class="line">print(transpose1, transpose2, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">print(transpose1.dot(A)) <span class="comment"># $&#123;A * A^T&#125;$</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>数据裁剪<code>clip</code> <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">clip = np.clip(a, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">print(a, clip, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure> Given an interval [5, 9], values outside this interval are clipped to this interval edges, namely 5 and 9. Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
-<li><p>迭代输出 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"><span class="comment"># 行迭代输出</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> a:</span><br><span class="line">    print(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列迭代输出    </span></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> a.T:</span><br><span class="line">    print(column.T)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 元素迭代, flat返回迭代器，flatten()返回array</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a.flat: <span class="comment"># or a.flatten()</span></span><br><span class="line">    print(item)</span><br></pre></td></tr></table></figure> Result: <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Row</span></span><br><span class="line">array([[<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">       [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">       [<span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>]])</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h1 id="array-joint">6 Array joint</h1>
-<h2 id="vstack-and-hstack">6.1 vstack and hstack</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">c = np.vstack((a, b)) <span class="comment">#vertical stack 纵向</span></span><br><span class="line">d = np.hstack((a, b)) <span class="comment"># horizontal stack 横</span></span><br><span class="line">print(a.shape, c.shape) <span class="comment"># a 的shape为序列</span></span><br><span class="line">print(c, d, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(a.T.shape) <span class="comment"># 并未改变shape，0x3维</span></span><br><span class="line">a1 = a[:, np.newaxis] <span class="comment"># 在后面加维度，3x1维</span></span><br><span class="line">a2 = a[np.newaxis, :] <span class="comment"># add before, 1x3</span></span><br><span class="line">c= np.array([[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]]) <span class="comment"># 2x3</span></span><br><span class="line">c1 = c[np.newaxis, :] <span class="comment"># add before 1x2x3</span></span><br><span class="line">c2 = c[:, np.newaxis] <span class="comment"># same as c3</span></span><br><span class="line">c3 = c[:, np.newaxis, :] <span class="comment"># 2x1x3</span></span><br><span class="line">c4 = c[:, :, np.newaxis] <span class="comment"># 2x3x1</span></span><br></pre></td></tr></table></figure>
-<h2 id="concatenate">6.2 concatenate</h2>
-<p>Join a sequence of arrays along a existing axis, default axis is o, if axis = None, arrays will be flattened before use.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])[:, np.newaxis]</span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])[:, np.newaxis]</span><br><span class="line"></span><br><span class="line">c1 = np.concatenate((a,b,b,a)) <span class="comment"># same as c2</span></span><br><span class="line">c2 = np.concatenate((a,b,b,a), axis = <span class="number">0</span>)</span><br><span class="line">c3 = np.concatenate((a,b,b,a), axis = <span class="number">1</span>)</span><br><span class="line">c4 = np.concatenate((a,b,b,a), axis = <span class="literal">None</span>)</span><br><span class="line">print(c1, c2, c3, c4, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="array-split">7 Array split</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">14</span>).reshape(<span class="number">3</span>, <span class="number">4</span>) <span class="comment"># 3x4</span></span><br><span class="line">print(a)</span><br><span class="line">print(np.split(a, <span class="number">3</span>, axis = <span class="number">0</span>)) <span class="comment"># vertical</span></span><br><span class="line">print(np.split(a, <span class="number">2</span>, axis = <span class="number">1</span>)) <span class="comment">#horizontal</span></span><br><span class="line"><span class="comment"># 只能进行相等的分割</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>np.split(ary, indices_or sections, axis = 0)</strong></li>
-</ul>
-<p>Array to be divided into multiple sub-arrays along the given 'axis ', if such split is not possible, then an error will be rasied.</p>
-<h1 id="array-copy">8 Array copy</h1>
-<ul>
-<li><strong>Copy and deep copy</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.arange(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">b = a <span class="comment"># shallow copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">print(a, b)</span><br><span class="line">b1 = a.copy() <span class="comment"># deep copy</span></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">20</span></span><br><span class="line">print(a, b1)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Notes</category>
-        <category>Python module</category>
-        <category>Numpy</category>
+        <category>Latex</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>Data analysis</tag>
-        <tag>Numpy</tag>
+        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -13380,78 +13380,6 @@ p_1 + p_2 + p_3 = 1,
       <tags>
         <tag>Prediction</tag>
         <tag>Deep learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python Figuration</title>
-    <url>/2020/11/23/Python-Figuration/</url>
-    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
-<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><code>pip</code> ：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
-<h1 id="delete-channel">2 Delete channel</h1>
-<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
-<h1 id="add-channel">3 Add channel</h1>
-<h2 id="conda-add-channel">3.1 Conda add channel</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
-<h2 id="pip">3.2 pip</h2>
-<h3 id="temporary-configuration">3.2.1 Temporary configuration</h3>
-<p>可以利用 <code>pip</code> 从镜像源安装第三方库，只需安装后加入 <code>-i source</code>：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Install pandas</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">    </span><br><span class="line"><span class="comment"># python-docx</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-docx</span><br></pre></td></tr></table></figure>
-<p>国内还有其他镜像可供选择：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 豆瓣</span></span><br><span class="line">http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
-<h3 id="permanently-configuration">3.2.2 Permanently configuration</h3>
-<ul>
-<li><p>自动配置镜像源</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
-<li><p>手动配置镜像源</p>
-<p>在 <code>windows</code> 下，直接在 <code>user</code> 目录中创建一个 <code>pip</code> 目录，再新建文件 <code>pip.ini</code>，接着打开 <code>pip.ini</code> 文件，复制粘贴以下内容并保存。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="install-package-offline">4 Install package offline</h1>
-<h3 id="conda-install">4.1 Conda install</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
-<h3 id="pip-install-.whl-package">4.2 pip install '.whl' package</h3>
-<p>再命令行窗口用 <code>cd</code> 命令跳转到 <code>whl</code> 文件所在目录，然后使用命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install ***.whl</span><br></pre></td></tr></table></figure>
-<h1 id="virtual-environment">5 Virtual environment</h1>
-<h2 id="steps">5.1 Steps</h2>
-<ul>
-<li><p>Open <code>terminal</code> or <code>Command prompt</code></p></li>
-<li><p>Input <code>D:</code> to enter drive D</p></li>
-<li><p>Then input <code>cd project_dir</code></p></li>
-<li><p>Create a virtual environment</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -m venv &lt;venv name&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="activate-venv">5.2 Activate venv</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.\&lt;venv name&gt;\Scripts\activate <span class="comment"># activate venv</span></span><br><span class="line"></span><br><span class="line">.\venv\Scripts\deactivate <span class="comment"># exit the current venv</span></span><br></pre></td></tr></table></figure>
-<h2 id="import-module">5.3 Import module</h2>
-<ul>
-<li><p>主程序和模块程序在同一目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    `-- test.py</span><br></pre></td></tr></table></figure>
-<p><code>test.py</code>导入模块 <code>mod1</code>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">from</span> mod1 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
-<li><p>主程序所在目录是模块所在目录的父(或祖辈)目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
-<p><code>test1.py</code>中导入模块<code>mod2</code>，需要在<code>mod2</code>文件夹中创建<code>__init__.py</code>文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mod2.mod2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
-<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    |-- sub</span><br><span class="line">    |   `-- test2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
-<p><code>test2.py</code> 中导入模块 <code>mod1</code> 和 <code>mod2</code>，首先需要在 <code>mod2</code> 下建立 <code>__init__.py</code> 文件，<code>src</code> 下不必建立该文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&quot;..&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>从上面可以看出，导入模块关键是能够根据sys.path环境变量的值，找到具体模块的路径</p>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Software</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Anaconda</tag>
       </tags>
   </entry>
   <entry>
@@ -14230,6 +14158,78 @@ Fig. 1-2 集合的布尔运算
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Figuration</title>
+    <url>/2020/11/23/Python-Figuration/</url>
+    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
+<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><code>pip</code> ：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+<h1 id="delete-channel">2 Delete channel</h1>
+<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
+<h1 id="add-channel">3 Add channel</h1>
+<h2 id="conda-add-channel">3.1 Conda add channel</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
+<h2 id="pip">3.2 pip</h2>
+<h3 id="temporary-configuration">3.2.1 Temporary configuration</h3>
+<p>可以利用 <code>pip</code> 从镜像源安装第三方库，只需安装后加入 <code>-i source</code>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Install pandas</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">    </span><br><span class="line"><span class="comment"># python-docx</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-docx</span><br></pre></td></tr></table></figure>
+<p>国内还有其他镜像可供选择：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 豆瓣</span></span><br><span class="line">http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+<h3 id="permanently-configuration">3.2.2 Permanently configuration</h3>
+<ul>
+<li><p>自动配置镜像源</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+<li><p>手动配置镜像源</p>
+<p>在 <code>windows</code> 下，直接在 <code>user</code> 目录中创建一个 <code>pip</code> 目录，再新建文件 <code>pip.ini</code>，接着打开 <code>pip.ini</code> 文件，复制粘贴以下内容并保存。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="install-package-offline">4 Install package offline</h1>
+<h3 id="conda-install">4.1 Conda install</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
+<h3 id="pip-install-.whl-package">4.2 pip install '.whl' package</h3>
+<p>再命令行窗口用 <code>cd</code> 命令跳转到 <code>whl</code> 文件所在目录，然后使用命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install ***.whl</span><br></pre></td></tr></table></figure>
+<h1 id="virtual-environment">5 Virtual environment</h1>
+<h2 id="steps">5.1 Steps</h2>
+<ul>
+<li><p>Open <code>terminal</code> or <code>Command prompt</code></p></li>
+<li><p>Input <code>D:</code> to enter drive D</p></li>
+<li><p>Then input <code>cd project_dir</code></p></li>
+<li><p>Create a virtual environment</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -m venv &lt;venv name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="activate-venv">5.2 Activate venv</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.\&lt;venv name&gt;\Scripts\activate <span class="comment"># activate venv</span></span><br><span class="line"></span><br><span class="line">.\venv\Scripts\deactivate <span class="comment"># exit the current venv</span></span><br></pre></td></tr></table></figure>
+<h2 id="import-module">5.3 Import module</h2>
+<ul>
+<li><p>主程序和模块程序在同一目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    `-- test.py</span><br></pre></td></tr></table></figure>
+<p><code>test.py</code>导入模块 <code>mod1</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">from</span> mod1 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
+<li><p>主程序所在目录是模块所在目录的父(或祖辈)目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
+<p><code>test1.py</code>中导入模块<code>mod2</code>，需要在<code>mod2</code>文件夹中创建<code>__init__.py</code>文件:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mod2.mod2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    |-- sub</span><br><span class="line">    |   `-- test2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
+<p><code>test2.py</code> 中导入模块 <code>mod1</code> 和 <code>mod2</code>，首先需要在 <code>mod2</code> 下建立 <code>__init__.py</code> 文件，<code>src</code> 下不必建立该文件:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&quot;..&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>从上面可以看出，导入模块关键是能够根据sys.path环境变量的值，找到具体模块的路径</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Anaconda</tag>
       </tags>
   </entry>
   <entry>
@@ -15561,6 +15561,12 @@ joseph</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Pytorch-4-LanguageModel</title>
+    <url>/2021/08/06/Pytorch-4-LanguageModel/</url>
+    <content><![CDATA[
+]]></content>
+  </entry>
+  <entry>
     <title>Pytorch</title>
     <url>/2021/04/08/Pytorch/</url>
     <content><![CDATA[<h1 id="pytorch-brief">1 Pytorch brief</h1>
@@ -15923,12 +15929,6 @@ fig. 4-5 Comparison before and after transforming
         <tag>Python</tag>
         <tag>Deep learning</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Pytorch-4-LanguageModel</title>
-    <url>/2021/08/06/Pytorch-4-LanguageModel/</url>
-    <content><![CDATA[
-]]></content>
   </entry>
   <entry>
     <title>Stata</title>
@@ -16879,20 +16879,6 @@ Fig. Bootstrap 自举法
       <tags>
         <tag>Econometrics</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2021/09/01/test/</url>
-    <content><![CDATA[<p><span id="inline-blue">站点配置文件</span></p>
-<p><a id="download" href="https://www.yangsuoly.com" target="_blank"><i class="fa fa-download"></i><span> Download Now </span> </a></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(<span class="string">&#x27;This is a test file&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p id="div-border-left-red">
-如果没有安装成功，那可能就是墙的原因。建议下载 <code>Node.js</code> 直接安装。
-</p>
-<p id="div-border-top-blue">
-关于更多基本操作和基础知识，请查阅 <a href="https://hexo.io/zh-cn/">Hexo</a> 与 <a href="http://theme-next.iissnan.com/">NexT</a> 官方文档.
-</p>
-]]></content>
   </entry>
   <entry>
     <title>Stata Introduction</title>
@@ -20348,5 +20334,63 @@ Topic_KL divergence
         <tag>Prediction</tag>
         <tag>NLP</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2021/09/01/test/</url>
+    <content><![CDATA[<p>This is a test file!</p>
+<a id="more"></a>
+<p><span id="inline-yellow">Yellow block</span></p>
+<p><span id="inline-blue">Blue block</span></p>
+<p><span id="inline-green">Green block</span></p>
+<p><span id="inline-purple">Purple block</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(<span class="string">&#x27;This is a test file&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p id="div-border-left-red">
+左侧边框红色块级
+</p>
+<p id="div-border-left-yellow">
+左侧边框黄色块级
+</p>
+<p id="div-border-left-green">
+左侧边框绿色块级
+</p>
+<p id="div-border-left-blue">
+左侧边框蓝色块级
+</p>
+<p id="div-border-left-purple">
+左侧边框紫色块级
+</p>
+<p id="div-border-right-red">
+右侧边框红色块级
+</p>
+<p id="div-border-right-yellow">
+右侧边框黄色块级
+</p>
+<p id="div-border-right-green">
+右侧边框绿色块级
+</p>
+<p id="div-border-right-blue">
+右侧边框蓝色块级
+</p>
+<p id="div-border-right-purple">
+右侧边框紫色块级
+</p>
+<p id="div-border-top-red">
+上侧边框红色块级
+</p>
+<p id="div-border-top-yellow">
+上侧边框黄色块级
+</p>
+<p id="div-border-top-green">
+上侧边框绿色块级
+</p>
+<p id="div-border-top-blue">
+上侧边框蓝色块级
+</p>
+<p id="div-border-top-purple">
+上侧边框紫色块级
+</p>
+<p><a id="download" href="https://www.yangsuoly.com" target="_blank"><i class="fa fa-download"></i><span> Download Now </span> </a></p>
+]]></content>
   </entry>
 </search>
