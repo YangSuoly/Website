@@ -11282,174 +11282,6 @@ figure 1-3 Parameters
       </tags>
   </entry>
   <entry>
-    <title>Linux notes</title>
-    <url>/2020/11/23/Linux/</url>
-    <content><![CDATA[<h1 id="command">1. Command</h1>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="cd">1.1 cd</h2>
-<p>即 current directory，切换目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
-<h4 id="绝对路径">绝对路径</h4>
-<p>/home/YangSu/Desktop</p>
-<h4 id="相对路径">相对路径</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
-<h2 id="pwd">1.2 pwd</h2>
-<p>即 print working directory 显示当前工作目录</p>
-<h2 id="ls">1.3 ls</h2>
-<p>即 list，列出文件和目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
-<h2 id="mkdir">1.4 mkdir</h2>
-<p>即 make directory，创建目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
-<h2 id="touch">1.5 touch</h2>
-<p>新建一个文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
-<h2 id="rm">1.6 rm</h2>
-<h3 id="rm-1">rm</h3>
-<p>即 remove 删除文件或目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
-<h3 id="rmdir">rmdir</h3>
-<p>即 remove directory，删除空目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
-<h2 id="cp">1.7 cp</h2>
-<p>即 copy，复制文件或者目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
-<h2 id="mv">1.8 mv</h2>
-<p>即 move，移动文件或目录（重命名）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
-<h2 id="tar">1.9 tar</h2>
-<p>即 tape archive档案打包</p>
-<h3 id="创建档案包">创建档案包</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
-<h4 id="还原档案包">还原档案包</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
-<h4 id="归档并压缩">归档并压缩</h4>
-<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
-<h2 id="man">1.10 man</h2>
-<p>即 manual，手册</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
-<h2 id="ln">1.11 ln</h2>
-<p>软链接，即Windows中的 “ 快捷方式 ”</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
-<h2 id="other">1.12 other</h2>
-<ul>
-<li>reset：重新初始化终端，即清屏</li>
-<li>clear：清屏</li>
-<li>history：查看命令历史</li>
-<li>help：帮助</li>
-<li>exit：推出</li>
-<li>#：表示注释</li>
-</ul>
-<h1 id="management">2 Management</h1>
-<h2 id="switch-user">2.1 Switch user</h2>
-<ul>
-<li>su</li>
-</ul>
-<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
-<h2 id="user-operation">2.2 User operation</h2>
-<ul>
-<li>useradd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
-<ul>
-<li>passwd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
-<ul>
-<li>userdel</li>
-</ul>
-<p>即 user delete</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
-<h2 id="group-operation">2.3 Group operation</h2>
-<ul>
-<li>groupadd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>groupdel</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>useradd</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>usermod</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>cat</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="file-permission">2.4 File permission</h2>
-<ul>
-<li>View Permission</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>chmod</li>
-</ul>
-<p>即 Change file mode，修改文件的访问权限</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>chown</li>
-</ul>
-<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
-<h2 id="script">2.5 Script</h2>
-<ul>
-<li>Shell 脚本： *.sh</li>
-<li>Perl 脚本： *.pl</li>
-<li>Python 脚本：*.py</li>
-</ul>
-<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Shell 脚本</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Perl 脚本</li>
-<li>Py 脚本</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
-<h2 id="shell">2.6 Shell</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
-<h1 id="enviroment">3 Enviroment</h1>
-<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
-<p>使用环境变量：</p>
-<ul>
-<li>在当前命令行中使用</li>
-<li>在 Shell 脚本中使用</li>
-</ul>
-<h2 id="user-viriables">3.2 User Viriables</h2>
-<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="system-variables">3.3 System Variables</h2>
-<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
-<h2 id="path-variables">3.4 PATH Variables</h2>
-<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
-<h2 id="network">3.5 Network</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>OS</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Latex</title>
     <url>/2021/01/19/Latex/</url>
     <content><![CDATA[<h1 id="recognize-latex">1 Recognize <span class="math inline">\(\LaTeX\)</span></h1>
@@ -12031,117 +11863,171 @@ a+\rlap{\overbrace{\phantom{b+c+d}}^m}b+\underbrace{c+d+e}_n +f
       </tags>
   </entry>
   <entry>
-    <title>Markdown</title>
-    <url>/2021/01/19/Markdown/</url>
-    <content><![CDATA[<h1 id="markdown">Markdown</h1>
-<h2 id="title">1. Title</h2>
-<h3 id="三级标题">三级标题</h3>
-<h4 id="四级标题">四级标题</h4>
-<p>格式及快捷键如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
+    <title>Linux notes</title>
+    <url>/2020/11/23/Linux/</url>
+    <content><![CDATA[<h1 id="command">1. Command</h1>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd / pwd / ls</span><br><span class="line">mkdir / rmdir</span><br><span class="line">cp / rm / mv</span><br><span class="line">tar / <span class="built_in">zip</span> / unzip</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="font">2. Font</h2>
-<p><strong>加粗 </strong></p>
-<p><em>斜体</em></p>
-<p><u>下划线</u></p>
-<p><del>删除线</del></p>
-<p>==高亮==</p>
-<p><code>底纹</code></p>
-<p>$ _i = w x_i + b $ <span class="math display">\[
-\hat{y}_i = w x_i + b
-\]</span></p>
-<p>格式及快捷键如下（其中 <code>#</code> 开头的行为注释行）：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**加粗 ** (快捷键 ctrl + B)</span><br><span class="line">*斜体* (快捷键 ctrl + I)</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;  (快捷键 ctrl + U)</span><br><span class="line">~~删除线~~</span><br><span class="line">==高亮==</span><br><span class="line">`底纹`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行内公式 (In-line formula)</span></span><br><span class="line">$ \hat&#123;y&#125;_i = w x_i + b $ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示公式 (Display formula)</span></span><br><span class="line">$$</span><br><span class="line">\hat&#123;y&#125;_i = w x_i + b</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-<h2 id="citation">3. Citation</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用语法</span></span><br><span class="line">&gt; Author</span><br><span class="line">&gt;&gt; Author</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<blockquote>
-<p>Author</p>
-<blockquote>
-<p>Author</p>
-</blockquote>
-</blockquote>
-<h2 id="分割线">4. 分割线</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># 分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
-<hr />
-<hr />
-<h2 id="inset-image">5. Inset image</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在线图片/本地图片</span></span><br><span class="line">![My image1](/image/me.png) --image <span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczP2Q.png" /></p>
-<center>
-Fig. 1 Image demo
-</center>
-<p>注：Typora 支持直接复制粘贴图片，可以省去敲格式的环节，但注意在复制粘贴之前将图片储存的设置为自动保存，设置如下：</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczkKs.png" /></p>
-<center>
-Fig. 2 Typora image auto-save setting
-</center>
-<h2 id="link">6. Link</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 超链接语法，其中 [] 中为文字内容，()内为想要插入的连接</span></span><br><span class="line">[My link](https://www.bilibili.com/)</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.bilibili.com/">My bilibili</a></p>
-<h2 id="list">7. List</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 无序列表</span></span><br><span class="line">- 目录<span class="number">1</span></span><br><span class="line">- 目录<span class="number">2</span></span><br><span class="line">- 目录<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序列表，在目录 4 后键入回车，会自动生成有序列表</span></span><br><span class="line"><span class="number">1.</span> 目录<span class="number">4</span></span><br><span class="line"><span class="number">2.</span> 目录<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h2 id="cd">1.1 cd</h2>
+<p>即 current directory，切换目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
+<h4 id="绝对路径">绝对路径</h4>
+<p>/home/YangSu/Desktop</p>
+<h4 id="相对路径">相对路径</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
+<h2 id="pwd">1.2 pwd</h2>
+<p>即 print working directory 显示当前工作目录</p>
+<h2 id="ls">1.3 ls</h2>
+<p>即 list，列出文件和目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
+<h2 id="mkdir">1.4 mkdir</h2>
+<p>即 make directory，创建目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test </span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
+<h2 id="touch">1.5 touch</h2>
+<p>新建一个文件</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
+<h2 id="rm">1.6 rm</h2>
+<h3 id="rm-1">rm</h3>
+<p>即 remove 删除文件或目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
+<h3 id="rmdir">rmdir</h3>
+<p>即 remove directory，删除空目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
+<h2 id="cp">1.7 cp</h2>
+<p>即 copy，复制文件或者目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
+<h2 id="mv">1.8 mv</h2>
+<p>即 move，移动文件或目录（重命名）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
+<h2 id="tar">1.9 tar</h2>
+<p>即 tape archive档案打包</p>
+<h3 id="创建档案包">创建档案包</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
+<h4 id="还原档案包">还原档案包</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
+<h4 id="归档并压缩">归档并压缩</h4>
+<p>上述的tar格式并没有对文件进行压缩，体积较大</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
+<h2 id="man">1.10 man</h2>
+<p>即 manual，手册</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
+<h2 id="ln">1.11 ln</h2>
+<p>软链接，即Windows中的 “ 快捷方式 ”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
+<h2 id="other">1.12 other</h2>
 <ul>
-<li>目录1</li>
-<li>目录2</li>
-<li>目录3</li>
+<li>reset：重新初始化终端，即清屏</li>
+<li>clear：清屏</li>
+<li>history：查看命令历史</li>
+<li>help：帮助</li>
+<li>exit：推出</li>
+<li>#：表示注释</li>
 </ul>
-<ol type="1">
-<li>目录4</li>
-<li>目录5</li>
-</ol>
-<h2 id="grid">8. Grid</h2>
-<p>在 Typora 中按 <code>Ctrl + T</code> 快捷键，会出现对话框，便可以快速插入表格，如下：</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczivj.png" />)</p>
-<center>
-Fig. 3 Insert table
-</center>
-<table>
-<thead>
-<tr class="header">
-<th>成绩</th>
-<th>语文</th>
-<th>数学</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>45</td>
-<td>35</td>
-</tr>
-</tbody>
-</table>
-<h2 id="段落格式">9. 段落格式</h2>
-<p>以下为一下 <code>html</code> 语法，<code>Markdown</code> 可以兼容 <span class="math inline">\(\TeX\)</span> 数学公式和 <code>html</code> 语法，可以扩充已有的功能。</p>
+<h1 id="management">2 Management</h1>
+<h2 id="switch-user">2.1 Switch user</h2>
 <ul>
-<li>居中</li>
+<li>su</li>
 </ul>
-<center>
-center
-</center>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span> 内容居中 <span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
+<h2 id="user-operation">2.2 User operation</h2>
 <ul>
-<li>字体</li>
+<li>useradd</li>
 </ul>
-<p><font face = "黑体">我是黑体</font></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span> = <span class="string">&quot;黑体&quot;</span>&gt;</span>我是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><font face="黑体" size=10>我是黑体10号字体</font></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 字体颜色更改为红色</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>Html 标签</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczC8g.png" /></p>
-<center>
-<p>Fig. 4 HTML Label</p>
-</center></li>
+<li>passwd</li>
 </ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<ul>
+<li>userdel</li>
+</ul>
+<p>即 user delete</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
+<h2 id="group-operation">2.3 Group operation</h2>
+<ul>
+<li>groupadd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupadd boys <span class="comment"># 创建用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>groupdel</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">groupdel boys <span class="comment"># 删除用户组</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>useradd</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">useradd -g boys ming <span class="comment"># -g表示添加用户，同时添加到boys中</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>usermod</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">usermod -g boys YangSu <span class="comment"># 修改用户信息</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>cat</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="file-permission">2.4 File permission</h2>
+<ul>
+<li>View Permission</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ls -l test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">-rw-------</span></span><br><span class="line"><span class="string">第一个字母，如果是文件夹，则为d，文件则为-</span></span><br><span class="line"><span class="string">后面九个字符分为三部分：自己 | 同组 | 别人</span></span><br><span class="line"><span class="string">rwx------ # 自己可读可写可执行</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chmod</li>
+</ul>
+<p>即 Change file mode，修改文件的访问权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chmod o+w test.txt</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">o: other</span></span><br><span class="line"><span class="string">a: all</span></span><br><span class="line"><span class="string">u: user # 省略怎默认修改自己和本组的权限</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">+w: add write permission</span></span><br><span class="line"><span class="string">-w: delete write permission</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chown</li>
+</ul>
+<p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
+<h2 id="script">2.5 Script</h2>
+<ul>
+<li>Shell 脚本： *.sh</li>
+<li>Perl 脚本： *.pl</li>
+<li>Python 脚本：*.py</li>
+</ul>
+<p>脚本程序本质上是一个文本文件，具有可执行权限</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Shell 脚本解释器：/<span class="built_in">bin</span>/sh</span><br><span class="line">Perl 脚本解释器：/<span class="built_in">bin</span>/perl</span><br><span class="line">Python 脚本解释器：/usr/<span class="built_in">bin</span>/python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行一个脚本时，以下两种方式等效</span></span><br><span class="line">./hello.py</span><br><span class="line">/usr/<span class="built_in">bin</span>/python3 hello.py</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Shell 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编辑一个文本文件</span></span><br><span class="line"><span class="comment">#!/bin/sh # 申明解释器</span></span><br><span class="line">echo <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存为Hello.sh</span></span><br><span class="line"><span class="comment"># 添加可执行权限，必须要有x权限，才能够执行</span></span><br><span class="line">chmod +x Hello.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行程序</span></span><br><span class="line">./Hello.sh <span class="comment"># 执行程序时，必须加上路径</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">./表示当前路径</span></span><br><span class="line"><span class="string">/home/YangSu/Test/Hello.sh</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Perl 脚本</li>
+<li>Py 脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell">2.6 Shell</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
+<h1 id="enviroment">3 Enviroment</h1>
+<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
+<p>使用环境变量：</p>
+<ul>
+<li>在当前命令行中使用</li>
+<li>在 Shell 脚本中使用</li>
+</ul>
+<h2 id="user-viriables">3.2 User Viriables</h2>
+<p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="system-variables">3.3 System Variables</h2>
+<p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
+<h2 id="path-variables">3.4 PATH Variables</h2>
+<p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo $PATH </span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
+<h2 id="network">3.5 Network</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Notes</category>
-        <category>Markdown</category>
+        <category>OS</category>
       </categories>
       <tags>
-        <tag>Markdown</tag>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -12850,6 +12736,120 @@ fig 5-5 Add text on figure
       </tags>
   </entry>
   <entry>
+    <title>Markdown</title>
+    <url>/2021/01/19/Markdown/</url>
+    <content><![CDATA[<h1 id="markdown">Markdown</h1>
+<h2 id="title">1. Title</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<p>格式及快捷键如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="font">2. Font</h2>
+<p><strong>加粗 </strong></p>
+<p><em>斜体</em></p>
+<p><u>下划线</u></p>
+<p><del>删除线</del></p>
+<p>==高亮==</p>
+<p><code>底纹</code></p>
+<p>$ _i = w x_i + b $ <span class="math display">\[
+\hat{y}_i = w x_i + b
+\]</span></p>
+<p>格式及快捷键如下（其中 <code>#</code> 开头的行为注释行）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**加粗 ** (快捷键 ctrl + B)</span><br><span class="line">*斜体* (快捷键 ctrl + I)</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;  (快捷键 ctrl + U)</span><br><span class="line">~~删除线~~</span><br><span class="line">==高亮==</span><br><span class="line">`底纹`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行内公式 (In-line formula)</span></span><br><span class="line">$ \hat&#123;y&#125;_i = w x_i + b $ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示公式 (Display formula)</span></span><br><span class="line">$$</span><br><span class="line">\hat&#123;y&#125;_i = w x_i + b</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<h2 id="citation">3. Citation</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用语法</span></span><br><span class="line">&gt; Author</span><br><span class="line">&gt;&gt; Author</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<blockquote>
+<p>Author</p>
+<blockquote>
+<p>Author</p>
+</blockquote>
+</blockquote>
+<h2 id="分割线">4. 分割线</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># 分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+<hr />
+<hr />
+<h2 id="inset-image">5. Inset image</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在线图片/本地图片</span></span><br><span class="line">![My image1](/image/me.png) --image <span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczP2Q.png" /></p>
+<center>
+Fig. 1 Image demo
+</center>
+<p>注：Typora 支持直接复制粘贴图片，可以省去敲格式的环节，但注意在复制粘贴之前将图片储存的设置为自动保存，设置如下：</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczkKs.png" /></p>
+<center>
+Fig. 2 Typora image auto-save setting
+</center>
+<h2 id="link">6. Link</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 超链接语法，其中 [] 中为文字内容，()内为想要插入的连接</span></span><br><span class="line">[My link](https://www.bilibili.com/)</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.bilibili.com/">My bilibili</a></p>
+<h2 id="list">7. List</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 无序列表</span></span><br><span class="line">- 目录<span class="number">1</span></span><br><span class="line">- 目录<span class="number">2</span></span><br><span class="line">- 目录<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序列表，在目录 4 后键入回车，会自动生成有序列表</span></span><br><span class="line"><span class="number">1.</span> 目录<span class="number">4</span></span><br><span class="line"><span class="number">2.</span> 目录<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>目录1</li>
+<li>目录2</li>
+<li>目录3</li>
+</ul>
+<ol type="1">
+<li>目录4</li>
+<li>目录5</li>
+</ol>
+<h2 id="grid">8. Grid</h2>
+<p>在 Typora 中按 <code>Ctrl + T</code> 快捷键，会出现对话框，便可以快速插入表格，如下：</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczivj.png" />)</p>
+<center>
+Fig. 3 Insert table
+</center>
+<table>
+<thead>
+<tr class="header">
+<th>成绩</th>
+<th>语文</th>
+<th>数学</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>45</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<h2 id="段落格式">9. 段落格式</h2>
+<p>以下为一下 <code>html</code> 语法，<code>Markdown</code> 可以兼容 <span class="math inline">\(\TeX\)</span> 数学公式和 <code>html</code> 语法，可以扩充已有的功能。</p>
+<ul>
+<li>居中</li>
+</ul>
+<center>
+center
+</center>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span> 内容居中 <span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>字体</li>
+</ul>
+<p><font face = "黑体">我是黑体</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span> = <span class="string">&quot;黑体&quot;</span>&gt;</span>我是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><font face="黑体" size=10>我是黑体10号字体</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 字体颜色更改为红色</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Html 标签</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczC8g.png" /></p>
+<center>
+<p>Fig. 4 HTML Label</p>
+</center></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Numpy</title>
     <url>/2020/11/29/Numpy/</url>
     <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
@@ -12931,6 +12931,20 @@ fig 5-5 Add text on figure
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -13074,20 +13088,6 @@ fig. 1 difference of ignoring index
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Pandas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -13380,6 +13380,78 @@ p_1 + p_2 + p_3 = 1,
       <tags>
         <tag>Prediction</tag>
         <tag>Deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Figuration</title>
+    <url>/2020/11/23/Python-Figuration/</url>
+    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
+<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><code>pip</code> ：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+<h1 id="delete-channel">2 Delete channel</h1>
+<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
+<h1 id="add-channel">3 Add channel</h1>
+<h2 id="conda-add-channel">3.1 Conda add channel</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
+<h2 id="pip">3.2 pip</h2>
+<h3 id="temporary-configuration">3.2.1 Temporary configuration</h3>
+<p>可以利用 <code>pip</code> 从镜像源安装第三方库，只需安装后加入 <code>-i source</code>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Install pandas</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">    </span><br><span class="line"><span class="comment"># python-docx</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-docx</span><br></pre></td></tr></table></figure>
+<p>国内还有其他镜像可供选择：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 豆瓣</span></span><br><span class="line">http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+<h3 id="permanently-configuration">3.2.2 Permanently configuration</h3>
+<ul>
+<li><p>自动配置镜像源</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+<li><p>手动配置镜像源</p>
+<p>在 <code>windows</code> 下，直接在 <code>user</code> 目录中创建一个 <code>pip</code> 目录，再新建文件 <code>pip.ini</code>，接着打开 <code>pip.ini</code> 文件，复制粘贴以下内容并保存。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="install-package-offline">4 Install package offline</h1>
+<h3 id="conda-install">4.1 Conda install</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
+<h3 id="pip-install-.whl-package">4.2 pip install '.whl' package</h3>
+<p>再命令行窗口用 <code>cd</code> 命令跳转到 <code>whl</code> 文件所在目录，然后使用命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install ***.whl</span><br></pre></td></tr></table></figure>
+<h1 id="virtual-environment">5 Virtual environment</h1>
+<h2 id="steps">5.1 Steps</h2>
+<ul>
+<li><p>Open <code>terminal</code> or <code>Command prompt</code></p></li>
+<li><p>Input <code>D:</code> to enter drive D</p></li>
+<li><p>Then input <code>cd project_dir</code></p></li>
+<li><p>Create a virtual environment</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -m venv &lt;venv name&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="activate-venv">5.2 Activate venv</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.\&lt;venv name&gt;\Scripts\activate <span class="comment"># activate venv</span></span><br><span class="line"></span><br><span class="line">.\venv\Scripts\deactivate <span class="comment"># exit the current venv</span></span><br></pre></td></tr></table></figure>
+<h2 id="import-module">5.3 Import module</h2>
+<ul>
+<li><p>主程序和模块程序在同一目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    `-- test.py</span><br></pre></td></tr></table></figure>
+<p><code>test.py</code>导入模块 <code>mod1</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">from</span> mod1 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
+<li><p>主程序所在目录是模块所在目录的父(或祖辈)目录</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
+<p><code>test1.py</code>中导入模块<code>mod2</code>，需要在<code>mod2</code>文件夹中创建<code>__init__.py</code>文件:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mod2.mod2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    |-- sub</span><br><span class="line">    |   `-- test2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
+<p><code>test2.py</code> 中导入模块 <code>mod1</code> 和 <code>mod2</code>，首先需要在 <code>mod2</code> 下建立 <code>__init__.py</code> 文件，<code>src</code> 下不必建立该文件:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&quot;..&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>从上面可以看出，导入模块关键是能够根据sys.path环境变量的值，找到具体模块的路径</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Anaconda</tag>
       </tags>
   </entry>
   <entry>
@@ -14161,75 +14233,101 @@ Fig. 1-2 集合的布尔运算
       </tags>
   </entry>
   <entry>
-    <title>Python Figuration</title>
-    <url>/2020/11/23/Python-Figuration/</url>
-    <content><![CDATA[<h1 id="show-channel">1 Show channel</h1>
-<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><code>pip</code> ：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
-<h1 id="delete-channel">2 Delete channel</h1>
-<p>Using <code>conda config --remove channels</code> to delete channels from config</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br></pre></td></tr></table></figure>
-<h1 id="add-channel">3 Add channel</h1>
-<h2 id="conda-add-channel">3.1 Conda add channel</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 channel 中安装包时显示channel 的url，这样就可以知道包的安装来源</span></span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装确认中，不默认yes，而是由我来决定</span></span><br><span class="line">conda config --<span class="built_in">set</span> always_yes false</span><br></pre></td></tr></table></figure>
-<h2 id="pip">3.2 pip</h2>
-<h3 id="temporary-configuration">3.2.1 Temporary configuration</h3>
-<p>可以利用 <code>pip</code> 从镜像源安装第三方库，只需安装后加入 <code>-i source</code>：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Install pandas</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pandas</span><br><span class="line">    </span><br><span class="line"><span class="comment"># python-docx</span></span><br><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple python-docx</span><br></pre></td></tr></table></figure>
-<p>国内还有其他镜像可供选择：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 豆瓣</span></span><br><span class="line">http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure>
-<h3 id="permanently-configuration">3.2.2 Permanently configuration</h3>
+    <title>Pytorch-1-Introduction</title>
+    <url>/2021/08/03/Pytorch-1-Introduction/</url>
+    <content><![CDATA[<p>Statement: This series of post records the personal notes and experiences of learning the <a href="https://www.bilibili.com/">BiliBili</a> video tutorial <a href="https://www.bilibili.com/video/BV12741177Cu?p=1">"Pytorch 入门学习"</a>, most of code and pictures are from the courseware <a href="https://github.com/ZeweiChu/PyTorch-Course">PyTorch-Course</a>. All posted content is for personal study only, do not use for other purposes. If there is infringement, please contact <code>e-mail:yangsuoly@qq.com</code> to delete. <a id="more"></a></p>
+<h1 id="introduction-to-deep-learning-models">1. Introduction to deep learning models</h1>
+<h2 id="definition">1.1 Definition</h2>
+<p><strong>Q</strong>: What is machine learning?<br />
+<strong>A</strong>: Study of algorithms that: - Improve their <em>performance</em> P - At some <em>task</em> T - With <em>experience</em> E</p>
+<p><strong>Conclusion</strong>: Modeling, Inference, learning <img src="https://z3.ax1x.com/2021/08/03/fi7u38.png" /></p>
 <ul>
-<li><p>自动配置镜像源</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip config <span class="built_in">set</span> <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
-<li><p>手动配置镜像源</p>
-<p>在 <code>windows</code> 下，直接在 <code>user</code> 目录中创建一个 <code>pip</code> 目录，再新建文件 <code>pip.ini</code>，接着打开 <code>pip.ini</code> 文件，复制粘贴以下内容并保存。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"> index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+<li>Modeling: define score function</li>
+<li>Inference: solve argmax</li>
+<li>Learning: choose w</li>
 </ul>
-<h1 id="install-package-offline">4 Install package offline</h1>
-<h3 id="conda-install">4.1 Conda install</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">conda install --offline &lt; package &gt;</span><br><span class="line"></span><br><span class="line">conda install &lt;包名&gt; <span class="comment">#安装指定包</span></span><br><span class="line">conda remove &lt;包名&gt; <span class="comment">#移除指定包</span></span><br><span class="line">conda update &lt;包名&gt; <span class="comment">#更新指定包</span></span><br></pre></td></tr></table></figure>
-<h3 id="pip-install-.whl-package">4.2 pip install '.whl' package</h3>
-<p>再命令行窗口用 <code>cd</code> 命令跳转到 <code>whl</code> 文件所在目录，然后使用命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install ***.whl</span><br></pre></td></tr></table></figure>
-<h1 id="virtual-environment">5 Virtual environment</h1>
-<h2 id="steps">5.1 Steps</h2>
+<p><span class="math display">\[ \text{classify} (x, w) = \mathop{\text{argmax}}\limits_{y} \  \text{score} (x, y, w)\]</span></p>
+<p><strong>Q</strong>: What is deep learning? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7KgS.md.png" /></p>
+<p><strong>Q</strong>: What is neural network? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7Mjg.png" /></p>
+<h2 id="activation-function">1.2 Activation function</h2>
+<p><img src="https://z3.ax1x.com/2021/08/03/fi7GEn.png" /></p>
+<h3 id="commonly-used-activation-functions">1.2.1 Commonly used activation functions:</h3>
 <ul>
-<li><p>Open <code>terminal</code> or <code>Command prompt</code></p></li>
-<li><p>Input <code>D:</code> to enter drive D</p></li>
-<li><p>Then input <code>cd project_dir</code></p></li>
-<li><p>Create a virtual environment</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python -m venv &lt;venv name&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p><span class="math inline">\(sigmoid\)</span>: <span class="math display">\[
+\sigma(x) = \frac{1}{1+e^{-x}}
+\]</span></p></li>
+<li><p><span class="math inline">\(tanh\)</span>: <span class="math display">\[
+tanh(x) = 2 \sigma(2x) - 1
+\]</span></p></li>
+<li><p><span class="math inline">\(ReLU\)</span>: <span class="math display">\[
+ReLU(x) = max(0, x)
+\]</span></p></li>
+<li><p><span class="math inline">\(Softmax\)</span>: <span class="math display">\[
+z_i \rightarrow \frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}}
+\]</span></p></li>
 </ul>
-<h2 id="activate-venv">5.2 Activate venv</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.\&lt;venv name&gt;\Scripts\activate <span class="comment"># activate venv</span></span><br><span class="line"></span><br><span class="line">.\venv\Scripts\deactivate <span class="comment"># exit the current venv</span></span><br></pre></td></tr></table></figure>
-<h2 id="import-module">5.3 Import module</h2>
+<h3 id="code-implementation">1.2.2 Code implementation</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = torch.linspace(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">200</span>)</span><br><span class="line">x = Variable(x)</span><br><span class="line">x_np = x.data.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># four activation function</span></span><br><span class="line">y_relu = F.relu(x).data.numpy()</span><br><span class="line">y_sigmoid = torch.sigmoid(x).data.numpy()</span><br><span class="line">y_tanh = F.tanh(x).data.numpy()</span><br><span class="line">y_softplus = F.softplus(x).data.numpy()</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plt.subplot(<span class="number">221</span>)</span><br><span class="line">plt.plot(x_np, y_relu, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;relu&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1</span>, <span class="number">5</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">222</span>)</span><br><span class="line">plt.plot(x_np, y_sigmoid, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;sigmoid&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">223</span>)</span><br><span class="line">plt.plot(x_np, y_tanh, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;tanh&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">224</span>)</span><br><span class="line">plt.plot(x_np, y_softplus, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;softplus&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">6</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://z3.ax1x.com/2021/08/03/fi7VAI.png" /></p>
+<h2 id="examples-of-nn">1.3 examples of NN</h2>
 <ul>
-<li><p>主程序和模块程序在同一目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    `-- test.py</span><br></pre></td></tr></table></figure>
-<p><code>test.py</code>导入模块 <code>mod1</code>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">from</span> mod1 <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure></li>
-<li><p>主程序所在目录是模块所在目录的父(或祖辈)目录</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
-<p><code>test1.py</code>中导入模块<code>mod2</code>，需要在<code>mod2</code>文件夹中创建<code>__init__.py</code>文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> mod2.mod2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
-<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`-- src</span><br><span class="line">    |-- mod1.py</span><br><span class="line">    |-- mod2</span><br><span class="line">    |   `-- mod2.py</span><br><span class="line">    |-- sub</span><br><span class="line">    |   `-- test2.py</span><br><span class="line">    `-- test1.py</span><br></pre></td></tr></table></figure>
-<p><code>test2.py</code> 中导入模块 <code>mod1</code> 和 <code>mod2</code>，首先需要在 <code>mod2</code> 下建立 <code>__init__.py</code> 文件，<code>src</code> 下不必建立该文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&quot;..&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> mod1</span><br><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></li>
+<li><p>Standard feedforward NN <img src="https://z3.ax1x.com/2021/08/03/fi71Bj.png" /></p></li>
+<li><p>Convolutional NN <img src="https://z3.ax1x.com/2021/08/03/fi7JNq.png" /></p></li>
+<li><p>Recurrent NN <img src="https://z3.ax1x.com/2021/08/03/fi7ZNt.png" /></p></li>
+<li><p>Seq2Seq with Attention <img src="https://z3.ax1x.com/2021/08/03/fi7Y40.png" /> <strong>Reference</strong>: <a href="https://arxiv.org/abs/1508.04025">Effective Approaches to Attention-based Neural Machine Translation</a></p></li>
 </ul>
-<p>从上面可以看出，导入模块关键是能够根据sys.path环境变量的值，找到具体模块的路径</p>
+<h1 id="introduction-to-pytorch">2. Introduction to PyTorch</h1>
+<h2 id="framework-for-deep-learning">2.1 Framework for deep learning</h2>
+<p><img src="https://z3.ax1x.com/2021/08/03/fi7U3T.png" /></p>
+<p>Difference between PyTorch and Tensorflow: - PyTorch: 动态计算图 Dynamic Computation Graph - Tensorflow: 静态计算图 Static Computation Graph</p>
+<p>PyTorch 代码通俗易懂，非常接近 Python 原生代码，不会让人感觉是完全在学习一门新的语言。拥有 Facebook 支持，社区活跃。</p>
+<p><strong>Q</strong>: What does the PyTorch do? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7agU.png" /></p>
+<h2 id="some-interesting-project-with-pytorch">2.2. Some interesting project with PyTorch</h2>
+<ul>
+<li><p>ResNet <img src="https://z3.ax1x.com/2021/08/03/fi7e4P.md.png" /> Image classification: <a href="https://github.com/floydhub/imagenet">ResNet</a></p></li>
+<li><p>Object Detection <img src="https://z3.ax1x.com/2021/08/03/fi7n9f.md.png" /> Project address: <a href="https://github.com/amdegroot/ssd.pytorch">Here</a></p></li>
+<li><p>Image Style Transfer <img src="https://z3.ax1x.com/2021/08/03/fi7Db9.md.png" /> Project address: <a href="https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer">Here</a></p></li>
+<li><p>CycleGAN <img src="https://z3.ax1x.com/2021/08/03/fi7luQ.png" /> Project address: <a href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">Here</a></p></li>
+<li><p>Image Captioning <img src="https://z3.ax1x.com/2021/08/03/fi7sER.md.png" /> Project address: <a href="https://github.com/ruotianluo/ImageCaptioning.pytorch">Here</a></p></li>
+<li><p>Sentiment Analysis <img src="https://z3.ax1x.com/2021/08/03/fi7dvF.png" /> Project address: <a href="https://github.com/bentrevett/pytorch-sentiment-analysis">Here</a></p></li>
+<li><p>Question Answering <img src="https://z3.ax1x.com/2021/08/03/fi7yU1.png" /> Project address: <a href="https://github.com/allenai/document-qa">Here</a></p></li>
+<li><p>Translation: OpenNMT-py <img src="https://z3.ax1x.com/2021/08/03/fi7BDJ.png" /> Project address: <a href="https://github.com/OpenNMT/OpenNMT-py">Here</a></p></li>
+<li><p>ChatBot <img src="https://z3.ax1x.com/2021/08/03/fi764x.png" /> Project address: <a href="https://github.com/czs0x55aa/pytorch-chatbot">Here</a></p></li>
+<li><p>Deep Reinforcement Learning</p>
+<p>Project address: <a href="https://github.com/jingweiz/pytorch-rl">Project 1</a>, <a href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">Project 2</a></p></li>
+</ul>
+<h2 id="how-to-learn-pytorch">2.3 How to learn PyTorch</h2>
+<ul>
+<li>Basics of deep learning;</li>
+<li>Pytorch official <a href="https://pytorch.org/tutorials/">tutorial</a>;</li>
+<li>Learn tutorials on GitHub and various blogs;</li>
+<li>Documentation and <a href="https://discuss.pytorch.org/">BBS</a></li>
+<li>Re-creat the open source PyTorch project;</li>
+<li>Read papers about deep learning model and implement them;</li>
+<li>Create your own model.</li>
+</ul>
+<h1 id="note-content">3. Note content</h1>
+<ol type="1">
+<li>Pytorch framework with autograd introduction, simple forward neural networks;</li>
+<li>Word vector;</li>
+<li>Image classification, CNN, Transfer learning;</li>
+<li>Language Model, Sentiment Classification, RNN, LSTM, GRU;</li>
+<li>Translation Model, Seq2Seq, Attention;</li>
+<li>Reading Comprehension, EIMo, BERT, GPT-2;</li>
+<li>ChatBot;</li>
+<li>GAN, Face generation, Style Transfer.</li>
+</ol>
 ]]></content>
       <categories>
         <category>Notes</category>
-        <category>Software</category>
+        <category>Python module</category>
+        <category>Pytorch</category>
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Anaconda</tag>
+        <tag>Deep learning</tag>
+        <tag>Pytorch</tag>
       </tags>
   </entry>
   <entry>
@@ -14489,104 +14587,6 @@ array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
         True,  True, False,  True,  True,  True,  True,  True,  True,        
         True,  True, False,  True,  True,  True,  True,  True,  True,        
         True])</code></pre>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Python module</category>
-        <category>Pytorch</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Deep learning</tag>
-        <tag>Pytorch</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pytorch-1-Introduction</title>
-    <url>/2021/08/03/Pytorch-1-Introduction/</url>
-    <content><![CDATA[<p>Statement: This series of post records the personal notes and experiences of learning the <a href="https://www.bilibili.com/">BiliBili</a> video tutorial <a href="https://www.bilibili.com/video/BV12741177Cu?p=1">"Pytorch 入门学习"</a>, most of code and pictures are from the courseware <a href="https://github.com/ZeweiChu/PyTorch-Course">PyTorch-Course</a>. All posted content is for personal study only, do not use for other purposes. If there is infringement, please contact <code>e-mail:yangsuoly@qq.com</code> to delete. <a id="more"></a></p>
-<h1 id="introduction-to-deep-learning-models">1. Introduction to deep learning models</h1>
-<h2 id="definition">1.1 Definition</h2>
-<p><strong>Q</strong>: What is machine learning?<br />
-<strong>A</strong>: Study of algorithms that: - Improve their <em>performance</em> P - At some <em>task</em> T - With <em>experience</em> E</p>
-<p><strong>Conclusion</strong>: Modeling, Inference, learning <img src="https://z3.ax1x.com/2021/08/03/fi7u38.png" /></p>
-<ul>
-<li>Modeling: define score function</li>
-<li>Inference: solve argmax</li>
-<li>Learning: choose w</li>
-</ul>
-<p><span class="math display">\[ \text{classify} (x, w) = \mathop{\text{argmax}}\limits_{y} \  \text{score} (x, y, w)\]</span></p>
-<p><strong>Q</strong>: What is deep learning? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7KgS.md.png" /></p>
-<p><strong>Q</strong>: What is neural network? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7Mjg.png" /></p>
-<h2 id="activation-function">1.2 Activation function</h2>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7GEn.png" /></p>
-<h3 id="commonly-used-activation-functions">1.2.1 Commonly used activation functions:</h3>
-<ul>
-<li><p><span class="math inline">\(sigmoid\)</span>: <span class="math display">\[
-\sigma(x) = \frac{1}{1+e^{-x}}
-\]</span></p></li>
-<li><p><span class="math inline">\(tanh\)</span>: <span class="math display">\[
-tanh(x) = 2 \sigma(2x) - 1
-\]</span></p></li>
-<li><p><span class="math inline">\(ReLU\)</span>: <span class="math display">\[
-ReLU(x) = max(0, x)
-\]</span></p></li>
-<li><p><span class="math inline">\(Softmax\)</span>: <span class="math display">\[
-z_i \rightarrow \frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}}
-\]</span></p></li>
-</ul>
-<h3 id="code-implementation">1.2.2 Code implementation</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = torch.linspace(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">200</span>)</span><br><span class="line">x = Variable(x)</span><br><span class="line">x_np = x.data.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># four activation function</span></span><br><span class="line">y_relu = F.relu(x).data.numpy()</span><br><span class="line">y_sigmoid = torch.sigmoid(x).data.numpy()</span><br><span class="line">y_tanh = F.tanh(x).data.numpy()</span><br><span class="line">y_softplus = F.softplus(x).data.numpy()</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plt.subplot(<span class="number">221</span>)</span><br><span class="line">plt.plot(x_np, y_relu, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;relu&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1</span>, <span class="number">5</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">222</span>)</span><br><span class="line">plt.plot(x_np, y_sigmoid, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;sigmoid&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">223</span>)</span><br><span class="line">plt.plot(x_np, y_tanh, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;tanh&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">224</span>)</span><br><span class="line">plt.plot(x_np, y_softplus, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;softplus&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">6</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7VAI.png" /></p>
-<h2 id="examples-of-nn">1.3 examples of NN</h2>
-<ul>
-<li><p>Standard feedforward NN <img src="https://z3.ax1x.com/2021/08/03/fi71Bj.png" /></p></li>
-<li><p>Convolutional NN <img src="https://z3.ax1x.com/2021/08/03/fi7JNq.png" /></p></li>
-<li><p>Recurrent NN <img src="https://z3.ax1x.com/2021/08/03/fi7ZNt.png" /></p></li>
-<li><p>Seq2Seq with Attention <img src="https://z3.ax1x.com/2021/08/03/fi7Y40.png" /> <strong>Reference</strong>: <a href="https://arxiv.org/abs/1508.04025">Effective Approaches to Attention-based Neural Machine Translation</a></p></li>
-</ul>
-<h1 id="introduction-to-pytorch">2. Introduction to PyTorch</h1>
-<h2 id="framework-for-deep-learning">2.1 Framework for deep learning</h2>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7U3T.png" /></p>
-<p>Difference between PyTorch and Tensorflow: - PyTorch: 动态计算图 Dynamic Computation Graph - Tensorflow: 静态计算图 Static Computation Graph</p>
-<p>PyTorch 代码通俗易懂，非常接近 Python 原生代码，不会让人感觉是完全在学习一门新的语言。拥有 Facebook 支持，社区活跃。</p>
-<p><strong>Q</strong>: What does the PyTorch do? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7agU.png" /></p>
-<h2 id="some-interesting-project-with-pytorch">2.2. Some interesting project with PyTorch</h2>
-<ul>
-<li><p>ResNet <img src="https://z3.ax1x.com/2021/08/03/fi7e4P.md.png" /> Image classification: <a href="https://github.com/floydhub/imagenet">ResNet</a></p></li>
-<li><p>Object Detection <img src="https://z3.ax1x.com/2021/08/03/fi7n9f.md.png" /> Project address: <a href="https://github.com/amdegroot/ssd.pytorch">Here</a></p></li>
-<li><p>Image Style Transfer <img src="https://z3.ax1x.com/2021/08/03/fi7Db9.md.png" /> Project address: <a href="https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer">Here</a></p></li>
-<li><p>CycleGAN <img src="https://z3.ax1x.com/2021/08/03/fi7luQ.png" /> Project address: <a href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">Here</a></p></li>
-<li><p>Image Captioning <img src="https://z3.ax1x.com/2021/08/03/fi7sER.md.png" /> Project address: <a href="https://github.com/ruotianluo/ImageCaptioning.pytorch">Here</a></p></li>
-<li><p>Sentiment Analysis <img src="https://z3.ax1x.com/2021/08/03/fi7dvF.png" /> Project address: <a href="https://github.com/bentrevett/pytorch-sentiment-analysis">Here</a></p></li>
-<li><p>Question Answering <img src="https://z3.ax1x.com/2021/08/03/fi7yU1.png" /> Project address: <a href="https://github.com/allenai/document-qa">Here</a></p></li>
-<li><p>Translation: OpenNMT-py <img src="https://z3.ax1x.com/2021/08/03/fi7BDJ.png" /> Project address: <a href="https://github.com/OpenNMT/OpenNMT-py">Here</a></p></li>
-<li><p>ChatBot <img src="https://z3.ax1x.com/2021/08/03/fi764x.png" /> Project address: <a href="https://github.com/czs0x55aa/pytorch-chatbot">Here</a></p></li>
-<li><p>Deep Reinforcement Learning</p>
-<p>Project address: <a href="https://github.com/jingweiz/pytorch-rl">Project 1</a>, <a href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">Project 2</a></p></li>
-</ul>
-<h2 id="how-to-learn-pytorch">2.3 How to learn PyTorch</h2>
-<ul>
-<li>Basics of deep learning;</li>
-<li>Pytorch official <a href="https://pytorch.org/tutorials/">tutorial</a>;</li>
-<li>Learn tutorials on GitHub and various blogs;</li>
-<li>Documentation and <a href="https://discuss.pytorch.org/">BBS</a></li>
-<li>Re-creat the open source PyTorch project;</li>
-<li>Read papers about deep learning model and implement them;</li>
-<li>Create your own model.</li>
-</ul>
-<h1 id="note-content">3. Note content</h1>
-<ol type="1">
-<li>Pytorch framework with autograd introduction, simple forward neural networks;</li>
-<li>Word vector;</li>
-<li>Image classification, CNN, Transfer learning;</li>
-<li>Language Model, Sentiment Classification, RNN, LSTM, GRU;</li>
-<li>Translation Model, Seq2Seq, Attention;</li>
-<li>Reading Comprehension, EIMo, BERT, GPT-2;</li>
-<li>ChatBot;</li>
-<li>GAN, Face generation, Style Transfer.</li>
-</ol>
 ]]></content>
       <categories>
         <category>Notes</category>
@@ -15931,6 +15931,210 @@ fig. 4-5 Comparison before and after transforming
       </tags>
   </entry>
   <entry>
+    <title>Stata Introduction</title>
+    <url>/2020/12/15/Stata-introduction/</url>
+    <content><![CDATA[<h1 id="stata-operation">1 Stata operation</h1>
+<h2 id="import-data">1.1 Import data</h2>
+<ul>
+<li><p>use</p>
+<p><code>grilic_small.dta</code> 文件的目录请根据自己的文件目录填写，数据文件可在陈强老师的网站下载，<a href="http://www.econometrics-stata.com/col.jsp?id=101">Click here</a>，选择《计量经济学及Stata应用》中的数据集下载。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">use <span class="string">&quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Data-Finished-bachelor\grilic_small.dta&quot;</span>, clear</span><br></pre></td></tr></table></figure></li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>clear</p>
+<p>关闭一个数据集，以便使用另外一个数据集</p></li>
+<li><p><code>d</code>escribe</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看数据集中的变量名称、标签等</span></span><br><span class="line">describe <span class="keyword">or</span> d</span><br></pre></td></tr></table></figure></li>
+<li><p>set more off/on</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连续滚屏显示命令运行结果</span></span><br><span class="line"><span class="built_in">set</span> more off</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分页显示命令运行结果</span></span><br><span class="line"><span class="built_in">set</span> more on</span><br></pre></td></tr></table></figure></li>
+<li><p><code>l</code>ist</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看变量 s 和 lnw 的前 5 个数据</span></span><br><span class="line"><span class="built_in">list</span> s lnw <span class="keyword">in</span> <span class="number">1</span>/<span class="number">5</span> <span class="comment"># or</span></span><br><span class="line">l s lnw <span class="keyword">in</span> <span class="number">1</span>/<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 罗列第 11-15 个观测值</span></span><br><span class="line"><span class="built_in">list</span> ss lnw <span class="keyword">in</span> <span class="number">11</span>/<span class="number">15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出满足条件 ‘s&gt;=16&#x27; 的数据</span></span><br><span class="line"><span class="built_in">list</span> s lnw <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br><span class="line"><span class="comment"># &gt;=: 等于  &lt;=：小于等于  ==：等于  ~= or !=：不等于  =：赋值</span></span><br></pre></td></tr></table></figure></li>
+<li><p>drop / keep</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除满足 ’s&gt;=16&#x27; 的观测值</span></span><br><span class="line">drop <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只保留满足 &#x27;s&gt;=16&#x27; 的观测值</span></span><br><span class="line">keep <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p>注：Stata 并不提供 undo 功能，故需慎重删除数据，最好保留备份-</p></li>
+<li><p>sort / gsort</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将数据按照变量 s 的升序排列</span></span><br><span class="line">sort s</span><br><span class="line">lsit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 降序排列</span></span><br><span class="line">gsort -s</span><br><span class="line"><span class="built_in">list</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="plot">1.2 Plot</h2>
+<h3 id="直方图">1.3.1 直方图</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">histogram s, width(<span class="number">1</span>) frequency</span><br><span class="line">hist s, w(<span class="number">1</span>) freq</span><br><span class="line"><span class="comment"># histogram: 直方图,</span></span><br><span class="line"><span class="comment"># 选择项 &#x27;width(1)&#x27; 表示将组宽设为 1（否则将使用 Stata 根据样本容量计算的默认分组数）</span></span><br><span class="line"><span class="comment"># 选择项 ‘frequency&#x27; 表示将纵坐标定为频数（默认使用密度）</span></span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKz0OK.png" alt="image-20201210163044446" style="zoom:80%;" /></p>
+<center>
+Fig. 1-1 Histogram figure
+</center>
+<ul>
+<li>查看帮助文档</li>
+</ul>
+<p>对于任何 <code>Stata</code> 命令，只需要输入 <code>help command_name</code> 即可查看该命令的帮助文档，<strong>初学者应养成经常查看帮助文档的习惯</strong>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">help</span> histogram</span><br><span class="line">h hist</span><br><span class="line"><span class="comment"># 查看 histogram 命令的帮助文档</span></span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">histogram varname [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, [continuous_opts | discrete_opts] options]</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[if], [in]: 条件操作</span></span><br><span class="line"><span class="string">[weight]: 权重</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[continuous_opts]: 连续型变量选择项</span></span><br><span class="line"><span class="string">[discrete_opts]: 离散型选择项</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">continuous_opts        Description</span></span><br><span class="line"><span class="string">----------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  bin(#)               set number of bins to #</span></span><br><span class="line"><span class="string">  width(#)             set width of bins to #</span></span><br><span class="line"><span class="string">  start(#)         	   set lower limit of first bin to #</span></span><br><span class="line"><span class="string">-------------------------------------------</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">discrete_opts          Description</span></span><br><span class="line"><span class="string">------------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  discrete             specify that data are discrete</span></span><br><span class="line"><span class="string">  width(#)             set width of bins to #</span></span><br><span class="line"><span class="string">  start(#)             set theoretical minimum value to #</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">options                Description</span></span><br><span class="line"><span class="string">-------------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  density               draw as density; the default</span></span><br><span class="line"><span class="string">  fraction              draw as fractions</span></span><br><span class="line"><span class="string">  frequency             draw as frequencies</span></span><br><span class="line"><span class="string">  percent               draw as percentages</span></span><br><span class="line"><span class="string">  bar_options           rendition of bars</span></span><br><span class="line"><span class="string">  binrescale  | recalculate bin sizes when by() is specified</span></span><br><span class="line"><span class="string">  addlabels             add height labels to bars</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Density plots</span></span><br><span class="line"><span class="string">  normal                  add a normal density to the graph</span></span><br><span class="line"><span class="string">  normopts(line_options)  affect rendition of normal density</span></span><br><span class="line"><span class="string">  kdensity     | add a kernel density estimate to the graph</span></span><br><span class="line"><span class="string">  kdenopts(kdensity_options) | affect rendition of kernel density</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Add plots</span></span><br><span class="line"><span class="string">  addplot(plot)           add other plots to the histogram</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="散点图">1.3.2 散点图</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scatter lnw s</span><br><span class="line">sc lnw s</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzrwD.png" alt="image-20201210163409860" style="zoom:80%;" /></p>
+<center>
+Fig. 1-2 Scatter between lnw and s
+</center>
+<ul>
+<li>标签</li>
+</ul>
+<p>如果想在散点图上标注每个点对应于哪个观测值，可先定义变量 <span class="math inline">\(n\)</span>，表示第 <span class="math inline">\(n\)</span> 个观测值：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen n = _n</span><br><span class="line">scatter lnw s, mlabel(n) <span class="comment"># 选择变量 n 作为标签（mark label）</span></span><br></pre></td></tr></table></figure>
+<p>其中，<code>_n</code> 表示第 <span class="math inline">\(n\)</span> 个观测值。然后以变量作为每个点的标签来画散点图。结果如下：</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzsTe.png" alt="image-20201210164351554" style="zoom:80%;" /></p>
+<center>
+Fig. 1-3 Scatter with mark label
+</center>
+<h3 id="核密度估计图">1.3.3 核密度估计图</h3>
+<p>直方图必然是不连续的，如果想得到密度函数的连续估计，可输入命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">kdensity lnw, normal normop (lpattern (dash))</span><br><span class="line">kdensity lnw, normal normop (lp (dash))</span><br></pre></td></tr></table></figure>
+<p>其中</p>
+<ul>
+<li><code>kdensity</code>：核密度估计（kernel density estimation）；</li>
+<li><code>normal</code>：画正态分布的密度函数作为对比；</li>
+<li><code>normop (lp (Dash))</code>：将正态密度用虚线来画。
+<ul>
+<li><code>normop</code>：normal options</li>
+<li><code>lpattern</code>： line pattern.</li>
+</ul></li>
+</ul>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzRSI.md.png" alt="image-20201210224215508" style="zoom:80%;" /></p>
+<center>
+Fig. 1-4 Kernel density estimate
+</center>
+<h2 id="statistical-analysis">1.3 Statistical analysis</h2>
+<ul>
+<li><p>统计特征</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">summarize s</span><br><span class="line">su s</span><br><span class="line"></span><br><span class="line"><span class="built_in">sum</span> lnw, detail <span class="comment"># 显示更多统计指标，如偏度、峰度</span></span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzDeO.png" alt="image-20201210164927010" style="zoom:80%;" /></p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzgfA.png" alt="image-20201210223033995" style="zoom:80%;" /></p>
+<center>
+<p>Fig. 1-4 Statistical description</p>
+</center>
+<p>显示了变量 <span class="math inline">\(s\)</span> 的样本容量、平均值、标准差、最小值于最大值。如 <strong>不指明变量</strong>，则显示 <strong>所有变量</strong> 的统计指标。</p></li>
+<li><p>经验累计分布函数（Empirical cumulative distribution function）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tabulate s <span class="comment"># 显示 s 的经验累积分布番薯</span></span><br><span class="line">ta s</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKzwy6.png" alt="image-20201210165710687" style="zoom:80%;" /></p>
+<center>
+<p>Fig. 1-5 Empirical cummlative distribution</p>
+</center>
+<p>其中，<code>Freq</code> 表示频数，<code>Percent</code> 表示百分比，而 <code>Cum.</code> 表示累积百分比。</p></li>
+<li><p>相关系数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pwcorr lnw s expr, sig star(<span class="number">.05</span>)</span><br><span class="line"><span class="comment"># 对工资对数、教育年限于工龄之间的相关系数</span></span><br></pre></td></tr></table></figure>
+<p>其中，</p>
+<ul>
+<li><code>pwcorr</code> ： <code>pairwise correlation</code>，即两两相关；</li>
+<li>选择项 <code>sig</code> ：相关系数的显著性水平，即 <code>p-value</code>，列在相关系数的下方 ；</li>
+<li>选择项 <code>star (.05)</code> ：所有显著性水平小于或等于 5% 的相关系数打赏星号。</li>
+</ul>
+<p>Result:</p>
+<p><img src="https://s3.ax1x.com/2020/12/15/rKz6FH.png" alt="image-20201210170540089" style="zoom:80%;" /></p>
+<center>
+<p>Fig.1-6 Correlation coefficient</p>
+</center>
+<p>结果显示，<span class="math inline">\(\rm{ln} w\)</span> 与 <span class="math inline">\(s\)</span> 的相关系数为 0.5368，且在 1% 水平上显著（ <span class="math inline">\(p\)</span> 值为0.0022）；<span class="math inline">\(\rm{ln} w\)</span> 与 <span class="math inline">\(expr\)</span> 的相关系数为 -0.1132，但此相关关系也不显著（<span class="math inline">\(p-value\)</span> 为0.5514）</p></li>
+</ul>
+<h2 id="generate-new-variable">1.4 Generate new variable</h2>
+<h3 id="basic-operation">1.4.1 Basic operation</h3>
+<ul>
+<li>对数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">generate lns = log(s)</span><br><span class="line">g lns = log(s) <span class="comment"># 对数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>平方</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen s2 = s ^<span class="number">2</span> <span class="comment"># 平方项</span></span><br></pre></td></tr></table></figure></li>
+<li><p>互动项（乘法）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen exprs = s * expr <span class="comment"># s 与 expr 的互动项</span></span><br></pre></td></tr></table></figure></li>
+<li><p>指数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen w = exp(lnw) <span class="comment"># 指数</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="虚拟变量">1.4.2 虚拟变量</h3>
+<p>假设定义 <span class="math inline">\(s \geq 16\)</span> 为 ”受过高等教育“，并使用 变量 <span class="math inline">\(college\)</span> 来表示:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen colleg = (s &gt;= <span class="number">16</span>)</span><br></pre></td></tr></table></figure>
+<p>其中，括弧 <code>()</code> 表示对括弧中的表达式进行逻辑评估：如果此表达式为真，则取值为1；如果为假，则取值为0。</p>
+<ul>
+<li><p>变量重命名</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rename colleg college</span><br><span class="line">ren colleg college</span><br></pre></td></tr></table></figure></li>
+<li><p>变量重定义</p>
+<p>将 ”受过高等教育“的定义改为 <span class="math inline">\(s \geq 15\)</span>，但仍用 <span class="math inline">\(college\)</span> 作为变量名：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Method one</span></span><br><span class="line">drop college</span><br><span class="line">gen college = (s &gt;= <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method two</span></span><br><span class="line">replace college = (s &gt;= <span class="number">15</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>变量输入</p>
+<p>对于较长的变量，一一输入较为麻烦，，有如下简便方式：</p>
+<ul>
+<li><p>在变量 窗口双击需要的变量；</p></li>
+<li><p><span class="math inline">\(s1 - s5\)</span> 来选择这 5 个变量；</p></li>
+<li><p>用 <code>*</code> 来简化变量名的书写。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">drop s* <span class="comment"># 去掉所有以 s 开头的变量</span></span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h2 id="other">1.5 Other</h2>
+<h3 id="calculator">1.5.1 Calculator</h3>
+<p><code>Stata</code> 也可作为计算器来使用，命令格式为 <code>display expression</code>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display log(<span class="number">2</span>) <span class="comment"># 计算 ln2</span></span><br><span class="line">di log(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">dis <span class="number">2</span>^<span class="number">0.5</span> <span class="comment"># 计算 $\sqrt&#123;2&#125;$</span></span><br></pre></td></tr></table></figure>
+<h3 id="invoke-and-terminate-commands">1.5.2 Invoke and terminate commands</h3>
+<ul>
+<li>调用旧命令
+<ul>
+<li>使用键盘上的 <code>Pg Up</code> 和 <code>Pg Dn</code> 键；</li>
+<li>在历史命令窗口 <strong>单击</strong> 旧命令，将命令调入命令窗口；</li>
+<li>在历史命令窗口 <strong>双击</strong> 旧命令，再次执行此命令。</li>
+</ul></li>
+<li>停止执行当前执行命令
+<ul>
+<li>点击 <code>Break</code> 图标的快捷键；</li>
+<li>同时按住 <code>Ctrl + Break</code>。</li>
+</ul></li>
+</ul>
+<h3 id="log-file">1.5.3 Log file</h3>
+<p><code>Stata</code> 日志文件的扩展名为 <code>smcl</code>。可通过快捷键 <code>Log</code> 图标使用，也可通过输入如下命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log using today <span class="comment"># 在当前路径中生成一个名为 &#x27;today.smcl&#x27; 的日志文件</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"># Result:</span></span><br><span class="line"><span class="string">log using &quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Test\Test-log.smcl&quot;</span></span><br><span class="line"><span class="string">--------------------------------------------</span></span><br><span class="line"><span class="string">name:  &lt;unnamed&gt;</span></span><br><span class="line"><span class="string">log:  D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Test\Test-log.smcl</span></span><br><span class="line"><span class="string">log type:  smcl</span></span><br><span class="line"><span class="string">opened on:  10 Dec 2020, 19:10:30</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>暂时关闭日志</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log off</span><br></pre></td></tr></table></figure></li>
+<li><p>恢复使用日志</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log on</span><br></pre></td></tr></table></figure></li>
+<li><p>彻底退出日志</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log close</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="updata-stata-lib">1.5.4 Updata stata lib</h3>
+<p>更新 <code>Stata</code> 命令库（ <code>Stata "ado"</code>文件及其他可执行文件）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">updata <span class="built_in">all</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>非官方命令</p>
+<p>最流行的非官方命令下载平台为 <a href="https://ideas.repec.org/s/boc/bocode.html">统计软件成分</a> (Statistical Software Components, SSC)，从 <code>SCC</code> 下载 <code>Stata</code> 程序的命令为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scc install newcommand</span><br></pre></td></tr></table></figure>
+<p>如果非官方命令不是来自 <code>SSC</code>，则需要手工安装。只需要将所有相关文件下载到制定的 <code>Stata</code> 文件夹中即可（通常为 <code>ado\plus\</code>）。如果不清楚应把文件复制到哪个文件夹，可输入以下命令，显示 <code>Stata</code> 的系统路径（System directories）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sysdir</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. sysdir</span><br><span class="line">   STATA:  D:\Program files\Stata <span class="number">16</span>\</span><br><span class="line">    BASE:  D:\Program files\Stata <span class="number">16</span>\ado\base\</span><br><span class="line">    SITE:  D:\Program files\Stata <span class="number">16</span>\ado\site\</span><br><span class="line">    PLUS:  C:\Users\YangSu\ado\plus\ <span class="comment"># 复制到此文件夹</span></span><br><span class="line">PERSONAL:  C:\Users\YangSu\ado\personal\</span><br><span class="line">OLDPLACE:  c:\ado\</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="search-and-findit">1.5.5 Search and findit</h3>
+<ul>
+<li><p>Search command</p>
+<p>如果想使用某种估计方法，但不知道它是否存在，可输入命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">search keyword</span><br></pre></td></tr></table></figure>
+<p>此命令搜索 <code>Stata</code> 帮助文件、<code>Stata</code> 常见问题、<code>Stata</code> 案例、<code>Stata Journal</code>、<code>Stata Technical Bulletin</code>等。</p></li>
+<li><p>Findit keyword</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">findit keyword</span><br></pre></td></tr></table></figure>
+<p><code>findit</code>搜索范围更广，还包括 <code>Stata</code> 的网络资源。</p></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Class Notes</category>
+        <category>Econometrics</category>
+      </categories>
+      <tags>
+        <tag>Econometrics</tag>
+        <tag>stata</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Stata</title>
     <url>/2021/03/18/Stata/</url>
     <content><![CDATA[<h1 id="stata-data-operation">1 Stata data operation</h1>
@@ -16878,210 +17082,6 @@ Fig. Bootstrap 自举法
       </categories>
       <tags>
         <tag>Econometrics</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Stata Introduction</title>
-    <url>/2020/12/15/Stata-introduction/</url>
-    <content><![CDATA[<h1 id="stata-operation">1 Stata operation</h1>
-<h2 id="import-data">1.1 Import data</h2>
-<ul>
-<li><p>use</p>
-<p><code>grilic_small.dta</code> 文件的目录请根据自己的文件目录填写，数据文件可在陈强老师的网站下载，<a href="http://www.econometrics-stata.com/col.jsp?id=101">Click here</a>，选择《计量经济学及Stata应用》中的数据集下载。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">use <span class="string">&quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Data-Finished-bachelor\grilic_small.dta&quot;</span>, clear</span><br></pre></td></tr></table></figure></li>
-</ul>
-<a id="more"></a>
-<ul>
-<li><p>clear</p>
-<p>关闭一个数据集，以便使用另外一个数据集</p></li>
-<li><p><code>d</code>escribe</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看数据集中的变量名称、标签等</span></span><br><span class="line">describe <span class="keyword">or</span> d</span><br></pre></td></tr></table></figure></li>
-<li><p>set more off/on</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连续滚屏显示命令运行结果</span></span><br><span class="line"><span class="built_in">set</span> more off</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分页显示命令运行结果</span></span><br><span class="line"><span class="built_in">set</span> more on</span><br></pre></td></tr></table></figure></li>
-<li><p><code>l</code>ist</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看变量 s 和 lnw 的前 5 个数据</span></span><br><span class="line"><span class="built_in">list</span> s lnw <span class="keyword">in</span> <span class="number">1</span>/<span class="number">5</span> <span class="comment"># or</span></span><br><span class="line">l s lnw <span class="keyword">in</span> <span class="number">1</span>/<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 罗列第 11-15 个观测值</span></span><br><span class="line"><span class="built_in">list</span> ss lnw <span class="keyword">in</span> <span class="number">11</span>/<span class="number">15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出满足条件 ‘s&gt;=16&#x27; 的数据</span></span><br><span class="line"><span class="built_in">list</span> s lnw <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br><span class="line"><span class="comment"># &gt;=: 等于  &lt;=：小于等于  ==：等于  ~= or !=：不等于  =：赋值</span></span><br></pre></td></tr></table></figure></li>
-<li><p>drop / keep</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除满足 ’s&gt;=16&#x27; 的观测值</span></span><br><span class="line">drop <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只保留满足 &#x27;s&gt;=16&#x27; 的观测值</span></span><br><span class="line">keep <span class="keyword">if</span> s &gt;= <span class="number">16</span></span><br></pre></td></tr></table></figure>
-<p>注：Stata 并不提供 undo 功能，故需慎重删除数据，最好保留备份-</p></li>
-<li><p>sort / gsort</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将数据按照变量 s 的升序排列</span></span><br><span class="line">sort s</span><br><span class="line">lsit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 降序排列</span></span><br><span class="line">gsort -s</span><br><span class="line"><span class="built_in">list</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="plot">1.2 Plot</h2>
-<h3 id="直方图">1.3.1 直方图</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">histogram s, width(<span class="number">1</span>) frequency</span><br><span class="line">hist s, w(<span class="number">1</span>) freq</span><br><span class="line"><span class="comment"># histogram: 直方图,</span></span><br><span class="line"><span class="comment"># 选择项 &#x27;width(1)&#x27; 表示将组宽设为 1（否则将使用 Stata 根据样本容量计算的默认分组数）</span></span><br><span class="line"><span class="comment"># 选择项 ‘frequency&#x27; 表示将纵坐标定为频数（默认使用密度）</span></span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKz0OK.png" alt="image-20201210163044446" style="zoom:80%;" /></p>
-<center>
-Fig. 1-1 Histogram figure
-</center>
-<ul>
-<li>查看帮助文档</li>
-</ul>
-<p>对于任何 <code>Stata</code> 命令，只需要输入 <code>help command_name</code> 即可查看该命令的帮助文档，<strong>初学者应养成经常查看帮助文档的习惯</strong>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">help</span> histogram</span><br><span class="line">h hist</span><br><span class="line"><span class="comment"># 查看 histogram 命令的帮助文档</span></span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">histogram varname [<span class="keyword">if</span>] [<span class="keyword">in</span>] [weight] [, [continuous_opts | discrete_opts] options]</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[if], [in]: 条件操作</span></span><br><span class="line"><span class="string">[weight]: 权重</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[continuous_opts]: 连续型变量选择项</span></span><br><span class="line"><span class="string">[discrete_opts]: 离散型选择项</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">continuous_opts        Description</span></span><br><span class="line"><span class="string">----------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  bin(#)               set number of bins to #</span></span><br><span class="line"><span class="string">  width(#)             set width of bins to #</span></span><br><span class="line"><span class="string">  start(#)         	   set lower limit of first bin to #</span></span><br><span class="line"><span class="string">-------------------------------------------</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">discrete_opts          Description</span></span><br><span class="line"><span class="string">------------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  discrete             specify that data are discrete</span></span><br><span class="line"><span class="string">  width(#)             set width of bins to #</span></span><br><span class="line"><span class="string">  start(#)             set theoretical minimum value to #</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">options                Description</span></span><br><span class="line"><span class="string">-------------------------------------------</span></span><br><span class="line"><span class="string">Main</span></span><br><span class="line"><span class="string">  density               draw as density; the default</span></span><br><span class="line"><span class="string">  fraction              draw as fractions</span></span><br><span class="line"><span class="string">  frequency             draw as frequencies</span></span><br><span class="line"><span class="string">  percent               draw as percentages</span></span><br><span class="line"><span class="string">  bar_options           rendition of bars</span></span><br><span class="line"><span class="string">  binrescale  | recalculate bin sizes when by() is specified</span></span><br><span class="line"><span class="string">  addlabels             add height labels to bars</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Density plots</span></span><br><span class="line"><span class="string">  normal                  add a normal density to the graph</span></span><br><span class="line"><span class="string">  normopts(line_options)  affect rendition of normal density</span></span><br><span class="line"><span class="string">  kdensity     | add a kernel density estimate to the graph</span></span><br><span class="line"><span class="string">  kdenopts(kdensity_options) | affect rendition of kernel density</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Add plots</span></span><br><span class="line"><span class="string">  addplot(plot)           add other plots to the histogram</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h3 id="散点图">1.3.2 散点图</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scatter lnw s</span><br><span class="line">sc lnw s</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKzrwD.png" alt="image-20201210163409860" style="zoom:80%;" /></p>
-<center>
-Fig. 1-2 Scatter between lnw and s
-</center>
-<ul>
-<li>标签</li>
-</ul>
-<p>如果想在散点图上标注每个点对应于哪个观测值，可先定义变量 <span class="math inline">\(n\)</span>，表示第 <span class="math inline">\(n\)</span> 个观测值：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen n = _n</span><br><span class="line">scatter lnw s, mlabel(n) <span class="comment"># 选择变量 n 作为标签（mark label）</span></span><br></pre></td></tr></table></figure>
-<p>其中，<code>_n</code> 表示第 <span class="math inline">\(n\)</span> 个观测值。然后以变量作为每个点的标签来画散点图。结果如下：</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKzsTe.png" alt="image-20201210164351554" style="zoom:80%;" /></p>
-<center>
-Fig. 1-3 Scatter with mark label
-</center>
-<h3 id="核密度估计图">1.3.3 核密度估计图</h3>
-<p>直方图必然是不连续的，如果想得到密度函数的连续估计，可输入命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">kdensity lnw, normal normop (lpattern (dash))</span><br><span class="line">kdensity lnw, normal normop (lp (dash))</span><br></pre></td></tr></table></figure>
-<p>其中</p>
-<ul>
-<li><code>kdensity</code>：核密度估计（kernel density estimation）；</li>
-<li><code>normal</code>：画正态分布的密度函数作为对比；</li>
-<li><code>normop (lp (Dash))</code>：将正态密度用虚线来画。
-<ul>
-<li><code>normop</code>：normal options</li>
-<li><code>lpattern</code>： line pattern.</li>
-</ul></li>
-</ul>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKzRSI.md.png" alt="image-20201210224215508" style="zoom:80%;" /></p>
-<center>
-Fig. 1-4 Kernel density estimate
-</center>
-<h2 id="statistical-analysis">1.3 Statistical analysis</h2>
-<ul>
-<li><p>统计特征</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">summarize s</span><br><span class="line">su s</span><br><span class="line"></span><br><span class="line"><span class="built_in">sum</span> lnw, detail <span class="comment"># 显示更多统计指标，如偏度、峰度</span></span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKzDeO.png" alt="image-20201210164927010" style="zoom:80%;" /></p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKzgfA.png" alt="image-20201210223033995" style="zoom:80%;" /></p>
-<center>
-<p>Fig. 1-4 Statistical description</p>
-</center>
-<p>显示了变量 <span class="math inline">\(s\)</span> 的样本容量、平均值、标准差、最小值于最大值。如 <strong>不指明变量</strong>，则显示 <strong>所有变量</strong> 的统计指标。</p></li>
-<li><p>经验累计分布函数（Empirical cumulative distribution function）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tabulate s <span class="comment"># 显示 s 的经验累积分布番薯</span></span><br><span class="line">ta s</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKzwy6.png" alt="image-20201210165710687" style="zoom:80%;" /></p>
-<center>
-<p>Fig. 1-5 Empirical cummlative distribution</p>
-</center>
-<p>其中，<code>Freq</code> 表示频数，<code>Percent</code> 表示百分比，而 <code>Cum.</code> 表示累积百分比。</p></li>
-<li><p>相关系数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pwcorr lnw s expr, sig star(<span class="number">.05</span>)</span><br><span class="line"><span class="comment"># 对工资对数、教育年限于工龄之间的相关系数</span></span><br></pre></td></tr></table></figure>
-<p>其中，</p>
-<ul>
-<li><code>pwcorr</code> ： <code>pairwise correlation</code>，即两两相关；</li>
-<li>选择项 <code>sig</code> ：相关系数的显著性水平，即 <code>p-value</code>，列在相关系数的下方 ；</li>
-<li>选择项 <code>star (.05)</code> ：所有显著性水平小于或等于 5% 的相关系数打赏星号。</li>
-</ul>
-<p>Result:</p>
-<p><img src="https://s3.ax1x.com/2020/12/15/rKz6FH.png" alt="image-20201210170540089" style="zoom:80%;" /></p>
-<center>
-<p>Fig.1-6 Correlation coefficient</p>
-</center>
-<p>结果显示，<span class="math inline">\(\rm{ln} w\)</span> 与 <span class="math inline">\(s\)</span> 的相关系数为 0.5368，且在 1% 水平上显著（ <span class="math inline">\(p\)</span> 值为0.0022）；<span class="math inline">\(\rm{ln} w\)</span> 与 <span class="math inline">\(expr\)</span> 的相关系数为 -0.1132，但此相关关系也不显著（<span class="math inline">\(p-value\)</span> 为0.5514）</p></li>
-</ul>
-<h2 id="generate-new-variable">1.4 Generate new variable</h2>
-<h3 id="basic-operation">1.4.1 Basic operation</h3>
-<ul>
-<li>对数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">generate lns = log(s)</span><br><span class="line">g lns = log(s) <span class="comment"># 对数</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>平方</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen s2 = s ^<span class="number">2</span> <span class="comment"># 平方项</span></span><br></pre></td></tr></table></figure></li>
-<li><p>互动项（乘法）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen exprs = s * expr <span class="comment"># s 与 expr 的互动项</span></span><br></pre></td></tr></table></figure></li>
-<li><p>指数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen w = exp(lnw) <span class="comment"># 指数</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="虚拟变量">1.4.2 虚拟变量</h3>
-<p>假设定义 <span class="math inline">\(s \geq 16\)</span> 为 ”受过高等教育“，并使用 变量 <span class="math inline">\(college\)</span> 来表示:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gen colleg = (s &gt;= <span class="number">16</span>)</span><br></pre></td></tr></table></figure>
-<p>其中，括弧 <code>()</code> 表示对括弧中的表达式进行逻辑评估：如果此表达式为真，则取值为1；如果为假，则取值为0。</p>
-<ul>
-<li><p>变量重命名</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rename colleg college</span><br><span class="line">ren colleg college</span><br></pre></td></tr></table></figure></li>
-<li><p>变量重定义</p>
-<p>将 ”受过高等教育“的定义改为 <span class="math inline">\(s \geq 15\)</span>，但仍用 <span class="math inline">\(college\)</span> 作为变量名：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Method one</span></span><br><span class="line">drop college</span><br><span class="line">gen college = (s &gt;= <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Method two</span></span><br><span class="line">replace college = (s &gt;= <span class="number">15</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>变量输入</p>
-<p>对于较长的变量，一一输入较为麻烦，，有如下简便方式：</p>
-<ul>
-<li><p>在变量 窗口双击需要的变量；</p></li>
-<li><p><span class="math inline">\(s1 - s5\)</span> 来选择这 5 个变量；</p></li>
-<li><p>用 <code>*</code> 来简化变量名的书写。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">drop s* <span class="comment"># 去掉所有以 s 开头的变量</span></span><br></pre></td></tr></table></figure></li>
-</ul></li>
-</ul>
-<h2 id="other">1.5 Other</h2>
-<h3 id="calculator">1.5.1 Calculator</h3>
-<p><code>Stata</code> 也可作为计算器来使用，命令格式为 <code>display expression</code>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">display log(<span class="number">2</span>) <span class="comment"># 计算 ln2</span></span><br><span class="line">di log(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">dis <span class="number">2</span>^<span class="number">0.5</span> <span class="comment"># 计算 $\sqrt&#123;2&#125;$</span></span><br></pre></td></tr></table></figure>
-<h3 id="invoke-and-terminate-commands">1.5.2 Invoke and terminate commands</h3>
-<ul>
-<li>调用旧命令
-<ul>
-<li>使用键盘上的 <code>Pg Up</code> 和 <code>Pg Dn</code> 键；</li>
-<li>在历史命令窗口 <strong>单击</strong> 旧命令，将命令调入命令窗口；</li>
-<li>在历史命令窗口 <strong>双击</strong> 旧命令，再次执行此命令。</li>
-</ul></li>
-<li>停止执行当前执行命令
-<ul>
-<li>点击 <code>Break</code> 图标的快捷键；</li>
-<li>同时按住 <code>Ctrl + Break</code>。</li>
-</ul></li>
-</ul>
-<h3 id="log-file">1.5.3 Log file</h3>
-<p><code>Stata</code> 日志文件的扩展名为 <code>smcl</code>。可通过快捷键 <code>Log</code> 图标使用，也可通过输入如下命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log using today <span class="comment"># 在当前路径中生成一个名为 &#x27;today.smcl&#x27; 的日志文件</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"># Result:</span></span><br><span class="line"><span class="string">log using &quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Test\Test-log.smcl&quot;</span></span><br><span class="line"><span class="string">--------------------------------------------</span></span><br><span class="line"><span class="string">name:  &lt;unnamed&gt;</span></span><br><span class="line"><span class="string">log:  D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Test\Test-log.smcl</span></span><br><span class="line"><span class="string">log type:  smcl</span></span><br><span class="line"><span class="string">opened on:  10 Dec 2020, 19:10:30</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>暂时关闭日志</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log off</span><br></pre></td></tr></table></figure></li>
-<li><p>恢复使用日志</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log on</span><br></pre></td></tr></table></figure></li>
-<li><p>彻底退出日志</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">log close</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="updata-stata-lib">1.5.4 Updata stata lib</h3>
-<p>更新 <code>Stata</code> 命令库（ <code>Stata "ado"</code>文件及其他可执行文件）。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">updata <span class="built_in">all</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>非官方命令</p>
-<p>最流行的非官方命令下载平台为 <a href="https://ideas.repec.org/s/boc/bocode.html">统计软件成分</a> (Statistical Software Components, SSC)，从 <code>SCC</code> 下载 <code>Stata</code> 程序的命令为：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">scc install newcommand</span><br></pre></td></tr></table></figure>
-<p>如果非官方命令不是来自 <code>SSC</code>，则需要手工安装。只需要将所有相关文件下载到制定的 <code>Stata</code> 文件夹中即可（通常为 <code>ado\plus\</code>）。如果不清楚应把文件复制到哪个文件夹，可输入以下命令，显示 <code>Stata</code> 的系统路径（System directories）：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sysdir</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">. sysdir</span><br><span class="line">   STATA:  D:\Program files\Stata <span class="number">16</span>\</span><br><span class="line">    BASE:  D:\Program files\Stata <span class="number">16</span>\ado\base\</span><br><span class="line">    SITE:  D:\Program files\Stata <span class="number">16</span>\ado\site\</span><br><span class="line">    PLUS:  C:\Users\YangSu\ado\plus\ <span class="comment"># 复制到此文件夹</span></span><br><span class="line">PERSONAL:  C:\Users\YangSu\ado\personal\</span><br><span class="line">OLDPLACE:  c:\ado\</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="search-and-findit">1.5.5 Search and findit</h3>
-<ul>
-<li><p>Search command</p>
-<p>如果想使用某种估计方法，但不知道它是否存在，可输入命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">search keyword</span><br></pre></td></tr></table></figure>
-<p>此命令搜索 <code>Stata</code> 帮助文件、<code>Stata</code> 常见问题、<code>Stata</code> 案例、<code>Stata Journal</code>、<code>Stata Technical Bulletin</code>等。</p></li>
-<li><p>Findit keyword</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">findit keyword</span><br></pre></td></tr></table></figure>
-<p><code>findit</code>搜索范围更广，还包括 <code>Stata</code> 的网络资源。</p></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Class Notes</category>
-        <category>Econometrics</category>
-      </categories>
-      <tags>
-        <tag>Econometrics</tag>
-        <tag>stata</tag>
       </tags>
   </entry>
   <entry>
@@ -20340,11 +20340,11 @@ Topic_KL divergence
     <url>/2021/09/01/test/</url>
     <content><![CDATA[<p>This is a test file!</p>
 <a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(<span class="string">&#x27;This is a test file&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><span id="inline-yellow">Yellow block</span></p>
 <p><span id="inline-blue">Blue block</span></p>
 <p><span id="inline-green">Green block</span></p>
 <p><span id="inline-purple">Purple block</span></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">print(<span class="string">&#x27;This is a test file&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p id="div-border-left-red">
 左侧边框红色块级
 </p>
