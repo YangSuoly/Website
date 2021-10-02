@@ -264,82 +264,82 @@ memory usage: 10.9+ MB</code></pre></li>
 <li><p>Select data</p>
 <p>我们选取评论相关的数据作为此次处理对象。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">comments = data_copy.iloc[:, <span class="number">1</span>:<span class="number">7</span>]</span><br><span class="line">comments.head(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p>Results:</p></li>
-</ul>
+<p>Results:</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
 <th>
 </th>
 <th>
-id
+<p>id</p>
 </th>
 <th>
-guid
+<p>guid</p>
 </th>
 <th>
-nickname
+<p>nickname</p>
 </th>
 <th>
-content
+<p>content</p>
 </th>
 <th>
-creationTime
+<p>creationTime</p>
 </th>
 <th>
-score
+<p>score</p>
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>
-0
+<p>0</p>
 </th>
 <td>
-1.582772e+10
+<p>1.582772e+10</p>
 </td>
 <td>
-d495506f3df9fa9fe5af352c8ecbea3f
+<p>d495506f3df9fa9fe5af352c8ecbea3f</p>
 </td>
 <td>
-****w
+<p>****w</p>
 </td>
 <td>
-京东自营618屯货。图方便快捷，一直在京东自营购买牛肉。这次回购的牛腱子，是用来做干切牛肉。...
+<p>京东自营618屯货。图方便快捷，一直在京东自营购买牛肉。这次回购的牛腱子，是用来做干切牛肉。...</p>
 </td>
 <td>
-2021-06-18 15:30:41
+<p>2021-06-18 15:30:41</p>
 </td>
 <td>
-5.0
+<p>5.0</p>
 </td>
 </tr>
 <tr>
 <th>
-1
+<p>1</p>
 </th>
 <td>
-1.582486e+10
+<p>1.582486e+10</p>
 </td>
 <td>
-39964bbdefbf80e9b48fd004531f5665
+<p>39964bbdefbf80e9b48fd004531f5665</p>
 </td>
 <td>
-小***3
+<p>小***3</p>
 </td>
 <td>
-感谢感谢京东商城提供这么好的美食产品，好吃不贵经济实惠
+<p>感谢感谢京东商城提供这么好的美食产品，好吃不贵经济实惠</p>
 </td>
 <td>
-2021-06-18 05:53:15
+<p>2021-06-18 05:53:15</p>
 </td>
 <td>
-5.0
+<p>5.0</p>
 </td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ul>
 <h2 id="word-frequency-analysis">4.2 Word frequency analysis</h2>
 <h3 id="word-frequency">4.2.1 Word frequency</h3>
 <ul>
@@ -13728,120 +13728,6 @@ a+\rlap{\overbrace{\phantom{b+c+d}}^m}b+\underbrace{c+d+e}_n +f
       </tags>
   </entry>
   <entry>
-    <title>Markdown</title>
-    <url>/2021/01/19/Markdown/</url>
-    <content><![CDATA[<h1 id="markdown">Markdown</h1>
-<h2 id="title">1. Title</h2>
-<h3 id="三级标题">三级标题</h3>
-<h4 id="四级标题">四级标题</h4>
-<p>格式及快捷键如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="font">2. Font</h2>
-<p><strong>加粗 </strong></p>
-<p><em>斜体</em></p>
-<p><u>下划线</u></p>
-<p><del>删除线</del></p>
-<p>==高亮==</p>
-<p><code>底纹</code></p>
-<p>$ _i = w x_i + b $ <span class="math display">\[
-\hat{y}_i = w x_i + b
-\]</span></p>
-<p>格式及快捷键如下（其中 <code>#</code> 开头的行为注释行）：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**加粗 ** (快捷键 ctrl + B)</span><br><span class="line">*斜体* (快捷键 ctrl + I)</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;  (快捷键 ctrl + U)</span><br><span class="line">~~删除线~~</span><br><span class="line">==高亮==</span><br><span class="line">`底纹`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行内公式 (In-line formula)</span></span><br><span class="line">$ \hat&#123;y&#125;_i = w x_i + b $ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示公式 (Display formula)</span></span><br><span class="line">$$</span><br><span class="line">\hat&#123;y&#125;_i = w x_i + b</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-<h2 id="citation">3. Citation</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用语法</span></span><br><span class="line">&gt; Author</span><br><span class="line">&gt;&gt; Author</span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<blockquote>
-<p>Author</p>
-<blockquote>
-<p>Author</p>
-</blockquote>
-</blockquote>
-<h2 id="分割线">4. 分割线</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># 分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
-<hr />
-<hr />
-<h2 id="inset-image">5. Inset image</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在线图片/本地图片</span></span><br><span class="line">![My image1](/image/me.png) --image <span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczP2Q.png" /></p>
-<center>
-Fig. 1 Image demo
-</center>
-<p>注：Typora 支持直接复制粘贴图片，可以省去敲格式的环节，但注意在复制粘贴之前将图片储存的设置为自动保存，设置如下：</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczkKs.png" /></p>
-<center>
-Fig. 2 Typora image auto-save setting
-</center>
-<h2 id="link">6. Link</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 超链接语法，其中 [] 中为文字内容，()内为想要插入的连接</span></span><br><span class="line">[My link](https://www.bilibili.com/)</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.bilibili.com/">My bilibili</a></p>
-<h2 id="list">7. List</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 无序列表</span></span><br><span class="line">- 目录<span class="number">1</span></span><br><span class="line">- 目录<span class="number">2</span></span><br><span class="line">- 目录<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序列表，在目录 4 后键入回车，会自动生成有序列表</span></span><br><span class="line"><span class="number">1.</span> 目录<span class="number">4</span></span><br><span class="line"><span class="number">2.</span> 目录<span class="number">5</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>目录1</li>
-<li>目录2</li>
-<li>目录3</li>
-</ul>
-<ol type="1">
-<li>目录4</li>
-<li>目录5</li>
-</ol>
-<h2 id="grid">8. Grid</h2>
-<p>在 Typora 中按 <code>Ctrl + T</code> 快捷键，会出现对话框，便可以快速插入表格，如下：</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczivj.png" />)</p>
-<center>
-Fig. 3 Insert table
-</center>
-<table>
-<thead>
-<tr class="header">
-<th>成绩</th>
-<th>语文</th>
-<th>数学</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>45</td>
-<td>35</td>
-</tr>
-</tbody>
-</table>
-<h2 id="段落格式">9. 段落格式</h2>
-<p>以下为一下 <code>html</code> 语法，<code>Markdown</code> 可以兼容 <span class="math inline">\(\TeX\)</span> 数学公式和 <code>html</code> 语法，可以扩充已有的功能。</p>
-<ul>
-<li>居中</li>
-</ul>
-<center>
-center
-</center>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span> 内容居中 <span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>字体</li>
-</ul>
-<p><font face = "黑体">我是黑体</font></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span> = <span class="string">&quot;黑体&quot;</span>&gt;</span>我是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><font face="黑体" size=10>我是黑体10号字体</font></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 字体颜色更改为红色</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Html 标签</p>
-<p><img src="https://s3.ax1x.com/2021/01/19/sczC8g.png" /></p>
-<center>
-<p>Fig. 4 HTML Label</p>
-</center></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Markdown</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Matplotlib</title>
     <url>/2020/11/30/Matplotlib/</url>
     <content><![CDATA[<h1 id="introduction">1 Introduction</h1>
@@ -14547,6 +14433,120 @@ fig 5-5 Add text on figure
       </tags>
   </entry>
   <entry>
+    <title>Markdown</title>
+    <url>/2021/01/19/Markdown/</url>
+    <content><![CDATA[<h1 id="markdown">Markdown</h1>
+<h2 id="title">1. Title</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<p>格式及快捷键如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Markdown</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 1. Title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 四级标题</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="font">2. Font</h2>
+<p><strong>加粗 </strong></p>
+<p><em>斜体</em></p>
+<p><u>下划线</u></p>
+<p><del>删除线</del></p>
+<p>==高亮==</p>
+<p><code>底纹</code></p>
+<p>$ _i = w x_i + b $ <span class="math display">\[
+\hat{y}_i = w x_i + b
+\]</span></p>
+<p>格式及快捷键如下（其中 <code>#</code> 开头的行为注释行）：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**加粗 ** (快捷键 ctrl + B)</span><br><span class="line">*斜体* (快捷键 ctrl + I)</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;  (快捷键 ctrl + U)</span><br><span class="line">~~删除线~~</span><br><span class="line">==高亮==</span><br><span class="line">`底纹`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行内公式 (In-line formula)</span></span><br><span class="line">$ \hat&#123;y&#125;_i = w x_i + b $ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示公式 (Display formula)</span></span><br><span class="line">$$</span><br><span class="line">\hat&#123;y&#125;_i = w x_i + b</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<h2 id="citation">3. Citation</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 引用语法</span></span><br><span class="line">&gt; Author</span><br><span class="line">&gt;&gt; Author</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<blockquote>
+<p>Author</p>
+<blockquote>
+<p>Author</p>
+</blockquote>
+</blockquote>
+<h2 id="分割线">4. 分割线</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment"># 分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+<hr />
+<hr />
+<h2 id="inset-image">5. Inset image</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在线图片/本地图片</span></span><br><span class="line">![My image1](/image/me.png) --image <span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczP2Q.png" /></p>
+<center>
+Fig. 1 Image demo
+</center>
+<p>注：Typora 支持直接复制粘贴图片，可以省去敲格式的环节，但注意在复制粘贴之前将图片储存的设置为自动保存，设置如下：</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczkKs.png" /></p>
+<center>
+Fig. 2 Typora image auto-save setting
+</center>
+<h2 id="link">6. Link</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 超链接语法，其中 [] 中为文字内容，()内为想要插入的连接</span></span><br><span class="line">[My link](https://www.bilibili.com/)</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.bilibili.com/">My bilibili</a></p>
+<h2 id="list">7. List</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 无序列表</span></span><br><span class="line">- 目录<span class="number">1</span></span><br><span class="line">- 目录<span class="number">2</span></span><br><span class="line">- 目录<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 有序列表，在目录 4 后键入回车，会自动生成有序列表</span></span><br><span class="line"><span class="number">1.</span> 目录<span class="number">4</span></span><br><span class="line"><span class="number">2.</span> 目录<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>目录1</li>
+<li>目录2</li>
+<li>目录3</li>
+</ul>
+<ol type="1">
+<li>目录4</li>
+<li>目录5</li>
+</ol>
+<h2 id="grid">8. Grid</h2>
+<p>在 Typora 中按 <code>Ctrl + T</code> 快捷键，会出现对话框，便可以快速插入表格，如下：</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczivj.png" />)</p>
+<center>
+Fig. 3 Insert table
+</center>
+<table>
+<thead>
+<tr class="header">
+<th>成绩</th>
+<th>语文</th>
+<th>数学</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>45</td>
+<td>35</td>
+</tr>
+</tbody>
+</table>
+<h2 id="段落格式">9. 段落格式</h2>
+<p>以下为一下 <code>html</code> 语法，<code>Markdown</code> 可以兼容 <span class="math inline">\(\TeX\)</span> 数学公式和 <code>html</code> 语法，可以扩充已有的功能。</p>
+<ul>
+<li>居中</li>
+</ul>
+<center>
+center
+</center>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span> 内容居中 <span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>字体</li>
+</ul>
+<p><font face = "黑体">我是黑体</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span> = <span class="string">&quot;黑体&quot;</span>&gt;</span>我是黑体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><font face="黑体" size=10>我是黑体10号字体</font></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 字体颜色更改为红色</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span> <span class="attr">size</span>=<span class="string">10</span>&gt;</span>我是黑体10号字体<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Html 标签</p>
+<p><img src="https://s3.ax1x.com/2021/01/19/sczC8g.png" /></p>
+<center>
+<p>Fig. 4 HTML Label</p>
+</center></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Numpy</title>
     <url>/2020/11/29/Numpy/</url>
     <content><![CDATA[<h1 id="numpy-version">1 NumPy version</h1>
@@ -14628,20 +14628,6 @@ fig 5-5 Add text on figure
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Numpy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PDF_test</title>
-    <url>/2020/12/01/PDF-test/</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -14785,6 +14771,20 @@ fig. 1 difference of ignoring index
         <tag>Python</tag>
         <tag>Data analysis</tag>
         <tag>Pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PDF_test</title>
+    <url>/2020/12/01/PDF-test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;% pdf https://yangsuoly.com/file/Latex-Notes.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -15930,104 +15930,6 @@ Fig. 1-2 集合的布尔运算
       </tags>
   </entry>
   <entry>
-    <title>Pytorch-1-Introduction</title>
-    <url>/2021/08/03/Pytorch-1-Introduction/</url>
-    <content><![CDATA[<p>Statement: This series of post records the personal notes and experiences of learning the <a href="https://www.bilibili.com/">BiliBili</a> video tutorial <a href="https://www.bilibili.com/video/BV12741177Cu?p=1">"Pytorch 入门学习"</a>, most of code and pictures are from the courseware <a href="https://github.com/ZeweiChu/PyTorch-Course">PyTorch-Course</a>. All posted content is for personal study only, do not use for other purposes. If there is infringement, please contact <code>e-mail:yangsuoly@qq.com</code> to delete. <a id="more"></a></p>
-<h1 id="introduction-to-deep-learning-models">1. Introduction to deep learning models</h1>
-<h2 id="definition">1.1 Definition</h2>
-<p><strong>Q</strong>: What is machine learning?<br />
-<strong>A</strong>: Study of algorithms that: - Improve their <em>performance</em> P - At some <em>task</em> T - With <em>experience</em> E</p>
-<p><strong>Conclusion</strong>: Modeling, Inference, learning <img src="https://z3.ax1x.com/2021/08/03/fi7u38.png" /></p>
-<ul>
-<li>Modeling: define score function</li>
-<li>Inference: solve argmax</li>
-<li>Learning: choose w</li>
-</ul>
-<p><span class="math display">\[ \text{classify} (x, w) = \mathop{\text{argmax}}\limits_{y} \  \text{score} (x, y, w)\]</span></p>
-<p><strong>Q</strong>: What is deep learning? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7KgS.md.png" /></p>
-<p><strong>Q</strong>: What is neural network? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7Mjg.png" /></p>
-<h2 id="activation-function">1.2 Activation function</h2>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7GEn.png" /></p>
-<h3 id="commonly-used-activation-functions">1.2.1 Commonly used activation functions:</h3>
-<ul>
-<li><p><span class="math inline">\(sigmoid\)</span>: <span class="math display">\[
-\sigma(x) = \frac{1}{1+e^{-x}}
-\]</span></p></li>
-<li><p><span class="math inline">\(tanh\)</span>: <span class="math display">\[
-tanh(x) = 2 \sigma(2x) - 1
-\]</span></p></li>
-<li><p><span class="math inline">\(ReLU\)</span>: <span class="math display">\[
-ReLU(x) = max(0, x)
-\]</span></p></li>
-<li><p><span class="math inline">\(Softmax\)</span>: <span class="math display">\[
-z_i \rightarrow \frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}}
-\]</span></p></li>
-</ul>
-<h3 id="code-implementation">1.2.2 Code implementation</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = torch.linspace(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">200</span>)</span><br><span class="line">x = Variable(x)</span><br><span class="line">x_np = x.data.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># four activation function</span></span><br><span class="line">y_relu = F.relu(x).data.numpy()</span><br><span class="line">y_sigmoid = torch.sigmoid(x).data.numpy()</span><br><span class="line">y_tanh = F.tanh(x).data.numpy()</span><br><span class="line">y_softplus = F.softplus(x).data.numpy()</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plt.subplot(<span class="number">221</span>)</span><br><span class="line">plt.plot(x_np, y_relu, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;relu&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1</span>, <span class="number">5</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">222</span>)</span><br><span class="line">plt.plot(x_np, y_sigmoid, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;sigmoid&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">223</span>)</span><br><span class="line">plt.plot(x_np, y_tanh, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;tanh&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">224</span>)</span><br><span class="line">plt.plot(x_np, y_softplus, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;softplus&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">6</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7VAI.png" /></p>
-<h2 id="examples-of-nn">1.3 examples of NN</h2>
-<ul>
-<li><p>Standard feedforward NN <img src="https://z3.ax1x.com/2021/08/03/fi71Bj.png" /></p></li>
-<li><p>Convolutional NN <img src="https://z3.ax1x.com/2021/08/03/fi7JNq.png" /></p></li>
-<li><p>Recurrent NN <img src="https://z3.ax1x.com/2021/08/03/fi7ZNt.png" /></p></li>
-<li><p>Seq2Seq with Attention <img src="https://z3.ax1x.com/2021/08/03/fi7Y40.png" /> <strong>Reference</strong>: <a href="https://arxiv.org/abs/1508.04025">Effective Approaches to Attention-based Neural Machine Translation</a></p></li>
-</ul>
-<h1 id="introduction-to-pytorch">2. Introduction to PyTorch</h1>
-<h2 id="framework-for-deep-learning">2.1 Framework for deep learning</h2>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7U3T.png" /></p>
-<p>Difference between PyTorch and Tensorflow: - PyTorch: 动态计算图 Dynamic Computation Graph - Tensorflow: 静态计算图 Static Computation Graph</p>
-<p>PyTorch 代码通俗易懂，非常接近 Python 原生代码，不会让人感觉是完全在学习一门新的语言。拥有 Facebook 支持，社区活跃。</p>
-<p><strong>Q</strong>: What does the PyTorch do? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7agU.png" /></p>
-<h2 id="some-interesting-project-with-pytorch">2.2. Some interesting project with PyTorch</h2>
-<ul>
-<li><p>ResNet <img src="https://z3.ax1x.com/2021/08/03/fi7e4P.md.png" /> Image classification: <a href="https://github.com/floydhub/imagenet">ResNet</a></p></li>
-<li><p>Object Detection <img src="https://z3.ax1x.com/2021/08/03/fi7n9f.md.png" /> Project address: <a href="https://github.com/amdegroot/ssd.pytorch">Here</a></p></li>
-<li><p>Image Style Transfer <img src="https://z3.ax1x.com/2021/08/03/fi7Db9.md.png" /> Project address: <a href="https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer">Here</a></p></li>
-<li><p>CycleGAN <img src="https://z3.ax1x.com/2021/08/03/fi7luQ.png" /> Project address: <a href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">Here</a></p></li>
-<li><p>Image Captioning <img src="https://z3.ax1x.com/2021/08/03/fi7sER.md.png" /> Project address: <a href="https://github.com/ruotianluo/ImageCaptioning.pytorch">Here</a></p></li>
-<li><p>Sentiment Analysis <img src="https://z3.ax1x.com/2021/08/03/fi7dvF.png" /> Project address: <a href="https://github.com/bentrevett/pytorch-sentiment-analysis">Here</a></p></li>
-<li><p>Question Answering <img src="https://z3.ax1x.com/2021/08/03/fi7yU1.png" /> Project address: <a href="https://github.com/allenai/document-qa">Here</a></p></li>
-<li><p>Translation: OpenNMT-py <img src="https://z3.ax1x.com/2021/08/03/fi7BDJ.png" /> Project address: <a href="https://github.com/OpenNMT/OpenNMT-py">Here</a></p></li>
-<li><p>ChatBot <img src="https://z3.ax1x.com/2021/08/03/fi764x.png" /> Project address: <a href="https://github.com/czs0x55aa/pytorch-chatbot">Here</a></p></li>
-<li><p>Deep Reinforcement Learning</p>
-<p>Project address: <a href="https://github.com/jingweiz/pytorch-rl">Project 1</a>, <a href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">Project 2</a></p></li>
-</ul>
-<h2 id="how-to-learn-pytorch">2.3 How to learn PyTorch</h2>
-<ul>
-<li>Basics of deep learning;</li>
-<li>Pytorch official <a href="https://pytorch.org/tutorials/">tutorial</a>;</li>
-<li>Learn tutorials on GitHub and various blogs;</li>
-<li>Documentation and <a href="https://discuss.pytorch.org/">BBS</a></li>
-<li>Re-creat the open source PyTorch project;</li>
-<li>Read papers about deep learning model and implement them;</li>
-<li>Create your own model.</li>
-</ul>
-<h1 id="note-content">3. Note content</h1>
-<ol type="1">
-<li>Pytorch framework with autograd introduction, simple forward neural networks;</li>
-<li>Word vector;</li>
-<li>Image classification, CNN, Transfer learning;</li>
-<li>Language Model, Sentiment Classification, RNN, LSTM, GRU;</li>
-<li>Translation Model, Seq2Seq, Attention;</li>
-<li>Reading Comprehension, EIMo, BERT, GPT-2;</li>
-<li>ChatBot;</li>
-<li>GAN, Face generation, Style Transfer.</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Notes</category>
-        <category>Python module</category>
-        <category>Pytorch</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Deep learning</tag>
-        <tag>Pytorch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pytorch-2-Autogradient</title>
     <url>/2021/08/04/Pytorch-2-Autogradient/</url>
     <content><![CDATA[<h1 id="什么是pytorch">1. 什么是PyTorch?</h1>
@@ -16284,6 +16186,104 @@ array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
         True,  True, False,  True,  True,  True,  True,  True,  True,        
         True,  True, False,  True,  True,  True,  True,  True,  True,        
         True])</code></pre>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Python module</category>
+        <category>Pytorch</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Deep learning</tag>
+        <tag>Pytorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytorch-1-Introduction</title>
+    <url>/2021/08/03/Pytorch-1-Introduction/</url>
+    <content><![CDATA[<p>Statement: This series of post records the personal notes and experiences of learning the <a href="https://www.bilibili.com/">BiliBili</a> video tutorial <a href="https://www.bilibili.com/video/BV12741177Cu?p=1">"Pytorch 入门学习"</a>, most of code and pictures are from the courseware <a href="https://github.com/ZeweiChu/PyTorch-Course">PyTorch-Course</a>. All posted content is for personal study only, do not use for other purposes. If there is infringement, please contact <code>e-mail:yangsuoly@qq.com</code> to delete. <a id="more"></a></p>
+<h1 id="introduction-to-deep-learning-models">1. Introduction to deep learning models</h1>
+<h2 id="definition">1.1 Definition</h2>
+<p><strong>Q</strong>: What is machine learning?<br />
+<strong>A</strong>: Study of algorithms that: - Improve their <em>performance</em> P - At some <em>task</em> T - With <em>experience</em> E</p>
+<p><strong>Conclusion</strong>: Modeling, Inference, learning <img src="https://z3.ax1x.com/2021/08/03/fi7u38.png" /></p>
+<ul>
+<li>Modeling: define score function</li>
+<li>Inference: solve argmax</li>
+<li>Learning: choose w</li>
+</ul>
+<p><span class="math display">\[ \text{classify} (x, w) = \mathop{\text{argmax}}\limits_{y} \  \text{score} (x, y, w)\]</span></p>
+<p><strong>Q</strong>: What is deep learning? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7KgS.md.png" /></p>
+<p><strong>Q</strong>: What is neural network? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7Mjg.png" /></p>
+<h2 id="activation-function">1.2 Activation function</h2>
+<p><img src="https://z3.ax1x.com/2021/08/03/fi7GEn.png" /></p>
+<h3 id="commonly-used-activation-functions">1.2.1 Commonly used activation functions:</h3>
+<ul>
+<li><p><span class="math inline">\(sigmoid\)</span>: <span class="math display">\[
+\sigma(x) = \frac{1}{1+e^{-x}}
+\]</span></p></li>
+<li><p><span class="math inline">\(tanh\)</span>: <span class="math display">\[
+tanh(x) = 2 \sigma(2x) - 1
+\]</span></p></li>
+<li><p><span class="math inline">\(ReLU\)</span>: <span class="math display">\[
+ReLU(x) = max(0, x)
+\]</span></p></li>
+<li><p><span class="math inline">\(Softmax\)</span>: <span class="math display">\[
+z_i \rightarrow \frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}}
+\]</span></p></li>
+</ul>
+<h3 id="code-implementation">1.2.2 Code implementation</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = torch.linspace(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">200</span>)</span><br><span class="line">x = Variable(x)</span><br><span class="line">x_np = x.data.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># four activation function</span></span><br><span class="line">y_relu = F.relu(x).data.numpy()</span><br><span class="line">y_sigmoid = torch.sigmoid(x).data.numpy()</span><br><span class="line">y_tanh = F.tanh(x).data.numpy()</span><br><span class="line">y_softplus = F.softplus(x).data.numpy()</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plt.subplot(<span class="number">221</span>)</span><br><span class="line">plt.plot(x_np, y_relu, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;relu&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1</span>, <span class="number">5</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">222</span>)</span><br><span class="line">plt.plot(x_np, y_sigmoid, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;sigmoid&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">223</span>)</span><br><span class="line">plt.plot(x_np, y_tanh, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;tanh&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">224</span>)</span><br><span class="line">plt.plot(x_np, y_softplus, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;softplus&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">6</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>Result:</p>
+<p><img src="https://z3.ax1x.com/2021/08/03/fi7VAI.png" /></p>
+<h2 id="examples-of-nn">1.3 examples of NN</h2>
+<ul>
+<li><p>Standard feedforward NN <img src="https://z3.ax1x.com/2021/08/03/fi71Bj.png" /></p></li>
+<li><p>Convolutional NN <img src="https://z3.ax1x.com/2021/08/03/fi7JNq.png" /></p></li>
+<li><p>Recurrent NN <img src="https://z3.ax1x.com/2021/08/03/fi7ZNt.png" /></p></li>
+<li><p>Seq2Seq with Attention <img src="https://z3.ax1x.com/2021/08/03/fi7Y40.png" /> <strong>Reference</strong>: <a href="https://arxiv.org/abs/1508.04025">Effective Approaches to Attention-based Neural Machine Translation</a></p></li>
+</ul>
+<h1 id="introduction-to-pytorch">2. Introduction to PyTorch</h1>
+<h2 id="framework-for-deep-learning">2.1 Framework for deep learning</h2>
+<p><img src="https://z3.ax1x.com/2021/08/03/fi7U3T.png" /></p>
+<p>Difference between PyTorch and Tensorflow: - PyTorch: 动态计算图 Dynamic Computation Graph - Tensorflow: 静态计算图 Static Computation Graph</p>
+<p>PyTorch 代码通俗易懂，非常接近 Python 原生代码，不会让人感觉是完全在学习一门新的语言。拥有 Facebook 支持，社区活跃。</p>
+<p><strong>Q</strong>: What does the PyTorch do? <strong>A</strong>: <img src="https://z3.ax1x.com/2021/08/03/fi7agU.png" /></p>
+<h2 id="some-interesting-project-with-pytorch">2.2. Some interesting project with PyTorch</h2>
+<ul>
+<li><p>ResNet <img src="https://z3.ax1x.com/2021/08/03/fi7e4P.md.png" /> Image classification: <a href="https://github.com/floydhub/imagenet">ResNet</a></p></li>
+<li><p>Object Detection <img src="https://z3.ax1x.com/2021/08/03/fi7n9f.md.png" /> Project address: <a href="https://github.com/amdegroot/ssd.pytorch">Here</a></p></li>
+<li><p>Image Style Transfer <img src="https://z3.ax1x.com/2021/08/03/fi7Db9.md.png" /> Project address: <a href="https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer">Here</a></p></li>
+<li><p>CycleGAN <img src="https://z3.ax1x.com/2021/08/03/fi7luQ.png" /> Project address: <a href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">Here</a></p></li>
+<li><p>Image Captioning <img src="https://z3.ax1x.com/2021/08/03/fi7sER.md.png" /> Project address: <a href="https://github.com/ruotianluo/ImageCaptioning.pytorch">Here</a></p></li>
+<li><p>Sentiment Analysis <img src="https://z3.ax1x.com/2021/08/03/fi7dvF.png" /> Project address: <a href="https://github.com/bentrevett/pytorch-sentiment-analysis">Here</a></p></li>
+<li><p>Question Answering <img src="https://z3.ax1x.com/2021/08/03/fi7yU1.png" /> Project address: <a href="https://github.com/allenai/document-qa">Here</a></p></li>
+<li><p>Translation: OpenNMT-py <img src="https://z3.ax1x.com/2021/08/03/fi7BDJ.png" /> Project address: <a href="https://github.com/OpenNMT/OpenNMT-py">Here</a></p></li>
+<li><p>ChatBot <img src="https://z3.ax1x.com/2021/08/03/fi764x.png" /> Project address: <a href="https://github.com/czs0x55aa/pytorch-chatbot">Here</a></p></li>
+<li><p>Deep Reinforcement Learning</p>
+<p>Project address: <a href="https://github.com/jingweiz/pytorch-rl">Project 1</a>, <a href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">Project 2</a></p></li>
+</ul>
+<h2 id="how-to-learn-pytorch">2.3 How to learn PyTorch</h2>
+<ul>
+<li>Basics of deep learning;</li>
+<li>Pytorch official <a href="https://pytorch.org/tutorials/">tutorial</a>;</li>
+<li>Learn tutorials on GitHub and various blogs;</li>
+<li>Documentation and <a href="https://discuss.pytorch.org/">BBS</a></li>
+<li>Re-creat the open source PyTorch project;</li>
+<li>Read papers about deep learning model and implement them;</li>
+<li>Create your own model.</li>
+</ul>
+<h1 id="note-content">3. Note content</h1>
+<ol type="1">
+<li>Pytorch framework with autograd introduction, simple forward neural networks;</li>
+<li>Word vector;</li>
+<li>Image classification, CNN, Transfer learning;</li>
+<li>Language Model, Sentiment Classification, RNN, LSTM, GRU;</li>
+<li>Translation Model, Seq2Seq, Attention;</li>
+<li>Reading Comprehension, EIMo, BERT, GPT-2;</li>
+<li>ChatBot;</li>
+<li>GAN, Face generation, Style Transfer.</li>
+</ol>
 ]]></content>
       <categories>
         <category>Notes</category>

@@ -32,7 +32,7 @@
 <meta property="og:description" content="1. Introduciton 1.1 Job description 本项目为京东评论数据爬虫。随着电子商务的发展，有如京东、淘宝等网站，在线评论作为电子口碑显著影响着产品的营销策略。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-02T09:40:36.000Z">
-<meta property="article:modified_time" content="2021-10-02T10:25:09.644Z">
+<meta property="article:modified_time" content="2021-10-02T15:52:23.105Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Crawler">
 <meta property="article:tag" content="Project">
@@ -238,7 +238,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-10-02 17:40:36 / Modified: 18:25:09" itemprop="dateCreated datePublished" datetime="2021-10-02T17:40:36+08:00">2021-10-02</time>
+              <time title="Created: 2021-10-02 17:40:36 / Modified: 23:52:23" itemprop="dateCreated datePublished" datetime="2021-10-02T17:40:36+08:00">2021-10-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -547,82 +547,82 @@ memory usage: 10.9+ MB</code></pre></li>
 <li><p>Select data</p>
 <p>我们选取评论相关的数据作为此次处理对象。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">comments = data_copy.iloc[:, <span class="number">1</span>:<span class="number">7</span>]</span><br><span class="line">comments.head(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p>Results:</p></li>
-</ul>
+<p>Results:</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
 <th>
 </th>
 <th>
-id
+<p>id</p>
 </th>
 <th>
-guid
+<p>guid</p>
 </th>
 <th>
-nickname
+<p>nickname</p>
 </th>
 <th>
-content
+<p>content</p>
 </th>
 <th>
-creationTime
+<p>creationTime</p>
 </th>
 <th>
-score
+<p>score</p>
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>
-0
+<p>0</p>
 </th>
 <td>
-1.582772e+10
+<p>1.582772e+10</p>
 </td>
 <td>
-d495506f3df9fa9fe5af352c8ecbea3f
+<p>d495506f3df9fa9fe5af352c8ecbea3f</p>
 </td>
 <td>
-****w
+<p>****w</p>
 </td>
 <td>
-京东自营618屯货。图方便快捷，一直在京东自营购买牛肉。这次回购的牛腱子，是用来做干切牛肉。...
+<p>京东自营618屯货。图方便快捷，一直在京东自营购买牛肉。这次回购的牛腱子，是用来做干切牛肉。...</p>
 </td>
 <td>
-2021-06-18 15:30:41
+<p>2021-06-18 15:30:41</p>
 </td>
 <td>
-5.0
+<p>5.0</p>
 </td>
 </tr>
 <tr>
 <th>
-1
+<p>1</p>
 </th>
 <td>
-1.582486e+10
+<p>1.582486e+10</p>
 </td>
 <td>
-39964bbdefbf80e9b48fd004531f5665
+<p>39964bbdefbf80e9b48fd004531f5665</p>
 </td>
 <td>
-小***3
+<p>小***3</p>
 </td>
 <td>
-感谢感谢京东商城提供这么好的美食产品，好吃不贵经济实惠
+<p>感谢感谢京东商城提供这么好的美食产品，好吃不贵经济实惠</p>
 </td>
 <td>
-2021-06-18 05:53:15
+<p>2021-06-18 05:53:15</p>
 </td>
 <td>
-5.0
+<p>5.0</p>
 </td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ul>
 <h2 id="word-frequency-analysis">4.2 Word frequency analysis</h2>
 <h3 id="word-frequency">4.2.1 Word frequency</h3>
 <ul>
