@@ -32,7 +32,7 @@
 <meta property="og:description" content="1. Introduction Linux，全称为 GNU&#x2F;Linux，是一种免费使用和自由传播的类 UNIX 操作系统。我们常说的 Linux ，指的是 Linux 内核，一个基于 POSIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-23T05:40:17.000Z">
-<meta property="article:modified_time" content="2021-12-22T00:50:37.273Z">
+<meta property="article:modified_time" content="2021-12-26T03:01:07.151Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="CentOS">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-22 08:50:37" itemprop="dateModified" datetime="2021-12-22T08:50:37+08:00">2021-12-22</time>
+                <time title="Modified: 2021-12-26 11:01:07" itemprop="dateModified" datetime="2021-12-26T11:01:07+08:00">2021-12-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,14 +273,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>9.3k</span>
+              <span>9.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>8 mins.</span>
+              <span>9 mins.</span>
             </span>
 
         </div>
@@ -635,7 +635,7 @@
 </ul>
 <h2 id="user-viriables">3.2 User Viriables</h2>
 <p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Delete this variables</span></span><br><span class="line">unset JAVA_HOME</span><br></pre></td></tr></table></figure>
 <h2 id="system-variables">3.3 System Variables</h2>
 <p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
@@ -779,7 +779,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
