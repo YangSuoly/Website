@@ -131,7 +131,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73FZPe.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73FkVK.png">
 <meta property="article:published_time" content="2022-01-11T08:31:57.000Z">
-<meta property="article:modified_time" content="2022-01-14T09:42:35.268Z">
+<meta property="article:modified_time" content="2022-01-14T10:33:09.802Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Data analysis">
@@ -345,7 +345,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-14 17:42:35" itemprop="dateModified" datetime="2022-01-14T17:42:35+08:00">2022-01-14</time>
+                <time title="Modified: 2022-01-14 18:33:09" itemprop="dateModified" datetime="2022-01-14T18:33:09+08:00">2022-01-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -973,8 +973,12 @@ Fig. 1 Aritist object
 <h3 id="使用-plt.subplots-绘制均匀状态下的子图">4.1.1 使用 <code>plt.subplots</code> 绘制均匀状态下的子图</h3>
 <p>返回元素分别是画布和子图构成的列表，第一个数字为行，第二个为列，默认值都为 <code>1</code>。构造函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subplots(nrows=<span class="number">1</span>, ncols=<span class="number">1</span>, *, sharex=<span class="literal">False</span>, sharey=<span class="literal">False</span>, squeeze=<span class="literal">True</span>, subplot_kw=<span class="literal">None</span>, gridspec_kw=<span class="literal">None</span>, **fig_kw)</span><br></pre></td></tr></table></figure>
-<p>参数如下： - <code>nrows</code>：行 - <code>ncols</code>：列 - <code>sharex</code> and <code>sharey</code>：分别表示是否共享横轴和纵轴刻度 - <code>tight_layout</code> ：该函数可以调整子图的相对大小使字符不会重叠</p>
+<p><strong>参数说明</strong>：</p>
 <ul>
+<li><p><code>nrows</code>：行</p></li>
+<li><p><code>ncols</code>：列</p></li>
+<li><p><code>sharex</code> and <code>sharey</code>：分别表示是否共享横轴和纵轴刻度</p></li>
+<li><p><code>tight_layout</code> ：该函数可以调整子图的相对大小使字符不会重叠</p></li>
 <li><p>Case：</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">2</span>, <span class="number">5</span>, figsize=(<span class="number">10</span>, <span class="number">4</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>)</span><br><span class="line">fig.suptitle(<span class="string">&#x27;样例1&#x27;</span>, size=<span class="number">20</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        axs[i][j].scatter(np.random.randn(<span class="number">10</span>), np.random.randn(<span class="number">10</span>))</span><br><span class="line">        axs[i][j].set_title(<span class="string">&#x27;第%d行，第%d列&#x27;</span>%(i+<span class="number">1</span>,j+<span class="number">1</span>))</span><br><span class="line">        axs[i][j].set_xlim(-<span class="number">5</span>,<span class="number">5</span>)</span><br><span class="line">        axs[i][j].set_ylim(-<span class="number">5</span>,<span class="number">5</span>)</span><br><span class="line">        <span class="keyword">if</span> i==<span class="number">1</span>: axs[i][j].set_xlabel(<span class="string">&#x27;横坐标&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> j==<span class="number">0</span>: axs[i][j].set_ylabel(<span class="string">&#x27;纵坐标&#x27;</span>)</span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
@@ -1109,7 +1113,13 @@ Table 1 Text creation
 <h3 id="text-子图上的文本">5.1.2 <code>text</code> 子图上的文本</h3>
 <p><code>text</code> 的调用方式为</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Axes.text(x, y, s, fontdict=<span class="literal">None</span>, **kwargs) </span><br></pre></td></tr></table></figure>
-<p>参数说明： - <code>x</code>,<code>y</code>： 为文本出现的位置，默认状态下即为当前坐标系下的坐标值； - <code>s</code>：文本的内容； - <code>fontdict</code>：可选参数，用于覆盖默认的文本属性 - <code>**kwargs</code>：关键字参数，也可以用于传入文本样式参数</p>
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li><code>x</code>,<code>y</code>： 为文本出现的位置，默认状态下即为当前坐标系下的坐标值；</li>
+<li><code>s</code>：文本的内容；</li>
+<li><code>fontdict</code>：可选参数，用于覆盖默认的文本属性</li>
+<li><code>**kwargs</code>：关键字参数，也可以用于传入文本样式参数</li>
+</ul>
 <p>接下来，重点解释下 <code>fontdict</code> 和 <code>**kwargs</code> 参数，这两种方式都可以用于调整呈现的文本样式，最终效果是一样的，不仅 <code>text</code> 方法，其他文本方法如 <code>set_xlabel</code>, <code>set_title</code> 等同样适用这两种方式修改样式。通过一个例子演示这两种方法如何使用：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">3</span>))</span><br><span class="line">axes = fig.subplots(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用关键字参数修改文本样式</span></span><br><span class="line">axes[<span class="number">0</span>].text(<span class="number">0.3</span>, <span class="number">0.8</span>, <span class="string">&#x27;modify by **kwargs&#x27;</span>, style=<span class="string">&#x27;italic&#x27;</span>,</span><br><span class="line">        bbox=&#123;<span class="string">&#x27;facecolor&#x27;</span>: <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;alpha&#x27;</span>: <span class="number">0.5</span>, <span class="string">&#x27;pad&#x27;</span>: <span class="number">10</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用fontdict参数修改文本样式</span></span><br><span class="line">font = &#123;<span class="string">&#x27;bbox&#x27;</span>:&#123;<span class="string">&#x27;facecolor&#x27;</span>: <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;alpha&#x27;</span>: <span class="number">0.5</span>, <span class="string">&#x27;pad&#x27;</span>: <span class="number">10</span>&#125;, <span class="string">&#x27;style&#x27;</span>:<span class="string">&#x27;italic&#x27;</span>&#125;</span><br><span class="line">axes[<span class="number">1</span>].text(<span class="number">0.3</span>, <span class="number">0.8</span>, <span class="string">&#x27;modify by fontdict&#x27;</span>, fontdict=font);</span><br></pre></td></tr></table></figure>
 <p>Results:</p>
@@ -1184,7 +1194,7 @@ Table 2 Text Parameters
 <h3 id="xlabel-and-ylabel">5.1.3 <code>xlabel</code> and <code>ylabel</code></h3>
 <p><code>xlabel</code> and <code>ylabel</code> 分别表示子图的 <code>x</code>，<code>y</code> 轴标签，其构造函数为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Axes.set_xlabel(xlabel, fontdict=<span class="literal">None</span>, labelpad=<span class="literal">None</span>, *, loc=<span class="literal">None</span>, **kwargs)</span><br></pre></td></tr></table></figure>
-<p>参数说明：</p>
+<p><strong>参数说明</strong>：</p>
 <ul>
 <li><code>xlabel</code>：标签内容；</li>
 <li><code>fontdict</code> and <code>**kwargs</code>：用来修改样式，上一小节已介绍；</li>
