@@ -109,6 +109,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73ixC4.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/715Cn0.md.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/715Cn0.md.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/01/14/715pXq.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/715Scn.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73Fib6.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73FPDx.png">
@@ -130,7 +131,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73FZPe.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/01/14/73FkVK.png">
 <meta property="article:published_time" content="2022-01-11T08:31:57.000Z">
-<meta property="article:modified_time" content="2022-01-14T06:07:28.720Z">
+<meta property="article:modified_time" content="2022-01-14T09:35:24.789Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Data analysis">
@@ -344,7 +345,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-14 14:07:28" itemprop="dateModified" datetime="2022-01-14T14:07:28+08:00">2022-01-14</time>
+                <time title="Modified: 2022-01-14 17:35:24" itemprop="dateModified" datetime="2022-01-14T17:35:24+08:00">2022-01-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -380,7 +381,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>57 mins.</span>
+              <span>56 mins.</span>
             </span>
 
         </div>
@@ -493,10 +494,11 @@
 <li>前两者处理程序和计算机的底层交互的事项，第三项 <code>Artist</code> 就是具体的调用接口来做出我们想要的图，比如图形、文本、线条的设定。所以通常来说，我们 <code>95%</code> 的时间，都是用来和 <code>matplotlib.artist.Artist</code> 类打交道的。</li>
 </ul>
 <h3 id="artist-分类">3.1.2 <code>Artist</code> 分类</h3>
-<p><code>Artist</code> 有两种类型： - <code>primitives</code></p>
-<pre><code>基本要素，它包含一些我们要在绘图区作图用到的标准图形对象，如曲线 `Line2D`，文字 `Text`，矩形 `Rectangle`，图像 `Image` 等。</code></pre>
+<p><code>Artist</code> 有两种类型：</p>
 <ul>
-<li><p><code>containers</code>;</p>
+<li><p><code>primitives</code></p>
+<p>基本要素，它包含一些我们要在绘图区作图用到的标准图形对象，如曲线 <code>Line2D</code>，文字 <code>Text</code>，矩形 <code>Rectangle</code>，图像 <code>Image</code> 等。</p></li>
+<li><p><code>containers</code></p>
 <p>容器，用来装基本要素的地方，包括图形 <code>Figure</code>、坐标系 <code>Axes</code> 和坐标轴 <code>Axis</code>。他们之间的关系如下所示：</p>
 <p><img src='https://s4.ax1x.com/2022/01/13/7M67i6.png' style='zoom:80%' /></p></li>
 </ul>
@@ -630,7 +632,7 @@ Fig. 1 Aritist object
 </li>
 <li><strong>elinewidth</strong>：指定 <code>error bar</code> 的线条宽度</li>
 </ul>
-<p>**绘制 <code>errorbar</code>：</p>
+<p><strong>绘制 <code>errorbar</code></strong>：</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br><span class="line">x = np.arange(<span class="number">10</span>)</span><br><span class="line">y = <span class="number">2.5</span> * np.sin(x / <span class="number">20</span>* np.pi)</span><br><span class="line">yerr = np.linspace(<span class="number">0.05</span>, <span class="number">0.2</span>, <span class="number">10</span>)</span><br><span class="line">plt.errorbar(x, y + <span class="number">3</span>, yerr = yerr, label = <span class="string">&#x27;both limits (default)&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
 <p>Result:</p>
 <p><img src='https://s4.ax1x.com/2022/01/13/7McJm9.md.png' style='zoom:80%' /></p></li>
@@ -658,7 +660,7 @@ Fig. 1 Aritist object
 <li><strong>log</strong>: <code>bool</code>，默认 <code>False</code>,即 <code>y</code> 坐标轴是否选择指数刻度</li>
 <li><strong>stacked</strong>: <code>bool</code>，默认为 <code>False</code>，是否为堆积状图</li>
 </ul>
-<p>**借助 <code>hist</code> 绘制直方图：</p>
+<p><strong>借助 <code>hist</code> 绘制直方图</strong>：</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x=np.random.randint(<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>) <span class="comment"># 生成[0-100)之间的100个数据,即 数据集</span></span><br><span class="line">bins=np.arange(<span class="number">0</span>,<span class="number">101</span>,<span class="number">10</span>) <span class="comment"># 设置连续的边界值，即直方图的分布区间 [0,10), [10,20).</span></span><br><span class="line">plt.hist(x,bins,color=<span class="string">&#x27;fuchsia&#x27;</span>,alpha=<span class="number">0.5</span>) <span class="comment"># alpha设置透明度，0为完全透明</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;scores&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;count&#x27;</span>)</span><br><span class="line">plt.xlim(<span class="number">0</span>,<span class="number">100</span>); <span class="comment"># 设置x轴分布范围</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
 <p><img src='https://s4.ax1x.com/2022/01/13/7Mc8OJ.md.png' style='zoom:80%' /></p>
@@ -702,6 +704,7 @@ Fig. 1 Aritist object
 <li><p><code>Polygon</code>-多边形</p>
 <p><code>matplotlib.patches.Polygon</code> 类是多边形类，它的构造函数：</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">matplotlib</span>.<span class="title">patches</span>.<span class="title">Polygon</span>(<span class="params">xy, closed=<span class="literal">True</span>, **kwargs</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>参数说明：</p>
 <ul>
 <li><code>xy</code> 是一个 <span class="math inline">\(N \times 2\)</span> 的 <code>numpy.array</code>，为多边形的顶点。</li>
 <li><code>closed</code> 为 <code>True</code> 则制定多边形将起点和终点重合从而显式关闭多边形。</li>
@@ -739,11 +742,18 @@ Fig. 1 Aritist object
 <h3 id="collection">3.2.3 <code>collection</code></h3>
 <p><code>collections</code> 类是用来绘制一组对象的集合，<code>collections</code> 有许多不同的子类，如 <code>RegularPolyCollection</code>，<code>CircleCollection</code>, <code>Pathcollection</code>，分别对应不同的集合子类型。其中比较常用的是散点图，它是属于 <code>PathCollection</code> 子类，<code>scatter</code> 方法提供了该类的封装，根据 <code>x</code> 与 <code>y</code> 绘制不同大小或颜色标记的散点图。它的构造方法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Axes.scatter(self, x, y, s=<span class="literal">None</span>, c=<span class="literal">None</span>, marker=<span class="literal">None</span>, cmap=<span class="literal">None</span>, norm=<span class="literal">None</span>, vmin=<span class="literal">None</span>, vmax=<span class="literal">None</span>, alpha=<span class="literal">None</span>, linewidths=<span class="literal">None</span>, verts=, edgecolors=<span class="literal">None</span>, , plotnonfinite=<span class="literal">False</span>, data=<span class="literal">None</span>, *kwargs)</span><br></pre></td></tr></table></figure>
-<p>主要参数为： + <strong>x</strong>：数据点x轴的位置<br />
-+ <strong>y</strong>：数据点y轴的位置<br />
-+ <strong>s</strong>：尺寸大小<br />
-+ <strong>c</strong>：可以是单个颜色格式的字符串，也可以是一系列颜色<br />
-+ <strong>marker</strong>: 标记的类型</p>
+<p>主要参数为：</p>
+<ul>
+<li><strong>x</strong>：数据点x轴的位置<br />
+</li>
+<li><strong>y</strong>：数据点y轴的位置<br />
+</li>
+<li><strong>s</strong>：尺寸大小<br />
+</li>
+<li><strong>c</strong>：可以是单个颜色格式的字符串，也可以是一系列颜色<br />
+</li>
+<li><strong>marker</strong>: 标记的类型</li>
+</ul>
 <p><strong>用 <code>scatter</code> 绘制散点图</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>]</span><br><span class="line">y = [<span class="number">10</span>]*<span class="built_in">len</span>(x)</span><br><span class="line">s = [<span class="number">20</span>*<span class="number">2</span>**n <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x))]</span><br><span class="line">plt.scatter(x,y,s=s) ;</span><br></pre></td></tr></table></figure>
 <p>Results:</p>
@@ -789,13 +799,20 @@ Fig. 1 Aritist object
 <p>Results:</p>
 <p><img src='https://s4.ax1x.com/2022/01/13/7McPW8.md.png' style='zoom:80%' /></p>
 <p><code>Figure</code> 也有它自己的 <code>text</code>、<code>line</code>、<code>patch</code>、<code>image</code>。你可以直接通过 <code>add primitive</code> 语句直接添加。但是注意 <code>Figure</code> 默认的坐标系是以像素为单位，需要转换成 <code>figure</code> 坐标系：<code>(0,0)</code> 表示左下点，<code>(1,1)</code> 表示右上点。</p>
-<p><strong>Figure容器的常见属性：</strong><br />
-<code>Figure.patch</code>属性：<code>Figure</code> 的背景矩形<br />
-<code>Figure.axes</code>属性：一个 <code>Axes</code> 实例的列表（包括 <code>Subplot</code>)<br />
-<code>Figure.images</code>属性：一个 <code>FigureImages patch</code> 列表<br />
-<code>Figure.lines</code>属性：一个 <code>Line2D</code> 实例的列表（很少使用）<br />
-<code>Figure.legends</code>属性：一个 <code>Figure Legend</code> 实例列表（不同于 <code>Axes.legends</code>)<br />
-<code>Figure.texts</code>属性：一个 <code>Figure Text</code> 实例列表</p>
+<p><strong>Figure容器的常见属性：</strong></p>
+<ul>
+<li><code>Figure.patch</code>属性：<code>Figure</code> 的背景矩形<br />
+</li>
+<li><code>Figure.axes</code>属性：一个 <code>Axes</code> 实例的列表（包括 <code>Subplot</code>)<br />
+</li>
+<li><code>Figure.images</code>属性：一个 <code>FigureImages patch</code> 列表<br />
+</li>
+<li><code>Figure.lines</code>属性：一个 <code>Line2D</code> 实例的列表（很少使用）<br />
+</li>
+<li><code>Figure.legends</code>属性：一个 <code>Figure Legend</code> 实例列表（不同于 <code>Axes.legends</code>)<br />
+</li>
+<li><code>Figure.texts</code>属性：一个 <code>Figure Text</code> 实例列表</li>
+</ul>
 <h3 id="axes-坐标系容器">3.3.2 <code>Axes</code> 坐标系容器</h3>
 <p><code>matplotlib.axes.Axes</code> 是 <code>matplotlib</code> 的核心。大量的用于绘图的 <code>Artist</code> 存放在它内部，并且它有许多辅助方法来创建和添加 <code>Artist</code> 给它自己，而且它也有许多赋值方法来访问和修改这些 <code>Artist</code>。</p>
 <p>和 <code>Figure</code> 容器类似，<code>Axes</code> 包含了一个 <code>patch</code> 属性，对于笛卡尔坐标系而言，它是一个 <code>Rectangle</code>；对于极坐标而言，它是一个 <code>Circle</code>。这个 <code>patch</code> 属性决定了绘图区域的形状、背景和边框。</p>
@@ -806,11 +823,18 @@ Fig. 1 Aritist object
 <p><code>Subplot</code> 就是一个特殊的 <code>Axes</code>，其实例是位于网格中某个区域的 <code>Subplot</code> 实例。其实你也可以在任意区域创建 <code>Axes</code>，通过下述代码来创建一个任意区域的 <code>Axes</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Figure.add_axes([left,bottom,width,height])</span><br></pre></td></tr></table></figure>
 <p>其中，<code>left</code>, <code>bottom</code>, <code>width</code>, <code>height</code> 都是 <code>[0—1]</code> 之间的浮点数，他们代表了相对于 <code>Figure</code> 的坐标。</p>
-<p>你不应该直接通过 <code>Axes.lines</code> 和 <code>Axes.patches</code> 列表来添加图表。因为当创建或添加一个对象到图表中时，<code>Axes</code>会做许多自动化的工作:<br />
-- 它会设置 <code>Artist</code> 中 <code>figure</code> 和 <code>axes</code> 的属性，同时默认 <code>Axes</code> 的转换；<br />
-- 它也会检视 <code>Artist</code> 中的数据，来更新数据结构，这样数据范围和呈现方式可以根据作图范围自动调整。</p>
+<p>你不应该直接通过 <code>Axes.lines</code> 和 <code>Axes.patches</code> 列表来添加图表。因为当创建或添加一个对象到图表中时，<code>Axes</code>会做许多自动化的工作:</p>
+<ul>
+<li>它会设置 <code>Artist</code> 中 <code>figure</code> 和 <code>axes</code> 的属性，同时默认 <code>Axes</code> 的转换；<br />
+</li>
+<li>它也会检视 <code>Artist</code> 中的数据，来更新数据结构，这样数据范围和呈现方式可以根据作图范围自动调整。</li>
+</ul>
 <p>可以使用Axes的辅助方法 <code>.add_line()</code> 和 <code>.add_patch()</code> 方法来直接添加。</p>
-<p>此外，<code>Axes</code> 还包含两个最重要的 <code>Artist container</code>： - <code>ax.xaxis</code>：<code>XAxis</code> 对象的实例，用于处理 <code>x</code> 轴 <code>tick</code> 以及 <code>label</code> 的绘制； - <code>ax.yaxis</code>：<code>YAxis</code> 对象的实例，用于处理 <code>y</code> 轴 <code>tick</code> 以及 <code>label</code> 的绘制;</p>
+<p>此外，<code>Axes</code> 还包含两个最重要的 <code>Artist container</code>：</p>
+<ul>
+<li><code>ax.xaxis</code>：<code>XAxis</code> 对象的实例，用于处理 <code>x</code> 轴 <code>tick</code> 以及 <code>label</code> 的绘制；</li>
+<li><code>ax.yaxis</code>：<code>YAxis</code> 对象的实例，用于处理 <code>y</code> 轴 <code>tick</code> 以及 <code>label</code> 的绘制;</li>
+</ul>
 <p><strong>Axes容器</strong>的常见属性有：</p>
 <ul>
 <li><code>artists</code>: <code>Artist</code> 实例列表<br />
@@ -871,12 +895,18 @@ Fig. 1 Aritist object
 <p><img src='https://s4.ax1x.com/2022/01/13/7McSot.png' style='zoom:80%' /></p>
 <h3 id="tick-容器">3.3.4 <code>Tick</code> 容器</h3>
 <p><code>matplotlib.axis.Tick</code> 是从 <code>Figure</code> 到 <code>Axes</code> 到 <code>Axis</code> 到 <code>Tick</code> 中最末端的容器对象。<code>Tick</code> 包含了 <code>tick</code>、<code>grid line</code> 实例以及对应的 <code>label</code>。</p>
-<p>所有的这些都可以通过 <code>Tick</code> 的属性获取，常见的 <code>tick</code> 属性有<br />
-- <code>Tick.tick1line</code>：<code>Line2D</code> 实例<br />
-- <code>Tick.tick2line</code>：<code>Line2D</code> 实例<br />
-- <code>Tick.gridline</code>：<code>Line2D</code> 实例<br />
-- <code>Tick.label1</code>：<code>Text</code> 实例<br />
-- <code>Tick.label2</code>：<code>Text</code> 实例</p>
+<p>所有的这些都可以通过 <code>Tick</code> 的属性获取，常见的 <code>tick</code> 属性有 ：</p>
+<ul>
+<li><code>Tick.tick1line</code>：<code>Line2D</code> 实例<br />
+</li>
+<li><code>Tick.tick2line</code>：<code>Line2D</code> 实例<br />
+</li>
+<li><code>Tick.gridline</code>：<code>Line2D</code> 实例<br />
+</li>
+<li><code>Tick.label1</code>：<code>Text</code> 实例<br />
+</li>
+<li><code>Tick.label2</code>：<code>Text</code> 实例</li>
+</ul>
 <p>其中，<code>y</code> 轴分为左右两个，因此 <code>tick1</code> 对应左侧的轴；<code>tick2</code> 对应右侧的轴。<br />
 <code>x</code> 轴分为上下两个，因此 <code>tick1</code> 对应下侧的轴；<code>tick2</code> 对应上侧的轴。</p>
 <p>下面的例子展示了，如何将 <code>Y</code> 轴右边轴设为主轴，并将标签设置为美元符号且为绿色：</p>
@@ -1493,7 +1523,7 @@ Table 2 Text Parameters
 <p>Results:</p>
 <p><img src='https://s4.ax1x.com/2022/01/14/715ANF.png' style='zoom:80%' /></p></li>
 <li><p><code>FuncFormatter</code> 接收函数参数</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">formatoddticks</span>(<span class="params">x, pos</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Format odd tick positions.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> x % <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;<span class="subst">&#123;x:<span class="number">1.2</span>f&#125;</span>&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">5</span>, <span class="number">3</span>), tight_layout=<span class="literal">True</span>)</span><br><span class="line">ax.plot(x1, y1)</span><br><span class="line">ax.xaxis.set_major_formatter(formatoddticks);</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">formatoddticks</span>(<span class="params">x, pos</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Format odd tick positions.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> x % <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;<span class="subst">&#123;x:<span class="number">1.2</span>f&#125;</span>&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">5</span>, <span class="number">3</span>), tight_layout=<span class="literal">True</span>)</span><br><span class="line">ax.plot(x1, y1)</span><br><span class="line">ax.xaxis.set_major_formatter(formatoddticks);</span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
 <p><img src='https://s4.ax1x.com/2022/01/14/715kAU.png' style='zoom:80%' /></p></li>
 </ul></li>
@@ -1703,33 +1733,71 @@ Table 2 Text Parameters
 </tr>
 </tbody>
 </table>
-<p><strong>常用参数</strong>: - <code>loc</code> 设置图例位置</p>
-<pre><code>`loc` 参数接收一个字符串或数字表示图例出现的位置。
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax.legend(loc=<span class="string">&#x27;upper center&#x27;</span>)</span><br><span class="line"><span class="comment"># Equals to</span></span><br><span class="line">ax.legend(loc=<span class="number">9</span>)</span><br></pre></td></tr></table></figure>
-
-&lt;center&gt; Table 3 Loc options &lt;/center&gt;
-
-| Location String | Location Code |
-| --------------- | ------------- |
-| &#39;best&#39;          | 0             |
-| &#39;upper right&#39;   | 1             |
-| &#39;upper left&#39;    | 2             |
-| &#39;lower left&#39;    | 3             |
-| &#39;lower right&#39;   | 4             |
-| &#39;right&#39;         | 5             |
-| &#39;center left&#39;   | 6             |
-| &#39;center right&#39;  | 7             |
-| &#39;lower center&#39;  | 8             |
-| &#39;upper center&#39;  | 9             |
-| &#39;center&#39;        | 10            |
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig,axes = plt.subplots(<span class="number">1</span>,<span class="number">4</span>,figsize=(<span class="number">10</span>,<span class="number">4</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    axes[i].plot([<span class="number">0.5</span>],[<span class="number">0.5</span>])</span><br><span class="line">    axes[i].legend(labels=<span class="string">&#x27;a&#x27;</span>,loc=i)  <span class="comment"># 观察loc参数传入不同值时图例的位置</span></span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
-
-Results:
-
-&lt;img src=&#39;https://s4.ax1x.com/2022/01/14/715pXq.png&#39; style=&#39;zoom:80%&#39; /&gt;</code></pre>
+<p><strong>常用参数</strong>:</p>
 <ul>
+<li><p><code>loc</code> 设置图例位置</p>
+<p><code>loc</code> 参数接收一个字符串或数字表示图例出现的位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax.legend(loc=<span class="string">&#x27;upper center&#x27;</span>)</span><br><span class="line"><span class="comment"># Equals to</span></span><br><span class="line">ax.legend(loc=<span class="number">9</span>)</span><br></pre></td></tr></table></figure>
+<center>
+<p>Table 3 Loc options</p>
+</center>
+<table>
+<thead>
+<tr class="header">
+<th>Location String</th>
+<th>Location Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>'best'</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>'upper right'</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>'upper left'</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>'lower left'</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>'lower right'</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>'right'</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>'center left'</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>'center right'</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>'lower center'</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>'upper center'</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>'center'</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig,axes = plt.subplots(<span class="number">1</span>,<span class="number">4</span>,figsize=(<span class="number">10</span>,<span class="number">4</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    axes[i].plot([<span class="number">0.5</span>],[<span class="number">0.5</span>])</span><br><span class="line">    axes[i].legend(labels=<span class="string">&#x27;a&#x27;</span>,loc=i)  <span class="comment"># 观察loc参数传入不同值时图例的位置</span></span><br><span class="line">fig.tight_layout()</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<p><img src='https://s4.ax1x.com/2022/01/14/715pXq.png' style='zoom:80%' /></p></li>
 <li><p>设置图例边框及背景</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">3</span>))</span><br><span class="line">axes = fig.subplots(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> i, ax <span class="keyword">in</span> <span class="built_in">enumerate</span>(axes):</span><br><span class="line">    ax.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],label=<span class="string">f&#x27;ax <span class="subst">&#123;i&#125;</span>&#x27;</span>)</span><br><span class="line">axes[<span class="number">0</span>].legend(frameon=<span class="literal">False</span>) <span class="comment">#去掉图例边框</span></span><br><span class="line">axes[<span class="number">1</span>].legend(edgecolor=<span class="string">&#x27;blue&#x27;</span>) <span class="comment">#设置图例边框颜色</span></span><br><span class="line">axes[<span class="number">2</span>].legend(facecolor=<span class="string">&#x27;gray&#x27;</span>); <span class="comment">#设置图例背景颜色,若无边框,参数无效</span></span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
@@ -1777,7 +1845,12 @@ Results:
 <h3 id="用户自定义-stylesheet">6.1.2 用户自定义 <code>stylesheet</code></h3>
 <p>在任意路径下创建一个后缀名为 <code>mplstyle</code> 的样式清单，编辑文件添加以下样式内容：</p>
 <blockquote>
-<p>axes.titlesize : 24 axes.labelsize : 20 lines.linewidth : 3 lines.markersize : 10 xtick.labelsize : 16 ytick.labelsize : 16</p>
+<p>axes.titlesize : 24</p>
+<p>axes.labelsize : 20</p>
+<p>lines.linewidth : 3</p>
+<p>lines.markersize : 10</p>
+<p>xtick.labelsize : 16</p>
+<p>ytick.labelsize : 16</p>
 </blockquote>
 <p>引用上述定义的 <code>stylesheet</code> 后观察图表变化：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(<span class="string">&#x27;./my.mplstyle&#x27;</span>)</span><br><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
@@ -1797,17 +1870,15 @@ Results:
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(<span class="string">&#x27;default&#x27;</span>) <span class="comment"># 恢复到默认样式</span></span><br><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
 <p><img src='https://s4.ax1x.com/2022/01/14/73iI3j.png' style='zoom:80%' /></p></li>
-<li><p>虚线形式</p></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpl.rcParams[<span class="string">&#x27;lines.linewidth&#x27;</span>] = <span class="number">2</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;lines.linestyle&#x27;</span>] = <span class="string">&#x27;--&#x27;</span></span><br><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<li><p>虚线形式</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpl.rcParams[<span class="string">&#x27;lines.linewidth&#x27;</span>] = <span class="number">2</span></span><br><span class="line">mpl.rcParams[<span class="string">&#x27;lines.linestyle&#x27;</span>] = <span class="string">&#x27;--&#x27;</span></span><br><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
-<p><img src='https://s4.ax1x.com/2022/01/14/73iogs.png' style='zoom:80%' /></p>
-<ul>
-<li>一次性修改多个样式</li>
-</ul>
+<p><img src='https://s4.ax1x.com/2022/01/14/73iogs.png' style='zoom:80%' /></p></li>
+<li><p>一次性修改多个样式</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpl.rc(<span class="string">&#x27;lines&#x27;</span>, linewidth=<span class="number">4</span>, linestyle=<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
 <p>Results:</p>
-<p><img src='https://s4.ax1x.com/2022/01/14/73i5CQ.png' style='zoom:80%' /></p>
+<p><img src='https://s4.ax1x.com/2022/01/14/73i5CQ.png' style='zoom:80%' /></p></li>
+</ul>
 <h2 id="matplotlib-color-setting">6.2 <code>Matplotlib</code> color setting</h2>
 <p>在可视化中，如何选择合适的颜色和搭配组合也是需要仔细考虑的，色彩选择要能够反映出可视化图像的主旨。从可视化编码的角度对颜色进行分析，可以将颜色分为 <strong>色相</strong>、<strong>亮度</strong> 和 <strong>饱和度</strong> 三个视觉通道。</p>
 <ul>
