@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Introduction Linux，全称为 GNU&#x2F;Linux，是一种免费使用和自由传播的类 UNIX 操作系统。我们常说的 Linux ，指的是 Linux 内核，一个基于 POSIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。">
+  <meta name="description" content="1. Introduction Linux，全称为 GNU&#x2F;Linux，是一种免费使用和自由传播的类 UNIX 操作系统。我们常说的 Linux ，指的是 Linux 内核，一个基于 POSIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux notes">
 <meta property="og:url" content="http://yangsuoly.com/2020/11/23/Linux/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Introduction Linux，全称为 GNU&#x2F;Linux，是一种免费使用和自由传播的类 UNIX 操作系统。我们常说的 Linux ，指的是 Linux 内核，一个基于 POSIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。">
+<meta property="og:description" content="1. Introduction Linux，全称为 GNU&#x2F;Linux，是一种免费使用和自由传播的类 UNIX 操作系统。我们常说的 Linux ，指的是 Linux 内核，一个基于 POSIX 的多用户、多任务、支持多线程和多 CPU 的操作系统。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-23T05:40:17.000Z">
 <meta property="article:modified_time" content="2021-12-26T03:01:07.151Z">
@@ -292,66 +292,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
+        <h1 id="introduction">1. Introduction</h1>
 <p><code>Linux</code>，全称为 <code>GNU/Linux</code>，是一种免费使用和自由传播的类 <code>UNIX</code> 操作系统。我们常说的 <code>Linux</code> ，指的是 <code>Linux</code> 内核，一个基于 <code>POSIX</code> 的多用户、多任务、支持多线程和多 <code>CPU</code> 的操作系统。</p>
 <a id="more"></a>
 <p><code>Linux</code> 现在已经是现代互联网体系中不可或缺的一部分了，可能你看不见它，但是它一直在你身边，各种嵌入式设备，如手表，机器人。还有广为人之的安卓。地球上大多数的服务器都是 <code>Linux</code> 操作系统。从航天到军事、从科研到金融、从手机到电脑，无处不在。</p>
 <p>因其开源的特点，<code>Linux</code> 的发展速度以指数规模增长，无数开发者加入到 <code>Linux</code> 开发的行列中来。本篇博客主要简单概括一下 <code>Linux</code> 的特点以及常用的语法及包。</p>
-<h2 id="11-why-linux"><a class="markdownIt-Anchor" href="#11-why-linux"></a> 1.1 Why Linux</h2>
+<h2 id="why-linux">1.1 Why Linux</h2>
 <p><code>Linux</code> 有以下众多特点：</p>
 <ul>
-<li>
-<p><strong>开源免费</strong></p>
-<p><code>Linux</code> 是完全免费的操作系统，并且开放源代码，任何人都可以随意修改其源代码。</p>
-</li>
-<li>
-<p><strong>多用户、多任务</strong></p>
-<p><code>Linux</code> 支持多用户，各个用户对于自己的文件设备有自己特殊的权利，保证了各用户之间互不影响。多任务则是现代电脑最主要的一个特点，<code>Linux</code> 可以使多个程序同时并独立地运行。</p>
-</li>
-<li>
-<p><strong>安全可靠</strong></p>
-<p><code>Linux</code> 的代码是开源的，所以每个人都可以参与进入修补漏洞。此外，<code>Linux</code> 的用户权限管理也使得安全风险降低</p>
-</li>
-<li>
-<p><strong>稳定</strong></p>
-<p><code>Linux</code> 服务器一直以稳定性闻名，可以持续运行很久都不易崩溃。</p>
-</li>
-<li>
-<p><strong>多平台</strong></p>
-<p><code>Linux</code> 可以运行在多种硬件平台上，<code>x86</code>，<code>arm</code> 及其他各种嵌入式设备。</p>
-</li>
+<li><p><strong>开源免费</strong></p>
+<p><code>Linux</code> 是完全免费的操作系统，并且开放源代码，任何人都可以随意修改其源代码。</p></li>
+<li><p><strong>多用户、多任务</strong></p>
+<p><code>Linux</code> 支持多用户，各个用户对于自己的文件设备有自己特殊的权利，保证了各用户之间互不影响。多任务则是现代电脑最主要的一个特点，<code>Linux</code> 可以使多个程序同时并独立地运行。</p></li>
+<li><p><strong>安全可靠</strong></p>
+<p><code>Linux</code> 的代码是开源的，所以每个人都可以参与进入修补漏洞。此外，<code>Linux</code> 的用户权限管理也使得安全风险降低</p></li>
+<li><p><strong>稳定</strong></p>
+<p><code>Linux</code> 服务器一直以稳定性闻名，可以持续运行很久都不易崩溃。</p></li>
+<li><p><strong>多平台</strong></p>
+<p><code>Linux</code> 可以运行在多种硬件平台上，<code>x86</code>，<code>arm</code> 及其他各种嵌入式设备。</p></li>
 </ul>
-<h2 id="12-linux-in-a-nutshell"><a class="markdownIt-Anchor" href="#12-linux-in-a-nutshell"></a> 1.2 Linux in a nutshell</h2>
-<h3 id="121-常用发行版"><a class="markdownIt-Anchor" href="#121-常用发行版"></a> 1.2.1 常用发行版</h3>
-<ol>
-<li>
-<p><strong>Debian</strong></p>
-<p>老牌发行版，非常稳定，适合用于服务器。</p>
-</li>
-<li>
-<p><strong>Ubuntu</strong></p>
-<p><code>Ubuntu</code> 是 <code>Debian</code> 的一款衍生版，侧重于它在这个市场的应用，在服务器、云计算、甚至一些运行 <code>Ubuntu Linux</code> 的移动设备上很常见。于 2004 年 9 月首次公布的。属于热门发行版之一，因其图形界面开发较完善以及良好的社区支持，很受初接触 <code>Linux</code> 的人群青睐。</p>
-</li>
-<li>
-<p><strong>CentOS</strong></p>
-<p><code>CentOS</code> 是一种对 RHEL（Red Hat Enterprise Linux）源代码再编译的产物，由于 <code>Linux</code> 是开发源代码的操作系统，并不排斥样基于源代码的再分发，<code>CentOS</code> 就是将商业的 <code>Linux</code> 操作系统 <code>RHEL</code> 进行源代码再编译后分发，并在 <code>RHEL</code> 的基础上修正了不少已知的漏洞。</p>
-</li>
-<li>
-<p><strong>Fedora</strong></p>
-</li>
+<h2 id="linux-in-a-nutshell">1.2 Linux in a nutshell</h2>
+<h3 id="常用发行版">1.2.1 常用发行版</h3>
+<ol type="1">
+<li><p><strong>Debian</strong></p>
+<p>老牌发行版，非常稳定，适合用于服务器。</p></li>
+<li><p><strong>Ubuntu</strong></p>
+<p><code>Ubuntu</code> 是 <code>Debian</code> 的一款衍生版，侧重于它在这个市场的应用，在服务器、云计算、甚至一些运行 <code>Ubuntu Linux</code> 的移动设备上很常见。于 2004 年 9 月首次公布的。属于热门发行版之一，因其图形界面开发较完善以及良好的社区支持，很受初接触 <code>Linux</code> 的人群青睐。</p></li>
+<li><p><strong>CentOS</strong></p>
+<p><code>CentOS</code> 是一种对 RHEL（Red Hat Enterprise Linux）源代码再编译的产物，由于 <code>Linux</code> 是开发源代码的操作系统，并不排斥样基于源代码的再分发，<code>CentOS</code> 就是将商业的 <code>Linux</code> 操作系统 <code>RHEL</code> 进行源代码再编译后分发，并在 <code>RHEL</code> 的基础上修正了不少已知的漏洞。</p></li>
+<li><p><strong>Fedora</strong></p></li>
 </ol>
 <p><code>Fedora Linux</code>（第七版以前为Fedora Core）是由 <code>Fedora</code> 项目社区开发、红帽公司赞助，目标是创建一套新颖、多功能并且自由（开放源代码）的操作系统。<code>Fedora</code> 是商业化的Red Hat Enterprise Linux发行版的上游源码。</p>
-<ol start="5">
-<li>
-<p><strong>Kali</strong></p>
-<p><code>Kali Linux</code> 是 <code>Debian</code> 的一款衍生版。旨在渗透测试和数字取证。它预先构建了用于渗透测试的多种工具。</p>
-</li>
-<li>
-<p><strong>Arch</strong></p>
-<p><code>Arch</code> 是一款采用滚动发行方式的操作系统，只要安装一次就够了，每当发行了某个新版本，就可以升级发行版，无需重新安装。<code>Pacman</code> 是 <code>Arch Linux</code>的软件包管理器。<code>Arch</code> 既支持 <code>X86</code> 处理器架构，又支持 <code>X86_64</code> 架构，安装程序可以从光盘或U盘来运行。</p>
-</li>
+<ol start="5" type="1">
+<li><p><strong>Kali</strong></p>
+<p><code>Kali Linux</code> 是 <code>Debian</code> 的一款衍生版。旨在渗透测试和数字取证。它预先构建了用于渗透测试的多种工具。</p></li>
+<li><p><strong>Arch</strong></p>
+<p><code>Arch</code> 是一款采用滚动发行方式的操作系统，只要安装一次就够了，每当发行了某个新版本，就可以升级发行版，无需重新安装。<code>Pacman</code> 是 <code>Arch Linux</code>的软件包管理器。<code>Arch</code> 既支持 <code>X86</code> 处理器架构，又支持 <code>X86_64</code> 架构，安装程序可以从光盘或U盘来运行。</p></li>
 </ol>
-<h3 id="122-推荐阅读"><a class="markdownIt-Anchor" href="#122-推荐阅读"></a> 1.2.2 推荐阅读</h3>
+<h3 id="推荐阅读">1.2.2 推荐阅读</h3>
 <p>有兴趣深入了解 <code>Linux</code> 以及自由软件，开源历史的，推荐阅读如下数据：</p>
 <ul>
 <li>《只是为了好玩》</li>
@@ -359,82 +337,62 @@
 <li>《自由软件，自由社会》</li>
 <li>《黑客与画家》</li>
 </ul>
-<h2 id="13-module-installation"><a class="markdownIt-Anchor" href="#13-module-installation"></a> 1.3 Module installation</h2>
-<h3 id="131-编译源码安装"><a class="markdownIt-Anchor" href="#131-编译源码安装"></a> 1.3.1 编译源码安装</h3>
+<h2 id="module-installation">1.3 Module installation</h2>
+<h3 id="编译源码安装">1.3.1 编译源码安装</h3>
 <p>使用源代码安装软件的优点：</p>
 <ul>
 <li>可以获得最新的软件，及时修复bug；</li>
 <li>根据用户的需求，灵活定制软件功能</li>
 </ul>
-<p>步骤：</p>
-<ol>
-<li>
-<p>解压</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0. tar -xzvf soft.tar.gz  <span class="comment"># 解压一般会生成一个soft目录</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>检查环境变量及配置编译选项</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="comment"># 检查环境变量及配置编译选项</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>编译源代码</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make  <span class="comment"># 源代码编译成二进制文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>安装</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make install <span class="comment"># 将make编译出来的文件安装到指定位置(或默认位置)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定安装目录</span></span><br><span class="line">make install ./configure --prefix=目录名</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>卸载</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make uninstall <span class="comment"># 或手动删除</span></span><br></pre></td></tr></table></figure>
+<p>步骤： 1. 解压</p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0. tar -xzvf soft.tar.gz  <span class="comment"># 解压一般会生成一个soft目录</span></span><br></pre></td></tr></table></figure></code></pre>
+<ol start="2" type="1">
+<li><p>检查环境变量及配置编译选项</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="comment"># 检查环境变量及配置编译选项</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>编译源代码</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make  <span class="comment"># 源代码编译成二进制文件</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>安装</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make install <span class="comment"># 将make编译出来的文件安装到指定位置(或默认位置)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定安装目录</span></span><br><span class="line">make install ./configure --prefix=目录名</span><br></pre></td></tr></table></figure></p></li>
+<li><p>卸载</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make uninstall <span class="comment"># 或手动删除</span></span><br></pre></td></tr></table></figure></p>
 <p>由于软件可能将文件分散地安装在系统的多个目录中，往往很难把它删除干净， 最好在编译前进行配置，指定软件将要安装到目标路径：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install ./configure --prefix=PATHNAME</span><br></pre></td></tr></table></figure>
-<p>这样可以使用 <code>rm -rf PATHNAME</code> 命令来进行干净彻底的卸载。</p>
-</li>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install ./configure --prefix=PATHNAME</span><br></pre></td></tr></table></figure></p>
+<p>这样可以使用 <code>rm -rf PATHNAME</code> 命令来进行干净彻底的卸载。</p></li>
 </ol>
-<h3 id="132-在线安装"><a class="markdownIt-Anchor" href="#132-在线安装"></a> 1.3.2 在线安装</h3>
-<ol>
-<li>
-<p><code>apt</code> 包管理</p>
-<p>由于操作系统中软件包存在复杂的依赖关系，为了解决软件包的依赖性问题和获取问题，<code>APT</code> 顺势出现了。<code>APT</code> 是 <code>Ubuntu</code>  中的命令行软件包管理工具，用于获取、安装、编译、卸载和查询 <code>Deb</code> 软件包，以及检查软件包的依赖关系。</p>
+<h3 id="在线安装">1.3.2 在线安装</h3>
+<ol type="1">
+<li><p><code>apt</code> 包管理</p>
+<p>由于操作系统中软件包存在复杂的依赖关系，为了解决软件包的依赖性问题和获取问题，<code>APT</code> 顺势出现了。<code>APT</code> 是 <code>Ubuntu</code> 中的命令行软件包管理工具，用于获取、安装、编译、卸载和查询 <code>Deb</code> 软件包，以及检查软件包的依赖关系。</p>
 <p><strong>常用命令</strong>：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update                       </span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新本地索引，即更新/var/lib/apt/lists 里边的内容</span></span><br><span class="line">sudo apt-get upgrade                      </span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新所有软件包</span></span><br><span class="line">sudo apt-get install xx                 </span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装软件</span></span><br><span class="line">sudo apt-get remove xx</span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载包</span></span><br><span class="line">sudo apt-get remove --purge name          </span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载并彻底清除</span></span><br><span class="line">sudo apt-get clean                        </span><br><span class="line"><span class="meta">#</span><span class="bash"> 清理下载文件的存档</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>换源</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update                       </span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新本地索引，即更新/var/lib/apt/lists 里边的内容</span></span><br><span class="line">sudo apt-get upgrade                      </span><br><span class="line"><span class="meta">#</span><span class="bash"> 更新所有软件包</span></span><br><span class="line">sudo apt-get install xx                 </span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装软件</span></span><br><span class="line">sudo apt-get remove xx</span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载包</span></span><br><span class="line">sudo apt-get remove --purge name          </span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载并彻底清除</span></span><br><span class="line">sudo apt-get clean                        </span><br><span class="line"><span class="meta">#</span><span class="bash"> 清理下载文件的存档</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>换源</p>
 <p>在线安装，如 <code>apt</code> 包管理的软件仓库地址可能在国外，国内连接速度较慢。所以可以将软件仓库地址改为国内源码库。</p>
 <p><code>Ubuntu</code> 的软件源配置文件是 <code>/etc/apt/sources.list</code>。将系统自带的该文件做个备份，将该文件替换为下面内容，即可使用 <code>TUNA</code> 的软件源镜像。</p>
 <p>用 <code>vim</code> 命令打开 <code>sources.list</code> 文件：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure></p>
 <p>将内容改为如下：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure></p>
 <p>以上为 <code>ubuntu 20.04</code> 更换清华源码的一个例子。此外还有许多其他的优秀软件仓库，可以自行尝试：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清华：</span></span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/<span class="built_in">help</span>/ubuntu/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中科大</span></span><br><span class="line">https://mirrors.ustc.edu.cn/<span class="built_in">help</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.cloud.aliyuncs.com/ubuntu</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清华：</span></span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/<span class="built_in">help</span>/ubuntu/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中科大</span></span><br><span class="line">https://mirrors.ustc.edu.cn/<span class="built_in">help</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里</span></span><br><span class="line">http://mirrors.cloud.aliyuncs.com/ubuntu</span><br></pre></td></tr></table></figure></p>
 <p><strong>Note:</strong> 查看 <code>Ubuntu</code> 的版本信息：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure></p>
 <p>Results:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:    core-11.1.0ubuntu2-noarch:security-11.1.0ubuntu2-noarch</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:    Ubuntu 20.04.3 LTS</span><br><span class="line">Release:        20.04</span><br><span class="line">Codename:       focal</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LSB Version:    core-11.1.0ubuntu2-noarch:security-11.1.0ubuntu2-noarch</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:    Ubuntu 20.04.3 LTS</span><br><span class="line">Release:        20.04</span><br><span class="line">Codename:       focal</span><br><span class="line"></span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="14-开发工具"><a class="markdownIt-Anchor" href="#14-开发工具"></a> 1.4 开发工具</h2>
-<h3 id="141-git"><a class="markdownIt-Anchor" href="#141-git"></a> 1.4.1 Git</h3>
+<h2 id="开发工具">1.4 开发工具</h2>
+<h3 id="git">1.4.1 Git</h3>
 <p><code>Git</code> 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
 <p>命令行安装：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<h3 id="142-vim"><a class="markdownIt-Anchor" href="#142-vim"></a> 1.4.2 <code>Vim</code></h3>
+<h3 id="vim">1.4.2 <code>Vim</code></h3>
 <p><code>Vim</code> 是从 <code>vi</code> 发展出来的一个文本编辑器。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和 <code>Emacs</code> 并列成为类 <code>Unix</code> 系统用户最喜欢的编辑器。 安装步骤：</p>
-<ol>
-<li>
-<p><strong>首先将vim的源码克隆下来，这里因为github可能很慢，使用码云的镜像</strong></p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/mirrors/vim.git</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>安装gcc（有则不必安装）和各依赖库</strong></p>
- <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt<span class="literal">-get</span> install gcc</span><br><span class="line"></span><br><span class="line">sudo apt<span class="literal">-get</span> install libncurses5<span class="literal">-dev</span> python<span class="literal">-dev</span> python3<span class="literal">-dev</span> libatk1.<span class="number">0</span><span class="literal">-dev</span> libcairo2<span class="literal">-dev</span> libx11<span class="literal">-dev</span> libxpm<span class="literal">-dev</span> libxt<span class="literal">-dev</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>配置与安装</strong>（<code>vim</code> 目录）</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --with-features=huge --enable-multibyte</span><br><span class="line">      --enable-rubyinterp --enable-pythoninterp --enable-python3interp</span><br><span class="line">      --enable-luainterp --enable-cscope --enable-gui=gtk3 --enable-perlinterp</span><br><span class="line">      --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/</span><br><span class="line">      --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/</span><br><span class="line">      --prefix=/usr/local/vim8</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><p><strong>首先将vim的源码克隆下来，这里因为github可能很慢，使用码云的镜像</strong></p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/mirrors/vim.git</span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>安装gcc（有则不必安装）和各依赖库</strong></p>
+<p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt<span class="literal">-get</span> install gcc</span><br><span class="line"></span><br><span class="line">sudo apt<span class="literal">-get</span> install libncurses5<span class="literal">-dev</span> python<span class="literal">-dev</span> python3<span class="literal">-dev</span> libatk1.<span class="number">0</span><span class="literal">-dev</span> libcairo2<span class="literal">-dev</span> libx11<span class="literal">-dev</span> libxpm<span class="literal">-dev</span> libxt<span class="literal">-dev</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>配置与安装</strong>（<code>vim</code> 目录）</p>
+<p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --with-features=huge --enable-multibyte</span><br><span class="line">      --enable-rubyinterp --enable-pythoninterp --enable-python3interp</span><br><span class="line">      --enable-luainterp --enable-cscope --enable-gui=gtk3 --enable-perlinterp</span><br><span class="line">      --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/</span><br><span class="line">      --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/</span><br><span class="line">      --prefix=/usr/local/vim8</span><br></pre></td></tr></table></figure></p>
 <p>参数说明：</p>
 <ul>
 <li>with-features=huge：支持最大特性</li>
@@ -450,146 +408,139 @@
 <li>with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/ 指定 python3路径(这里可以根据自己的版本做更改)</li>
 <li>prefix=/usr/local/vim8：指定将要安装到的路径</li>
 </ul>
-<p><strong>Note:</strong> 更多有关 <code>Linux</code> 和 <code>Vim</code> 的相关操作，请查看本文博文 <a target="_blank" rel="noopener" href="https://www.yangsuoly.com/2020/11/23/Linux/">Linux notes</a>，此处不再进行赘述。</p>
-</li>
+<p><strong>Note:</strong> 更多有关 <code>Linux</code> 和 <code>Vim</code> 的相关操作，请查看本文博文 <a target="_blank" rel="noopener" href="https://www.yangsuoly.com/2020/11/23/Linux/">Linux notes</a>，此处不再进行赘述。</p></li>
 </ol>
-<h1 id="15-shortcuts"><a class="markdownIt-Anchor" href="#15-shortcuts"></a> 1.5 Shortcuts</h1>
-<h1 id="六-常用终端快捷键"><a class="markdownIt-Anchor" href="#六-常用终端快捷键"></a> 六、常用终端快捷键</h1>
+<h1 id="shortcuts">1.5 Shortcuts</h1>
+<h1 id="六常用终端快捷键">六、常用终端快捷键</h1>
 <p>以下命令仅在 <code>ubuntu</code> 系统测试，其他发行版 <code>Linux</code> 未测试。</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>快捷键</th>
 <th>功能</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>Ctrl+a</td>
 <td>光标移动到开始位置</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+e</td>
 <td>光标移动到最末尾</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+k</td>
 <td>删除此处至末尾的所有内容</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+u</td>
 <td>删除此处至开始的所有内容</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+d</td>
 <td>删除当前字符</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+h</td>
 <td>删除当前字符前一个字符</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+w</td>
 <td>删除此处到左边的单词</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+y</td>
 <td>粘贴由Ctrl+u， Ctrl+d， Ctrl+w删除的单词</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+l</td>
 <td>相当于clear，即清屏</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+r</td>
 <td>查找历史命令</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+b</td>
 <td>向回移动光标</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+f</td>
 <td>向前移动光标</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+Left-Arrow</td>
 <td>光标移动到上一个单词的词首</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+Right-Arrow</td>
 <td>光标移动到下一个单词的词尾</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Ctrl+d</td>
 <td>退出终端</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Ctrl+Alt+T</td>
 <td>打开终端</td>
 </tr>
 </tbody>
 </table>
-<h1 id="2-command"><a class="markdownIt-Anchor" href="#2-command"></a> 2. Command</h1>
+<h1 id="command">2. Command</h1>
 <p>This chapter introduce some commonly used <code>Linux</code> command, including <code>cd</code>, <code>pwd</code>, <code>ls</code>, <code>mkdir</code>, <code>rmdir</code>, <code>cp</code>, <code>rm</code>, <code>mv</code>, <code>tar</code>, <code>zip</code>, <code>unzip</code>.</p>
-<h2 id="21-derectory-management"><a class="markdownIt-Anchor" href="#21-derectory-management"></a> 2.1 Derectory management</h2>
-<ol>
-<li>
-<p><code>cd</code></p>
-<p>即 current directory，切换目录</p>
-</li>
+<h2 id="derectory-management">2.1 Derectory management</h2>
+<ol type="1">
+<li><p><code>cd</code></p>
+<p>即 current directory，切换目录</p></li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/YangSu/Desktop <span class="comment">#按TAB键可以自动补全</span></span><br><span class="line">cd ~/Desktop <span class="comment">#其中~特指用户的主目录</span></span><br><span class="line">cd.. <span class="comment"># 回到上一个目录</span></span><br><span class="line">cd <span class="comment">#回到用户目录位置</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>
-<p>绝对路径</p>
-<p>/home/YangSu/Desktop</p>
-</li>
-<li>
-<p>相对路径</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure>
-</li>
+<li><p>绝对路径</p>
+<p>/home/YangSu/Desktop</p></li>
+<li><p>相对路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. 当前目录</span><br><span class="line">.. 上级目录</span><br><span class="line">../Videos 上级目录下的Videos子目录</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="112-pwd"><a class="markdownIt-Anchor" href="#112-pwd"></a> 1.1.2 <code>pwd</code></h3>
+<h3 id="pwd">1.1.2 <code>pwd</code></h3>
 <p>即 print working directory 显示当前工作目录</p>
-<h3 id="113-ls"><a class="markdownIt-Anchor" href="#113-ls"></a> 1.1.3 ls</h3>
+<h3 id="ls">1.1.3 ls</h3>
 <p>即 list，列出文件和目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">ls ~/Desktop</span><br><span class="line">ls -l ~/Desktop <span class="comment">#其中，-l参数表示详细模式</span></span><br></pre></td></tr></table></figure>
-<h2 id="14-mkdir"><a class="markdownIt-Anchor" href="#14-mkdir"></a> 1.4 mkdir</h2>
+<h2 id="mkdir">1.4 mkdir</h2>
 <p>即 make directory，创建目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir abc</span><br><span class="line">mkdir -p abc/<span class="number">123</span>/test</span><br><span class="line"><span class="comment">#使用-p参数，可以将路径的层次目录全部创建</span></span><br></pre></td></tr></table></figure>
-<h2 id="15-touch"><a class="markdownIt-Anchor" href="#15-touch"></a> 1.5 touch</h2>
+<h2 id="touch">1.5 touch</h2>
 <p>新建一个文件</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">touch index.js</span><br><span class="line"><span class="comment"># 在当前目录下新建一个 index.js 文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># windows terminal中</span></span><br><span class="line">new-item index.js</span><br></pre></td></tr></table></figure>
-<h2 id="16-rm"><a class="markdownIt-Anchor" href="#16-rm"></a> 1.6 rm</h2>
-<h3 id="rm"><a class="markdownIt-Anchor" href="#rm"></a> rm</h3>
+<h2 id="rm">1.6 rm</h2>
+<h3 id="rm-1">rm</h3>
 <p>即 remove 删除文件或目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf abc <span class="comment">#删除abc目录，和子项一并删除</span></span><br><span class="line"><span class="comment">#其中，r:recursive, f:force</span></span><br></pre></td></tr></table></figure>
-<h3 id="rmdir"><a class="markdownIt-Anchor" href="#rmdir"></a> rmdir</h3>
+<h3 id="rmdir">rmdir</h3>
 <p>即 remove directory，删除空目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir abc <span class="comment">#删除空目录，如果目录非空，则会删除失败</span></span><br></pre></td></tr></table></figure>
-<h2 id="17-cp"><a class="markdownIt-Anchor" href="#17-cp"></a> 1.7 cp</h2>
+<h2 id="cp">1.7 cp</h2>
 <p>即 copy，复制文件或者目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -rf Test Test1</span><br></pre></td></tr></table></figure>
-<h2 id="18-mv"><a class="markdownIt-Anchor" href="#18-mv"></a> 1.8 mv</h2>
+<h2 id="mv">1.8 mv</h2>
 <p>即 move，移动文件或目录（重命名）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv Test1 HelloWorld</span><br></pre></td></tr></table></figure>
-<h2 id="19-tar"><a class="markdownIt-Anchor" href="#19-tar"></a> 1.9 tar</h2>
+<h2 id="tar">1.9 tar</h2>
 <p>即 tape archive档案打包</p>
-<h3 id="创建档案包"><a class="markdownIt-Anchor" href="#创建档案包"></a> 创建档案包</h3>
+<h3 id="创建档案包">创建档案包</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf example.tar example</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">c: create</span></span><br><span class="line"><span class="string">v: verbose，显示详情</span></span><br><span class="line"><span class="string">f: file</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 也可以多个目录打包</span></span><br><span class="line">tar -cvd xxx.tar file1 file2 file3</span><br></pre></td></tr></table></figure>
-<h4 id="还原档案包"><a class="markdownIt-Anchor" href="#还原档案包"></a> 还原档案包</h4>
+<h4 id="还原档案包">还原档案包</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf example.tar</span><br><span class="line">tar -xvf example.tar -C outdir</span><br></pre></td></tr></table></figure>
-<h4 id="归档并压缩"><a class="markdownIt-Anchor" href="#归档并压缩"></a> 归档并压缩</h4>
+<h4 id="归档并压缩">归档并压缩</h4>
 <p>上述的tar格式并没有对文件进行压缩，体积较大</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 并档并压缩</span></span><br><span class="line">tar -czvf example.tar.gz example</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -xzvf example.tar.gz -C outdir</span><br></pre></td></tr></table></figure>
-<h2 id="110-man"><a class="markdownIt-Anchor" href="#110-man"></a> 1.10 man</h2>
+<h2 id="man">1.10 man</h2>
 <p>即 manual，手册</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man tar</span><br></pre></td></tr></table></figure>
-<h2 id="111-ln"><a class="markdownIt-Anchor" href="#111-ln"></a> 1.11 ln</h2>
+<h2 id="ln">1.11 ln</h2>
 <p>软链接，即Windows中的 “ 快捷方式 ”</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ln -s source link</span><br><span class="line"><span class="comment"># s: soft</span></span><br><span class="line">ls -l <span class="comment"># 查看软链接，显示为：test -&gt; Test/</span></span><br><span class="line">ls -l / <span class="comment">#详细列出根目录</span></span><br></pre></td></tr></table></figure>
-<h2 id="112-other"><a class="markdownIt-Anchor" href="#112-other"></a> 1.12 other</h2>
+<h2 id="other">1.12 other</h2>
 <ul>
 <li>reset：重新初始化终端，即清屏</li>
 <li>clear：清屏</li>
@@ -598,14 +549,14 @@
 <li>exit：推出</li>
 <li>#：表示注释</li>
 </ul>
-<h1 id="2-management"><a class="markdownIt-Anchor" href="#2-management"></a> 2 Management</h1>
-<h2 id="21-switch-user"><a class="markdownIt-Anchor" href="#21-switch-user"></a> 2.1 Switch user</h2>
+<h1 id="management">2 Management</h1>
+<h2 id="switch-user">2.1 Switch user</h2>
 <ul>
 <li>su</li>
 </ul>
 <p>即 switch user，切换用户。用户管理需要以管理员身份执行，所以，要先切换账户到 <strong>root</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line">su <span class="comment"># 默认为 root</span></span><br></pre></td></tr></table></figure>
-<h2 id="22-user-operation"><a class="markdownIt-Anchor" href="#22-user-operation"></a> 2.2 User operation</h2>
+<h2 id="user-operation">2.2 User operation</h2>
 <ul>
 <li>useradd</li>
 </ul>
@@ -619,7 +570,7 @@
 </ul>
 <p>即 user delete</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel username</span><br></pre></td></tr></table></figure>
-<h2 id="23-group-operation"><a class="markdownIt-Anchor" href="#23-group-operation"></a> 2.3 Group operation</h2>
+<h2 id="group-operation">2.3 Group operation</h2>
 <ul>
 <li>groupadd</li>
 </ul>
@@ -640,7 +591,7 @@
 <li>cat</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group <span class="comment"># 查看用户组，每一行表示一个group的信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">输出为：名称 + ID</span></span><br><span class="line"><span class="string">YangSu:x:1000:</span></span><br><span class="line"><span class="string">boys:x:1001:</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">cat /etc/passwd <span class="comment"># 查看用户列表，每一行表示一个user信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="24-file-permission"><a class="markdownIt-Anchor" href="#24-file-permission"></a> 2.4 File permission</h2>
+<h2 id="file-permission">2.4 File permission</h2>
 <ul>
 <li>View Permission</li>
 </ul>
@@ -655,7 +606,7 @@
 </ul>
 <p>即 Change owner，修改文件的属主，一般每个用户只操作自己用户目录</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">mkdir /opt/source <span class="comment"># 在/opt目录下创建一个文件夹source</span></span><br><span class="line">chown -R YangSu /opt/source <span class="comment"># 将source目录分配给YangSu</span></span><br><span class="line">ls -ld /opt/source</span><br></pre></td></tr></table></figure>
-<h2 id="25-script"><a class="markdownIt-Anchor" href="#25-script"></a> 2.5 Script</h2>
+<h2 id="script">2.5 Script</h2>
 <ul>
 <li>Shell 脚本： *.sh</li>
 <li>Perl 脚本： *.pl</li>
@@ -672,28 +623,28 @@
 <li>Py 脚本</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br></pre></td></tr></table></figure>
-<h2 id="26-shell"><a class="markdownIt-Anchor" href="#26-shell"></a> 2.6 Shell</h2>
+<h2 id="shell">2.6 Shell</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 定义变量，NAME=value</span></span><br><span class="line">JAVA_HOME=/opt/java #中间不能有空格</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 调用命令</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;/bin</span><br><span class="line">ls $&#123;JAVA_HOME&#125; #使用变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 逻辑控制</span></span><br><span class="line">if ... while ...</span><br></pre></td></tr></table></figure>
-<h1 id="3-enviroment"><a class="markdownIt-Anchor" href="#3-enviroment"></a> 3 Enviroment</h1>
-<h2 id="31-enviromental-viriables"><a class="markdownIt-Anchor" href="#31-enviromental-viriables"></a> 3.1 Enviromental Viriables</h2>
+<h1 id="enviroment">3 Enviroment</h1>
+<h2 id="enviromental-viriables">3.1 Enviromental Viriables</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1.8 # 定义临时的环境变量</span><br><span class="line">echo $JAVA_HOME # 显示环境变量</span><br><span class="line">printenv #查看所有环境变量</span><br></pre></td></tr></table></figure>
 <p>使用环境变量：</p>
 <ul>
 <li>在当前命令行中使用</li>
 <li>在 Shell 脚本中使用</li>
 </ul>
-<h2 id="32-user-viriables"><a class="markdownIt-Anchor" href="#32-user-viriables"></a> 3.2 User Viriables</h2>
+<h2 id="user-viriables">3.2 User Viriables</h2>
 <p>用户环境变量定义在：~/.bash_profile 中（注：在 Linux 下，以 . 开头的文件为 <strong>隐藏文件</strong> ）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ls -la # a 表示 all，显示所有文件</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户环境变量，g 表示 GNU</span></span><br><span class="line">gedit ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加</span></span><br><span class="line">export JAVA_HOME=/opt/jdk1.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销当前用户，再次登陆时生效</span></span><br><span class="line">echo $&#123;JAVA_HOME&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Delete this variables</span></span><br><span class="line">unset JAVA_HOME</span><br></pre></td></tr></table></figure>
-<h2 id="33-system-variables"><a class="markdownIt-Anchor" href="#33-system-variables"></a> 3.3 System Variables</h2>
+<h2 id="system-variables">3.3 System Variables</h2>
 <p>系统环境变量定义在：/etc/profile 中，其中的环境变量对 <strong>所有用户</strong> 有效</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 以 root 登录或执行</span></span><br><span class="line">gedit /etc/profile</span><br><span class="line"></span><br><span class="line">:&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">在 CentOS 中，一般不可以直接修改 /etc/profile，而是在 /etc/profile.d 创建一个自定义的脚本</span></span><br><span class="line">&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用 gedit 创建一个脚本</span></span><br><span class="line">gedit /etc/profile.d/myprofile.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义环境变量</span></span><br><span class="line">export TOMCAT=/opt/tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注销并重新登录</span></span><br></pre></td></tr></table></figure>
-<h2 id="34-path-variables"><a class="markdownIt-Anchor" href="#34-path-variables"></a> 3.4 PATH Variables</h2>
+<h2 id="path-variables">3.4 PATH Variables</h2>
 <p>PATH，最常见的环境变量，用来描述可执行程序的搜索路径</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> OUTPUT:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/home/YangSu/.<span class="built_in">local</span>/bin:/home/YangSu/bin:/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多个路径之间用冒号分隔</span></span><br></pre></td></tr></table></figure>
-<h2 id="35-network"><a class="markdownIt-Anchor" href="#35-network"></a> 3.5 Network</h2>
+<h2 id="network">3.5 Network</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ifconfig <span class="comment"># 检查IP地址，Windows 为ipconfig</span></span><br><span class="line">ping www.baidu.com <span class="comment"># 测试外网</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">虚拟机和宿主机时互相连通的</span></span><br><span class="line"><span class="string">虚拟机：192.168.11.128</span></span><br><span class="line"><span class="string">宿主机：192.168.11.1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h1 id="4-centos8-图形界面和命令行切换"><a class="markdownIt-Anchor" href="#4-centos8-图形界面和命令行切换"></a> 4 CentOS8 图形界面和命令行切换</h1>
+<h1 id="centos8-图形界面和命令行切换">4 CentOS8 图形界面和命令行切换</h1>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看目前默认的启动默认</span></span><br><span class="line">systemctl get-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行模式:multi-user.target</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 图形界面模式:graphical.target</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为图形界面模式</span></span><br><span class="line">systemctl set-default graphical.target</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置为命令行模式</span></span><br><span class="line">systemctl set-default multi-user.target</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -812,7 +763,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-introduction"><span class="nav-number">1.</span> <span class="nav-text"> 1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-why-linux"><span class="nav-number">1.1.</span> <span class="nav-text"> 1.1 Why Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-linux-in-a-nutshell"><span class="nav-number">1.2.</span> <span class="nav-text"> 1.2 Linux in a nutshell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#121-%E5%B8%B8%E7%94%A8%E5%8F%91%E8%A1%8C%E7%89%88"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 1.2.1 常用发行版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#122-%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text"> 1.2.2 推荐阅读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-module-installation"><span class="nav-number">1.3.</span> <span class="nav-text"> 1.3 Module installation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#131-%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.</span> <span class="nav-text"> 1.3.1 编译源码安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#132-%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.</span> <span class="nav-text"> 1.3.2 在线安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text"> 1.4 开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#141-git"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 1.4.1 Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#142-vim"><span class="nav-number">1.4.2.</span> <span class="nav-text"> 1.4.2 Vim</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15-shortcuts"><span class="nav-number">2.</span> <span class="nav-text"> 1.5 Shortcuts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">3.</span> <span class="nav-text"> 六、常用终端快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-command"><span class="nav-number">4.</span> <span class="nav-text"> 2. Command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-derectory-management"><span class="nav-number">4.1.</span> <span class="nav-text"> 2.1 Derectory management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#112-pwd"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 1.1.2 pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#113-ls"><span class="nav-number">4.1.2.</span> <span class="nav-text"> 1.1.3 ls</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-mkdir"><span class="nav-number">4.2.</span> <span class="nav-text"> 1.4 mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-touch"><span class="nav-number">4.3.</span> <span class="nav-text"> 1.5 touch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-rm"><span class="nav-number">4.4.</span> <span class="nav-text"> 1.6 rm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rm"><span class="nav-number">4.4.1.</span> <span class="nav-text"> rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir"><span class="nav-number">4.4.2.</span> <span class="nav-text"> rmdir</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-cp"><span class="nav-number">4.5.</span> <span class="nav-text"> 1.7 cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-mv"><span class="nav-number">4.6.</span> <span class="nav-text"> 1.8 mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-tar"><span class="nav-number">4.7.</span> <span class="nav-text"> 1.9 tar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">4.7.1.</span> <span class="nav-text"> 创建档案包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">4.7.1.1.</span> <span class="nav-text"> 还原档案包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%92%E6%A1%A3%E5%B9%B6%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.7.1.2.</span> <span class="nav-text"> 归档并压缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#110-man"><span class="nav-number">4.8.</span> <span class="nav-text"> 1.10 man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#111-ln"><span class="nav-number">4.9.</span> <span class="nav-text"> 1.11 ln</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#112-other"><span class="nav-number">4.10.</span> <span class="nav-text"> 1.12 other</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-management"><span class="nav-number">5.</span> <span class="nav-text"> 2 Management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-switch-user"><span class="nav-number">5.1.</span> <span class="nav-text"> 2.1 Switch user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-user-operation"><span class="nav-number">5.2.</span> <span class="nav-text"> 2.2 User operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-group-operation"><span class="nav-number">5.3.</span> <span class="nav-text"> 2.3 Group operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-file-permission"><span class="nav-number">5.4.</span> <span class="nav-text"> 2.4 File permission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-script"><span class="nav-number">5.5.</span> <span class="nav-text"> 2.5 Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-shell"><span class="nav-number">5.6.</span> <span class="nav-text"> 2.6 Shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-enviroment"><span class="nav-number">6.</span> <span class="nav-text"> 3 Enviroment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#31-enviromental-viriables"><span class="nav-number">6.1.</span> <span class="nav-text"> 3.1 Enviromental Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-user-viriables"><span class="nav-number">6.2.</span> <span class="nav-text"> 3.2 User Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-system-variables"><span class="nav-number">6.3.</span> <span class="nav-text"> 3.3 System Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-path-variables"><span class="nav-number">6.4.</span> <span class="nav-text"> 3.4 PATH Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-network"><span class="nav-number">6.5.</span> <span class="nav-text"> 3.5 Network</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-centos8-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%92%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%87%E6%8D%A2"><span class="nav-number">7.</span> <span class="nav-text"> 4 CentOS8 图形界面和命令行切换</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-linux"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Why Linux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-in-a-nutshell"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Linux in a nutshell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%91%E8%A1%8C%E7%89%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 常用发行版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 推荐阅读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module-installation"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Module installation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 编译源码安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 在线安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 Vim</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shortcuts"><span class="nav-number">2.</span> <span class="nav-text">1.5 Shortcuts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E5%B8%B8%E7%94%A8%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">3.</span> <span class="nav-text">六、常用终端快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#command"><span class="nav-number">4.</span> <span class="nav-text">2. Command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#derectory-management"><span class="nav-number">4.1.</span> <span class="nav-text">2.1 Derectory management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pwd"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.1.2 pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls"><span class="nav-number">4.1.2.</span> <span class="nav-text">1.1.3 ls</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir"><span class="nav-number">4.2.</span> <span class="nav-text">1.4 mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch"><span class="nav-number">4.3.</span> <span class="nav-text">1.5 touch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">4.4.</span> <span class="nav-text">1.6 rm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-1"><span class="nav-number">4.4.1.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir"><span class="nav-number">4.4.2.</span> <span class="nav-text">rmdir</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp"><span class="nav-number">4.5.</span> <span class="nav-text">1.7 cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv"><span class="nav-number">4.6.</span> <span class="nav-text">1.8 mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar"><span class="nav-number">4.7.</span> <span class="nav-text">1.9 tar</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">4.7.1.</span> <span class="nav-text">创建档案包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E6%A1%A3%E6%A1%88%E5%8C%85"><span class="nav-number">4.7.1.1.</span> <span class="nav-text">还原档案包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%92%E6%A1%A3%E5%B9%B6%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.7.1.2.</span> <span class="nav-text">归档并压缩</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man"><span class="nav-number">4.8.</span> <span class="nav-text">1.10 man</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ln"><span class="nav-number">4.9.</span> <span class="nav-text">1.11 ln</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other"><span class="nav-number">4.10.</span> <span class="nav-text">1.12 other</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#management"><span class="nav-number">5.</span> <span class="nav-text">2 Management</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-user"><span class="nav-number">5.1.</span> <span class="nav-text">2.1 Switch user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-operation"><span class="nav-number">5.2.</span> <span class="nav-text">2.2 User operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-operation"><span class="nav-number">5.3.</span> <span class="nav-text">2.3 Group operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-permission"><span class="nav-number">5.4.</span> <span class="nav-text">2.4 File permission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#script"><span class="nav-number">5.5.</span> <span class="nav-text">2.5 Script</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">5.6.</span> <span class="nav-text">2.6 Shell</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enviroment"><span class="nav-number">6.</span> <span class="nav-text">3 Enviroment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#enviromental-viriables"><span class="nav-number">6.1.</span> <span class="nav-text">3.1 Enviromental Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-viriables"><span class="nav-number">6.2.</span> <span class="nav-text">3.2 User Viriables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#system-variables"><span class="nav-number">6.3.</span> <span class="nav-text">3.3 System Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-variables"><span class="nav-number">6.4.</span> <span class="nav-text">3.4 PATH Variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network"><span class="nav-number">6.5.</span> <span class="nav-text">3.5 Network</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#centos8-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%92%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%88%87%E6%8D%A2"><span class="nav-number">7.</span> <span class="nav-text">4 CentOS8 图形界面和命令行切换</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
