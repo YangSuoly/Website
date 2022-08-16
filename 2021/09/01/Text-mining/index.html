@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Introduction  投资者情绪等指数对石油价格（收益率）的预测（or predictability）；如投资者看涨、看跌的情绪. 投资者关注度。如对石油市场的关注度（可以借助谷歌指数）、对石油政策、绿色消费、碳中和等的关注度等； 基于数据挖掘对石油价格的预测。挖掘一些新的创意点对油价进行预测，初步拟定爬取新闻文本，之后借助自然语言处理分析投资者情绪，情感分析，投资者关注度等。">
+  <meta name="description" content="1. Introduction  投资者情绪等指数对石油价格（收益率）的预测（or predictability）；如投资者看涨、看跌的情绪. 投资者关注度。如对石油市场的关注度（可以借助谷歌指数）、对石油政策、绿色消费、碳中和等的关注度等； 基于数据挖掘对石油价格的预测。挖掘一些新的创意点对油价进行预测，初步拟定爬取新闻文本，之后借助自然语言处理分析投资者情绪，情感分析，投资者关注度等。  虽然">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Text-mining">
 <meta property="og:url" content="http://yangsuoly.com/2021/09/01/Text-mining/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Introduction  投资者情绪等指数对石油价格（收益率）的预测（or predictability）；如投资者看涨、看跌的情绪. 投资者关注度。如对石油市场的关注度（可以借助谷歌指数）、对石油政策、绿色消费、碳中和等的关注度等； 基于数据挖掘对石油价格的预测。挖掘一些新的创意点对油价进行预测，初步拟定爬取新闻文本，之后借助自然语言处理分析投资者情绪，情感分析，投资者关注度等。">
+<meta property="og:description" content="1. Introduction  投资者情绪等指数对石油价格（收益率）的预测（or predictability）；如投资者看涨、看跌的情绪. 投资者关注度。如对石油市场的关注度（可以借助谷歌指数）、对石油政策、绿色消费、碳中和等的关注度等； 基于数据挖掘对石油价格的预测。挖掘一些新的创意点对油价进行预测，初步拟定爬取新闻文本，之后借助自然语言处理分析投资者情绪，情感分析，投资者关注度等。  虽然">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/01/hwspge.png">
 <meta property="og:image" content="https://z3.ax1x.com/2021/09/01/hwsFHI.png">
@@ -293,7 +293,8 @@
       
         <h1 id="introduction">1. Introduction</h1>
 <ol type="1">
-<li>投资者情绪等指数对石油价格（收益率）的预测（or predictability）；如投资者看涨、看跌的情绪.</li>
+<li>投资者情绪等指数对石油价格（收益率）的预测（or
+predictability）；如投资者看涨、看跌的情绪.</li>
 <li>投资者关注度。如对石油市场的关注度（可以借助谷歌指数）、对石油政策、绿色消费、碳中和等的关注度等；</li>
 <li><strong>基于数据挖掘对石油价格的预测</strong>。挖掘一些新的创意点对油价进行预测，初步拟定爬取新闻文本，之后借助自然语言处理分析投资者情绪，情感分析，投资者关注度等。</li>
 </ol>
@@ -305,25 +306,45 @@
 </ol>
 <ul>
 <li>爬虫: 多线程和多进程爬重</li>
-<li>机器学习：<code>SVM</code>, <code>Lasso</code>, <code>Random Forest</code>, <code>LightGBM</code>;</li>
+<li>机器学习：<code>SVM</code>, <code>Lasso</code>,
+<code>Random Forest</code>, <code>LightGBM</code>;</li>
 <li>深度学习: <code>CNN</code></li>
-<li><code>NLP</code>: Text classification, Sentiment analysis, Topic modelling.</li>
+<li><code>NLP</code>: Text classification, Sentiment analysis, Topic
+modelling.</li>
 </ul>
 <h1 id="text-mining">3. Text mining</h1>
 <h2 id="get-news-information">3.1 Get news information</h2>
 <h3 id="爬取信息">3.1.1 爬取信息</h3>
-<p>参考 <a target="_blank" rel="noopener" href="https://linkinghub.elsevier.com/retrieve/pii/S0263224120309982">Wu et al.</a>，我们也选择 <a target="_blank" rel="noopener" href="https://oilprice.com/">OilPrice.com</a> 的 <code>ARTICLE ARCHIVE | PAGE 1</code> 部分的所有新闻，作为我们的新闻来源，我们借助 <code>Python</code> 爬虫工具从该栏目中爬取了 1300 页，每页有 20 条新闻，合计 26000 条新闻。</p>
+<p>参考 <a
+target="_blank" rel="noopener" href="https://linkinghub.elsevier.com/retrieve/pii/S0263224120309982">Wu
+et al.</a>，我们也选择 <a target="_blank" rel="noopener" href="https://oilprice.com/">OilPrice.com</a>
+的 <code>ARTICLE ARCHIVE | PAGE 1</code>
+部分的所有新闻，作为我们的新闻来源，我们借助 <code>Python</code>
+爬虫工具从该栏目中爬取了 1300 页，每页有 20 条新闻，合计 26000
+条新闻。</p>
 <p>爬虫分两步：</p>
 <ol type="1">
 <li><p>利用多线程爬虫（<code>threading</code>) 爬取所有新闻的链接</p>
 <p>最终，得到了总计 26000 条新闻的所有链接。</p></li>
-<li><p>利用多进程爬虫 （<code>multiprocessing</code>) 爬取所有新闻的内容</p>
-<p>由于数据量过于庞大，要对总计 26000 条新闻链接进行访问和获取包含标题、发布时间、作者、新闻内容在内所有信息，因此如果一条条的进行爬取的话，会非常耗时。因此，此处借助多 <code>CPU</code> 的优点，选择使用多进程 <code>multiprocessing</code> 爬虫进行处理。</p>
-<p>此外，由于个人电脑的 <code>CPU</code> 数量并不多，<code>Google Colab</code> 平台的 <code>CPU</code> 数为 2，综合考虑之后，此处使用阿里云平台的 <a target="_blank" rel="noopener" href="https://dsw-dev.data.aliyun.com/">Data Science Workshop</a> 进行处理，因为其 <code>CPU</code> 数为 24。最终得到 25695 条新闻数据的全部文本内容。</p></li>
+<li><p>利用多进程爬虫 （<code>multiprocessing</code>)
+爬取所有新闻的内容</p>
+<p>由于数据量过于庞大，要对总计 26000
+条新闻链接进行访问和获取包含标题、发布时间、作者、新闻内容在内所有信息，因此如果一条条的进行爬取的话，会非常耗时。因此，此处借助多
+<code>CPU</code> 的优点，选择使用多进程 <code>multiprocessing</code>
+爬虫进行处理。</p>
+<p>此外，由于个人电脑的 <code>CPU</code>
+数量并不多，<code>Google Colab</code> 平台的 <code>CPU</code> 数为
+2，综合考虑之后，此处使用阿里云平台的 <a
+target="_blank" rel="noopener" href="https://dsw-dev.data.aliyun.com/">Data Science Workshop</a>
+进行处理，因为其 <code>CPU</code> 数为 24。最终得到 25695
+条新闻数据的全部文本内容。</p></li>
 </ol>
 <h2 id="news-propression">3.2 News propression</h2>
 <h3 id="text-cleaning">3.2.1 Text cleaning</h3>
-<p>First of all, we need process data cleaning. 1. Load news content and and remove the data outside the time frame of our study. 2. Turn the Time columns (string) to timetype. 3. Extract the daily and hourly information for further analysis.</p>
+<p>First of all, we need process data cleaning. 1. Load news content and
+and remove the data outside the time frame of our study. 2. Turn the
+Time columns (string) to timetype. 3. Extract the daily and hourly
+information for further analysis.</p>
 <p>Finally we get 24308 news, each item contains nine columns:</p>
 <ul>
 <li>Link: Links to articles;</li>
@@ -538,7 +559,9 @@ Tom Kool
 </tbody>
 </table>
 <h3 id="load-oil-price">3.2.2 Load oil price</h3>
-<p>We use WTI future oil price (collecte from Wind database) as the movement index, from 2011.8.1 to 2021.07.30 (7.31 is also non-trading day), 10 years and 2545 samples in total, six samples see Table 2.</p>
+<p>We use WTI future oil price (collecte from Wind database) as the
+movement index, from 2011.8.1 to 2021.07.30 (7.31 is also non-trading
+day), 10 years and 2545 samples in total, six samples see Table 2.</p>
 <center>
 Table 2 The last six item of historical oil price
 </center>
@@ -646,32 +669,74 @@ Movement
 </tbody>
 </table>
 <h3 id="preparation">3.2.3 Preparation</h3>
-<p>Before carrying out sentiment analysis, we need preprocess the original data. Considering that news information can be published in either trading days or non-trading days, and also can be published in either trading hours or non-trading hours, we need to preprocess the attribution date of news. The specific processing rules are as follows:</p>
+<p>Before carrying out sentiment analysis, we need preprocess the
+original data. Considering that news information can be published in
+either trading days or non-trading days, and also can be published in
+either trading hours or non-trading hours, we need to preprocess the
+attribution date of news. The specific processing rules are as
+follows:</p>
 <ul>
-<li>News posted before 17:00 on the same day is classified as the news of the trading day</li>
-<li>The news released after 17:00 on the day is classified as the news of the next trading day</li>
+<li>News posted before 17:00 on the same day is classified as the news
+of the trading day</li>
+<li>The news released after 17:00 on the day is classified as the news
+of the next trading day</li>
 </ul>
 <p>More details see Fig. 1:</p>
 <p><img src = 'https://z3.ax1x.com/2021/09/01/hwsS3D.png' style="zoom:80%;" /></p>
 <center>
 Fig.1 News Timeline
 </center>
-<p><strong>Note</strong>: This guide describes the news timeline. Considering that the closing/opening time of WTI future oil price is 17:00/18:00 pm EST, so we regard news form 18:00 pm (the T-1 -th day) to 17:00 pm (the T-th day) as news posted on T-th, and the use these news (features information extracted by deep learning technique) to predict oil prices.</p>
+<p><strong>Note</strong>: This guide describes the news timeline.
+Considering that the closing/opening time of WTI future oil price is
+17:00/18:00 pm EST, so we regard news form 18:00 pm (the T-1 -th day) to
+17:00 pm (the T-th day) as news posted on T-th, and the use these news
+(features information extracted by deep learning technique) to predict
+oil prices.</p>
 <h4 id="analysis-with-merged-data">Analysis with merged data</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The total number of days news was issued:  3358</span><br><span class="line">The total number of trading days:  2545</span><br><span class="line">Days on which news was issued in non-trading days:  857</span><br><span class="line">Days on which no news issused:  44</span><br><span class="line">The number of news posted on on-trading days: 4274</span><br></pre></td></tr></table></figure>
-<p>From above, we can see that all of 24308 news were issued in 3358 days among 10 years. In total, there are 4274 news posted on non-trading days. Then, we need to:</p>
+<p>From above, we can see that all of 24308 news were issued in 3358
+days among 10 years. In total, there are 4274 news posted on non-trading
+days. Then, we need to:</p>
 <ol type="1">
 <li><p>Classify these news to news trading days.</p></li>
-<li><p>Classify news according to posted hours. If a news is posted after 17:00 PM, we consider to regard this news as next day's news</p></li>
+<li><p>Classify news according to posted hours. If a news is posted
+after 17:00 PM, we consider to regard this news as next day's
+news</p></li>
 </ol>
-<h2 id="sentiment-analysis-with-finbert">3.3 Sentiment analysis with FinBERT</h2>
+<h2 id="sentiment-analysis-with-finbert">3.3 Sentiment analysis with
+FinBERT</h2>
 <h3 id="introduction-1">3.3.1 Introduction</h3>
-<p>FinBERT is a pre-trained NLP model to analyze sentiment of financial text. It is built by further training the BERT language model in the finance domain, using a large financial corpus and thereby fine-tuning it for financial sentiment classification. <a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/251231107_Good_Debt_or_Bad_Debt_Detecting_Semantic_Orientations_in_Economic_Texts">Financial PhraseBank</a> by Malo et al. (2014) is used for fine-tuning. For more details, please see the paper <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.10063">FinBERT: Financial Sentiment Analysis with Pre-trained Language Models</a> and related <a target="_blank" rel="noopener" href="https://medium.com/prosus-ai-tech-blog/finbert-financial-sentiment-analysis-with-bert-b277a3607101">blog</a> post on Medium.</p>
-<p>In this subsection, we ultilize the <a target="_blank" rel="noopener" href="https://huggingface.co/ProsusAI/finbert">Hosted inference API</a> and <a target="_blank" rel="noopener" href="https://github.com/ProsusAI/finBERT">Github project</a> to analysis the sentiment characteristics hidden in the news text.</p>
-<h4 id="data-exploration-to-financial-phrasebank">Data exploration to Financial PhraseBank</h4>
-<p>Financial Phrasebank (<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/251231107_Good_Debt_or_Bad_Debt_Detecting_Semantic_Orientations_in_Economic_Texts">Malo et al. (2014)</a>) consists of 4845 english sentences selected randomly from financial news found on LexisNexis database. These sentences then were annotated by 16 people with background in finance and business. The annotators were asked to give labels according to how they think the information in the sentence might affect the mentioned company stock price. The dataset also includes information regarding the agreement levels on sentences among annotators.</p>
-<p><strong>Note</strong>: Please make sure to abid by the license and copyright for the use of the data. Please check with the author.</p>
-<p>Download the data from this <a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Pekka_Malo/publication/251231364_FinancialPhraseBank-v10/data/0c96051eee4fb1d56e000000/FinancialPhraseBank-v10.zip?origin=publication_list">link</a> and unzip it under <code>finphrase_dir</code> set above.</p>
+<p>FinBERT is a pre-trained NLP model to analyze sentiment of financial
+text. It is built by further training the BERT language model in the
+finance domain, using a large financial corpus and thereby fine-tuning
+it for financial sentiment classification. <a
+target="_blank" rel="noopener" href="https://www.researchgate.net/publication/251231107_Good_Debt_or_Bad_Debt_Detecting_Semantic_Orientations_in_Economic_Texts">Financial
+PhraseBank</a> by Malo et al. (2014) is used for fine-tuning. For more
+details, please see the paper <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.10063">FinBERT: Financial Sentiment
+Analysis with Pre-trained Language Models</a> and related <a
+target="_blank" rel="noopener" href="https://medium.com/prosus-ai-tech-blog/finbert-financial-sentiment-analysis-with-bert-b277a3607101">blog</a>
+post on Medium.</p>
+<p>In this subsection, we ultilize the <a
+target="_blank" rel="noopener" href="https://huggingface.co/ProsusAI/finbert">Hosted inference API</a>
+and <a target="_blank" rel="noopener" href="https://github.com/ProsusAI/finBERT">Github project</a> to
+analysis the sentiment characteristics hidden in the news text.</p>
+<h4 id="data-exploration-to-financial-phrasebank">Data exploration to
+Financial PhraseBank</h4>
+<p>Financial Phrasebank (<a
+target="_blank" rel="noopener" href="https://www.researchgate.net/publication/251231107_Good_Debt_or_Bad_Debt_Detecting_Semantic_Orientations_in_Economic_Texts">Malo
+et al. (2014)</a>) consists of 4845 english sentences selected randomly
+from financial news found on LexisNexis database. These sentences then
+were annotated by 16 people with background in finance and business. The
+annotators were asked to give labels according to how they think the
+information in the sentence might affect the mentioned company stock
+price. The dataset also includes information regarding the agreement
+levels on sentences among annotators.</p>
+<p><strong>Note</strong>: Please make sure to abid by the license and
+copyright for the use of the data. Please check with the author.</p>
+<p>Download the data from this <a
+target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Pekka_Malo/publication/251231364_FinancialPhraseBank-v10/data/0c96051eee4fb1d56e000000/FinancialPhraseBank-v10.zip?origin=publication_list">link</a>
+and unzip it under <code>finphrase_dir</code> set above.</p>
 <ul>
 <li><p>Data information</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Total number of record <span class="keyword">in</span> the file:  <span class="number">4846</span></span><br><span class="line">Total number of record after dropping duplicates:  <span class="number">4840</span></span><br><span class="line">Missing label:  <span class="number">0</span></span><br></pre></td></tr></table></figure>
@@ -698,7 +763,11 @@ Fig.1 News Timeline
 <p>3200</p>
 </th>
 <td>
-<p>The company serves customers in various industries , including process and resources , industrial machinery , architecture , building , construction , electrical , transportation , electronics , chemical , petrochemical , energy , and information technology , as well as catering and households .</p>
+<p>The company serves customers in various industries , including
+process and resources , industrial machinery , architecture , building ,
+construction , electrical , transportation , electronics , chemical ,
+petrochemical , energy , and information technology , as well as
+catering and households .</p>
 </td>
 <td>
 <p>neutral</p>
@@ -720,7 +789,9 @@ Fig.1 News Timeline
 <p>4101</p>
 </th>
 <td>
-<p>The extracted filtrates are very high in clarity while the dried filter cakes meet required transport moisture limits (TMLs)for their ore grades .</p>
+<p>The extracted filtrates are very high in clarity while the dried
+filter cakes meet required transport moisture limits (TMLs)for their ore
+grades .</p>
 </td>
 <td>
 <p>neutral</p>
@@ -731,7 +802,9 @@ Fig.1 News Timeline
 <p>1926</p>
 </th>
 <td>
-<p>The tool is a patent pending design that allows consumers to lay out their entire project on a removable plate using multiple clear stamps of any kind .</p>
+<p>The tool is a patent pending design that allows consumers to lay out
+their entire project on a removable plate using multiple clear stamps of
+any kind .</p>
 </td>
 <td>
 <p>neutral</p>
@@ -742,7 +815,9 @@ Fig.1 News Timeline
 <p>1536</p>
 </th>
 <td>
-<p>In Finland , the corresponding service is Alma Media 's Etuovi.com , Finland 's most popular and best known nationwide online service for home and property sales .</p>
+<p>In Finland , the corresponding service is Alma Media 's Etuovi.com ,
+Finland 's most popular and best known nationwide online service for
+home and property sales .</p>
 </td>
 <td>
 <p>neutral</p>
@@ -751,12 +826,18 @@ Fig.1 News Timeline
 </tbody>
 </table></li>
 <li><p>Histogram</p>
-<p>From Fig. 2, we find that more than 60% of the data are labeled as "neutral". Sometimes imbalanced data are balanced using methods like resampling (oversampling, under-sampling) as models tend to predict the majority class more. SMOTE or the Synthetic Minority Over-sampling Technique is a popular technique for oversampling but it is a statistical method for numerical data.</p>
+<p>From Fig. 2, we find that more than 60% of the data are labeled as
+"neutral". Sometimes imbalanced data are balanced using methods like
+resampling (oversampling, under-sampling) as models tend to predict the
+majority class more. SMOTE or the Synthetic Minority Over-sampling
+Technique is a popular technique for oversampling but it is a
+statistical method for numerical data.</p>
 <p><img src = 'https://z3.ax1x.com/2021/09/01/hws9jH.md.png' style="zoom:80%;" /></p>
 <center>
 <p>Fig.2 The word distribution of Financial PhraseBank</p>
 </center>
-<p>In addition, this imbalance should be also taken into consideration if this happends in the real world.</p></li>
+<p>In addition, this imbalance should be also taken into consideration
+if this happends in the real world.</p></li>
 <li><p>Word frequency</p>
 <p><img src="https://z3.ax1x.com/2021/09/01/hwspge.png" alt="png" style="zoom:80%;" /></p>
 <center>
@@ -834,28 +915,82 @@ Fig.1 News Timeline
 </table>
 <p><strong>Note:</strong></p>
 <ul>
-<li>Because some of the original code didn't fit perfectly in our prediction work, hence, we made some changes to the source code.</li>
-<li>The initial prediction function did not support input lists of strings (as shown in the following examples), so we made some changes to the original code.</li>
+<li>Because some of the original code didn't fit perfectly in our
+prediction work, hence, we made some changes to the source code.</li>
+<li>The initial prediction function did not support input lists of
+strings (as shown in the following examples), so we made some changes to
+the original code.</li>
 </ul></li>
 </ol>
-<h3 id="analysis-sentiment-features">3.3.3 Analysis sentiment features</h3>
-<p>In this part, we perform sentiment analysis for both news headlines and news bodies, and the output results include five parts:</p>
+<h3 id="analysis-sentiment-features">3.3.3 Analysis sentiment
+features</h3>
+<p>In this part, we perform sentiment analysis for both news headlines
+and news bodies, and the output results include five parts:</p>
 <ul>
-<li>Senti: sentiment score, obatain by subtracting negative prob. from positive prob. (title and full-text)</li>
-<li>Prediction: this item is considered <code>Positive</code>, <code>neutral</code> or <code>negative</code> by the FinBert (title and full-text).</li>
+<li>Senti: sentiment score, obatain by subtracting negative prob. from
+positive prob. (title and full-text)</li>
+<li>Prediction: this item is considered <code>Positive</code>,
+<code>neutral</code> or <code>negative</code> by the FinBert (title and
+full-text).</li>
 </ul>
-<h2 id="subjective-analysis-with-textblob">3.4 Subjective analysis with TextBlob</h2>
+<h2 id="subjective-analysis-with-textblob">3.4 Subjective analysis with
+TextBlob</h2>
 <h3 id="introduction-2">3.4.1 Introduction</h3>
-<p><a target="_blank" rel="noopener" href="https://textblob.readthedocs.io/en/dev/">TextBlob</a> is a Python library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, translation, and more. Many scholars used this library to perform textual sentiment analysis, such as, <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ijforecast.2018.07.006">Li et al.</a>, <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai et al.</a>.</p>
-<p>However, the sentiment analyzers of TextBlod is the Naive Bayes classifier on the movie review corpus. We know that there are certain ambiguities in language expressions in different fields. Our research fields are finance and economics, so there may be some errors in using this classifier. Therefore, we just ultilize this library to carry out subjective analysis to obtain each new's subjectivity score according to <code>Title</code> and <code>full-text</code>. Subjectivity scores are values within the range [0.0, 1.0], where 0.0 is very objective and 1.0 is very subjective.</p>
+<p><a target="_blank" rel="noopener" href="https://textblob.readthedocs.io/en/dev/">TextBlob</a> is a
+Python library for processing textual data. It provides a simple API for
+diving into common natural language processing (NLP) tasks such as
+part-of-speech tagging, noun phrase extraction, sentiment analysis,
+classification, translation, and more. Many scholars used this library
+to perform textual sentiment analysis, such as, <a
+target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ijforecast.2018.07.006">Li et al.</a>,
+<a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai
+et al.</a>.</p>
+<p>However, the sentiment analyzers of TextBlod is the Naive Bayes
+classifier on the movie review corpus. We know that there are certain
+ambiguities in language expressions in different fields. Our research
+fields are finance and economics, so there may be some errors in using
+this classifier. Therefore, we just ultilize this library to carry out
+subjective analysis to obtain each new's subjectivity score according to
+<code>Title</code> and <code>full-text</code>. Subjectivity scores are
+values within the range [0.0, 1.0], where 0.0 is very objective and 1.0
+is very subjective.</p>
 <h2 id="oil-price-trends-with-cnn">3.5 Oil price trends with CNN</h2>
 <h3 id="introduction-3">3.5.1 Introduction</h3>
-<p>In this subsection, we employs a CNN interface from the library, <em>PyTorch</em>, for implementing the prescribed network architecture of <a target="_blank" rel="noopener" href="https://paperswithcode.com/paper/a-sensitivity-analysis-of-and-practitioners">Zhang and Wallace's (2017)</a> CNN model. This approach is developed specifically for the sentiment analysis of short text.</p>
+<p>In this subsection, we employs a CNN interface from the library,
+<em>PyTorch</em>, for implementing the prescribed network architecture
+of <a
+target="_blank" rel="noopener" href="https://paperswithcode.com/paper/a-sensitivity-analysis-of-and-practitioners">Zhang
+and Wallace's (2017)</a> CNN model. This approach is developed
+specifically for the sentiment analysis of short text.</p>
 <blockquote>
-<p><strong>Note</strong>： The CNN model begins with a tokenized sentence which is then converted to a sentence matrix, the rows of which are word vector representations of each token. We treat the sentence matrix as an ‘image’, and perform convolution on it via linear filters. The dimensionality of the feature map generated by each filter will vary as a function of the sentence length and the filter region size. Thus, a pooling function is applied to each feature map to induce a fixed-length vector. A common strategy is 1-max pooling (<a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=A+theoretical+analysis+of+feature+pooling+in+visual+recognition&amp;btnG=">Boureau, Ponce, &amp; LeCun, 2010</a>), which extracts a scalar from each feature map. Together, the outputs generated from the filter maps can be concatenated into a fixed-length, ‘top-level’ feature vector, which is then fed through a softmax function to generate the final classification.</p>
+<p><strong>Note</strong>： The CNN model begins with a tokenized
+sentence which is then converted to a sentence matrix, the rows of which
+are word vector representations of each token. We treat the sentence
+matrix as an ‘image’, and perform convolution on it via linear filters.
+The dimensionality of the feature map generated by each filter will vary
+as a function of the sentence length and the filter region size. Thus, a
+pooling function is applied to each feature map to induce a fixed-length
+vector. A common strategy is 1-max pooling (<a
+target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=A+theoretical+analysis+of+feature+pooling+in+visual+recognition&amp;btnG=">Boureau,
+Ponce, &amp; LeCun, 2010</a>), which extracts a scalar from each feature
+map. Together, the outputs generated from the filter maps can be
+concatenated into a fixed-length, ‘top-level’ feature vector, which is
+then fed through a softmax function to generate the final
+classification.</p>
 </blockquote>
-<p>The advantage of the CNN classifier is based on multi-layer networks and convolution architecture. Since convolutional layers of CNNs apply a convolution operation to the input matrix, they are able to compose different semantic fragments of sentences and learn the interactions between composed fragments, thereby fully exploiting inter-modal semantic relations of crude oil news. Price movements either up or down within the transaction day are used as the output of the CNN classification.</p>
-<p>The outputs of the CNN classification represent the fluctuation of daily crude oil prices, either increase or decrease. Specifically, the price movement <span class="math inline">\(M_t\)</span> is defined as:</p>
+<p>The advantage of the CNN classifier is based on multi-layer networks
+and convolution architecture. Since convolutional layers of CNNs apply a
+convolution operation to the input matrix, they are able to compose
+different semantic fragments of sentences and learn the interactions
+between composed fragments, thereby fully exploiting inter-modal
+semantic relations of crude oil news. Price movements either up or down
+within the transaction day are used as the output of the CNN
+classification.</p>
+<p>The outputs of the CNN classification represent the fluctuation of
+daily crude oil prices, either increase or decrease. Specifically, the
+price movement <span class="math inline">\(M_t\)</span> is defined
+as:</p>
 <p><span class="math display">\[
 M = \left\{
       \begin{array}{ll}
@@ -863,22 +998,47 @@ M = \left\{
           1,\ p_t \geq p_{t-1}
           \end{array}\right.
 \]</span></p>
-<p>Where, <span class="math inline">\(p_t\)</span> denotes the oil price at the end of day <span class="math inline">\(t\)</span>.</p>
-<p>In this way, the CNN model is trained to learn hidden patterns embedded within news headlines that affect the oil price. to improve our understanding of the CNN algorithm. The procedures are described as follows:</p>
+<p>Where, <span class="math inline">\(p_t\)</span> denotes the oil price
+at the end of day <span class="math inline">\(t\)</span>.</p>
+<p>In this way, the CNN model is trained to learn hidden patterns
+embedded within news headlines that affect the oil price. to improve our
+understanding of the CNN algorithm. The procedures are described as
+follows:</p>
 <ul>
-<li><p>Step 1: Data preprocessing. The dataset is divided into training data (2011.08.01 - 2018.07.31) and testing data (2018.08.01 - 2021.07.31).</p></li>
-<li><p>Step 2: Text vectorization. Convert news text to word vector with pretrainded word embedding. In this research, we utlize an unsupervised learning algorithm for word representation call GloVe (<a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Glove%3A+Global+vectors+for+word+representation.+In+Proceedings+of+the+2014+conference+on+empirical+methods+in+natural+language+processing&amp;btnG=">Pennington et al., 2014</a>) proposed by Stanford University and is a new global log-bilinear regression model that aims to combine the advantages of the global matrix and local context window methods.</p>
+<li><p>Step 1: Data preprocessing. The dataset is divided into training
+data (2011.08.01 - 2018.07.31) and testing data (2018.08.01 -
+2021.07.31).</p></li>
+<li><p>Step 2: Text vectorization. Convert news text to word vector with
+pretrainded word embedding. In this research, we utlize an unsupervised
+learning algorithm for word representation call GloVe (<a
+target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Glove%3A+Global+vectors+for+word+representation.+In+Proceedings+of+the+2014+conference+on+empirical+methods+in+natural+language+processing&amp;btnG=">Pennington
+et al., 2014</a>) proposed by Stanford University and is a new global
+log-bilinear regression model that aims to combine the advantages of the
+global matrix and local context window methods.</p>
 <blockquote>
-<p>Word embedding is a dimension reduction technique that maps high-dimensional words (unstructured information) to low-dimensional numerical vectors (structured information). In other words, word embedding aims to convert documents into mathematical representations as computer-readable input and thus is essential for text analysis problems (<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai et al.</a>).</p>
+<p>Word embedding is a dimension reduction technique that maps
+high-dimensional words (unstructured information) to low-dimensional
+numerical vectors (structured information). In other words, word
+embedding aims to convert documents into mathematical representations as
+computer-readable input and thus is essential for text analysis problems
+(<a
+target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0169207021001060?via%3Dihub">Bai
+et al.</a>).</p>
 </blockquote></li>
-<li><p>Step 3: Train CNN model using the training sample. Word vector is feed into CNN model. The process of CNN model includes “Convolutional operation,” “Max Pooling,” and “Softmax classification”. A concise and complete flowchart is shown in Fig. 4.</p>
+<li><p>Step 3: Train CNN model using the training sample. Word vector is
+feed into CNN model. The process of CNN model includes “Convolutional
+operation,” “Max Pooling,” and “Softmax classification”. A concise and
+complete flowchart is shown in Fig. 4.</p>
 <p><img src="https://z3.ax1x.com/2021/09/01/hwsiDA.png" alt="png" style="zoom:80%;" /></p>
 <center>
 <p>Fig.4 The flowchart of CNN model</p>
 </center></li>
-<li><p>Step 3: Using the best trained CNN model classifies the test sample.</p></li>
+<li><p>Step 3: Using the best trained CNN model classifies the test
+sample.</p></li>
 </ul>
-<p>In this study, CNN is coded by Python 3.8. We employ a Python library, PyTorch, which provides convenient APIs for building Deep learning network.</p>
+<p>In this study, CNN is coded by Python 3.8. We employ a Python
+library, PyTorch, which provides convenient APIs for building Deep
+learning network.</p>
 <h3 id="code-implementation">3.5.2 Code implementation</h3>
 <h4 id="prepare-data">Prepare data</h4>
 <ol type="1">
@@ -916,7 +1076,11 @@ M = \left\{
 <p>-1.0</p>
 </td>
 <td>
-<p>Debt Ceiling Agreement Pushes Crude Oil Prices Higher. Biofuels and Tequila: Agave May Make a Suitable Ethanol Crop. Jesters, Economics, and American Dollar Supremacy. Natural Gas Analysis for the Week of August 1, 2011. The Quiet Revolution: Latin America Moving Away from Washingtons Influence</p>
+<p>Debt Ceiling Agreement Pushes Crude Oil Prices Higher. Biofuels and
+Tequila: Agave May Make a Suitable Ethanol Crop. Jesters, Economics, and
+American Dollar Supremacy. Natural Gas Analysis for the Week of August
+1, 2011. The Quiet Revolution: Latin America Moving Away from
+Washingtons Influence</p>
 </td>
 </tr>
 </tbody>
@@ -1214,9 +1378,51 @@ Name: Title, dtype: object</code></pre></li>
 </ol>
 <h2 id="lda-topic-model">3.6 LDA topic model</h2>
 <h3 id="introduction-4">3.6.1 Introduction</h3>
-<p>Referring to <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ijforecast.2018.07.006">Li et al.</a>, We also apply the Latent Dirichlet Allocation (LDA) modelling approach of <a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Latent+Dirichlet+allocation.+Journal+of+Machine+Learning+Research&amp;btnG=">Blei, Ng, and Jordan (2003)</a> in order to identify latent topics embedded within the news headlines corpus. We mainly adopt two Python library, <a target="_blank" rel="noopener" href="https://github.com/MIND-Lab/OCTIS/blob/master/octis/evaluation_metrics/diversity_metrics.py#L12">OCITS</a> and <a target="_blank" rel="noopener" href="https://radimrehurek.com/gensim/">gensim</a>, for implementing the LDA model.</p>
-<p>The LDA model is based on the assumption that <strong>each document is a mixture of various topics, and each topic has a corresponding probability distribution for different words.</strong> Each document <span class="math inline">\(d\)</span> is viewed as a multinomial distribution <span class="math inline">\(\theta (d)\)</span> over <span class="math inline">\(T\)</span> topics, and each topic <span class="math inline">\(z_j\)</span>, <span class="math inline">\(j = 1 \dots T\)</span>, is assumed to have a multinomial distribution <span class="math inline">\(\phi (j)\)</span> over the set of words <span class="math inline">\(W\)</span>. In order to uncover both the topics that are present and the distribution of these topics in each document from a corpus of documents, <span class="math inline">\(D\)</span>, estimates of <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\phi\)</span> are required.</p>
-<p>Previously, topic models are usually compared by fixing their hyperparameters. However, <a target="_blank" rel="noopener" href="https://aclanthology.org/2021.eacl-demos.31/">Terragni et al.</a> points out that choosing the optimal hyperparameter configuration for given dataset and a given evaluation metrics is fundamental to induce each model at the best of its capabilities, and therefore to gurantee a fair comparison with othr models. Therefore, to select a optimal topic number for topic modelling, we employ a unified and open-source evaluation framework, <a target="_blank" rel="noopener" href="https://github.com/MIND-Lab/OCTIS">OCTIS</a> for comparing Topic Models, whose optimal hyper-parameters configuration can be determined according to Bayesian Optimization strategy (<a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Bayesian+Optimization+and+Data+Science&amp;btnG=">Archetti and Candelieri, 2019</a>; <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2012/hash/05311655a15b75fab86956663e1819cd-Abstract.html">Snoek et al.</a>, 2012; <a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s10287-020-00376-3">Galuzzi et al., 2020</a>). The <a target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Leveraging+Kullback%E2%80%93Leibler+divergence+measures+and+information-rich+cues+for+speech+summarization&amp;btnG=">Kullback–Leibler (KL)</a> divergence approach was used to determine the topic number <span class="math inline">\(T\)</span>. The results see Table 6.</p>
+<p>Referring to <a
+target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ijforecast.2018.07.006">Li et al.</a>,
+We also apply the Latent Dirichlet Allocation (LDA) modelling approach
+of <a
+target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Latent+Dirichlet+allocation.+Journal+of+Machine+Learning+Research&amp;btnG=">Blei,
+Ng, and Jordan (2003)</a> in order to identify latent topics embedded
+within the news headlines corpus. We mainly adopt two Python library, <a
+target="_blank" rel="noopener" href="https://github.com/MIND-Lab/OCTIS/blob/master/octis/evaluation_metrics/diversity_metrics.py#L12">OCITS</a>
+and <a target="_blank" rel="noopener" href="https://radimrehurek.com/gensim/">gensim</a>, for
+implementing the LDA model.</p>
+<p>The LDA model is based on the assumption that <strong>each document
+is a mixture of various topics, and each topic has a corresponding
+probability distribution for different words.</strong> Each document
+<span class="math inline">\(d\)</span> is viewed as a multinomial
+distribution <span class="math inline">\(\theta (d)\)</span> over <span
+class="math inline">\(T\)</span> topics, and each topic <span
+class="math inline">\(z_j\)</span>, <span class="math inline">\(j = 1
+\dots T\)</span>, is assumed to have a multinomial distribution <span
+class="math inline">\(\phi (j)\)</span> over the set of words <span
+class="math inline">\(W\)</span>. In order to uncover both the topics
+that are present and the distribution of these topics in each document
+from a corpus of documents, <span class="math inline">\(D\)</span>,
+estimates of <span class="math inline">\(\theta\)</span> and <span
+class="math inline">\(\phi\)</span> are required.</p>
+<p>Previously, topic models are usually compared by fixing their
+hyperparameters. However, <a
+target="_blank" rel="noopener" href="https://aclanthology.org/2021.eacl-demos.31/">Terragni et al.</a>
+points out that choosing the optimal hyperparameter configuration for
+given dataset and a given evaluation metrics is fundamental to induce
+each model at the best of its capabilities, and therefore to gurantee a
+fair comparison with othr models. Therefore, to select a optimal topic
+number for topic modelling, we employ a unified and open-source
+evaluation framework, <a
+target="_blank" rel="noopener" href="https://github.com/MIND-Lab/OCTIS">OCTIS</a> for comparing Topic
+Models, whose optimal hyper-parameters configuration can be determined
+according to Bayesian Optimization strategy (<a
+target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Bayesian+Optimization+and+Data+Science&amp;btnG=">Archetti
+and Candelieri, 2019</a>; <a
+target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2012/hash/05311655a15b75fab86956663e1819cd-Abstract.html">Snoek
+et al.</a>, 2012; <a
+target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s10287-020-00376-3">Galuzzi
+et al., 2020</a>). The <a
+target="_blank" rel="noopener" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Leveraging+Kullback%E2%80%93Leibler+divergence+measures+and+information-rich+cues+for+speech+summarization&amp;btnG=">Kullback–Leibler
+(KL)</a> divergence approach was used to determine the topic number
+<span class="math inline">\(T\)</span>. The results see Table 6.</p>
 <center>
 Table 6 Topic_KL divergence of topic numbers, ranging from 2 to 19.
 </center>
@@ -1352,18 +1558,48 @@ Topic_KL divergence
 </tr>
 </tbody>
 </table>
-<p>It can be see that the maximum KL divergence metric value is 1.0139, where the number of topic is 4. Therefore, we believe that the optimal number of topics for LDA model is 4. For each topic during each transaction day, we compute average scores for the results of the sentimentanalysis and CNN classifications, to form sentiment-topic features and CNN-topic features.</p>
+<p>It can be see that the maximum KL divergence metric value is 1.0139,
+where the number of topic is 4. Therefore, we believe that the optimal
+number of topics for LDA model is 4. For each topic during each
+transaction day, we compute average scores for the results of the
+sentimentanalysis and CNN classifications, to form sentiment-topic
+features and CNN-topic features.</p>
 <p>These topic features are defined as follows:</p>
 <ul>
-<li><p>Sentiment-topic score of topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[SE_{k,t} = \frac{1}{n_{k,t}} \sum SE_i\]</span></p></li>
-<li><p>Polarity-topic score of topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[P_{k,t} = \frac{1}{n_{k,t}} \sum P_i\]</span></p></li>
-<li><p>Subjectivity-topic score of topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[SU_{k,t} = \frac{1}{n_{k,t}} \sum SU_i\]</span></p></li>
-<li><p>CNN-topic score of topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[C_{k, t} = \frac{1}{n_{k,t}} \sum C_i\]</span></p>
-<p>Where <span class="math inline">\(n_{k, t}\)</span> is the total number of news headlines (or full-text) from topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>, <span class="math inline">\(SE_{k,t}\)</span> is the investor sentiment (including postive, negative and neutral) of news headline (or full-text) <span class="math inline">\(i\)</span> belonging to topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>. <span class="math inline">\(P_i\)</span>, <span class="math inline">\(SU_i\)</span> are the polarity score and subjectivity score of news headline (or full-text) <span class="math inline">\(i\)</span> belonging to topic <span class="math inline">\(k\)</span> on day <span class="math inline">\(t\)</span>, respectively.</p></li>
+<li><p>Sentiment-topic score of topic <span
+class="math inline">\(k\)</span> on day <span
+class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[SE_{k,t} = \frac{1}{n_{k,t}} \sum
+SE_i\]</span></p></li>
+<li><p>Polarity-topic score of topic <span
+class="math inline">\(k\)</span> on day <span
+class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[P_{k,t} = \frac{1}{n_{k,t}} \sum
+P_i\]</span></p></li>
+<li><p>Subjectivity-topic score of topic <span
+class="math inline">\(k\)</span> on day <span
+class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[SU_{k,t} = \frac{1}{n_{k,t}} \sum
+SU_i\]</span></p></li>
+<li><p>CNN-topic score of topic <span class="math inline">\(k\)</span>
+on day <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[C_{k, t} = \frac{1}{n_{k,t}} \sum
+C_i\]</span></p>
+<p>Where <span class="math inline">\(n_{k, t}\)</span> is the total
+number of news headlines (or full-text) from topic <span
+class="math inline">\(k\)</span> on day <span
+class="math inline">\(t\)</span>, <span
+class="math inline">\(SE_{k,t}\)</span> is the investor sentiment
+(including postive, negative and neutral) of news headline (or
+full-text) <span class="math inline">\(i\)</span> belonging to topic
+<span class="math inline">\(k\)</span> on day <span
+class="math inline">\(t\)</span>. <span
+class="math inline">\(P_i\)</span>, <span
+class="math inline">\(SU_i\)</span> are the polarity score and
+subjectivity score of news headline (or full-text) <span
+class="math inline">\(i\)</span> belonging to topic <span
+class="math inline">\(k\)</span> on day <span
+class="math inline">\(t\)</span>, respectively.</p></li>
 </ul>
 <h3 id="code-implementation-1">3.6.2 Code implementation</h3>
 <h4 id="configurations">Configurations</h4>
@@ -1374,7 +1610,8 @@ Topic_KL divergence
 <li>Load dataset</li>
 <li>Build vocabulary (vocab size: 7653)</li>
 </ol>
-<h4 id="choosing-the-optimal-topic-numbers-with-octis">Choosing the optimal topic numbers with OCTIS</h4>
+<h4 id="choosing-the-optimal-topic-numbers-with-octis">Choosing the
+optimal topic numbers with OCTIS</h4>
 <ul>
 <li><p>Calculate KL_divergences, see Table 7:</p>
 <center>
@@ -1567,7 +1804,10 @@ Topic_KL divergence
 </tr>
 </tbody>
 </table>
-<p><strong>Conclusion</strong>: It can be see that the maximum KL divergence metric value is 1.0139, where the number of topic is 4. Therefore, we believe that the optimal number of topics for LDA model is 4.</p></li>
+<p><strong>Conclusion</strong>: It can be see that the maximum KL
+divergence metric value is 1.0139, where the number of topic is 4.
+Therefore, we believe that the optimal number of topics for LDA model is
+4.</p></li>
 </ul>
 <h4 id="topic-modelling-with-gensim">Topic modelling with gensim</h4>
 <ol type="1">
@@ -2563,7 +2803,8 @@ Topic_KL divergence
 </p></li>
 <li><p>Creat dictionary (Word2id &amp; id2word)</p></li>
 <li><p>Build LDA model</p>
-<p>We have determined the optimal topic_nums (4) with the help of <code>OCTIS</code> module. So we build a LDA model with 4 topics.</p>
+<p>We have determined the optimal topic_nums (4) with the help of
+<code>OCTIS</code> module. So we build a LDA model with 4 topics.</p>
 <ul>
 <li><p>Print topic information:</p>
 <pre><code>[(0,
@@ -2817,8 +3058,10 @@ Topic_KL divergence
 <p>Where,</p>
 <ul>
 <li>Document_No: The id for title;</li>
-<li>Dominant_Topic: The topic to which this title most likely belongs</li>
-<li>Topic_Perc_Contrib: The probability of being classified under this topic</li>
+<li>Dominant_Topic: The topic to which this title most likely
+belongs</li>
+<li>Topic_Perc_Contrib: The probability of being classified under this
+topic</li>
 <li>Keywords: the keywords of the topic</li>
 <li>Text: The title's content after participle</li>
 </ul></li>
@@ -3505,7 +3748,8 @@ Topic_KL divergence
 <pre><code>Perplexity:  -11.663989584579646</code></pre></li>
 </ul></li>
 <li><p>Visualization</p>
-<p>We can visualize the LDA model with the help of <code>pyLDAvis</code> module, a Python library, see Fig. 5.</p>
+<p>We can visualize the LDA model with the help of <code>pyLDAvis</code>
+module, a Python library, see Fig. 5.</p>
 <p><img src="https://z3.ax1x.com/2021/09/01/hwsPud.png" alt="png" style="zoom:80%;" /></p>
 <center>
 <p>Fig.5 Visualization of LDA model</p>
@@ -3628,7 +3872,12 @@ Topic_KL divergence
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#methodology"><span class="nav-number">2.</span> <span class="nav-text">2. Methodology</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#text-mining"><span class="nav-number">3.</span> <span class="nav-text">3. Text mining</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#get-news-information"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Get news information</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 爬取信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#news-propression"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 News propression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#text-cleaning"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 Text cleaning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-oil-price"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 Load oil price</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preparation"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#analysis-with-merged-data"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">Analysis with merged data</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sentiment-analysis-with-finbert"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Sentiment analysis with FinBERT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#data-exploration-to-financial-phrasebank"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Data exploration to Financial PhraseBank</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-pre-trained-model"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 Load pre-trained model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-sentiment-features"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 Analysis sentiment features</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subjective-analysis-with-textblob"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Subjective analysis with TextBlob</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oil-price-trends-with-cnn"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 Oil price trends with CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-3"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-implementation"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 Code implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prepare-data"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">Prepare data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#model-specification"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">Model specification</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lda-topic-model"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 LDA topic model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-4"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.6.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-implementation-1"><span class="nav-number">3.6.2.</span> <span class="nav-text">3.6.2 Code implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#configurations"><span class="nav-number">3.6.2.1.</span> <span class="nav-text">Configurations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#choosing-the-optimal-topic-numbers-with-octis"><span class="nav-number">3.6.2.2.</span> <span class="nav-text">Choosing the optimal topic numbers with OCTIS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#topic-modelling-with-gensim"><span class="nav-number">3.6.2.3.</span> <span class="nav-text">Topic modelling with gensim</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#methodology"><span class="nav-number">2.</span> <span class="nav-text">2. Methodology</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#text-mining"><span class="nav-number">3.</span> <span class="nav-text">3. Text mining</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#get-news-information"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Get news information</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%AC%E5%8F%96%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 爬取信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#news-propression"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 News propression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#text-cleaning"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 Text cleaning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-oil-price"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 Load oil price</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preparation"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#analysis-with-merged-data"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">Analysis with merged data</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sentiment-analysis-with-finbert"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Sentiment analysis with
+FinBERT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#data-exploration-to-financial-phrasebank"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Data exploration to
+Financial PhraseBank</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-pre-trained-model"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 Load pre-trained model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analysis-sentiment-features"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 Analysis sentiment
+features</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subjective-analysis-with-textblob"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Subjective analysis with
+TextBlob</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oil-price-trends-with-cnn"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 Oil price trends with CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-3"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-implementation"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 Code implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prepare-data"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">Prepare data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#model-specification"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">Model specification</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lda-topic-model"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 LDA topic model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-4"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.6.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-implementation-1"><span class="nav-number">3.6.2.</span> <span class="nav-text">3.6.2 Code implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#configurations"><span class="nav-number">3.6.2.1.</span> <span class="nav-text">Configurations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#choosing-the-optimal-topic-numbers-with-octis"><span class="nav-number">3.6.2.2.</span> <span class="nav-text">Choosing the
+optimal topic numbers with OCTIS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#topic-modelling-with-gensim"><span class="nav-number">3.6.2.3.</span> <span class="nav-text">Topic modelling with gensim</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

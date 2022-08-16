@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Introduction 1.1 Preface 本系列博文是和鲸社区的活动《20天吃掉那只PyTorch》学习的笔记，本篇为系列笔记的第三篇—— Pytorch 的层次结构。该专栏是 Github 上 2.8K 星的项目，在学习该书的过程中可以参考阅读《Python深度学习》一书的第一部分&quot;深度学习基础&quot;内容。">
+  <meta name="description" content="1. Introduction 1.1 Preface 本系列博文是和鲸社区的活动《20天吃掉那只PyTorch》学习的笔记，本篇为系列笔记的第三篇—— Pytorch 的层次结构。该专栏是 Github 上 2.8K 星的项目，在学习该书的过程中可以参考阅读《Python深度学习》一书的第一部分&quot;深度学习基础&quot;内容。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Eat-pytorch-3-hierarchy">
 <meta property="og:url" content="http://yangsuoly.com/2022/02/07/Eat-pytorch-3-hierarchy/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Introduction 1.1 Preface 本系列博文是和鲸社区的活动《20天吃掉那只PyTorch》学习的笔记，本篇为系列笔记的第三篇—— Pytorch 的层次结构。该专栏是 Github 上 2.8K 星的项目，在学习该书的过程中可以参考阅读《Python深度学习》一书的第一部分&quot;深度学习基础&quot;内容。">
+<meta property="og:description" content="1. Introduction 1.1 Preface 本系列博文是和鲸社区的活动《20天吃掉那只PyTorch》学习的笔记，本篇为系列笔记的第三篇—— Pytorch 的层次结构。该专栏是 Github 上 2.8K 星的项目，在学习该书的过程中可以参考阅读《Python深度学习》一书的第一部分&quot;深度学习基础&quot;内容。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-07T15:03:01.000Z">
 <meta property="article:modified_time" content="2022-02-08T07:50:13.784Z">
@@ -295,10 +295,17 @@
       
         <h1 id="introduction">1. Introduction</h1>
 <h2 id="preface">1.1 Preface</h2>
-<p>本系列博文是和鲸社区的活动《20天吃掉那只PyTorch》学习的笔记，本篇为系列笔记的第三篇—— <code>Pytorch</code> 的层次结构。该专栏是 <code>Github</code> 上 <code>2.8K</code> 星的项目，在学习该书的过程中可以参考阅读《Python深度学习》一书的第一部分"深度学习基础"内容。</p>
+<p>本系列博文是和鲸社区的活动《20天吃掉那只PyTorch》学习的笔记，本篇为系列笔记的第三篇——
+<code>Pytorch</code> 的层次结构。该专栏是 <code>Github</code> 上
+<code>2.8K</code>
+星的项目，在学习该书的过程中可以参考阅读《Python深度学习》一书的第一部分"深度学习基础"内容。</p>
 <a id="more"></a>
-<p>《Python深度学习》这本书是 <code>Keras</code> 之父 <code>Francois Chollet</code> 所著，该书假定读者无任何机器学习知识，以<code>Keras</code> 为工具，使用丰富的范例示范深度学习的最佳实践，该书通俗易懂，全书没有一个数学公式，注重培养读者的深度学习直觉。</p>
-<p>《Python深度学习》一书的第一部分的 <code>4</code> 个章节内容如下，预计读者可以在 <code>20</code> 小时之内学完。</p>
+<p>《Python深度学习》这本书是 <code>Keras</code> 之父
+<code>Francois Chollet</code>
+所著，该书假定读者无任何机器学习知识，以<code>Keras</code>
+为工具，使用丰富的范例示范深度学习的最佳实践，该书通俗易懂，全书没有一个数学公式，注重培养读者的深度学习直觉。</p>
+<p>《Python深度学习》一书的第一部分的 <code>4</code>
+个章节内容如下，预计读者可以在 <code>20</code> 小时之内学完。</p>
 <ol type="1">
 <li>什么是深度学习</li>
 <li>神经网络的数学基础</li>
@@ -315,9 +322,11 @@
 <li>六、PyTorch的高阶API</li>
 </ul>
 <p>最后，本博文提供所使用的全部数据，读者可以从下述连接中下载数据：</p>
-<p><a id="download" href="https://www.heywhale.com/mw/dataset/61ffa75e7a7c9a0017c2e189/file" target="_blank"><i class="fa fa-download"></i><span> Download Now </span> </a></p>
+<p><a id="download" href="https://www.heywhale.com/mw/dataset/61ffa75e7a7c9a0017c2e189/file" target="_blank"><i class="fa fa-download"></i><span>
+Download Now </span> </a></p>
 <h2 id="pytorch-的层次结构">1.2 Pytorch 的层次结构</h2>
-<p>本章我们介绍 <code>Pytorch</code> 中 <code>5</code> 个不同的层次结构：</p>
+<p>本章我们介绍 <code>Pytorch</code> 中 <code>5</code>
+个不同的层次结构：</p>
 <ul>
 <li>硬件层</li>
 <li>内核层</li>
@@ -325,19 +334,36 @@
 <li>中阶 `API ``</li>
 <li>高阶 <code>API</code>【<code>torchkeras</code>】</li>
 </ul>
-<p>并以线性回归和 <code>DNN</code> 二分类模型为例，直观对比展示在不同层级实现模型的特点。</p>
+<p>并以线性回归和 <code>DNN</code>
+二分类模型为例，直观对比展示在不同层级实现模型的特点。</p>
 <p><code>Pytorch</code> 的层次结构从低到高可以分成如下五层：</p>
 <ol type="1">
-<li><p>最底层为硬件层，<code>Pytorch</code> 支持 <code>CPU</code>、<code>GPU</code> 加入计算资源池；</p></li>
+<li><p>最底层为硬件层，<code>Pytorch</code> 支持
+<code>CPU</code>、<code>GPU</code> 加入计算资源池；</p></li>
 <li><p>第二层为 <code>C++</code> 实现的内核；</p></li>
-<li><p>第三层为 <code>Python</code> 实现的操作符，提供了封装 <code>C++</code> 内核的低级API指令，主要包括各种张量操作算子、自动微分、变量管理；</p>
-<p>如 <code>torch.tensor</code> , <code>torch.cat</code>, <code>torch.autograd.grad</code>, <code>nn.Module</code>。如果把模型比作一个房子，那么第三层 <code>API</code> 就是【模型之砖】。</p></li>
-<li><p>第四层为 <code>Python</code> 实现的模型组件，对低级 <code>API</code> 进行了函数封装，主要包括各种模型层，损失函数，优化器，数据管道等等。</p>
-<p>如 <code>torch.nn.Linear</code>, <code>torch.nn.BCE</code>, <code>torch.optim.Adam</code>, <code>torch.utils.data.DataLoader</code>。如果把模型比作一个房子，那么第四层API就是【模型之墙】。</p></li>
-<li><p>第五层为 <code>Python</code> 实现的模型接口。<code>Pytorch</code> 没有官方的高阶API。为了便于训练模型，作者仿照 <code>keras</code> 中的模型接口，使用了不到 <code>300</code> 行代码，封装了Pytorch的高阶模型接口 <code>torchkeras.Model</code> 。如果把模型比作一个房子，那么第五层API就是模型本身，即【模型之屋】。</p></li>
+<li><p>第三层为 <code>Python</code> 实现的操作符，提供了封装
+<code>C++</code>
+内核的低级API指令，主要包括各种张量操作算子、自动微分、变量管理；</p>
+<p>如 <code>torch.tensor</code> , <code>torch.cat</code>,
+<code>torch.autograd.grad</code>,
+<code>nn.Module</code>。如果把模型比作一个房子，那么第三层
+<code>API</code> 就是【模型之砖】。</p></li>
+<li><p>第四层为 <code>Python</code> 实现的模型组件，对低级
+<code>API</code>
+进行了函数封装，主要包括各种模型层，损失函数，优化器，数据管道等等。</p>
+<p>如 <code>torch.nn.Linear</code>, <code>torch.nn.BCE</code>,
+<code>torch.optim.Adam</code>,
+<code>torch.utils.data.DataLoader</code>。如果把模型比作一个房子，那么第四层API就是【模型之墙】。</p></li>
+<li><p>第五层为 <code>Python</code> 实现的模型接口。<code>Pytorch</code>
+没有官方的高阶API。为了便于训练模型，作者仿照 <code>keras</code>
+中的模型接口，使用了不到 <code>300</code>
+行代码，封装了Pytorch的高阶模型接口 <code>torchkeras.Model</code>
+。如果把模型比作一个房子，那么第五层API就是模型本身，即【模型之屋】。</p></li>
 </ol>
 <h1 id="低阶-api-示范">2. 低阶 <code>API</code> 示范</h1>
-<p>下面的范例使用 <code>Pytorch</code> 的低阶 <code>API</code> 实现线性回归模型和 <code>DNN</code> 二分类模型。低阶 <code>API</code> 主要包括张量操作，计算图和自动微分。</p>
+<p>下面的范例使用 <code>Pytorch</code> 的低阶 <code>API</code>
+实现线性回归模型和 <code>DNN</code> 二分类模型。低阶 <code>API</code>
+主要包括张量操作，计算图和自动微分。</p>
 <h2 id="linear-regression">2.1 Linear regression</h2>
 <h3 id="prepare-data">2.1.1 Prepare data</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="comment">#样本数量</span></span><br><span class="line">n = <span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成测试用数据集</span></span><br><span class="line">X = <span class="number">10</span>*torch.rand([n,<span class="number">2</span>])-<span class="number">5.0</span>  <span class="comment">#torch.rand是均匀分布</span></span><br><span class="line">w0 = torch.tensor([[<span class="number">2.0</span>],[-<span class="number">3.0</span>]])</span><br><span class="line">b0 = torch.tensor([[<span class="number">10.0</span>]])</span><br><span class="line">Y = X@w0 + b0 + torch.normal( <span class="number">0.0</span>,<span class="number">2.0</span>,size = [n,<span class="number">1</span>])  <span class="comment"># @表示矩阵乘法,增加正态扰动</span></span><br></pre></td></tr></table></figure>
@@ -411,7 +437,8 @@ epoch = 1000 loss =  0.1799963693227619 metric =  0.9282499927282334</code></pre
 <p>Results:</p>
 <p><img src= 'https://s4.ax1x.com/2022/02/08/H1NuOU.png' style = "zoom:80%"></p>
 <h1 id="中阶api示范">3. 中阶API示范</h1>
-<p>下面的范例使用 <code>Pytorch</code> 的中阶 <code>API</code> 实现线性回归模型和和 <code>DNN</code> 二分类模型。</p>
+<p>下面的范例使用 <code>Pytorch</code> 的中阶 <code>API</code>
+实现线性回归模型和和 <code>DNN</code> 二分类模型。</p>
 <p><code>Pytorch</code> 的中阶 <code>API</code> 主要包括：</p>
 <ul>
 <li>各种模型层；</li>
@@ -481,9 +508,17 @@ epoch = 1000 loss =  0.1799963693227619 metric =  0.9282499927282334</code></pre
 <p>Results:</p>
 <p><img src= 'https://s4.ax1x.com/2022/02/08/H1NN6K.md.png' style = "zoom:80%"></p>
 <h1 id="高阶api示范">4. 高阶API示范</h1>
-<p><code>Pytorch</code> 没有官方的高阶 <code>API</code>，一般需要用户自己实现训练循环、验证循环、和预测循环。</p>
-<p><code>torchkeras.Model</code> 类是仿照 <code>tf.keras.Model</code> 的功能对 <code>Pytorch</code> 的 <code>nn.Module</code> 进行了封装设计而成的，它实现了 <code>fit</code>, <code>validate</code>，<code>predict</code>, <code>summary</code> 方法，相当于用户自定义高阶 <code>API</code>。本章后面的内容借助它来实现线性回归模型。</p>
-<p>此外，<code>torchkeras.LightModel</code> 类是借用 <code>pytorch_lightning</code> 的功能，封装了类<code>Keras</code> 接口的另外一种实现。本章后面的内容用它实现DNN二分类模型。</p>
+<p><code>Pytorch</code> 没有官方的高阶
+<code>API</code>，一般需要用户自己实现训练循环、验证循环、和预测循环。</p>
+<p><code>torchkeras.Model</code> 类是仿照 <code>tf.keras.Model</code>
+的功能对 <code>Pytorch</code> 的 <code>nn.Module</code>
+进行了封装设计而成的，它实现了 <code>fit</code>,
+<code>validate</code>，<code>predict</code>, <code>summary</code>
+方法，相当于用户自定义高阶
+<code>API</code>。本章后面的内容借助它来实现线性回归模型。</p>
+<p>此外，<code>torchkeras.LightModel</code> 类是借用
+<code>pytorch_lightning</code> 的功能，封装了类<code>Keras</code>
+接口的另外一种实现。本章后面的内容用它实现DNN二分类模型。</p>
 <h2 id="linear-regression-2">4.1 Linear regression</h2>
 <h3 id="prepare-data-4">4.1.1 Prepare data</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset,DataLoader,TensorDataset</span><br><span class="line"></span><br><span class="line"><span class="comment">#样本数量</span></span><br><span class="line">n = <span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成测试用数据集</span></span><br><span class="line">X = <span class="number">10</span>*torch.rand([n,<span class="number">2</span>])-<span class="number">5.0</span>  <span class="comment">#torch.rand是均匀分布</span></span><br><span class="line">w0 = torch.tensor([[<span class="number">2.0</span>],[-<span class="number">3.0</span>]])</span><br><span class="line">b0 = torch.tensor([[<span class="number">10.0</span>]])</span><br><span class="line">Y = X@w0 + b0 + torch.normal( <span class="number">0.0</span>,<span class="number">2.0</span>,size = [n,<span class="number">1</span>])  <span class="comment"># @表示矩阵乘法,增加正态扰动</span></span><br></pre></td></tr></table></figure>
@@ -742,7 +777,8 @@ Params size (MB): 0.000233
 Estimated Total Size (MB): 0.000340
 ----------------------------------------------------------------</code></pre>
 <h3 id="training-model-4">4.3.3 Training model</h3>
-<p><strong>Note</strong>：下述代码，如果本机没有 <code>gpu</code> 会报 <code>Runerror</code> 错误：</p>
+<p><strong>Note</strong>：下述代码，如果本机没有 <code>gpu</code> 会报
+<code>Runerror</code> 错误：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: DataLoader worker (pid(s) 6088, 19424) exited unexpectedl</span><br></pre></td></tr></table></figure>
 <p>将 <code>gpu=0</code> 删掉能避免此错误。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ckpt_cb = pl.callbacks.ModelCheckpoint(monitor=<span class="string">&#x27;val_loss&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set gpus=0 will use cpu，</span></span><br><span class="line"><span class="comment"># set gpus=1 will use 1 gpu</span></span><br><span class="line"><span class="comment"># set gpus=2 will use 2gpus</span></span><br><span class="line"><span class="comment"># set gpus = -1 will use all gpus</span></span><br><span class="line"><span class="comment"># you can also set gpus = [0,1] to use the  given gpus</span></span><br><span class="line"><span class="comment"># you can even set tpu_cores=2 to use two tpus</span></span><br><span class="line"></span><br><span class="line">trainer = pl.Trainer(max_epochs=<span class="number">100</span>, callbacks=[ckpt_cb])</span><br><span class="line"></span><br><span class="line">trainer.fit(model,dl_train,dl_valid)</span><br></pre></td></tr></table></figure>

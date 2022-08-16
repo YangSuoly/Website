@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Introduction 本文属于新闻推荐实战-数据层-构建物料池之 scrapy 爬虫框架基础。对于开源的推荐系统来说数据的不断获取是非常重要的，scrapy 是一个非常易用且强大的爬虫框架，有固定的文件结构、类和方法，在实际使用过程中我们只需要按照要求实现相应的类方法，就可以完成我们的爬虫任务。文中给出了新闻推荐系统中新闻爬取的实战代码，以便读者可以快速掌握 scrapy 的基本使用方">
+  <meta name="description" content="1. Introduction 本文属于新闻推荐实战-数据层-构建物料池之 scrapy 爬虫框架基础。对于开源的推荐系统来说数据的不断获取是非常重要的，scrapy 是一个非常易用且强大的爬虫框架，有固定的文件结构、类和方法，在实际使用过程中我们只需要按照要求实现相应的类方法，就可以完成我们的爬虫任务。文中给出了新闻推荐系统中新闻爬取的实战代码，以便读者可以快速掌握 scrapy 的基本使用方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Recommentation-Materials">
 <meta property="og:url" content="http://yangsuoly.com/2021/12/22/Recommentation-Materials/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Introduction 本文属于新闻推荐实战-数据层-构建物料池之 scrapy 爬虫框架基础。对于开源的推荐系统来说数据的不断获取是非常重要的，scrapy 是一个非常易用且强大的爬虫框架，有固定的文件结构、类和方法，在实际使用过程中我们只需要按照要求实现相应的类方法，就可以完成我们的爬虫任务。文中给出了新闻推荐系统中新闻爬取的实战代码，以便读者可以快速掌握 scrapy 的基本使用方">
+<meta property="og:description" content="1. Introduction 本文属于新闻推荐实战-数据层-构建物料池之 scrapy 爬虫框架基础。对于开源的推荐系统来说数据的不断获取是非常重要的，scrapy 是一个非常易用且强大的爬虫框架，有固定的文件结构、类和方法，在实际使用过程中我们只需要按照要求实现相应的类方法，就可以完成我们的爬虫任务。文中给出了新闻推荐系统中新闻爬取的实战代码，以便读者可以快速掌握 scrapy 的基本使用方法">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://ryluo.oss-cn-chengdu.aliyuncs.com/图片image-20211103214124327.png">
 <meta property="og:image" content="http://ryluo.oss-cn-chengdu.aliyuncs.com/图片image-20211103213354334.png">
@@ -291,15 +291,22 @@
 
       
         <h1 id="introduction">1. Introduction</h1>
-<p>本文属于新闻推荐实战-数据层-构建物料池之 <code>scrapy</code> 爬虫框架基础。对于开源的推荐系统来说数据的不断获取是非常重要的，<code>scrapy</code> 是一个非常易用且强大的爬虫框架，有固定的文件结构、类和方法，在实际使用过程中我们只需要按照要求实现相应的类方法，就可以完成我们的爬虫任务。文中给出了新闻推荐系统中新闻爬取的实战代码，以便读者可以快速掌握 <code>scrapy</code> 的基本使用方法，并能够举一反三。</p>
+<p>本文属于新闻推荐实战-数据层-构建物料池之 <code>scrapy</code>
+爬虫框架基础。对于开源的推荐系统来说数据的不断获取是非常重要的，<code>scrapy</code>
+是一个非常易用且强大的爬虫框架，有固定的文件结构、类和方法，在实际使用过程中我们只需要按照要求实现相应的类方法，就可以完成我们的爬虫任务。文中给出了新闻推荐系统中新闻爬取的实战代码，以便读者可以快速掌握
+<code>scrapy</code> 的基本使用方法，并能够举一反三。</p>
 <a id="more"></a>
-<h1 id="scrapy-基础及新闻爬取实战">2. <code>Scrapy</code> 基础及新闻爬取实战</h1>
+<h1 id="scrapy-基础及新闻爬取实战">2. <code>Scrapy</code>
+基础及新闻爬取实战</h1>
 <h3 id="python环境的安装">python环境的安装</h3>
-<p>python 环境，使用 miniconda 搭建，安装miniconda的参考链接：https://blog.csdn.net/pdcfighting/article/details/111503057。</p>
-<p>在安装完 miniconda 之后，创建一个新闻推荐的虚拟环境，我这边将其命名为news_rec_py3，<strong>这个环境将会在整个新闻推荐项目中使用。</strong></p>
+<p>python 环境，使用 miniconda
+搭建，安装miniconda的参考链接：https://blog.csdn.net/pdcfighting/article/details/111503057。</p>
+<p>在安装完 miniconda
+之后，创建一个新闻推荐的虚拟环境，我这边将其命名为news_rec_py3，<strong>这个环境将会在整个新闻推荐项目中使用。</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n news_rec_py3 python==<span class="number">3.8</span></span><br></pre></td></tr></table></figure>
 <h3 id="scrapy的简介与安装">Scrapy的简介与安装</h3>
-<p>Scrapy 是一种快速的高级 web crawling 和 web scraping 框架，<strong>用于对网站内容进行爬取，并从其页面提取结构化数据</strong>。</p>
+<p>Scrapy 是一种快速的高级 web crawling 和 web scraping
+框架，<strong>用于对网站内容进行爬取，并从其页面提取结构化数据</strong>。</p>
 <p>Ubuntu下安装Scrapy，需要先安装依赖Linux依赖</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3 python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev</span><br></pre></td></tr></table></figure>
 <p>在新闻推荐系统虚拟conda环境中安装scrapy</p>
@@ -313,29 +320,50 @@
 <li>scrapy.cfg: 项目配置文件</li>
 <li>myproject/ : 项目python模块, 代码将从这里导入</li>
 <li><strong>myproject/ items.py: 项目items文件，</strong></li>
-<li><strong>myproject/ pipelines.py: 项目管道文件，将爬取的数据进行持久化存储</strong></li>
+<li><strong>myproject/ pipelines.py:
+项目管道文件，将爬取的数据进行持久化存储</strong></li>
 <li>myproject/ settings.py: 项目配置文件，可以配置数据库等</li>
-<li><strong>myproject/ spiders/: 放置spider的目录，爬虫的具体逻辑就是在这里实现的（具体逻辑写在spider.py文件中）,可以使用命令行创建spider，也可以直接在这个文件夹中创建spider相关的py文件</strong></li>
-<li>myproject/ middlewares：中间件，请求和响应都将经过他，可以配置请求头、代理、cookie、会话维持等</li>
+<li><strong>myproject/ spiders/:
+放置spider的目录，爬虫的具体逻辑就是在这里实现的（具体逻辑写在spider.py文件中）,可以使用命令行创建spider，也可以直接在这个文件夹中创建spider相关的py文件</strong></li>
+<li>myproject/
+middlewares：中间件，请求和响应都将经过他，可以配置请求头、代理、cookie、会话维持等</li>
 </ul>
 <h4 id="spider">spider</h4>
 <p><strong>spider是定义一个特定站点（或一组站点）如何被抓取的类，包括如何执行抓取（即跟踪链接）以及如何从页面中提取结构化数据（即抓取项）。换言之，spider是为特定站点（或者在某些情况下，一组站点）定义爬行和解析页面的自定义行为的地方。</strong></p>
-<p>爬行器是自己定义的类，Scrapy使用它从一个网站(或一组网站)中抓取信息。它们必须继承 <code>Spider</code> 并定义要做出的初始请求，可选的是如何跟随页面中的链接，以及如何解析下载的页面内容以提取数据。</p>
+<p>爬行器是自己定义的类，Scrapy使用它从一个网站(或一组网站)中抓取信息。它们必须继承
+<code>Spider</code>
+并定义要做出的初始请求，可选的是如何跟随页面中的链接，以及如何解析下载的页面内容以提取数据。</p>
 <p>对于spider来说，抓取周期是这样的：</p>
 <ol type="1">
-<li>首先生成对第一个URL进行爬网的初始请求，然后指定一个回调函数，该函数使用从这些请求下载的响应进行调用。要执行的第一个请求是通过调用 <code>start_requests()</code> 方法，该方法(默认情况下)生成 <code>Request</code> 中指定的URL的 <code>start_urls</code> 以及 <code>parse</code> 方法作为请求的回调函数。</li>
-<li>在回调函数中，解析响应(网页)并返回 <a target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/items.html#topics-items">item objects</a> ， <code>Request</code> 对象，或这些对象的可迭代。这些请求还将包含一个回调(可能相同)，然后由Scrapy下载，然后由指定的回调处理它们的响应。</li>
-<li>在回调函数中，解析页面内容，通常使用 <a target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/selectors.html#topics-selectors">选择器</a> （但您也可以使用beautifulsoup、lxml或任何您喜欢的机制）并使用解析的数据生成项。</li>
-<li>最后，从spider返回的项目通常被持久化到数据库（在某些 <a target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/item-pipeline.html#topics-item-pipeline">Item Pipeline</a> ）或者使用 <a target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/feed-exports.html#topics-feed-exports">Feed 导出</a> .</li>
+<li>首先生成对第一个URL进行爬网的初始请求，然后指定一个回调函数，该函数使用从这些请求下载的响应进行调用。要执行的第一个请求是通过调用
+<code>start_requests()</code> 方法，该方法(默认情况下)生成
+<code>Request</code> 中指定的URL的 <code>start_urls</code> 以及
+<code>parse</code> 方法作为请求的回调函数。</li>
+<li>在回调函数中，解析响应(网页)并返回 <a
+target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/items.html#topics-items">item
+objects</a> ， <code>Request</code>
+对象，或这些对象的可迭代。这些请求还将包含一个回调(可能相同)，然后由Scrapy下载，然后由指定的回调处理它们的响应。</li>
+<li>在回调函数中，解析页面内容，通常使用 <a
+target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/selectors.html#topics-selectors">选择器</a>
+（但您也可以使用beautifulsoup、lxml或任何您喜欢的机制）并使用解析的数据生成项。</li>
+<li>最后，从spider返回的项目通常被持久化到数据库（在某些 <a
+target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/item-pipeline.html#topics-item-pipeline">Item
+Pipeline</a> ）或者使用 <a
+target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/topics/feed-exports.html#topics-feed-exports">Feed
+导出</a> .</li>
 </ol>
 <p><strong>下面是官网给出的Demo:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuotesSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&quot;quotes&quot;</span> <span class="comment"># 表示一个spider 它在一个项目中必须是唯一的，即不能为不同的spider设置相同的名称。</span></span><br><span class="line">	</span><br><span class="line">    <span class="comment"># 必须返回请求的可迭代(您可以返回请求列表或编写生成器函数)，spider将从该请求开始爬行。后续请求将从这些初始请求中相继生成。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span>(<span class="params">self</span>):</span></span><br><span class="line">        urls = [</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/1/&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/2/&#x27;</span>,</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(url=url, callback=self.parse) <span class="comment"># 注意，这里callback调用了下面定义的parse方法</span></span><br><span class="line">	</span><br><span class="line">    <span class="comment"># 将被调用以处理为每个请求下载的响应的方法。Response参数是 TextResponse 它保存页面内容，并具有进一步有用的方法来处理它。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="comment"># 下面是直接从response中获取内容，为了更方便的爬取内容，后面会介绍使用selenium来模拟人用浏览器，并且使用对应的方法来提取我们想要爬取的内容</span></span><br><span class="line">        page = response.url.split(<span class="string">&quot;/&quot;</span>)[-<span class="number">2</span>]</span><br><span class="line">        filename = <span class="string">f&#x27;quotes-<span class="subst">&#123;page&#125;</span>.html&#x27;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(response.body)</span><br><span class="line">        self.log(<span class="string">f&#x27;Saved file <span class="subst">&#123;filename&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="xpath">Xpath</h4>
-<p><strong>XPath 是一门在 XML 文档中查找信息的语言，XPath 可用来在 XML 文档中对元素和属性进行遍历。在爬虫的时候使用xpath来选择我们想要爬取的内容是非常方便的</strong>，这里就提一下xpath中需要掌握的内容，参考资料中的内容更加的详细（建议花一个小时看看）。</p>
-<p>要了解xpath, 需要先了解一下HTML（是用来描述网页的一种语言）, 这个的细节就不详细展开</p>
+<p><strong>XPath 是一门在 XML 文档中查找信息的语言，XPath 可用来在 XML
+文档中对元素和属性进行遍历。在爬虫的时候使用xpath来选择我们想要爬取的内容是非常方便的</strong>，这里就提一下xpath中需要掌握的内容，参考资料中的内容更加的详细（建议花一个小时看看）。</p>
+<p>要了解xpath, 需要先了解一下HTML（是用来描述网页的一种语言）,
+这个的细节就不详细展开</p>
 <p><strong>划重点：</strong></p>
 <ol type="1">
-<li><p><strong>xpath路径表达式：</strong>XPath 使用路径表达式来选取 XML 文档中的节点或者节点集。这些路径表达式和我们在常规的电脑文件系统中看到的表达式非常相似。节点是通过沿着路径 (path) 或者步 (steps) 来选取的。</p></li>
+<li><p><strong>xpath路径表达式：</strong>XPath 使用路径表达式来选取 XML
+文档中的节点或者节点集。这些路径表达式和我们在常规的电脑文件系统中看到的表达式非常相似。节点是通过沿着路径
+(path) 或者步 (steps) 来选取的。</p></li>
 <li><p><strong>了解如何使用xpath语法选取我们想要的内容，所以需要熟悉xpath的基本语法</strong></p></li>
 </ol>
 <h4 id="scrapy爬取新闻内容实战">scrapy爬取新闻内容实战</h4>
@@ -392,10 +420,14 @@
 <p><img src="http://ryluo.oss-cn-chengdu.aliyuncs.com/图片image-20211103214611171.png" alt="image-20211103214611171" style="zoom:80%;" /></p>
 <h3 id="参考资料">参考资料</h3>
 <ol type="1">
-<li><p><a target="_blank" rel="noopener" href="https://github.com/datawhalechina/fun-rec/blob/master/docs/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%88%98/2.2%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%88%98/docs/MongoDB%E5%9F%BA%E7%A1%80.md">MongoDB基础</a></p></li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sxf1061700625/article/details/106866547/">Scrapy框架新手入门教程</a></p></li>
-<li><p><a target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/index.html">scrapy中文文档</a></p></li>
-<li><p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/xpath/index.asp">Xpath教程</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/datawhalechina/fun-rec/blob/master/docs/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%88%98/2.2%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%88%98/docs/MongoDB%E5%9F%BA%E7%A1%80.md">MongoDB基础</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/sxf1061700625/article/details/106866547/">Scrapy框架新手入门教程</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.osgeo.cn/scrapy/index.html">scrapy中文文档</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.w3school.com.cn/xpath/index.asp">Xpath教程</a></p></li>
 <li><p>https://github.com/Ingram7/NewsinaSpider</p></li>
 <li><p>https://www.cnblogs.com/zlslch/p/6931838.html</p></li>
 </ol>
@@ -516,7 +548,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scrapy-%E5%9F%BA%E7%A1%80%E5%8F%8A%E6%96%B0%E9%97%BB%E7%88%AC%E5%8F%96%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">2. Scrapy 基础及新闻爬取实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.0.1.</span> <span class="nav-text">python环境的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrapy%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-number">2.0.2.</span> <span class="nav-text">Scrapy的简介与安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#scrapy%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">scrapy项目结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spider"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">spider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xpath"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">Xpath</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrapy%E7%88%AC%E5%8F%96%E6%96%B0%E9%97%BB%E5%86%85%E5%AE%B9%E5%AE%9E%E6%88%98"><span class="nav-number">2.0.2.4.</span> <span class="nav-text">scrapy爬取新闻内容实战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.0.3.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scrapy-%E5%9F%BA%E7%A1%80%E5%8F%8A%E6%96%B0%E9%97%BB%E7%88%AC%E5%8F%96%E5%AE%9E%E6%88%98"><span class="nav-number">2.</span> <span class="nav-text">2. Scrapy
+基础及新闻爬取实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">2.0.1.</span> <span class="nav-text">python环境的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrapy%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-number">2.0.2.</span> <span class="nav-text">Scrapy的简介与安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#scrapy%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">scrapy项目结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spider"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">spider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xpath"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">Xpath</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrapy%E7%88%AC%E5%8F%96%E6%96%B0%E9%97%BB%E5%86%85%E5%AE%B9%E5%AE%9E%E6%88%98"><span class="nav-number">2.0.2.4.</span> <span class="nav-text">scrapy爬取新闻内容实战</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.0.3.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

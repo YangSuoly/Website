@@ -389,7 +389,9 @@
 
       
           <h1 id="引言">1. 引言</h1>
-<p>影响力，一般认为指的是用一种为别人所乐于接受的方式，改变他人所乐于接受的方式，改变他人的思想和行动的能力。该书由著名社会心理学家 Robert B. Cialdini 所著， Cialdini 倾其职业生涯来研究影响力，在说服、顺从和谈判领域享有广泛的国际声誉。因其在商业道德和政策运用方面所作的前沿研究，常被称为“影响力教父”。</p>
+<p>影响力，一般认为指的是用一种为别人所乐于接受的方式，改变他人所乐于接受的方式，改变他人的思想和行动的能力。该书由著名社会心理学家
+Robert B. Cialdini 所著， Cialdini
+倾其职业生涯来研究影响力，在说服、顺从和谈判领域享有广泛的国际声誉。因其在商业道德和政策运用方面所作的前沿研究，常被称为“影响力教父”。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/01/18/Influence-1/#more" rel="contents">
@@ -496,7 +498,10 @@
 <h2 id="import-data">1.1 Import data</h2>
 <ul>
 <li><p>use</p>
-<p><code>grilic_small.dta</code> 文件的目录请根据自己的文件目录填写，数据文件可在陈强老师的网站下载，<a target="_blank" rel="noopener" href="http://www.econometrics-stata.com/col.jsp?id=101">Click here</a>，选择《计量经济学及Stata应用》中的数据集下载。</p>
+<p><code>grilic_small.dta</code>
+文件的目录请根据自己的文件目录填写，数据文件可在陈强老师的网站下载，<a
+target="_blank" rel="noopener" href="http://www.econometrics-stata.com/col.jsp?id=101">Click
+here</a>，选择《计量经济学及Stata应用》中的数据集下载。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use <span class="string">&quot;D:\Demo\University\XMU\Class_files\Econometrics\Econometrics and Stata application\Data-Finished-bachelor\grilic_small.dta&quot;</span>, clear</span><br></pre></td></tr></table></figure></li>
 </ul>
           <!--noindex-->
@@ -818,8 +823,10 @@
 <ul>
 <li>特点</li>
 </ul>
-<p>当描述实际对象的某些特征随时间（或空间）而演变的过程、分析它的变化规律、预测它的未来形态、研究它的控制手段时，通常需要建立对象的 <strong>动态微分方程模型</strong>。</p>
-<p>微分模型求解的结果就是问题的答案，该答案是 <strong>唯一</strong> 的。</p>
+<p>当描述实际对象的某些特征随时间（或空间）而演变的过程、分析它的变化规律、预测它的未来形态、研究它的控制手段时，通常需要建立对象的
+<strong>动态微分方程模型</strong>。</p>
+<p>微分模型求解的结果就是问题的答案，该答案是 <strong>唯一</strong>
+的。</p>
 <ul>
 <li>典型的模型：
 <ul>
@@ -1131,7 +1138,8 @@
 <ul>
 <li>中文显示乱码问题</li>
 </ul>
-<p>Matplotlib 库缺少中文字体，因此在图标上显示中文会出现乱码，解决办法：</p>
+<p>Matplotlib
+库缺少中文字体，因此在图标上显示中文会出现乱码，解决办法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyplt <span class="keyword">import</span> mpl</span><br><span class="line">mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line">mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">

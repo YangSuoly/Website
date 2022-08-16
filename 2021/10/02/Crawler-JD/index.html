@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Introduciton 1.1 Job description 本项目为京东评论数据爬虫。随着电子商务的发展，有如京东、淘宝等网站，在线评论作为电子口碑显著影响着产品的营销策略。">
+  <meta name="description" content="1. Introduciton 1.1 Job description 本项目为京东评论数据爬虫。随着电子商务的发展，有如京东、淘宝等网站，在线评论作为电子口碑显著影响着产品的营销策略。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Crawler-JD">
 <meta property="og:url" content="http://yangsuoly.com/2021/10/02/Crawler-JD/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Introduciton 1.1 Job description 本项目为京东评论数据爬虫。随着电子商务的发展，有如京东、淘宝等网站，在线评论作为电子口碑显著影响着产品的营销策略。">
+<meta property="og:description" content="1. Introduciton 1.1 Job description 本项目为京东评论数据爬虫。随着电子商务的发展，有如京东、淘宝等网站，在线评论作为电子口碑显著影响着产品的营销策略。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-02T09:40:36.000Z">
 <meta property="article:modified_time" content="2021-10-02T15:52:23.105Z">
@@ -296,22 +296,29 @@
 <li>情感倾向明显。商品评论是针对产品整体或属性进行评价，这样是商品评论文本有着很明显的情感倾向，如“喜欢”、“差”等；</li>
 <li>数据量大。电子商务网站的交易量非常大，网上的评论数据以秒为单位的速度不断的刷新，增大。面对无限大的数据，通常在分析是取一段时间内旳文本进行分析，即可获得相对全面的产品评论信息；</li>
 <li>不规范性。语法不规范，口语化严重是互联网语言的一大特点，而且包含很多时下流行词汇。例如“木有”代表没有，“撒米”代表什么等等。口语化严重还包括出现很多新鲜的词汇，包括“坑爹”、“不明觉厉”、“我伙呆”等等。这些都给文本分析带来很多困难；</li>
-<li>易获取性。商品评论信息比较容易获取，各大电子商务网站例如京东、淘宝、亚马逊等都提供，方便获取到评论信息。 本文所有涉及到的商品评论文本，均为京东商城牛肉产品的评论文本。</li>
+<li>易获取性。商品评论信息比较容易获取，各大电子商务网站例如京东、淘宝、亚马逊等都提供，方便获取到评论信息。
+本文所有涉及到的商品评论文本，均为京东商城牛肉产品的评论文本。</li>
 </ol>
 <p>本研究中，以京东商城的生牛肉类产品为例子，爬取其评论信息。</p>
 <h2 id="task-analysis">1.2 Task analysis</h2>
-<p>首先，我们打开我们需要提取的商品链接（<a target="_blank" rel="noopener" href="https://item.jd.com/2925506.html#comment">恒都牛腱子</a>），打开开发者模式，可以发现其评论以 <code>json</code> 的形式进行存储，其链接的形式如下：<a target="_blank" rel="noopener" href="https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98&amp;productId=2925506&amp;score=0&amp;sortType=5&amp;page=1&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1">https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98&amp;productId=2925506&amp;score=0&amp;sortType=5&amp;page=1&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1</a>。因此我们可以通过爬取该地址进行评论的筛选和处理。</p>
+<p>首先，我们打开我们需要提取的商品链接（<a
+target="_blank" rel="noopener" href="https://item.jd.com/2925506.html#comment">恒都牛腱子</a>），打开开发者模式，可以发现其评论以
+<code>json</code> 的形式进行存储，其链接的形式如下：<a
+target="_blank" rel="noopener" href="https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98&amp;productId=2925506&amp;score=0&amp;sortType=5&amp;page=1&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1">https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98&amp;productId=2925506&amp;score=0&amp;sortType=5&amp;page=1&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1</a>。因此我们可以通过爬取该地址进行评论的筛选和处理。</p>
 <p>进一步分析可以发现，该链接所对应的评论页面主要由如下参数进行控制：</p>
 <ul>
 <li>productId：商品 id；</li>
 <li>score：评论星级数；</li>
 <li>page：评论页数；</li>
 </ul>
-<p>了解这些信息之后，我们可以通过控制上面上个参数，用 <code>loop</code> 循环获取所有评论的数据。</p>
+<p>了解这些信息之后，我们可以通过控制上面上个参数，用 <code>loop</code>
+循环获取所有评论的数据。</p>
 <h2 id="reviews-analysis">1.3 Reviews analysis</h2>
 <ul>
 <li><p>热评</p>
-<p>通过比对文本，我们可以发现热评信息在字段 <code>hotCommentTagStatistics</code> 下，且仅有在 <code>page=1</code> 时，也就是说时在第一页评论中，才会出现热评，后面的页数不会出现热评。</p>
+<p>通过比对文本，我们可以发现热评信息在字段
+<code>hotCommentTagStatistics</code> 下，且仅有在 <code>page=1</code>
+时，也就是说时在第一页评论中，才会出现热评，后面的页数不会出现热评。</p>
 <p><img src = 'https://z3.ax1x.com/2021/10/02/4bwZLj.md.png' style="zoom:80%;" /></p>
 <center>
 <p>Fig. 1 热评信息</p>
@@ -324,7 +331,8 @@
 </center></li>
 </ul>
 <h1 id="static-crawler">2. Static crawler</h1>
-<p>由于评论信息均储存在 <code>json</code> 文件中，我们此处我们便使用静态爬虫进行爬取。</p>
+<p>由于评论信息均储存在 <code>json</code>
+文件中，我们此处我们便使用静态爬虫进行爬取。</p>
 <h2 id="configuration">2.1 configuration</h2>
 <ul>
 <li><p>Load modules</p>
@@ -380,7 +388,8 @@
 Fig. 5 热评样例
 </center>
 <ol start="2" type="1">
-<li>商品评论 <img src = 'https://z3.ax1x.com/2021/10/02/4bwMF0.png' style="zoom:80%;" /></li>
+<li>商品评论
+<img src = 'https://z3.ax1x.com/2021/10/02/4bwMF0.png' style="zoom:80%;" /></li>
 </ol>
 <center>
 Fig. 6 评论样例
@@ -391,14 +400,17 @@ Fig. 6 评论样例
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_type_comments</span>(<span class="params">url</span>):</span></span><br><span class="line">    product_id = get_product_id(url)</span><br><span class="line">    pd_comments = pd.DataFrame()</span><br><span class="line">    pd_hot_comments = pd.DataFrame()</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> score <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">8</span>):</span><br><span class="line">        page = <span class="number">0</span></span><br><span class="line">        print(<span class="string">&#x27;---------score:&#123;&#125;---------------&#x27;</span>.<span class="built_in">format</span>(score))</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            start = pd_comments.shape[<span class="number">0</span>]</span><br><span class="line">            comment_url = <span class="string">&#x27;https://club.jd.com/comment/productPageComments.action?&#x27;</span> \</span><br><span class="line">                    <span class="string">&#x27;callback=fetchJSON_comment98&amp;productId=&#123;&#125;&amp;score=&#123;&#125;&#x27;</span> \</span><br><span class="line">                    <span class="string">&#x27;&amp;sortType=5&amp;page=&#123;&#125;&amp;pageSize=10&amp;isShadowSku=0&amp;rid=0&amp;fold=1&#x27;</span></span><br><span class="line">            comment_url = comment_url.<span class="built_in">format</span>(product_id, score, page)</span><br><span class="line">            <span class="comment"># comment_url = comment_url.format(product_id, 5, page)</span></span><br><span class="line">            comment_detail = find_message(comment_url, page)</span><br><span class="line">            <span class="keyword">if</span> comment_detail == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">            comments = comment_detail[<span class="string">&#x27;comments&#x27;</span>]</span><br><span class="line">            <span class="keyword">if</span> page == <span class="number">1</span> <span class="keyword">and</span> score == <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># 提取热点评论</span></span><br><span class="line">                np_hot_comments = np.array([<span class="string">&#x27;Hot Comments&#x27;</span>, <span class="string">&#x27;Counts&#x27;</span>])</span><br><span class="line">                hot_comments = comment_detail[<span class="string">&#x27;hotCommentTagStatistics&#x27;</span>]</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(hot_comments)):</span><br><span class="line">                    comment_name = hot_comments[i][<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">                    count = hot_comments[i][<span class="string">&#x27;count&#x27;</span>]</span><br><span class="line">                    np_hot_comments = np.vstack((np_hot_comments, np.array([comment_name, count])))</span><br><span class="line">                    pd_hot_comments = pd.DataFrame(np_hot_comments[<span class="number">1</span>:, :],</span><br><span class="line">                                                  columns = np_hot_comments[<span class="number">0</span>, :])         </span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(comments) == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(comments)):</span><br><span class="line">                need_keys = [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;guid&#x27;</span>, <span class="string">&#x27;nickname&#x27;</span>, <span class="string">&#x27;content&#x27;</span>, <span class="string">&#x27;creationTime&#x27;</span>, <span class="string">&#x27;score&#x27;</span>,</span><br><span class="line">                             <span class="string">&#x27;productColor&#x27;</span>, <span class="string">&#x27;referenceName&#x27;</span>]</span><br><span class="line">                <span class="keyword">for</span> key <span class="keyword">in</span> need_keys:</span><br><span class="line">                    pd_comments.loc[start+i, key] = comments[i][key]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="string">&#x27;afterUserComment&#x27;</span> <span class="keyword">in</span> <span class="built_in">list</span>(comments[i].keys()):</span><br><span class="line">                    after_comments_info = comments[i][<span class="string">&#x27;afterUserComment&#x27;</span>]</span><br><span class="line">                    pd_comments.loc[start+i, <span class="string">&#x27;Zhuiping_content&#x27;</span>] = after_comments_info[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">                    pd_comments.loc[start+i, <span class="string">&#x27;Zhuiping_time&#x27;</span>] = after_comments_info[<span class="string">&#x27;created&#x27;</span>]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="string">&#x27;replies&#x27;</span> <span class="keyword">in</span> <span class="built_in">list</span>(comments[i].keys()):</span><br><span class="line">                    replies_info = comments[i][<span class="string">&#x27;replies&#x27;</span>]</span><br><span class="line">                    length = <span class="built_in">len</span>(replies_info)</span><br><span class="line">                    <span class="keyword">if</span> length != <span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">                            reply_info = replies_info[i]</span><br><span class="line">                            pd_comments.loc[start+i, <span class="string">f&#x27;Reply_<span class="subst">&#123;i&#125;</span>_content&#x27;</span>] = reply_info[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">                            pd_comments.loc[start+i, <span class="string">f&#x27;Reply_<span class="subst">&#123;i&#125;</span>_time&#x27;</span>] = reply_info[<span class="string">&#x27;creationTime&#x27;</span>]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="string">&#x27;images&#x27;</span> <span class="keyword">in</span> <span class="built_in">list</span>(comments[i].keys()):</span><br><span class="line">                    images_info = comments[i][<span class="string">&#x27;images&#x27;</span>]</span><br><span class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(images_info)):</span><br><span class="line">                        pd_comments.loc[start+i, <span class="string">f&#x27;IMG_url_<span class="subst">&#123;j&#125;</span>&#x27;</span>] = images_info[j][<span class="string">&#x27;imgUrl&#x27;</span>]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="string">&#x27;videos&#x27;</span> <span class="keyword">in</span> <span class="built_in">list</span>(comments[i].keys()):</span><br><span class="line">                    videos_info = comments[i][<span class="string">&#x27;videos&#x27;</span>]</span><br><span class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(videos_info)):</span><br><span class="line">                        pd_comments.loc[start+i, <span class="string">f&#x27;Video_mainpic_<span class="subst">&#123;i&#125;</span>&#x27;</span>] = videos_info[j][<span class="string">&#x27;mainUrl&#x27;</span>]</span><br><span class="line">                        pd_comments.loc[start+i, <span class="string">f&#x27;Video_url_<span class="subst">&#123;i&#125;</span>&#x27;</span>] = videos_info[j][<span class="string">&#x27;remark&#x27;</span>]</span><br><span class="line">            count += <span class="number">1</span>         </span><br><span class="line">            page += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> count &lt;= <span class="number">50</span>:</span><br><span class="line">                time.sleep(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count = <span class="number">0</span></span><br><span class="line">                time.sleep(<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pd_comments, pd_hot_comments</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="开始爬取">2.4 开始爬取</h2>
-<p>考虑到我们的项目处理并不仅仅爬取一个网址，也需要多个商品的评论数据，因此，我们对主函数做一定的修改，使之不仅可以爬取单个商品的评论，也可以爬取多个商品的评论，并保存在不同的 <code>csv</code> 文件中。</p>
+<p>考虑到我们的项目处理并不仅仅爬取一个网址，也需要多个商品的评论数据，因此，我们对主函数做一定的修改，使之不仅可以爬取单个商品的评论，也可以爬取多个商品的评论，并保存在不同的
+<code>csv</code> 文件中。</p>
 <ul>
 <li><p>单链爬取</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">is_single = <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> is_single == <span class="literal">True</span>:  </span><br><span class="line">    url = <span class="string">&#x27;https://item.jd.com/2925506.html#comment&#x27;</span></span><br><span class="line">    pd_type_comments, pd_hot_comments = get_type_comments(url)</span><br><span class="line">    pd_type_comments.to_csv(<span class="string">&#x27;./Comments_type_1.csv&#x27;</span>, encoding=<span class="string">&#x27;ansi&#x27;</span>, errors = <span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">    pd_hot_comments.to_excel(<span class="string">&#x27;./Hot_comments.xlsx&#x27;</span>, sheet_name = get_product_id(url))</span><br></pre></td></tr></table></figure></li>
 <li><p>多链接爬取</p>
-<p>在实际操作过程中，我们发现多链接爬取由于 <code>request</code> 的次数太多，容易导致如下问题：</p>
+<p>在实际操作过程中，我们发现多链接爬取由于 <code>request</code>
+的次数太多，容易导致如下问题：</p>
 <ol type="1">
-<li><code>ip</code> 容易被服务器暂时拉黑（大约半小时，可以换个网继续操作）；</li>
+<li><code>ip</code>
+容易被服务器暂时拉黑（大约半小时，可以换个网继续操作）；</li>
 <li>容易达到端口的最大访问次数</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">is_multi = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> is_multi == <span class="literal">True</span>:</span><br><span class="line">    urls = [<span class="string">&#x27;https://item.jd.com/2925506.html#comment&#x27;</span>, <span class="string">&#x27;https://item.jd.com/2925506.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/100007810155.html&#x27;</span>, <span class="string">&#x27;https://item.jd.com/2925346.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/4924290.html&#x27;</span>, <span class="string">&#x27;https://item.jd.com/6879534.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/100006306997.html&#x27;</span>, <span class="string">&#x27;https://item.jd.com/8543963.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/100007212087.html&#x27;</span>, <span class="string">&#x27;https://item.jd.com/5662044.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/8543957.html&#x27;</span>,  <span class="string">&#x27;https://item.jd.com/6739532.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/4607999.html&#x27;</span>, <span class="string">&#x27;https://item.jd.com/100006930529.html&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;https://item.jd.com/100011848484.html&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(urls)):</span><br><span class="line">        print(<span class="string">f&#x27;----------正在爬取第<span class="subst">&#123;i&#125;</span>个网页的内容------------&#x27;</span>)</span><br><span class="line">        url = urls[i]</span><br><span class="line">        pd_type_comments, pd_hot_comments = get_type_comments(url)</span><br><span class="line">        uniq = pd_type_comments[<span class="string">&#x27;content&#x27;</span>].drop_duplicates().index</span><br><span class="line">        data_drop_dup = pd_type_comments.loc[uniq, :].reset_index()</span><br><span class="line">        data_drop_dup.to_csv(<span class="string">f&#x27;./Comments_type_product_<span class="subst">&#123;i&#125;</span>-0.csv&#x27;</span>, encoding=<span class="string">&#x27;ansi&#x27;</span>, errors = <span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">        pd_hot_comments.to_excel(<span class="string">f&#x27;./Hot_comments_product_<span class="subst">&#123;i&#125;</span>.xlsx&#x27;</span>, sheet_name = get_product_id(url))</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></li>
@@ -410,10 +422,12 @@ Fig. 6 评论样例
 <center>
 Fig. 7 问答信息
 </center>
-<p>通过分析，可以发现其问答数据藏在 <code>继续查看68条回答</code> 按钮之下，通过点击可以动态加载数据，因此我们选择使用动态爬虫爬取问答数据。</p>
+<p>通过分析，可以发现其问答数据藏在 <code>继续查看68条回答</code>
+按钮之下，通过点击可以动态加载数据，因此我们选择使用动态爬虫爬取问答数据。</p>
 <h2 id="爬取问答数据">3.2 爬取问答数据</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ask_answers</span>(<span class="params">url, pages</span>):</span></span><br><span class="line">    pd_ask_answer = pd.DataFrame()</span><br><span class="line"></span><br><span class="line">    browser = webdriver.Chrome(executable_path=<span class="string">&#x27;C:\Program Files (x86)\Google\Chrome\Application\chromedriver&#x27;</span>)</span><br><span class="line">    browser.get(url)</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> bt <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, pages):</span><br><span class="line">        bt_xpath = <span class="string">f&#x27;//*[@id=&quot;askAnswer&quot;]/div[2]/div[2]/div[12]/div/a[<span class="subst">&#123;bt&#125;</span>]&#x27;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            browser.find_element_by_xpath(bt_xpath).click()</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>):</span><br><span class="line">            shapes = pd_ask_answer.shape</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    click_xpath = <span class="string">f&#x27;//*[@id=&quot;askAnswer&quot;]/div[2]/div[2]/div[<span class="subst">&#123;i&#125;</span>]/div[2]/div/div/a[1]&#x27;</span></span><br><span class="line">                    browser.find_element_by_xpath(click_xpath).click()</span><br><span class="line">                <span class="keyword">except</span> Exception:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                question_xpath = <span class="string">f&#x27;//*[@id=&quot;askAnswer&quot;]/div[2]/div[2]/div[<span class="subst">&#123;i&#125;</span>]/div[1]/div/p&#x27;</span></span><br><span class="line">                pd_ask_answer.loc[<span class="number">0</span>, shapes[<span class="number">1</span>]+i] = browser.find_element_by_xpath(question_xpath).text</span><br><span class="line">            <span class="keyword">except</span> Exception:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">70</span>):</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    answer_xpath = <span class="string">f&#x27;//*[@id=&quot;askAnswer&quot;]/div[2]/div[2]/div[<span class="subst">&#123;i&#125;</span>]/div[2]/div/ul/li[<span class="subst">&#123;j&#125;</span>]/p&#x27;</span></span><br><span class="line">                    pd_ask_answer.loc[j, shapes[<span class="number">1</span>]+i] = browser.find_element_by_xpath(answer_xpath).text</span><br><span class="line">                <span class="keyword">except</span> Exception:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                time.sleep(<span class="number">0.05</span>)</span><br><span class="line"></span><br><span class="line">    pd_ask_answer.to_csv(<span class="string">&#x27;./Ask_answer.csv&#x27;</span>, encoding = <span class="string">&#x27;ansi&#x27;</span>, errors = <span class="string">&#x27;ignore&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>可以通过传入 <code>url</code> 和 <code>pages</code> 两个参数获取问答数据，如本案列中使用的参数如下：</p>
+<p>可以通过传入 <code>url</code> 和 <code>pages</code>
+两个参数获取问答数据，如本案列中使用的参数如下：</p>
 <ul>
 <li><code>url</code>： https://item.jd.com/2925506.html#comment</li>
 <li><code>pages</code>： 14</li>
@@ -758,7 +772,8 @@ memory usage: 10.9+ MB</code></pre></li>
 </table></li>
 <li><p>将词频分析结果存储</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mod_terms.to_csv(<span class="string">&#x27;./Process/analsis_content.csv&#x27;</span>, encoding = <span class="string">&#x27;ansi&#x27;</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>Note：</strong> 得到词频结果后，我们对一些关键词进行了指标值的分类，具体分类情况见下一章节</p></li>
+<p><strong>Note：</strong>
+得到词频结果后，我们对一些关键词进行了指标值的分类，具体分类情况见下一章节</p></li>
 </ul>
 <h3 id="word-cloud">4.2.2 Word cloud</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">words = <span class="string">&#x27; &#x27;</span>.join(word)</span><br><span class="line">wordcloud = WordCloud(</span><br><span class="line">    font_path=<span class="string">&quot;C:/Windows/Fonts/simkai.ttf&quot;</span>,<span class="comment">#设置字体</span></span><br><span class="line">    background_color=<span class="string">&quot;white&quot;</span>,<span class="comment">#设置背景颜色</span></span><br><span class="line">    max_font_size=<span class="number">250</span>,<span class="comment"># 设置字体最大值</span></span><br><span class="line">    max_words=<span class="number">2000</span>, <span class="comment"># 设置最大显示的字数</span></span><br><span class="line">    width=<span class="number">2800</span>, <span class="comment"># 宽</span></span><br><span class="line">    height=<span class="number">1600</span>, <span class="comment"># 高</span></span><br><span class="line">    ).generate(words)</span><br><span class="line"></span><br><span class="line">image = wordcloud.to_image()</span><br><span class="line">wordcloud.to_file(<span class="string">&#x27;./Process/ciyun.png&#x27;</span>)</span><br><span class="line">image.show()</span><br></pre></td></tr></table></figure>
@@ -951,7 +966,8 @@ Name: content_seg, dtype: object</code></pre></li>
 <p>5.0</p>
 </td>
 <td>
-<p>京东 自营 618 屯货 图 方便快捷 京东 自营 购买 牛肉 回购 牛腱子 做 干切 牛肉...</p>
+<p>京东 自营 618 屯货 图 方便快捷 京东 自营 购买 牛肉 回购 牛腱子 做
+干切 牛肉...</p>
 </td>
 <td>
 <p>0</p>
@@ -1087,7 +1103,8 @@ Name: content_seg, dtype: object</code></pre></li>
 <p>4.0</p>
 </td>
 <td>
-<p>高压锅 不炖 太烂 吃 牛肉 感觉 慢慢 炖煮 味道 煮 机会 买 尝尝 煮 方法 不好 感觉</p>
+<p>高压锅 不炖 太烂 吃 牛肉 感觉 慢慢 炖煮 味道 煮 机会 买 尝尝 煮 方法
+不好 感觉</p>
 </td>
 <td>
 <p>0</p>
@@ -1236,7 +1253,8 @@ Name: content_seg, dtype: object</code></pre></li>
 <p>5.0</p>
 </td>
 <td>
-<p>京东 自营 618 屯货 图 方便快捷 京东 自营 购买 牛肉 回购 牛腱子 做 干切 牛肉...</p>
+<p>京东 自营 618 屯货 图 方便快捷 京东 自营 购买 牛肉 回购 牛腱子 做
+干切 牛肉...</p>
 </td>
 <td>
 <p>0</p>
@@ -1372,7 +1390,8 @@ Name: content_seg, dtype: object</code></pre></li>
 <p>4.0</p>
 </td>
 <td>
-<p>高压锅 不炖 太烂 吃 牛肉 感觉 慢慢 炖煮 味道 煮 机会 买 尝尝 煮 方法 不好 感觉</p>
+<p>高压锅 不炖 太烂 吃 牛肉 感觉 慢慢 炖煮 味道 煮 机会 买 尝尝 煮 方法
+不好 感觉</p>
 </td>
 <td>
 <p>0</p>
@@ -1424,7 +1443,8 @@ Name: content_seg, dtype: object</code></pre></li>
 </p>
 <p>增加了14列一级指标。</p></li>
 <li><p>生成标签</p>
-<p>将 score 小于三的划分为负面评论 <code>0</code>，大于三的划分为正面评论 <code>1</code>。</p>
+<p>将 score 小于三的划分为负面评论
+<code>0</code>，大于三的划分为正面评论 <code>1</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comments[<span class="string">&#x27;Label&#x27;</span>] = comments[<span class="string">&#x27;score&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt;=<span class="number">3</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="tf-idf">4.4 TF-IDF</h2>
@@ -1513,7 +1533,8 @@ weighted avg     0.9642    0.9588    0.9607      6484</code></pre>
 </ul>
 <h1 id="conclusion">5. Conclusion</h1>
 <p>至此，京东评论爬取和情感分析处理完毕。由于是个人的比赛项目，本文不提供更详细的数据，代码和部分结果已基本附上。所获取的数据仅用于比赛。图片皆为个人爬取后的数据截图，如有侵权，可联系邮箱进行删除。</p>
-<p>申明：本文仅供学习和交流，请珍惜作者劳动成果，勿用作商业用途，如需商业用途或业务交流可联系邮箱 <code>e-mail:yangsuoly@qq.com</code> 进行进一步交流。</p>
+<p>申明：本文仅供学习和交流，请珍惜作者劳动成果，勿用作商业用途，如需商业用途或业务交流可联系邮箱
+<code>e-mail:yangsuoly@qq.com</code> 进行进一步交流。</p>
 
     </div>
 

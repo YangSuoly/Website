@@ -24,12 +24,12 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1. Python 数据类型 1.1 String  字符串的换行  123456789# 长字符串的换行s2 &#x3D; &amp;#x27;It took me six months to write this Python tutorial. \    Please give me more support. \    I will keep it updated.&amp;#x27;# 表达式的换行nu">
+  <meta name="description" content="1. Python 数据类型 1.1 String  字符串的换行  123456789# 长字符串的换行s2 &#x3D; &amp;#x27;It took me six months to write this Python tutorial. \    Please give me more support. \    I will keep it updated.&amp;#x27;# 表达式的换行num &#x3D; 2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python">
 <meta property="og:url" content="http://yangsuoly.com/2020/11/29/Python/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="1. Python 数据类型 1.1 String  字符串的换行  123456789# 长字符串的换行s2 &#x3D; &amp;#x27;It took me six months to write this Python tutorial. \    Please give me more support. \    I will keep it updated.&amp;#x27;# 表达式的换行nu">
+<meta property="og:description" content="1. Python 数据类型 1.1 String  字符串的换行  123456789# 长字符串的换行s2 &#x3D; &amp;#x27;It took me six months to write this Python tutorial. \    Please give me more support. \    I will keep it updated.&amp;#x27;# 表达式的换行num &#x3D; 2">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s3.ax1x.com/2020/11/30/Dg2hm6.gif">
 <meta property="og:image" content="https://s3.ax1x.com/2020/11/30/DgR9hQ.gif">
@@ -317,7 +317,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过构造函数创建空 bytes</span></span><br><span class="line">b1 = <span class="built_in">bytes</span>()</span><br><span class="line"><span class="comment"># 通过空字符串创建空 bytes</span></span><br><span class="line">b2 = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 通过b前缀将字符串转换成 bytes</span></span><br><span class="line">b3 = <span class="string">b&#x27;http://c.biancheng.net/python/&#x27;</span></span><br><span class="line">print(<span class="string">&quot;b3: &quot;</span>, b3)</span><br><span class="line">print(b3[<span class="number">3</span>])</span><br><span class="line">print(b3[<span class="number">7</span>:<span class="number">22</span>])</span><br><span class="line"><span class="comment"># 为 bytes() 方法指定字符集</span></span><br><span class="line">b4 = <span class="built_in">bytes</span>(<span class="string">&#x27;C语言中文网8岁了&#x27;</span>, encoding=<span class="string">&#x27;UTF-8&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;b4: &quot;</span>, b4)</span><br><span class="line"><span class="comment"># 通过 encode() 方法将字符串转换成 bytes</span></span><br><span class="line">b5 = <span class="string">&quot;C语言中文网8岁了&quot;</span>.encode(<span class="string">&#x27;UTF-8&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;b5: &quot;</span>, b5)</span><br><span class="line"><span class="comment"># 通过 decode() 方法将 bytes 转化为字符串</span></span><br><span class="line">str1 = b5.decode(<span class="string">&#x27;UTF-8&#x27;</span>)</span><br><span class="line">print(<span class="string">&quot;str1: &quot;</span>, str1)</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b3:  <span class="string">b&#x27;http://c.biancheng.net/python/&#x27;</span></span><br><span class="line"><span class="number">112</span></span><br><span class="line"><span class="string">b&#x27;c.biancheng.net&#x27;</span></span><br><span class="line">b4:  <span class="string">b&#x27;C\xe8\xaf\xad\xe8\xa8\x80\xe4\xb8\xad\xe6\x96\x87\xe7\xbd\x918\xe5\xb2\x81\xe4\xba\x86&#x27;</span></span><br><span class="line">b5:  <span class="string">b&#x27;C\xe8\xaf\xad\xe8\xa8\x80\xe4\xb8\xad\xe6\x96\x87\xe7\xbd\x918\xe5\xb2\x81\xe4\xba\x86&#x27;</span></span><br><span class="line">str1:  C语言中文网<span class="number">8</span>岁了</span><br></pre></td></tr></table></figure>
-<p>从运行结果可以发现，对于非 ASCII 字符，print 输出的是它的字符编码值（十六进制形式），而不是字符本身。非 ASCII 字符一般占用两个字节以上的内存，而 bytes 是按照单个字节来处理数据的，所以不能一次处理多个字节。</p>
+<p>从运行结果可以发现，对于非 ASCII 字符，print
+输出的是它的字符编码值（十六进制形式），而不是字符本身。非 ASCII
+字符一般占用两个字节以上的内存，而 bytes
+是按照单个字节来处理数据的，所以不能一次处理多个字节。</p>
 <h2 id="list">1.3 list</h2>
 <h3 id="创建列表">1.3.1 创建列表</h3>
 <ul>
@@ -418,7 +421,8 @@
 <li>del 关键字</li>
 </ul>
 <h2 id="dict">1.5 dict</h2>
-<p>dict 是一种无序的、可变的序列，他的元素以“键值对（key - value）”的形式存储</p>
+<p>dict 是一种无序的、可变的序列，他的元素以“键值对（key -
+value）”的形式存储</p>
 <p><img src="https://s3.ax1x.com/2020/11/30/Dg2hm6.gif" alt="reflect1" style="zoom:80%;" /></p>
 <center>
 Fig. 1-1 字典数据结构
@@ -452,15 +456,24 @@ Fig. 1-1 字典数据结构
 <tbody>
 <tr class="odd">
 <td>a = dict(str1=value1, str2=value2, str3=value3)</td>
-<td>str 表示字符串类型的键，value 表示键对应的值。使用此方式创建字典时，字符串不能带引号。</td>
+<td>str 表示字符串类型的键，value
+表示键对应的值。使用此方式创建字典时，字符串不能带引号。</td>
 </tr>
 <tr class="even">
-<td>#方式1<br />demo = [('two',2), ('one',1), ('three',3)] <br />#方式2<br /> demo = [['two',2], ['one',1], ['three',3]] <br />#方式3 <br />demo = (('two',2), ('one',1), ('three',3)) <br />#方式4 <br />demo = (['two',2], ['one',1], ['three',3]) a = dict(demo)</td>
-<td>向 dict() 函数传入列表或元组，而它们中的元素又各自是包含 2 个元素的列表或元组，其中第一个元素作为键，第二个元素作为值。</td>
+<td>#方式1<br />demo = [('two',2), ('one',1), ('three',3)]
+<br />#方式2<br /> demo = [['two',2], ['one',1], ['three',3]]
+<br />#方式3 <br />demo = (('two',2), ('one',1), ('three',3))
+<br />#方式4 <br />demo = (['two',2], ['one',1], ['three',3]) a =
+dict(demo)</td>
+<td>向 dict() 函数传入列表或元组，而它们中的元素又各自是包含 2
+个元素的列表或元组，其中第一个元素作为键，第二个元素作为值。</td>
 </tr>
 <tr class="odd">
-<td>keys = ['one', 'two', 'three'] <br />#还可以是字符串或元组 <br />values = [1, 2, 3] <br />#还可以是字符串或元组 <br />a = dict( zip(keys, values) )</td>
-<td>通过应用 dict() 函数和 zip() 函数，可将前两个列表转换为对应的字典。</td>
+<td>keys = ['one', 'two', 'three'] <br />#还可以是字符串或元组
+<br />values = [1, 2, 3] <br />#还可以是字符串或元组 <br />a = dict(
+zip(keys, values) )</td>
+<td>通过应用 dict() 函数和 zip()
+函数，可将前两个列表转换为对应的字典。</td>
 </tr>
 </tbody>
 </table>
@@ -510,8 +523,11 @@ Fig. 1-1 字典数据结构
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scores = &#123;<span class="string">&#x27;数学&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;语文&#x27;</span>: <span class="number">89</span>, <span class="string">&#x27;英语&#x27;</span>: <span class="number">90</span>&#125;</span><br><span class="line">print(scores.keys())</span><br><span class="line">print(scores.values())</span><br><span class="line">print(scores.items())</span><br></pre></td></tr></table></figure>
 <p>​ 运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict_keys([<span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>])</span><br><span class="line">dict_values([<span class="number">95</span>, <span class="number">89</span>, <span class="number">90</span>])</span><br><span class="line">dict_items([(<span class="string">&#x27;数学&#x27;</span>, <span class="number">95</span>), (<span class="string">&#x27;语文&#x27;</span>, <span class="number">89</span>), (<span class="string">&#x27;英语&#x27;</span>, <span class="number">90</span>)])</span><br><span class="line"><span class="comment"># keys()、values() 和 items() 返回值的类型分别为 dict_keys、dict_values 和 dict_items</span></span><br></pre></td></tr></table></figure>
-<p>在 Python 2.x 中，上面三个方法的返回值都是列表（list）类型。但在 Python 3.x 中，它们的返回值并不是我们常见的列表或者元组类型，因为 Python 3.x 不希望用户直接操作这几个方法的返回值。</p>
-<p>在 Python 3.x 中如果想使用这三个方法返回的数据，一般有下面两种方案：</p>
+<p>在 Python 2.x 中，上面三个方法的返回值都是列表（list）类型。但在
+Python 3.x 中，它们的返回值并不是我们常见的列表或者元组类型，因为 Python
+3.x 不希望用户直接操作这几个方法的返回值。</p>
+<p>在 Python 3.x
+中如果想使用这三个方法返回的数据，一般有下面两种方案：</p>
 <ol type="1">
 <li>使用 list() 函数，将他们转化为列表</li>
 </ol>
@@ -528,14 +544,16 @@ Fig. 1-1 字典数据结构
 <li>update() 方法</li>
 </ul>
 <p>update方法可以使用一个字典所包含的简直对来更新已有的字典。</p>
-<p>在执行 update（）方法是，如果被更新的字典中已包含对应的键值对，那么原 value会被覆盖；如果不包含对应的键值对，则该键值对被添加进去</p>
+<p>在执行 update（）方法是，如果被更新的字典中已包含对应的键值对，那么原
+value会被覆盖；如果不包含对应的键值对，则该键值对被添加进去</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line">a.update(&#123;<span class="string">&#x27;one&#x27;</span>:<span class="number">4.5</span>, <span class="string">&#x27;four&#x27;</span>: <span class="number">9.3</span>&#125;)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 <p>​ 运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">4.5</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;four&#x27;</span>: <span class="number">9.3</span>&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>pop() 和 popitem() 方法</li>
 </ul>
-<p>都是用来删除字典中键值对，不同的是，pop() 用来删除指定的键值对，而 popitem() 用来随机删除一个键值对</p>
+<p>都是用来删除字典中键值对，不同的是，pop() 用来删除指定的键值对，而
+popitem() 用来随机删除一个键值对</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dictname.pop(key)</span><br><span class="line">dictname.popitem()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;数学&#x27;</span>: <span class="number">95</span>, <span class="string">&#x27;语文&#x27;</span>: <span class="number">89</span>, <span class="string">&#x27;英语&#x27;</span>: <span class="number">90</span>, <span class="string">&#x27;化学&#x27;</span>: <span class="number">83</span>, <span class="string">&#x27;生物&#x27;</span>: <span class="number">98</span>, <span class="string">&#x27;物理&#x27;</span>: <span class="number">89</span>&#125;</span><br><span class="line">print(a)</span><br><span class="line">a.pop(<span class="string">&#x27;化学&#x27;</span>)</span><br><span class="line">print(a)</span><br><span class="line">a.popitem()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 <p>​ 运行结果</p>
@@ -550,12 +568,18 @@ Fig. 1-1 字典数据结构
 <p>​ 运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
 <p>copy() 方法所遵循的拷贝原理，既有深拷贝，也有浅拷贝。</p>
-<p>拿拷贝字典 a 为例，copy() 方法只会对最表层的键值对进行深拷贝，也就是说，它会再申请一块内存用来存放 {'one': 1, 'two': 2, 'three': []}；而对于某些列表类型的值来说，此方法对其做的是浅拷贝，也就是说，b 中的 [1,2,3] 的值不是自己独有，而是和 a 共有。</p>
+<p>拿拷贝字典 a 为例，copy()
+方法只会对最表层的键值对进行深拷贝，也就是说，它会再申请一块内存用来存放
+{'one': 1, 'two': 2, 'three':
+[]}；而对于某些列表类型的值来说，此方法对其做的是浅拷贝，也就是说，b
+中的 [1,2,3] 的值不是自己独有，而是和 a 共有。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br><span class="line">b = a.copy()</span><br><span class="line"><span class="comment"># 向 a 中添加新键值对，由于b已经提前将 a 所有键值对都深拷贝过来，因此 a 添加新键值对，不会影响 b。</span></span><br><span class="line"></span><br><span class="line">a[<span class="string">&#x27;four&#x27;</span>]=<span class="number">100</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 由于 b 和 a 共享[1,2,3]（浅拷贝），因此移除 a 中列表中的元素，也会影响 b。</span></span><br><span class="line">a[<span class="string">&#x27;three&#x27;</span>].remove(<span class="number">1</span>)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
 <p>​ 运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="string">&#x27;four&#x27;</span>: <span class="number">100</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br><span class="line">&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: [<span class="number">2</span>, <span class="number">3</span>], <span class="string">&#x27;four&#x27;</span>: <span class="number">100</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;one&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;two&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;three&#x27;</span>: [<span class="number">2</span>, <span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="set">1.6 set</h2>
-<p>同一集合中，只能存储 <strong>不可变</strong> 的数据类型，包括整形、浮点型、字符串、元组，无法存储列表、字典、集合这些<strong>可变</strong> 的数据类型，否则会抛出 TypeError 错误。</p>
+<p>同一集合中，只能存储 <strong>不可变</strong>
+的数据类型，包括整形、浮点型、字符串、元组，无法存储列表、字典、集合这些<strong>可变</strong>
+的数据类型，否则会抛出 TypeError 错误。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;element1,element2,...,elementn&#125;</span><br><span class="line"><span class="comment"># Python 中有两种集合类型，一种是 set 类型的集合，另一种是 frozenset 类型的集合，它们唯一的区别是，set 类型集合可以做添加、删除元素的操作，而 forzenset 类型集合不行</span></span><br></pre></td></tr></table></figure>
 <h3 id="创建-set-集合">1.6.1 创建 set 集合</h3>
 <ul>
@@ -592,6 +616,12 @@ Fig. 1-2 集合的布尔运算
 表 1-2 集合的布尔运算
 </center>
 <table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 40%" />
+<col style="width: 34%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>运算操作</th>
@@ -628,14 +658,18 @@ Fig. 1-2 集合的布尔运算
 </tbody>
 </table>
 <h3 id="set-集合方法详解">1.6.5 set 集合方法详解</h3>
-<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4402.html">set 集合方法详解</a></p>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4402.html">set
+集合方法详解</a></p>
 <h1 id="python-函数操作">2. Python 函数操作</h1>
 <h2 id="系统函数">2.1 系统函数</h2>
 <h3 id="input">2.1.1 input()</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="built_in">input</span>(tipmsg)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>str 表示一个字符串类型的变量，input 会将读取到的字符串放入 str 中</li>
-<li>tipmsg 表示提示信息，它会显示在控制台上，告诉用户应该输入什么样的内容；如果不写 tipmsg，就不会有任何提示信息</li>
+<li>str 表示一个字符串类型的变量，input 会将读取到的字符串放入 str
+中</li>
+<li>tipmsg
+表示提示信息，它会显示在控制台上，告诉用户应该输入什么样的内容；如果不写
+tipmsg，就不会有任何提示信息</li>
 </ul>
 <h3 id="pirnt">2.1.2 pirnt()</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(value,..., sep =<span class="string">&#x27;&#x27;</span>, end = <span class="string">&#x27;\n&#x27;</span>, file = sys.stdout, flush = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
@@ -648,7 +682,12 @@ Fig. 1-2 集合的布尔运算
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>(obj)</span><br><span class="line"><span class="built_in">repr</span>(obj)</span><br><span class="line"><span class="comment">#  Python 不允许直接拼接数字和字符串，需要借助str() 和 repr() 函数将数字转换为字符串</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 <p><strong>str() 和 repr() 的区别</strong></p>
-<p>str() 和 repr() 函数虽然都可以将数字转换成字符串，但它们之间是有区别的： 1) str() 将数据转换成适合人类阅读的字符串形式 2) repr() 将数据转换成适合解释器阅读的字符串形式（Python 表达式的形式），适合在开发和调试阶段使用；如果没有等价的语法，则会发生 SyntaxError 异常。</p>
+<p>str() 和 repr()
+函数虽然都可以将数字转换成字符串，但它们之间是有区别的： 1) str()
+将数据转换成适合人类阅读的字符串形式 2) repr()
+将数据转换成适合解释器阅读的字符串形式（Python
+表达式的形式），适合在开发和调试阶段使用；如果没有等价的语法，则会发生
+SyntaxError 异常。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;http://c.biancheng.net/shell/&quot;</span></span><br><span class="line">s_str = <span class="built_in">str</span>(s)</span><br><span class="line">s_repr = <span class="built_in">repr</span>(s)</span><br><span class="line">print( <span class="built_in">type</span>(s_str) )</span><br><span class="line"><span class="built_in">print</span> (s_str)</span><br><span class="line">print( <span class="built_in">type</span>(s_repr) )</span><br><span class="line"><span class="built_in">print</span> (s_repr)</span><br></pre></td></tr></table></figure>
 <p>​ 运行结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">str</span>&#x27;&gt;</span></span><br><span class="line"><span class="class"><span class="title">http</span>:</span>//c.biancheng.net/shell/</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">str</span>&#x27;&gt;</span></span><br><span class="line"><span class="class">&#x27;<span class="title">http</span>:</span>//c.biancheng.net/shell/<span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -702,9 +741,11 @@ Fig. 1-2 集合的布尔运算
 </ul>
 <h3 id="format">2.2.13 format()</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.<span class="built_in">format</span>(args)</span><br><span class="line"><span class="comment"># str 用于指定字符串的显示样式；args 用于指定要进行格式转换的项，如果有多项，之间有逗号进行分割</span></span><br></pre></td></tr></table></figure>
-<p>学习 format() 方法的难点，在于搞清楚 str 显示样式的书写格式。在创建显示样式模板时，需要使用<code>&#123;&#125;</code>和<code>：</code>来指定占位符，其完整的语法格式为：</p>
+<p>学习 format() 方法的难点，在于搞清楚 str
+显示样式的书写格式。在创建显示样式模板时，需要使用<code>&#123;&#125;</code>和<code>：</code>来指定占位符，其完整的语法格式为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; [index][ : [ [fill] align] [sign] [<span class="comment">#] [width] [.precision] [type] ] &#125;</span></span><br></pre></td></tr></table></figure>
-<p>具体参照：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4301.html">format完整</a></p>
+<p>具体参照：<a
+target="_blank" rel="noopener" href="http://c.biancheng.net/view/4301.html">format完整</a></p>
 <h3 id="encode-和-decode">2.2.14 encode() 和 decode()</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.encode([encoding=<span class="string">&quot;utf-8&quot;</span>][,errors=<span class="string">&quot;strict&quot;</span>])</span><br><span class="line"><span class="comment"># encoding=&quot;GBK&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">bytes</span>.decode([encoding=<span class="string">&quot;utf-8&quot;</span>][,errors=<span class="string">&quot;strict&quot;</span>])</span><br></pre></td></tr></table></figure>
 <center>
@@ -728,11 +769,17 @@ Fig. 1-2 集合的布尔运算
 </tr>
 <tr class="even">
 <td>encoding = "utf-8"</td>
-<td>指定进行编码时采用的字符编码，该选项默认采用 utf-8 编码。例如，如果想使用简体中文，可以设置 gb2312。<br /> 当方法中只使用这一个参数时，可以省略前边的“encoding=”，直接写编码格式，例如 str.encode("UTF-8")。</td>
+<td>指定进行编码时采用的字符编码，该选项默认采用 utf-8
+编码。例如，如果想使用简体中文，可以设置 gb2312。<br />
+当方法中只使用这一个参数时，可以省略前边的“encoding=”，直接写编码格式，例如
+str.encode("UTF-8")。</td>
 </tr>
 <tr class="odd">
 <td>errors = "strict"</td>
-<td>指定错误处理方式，其可选择值可以是：<br />1) strict：遇到非法字符就抛出异常。<br />2) ignore：忽略非法字符。<br />3) replace：用“？”替换非法字符。<br />4) xmlcharrefreplace：使用 xml 的字符引用。该参数的默认值为 strict。</td>
+<td>指定错误处理方式，其可选择值可以是：<br />1)
+strict：遇到非法字符就抛出异常。<br />2) ignore：忽略非法字符。<br />3)
+replace：用“？”替换非法字符。<br />4) xmlcharrefreplace：使用 xml
+的字符引用。该参数的默认值为 strict。</td>
 </tr>
 </tbody>
 </table>
@@ -740,12 +787,18 @@ Fig. 1-2 集合的布尔运算
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span>(obj)</span><br><span class="line"><span class="built_in">help</span>(obj)</span><br></pre></td></tr></table></figure>
 <h1 id="python-运算符">3. Python 运算符</h1>
 <h2 id="escape-character">3.1 Escape character</h2>
-<p>转义字符以 <code>\0、\x</code> 开头，以 <code>\x</code> 开头表示后跟十六进制形势的编码值，Python中的转义字符只能使用八进制或十六进制</p>
-<p>ASCII编码共收录了128个字符，<code>\0</code> 、<code>\x</code> 后面最多只能跟两位数字，所以八进制形势并不能表示所有的ASCII字符，只有十六进制才能表示所有的ASCII字符</p>
+<p>转义字符以 <code>\0、\x</code> 开头，以 <code>\x</code>
+开头表示后跟十六进制形势的编码值，Python中的转义字符只能使用八进制或十六进制</p>
+<p>ASCII编码共收录了128个字符，<code>\0</code> 、<code>\x</code>
+后面最多只能跟两位数字，所以八进制形势并不能表示所有的ASCII字符，只有十六进制才能表示所有的ASCII字符</p>
 <center>
 表3-1 转义字符一览表
 </center>
 <table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 88%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>转义字符</th>
@@ -849,6 +902,10 @@ Fig. 1-2 集合的布尔运算
 表3-3 比较运算符一览表
 </center>
 <table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 85%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>比较运算符</th>
@@ -858,42 +915,54 @@ Fig. 1-2 集合的布尔运算
 <tbody>
 <tr class="odd">
 <td>&gt;</td>
-<td>大于，如果<code>&gt;</code>前面的值大于后面的值，则返回 True，否则返回 False。</td>
+<td>大于，如果<code>&gt;</code>前面的值大于后面的值，则返回
+True，否则返回 False。</td>
 </tr>
 <tr class="even">
 <td>&lt;</td>
-<td>小于，如果<code>&lt;</code>前面的值小于后面的值，则返回 True，否则返回 False。</td>
+<td>小于，如果<code>&lt;</code>前面的值小于后面的值，则返回
+True，否则返回 False。</td>
 </tr>
 <tr class="odd">
 <td>==</td>
-<td>等于，如果<code>==</code>两边的值相等，则返回 True，否则返回 False。</td>
+<td>等于，如果<code>==</code>两边的值相等，则返回 True，否则返回
+False。</td>
 </tr>
 <tr class="even">
 <td>&gt;=</td>
-<td>大于等于（等价于数学中的 ≥），如果<code>&gt;=</code>前面的值大于或者等于后面的值，则返回 True，否则返回 False。</td>
+<td>大于等于（等价于数学中的
+≥），如果<code>&gt;=</code>前面的值大于或者等于后面的值，则返回
+True，否则返回 False。</td>
 </tr>
 <tr class="odd">
 <td>&lt;=</td>
-<td>小于等于（等价于数学中的 ≤），如果<code>&lt;=</code>前面的值小于或者等于后面的值，则返回 True，否则返回 False。</td>
+<td>小于等于（等价于数学中的
+≤），如果<code>&lt;=</code>前面的值小于或者等于后面的值，则返回
+True，否则返回 False。</td>
 </tr>
 <tr class="even">
 <td>!=</td>
-<td>不等于（等价于数学中的 ≠），如果<code>!=</code>两边的值不相等，则返回 True，否则返回 False。</td>
+<td>不等于（等价于数学中的
+≠），如果<code>!=</code>两边的值不相等，则返回 True，否则返回
+False。</td>
 </tr>
 <tr class="odd">
 <td>is</td>
-<td>判断两个变量所引用的对象是否相同，如果相同则返回 True，否则返回 False。</td>
+<td>判断两个变量所引用的对象是否相同，如果相同则返回 True，否则返回
+False。</td>
 </tr>
 <tr class="even">
 <td>is not</td>
-<td>判断两个变量所引用的对象是否不相同，如果不相同则返回 True，否则返回 False。</td>
+<td>判断两个变量所引用的对象是否不相同，如果不相同则返回 True，否则返回
+False。</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>== 和 is 的区别</li>
 </ul>
-<p>== 用来比较两个变量的值是否相等，而 is 则用来比对两个变量引用的是否是同一个对象</p>
+<p>== 用来比较两个变量的值是否相等，而 is
+则用来比对两个变量引用的是否是同一个对象</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time  <span class="comment">#引入time模块</span></span><br><span class="line">t1 = time.gmtime() <span class="comment"># gmtime()用来获取当前时间</span></span><br><span class="line">t2 =  time.gmtime()</span><br><span class="line">print(t1 == t2) <span class="comment">#输出True</span></span><br><span class="line">print(t1 <span class="keyword">is</span> t2) <span class="comment">#输出False</span></span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">time 模块的 gmtime() 方法用来获取当前的系统时间，精确到秒级，因为程序运行非常快，所以 t1 和 t1 得到的时间是一样的。== 用来判断 t1 和 t2 的值是否相等，所以返回 True。</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -933,7 +1002,8 @@ Fig. 1-2 集合的布尔运算
 <td>not</td>
 <td>逻辑非运算，等价于数学中的“非”</td>
 <td>not a</td>
-<td>如果 a 为真，那么 not a 的结果为假；如果 a 为假，那么 not a 的结果为真。相当于对 a 取反。</td>
+<td>如果 a 为真，那么 not a 的结果为假；如果 a 为假，那么 not a
+的结果为真。相当于对 a 取反。</td>
 </tr>
 </tbody>
 </table>
@@ -1005,15 +1075,19 @@ Fig. 1-2 集合的布尔运算
 </table>
 <h1 id="python-流程控制">4. Python 流程控制</h1>
 <h2 id="pass">4.1 pass</h2>
-<p><strong>pass</strong> 是 Python 中的关键字，用来让解释器跳过此处，什么都不做</p>
+<p><strong>pass</strong> 是 Python
+中的关键字，用来让解释器跳过此处，什么都不做</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="built_in">int</span>( <span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>) )</span><br><span class="line"><span class="keyword">if</span> age &lt; <span class="number">12</span> :</span><br><span class="line">    print(<span class="string">&quot;婴幼儿&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> age &gt;= <span class="number">12</span> <span class="keyword">and</span> age &lt; <span class="number">18</span>:</span><br><span class="line">    print(<span class="string">&quot;青少年&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> age &gt;= <span class="number">18</span> <span class="keyword">and</span> age &lt; <span class="number">30</span>:</span><br><span class="line">    print(<span class="string">&quot;成年人&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> age &gt;= <span class="number">30</span> <span class="keyword">and</span> age &lt; <span class="number">50</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;老年人&quot;</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="assert-断言">4.2 assert 断言</h2>
-<p>assert 语句，又称断言语句，可看做是功能缩小版的 if 语句，用于判断某个表达式的值，如果值为真，则程序可以继续往下执行；反之，会报 AssertionError 错误</p>
+<p>assert 语句，又称断言语句，可看做是功能缩小版的 if
+语句，用于判断某个表达式的值，如果值为真，则程序可以继续往下执行；反之，会报
+AssertionError 错误</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> 表达式</span><br><span class="line"></span><br><span class="line"><span class="comment"># 功能与下式类似</span></span><br><span class="line"><span class="keyword">if</span> 表达式==<span class="literal">True</span>:</span><br><span class="line">    程序继续执行</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    程序报 AssertionError 错误</span><br></pre></td></tr></table></figure>
 <h2 id="break-和-continue">4.3 break 和 continue</h2>
 <ul>
 <li><p>break 语句，可以完全终止当前循环</p></li>
-<li><p>continue 语句，可以跳过执行本次循环体中剩余的代码，转而执行下一次的循环</p></li>
+<li><p>continue
+语句，可以跳过执行本次循环体中剩余的代码，转而执行下一次的循环</p></li>
 </ul>
 <h2 id="zip">4.4 zip()</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">zip</span>(iterable, ...)</span><br><span class="line"><span class="comment">#  iterable,... 表示多个列表、元组、字典、集合、字符串，甚至还可以为 range() 区间</span></span><br></pre></td></tr></table></figure>
@@ -1030,8 +1104,17 @@ Fig. 1-2 集合的布尔运算
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = <span class="built_in">sorted</span>(iterable, key=<span class="literal">None</span>, reverse=<span class="literal">False</span>)  </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">key 参数可以自定义排序规则</span></span><br><span class="line"><span class="string">reverse 参数指定以升序（False，默认）还是降序（True）进行排序</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 <h1 id="python-程序打包">5 Python 程序打包</h1>
 <h2 id="需求分析">5.1 需求分析</h2>
-<p>在写 <code>python</code> 程序时，难免会遇到一些需求，比如给别人写一个小工具什么的但是除了写 <code>Python</code> 的，绝大多数人电脑里都没有<code>Python</code> 编译器，所以打包成 <code>exe</code>，让 <code>Windows</code> 用户双击就可以打开，就非常方便了。</p>
-<p>打包最常用的工具有 <code>py2exe</code>, <code>cxfree</code>, <code>pyinstaller</code> 等多种方法，不同方法的优缺点自行谷歌，经过多次尝试和对比，笔者觉得 <code>pyintaller</code> 是最方便使用的，因此本节以 <code>pyintaller</code> 为例介绍如何将 <code>py</code> 文件打包为 <code>exe</code> 可执行文件。</p>
+<p>在写 <code>python</code>
+程序时，难免会遇到一些需求，比如给别人写一个小工具什么的但是除了写
+<code>Python</code> 的，绝大多数人电脑里都没有<code>Python</code>
+编译器，所以打包成 <code>exe</code>，让 <code>Windows</code>
+用户双击就可以打开，就非常方便了。</p>
+<p>打包最常用的工具有 <code>py2exe</code>, <code>cxfree</code>,
+<code>pyinstaller</code>
+等多种方法，不同方法的优缺点自行谷歌，经过多次尝试和对比，笔者觉得
+<code>pyintaller</code> 是最方便使用的，因此本节以
+<code>pyintaller</code> 为例介绍如何将 <code>py</code> 文件打包为
+<code>exe</code> 可执行文件。</p>
 <h2 id="直接打包">5.2 直接打包</h2>
 <ul>
 <li><p>安装 pyinstaller</p>
@@ -1039,12 +1122,18 @@ Fig. 1-2 集合的布尔运算
 <li><p>打包命令</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F -w py-file-path --distpath=outputpath</span><br><span class="line"><span class="comment"># py-file-path 为需要打包为exe文件的位置</span></span><br><span class="line"><span class="comment"># outputpath 为输出位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For example</span></span><br><span class="line">pyinstaller -F -w <span class="string">&quot;./excel_to_word.py&quot;</span> --distpath=<span class="string">&quot;./output&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>虽然这种方式较为简单，但是打包过程非常缓慢，同时结果文件非常大，笔者写了一个十几行的代码，打包出来的代码有足足 <code>387M</code>。</p>
-<p>有人说，这是因为 <code>Anaconda</code> 里内置了很多库，打包的时候打包了很多不必要的模块进去，要用纯净的 <code>Python</code> 来打包。因此介绍如何给 <code>exe</code> 文件瘦身。</p>
+<p>虽然这种方式较为简单，但是打包过程非常缓慢，同时结果文件非常大，笔者写了一个十几行的代码，打包出来的代码有足足
+<code>387M</code>。</p>
+<p>有人说，这是因为 <code>Anaconda</code>
+里内置了很多库，打包的时候打包了很多不必要的模块进去，要用纯净的
+<code>Python</code> 来打包。因此介绍如何给 <code>exe</code>
+文件瘦身。</p>
 <h2 id="利用虚拟环境打包">5.2 利用虚拟环境打包</h2>
 <ul>
 <li><p>代码规范</p>
-<p>在写代码时尽量使用 <code>from * import *</code> 的命令，而不是直接使用 <code>import</code> 命令，这样打包时会少导入一些模块内容。</p></li>
+<p>在写代码时尽量使用 <code>from * import *</code>
+的命令，而不是直接使用 <code>import</code>
+命令，这样打包时会少导入一些模块内容。</p></li>
 <li><p>创建虚拟环境</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="string">&quot;D:\Program Datas\Python\Venv&quot;</span> <span class="comment"># 存放虚拟环境的目录</span></span><br><span class="line"></span><br><span class="line">python -m venv pyintall <span class="comment">#创建名为 pyintall 的虚拟环境</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入虚拟环境目录</span></span><br><span class="line">cd <span class="string">&quot;.\pyintall\Scripts\&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 激活虚拟环境</span></span><br><span class="line"><span class="string">activate.abat</span></span><br></pre></td></tr></table></figure></li>
 <li><p>安装代码中需要的模块</p>
