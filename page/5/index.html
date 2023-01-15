@@ -286,12 +286,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="introduction">1 Introduction</h1>
+          <h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1 Introduction</h1>
 <ul>
 <li>中文显示乱码问题</li>
 </ul>
-<p>Matplotlib
-库缺少中文字体，因此在图标上显示中文会出现乱码，解决办法：</p>
+<p>Matplotlib 库缺少中文字体，因此在图标上显示中文会出现乱码，解决办法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyplt <span class="keyword">import</span> mpl</span><br><span class="line">mpl.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line">mpl.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -391,8 +390,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="python-数据类型">1. Python 数据类型</h1>
-<h2 id="string">1.1 String</h2>
+          <h1 id="1-python-数据类型"><a class="markdownIt-Anchor" href="#1-python-数据类型"></a> 1. Python 数据类型</h1>
+<h2 id="11-string"><a class="markdownIt-Anchor" href="#11-string"></a> 1.1 String</h2>
 <ul>
 <li>字符串的换行</li>
 </ul>
@@ -503,10 +502,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="numpy-version">1 NumPy version</h1>
+          <h1 id="1-numpy-version"><a class="markdownIt-Anchor" href="#1-numpy-version"></a> 1 NumPy version</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.__version__) <span class="comment"># 查看 numpy 版本</span></span><br></pre></td></tr></table></figure>
-<p>NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N
-维数组对象 ndarray ( N-dimensional array )。</p>
+<p>NumPy( Numerical Python) 是 Python 数值计算最重要的基础库，核心是 N 维数组对象 ndarray ( N-dimensional array )。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/29/Numpy/#more" rel="contents">
@@ -613,15 +611,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="series">1 Series</h1>
-<h2 id="preparation">1.1 Preparation</h2>
+          <h1 id="1-series"><a class="markdownIt-Anchor" href="#1-series"></a> 1 Series</h1>
+<h2 id="11-preparation"><a class="markdownIt-Anchor" href="#11-preparation"></a> 1.1 Preparation</h2>
 <ul>
-<li>Import modules <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></li>
+<li>Import modules<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="different-data-type">1.2 Different data type</h2>
+<h2 id="12-different-data-type"><a class="markdownIt-Anchor" href="#12-different-data-type"></a> 1.2 Different data type</h2>
 <ul>
-<li><p>Time type <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>) <span class="comment"># time type</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">Timestamp(<span class="string">&#x27;2018-09-01 00:00:00&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Created by means of <code>data_range</code>. <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates = pd.date_range(<span class="string">&#x27;20200101&#x27;</span>, periods = <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates</span><br><span class="line">DatetimeIndex([<span class="string">&#x27;2020-01-01&#x27;</span>, <span class="string">&#x27;2020-01-02&#x27;</span>, <span class="string">&#x27;2020-01-03&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;2020-01-04&#x27;</span>,<span class="string">&#x27;2020-01-05&#x27;</span>, <span class="string">&#x27;2020-01-06&#x27;</span>],</span><br><span class="line">           dtype=<span class="string">&#x27;datetime64[ns]&#x27;</span>, freq=<span class="string">&#x27;D&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<li>
+<p>Time type</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = pd.Timestamp(<span class="string">&#x27;20180901&#x27;</span>) <span class="comment"># time type</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">Timestamp(<span class="string">&#x27;2018-09-01 00:00:00&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>Created by means of <code>data_range</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates = pd.date_range(<span class="string">&#x27;20200101&#x27;</span>, periods = <span class="number">6</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dates</span><br><span class="line">DatetimeIndex([<span class="string">&#x27;2020-01-01&#x27;</span>, <span class="string">&#x27;2020-01-02&#x27;</span>, <span class="string">&#x27;2020-01-03&#x27;</span>,</span><br><span class="line">          <span class="string">&#x27;2020-01-04&#x27;</span>,<span class="string">&#x27;2020-01-05&#x27;</span>, <span class="string">&#x27;2020-01-06&#x27;</span>],</span><br><span class="line">           dtype=<span class="string">&#x27;datetime64[ns]&#x27;</span>, freq=<span class="string">&#x27;D&#x27;</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/27/Pandas/#more" rel="contents">
@@ -724,9 +726,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="show-channel">1 Show channel</h1>
-<p><code>conda config --show</code>显示所有的 conda 的config
-信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
+          <h1 id="1-show-channel"><a class="markdownIt-Anchor" href="#1-show-channel"></a> 1 Show channel</h1>
+<p><code>conda config --show</code>显示所有的 conda 的config 信息，<code>conda config --show channels</code>显示所有 channel 信息</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>conda config --show channels</span><br><span class="line">channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-<span class="number">64</span>/</span><br><span class="line">  - defaults</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -830,12 +831,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="introduction">1. Introduction</h1>
-<p><code>Linux</code>，全称为
-<code>GNU/Linux</code>，是一种免费使用和自由传播的类 <code>UNIX</code>
-操作系统。我们常说的 <code>Linux</code> ，指的是 <code>Linux</code>
-内核，一个基于 <code>POSIX</code> 的多用户、多任务、支持多线程和多
-<code>CPU</code> 的操作系统。</p>
+          <h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
+<p><code>Linux</code>，全称为 <code>GNU/Linux</code>，是一种免费使用和自由传播的类 <code>UNIX</code> 操作系统。我们常说的 <code>Linux</code> ，指的是 <code>Linux</code> 内核，一个基于 <code>POSIX</code> 的多用户、多任务、支持多线程和多 <code>CPU</code> 的操作系统。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/23/Linux/#more" rel="contents">
@@ -942,19 +939,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="installing-scikit-learn">1 Installing scikit-learn</h1>
+          <h1 id="1-installing-scikit-learn"><a class="markdownIt-Anchor" href="#1-installing-scikit-learn"></a> 1 Installing scikit-learn</h1>
 <ul>
-<li><p>Windows</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
-<li><p>macOS</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
-<li><p>Linux</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -U scikit-learn</span><br></pre></td></tr></table></figure></li>
+<li>
+<p>Windows</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>macOS</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Linux</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -U scikit-learn</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>Check installation:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip show scikit-learn</span><br></pre></td></tr></table></figure>
-<p>See more about scikit-learn via clicking <a
-target="_blank" rel="noopener" href="https://scikit-learn.org/stable/index.html#">here</a>.</p>
+<p>See more about scikit-learn via clicking <a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/index.html#">here</a>.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/22/Scikit-learn/#more" rel="contents">
@@ -1057,10 +1059,9 @@ target="_blank" rel="noopener" href="https://scikit-learn.org/stable/index.html#
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="版本控制">1. 版本控制</h1>
-<h2 id="版本控制迭代">1.1 版本控制（迭代）</h2>
-<p>版本控制（Revision
-control）是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
+          <h1 id="1-版本控制"><a class="markdownIt-Anchor" href="#1-版本控制"></a> 1. 版本控制</h1>
+<h2 id="11-版本控制迭代"><a class="markdownIt-Anchor" href="#11-版本控制迭代"></a> 1.1 版本控制（迭代）</h2>
+<p>版本控制（Revision control）是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
 <ul>
 <li>实现跨区域多人协同开发</li>
 <li>追踪和记载一个或者多个文件的历史记录</li>
@@ -1153,7 +1154,7 @@ control）是一种在开发的过程中用于管理我们对文件、目录或�
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>634</span>
+              <span>644</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -1172,12 +1173,10 @@ control）是一种在开发的过程中用于管理我们对文件、目录或�
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="create-workfile">1 Create workfile</h1>
+          <h1 id="1-create-workfile"><a class="markdownIt-Anchor" href="#1-create-workfile"></a> 1 Create workfile</h1>
 <p>Eviews 10 创建时间序列工作文件，界面如下</p>
-<p><img src="https://s3.ax1x.com/2020/11/25/DUNDeA.png" /></p>
-<center>
-figure 1-1 时间序列类型
-</center>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUNDeA.png" alt="" /></p>
+<center> figure 1-1 时间序列类型</center>
 <p>参数释义为：</p>
           <!--noindex-->
             <div class="post-button">
