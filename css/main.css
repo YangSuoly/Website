@@ -771,15 +771,13 @@ pre .javascript .function {
   margin-bottom: 20px;
   padding: 1em;
   position: relative;
-  border: 1px solid #eee;
-  border-left-width: 5px;
 }
 .post-body .note h2,
 .post-body .note h3,
 .post-body .note h4,
 .post-body .note h5,
 .post-body .note h6 {
-  margin-top: 0;
+  margin-top: 3px;
   border-bottom: initial;
   margin-bottom: 0;
   padding-top: 0;
@@ -802,6 +800,17 @@ pre .javascript .function {
 .post-body .note img:last-child {
   margin-bottom: 0;
 }
+.post-body .note:not(.no-icon) {
+  padding-left: 2.5em;
+}
+.post-body .note:not(.no-icon)::before {
+  font-size: 1.5em;
+  left: 0.4em;
+  position: absolute;
+  top: calc(50% - 1em);
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
 .post-body .note.default {
   border-left-color: #777;
 }
@@ -810,6 +819,10 @@ pre .javascript .function {
 .post-body .note.default h4,
 .post-body .note.default h5,
 .post-body .note.default h6 {
+  color: #777;
+}
+.post-body .note.default:not(.no-icon)::before {
+  content: "\f0a9";
   color: #777;
 }
 .post-body .note.primary {
@@ -822,6 +835,10 @@ pre .javascript .function {
 .post-body .note.primary h6 {
   color: #6f42c1;
 }
+.post-body .note.primary:not(.no-icon)::before {
+  content: "\f055";
+  color: #6f42c1;
+}
 .post-body .note.info {
   border-left-color: #428bca;
 }
@@ -830,6 +847,10 @@ pre .javascript .function {
 .post-body .note.info h4,
 .post-body .note.info h5,
 .post-body .note.info h6 {
+  color: #428bca;
+}
+.post-body .note.info:not(.no-icon)::before {
+  content: "\f05a";
   color: #428bca;
 }
 .post-body .note.success {
@@ -842,6 +863,10 @@ pre .javascript .function {
 .post-body .note.success h6 {
   color: #5cb85c;
 }
+.post-body .note.success:not(.no-icon)::before {
+  content: "\f058";
+  color: #5cb85c;
+}
 .post-body .note.warning {
   border-left-color: #f0ad4e;
 }
@@ -852,6 +877,10 @@ pre .javascript .function {
 .post-body .note.warning h6 {
   color: #f0ad4e;
 }
+.post-body .note.warning:not(.no-icon)::before {
+  content: "\f06a";
+  color: #f0ad4e;
+}
 .post-body .note.danger {
   border-left-color: #d9534f;
 }
@@ -860,6 +889,10 @@ pre .javascript .function {
 .post-body .note.danger h4,
 .post-body .note.danger h5,
 .post-body .note.danger h6 {
+  color: #d9534f;
+}
+.post-body .note.danger:not(.no-icon)::before {
+  content: "\f056";
   color: #d9534f;
 }
 .pdfobject-container iframe,
@@ -1299,7 +1332,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0b99c7;
+  background: #22e5e4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1656,6 +1689,9 @@ pre .javascript .function {
   .post-body .note {
     margin-bottom: 10px !important;
     padding: 10px !important;
+  }
+  .post-body .note:not(.no-icon) {
+    padding-left: 35px !important;
   }
   .post-body .tabs .tab-content .tab-pane {
     padding: 10px 10px 0 10px !important;
@@ -2961,6 +2997,68 @@ p#div-border-top-purple {
   border-top-width: 5px;
   border-radius: 3px;
   border-top-color: #9954bb;
+}
+div[style^='callout:'] {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 6px !important;
+  border-radius: 3px;
+}
+div[style^='callout:'] h4 {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+div[style^='callout:'] p:last-child {
+  margin-bottom: 0;
+}
+div[style^='callout:'] code {
+  border-radius: 3px;
+}
+div[style^='callout:']+div[style^='callout:'] {
+  margin-top: -5px;
+}
+div[style='callout:default'] {
+  border-left-color: #777 !important;
+}
+div[style='callout:default'] h4 {
+  color: #777 !important;
+}
+div[style='callout:primary'] {
+  border-left-color: #428bca !important;
+}
+div[style='callout:primary'] h4 {
+  color: #428bca !important;
+}
+div[style='callout:success'] {
+  border-left-color: #5cb85c !important;
+}
+div[style='callout:success'] h4 {
+  color: #5cb85c !important;
+}
+div[style='callout:danger'] {
+  border-left-color: #d9534f !important;
+}
+div[style='callout:danger'] h4 {
+  color: #d9534f !important;
+}
+div[style='callout:warning'] {
+  border-left-color: #f0ad4e !important;
+}
+div[style^='callout:warning'] h4 {
+  color: #f0ad4e !important;
+}
+div[style^='callout:info'] {
+  border-left-color: #5bc0de !important;
+}
+div[style^='callout:info'] h4 {
+  color: #5bc0de !important;
+}
+div[style^='callout:code'] {
+  border-left-color: #53f6f9 !important;
+}
+div[style^='callout:code'] h4 {
+  color: #53f6f9 !important;
 }
 .post-toc .nav .nav-child {
   display: block;
