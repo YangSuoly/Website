@@ -32,7 +32,7 @@
 <meta property="og:description" content="0. Preface 本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第一篇—— 初识深度学习和预备知识整理。 本文是学习李沐老师 B 站视频教程 动手学深度学习 PyTorch版 所记录的笔记。主要使用 Obsidian 软件并借助插件 Meida extended 插件，在 markdown 文件中生成时间戳，可以">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-21T10:09:44.000Z">
-<meta property="article:modified_time" content="2023-03-21T10:17:40.407Z">
+<meta property="article:modified_time" content="2023-03-21T10:50:52.482Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Pytorch">
@@ -239,7 +239,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-03-21 18:09:44 / Modified: 18:17:40" itemprop="dateCreated datePublished" datetime="2023-03-21T18:09:44+08:00">2023-03-21</time>
+              <time title="Created: 2023-03-21 18:09:44 / Modified: 18:50:52" itemprop="dateCreated datePublished" datetime="2023-03-21T18:09:44+08:00">2023-03-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,7 +275,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>41 mins.</span>
+              <span>40 mins.</span>
             </span>
 
         </div>
@@ -1890,7 +1890,16 @@ class="math inline">\(28 \times 28 = 784\)</span>
 <code>0.1</code> ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">num_epochs, lr &#x3D; 10, 0.1</span><br><span class="line">updater &#x3D; torch.optim.SGD(params, lr&#x3D;lr)</span><br><span class="line">d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, updater)</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211655784.png)</span><br></pre></td></tr></table></figure>
 <p>为了对学习到的模型进行评估，我们将在一些测试数据上应用这个模型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">d2l.predict_ch3(net, test_iter)</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211700992.png)</span><br></pre></td></tr></table></figure>
+<div style="callout:code">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d2l.predict_ch3(net, test_iter)</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211700992.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+</div>
 <h3 id="小结-5">3.3.4 小结</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">手动实现一个简单的多层感知机是很容易的。然而如果有大量的层，从零开始实现多层感知机会变得很麻烦（例如，要命名和记录模型的参数）。</span><br></pre></td></tr></table></figure>
 <h2 id="多层感知机qa">3.4 多层感知机Q&amp;A</h2>
