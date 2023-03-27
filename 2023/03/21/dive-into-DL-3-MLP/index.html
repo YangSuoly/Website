@@ -32,7 +32,7 @@
 <meta property="og:description" content="0. Preface   Most folks are as happy as they make up their minds to be. — Abraham Lincoln   本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第三篇—— 多层感知机。 本文是学习李沐老师 B 站视频教程 动手学深度学习 PyTor">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-21T11:18:20.000Z">
-<meta property="article:modified_time" content="2023-03-27T14:37:10.526Z">
+<meta property="article:modified_time" content="2023-03-27T16:11:35.202Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Pytorch">
@@ -245,7 +245,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-27 22:37:10" itemprop="dateModified" datetime="2023-03-27T22:37:10+08:00">2023-03-27</time>
+                <time title="Modified: 2023-03-28 00:11:35" itemprop="dateModified" datetime="2023-03-28T00:11:35+08:00">2023-03-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,14 +274,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>28k</span>
+              <span>26k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>25 mins.</span>
+              <span>24 mins.</span>
             </span>
 
         </div>
@@ -422,7 +422,9 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211317222.png"
 alt="image.png" />
 <figcaption aria-hidden="true">image.png</figcaption>
 </figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">然而，这种线性划分依赖于线性假设，是非常不可靠的</span><br><span class="line"></span><br><span class="line">-   线性假设意味着单调假设，这是不可靠的：</span><br><span class="line">    </span><br><span class="line">    -   对于人体的体温与健康情况的建模，人体在37℃时最为健康，过小过大均有风险，然而这不是单调的</span><br><span class="line">        </span><br><span class="line">-   线性假设意味着特征与预测存在线性相关性，这也是不可靠的：</span><br><span class="line">    </span><br><span class="line">    -   如果预测一个人偿还债务的可能性，那这个人的资产从0万元增至5万元和从100万元增至105万元对应的偿还债务的可能性的增幅肯定是不相等的，也就是不线性相关的</span><br><span class="line">        </span><br><span class="line">-   线性模型的评估标准是有位置依赖性的，这是不可靠的：</span><br><span class="line">    </span><br><span class="line">    -   如果需要判断图片中的动物是猫还是狗，对于图片中一个像素的权重的改变永远是不可靠的，因为如果将图片翻转，它的类别不会改变，但是线性模型不具备这种性质，像素的权重将会失效</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>然而，这种线性划分依赖于线性假设，是非常不可靠的</p><ul><li><p>线性假设意味着单调假设，这是不可靠的：</p><ul><li>对于人体的体温与健康情况的建模，人体在37℃时最为健康，过小过大均有风险，然而这不是单调的</li></ul></li><li><p>线性假设意味着特征与预测存在线性相关性，这也是不可靠的：</p><ul><li>如果预测一个人偿还债务的可能性，那这个人的资产从0万元增至5万元和从100万元增至105万元对应的偿还债务的可能性的增幅肯定是不相等的，也就是不线性相关的</li></ul></li><li><p>线性模型的评估标准是有位置依赖性的，这是不可靠的：</p><ul><li>如果需要判断图片中的动物是猫还是狗，对于图片中一个像素的权重的改变永远是不可靠的，因为如果将图片翻转，它的类别不会改变，但是线性模型不具备这种性质，像素的权重将会失效</li></ul></li></ul>
+          </div>
 <p><strong>XOR 问题</strong>：</p>
 <p>希望模型能预测出 <code>XOR</code>
 分类（分割图片中的一三象限与二四象限）：</p>
@@ -492,7 +494,9 @@ class="math display">\[
     o=\mathbf{w}_2^T \mathbf{h}+b_2
     \]</span> 其中，<span class="math inline">\(\mathbf{w}_2 \in
 \mathbb{R}^m, b_2 \in \mathbb{R}\)</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">除了输入的信息和最后一层的感知机以外，其余的层均称为隐藏层，隐藏层的设置为模型一个重要的超参数，这里的模型有一个隐藏层。</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>除了输入的信息和最后一层的感知机以外，其余的层均称为隐藏层，隐藏层的设置为模型一个重要的超参数，这里的模型有一个隐藏层。</p>
+          </div>
 <h4 id="激活函数">3.1.2.3 激活函数</h4>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hh411U7gn/?p=2&amp;spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=503.770492">08:23
@@ -524,7 +528,32 @@ if } x&gt;0 \\ 0 &amp; \text { otherwise
 \exp(-x))^2} =
 \operatorname{sigmoid}(x)\left(1-\operatorname{sigmoid}(x)\right).
 \]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">title: Sigmoid 函数</span><br><span class="line"></span><br><span class="line">绘制sigmoid函数。 </span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">y &#x3D; torch.sigmoid(x)</span><br><span class="line">d2l.plot(x.detach(), y.detach(), &#39;x&#39;, &#39;sigmoid(x)&#39;, figsize&#x3D;(5, 2.5))</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211716246.png)</span><br><span class="line"></span><br><span class="line">**Note**：当输入接近0时，sigmoid函数接近线性变换。</span><br><span class="line"></span><br><span class="line">- sigmoid函数的导数： </span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line"># 清除以前的梯度</span><br><span class="line">x.grad.data.zero_()</span><br><span class="line">y.backward(torch.ones_like(x),retain_graph&#x3D;True)</span><br><span class="line">d2l.plot(x.detach(), x.grad, &#39;x&#39;, &#39;grad of sigmoid&#39;, figsize&#x3D;(5, 2.5))</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211716247.png)</span><br><span class="line"></span><br><span class="line">**注意**：当输入为0时，sigmoid函数的导数达到最大值0.25； 而输入在任一方向上越远离0点时，导数越接近0。</span><br></pre></td></tr></table></figure>
+<div style="callout:code">
+<p>title: Sigmoid 函数</p>
+<p>绘制sigmoid函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = torch.sigmoid(x)</span><br><span class="line">d2l.plot(x.detach(), y.detach(), <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;sigmoid(x)&#x27;</span>, figsize=(<span class="number">5</span>, <span class="number">2.5</span>))</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211716246.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<p><strong>Note</strong>：当输入接近0时，sigmoid函数接近线性变换。</p>
+<ul>
+<li>sigmoid函数的导数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清除以前的梯度</span></span><br><span class="line">x.grad.data.zero_()</span><br><span class="line">y.backward(torch.ones_like(x),retain_graph=<span class="literal">True</span>)</span><br><span class="line">d2l.plot(x.detach(), x.grad, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;grad of sigmoid&#x27;</span>, figsize=(<span class="number">5</span>, <span class="number">2.5</span>))</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211716247.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<p><strong>注意</strong>：当输入为0时，sigmoid函数的导数达到最大值0.25；
+而输入在任一方向上越远离0点时，导数越接近0。</p>
+</div>
 <ol start="2" type="1">
 <li><strong>Tanh函数</strong></li>
 </ol>
@@ -538,7 +567,9 @@ class="math inline">\((-1,1)\)</span> 上。 <code>tanh</code>
 <p><span class="math display">\[
 \frac{d}{dx} \operatorname{tanh}(x) = 1 - \operatorname{tanh}^2(x).
 \]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">title: Tanh 函数</span><br><span class="line"></span><br><span class="line">为了直观感受一下，可以画出函数的曲线图。 正如从图中所看到，当输入在0附近时，tanh函数接近线性变换。 函数的形状类似于sigmoid函数， 不同的是tanh函数关于坐标系原点中心对称。</span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">y &#x3D; torch.tanh(x)</span><br><span class="line">d2l.plot(x.detach(), y.detach(), &#39;x&#39;, &#39;tanh(x)&#39;, figsize&#x3D;(5, 2.5))</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211732614.png)</span><br><span class="line"></span><br><span class="line">- Tanh 函数的导数</span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line"># 清除以前的梯度</span><br><span class="line">x.grad.data.zero_()</span><br><span class="line">y.backward(torch.ones_like(x),retain_graph&#x3D;True)</span><br><span class="line">d2l.plot(x.detach(), x.grad, &#39;x&#39;, &#39;grad of tanh&#39;, figsize&#x3D;(5, 2.5))</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211733752.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="note code">
+            <p>title: Tanh 函数</p><p>为了直观感受一下，可以画出函数的曲线图。正如从图中所看到，当输入在0附近时，tanh函数接近线性变换。函数的形状类似于sigmoid函数，不同的是tanh函数关于坐标系原点中心对称。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = torch.tanh(x)</span><br><span class="line">d2l.plot(x.detach(), y.detach(), <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;tanh(x)&#x27;</span>, figsize=(<span class="number">5</span>, <span class="number">2.5</span>))</span><br></pre></td></tr></table></figure><p>Results:</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211732614.png"alt="image.png" /><figcaption aria-hidden="true">image.png</figcaption></figure><ul><li>Tanh 函数的导数</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清除以前的梯度</span></span><br><span class="line">x.grad.data.zero_()</span><br><span class="line">y.backward(torch.ones_like(x),retain_graph=<span class="literal">True</span>)</span><br><span class="line">d2l.plot(x.detach(), x.grad, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;grad of tanh&#x27;</span>, figsize=(<span class="number">5</span>, <span class="number">2.5</span>))</span><br></pre></td></tr></table></figure><p>Results:</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211733752.png"alt="image.png" /><figcaption aria-hidden="true">image.png</figcaption></figure>
+          </div>
 <ol start="3" type="1">
 <li><strong>ReLU 函数</strong></li>
 </ol>
@@ -552,7 +583,32 @@ unit，ReLU），因为它实现简单，同时在各种预测任务中表现良
 class="math display">\[
 \operatorname{ReLU}(x) = \max(x, 0)  
 \]</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">title: ReLU函数</span><br><span class="line"></span><br><span class="line">为了直观感受一下，可以画出函数的曲线图。 正如从图中所看到，激活函数是分段线性的。</span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">%matplotlib inline</span><br><span class="line">import torch</span><br><span class="line">from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line">x &#x3D; torch.arange(-8.0, 8.0, 0.1, requires_grad&#x3D;True)</span><br><span class="line">y &#x3D; torch.relu(x)</span><br><span class="line">d2l.plot(x.detach(), y.detach(), &#39;x&#39;, &#39;relu(x)&#39;, figsize&#x3D;(5, 2.5))</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211731144.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**Note**:当输入为负时，ReLU函数的导数为0，而当输入为正时，ReLU函数的导数为1。 注意，当输入值精确等于0时，ReLU函数不可导。</span><br><span class="line"></span><br><span class="line">- ReLU函数的导数</span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">y.backward(torch.ones_like(x), retain_graph&#x3D;True)</span><br><span class="line">d2l.plot(x.detach(), x.grad, &#39;x&#39;, &#39;grad of relu&#39;, figsize&#x3D;(5, 2.5))</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211731145.png)</span><br></pre></td></tr></table></figure>
+<div style="callout:code">
+<p>title: ReLU函数</p>
+<p>为了直观感受一下，可以画出函数的曲线图。
+正如从图中所看到，激活函数是分段线性的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line">x = torch.arange(-<span class="number">8.0</span>, <span class="number">8.0</span>, <span class="number">0.1</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">y = torch.relu(x)</span><br><span class="line">d2l.plot(x.detach(), y.detach(), <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;relu(x)&#x27;</span>, figsize=(<span class="number">5</span>, <span class="number">2.5</span>))</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211731144.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<p><strong>Note</strong>:当输入为负时，ReLU函数的导数为0，而当输入为正时，ReLU函数的导数为1。
+注意，当输入值精确等于0时，ReLU函数不可导。</p>
+<ul>
+<li>ReLU函数的导数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y.backward(torch.ones_like(x), retain_graph=<span class="literal">True</span>)</span><br><span class="line">d2l.plot(x.detach(), x.grad, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;grad of relu&#x27;</span>, figsize=(<span class="number">5</span>, <span class="number">2.5</span>))</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211731145.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+</div>
 <h4 id="多类分类">3.1.2.4 多类分类</h4>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hh411U7gn/?p=2&amp;spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=839.693995">13:59
@@ -656,9 +712,13 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72374385">权�
 </ul>
 </blockquote>
 <h4 id="总结-1">3.1.2.7 总结</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 多层感知机使用隐藏层和激活函数来得到非线性模型</span><br><span class="line">- 常用激活函数：Sigmoid，Tanh，ReLU</span><br><span class="line">- 使用softmax进行多分类</span><br><span class="line">- 隐藏层数、大小为超参数</span><br></pre></td></tr></table></figure>
+<div class="note summary">
+            <ul><li>多层感知机使用隐藏层和激活函数来得到非线性模型</li><li>常用激活函数：Sigmoid，Tanh，ReLU</li><li>使用softmax进行多分类</li><li>隐藏层数、大小为超参数</li></ul>
+          </div>
 <h3 id="从零实现多层感知机">3.1.3 从零实现多层感知机</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在 [[dl-notes-2#2.2.5.5 训练|Softmax 简洁实现]] 中，笔者在尝试运行李沐老师的代码时会报错，此处，对其进行修正。</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>在 [[dl-notes-2#2.2.5.5 训练|Softmax 简洁实现]]中，笔者在尝试运行李沐老师的代码时会报错，此处，对其进行修正。</p>
+          </div>
 <p>通过查询发现，笔者安装的 <code>d2l</code> 是最新版本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d2l==<span class="number">1.0</span><span class="number">.0</span>a0</span><br></pre></td></tr></table></figure>
 <p>发现这个版本中并没有 <code>d2l.train_ch3</code>
@@ -666,7 +726,11 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72374385">权�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install d2l==0.17.5</span><br></pre></td></tr></table></figure>
 <p>然而，此时 <code>import d2l</code> 包时会报 [[dl-notes-2#2.1.3.1
 环境配置|环境配置]] 中出现的错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">!pip install d2l</span><br><span class="line">import numpy as np</span><br><span class="line">import torch</span><br><span class="line">from torch.utils import data </span><br><span class="line">from d2l import torch as d2l</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">会报如下错误：</span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">ValueError Traceback (most recent call last)  </span><br><span class="line">Input In [1], in &lt;cell line: 4&gt;()  </span><br><span class="line">1 #import torch  </span><br><span class="line">2 #print(torch.**version**)  </span><br><span class="line">----&gt; 4 from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line">... </span><br><span class="line"></span><br><span class="line">---&gt; 13 from pandas._libs.interval import Interval  </span><br><span class="line">14 from pandas._libs.tslibs import (  </span><br><span class="line">15 NaT,  </span><br><span class="line">16 NaTType,  </span><br><span class="line">(...)  </span><br><span class="line">21 iNaT,  </span><br><span class="line">22 )</span><br><span class="line"></span><br><span class="line">File pandas&#x2F;_libs&#x2F;interval.pyx:1, in init pandas._libs.interval()</span><br><span class="line"></span><br><span class="line">ValueError: numpy.ndarray size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">此时只需要重装 **pandas** 就可以完美解决了。</span><br><span class="line"></span><br><span class="line">~~~shell</span><br><span class="line">!pip install --upgrade numpy</span><br><span class="line">!pip install --force-reinstall pandas</span><br><span class="line">~~~</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">!pip install d2l</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils <span class="keyword">import</span> data </span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br></pre></td></tr></table></figure>
+<p>会报如下错误：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ValueError Traceback (most recent call last)  </span><br><span class="line">Input In [<span class="number">1</span>], <span class="keyword">in</span> &lt;cell line: <span class="number">4</span>&gt;()  </span><br><span class="line"><span class="number">1</span> <span class="comment">#import torch  </span></span><br><span class="line"><span class="number">2</span> <span class="comment">#print(torch.**version**)  </span></span><br><span class="line">----&gt; 4 from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line"><span class="meta">... </span></span><br><span class="line"></span><br><span class="line">---&gt; 13 from pandas._libs.interval import Interval  </span><br><span class="line"><span class="number">14</span> <span class="keyword">from</span> pandas._libs.tslibs <span class="keyword">import</span> (  </span><br><span class="line"><span class="number">15</span> NaT,  </span><br><span class="line"><span class="number">16</span> NaTType,  </span><br><span class="line">(...)  </span><br><span class="line"><span class="number">21</span> iNaT,  </span><br><span class="line"><span class="number">22</span> )</span><br><span class="line"></span><br><span class="line">File pandas/_libs/interval.pyx:<span class="number">1</span>, <span class="keyword">in</span> init pandas._libs.interval()</span><br><span class="line"></span><br><span class="line">ValueError: numpy.ndarray size changed, may indicate binary incompatibility. Expected <span class="number">96</span> <span class="keyword">from</span> C header, got <span class="number">88</span> <span class="keyword">from</span> PyObject</span><br></pre></td></tr></table></figure>
+<p>此时只需要重装 <strong>pandas</strong> 就可以完美解决了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!pip install --upgrade numpy</span><br><span class="line">!pip install --force-reinstall pandas</span><br></pre></td></tr></table></figure>
 <h4 id="读取数据">3.1.3.1 读取数据</h4>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hh411U7gn/?p=3&amp;spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=3.243614">00:03
@@ -706,11 +770,31 @@ class="math inline">\(28 \times 28 = 784\)</span>
 从零实现多层感知机|本章前沿部分]] 的解决方案）。</p>
 <p>将迭代周期数设置为 <code>10</code> ，并将学习率设置为
 <code>0.1</code> ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">num_epochs, lr &#x3D; 10, 0.1</span><br><span class="line">updater &#x3D; torch.optim.SGD(params, lr&#x3D;lr)</span><br><span class="line">d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, updater)</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211655784.png)</span><br></pre></td></tr></table></figure>
+<div style="callout:code">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_epochs, lr = <span class="number">10</span>, <span class="number">0.1</span></span><br><span class="line">updater = torch.optim.SGD(params, lr=lr)</span><br><span class="line">d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, updater)</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211655784.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+</div>
 <p>为了对学习到的模型进行评估，我们将在一些测试数据上应用这个模型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">d2l.predict_ch3(net, test_iter)</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303211700992.png)</span><br></pre></td></tr></table></figure>
+<div style="callout:code">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d2l.predict_ch3(net, test_iter)</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303211700992.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+</div>
 <h4 id="小结">3.1.3.4 小结</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">手动实现一个简单的多层感知机是很容易的。然而如果有大量的层，从零开始实现多层感知机会变得很麻烦（例如，要命名和记录模型的参数）。</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>手动实现一个简单的多层感知机是很容易的。然而如果有大量的层，从零开始实现多层感知机会变得很麻烦（例如，要命名和记录模型的参数）。</p>
+          </div>
 <h3 id="多层感知机qa">3.1.4 多层感知机Q&amp;A</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hh411U7gn/?p=4&amp;spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=8.620123">00:08
@@ -746,8 +830,19 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kX4y1g7jp
 <ul>
 <li>在没有足够多数据时使用（这是常态）</li>
 </ul>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: K&#x3D;则交叉验证</span><br><span class="line"></span><br><span class="line">- 将训练数据分割k块</span><br><span class="line">- For  $i &#x3D; 1, \cdots, k$ </span><br><span class="line">- 使用第 $i$ 块作为验证数据集，其余的作为训练数据集</span><br><span class="line">	- 报告k个验证集误差的平均</span><br><span class="line">- 常用：$k &#x3D; 5$ 或 $10$</span><br></pre></td></tr></table></figure></p>
+<div style="callout:code">
+<p>title: K=则交叉验证</p>
 <ul>
+<li>将训练数据分割k块</li>
+<li>For <span class="math inline">\(i = 1, \cdots, k\)</span></li>
+<li>使用第 <span class="math inline">\(i\)</span>
+块作为验证数据集，其余的作为训练数据集
+<ul>
+<li>报告k个验证集误差的平均</li>
+</ul></li>
+<li>常用：<span class="math inline">\(k = 5\)</span> 或 <span
+class="math inline">\(10\)</span>
+</div></li>
 <li><strong>目的</strong>：在没有足够多数据使用时评估模型和超参数的性能，也就是说，<strong>K次训练和验证使用的是相同的超参数和模型</strong></li>
 </ul></li>
 </ol>
@@ -755,7 +850,9 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kX4y1g7jp
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kX4y1g7jp?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=1030.225781">17:10
 总结</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 训练数据集：训练模型参数</span><br><span class="line">- 验证数据集：选择模型超参数</span><br><span class="line">- 非大数据集上通常使用k-则交叉验证</span><br></pre></td></tr></table></figure>
+<div class="note primary">
+            <ul><li>训练数据集：训练模型参数</li><li>验证数据集：选择模型超参数</li><li>非大数据集上通常使用k-则交叉验证</li></ul>
+          </div>
 <h3 id="过拟合和欠拟合">3.2.2 过拟合和欠拟合</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kX4y1g7jp?p=2&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=1.443935">00:01
@@ -785,7 +882,9 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303221101986.png"
 alt="image.png" />
 <figcaption aria-hidden="true">image.png</figcaption>
 </figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 深度学习的核心任务就是把泛化误差往下降。</span><br><span class="line">- 有时为了降低泛化误差，不得不承受一定程度的过拟合。</span><br><span class="line">- 首先模型大，然后再使用各种手段控制模型容量使得泛化误差下降。</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <ul><li>深度学习的核心任务就是把泛化误差往下降。</li><li>有时为了降低泛化误差，不得不承受一定程度的过拟合。</li><li>首先模型大，然后再使用各种手段控制模型容量使得泛化误差下降。</li></ul>
+          </div>
 <p><strong>估计模型容量</strong>：</p>
 <ul>
 <li>难以在不同的种类算法之间比较
@@ -885,7 +984,9 @@ where }
 <p>噪声项 <span class="math inline">\(\epsilon\)</span> 服从均值为 <span
 class="math inline">\(0\)</span> 且标准差为 <span
 class="math inline">\(0.1\)</span> 的正态分布。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- 在优化的过程中，通常希望避免非常大的梯度值或损失值。</span><br><span class="line">- 因此此处，将特征从 $x^i$ 调整为 $\frac&#123;x^i&#125;&#123;i!&#125;$ ，这样可以避免很大的 $i$ 带来的特别大的指数值。</span><br><span class="line"></span><br><span class="line">Code: </span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">max_degree &#x3D; 20  # 多项式的最大阶数</span><br><span class="line">n_train, n_test &#x3D; 100, 100  # 训练和测试数据集大小</span><br><span class="line">true_w &#x3D; np.zeros(max_degree)  # 分配大量的空间</span><br><span class="line">true_w[0:4] &#x3D; np.array([5, 1.2, -3.4, 5.6])#前五个参数是有用的已知的参数，其他都是0，是不希望被学习的参数</span><br><span class="line"></span><br><span class="line">features &#x3D; np.random.normal(size&#x3D;(n_train + n_test, 1))#创建特征值</span><br><span class="line">np.random.shuffle(features)#打乱顺序</span><br><span class="line">poly_features &#x3D; np.power(features, np.arange(max_degree).reshape(1, -1))#通过广播机制得到每个特征值的所有多项式值</span><br><span class="line">for i in range(max_degree):</span><br><span class="line">    poly_features[:, i] &#x2F;&#x3D; math.gamma(i + 1)  # gamma(n)&#x3D;(n-1)!，除以gamma防止梯度过大</span><br><span class="line"># labels的维度:(n_train+n_test,)</span><br><span class="line">labels &#x3D; np.dot(poly_features, true_w)#将对应多项式值与其系数相乘</span><br><span class="line">labels +&#x3D; np.random.normal(scale&#x3D;0.1, size&#x3D;labels.shape)#加上噪声项</span><br><span class="line">~~~</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <ul><li>在优化的过程中，通常希望避免非常大的梯度值或损失值。</li><li>因此此处，将特征从 <span class="math inline">\(x^i\)</span> 调整为<span class="math inline">\(\frac{x^i}{i!}\)</span> ，这样可以避免很大的<span class="math inline">\(i\)</span> 带来的特别大的指数值。</li></ul><p>Code:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">max_degree = <span class="number">20</span>  <span class="comment"># 多项式的最大阶数</span></span><br><span class="line">n_train, n_test = <span class="number">100</span>, <span class="number">100</span>  <span class="comment"># 训练和测试数据集大小</span></span><br><span class="line">true_w = np.zeros(max_degree)  <span class="comment"># 分配大量的空间</span></span><br><span class="line">true_w[<span class="number">0</span>:<span class="number">4</span>] = np.array([<span class="number">5</span>, <span class="number">1.2</span>, -<span class="number">3.4</span>, <span class="number">5.6</span>])<span class="comment">#前五个参数是有用的已知的参数，其他都是0，是不希望被学习的参数</span></span><br><span class="line"></span><br><span class="line">features = np.random.normal(size=(n_train + n_test, <span class="number">1</span>))<span class="comment">#创建特征值</span></span><br><span class="line">np.random.shuffle(features)<span class="comment">#打乱顺序</span></span><br><span class="line">poly_features = np.power(features, np.arange(max_degree).reshape(<span class="number">1</span>, -<span class="number">1</span>))<span class="comment">#通过广播机制得到每个特征值的所有多项式值</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(max_degree):</span><br><span class="line">    poly_features[:, i] /= math.gamma(i + <span class="number">1</span>)  <span class="comment"># gamma(n)=(n-1)!，除以gamma防止梯度过大</span></span><br><span class="line"><span class="comment"># labels的维度:(n_train+n_test,)</span></span><br><span class="line">labels = np.dot(poly_features, true_w)<span class="comment">#将对应多项式值与其系数相乘</span></span><br><span class="line">labels += np.random.normal(scale=<span class="number">0.1</span>, size=labels.shape)<span class="comment">#加上噪声项</span></span><br></pre></td></tr></table></figure>
+          </div>
 <ul>
 <li><strong>Note</strong>：存储在 <code>poly_features</code>
 中的单项式由 <code>gamma</code> 函数重新缩放，其中 <span
@@ -913,7 +1014,17 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kX4y1g7jp
 结果表明，该模型能有效降低训练损失和测试损失。
 学习到的模型参数也接近真实值 <span
 class="math inline">\(𝑤=[5,1.2,−3.4,5.6]\)</span>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~~python</span><br><span class="line"># 从多项式特征中选择前4个维度，即1,x,x^2&#x2F;2!,x^3&#x2F;3!</span><br><span class="line">train(poly_features[:n_train, :4], poly_features[n_train:, :4],</span><br><span class="line">      labels[:n_train], labels[n_train:])</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Results:</span><br><span class="line"></span><br><span class="line">~~~python</span><br><span class="line">weight: [[ 4.9753904  1.1974537 -3.3913007  5.6012864]]</span><br><span class="line">~~~</span><br><span class="line">![image.png](https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;YangSuoly&#x2F;Images&#x2F;dl-notes&#x2F;202303261716401.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div style="callout:code">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从多项式特征中选择前4个维度，即1,x,x^2/2!,x^3/3!</span></span><br><span class="line">train(poly_features[:n_train, :<span class="number">4</span>], poly_features[n_train:, :<span class="number">4</span>],</span><br><span class="line">      labels[:n_train], labels[n_train:])</span><br></pre></td></tr></table></figure>
+<p>Results:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weight: [[ <span class="number">4.9753904</span>  <span class="number">1.1974537</span> -<span class="number">3.3913007</span>  <span class="number">5.6012864</span>]]</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303261716401.png"
+alt="image.png" />
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+</div>
 <h4 id="线性函数拟合欠拟合">3.3.5.2 线性函数拟合(欠拟合)</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从多项式特征中选择前2个维度，即1和x</span></span><br><span class="line">train(poly_features[:n_train, :<span class="number">2</span>], poly_features[n_train:, :<span class="number">2</span>],</span><br><span class="line">      labels[:n_train], labels[n_train:])</span><br></pre></td></tr></table></figure>
 <p>Results:</p>
@@ -938,7 +1049,9 @@ alt="image.png" />
 <figcaption aria-hidden="true">image.png</figcaption>
 </figure>
 <h3 id="小结-1">3.3.5 小结</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: 内容标题</span><br><span class="line">collapse: open</span><br><span class="line"></span><br><span class="line">- **欠拟合** 是指模型无法继续减少训练误差。**过拟合** 是指训练误差远小于验证误差。</span><br><span class="line">- 由于不能基于训练误差来估计泛化误差，因此简单地最小化训练误差并不一定意味着泛化误差的减小。</span><br><span class="line">- 机器学习模型需要注意防止过拟合，即防止泛化误差过大。</span><br><span class="line">- 验证集可以用于模型选择，但不能过于随意地使用它。</span><br><span class="line">- 应该选择一个复杂度适当的模型，避免使用数量不足的训练样本</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>title: 内容标题 collapse: open</p><ul><li><strong>欠拟合</strong>是指模型无法继续减少训练误差。<strong>过拟合</strong>是指训练误差远小于验证误差。</li><li>由于不能基于训练误差来估计泛化误差，因此简单地最小化训练误差并不一定意味着泛化误差的减小。</li><li>机器学习模型需要注意防止过拟合，即防止泛化误差过大。</li><li>验证集可以用于模型选择，但不能过于随意地使用它。</li><li>应该选择一个复杂度适当的模型，避免使用数量不足的训练样本</li></ul>
+          </div>
 <h2 id="权重衰退">3.4 权重衰退</h2>
 <h3 id="权重限制">3.4.1 权重限制</h3>
 <p><a
@@ -1002,7 +1115,9 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303271534530.png"
 alt="image.png" />
 <figcaption aria-hidden="true">image.png</figcaption>
 </figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">collapse: open</span><br><span class="line"></span><br><span class="line">为什么我们首先使用$L_2$范数，而不是$L_1$范数?</span><br><span class="line"></span><br><span class="line">- 事实上，这个选择在整个统计领域中都是有效的和受欢迎的。$L_2$ 正则化线性模型构成经典的 *岭回归*（ridge regression）算法，$L_1$ 正则化线性回归是统计学中类似的基本模型，通常被称为 *套索回归*（lasso regression）。</span><br><span class="line"></span><br><span class="line">- 使用$L_2$范数的一个原因是它对权重向量的大分量施加了巨大的惩罚。这使得我们的学习算法偏向于在大量特征上均匀分布权重的模型。在实践中，这可能使它们对单个变量中的观测误差更为稳定。</span><br><span class="line">- 相比之下，$L_1$惩罚会导致模型将权重集中在一小部分特征上，而将其他权重清除为零。这称为*特征选择*（feature selection），这可能是其他场景下需要的。</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <p>collapse: open</p><p>为什么我们首先使用<spanclass="math inline">\(L_2\)</span>范数，而不是<spanclass="math inline">\(L_1\)</span>范数?</p><ul><li><p>事实上，这个选择在整个统计领域中都是有效的和受欢迎的。<spanclass="math inline">\(L_2\)</span> 正则化线性模型构成经典的<em>岭回归</em>（ridge regression）算法，<spanclass="math inline">\(L_1\)</span>正则化线性回归是统计学中类似的基本模型，通常被称为<em>套索回归</em>（lasso regression）。</p></li><li><p>使用<spanclass="math inline">\(L_2\)</span>范数的一个原因是它对权重向量的大分量施加了巨大的惩罚。这使得我们的学习算法偏向于在大量特征上均匀分布权重的模型。在实践中，这可能使它们对单个变量中的观测误差更为稳定。</p></li><li><p>相比之下，<spanclass="math inline">\(L_1\)</span>惩罚会导致模型将权重集中在一小部分特征上，而将其他权重清除为零。这称为<em>特征选择</em>（featureselection），这可能是其他场景下需要的。</p></li></ul>
+          </div>
 <h3 id="参数更新">3.4.2 参数更新</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UK4y1o7dy/?%22&amp;t=561.584073">09:21
@@ -1106,7 +1221,9 @@ target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Reproducing_k
 允许在非线性环境中应用为线性函数引入的工具。不幸的是，基于RKHS的算法往往难以应用到大型、高维的数据。在这本书中，我们将默认使用简单的启发式方法，即在深层网络的所有层上应用权重衰减。</li>
 </ul>
 <h3 id="总结-4">3.4.4 总结</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">collapse: open</span><br><span class="line"></span><br><span class="line">- 权重衰退通过L2正则项使得模型参数不会过大，从而控制模型复杂度</span><br><span class="line">- 正则项权重 $\lambda$ 是控制模型复杂度的超参数</span><br><span class="line">- 正则化是处理过拟合的常用方法：在训练集的损失函数中加入惩罚项，以降低学习到的模型的复杂度。</span><br></pre></td></tr></table></figure>
+<div class="note primary">
+            <p>collapse: open</p><ul><li>权重衰退通过L2正则项使得模型参数不会过大，从而控制模型复杂度</li><li>正则项权重 <span class="math inline">\(\lambda\)</span>是控制模型复杂度的超参数</li><li>正则化是处理过拟合的常用方法：在训练集的损失函数中加入惩罚项，以降低学习到的模型的复杂度。</li></ul>
+          </div>
 <h2 id="丢弃法">3.5 丢弃法</h2>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Y5411c7aY?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1">丢弃法_哔哩哔哩_bilibili</a></p>
@@ -1164,7 +1281,9 @@ class="math inline">\(0\)</span> ，因此模型不会过分依赖某些神经�
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Y5411c7aY?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=649.014278">10:49
 总结</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 正则项（丢弃法）仅在训练中使用：影响模型参数的更新，预测的时候便不再使用</span><br><span class="line">- - 丢弃法将一些输出项随机置0来控制模型复杂度</span><br><span class="line">- 常作用在多层感知机的隐藏层输出上</span><br><span class="line">- 丢弃概率是控制模型复杂度的超参数（常取0.9，0.5，0.1）</span><br></pre></td></tr></table></figure>
+<div class="note info">
+            <ul><li>正则项（丢弃法）仅在训练中使用：影响模型参数的更新，预测的时候便不再使用</li><li><ul><li>丢弃法将一些输出项随机置0来控制模型复杂度</li></ul></li><li>常作用在多层感知机的隐藏层输出上</li><li>丢弃概率是控制模型复杂度的超参数（常取0.9，0.5，0.1）</li></ul>
+          </div>
 <h3 id="代码实现-1">3.5.2 代码实现</h3>
 <h4 id="从零实现-1">3.5.2.1 从零实现</h4>
 <p><a
@@ -1226,7 +1345,9 @@ alt="image.png" />
 src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303271709367.png"
 alt="image.png" /></p>
 <h3 id="小结-2">3.5.3 小结</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 暂退法在前向传播过程中，计算每一内部层的同时丢弃一些神经元。 </span><br><span class="line">- 暂退法可以避免过拟合，它通常与控制权重向量的维数和大小结合使用的。 </span><br><span class="line">- 暂退法将活性值$h$替换为具有期望值$h$的随机变量。 </span><br><span class="line">- 暂退法仅在训练期间使用。</span><br></pre></td></tr></table></figure>
+<div class="note primary">
+            <ul><li>暂退法在前向传播过程中，计算每一内部层的同时丢弃一些神经元。</li><li>暂退法可以避免过拟合，它通常与控制权重向量的维数和大小结合使用的。</li><li>暂退法将活性值<spanclass="math inline">\(h\)</span>替换为具有期望值<spanclass="math inline">\(h\)</span>的随机变量。</li><li>暂退法仅在训练期间使用。</li></ul>
+          </div>
 <h3 id="qa">3.5.4 Q&amp;A</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Y5411c7aY?p=3&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=5.87748">00:05
@@ -1377,7 +1498,9 @@ alt="image.png" />
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1u64y1i75a?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=898.358763">14:58
 总结</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 当数值过大或者过小时会导致数值问题</span><br><span class="line">- 常发生在深度模型中，因为其会对 $n$ 个数累乘</span><br></pre></td></tr></table></figure>
+<div class="note primary">
+            <ul><li>当数值过大或者过小时会导致数值问题</li><li>常发生在深度模型中，因为其会对 <spanclass="math inline">\(n\)</span> 个数累乘</li></ul>
+          </div>
 <h3 id="模型初始化和激活函数">3.6.2 模型初始化和激活函数</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1u64y1i75a?p=2&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=0.358763">00:00
@@ -1511,7 +1634,9 @@ alt="image.png" />
 函数在零点附近不满足要求，可以对sigmoid函数进行调整（根据
 <code>Taylor</code> 展开式，调整其过原点）</p>
 <h3 id="总结-6">3.6.3 总结</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 当数值过大或者过小时，会导致数值问题。</span><br><span class="line">- 常发生在深度模型中，因为其会对n个数累乘。</span><br><span class="line">- 合理的权重初始值(如Xavier)和激活函数的选取(如relu, tanh, 调整后的sigmoid)可以提升数值稳定性。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="note primary">
+            <ul><li>当数值过大或者过小时，会导致数值问题。</li><li>常发生在深度模型中，因为其会对n个数累乘。</li><li>合理的权重初始值(如Xavier)和激活函数的选取(如relu, tanh,调整后的sigmoid)可以提升数值稳定性。</li></ul>
+          </div>
 <h3 id="qa-1">4.Q&amp;A</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1u64y1i75a?p=3&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=0.857129">00:00
