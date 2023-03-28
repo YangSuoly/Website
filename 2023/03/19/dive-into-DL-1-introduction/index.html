@@ -31,15 +31,50 @@
 <meta property="og:site_name" content="独孤诗人的学习驿站">
 <meta property="og:description" content="0. Preface 本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第一篇—— 初识深度学习和预备知识整理。 本文是学习李沐老师 B 站视频教程 动手学深度学习 PyTorch版 所记录的笔记。主要使用 Obsidian 软件并借助插件 Meida extended 插件，在 markdown 文件中生成时间戳，可以">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141756447.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141725373.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721062.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721063.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721065.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721066.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721067.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721068.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721069.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141723770.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721070.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721071.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721072.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141844355.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141845978.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141848040.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141850111.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142021265.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142021918.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142022111.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142023065.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142023105.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142025810.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142026644.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142029742.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142140686.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142143044.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142145331.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162141908.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162141908.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162159763.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212421.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212002.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162228647.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162238748.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162238220.png">
 <meta property="article:published_time" content="2023-03-19T10:09:19.000Z">
-<meta property="article:modified_time" content="2023-03-21T11:29:46.730Z">
+<meta property="article:modified_time" content="2023-03-28T03:45:32.507Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Pytorch">
 <meta property="article:tag" content="Deep learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142140686.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141756447.png">
 
 <link rel="canonical" href="http://yangsuoly.com/2023/03/19/dive-into-DL-1-introduction/">
 
@@ -247,7 +282,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-21 19:29:46" itemprop="dateModified" datetime="2023-03-21T19:29:46+08:00">2023-03-21</time>
+                <time title="Modified: 2023-03-28 11:45:32" itemprop="dateModified" datetime="2023-03-28T11:45:32+08:00">2023-03-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,7 +311,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>28k</span>
+              <span>29k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -351,18 +386,13 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oX4y137bC
 </ul></li>
 </ul>
 <h2 id="内容">1.2 内容</h2>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141756447.png" /></p>
-<blockquote>
-<p>深度学习基础：线性神经网络，多层感知机</p>
-<p>卷积神经网络：LeNet, AlexNet, VGG, Inception, ResNet</p>
-<p>循环神经网络：RNN，GRU，LSTM，seq2seq</p>
-<p>注意力机制：Attention， Transformer</p>
-<p>优化算法：SGD，Momentum，Adam</p>
-<p>高性能计算：并行，多GPU，分布式</p>
-<p>计算机视觉：目标检测，语义分割</p>
-<p>自然语言处理：词嵌入，BERT</p>
-</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141756447.png" style="zoom:67%;" />
+&gt; 深度学习基础：线性神经网络，多层感知机 &gt; &gt;
+卷积神经网络：LeNet, AlexNet, VGG, Inception, ResNet &gt; &gt;
+循环神经网络：RNN，GRU，LSTM，seq2seq &gt; &gt; 注意力机制：Attention，
+Transformer &gt; &gt; 优化算法：SGD，Momentum，Adam &gt; &gt;
+高性能计算：并行，多GPU，分布式 &gt; &gt; 计算机视觉：目标检测，语义分割
+&gt; &gt; 自然语言处理：词嵌入，BERT</p>
 <h2 id="学到什么">1.3 学到什么</h2>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oX4y137bC/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=288.209515">04:48
@@ -399,16 +429,15 @@ to DL Link</a></p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=1">0:1
 什么是深度学习</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141725373.jpg" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141725373.jpg" style="zoom:67%;" /></p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=13">0:13
 AI 地图</a></p>
 <p>首先画一个简单的人工智能地图：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721062.jpg" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721062.jpg" style="zoom:67%;" />
+-
+x轴表示不同的模式or方法：最早的是符号学，接下来是概率模型，之后是机器学习</p>
 <ul>
-<li><p>x轴表示不同的模式or方法：最早的是符号学，接下来是概率模型，之后是机器学习</p></li>
 <li><p>y轴表示可以达到的层次：由底部向上依次是</p>
 <blockquote>
 <p>感知：了解是什么，比如能够可以看到物体，如面前的一块屏幕</p>
@@ -449,9 +478,8 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9
 <p>深度学习最早是在图片分类上有比较大的突破，<a
 target="_blank" rel="noopener" href="http://www.image-net.org/">ImageNet</a>
 是一个比较大的图片分类数据集，</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721063.jpg" /></p>
-<p><code>x轴</code>：年份 <code>y轴</code>：错误率
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721063.jpg" style="zoom:67%;" />
+<code>x轴</code>：年份 <code>y轴</code>：错误率
 <code>圆点</code>：表示某年份某研究工作/paper的错误率 <a
 target="_blank" rel="noopener" href="https://image-net.org/">IMAGENET</a> <a
 target="_blank" rel="noopener" href="https://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world/">数据来源</a></p>
@@ -464,40 +492,30 @@ target="_blank" rel="noopener" href="https://qz.com/1034972/the-data-that-change
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=283">4:43
 物体检测和分割</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721065.jpg" /></p>
-<p>当你不仅仅想知道图片里有什么内容，还想知道物体是什么，在什么位置，这就是<strong>物体检测</strong>。<strong>物体分割</strong>是指每一个像素属于什么，属于飞机还是属于人(如下图)，这是图像领域更深层次的一个应用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721065.jpg" style="zoom:67%;" />
+当你不仅仅想知道图片里有什么内容，还想知道物体是什么，在什么位置，这就是<strong>物体检测</strong>。<strong>物体分割</strong>是指每一个像素属于什么，属于飞机还是属于人(如下图)，这是图像领域更深层次的一个应用。</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=315">5:15
 样式迁移</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721066.jpg" /></p>
-<p>原图片+想要迁移的风格=风格迁移后的图片，加了一个可以根据输入改变图片风格的滤镜。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721066.jpg" style="zoom:67%;" />
+原图片+想要迁移的风格=风格迁移后的图片，加了一个可以根据输入改变图片风格的滤镜。</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=361">6:1
 人脸合成</a></p>
 <p>下图中所有的人脸都是假的，由机器合成的图片：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721067.jpg" /></p>
-<p><a
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721067.jpg" style="zoom:67%;" />
+<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=385">6:25
 文生图</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721068.jpg" /></p>
-<ol type="1">
-<li>描述：一个胡萝卜宝宝遛狗的图片。</li>
-<li>描述：一个牛油果形状的靠背椅。</li>
-</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721068.jpg" style="zoom:67%;" />
+1. 描述：一个胡萝卜宝宝遛狗的图片。 2.
+描述：一个牛油果形状的靠背椅。</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=422">7:2
 文字生成</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721069.jpg" /></p>
-<blockquote>
-<p>示例1：</p>
-<p>问题输入：如何举行一个有效的董事会议</p>
-<p>机器输出：生成篇章回答</p>
-</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721069.jpg" style="zoom:67%;" />
+&gt; 示例1： &gt; &gt; 问题输入：如何举行一个有效的董事会议 &gt; &gt;
+机器输出：生成篇章回答</p>
 <blockquote>
 <p>示例2：</p>
 <p>输入：将Students从School这个table中选出来</p>
@@ -507,9 +525,8 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721069.jpg" 
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=476">7:56
 无人驾驶</a></p>
 <p>识别车、道路以及各种障碍物等，并规划路线。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141723770.png" /></p>
-<p><a
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141723770.png" style="zoom:67%;" />
+<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=509">8:29
 案例研究-广告点击</a></p>
 <blockquote>
@@ -518,29 +535,27 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1J54y187f9
 <blockquote>
 <p>网站呈现最具有效益的广告(用户更可能点击，且给网站带来更高经济效益)</p>
 </blockquote>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721070.png" /></p>
-<p><strong>步骤：</strong> 1.
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721070.png" style="zoom:67%;" />
+<strong>步骤：</strong> 1.
 触发：用户输入关键词，机器先找到一些相关的广告 2. 点击率预估：
 利用机器学习的模型预测用户对广告的点击率 3.
 排序：利用点击率x竞价的结果进行排序呈现广告，排名高的在前面呈现</p>
 <p><strong>模型的训练与预测</strong>：</p>
 <p>上述步骤的第二步中涉及到模型预测用户的点击率，具体过程如下：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721071.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721071.png" style="zoom:67%;" />
+- <strong>模型预测</strong> 数据 (待预测广告) → 特征提取 → 模型 →
+点击率预测</p>
 <ul>
-<li><p><strong>模型预测</strong> 数据 (待预测广告) → 特征提取 → 模型 →
-点击率预测</p></li>
-<li><p><strong>模型训练</strong> 训练数据 (过去广告展现和用户点击) →
-特征(X)和用户点击(Y) → 喂给模型训练</p></li>
+<li><strong>模型训练</strong> 训练数据 (过去广告展现和用户点击) →
+特征(X)和用户点击(Y) → 喂给模型训练</li>
 </ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721072.png" /></p>
-<ul>
-<li><strong><font color="Navy">领域专家</font></strong>：对特定的应用有比较深的了解，根据展现情况以及用户点击分析用户的行为，期望模型对应用做一些拟合，符合真实数据和分析情况。</li>
-<li><strong><font color="Navy">数据科学家</font></strong>：利用数据训练模型，训练后模型投入使用，进行预测呈现。</li>
-<li><strong><font color="Navy">AI专家</font></strong>：应用规模扩大，用户数量增多，模型更加复杂，需要进一步提升精度和性能。</li>
-</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141721072.png" style="zoom:67%;" />
+-
+<strong><font color="Navy">领域专家</font></strong>：对特定的应用有比较深的了解，根据展现情况以及用户点击分析用户的行为，期望模型对应用做一些拟合，符合真实数据和分析情况。
+-
+<strong><font color="Navy">数据科学家</font></strong>：利用数据训练模型，训练后模型投入使用，进行预测呈现。
+-
+<strong><font color="Navy">AI专家</font></strong>：应用规模扩大，用户数量增多，模型更加复杂，需要进一步提升精度和性能。</p>
 <h2 id="总结">2.3 总结</h2>
 <ul>
 <li>通过AI地图，课程从纵向和横向两个维度解读了深度学习在重要问题领域的概况。</li>
@@ -678,24 +693,18 @@ N维数组样例</a></p>
 <ul>
 <li>低维数组</li>
 </ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141844355.png" /></p>
-<ul>
-<li>高维数组</li>
-</ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141845978.png" /></p>
-<p><a
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141844355.png" style="zoom:67%;" />
+- 高维数组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141845978.png" style="zoom:67%;" />
+<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CV411Y7i4/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=156.601399">02:36
 创建数组</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141848040.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141848040.png" style="zoom:67%;" /></p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CV411Y7i4/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=186.110479">03:06
 访问元素</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141850111.png" /></p>
-<h4 id="基本操作">基本操作</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303141850111.png" style="zoom:67%;" />
+#### 基本操作</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CV411Y7i4?p=2&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1">数据操作</a></p>
 <p><strong>张量表示由一些数值组成的数组，这个数组可能有多个维度</strong>。</p>
@@ -1009,30 +1018,23 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eK4y1U7Qy
 <h2 id="线性代数基础知识">5.1 线性代数基础知识</h2>
 <p>这部分主要是由标量过渡到向量，再从向量拓展到矩阵操作，重点在于理解矩阵层面上的操作（都是大学线代课的内容，熟悉的可以自动忽略）</p>
 <h3 id="标量">标量</h3>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142021265.png" /></p>
-<h4 id="向量">2. 向量</h4>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142021918.png" /></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142022111.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142021265.png" style="zoom:67%;" />
+#### 2. 向量</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142021918.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142022111.png" style="zoom:67%;" /></p>
 <h4 id="矩阵">3. 矩阵</h4>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eK4y1U7Qy?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=229.164749">03:49
 矩阵</a></p>
 <h5 id="矩阵的操作">矩阵的操作</h5>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142023065.png" /></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142023105.png" /></p>
-<pre><code>(矩阵范数麻烦且不常用，一般用F范数)</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142023065.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142023105.png" style="zoom:67%;" />
+(矩阵范数麻烦且不常用，一般用F范数)</p>
 <h5 id="特殊矩阵">特殊矩阵</h5>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142025810.png" /></p>
-<pre><code>(深度学习里基本不会涉及到正定、置换矩阵，这里明确个概念就行)</code></pre>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142026644.png" /></p>
-<h5 id="特征向量和特征值">特征向量和特征值</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142025810.png" style="zoom:67%;" />
+(深度学习里基本不会涉及到正定、置换矩阵，这里明确个概念就行)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142026644.png" style="zoom:67%;" />
+##### 特征向量和特征值</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eK4y1U7Qy?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=510.678613">08:30
 特征向量和特征值</a></p>
@@ -1051,11 +1053,8 @@ class="math inline">\(\lambda\)</span> 的特征向量。</p></li>
 改变方向 （大小改变没关系）的向量 <span class="math inline">\(x\)</span>
 就是A的一个特征向量</p></li>
 </ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142029742.png" /></p>
-<ul>
-<li>矩阵不一定有特征向量，但是对称矩阵总是可以找到特征向量</li>
-</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142029742.png" style="zoom:67%;" />
+- 矩阵不一定有特征向量，但是对称矩阵总是可以找到特征向量</p>
 <h2 id="线性代数实现">5.2 线性代数实现</h2>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eK4y1U7Qy?p=2&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=9.175524">00:09
@@ -1063,7 +1062,7 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eK4y1U7Qy
 <p>这部分主要是应用pytorch实现基本矩阵操作，同样由标量过渡到向量最后拓展到矩阵</p>
 <h3 id="标量-1">标量</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch    <span class="comment"># 应用pytorch框架</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 标量由只有一个元素的张量表示</span></span><br><span class="line">x = torch.tensor([<span class="number">3.0</span>])     <span class="comment"># 单独一个数字表示标量也可以</span></span><br><span class="line">y = torch.tensor([<span class="number">2.0</span>])     <span class="comment"># 单独一个数字表示标量也可以</span></span><br><span class="line">print(x + y)    <span class="comment"># tensor([5.])</span></span><br><span class="line">print(x * y)    <span class="comment"># tensor([6.])</span></span><br><span class="line">print(x / y)    <span class="comment"># tensor([1.5000])</span></span><br><span class="line">print(x ** y)   <span class="comment"># tensor([9.]) 指数运算</span></span><br></pre></td></tr></table></figure>
-<h4 id="向量-1">2. 向量</h4>
+<h4 id="向量">2. 向量</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 向量可以看作是若干标量值组成的列表</span></span><br><span class="line">x = torch.arange(<span class="number">4</span>)     <span class="comment"># tensor([0, 1, 2, 3])</span></span><br><span class="line">                        <span class="comment"># 生成[0, 4)范围内所有整数构成的张量tensor</span></span><br><span class="line">print(x[<span class="number">3</span>])             <span class="comment"># tensor(3)</span></span><br><span class="line">                        <span class="comment"># 和列表相似，通过张量的索引访问元素</span></span><br><span class="line">print(<span class="built_in">len</span>(x))           <span class="comment"># 4</span></span><br><span class="line">                        <span class="comment"># 获取张量x的长度</span></span><br><span class="line">print(x.shape)          <span class="comment"># torch.Size([4])</span></span><br><span class="line">                        <span class="comment"># 获取张量形状，这里x是只有一个轴的张量因此形状只有一个元素</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="矩阵-1">3. 矩阵</h4>
 <ol type="1">
@@ -1152,15 +1151,13 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eZ4y1w7PY
 <ul>
 <li>将导数拓展到不可微的函数，在不可导的点的导数可以用一个范围内的数表示</li>
 </ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142143044.png" /></p>
-<h4 id="梯度">梯度</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142143044.png" style="zoom:67%;" />
+#### 梯度</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eZ4y1w7PY?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=223.9787">03:43
 梯度</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142145331.png" /></p>
-<h2 id="函数与标量向量矩阵">6.2 函数与标量，向量，矩阵</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303142145331.png" style="zoom:67%;" />
+## 6.2 函数与标量，向量，矩阵</p>
 <p>该部分结合课程视频和参考文章进行总结（参考了知乎文章：<a
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/263777564">矩阵求导的本质与分子布局、分母布局的本质（矩阵求导——本质篇）
 - 知乎 (zhihu.com)</a>） - 考虑一个函数 <span
@@ -1332,9 +1329,8 @@ x_{11}+x_{12}+x_{21}+x_{22}+x_{31}+x_{32}
   \end{aligned}
 \]</span></p>
 <p>求导：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162141908.png" /></p>
-<h4 id="求导的本质">求导的本质</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162141908.png" style="zoom:67%;" /><br />
+#### 求导的本质</p>
 <p>对于一个多元函数： <span class="math display">\[
 f\left(x_1, x_2, x_3\right)=x_1^2+x_1 x_2+x_2 x_3
 \]</span> <strong>可以将 <span class="math inline">\(f\)</span> 对 <span
@@ -1439,9 +1435,8 @@ class="math inline">\(f\)</span> 求导结果的四维形状。</p>
 <p>对于不同 <span class="math inline">\(f\)</span> 和 <span
 class="math inline">\(\rm{input}\)</span>
 求导后的维度情况总结如下图所示：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162141908.png" /></p>
-<h2 id="qa-1">6.4 Q&amp;A</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162141908.png" style="zoom:67%;" />
+## 6.4 Q&amp;A</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eZ4y1w7PY?p=2&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=0">00:00
 Q&amp;A</a></p>
@@ -1469,9 +1464,8 @@ y}{\partial u} \frac{\partial u}{\partial x}
 </ol>
 </blockquote></li>
 </ol>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162159763.png" /></p>
-<hr />
+<h2
+id="section"><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162159763.png" style="zoom:67%;" /></h2>
 <h5 id="链式法则示例">链式法则示例</h5>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=90.557442">01:30
@@ -1497,9 +1491,8 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162211659.png" 
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=260.022891">04:20
 自动求导</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212421.png" /></p>
-<p>含义：计算一个函数在指定值上的导数。它有别于：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212421.png" style="zoom:67%;" />
+含义：计算一个函数在指定值上的导数。它有别于：</p>
 <ul>
 <li>符号求导</li>
 <li>数值求导</li>
@@ -1511,9 +1504,8 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px
 <p>一、步骤： - 将代码分解成操作子 -
 将计算表示成一个<strong>无环图</strong></p>
 <p>下图自底向上其实就类似于链式求导过程：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212002.png" /></p>
-<p>二、计算图有两种构造方式</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212002.png" style="zoom:67%;" />
+二、计算图有两种构造方式</p>
 <ul>
 <li><p>显示构造</p>
 <blockquote>
@@ -1532,15 +1524,9 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162212002.png" 
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=459.600597">07:39
 自动求导的两种模式</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162228647.png" /></p>
-<ul>
-<li><p>链式法则：</p>
-<p><span class="math display">\[\frac{\partial y}{\partial
-x}=\frac{\partial y}{\partial u_n} \frac{\partial u_n}{\partial u_{n-1}}
-\ldots \frac{\partial u_2}{\partial u_1} \frac{\partial u_1}{\partial
-x}\]</span></p></li>
-</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162228647.png" style="zoom:67%;" />
+- 链式法则：</p>
+<pre><code>$$\frac&#123;\partial y&#125;&#123;\partial x&#125;=\frac&#123;\partial y&#125;&#123;\partial u_n&#125; \frac&#123;\partial u_n&#125;&#123;\partial u_&#123;n-1&#125;&#125; \ldots \frac&#123;\partial u_2&#125;&#123;\partial u_1&#125; \frac&#123;\partial u_1&#125;&#123;\partial x&#125;$$</code></pre>
 <ol type="1">
 <li><p>正向累积</p>
 <p><span class="math display">\[
@@ -1560,16 +1546,14 @@ u_1}{\partial x}
 <p><strong>反向累积计算过程</strong></p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px/?spm_id_from=333.999.0.0&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=541.17702">09:01反向传递</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162238748.png" /></p>
-<p><strong>注</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162238748.png" style="zoom:67%;" />
+<strong>注</strong>：</p>
 <blockquote>
 <p>反向累积的正向过程：自底向上，需要存储中间结果
 反向累积的反向过程：自顶向下，可以去除不需要的枝（图中的x应为w）</p>
 </blockquote>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162238220.png" /></p>
-<h4 id="三复杂度比较">三、复杂度比较</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303162238220.png" style="zoom:67%;" />
+#### 三、复杂度比较</p>
 <ol type="1">
 <li><p>反向累积</p>
 <ul>
@@ -1640,7 +1624,7 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px
 <p>即使构建函数的计算图需要用过Python控制流，仍然可以计算得到的变量的梯度。这也是隐式构造的优势，因为它会存储梯度计算的计算图，再次计算时执行反向过程就可以</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">a</span>):</span></span><br><span class="line">    b = a * <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> b.norm()&lt;<span class="number">1000</span>:</span><br><span class="line">        b = b * <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> b.<span class="built_in">sum</span>() &gt; <span class="number">0</span>:</span><br><span class="line">        c = b</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        c = <span class="number">100</span> * b</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">a = torch.randn(size=(),requires_grad=<span class="literal">True</span>)</span><br><span class="line">d = f(a)</span><br><span class="line">d.backward()</span><br><span class="line"></span><br><span class="line">a.grad == d / a</span><br></pre></td></tr></table></figure>
 <p>Results: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor(<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="qa-2">7.3 Q&amp;A</h2>
+<h2 id="qa-1">7.3 Q&amp;A</h2>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px?p=3&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=0">00:00
 Q&amp;A</a></p>
@@ -1787,7 +1771,7 @@ Q&amp;A</a></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preface"><span class="nav-number">1.</span> <span class="nav-text">0. Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%AE%89%E6%8E%92"><span class="nav-number">2.</span> <span class="nav-text">1 课程安排</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 课程目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 学到什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 基本要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%BA%90"><span class="nav-number">2.5.</span> <span class="nav-text">1.5 课程资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.</span> <span class="nav-text">2 深度学习介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ai%E5%9C%B0%E5%9B%BE%E8%A7%A3%E8%AF%BB"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">AI地图解读</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 深度学习的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">3 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 安装python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85minicondaanaconda"><span class="nav-number">4.2.</span> <span class="nav-text">3.2安装Miniconda&#x2F;Anaconda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#miniconda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.0.1.</span> <span class="nav-text">2.2 Miniconda环境配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pytorch-d2l-jupyter%E5%8C%85"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 安装Pytorch, d2l, jupyter包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">4.4.</span> <span class="nav-text">3.4 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">4 数据操作与数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.1.0.1.</span> <span class="nav-text">基本操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%BF%90%E7%AE%97"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 简单运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6"><span class="nav-number">5.2.0.1.</span> <span class="nav-text">广播机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-number">5.2.0.2.</span> <span class="nav-text">索引和切片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%BA%A6%E5%86%85%E5%AD%98"><span class="nav-number">5.2.0.3.</span> <span class="nav-text">节约内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA-numpy-%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.2.0.4.</span> <span class="nav-text">转换为 NumPy 对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">5.3.</span> <span class="nav-text">4.2 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">5.3.0.1.</span> <span class="nav-text">读取数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-number">5.3.0.2.</span> <span class="nav-text">处理缺失值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%80%BC%E5%A4%84%E7%90%86"><span class="nav-number">5.3.0.3.</span> <span class="nav-text">离散值处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%BC%A0%E9%87%8F%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.3.0.4.</span> <span class="nav-text">转换为张量格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa"><span class="nav-number">5.4.</span> <span class="nav-text">4.3 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">5 线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">6.1.</span> <span class="nav-text">5.1 线性代数基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%87%8F"><span class="nav-number">6.1.1.</span> <span class="nav-text">标量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%87%8F"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">2. 向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-number">6.1.1.2.</span> <span class="nav-text">3. 矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">6.1.1.2.1.</span> <span class="nav-text">矩阵的操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E7%9F%A9%E9%98%B5"><span class="nav-number">6.1.1.2.2.</span> <span class="nav-text">特殊矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E5%92%8C%E7%89%B9%E5%BE%81%E5%80%BC"><span class="nav-number">6.1.1.2.3.</span> <span class="nav-text">特征向量和特征值</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 线性代数实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%87%8F-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">标量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%87%8F-1"><span class="nav-number">6.2.1.1.</span> <span class="nav-text">2. 向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5-1"><span class="nav-number">6.2.1.2.</span> <span class="nav-text">3. 矩阵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%89%B9%E5%AE%9A%E8%BD%B4%E6%B1%82%E5%92%8C"><span class="nav-number">6.3.</span> <span class="nav-text">5.3 按特定轴求和</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97"><span class="nav-number">7.</span> <span class="nav-text">6 矩阵计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="nav-number">7.1.</span> <span class="nav-text">6.1 导数的概念及几何意义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E9%87%8F%E5%AF%BC%E6%95%B0"><span class="nav-number">7.1.0.1.</span> <span class="nav-text">标量导数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%9A%E5%AF%BC%E6%95%B0-%E5%81%8F%E5%AF%BC%E6%95%B0"><span class="nav-number">7.1.0.2.</span> <span class="nav-text">亚导数 （偏导数）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6"><span class="nav-number">7.1.0.3.</span> <span class="nav-text">梯度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8E%E6%A0%87%E9%87%8F%E5%90%91%E9%87%8F%E7%9F%A9%E9%98%B5"><span class="nav-number">7.2.</span> <span class="nav-text">6.2 函数与标量，向量，矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80rmfunction-%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E6%A0%87%E9%87%8F"><span class="nav-number">7.2.0.1.</span> <span class="nav-text">一、\(\rm{function}\) 为是一个标量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8Crmfunction-%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E5%90%91%E9%87%8F"><span class="nav-number">7.2.0.2.</span> <span class="nav-text">二、\(\rm{function}\) 为是一个向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89rmfunction-%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5"><span class="nav-number">7.2.0.3.</span> <span class="nav-text">三、\(\rm{function}\) 为是一个矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82%E5%AF%BC%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">7.2.0.4.</span> <span class="nav-text">求导的本质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC%E7%9A%84%E5%B8%83%E5%B1%80"><span class="nav-number">7.3.</span> <span class="nav-text">6.3 矩阵求导的布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa-1"><span class="nav-number">7.4.</span> <span class="nav-text">6.4 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="nav-number">8.</span> <span class="nav-text">7 自动求导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99"><span class="nav-number">8.1.</span> <span class="nav-text">7.1 向量链式法则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99%E7%A4%BA%E4%BE%8B"><span class="nav-number">8.1.0.0.1.</span> <span class="nav-text">链式法则示例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC-1"><span class="nav-number">8.2.</span> <span class="nav-text">7.2 自动求导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%AE%A1%E7%AE%97%E5%9B%BE"><span class="nav-number">8.2.0.1.</span> <span class="nav-text">一、计算图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-number">8.2.0.2.</span> <span class="nav-text">二、自动求导的两种模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%AF%94%E8%BE%83"><span class="nav-number">8.2.0.3.</span> <span class="nav-text">三、复杂度比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86"><span class="nav-number">8.3.</span> <span class="nav-text">7.3 代码部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa-2"><span class="nav-number">8.4.</span> <span class="nav-text">7.3 Q&amp;A</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preface"><span class="nav-text">0. Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%AE%89%E6%8E%92"><span class="nav-text">1 课程安排</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="nav-text">1.1 课程目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AE%B9"><span class="nav-text">1.2 内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88"><span class="nav-text">1.3 学到什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="nav-text">1.4 基本要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%BA%90"><span class="nav-text">1.5 课程资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BB%8B%E7%BB%8D"><span class="nav-text">2 深度学习介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">2.1 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ai%E5%9C%B0%E5%9B%BE%E8%A7%A3%E8%AF%BB"><span class="nav-text">AI地图解读</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">2.2 深度学习的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">2.3 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">3 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85python"><span class="nav-text">3.1 安装python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85minicondaanaconda"><span class="nav-text">3.2安装Miniconda&#x2F;Anaconda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#miniconda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">2.2 Miniconda环境配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pytorch-d2l-jupyter%E5%8C%85"><span class="nav-text">3.3 安装Pytorch, d2l, jupyter包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-text">3.4 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-text">4 数据操作与数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">4.1 数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%BF%90%E7%AE%97"><span class="nav-text">4.2 简单运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6"><span class="nav-text">广播机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-text">索引和切片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%BA%A6%E5%86%85%E5%AD%98"><span class="nav-text">节约内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA-numpy-%E5%AF%B9%E8%B1%A1"><span class="nav-text">转换为 NumPy 对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-text">4.2 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">读取数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-text">处理缺失值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%80%BC%E5%A4%84%E7%90%86"><span class="nav-text">离散值处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%BC%A0%E9%87%8F%E6%A0%BC%E5%BC%8F"><span class="nav-text">转换为张量格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa"><span class="nav-text">4.3 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-text">5 线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">5.1 线性代数基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%87%8F"><span class="nav-text">标量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-text">3. 矩阵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="nav-text">5.2 线性代数实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%87%8F-1"><span class="nav-text">标量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%87%8F"><span class="nav-text">2. 向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5-1"><span class="nav-text">3. 矩阵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E7%89%B9%E5%AE%9A%E8%BD%B4%E6%B1%82%E5%92%8C"><span class="nav-text">5.3 按特定轴求和</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97"><span class="nav-text">6 矩阵计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="nav-text">6.1 导数的概念及几何意义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E9%87%8F%E5%AF%BC%E6%95%B0"><span class="nav-text">标量导数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%9A%E5%AF%BC%E6%95%B0-%E5%81%8F%E5%AF%BC%E6%95%B0"><span class="nav-text">亚导数 （偏导数）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80rmfunction-%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E6%A0%87%E9%87%8F"><span class="nav-text">一、\(\rm{function}\) 为是一个标量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8Crmfunction-%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E5%90%91%E9%87%8F"><span class="nav-text">二、\(\rm{function}\) 为是一个向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89rmfunction-%E4%B8%BA%E6%98%AF%E4%B8%80%E4%B8%AA%E7%9F%A9%E9%98%B5"><span class="nav-text">三、\(\rm{function}\) 为是一个矩阵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC%E7%9A%84%E5%B8%83%E5%B1%80"><span class="nav-text">6.3 矩阵求导的布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="nav-text">7 自动求导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99"><span class="nav-text">7.1 向量链式法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC-1"><span class="nav-text">7.2 自动求导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%AE%A1%E7%AE%97%E5%9B%BE"><span class="nav-text">一、计算图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="nav-text">二、自动求导的两种模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86"><span class="nav-text">7.3 代码部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa-1"><span class="nav-text">7.3 Q&amp;A</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

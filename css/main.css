@@ -771,6 +771,8 @@ pre .javascript .function {
   margin-bottom: 20px;
   padding: 1em;
   position: relative;
+  border: 1px solid #eee;
+  border-left-width: 5px;
 }
 .post-body .note h2,
 .post-body .note h3,
@@ -1332,7 +1334,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d122ed;
+  background: #62dee4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;

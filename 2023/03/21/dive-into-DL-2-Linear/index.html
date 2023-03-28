@@ -31,13 +31,32 @@
 <meta property="og:site_name" content="独孤诗人的学习驿站">
 <meta property="og:description" content="0. Preface 本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第二篇—— 线性回归和Softmax回归。 本文是学习李沐老师 B 站视频教程 动手学深度学习 PyTorch版 所记录的笔记。主要使用 Obsidian 软件并借助插件 Meida extended 插件，在 markdown 文件中生成时间戳，可">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552001.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552776.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181558100.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181602746.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181607807.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181712699.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181712900.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303182223495.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192252047.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192325371.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192329501.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192329833.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192330631.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201418243.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201619981.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201618137.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201833184.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201949725.png)   ">
 <meta property="article:published_time" content="2023-03-21T10:09:44.000Z">
-<meta property="article:modified_time" content="2023-03-21T11:29:08.973Z">
+<meta property="article:modified_time" content="2023-03-28T03:45:32.508Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Pytorch">
 <meta property="article:tag" content="Deep learning">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552001.png">
 
 <link rel="canonical" href="http://yangsuoly.com/2023/03/21/dive-into-DL-2-Linear/">
 
@@ -237,10 +256,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-03-21 18:09:44 / Modified: 19:29:08" itemprop="dateCreated datePublished" datetime="2023-03-21T18:09:44+08:00">2023-03-21</time>
+              <time title="Created: 2023-03-21 18:09:44" itemprop="dateCreated datePublished" datetime="2023-03-21T18:09:44+08:00">2023-03-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-03-28 11:45:32" itemprop="dateModified" datetime="2023-03-28T11:45:32+08:00">2023-03-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -331,11 +356,9 @@ have lost the future. — <cite>Winston Churchill</cite></p>
 <p><strong>房价预测例子</strong>。<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=2.190078">00:02
 线性回归</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552001.png" /></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552776.png" /></p>
-<p><strong>模型简化</strong>。<a
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552001.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181552776.png" style="zoom:67%;" />
+<strong>模型简化</strong>。<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=207.569903">03:27
 模型简化</a></p>
 <ol type="1">
@@ -350,11 +373,9 @@ b\]</span></p>
 </ol>
 <h2 id="线性模型">1.1 线性模型</h2>
 <h3 id="模型设定">1.1.1 模型设定</h3>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181558100.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181558100.png" style="zoom:67%;" />
+- 输入：<span class="math inline">\(x=[x_1,x_2,...,x_n]^T\)</span></p>
 <ul>
-<li><p>输入：<span
-class="math inline">\(x=[x_1,x_2,...,x_n]^T\)</span></p></li>
 <li><p>线性模型需要确定一个n维权重和一个标量偏差</p>
 <p><span
 class="math display">\[w=[w_1,w_2,...,w_n]^T,b\]</span></p></li>
@@ -365,16 +386,11 @@ x_2+...+w_nx_n+b\]</span></p>
 class="math inline">\(y=&lt;w,x&gt;+b\)</span></p></li>
 </ul>
 <p><strong>Note</strong>： 线性模型可以看作是单层神经网络（图片）</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181602746.png" /></p>
-<p>神经网络源于神经科学：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181607807.png" /></p>
-<blockquote>
-<ul>
-<li>最早的神经网络是源自神经科学的，但是时至今日，很多神经网络已经远远高于神经科学，可解释性也不是很强，不必纠结</li>
-</ul>
-</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181602746.png" style="zoom:67%;" />
+神经网络源于神经科学：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181607807.png" style="zoom:67%;" />
+&gt; -
+最早的神经网络是源自神经科学的，但是时至今日，很多神经网络已经远远高于神经科学，可解释性也不是很强，不必纠结</p>
 <h3 id="衡量估计质量">1.1.2 衡量估计质量</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=488.954406">08:08
@@ -464,16 +480,12 @@ class="math inline">\(w_0\)</span>，</p></li>
   \]</span></p>
 <pre><code>$-\frac&#123;\partial l&#125;&#123;\partial\omega_&#123;t-1&#125;&#125;$ 为函数值下降最快的方向，学习率 $\eta$ 为学习步长。</code></pre></li>
 </ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181712699.png" /></p>
-<h3 id="选择学习率">1.2.2 选择学习率</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181712699.png" style="zoom:67%;" />
+### 1.2.2 选择学习率</p>
 <p>学习率 <span class="math inline">\(\eta\)</span>
 为学习步长，代表了沿负梯度方向走了多远，这是超参数（人为指定的的值，不是训练得到的）</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181712900.png" /></p>
-<ul>
-<li><strong>Note</strong>：学习率不能太大，也不能太小，需要选取适当。</li>
-</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303181712900.png" style="zoom:67%;" />
+- <strong>Note</strong>：学习率不能太大，也不能太小，需要选取适当。</p>
 <h3 id="小批量随机梯度下降">1.2.3 小批量随机梯度下降</h3>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=2&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=255.218868">04:15
@@ -577,9 +589,8 @@ class="math inline">\(0.01\)</span>。 下面的代码生成合成数据集。</
 <p>通过生成第二个特征<code>features[:, 1]</code>和<code>labels</code>的散点图，可以直观观察到两者之间的线性关系。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可视化数据</span></span><br><span class="line">d2l.set_figsize() </span><br><span class="line">d2l.plt.scatter(features[:, (<span class="number">1</span>)].detach().numpy(), labels.detach().numpy(), <span class="number">1</span>); <span class="comment">#x轴为features的第一列，y轴为标签值，正相关</span></span><br></pre></td></tr></table></figure>
 <p>Results:</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303182223495.png" /></p>
-<h3 id="读取数据集">1.3.3 读取数据集</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303182223495.png" style="zoom:67%;" />
+### 1.3.3 读取数据集</p>
 <p>训练模型时要对数据集进行遍历，每次抽取一小批量样本，并使用它们来更新我们的模型。由于这个过程是训练机器学习算法的基础，所以有必要定义一个函数，该函数能打乱数据集中的样本并以小批量方式获取数据。</p>
 <p>在下面的代码中，<strong>定义了一个<code>data_iter</code>函数，
 该函数接收批量大小、特征矩阵和标签向量作为输入，生成大小为<code>batch_size</code>的小批量</strong>。
@@ -703,7 +714,7 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">true_w = torch.tensor([<span class="number">2</span>, -<span class="number">3.4</span>]) <span class="comment"># 真实权重</span></span><br><span class="line">true_b = <span class="number">4.2</span> <span class="comment"># 真实偏差</span></span><br><span class="line">features, labels = d2l.synthetic_data(true_w, true_b, <span class="number">1000</span>) </span><br><span class="line"><span class="comment"># 应用liner-regression-concise里面的函数，生成训练数据</span></span><br><span class="line"></span><br><span class="line">features</span><br></pre></td></tr></table></figure>
 <p>Results:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tensor([[-<span class="number">1.4684</span>,  <span class="number">0.0977</span>],</span><br><span class="line">		[ <span class="number">1.7930</span>,  <span class="number">0.9657</span>],</span><br><span class="line">		[ <span class="number">1.1813</span>,  <span class="number">2.1203</span>],</span><br><span class="line">		...,</span><br><span class="line">		[ <span class="number">0.0698</span>,  <span class="number">0.6992</span>],</span><br><span class="line">		[-<span class="number">1.6323</span>,  <span class="number">2.0169</span>],</span><br><span class="line">		[-<span class="number">0.4198</span>, -<span class="number">1.1236</span>]])</span><br></pre></td></tr></table></figure>
-<h3 id="读取数据集-1">1.4.2 读取数据集</h3>
+<h3 id="读取数据集">1.4.2 读取数据集</h3>
 <p>可以 <strong>调用框架中现有的API来读取数据</strong> 。 我们将
 <code>features</code> 和 <code>labels</code> 作为 <code>API</code>
 的参数传递，并通过数据迭代器指定 <code>batch_size</code>。 此外，布尔值
@@ -890,15 +901,10 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192250999.png" 
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K64y1Q7wu?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=157.822685">02:37
 从回归到分类</a></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192252047.png" /></p>
-<ol type="1">
-<li><p>回归：</p>
-<ul>
-<li>单连续数值输出</li>
-<li>自然区间 <span class="math inline">\(\mathbb{R}\)</span></li>
-<li>跟真实值的区别作为损失</li>
-</ul></li>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192252047.png" style="zoom:67%;" />
+1. 回归： - 单连续数值输出 - 自然区间 <span
+class="math inline">\(\mathbb{R}\)</span> - 跟真实值的区别作为损失</p>
+<ol start="2" type="1">
 <li><p>分类：</p>
 <ul>
 <li>通常多个输出<br />
@@ -974,29 +980,17 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K64y1Q7wu
 <p><span class="math display">\[
 l\left(y, y^{\prime}\right)=\frac{1}{2}\left(y-y^{\prime}\right)^2
 \]</span></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192325371.png" /></p>
-<blockquote>
-<p>梯度会随着结果逼近而下降</p>
-</blockquote>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192329501.png" /></p>
-<ol start="2" type="1">
-<li>L1 Loss</li>
-</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192325371.png" style="zoom:67%;" />
+&gt; 梯度会随着结果逼近而下降</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192329501.png" style="zoom:67%;" />
+2. L1 Loss</p>
 <p><span class="math display">\[
 l\left(y, y^{\prime}\right)=\left|y-y^{\prime}\right|
 \]</span></p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192329833.png" /></p>
-<blockquote>
-<p>梯度保持不变，但在0处梯度随机</p>
-</blockquote>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192330631.png" /></p>
-<ol start="3" type="1">
-<li>Huber's Robust Loss</li>
-</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192329833.png" style="zoom:67%;" />
+&gt; 梯度保持不变，但在0处梯度随机</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303192330631.png" style="zoom:67%;" />
+3. Huber's Robust Loss</p>
 <p><span class="math display">\[
 l\left(y, y^{\prime}\right)=\left\{\begin{array}{ll}
 \left|y-y^{\prime}\right|-\frac{1}{2} &amp; \text { if
@@ -1020,7 +1014,7 @@ title="LeCun, Y., Bottou, L., Bengio, Y., Haffner, P., &amp; others. (1998). Gra
 target="_blank" rel="noopener" href="https://zh-v2.d2l.ai/chapter_references/zreferences.html#id189"
 title="Xiao, H., Rasul, K., &amp; Vollgraf, R. (2017). Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms. arXiv preprint arXiv:1708.07747.">Xiao
 <em>et al.</em>, 2017</a>)：</p>
-<h3 id="读取数据集-2">2.3.1 读取数据集</h3>
+<h3 id="读取数据集-1">2.3.1 读取数据集</h3>
 <ul>
 <li><p>导入数据包</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">from</span> torch.utils <span class="keyword">import</span> data</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line">d2l.use_svg_display()</span><br></pre></td></tr></table></figure></p></li>
@@ -1061,9 +1055,8 @@ boot（短靴）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_images</span>(<span class="params">imgs, num_rows, num_cols, titles=<span class="literal">None</span>, scale=<span class="number">1.5</span></span>):</span>  <span class="comment">#@save</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制图像列表&quot;&quot;&quot;</span></span><br><span class="line">    figsize = (num_cols * scale, num_rows * scale)</span><br><span class="line">    _, axes = d2l.plt.subplots(num_rows, num_cols, figsize=figsize)</span><br><span class="line">    axes = axes.flatten()</span><br><span class="line">    <span class="keyword">for</span> i, (ax, img) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(axes, imgs)):</span><br><span class="line">        <span class="keyword">if</span> torch.is_tensor(img):</span><br><span class="line">            <span class="comment"># 图片张量</span></span><br><span class="line">            ax.imshow(img.numpy())</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># PIL图片</span></span><br><span class="line">            ax.imshow(img)</span><br><span class="line">        ax.axes.get_xaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">        ax.axes.get_yaxis().set_visible(<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">if</span> titles:</span><br><span class="line">            ax.set_title(titles[i])</span><br><span class="line">    <span class="keyword">return</span> axes</span><br></pre></td></tr></table></figure>
 <p>以下是训练数据集中前几个样本的图像及其相应的标签。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X, y = <span class="built_in">next</span>(<span class="built_in">iter</span>(data.DataLoader(mnist_train, batch_size=<span class="number">18</span>)))</span><br><span class="line">show_images(X.reshape(<span class="number">18</span>, <span class="number">28</span>, <span class="number">28</span>), <span class="number">2</span>, <span class="number">9</span>, titles=get_fashion_mnist_labels(y));</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201418243.png" /></p>
-<h3 id="读取小批量">2.3.3 读取小批量</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201418243.png" style="zoom:67%;" />
+### 2.3.3 读取小批量</p>
 <p>为了使我们在读取训练集和测试集时更容易，我们使用内置的数据迭代器，而不是从零开始创建。
 回顾一下，在每次迭代中，数据加载器每次都会[<strong>读取一小批量数据，大小为<code>batch_size</code></strong>]。
 通过内置数据迭代器，我们可以随机打乱了所有样本，从而无偏见地读取小批量。</p>
@@ -1254,14 +1247,12 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K64y1Q7wu
 <strong>Note</strong>：迭代周期（<code>num_epochs</code>）和学习率（<code>lr</code>）都是可调节的超参数。通过更改它们的值，我们可以提高模型的分类精度。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_epochs = <span class="number">10</span></span><br><span class="line">train_ch3(net, train_iter, test_iter, cross_entropy, num_epochs, updater)</span><br></pre></td></tr></table></figure>
 <p>Results：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201619981.png" /></p>
-<h3 id="预测">2.4.7 预测</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201619981.png" style="zoom:67%;" />
+### 2.4.7 预测</p>
 <p>现在训练已经完成，我们的模型已经准备好对图像进行分类预测。给定一系列图像，我们将比较它们的实际标签（文本输出的第一行）和模型预测（文本输出的第二行）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict_ch3</span>(<span class="params">net, test_iter, n=<span class="number">6</span></span>):</span>  <span class="comment">#@save</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;预测标签（定义见第3章）&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> test_iter:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    trues = d2l.get_fashion_mnist_labels(y)</span><br><span class="line">    preds = d2l.get_fashion_mnist_labels(net(X).argmax(axis=<span class="number">1</span>))</span><br><span class="line">    titles = [true +<span class="string">&#x27;\n&#x27;</span> + pred <span class="keyword">for</span> true, pred <span class="keyword">in</span> <span class="built_in">zip</span>(trues, preds)]</span><br><span class="line">    d2l.show_images(</span><br><span class="line">        X[<span class="number">0</span>:n].reshape((n, <span class="number">28</span>, <span class="number">28</span>)), <span class="number">1</span>, n, titles=titles[<span class="number">0</span>:n])</span><br><span class="line"></span><br><span class="line">predict_ch3(net, test_iter)</span><br></pre></td></tr></table></figure>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201618137.png" /></p>
-<h3 id="小结-3">2.4.8 小结</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201618137.png" style="zoom:67%;" />
+### 2.4.8 小结</p>
 <ul>
 <li>借助 <code>softmax</code> 回归，我们可以训练多分类的模型。</li>
 <li>训练 <code>softmax</code>
@@ -1366,23 +1357,21 @@ target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/LogSumExp">"L
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    d2l.train_ch3()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">&quot;module &#x27;d2l.torch&#x27; has no attribute &#x27;train_ch3&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    d2l.train_epoch_ch3train_epoch_ch3()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">&quot;module &#x27;d2l.torch&#x27; has no attribute &#x27;train_epoch_ch3&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p>Results:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module <span class="string">&#x27;d2l.torch&#x27;</span> has no attribute <span class="string">&#x27;train_ch3&#x27;</span></span><br><span class="line"></span><br><span class="line">module <span class="string">&#x27;d2l.torch&#x27;</span> has no attribute <span class="string">&#x27;train_epoch_ch3&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201833184.png" /></p>
-<ul>
-<li><p><strong>Note</strong>：可以发现，此处直接调用
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201833184.png" style="zoom:67%;" />
+- <strong>Note</strong>：可以发现，此处直接调用
 <code>d2l.train_ch3</code> 会报错。这可能是由于笔者安装的
 <code>d2l</code> 版本与李沐老师是视频中（<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K64y1Q7wu?p=5&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1&amp;t=151.585906">02:31
-训练模型</a>）展示的代码颇有不同，因此直接调用上一节的部分代码，并进行了改写。</p></li>
+训练模型</a>）展示的代码颇有不同，因此直接调用上一节的部分代码，并进行了改写。</p>
+<ul>
 <li><p><code>train_epoch_ch3</code> 函数</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_epoch_ch3</span>(<span class="params">net, train_iter, loss, updater</span>):</span>  <span class="comment">#@save</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;训练模型一个迭代周期（定义见第3章）&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 将模型设置为训练模式</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(net, torch.nn.Module):</span><br><span class="line">        net.train()</span><br><span class="line">    <span class="comment"># 训练损失总和、训练准确度总和、样本数</span></span><br><span class="line">    metric = d2l.Accumulator(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">for</span> X, y <span class="keyword">in</span> train_iter:</span><br><span class="line">        <span class="comment"># 计算梯度并更新参数</span></span><br><span class="line">        y_hat = net(X)</span><br><span class="line">        l = loss(y_hat, y)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(updater, torch.optim.Optimizer):</span><br><span class="line">            <span class="comment"># 使用PyTorch内置的优化器和损失函数</span></span><br><span class="line">            updater.zero_grad()</span><br><span class="line">            l.mean().backward()</span><br><span class="line">            updater.step()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 使用定制的优化器和损失函数</span></span><br><span class="line">            l.<span class="built_in">sum</span>().backward()</span><br><span class="line">            updater(X.shape[<span class="number">0</span>])</span><br><span class="line">        metric.add(<span class="built_in">float</span>(l.<span class="built_in">sum</span>()), d2l.accuracy(y_hat, y), y.numel())</span><br><span class="line">    <span class="comment"># 返回训练损失和训练精度</span></span><br><span class="line">    <span class="keyword">return</span> metric[<span class="number">0</span>] / metric[<span class="number">2</span>], metric[<span class="number">1</span>] / metric[<span class="number">2</span>]</span><br></pre></td></tr></table></figure></p></li>
 <li><p><code>train</code></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">num_epochs = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_ch3</span>(<span class="params">net, train_iter, test_iter, loss, num_epochs, updater</span>):</span>  <span class="comment">#@save</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;训练模型（定义见第3章）&quot;&quot;&quot;</span></span><br><span class="line">    animator = d2l.Animator(xlabel=<span class="string">&#x27;epoch&#x27;</span>, xlim=[<span class="number">1</span>, num_epochs], ylim=[<span class="number">0.3</span>, <span class="number">0.9</span>],</span><br><span class="line">                        legend=[<span class="string">&#x27;train loss&#x27;</span>, <span class="string">&#x27;train acc&#x27;</span>, <span class="string">&#x27;test acc&#x27;</span>], figsize=(<span class="number">4.5</span>, <span class="number">2.5</span>))</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(num_epochs):</span><br><span class="line">        train_metrics = train_epoch_ch3(net, train_iter, loss, updater)</span><br><span class="line">        test_acc = d2l.evaluate_accuracy_gpu(net, test_iter)</span><br><span class="line">        animator.add(epoch + <span class="number">1</span>, train_metrics + (test_acc,))</span><br><span class="line">    train_loss, train_acc = train_metrics</span><br><span class="line">    <span class="keyword">assert</span> train_loss &lt; <span class="number">0.5</span>, train_loss</span><br><span class="line">    <span class="keyword">assert</span> train_acc &lt;= <span class="number">1</span> <span class="keyword">and</span> train_acc &gt; <span class="number">0.7</span>, train_acc</span><br><span class="line">    <span class="keyword">assert</span> test_acc &lt;= <span class="number">1</span> <span class="keyword">and</span> test_acc &gt; <span class="number">0.7</span>, test_acc</span><br><span class="line">    </span><br><span class="line">train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)</span><br></pre></td></tr></table></figure></p></li>
 </ul>
-<p><img
-src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201949725.png" /></p>
-<p>和以前一样，这个算法使结果收敛到一个相当高的精度，而且这次的代码比之前更精简了。</p>
-<h3 id="小结-4">2.5.6小结</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/dl-notes/202303201949725.png)   " style="zoom:67%;" />
+和以前一样，这个算法使结果收敛到一个相当高的精度，而且这次的代码比之前更精简了。</p>
+<h3 id="小结-3">2.5.6小结</h3>
 <ul>
 <li>使用深度学习框架的高级API，我们可以更简洁地实现 <code>softmax</code>
 回归。</li>
@@ -1560,7 +1549,7 @@ Q&amp;A</a></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preface"><span class="nav-number">1.</span> <span class="nav-text">0. Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">2.</span> <span class="nav-text">1 线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1.1 模型设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A1%E9%87%8F%E4%BC%B0%E8%AE%A1%E8%B4%A8%E9%87%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.1.2 衡量估计质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.1.3 训练数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.1.4 参数学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%A7%A3"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.1.5 显示解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.1.6 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 基础优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.2.1 梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-number">2.2.2.</span> <span class="nav-text">1.2.2 选择学习率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%89%B9%E9%87%8F%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">2.2.3.</span> <span class="nav-text">1.2.3 小批量随机梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%89%B9%E9%87%8F%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.2.4.</span> <span class="nav-text">1.2.4 选择批量大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.2.5.</span> <span class="nav-text">1.2.5 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 线性回归的从零开始实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.3.1 环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.3.2.</span> <span class="nav-text">1.3.2 生成数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.3.3.</span> <span class="nav-text">1.3.3 读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="nav-number">2.3.4.</span> <span class="nav-text">1.3.4 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.5.</span> <span class="nav-text">1.3.5 定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.6.</span> <span class="nav-text">1.3.6 定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.7.</span> <span class="nav-text">1.3.7 定义优化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83"><span class="nav-number">2.3.8.</span> <span class="nav-text">1.3.8 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.3.9.</span> <span class="nav-text">1.3.9 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-api-%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.4.</span> <span class="nav-text">1.4 调用 API 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE"><span class="nav-number">2.4.1.</span> <span class="nav-text">1.4.1 生成数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86-1"><span class="nav-number">2.4.2.</span> <span class="nav-text">1.4.2 读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B-1"><span class="nav-number">2.4.3.</span> <span class="nav-text">1.4.3 定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0-1"><span class="nav-number">2.4.4.</span> <span class="nav-text">1.4.4 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.4.5.</span> <span class="nav-text">1.4.5 定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95-1"><span class="nav-number">2.4.6.</span> <span class="nav-text">1.4.6 定义优化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83-1"><span class="nav-number">2.4.7.</span> <span class="nav-text">1.4.7 训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">2.5.</span> <span class="nav-text">1.5 小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa"><span class="nav-number">2.6.</span> <span class="nav-text">1.6 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#softmax-%E5%9B%9E%E5%BD%92"><span class="nav-number">3.</span> <span class="nav-text">2 Softmax 回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-%E5%9B%9E%E5%BD%92%E5%90%AB%E4%B9%89"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 Softmax 回归含义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92vs%E5%88%86%E7%B1%BB"><span class="nav-number">3.1.1.</span> <span class="nav-text">2.1.1 回归VS分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%9B%9E%E5%BD%92%E5%88%B0%E5%A4%9A%E7%B1%BB%E5%88%86%E7%B1%BB"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.1.2 从回归到多类分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softmax%E5%92%8C%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1"><span class="nav-number">3.1.3.</span> <span class="nav-text">2.1.3 Softmax和交叉熵损失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">3.1.4.</span> <span class="nav-text">2.1.4 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">2.2损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 图片分类数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">2.3.1 读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84"><span class="nav-number">3.3.2.</span> <span class="nav-text">2.3.2 可视化数据集的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E5%B0%8F%E6%89%B9%E9%87%8F"><span class="nav-number">3.3.3.</span> <span class="nav-text">2.3.3 读取小批量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%90%88%E6%89%80%E6%9C%89%E7%BB%84%E4%BB%B6"><span class="nav-number">3.3.4.</span> <span class="nav-text">2.3.4 整合所有组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-number">3.3.5.</span> <span class="nav-text">2.3.5 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0-softmax%E5%9B%9E%E5%BD%92"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 从零实现 Softmax回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">2.4.1 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-softmax-%E6%93%8D%E4%BD%9C"><span class="nav-number">3.4.2.</span> <span class="nav-text">2.4.2 定义 softmax 操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B-2"><span class="nav-number">3.4.3.</span> <span class="nav-text">2.4.3 定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-2"><span class="nav-number">3.4.4.</span> <span class="nav-text">2.4.4 定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%B2%BE%E5%BA%A6"><span class="nav-number">3.4.5.</span> <span class="nav-text">2.4.5 分类精度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83-2"><span class="nav-number">3.4.6.</span> <span class="nav-text">2.4.6 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B"><span class="nav-number">3.4.7.</span> <span class="nav-text">2.4.7 预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="nav-number">3.4.8.</span> <span class="nav-text">2.4.8 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.5.</span> <span class="nav-text">2.5 Softmax 简洁实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0-3"><span class="nav-number">3.5.1.</span> <span class="nav-text">2.5.1 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%AE%A1%E8%A7%86softmax%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.5.2.</span> <span class="nav-text">2.5.2 重新审视Softmax的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-1"><span class="nav-number">3.5.3.</span> <span class="nav-text">2.5.3 损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">3.5.4.</span> <span class="nav-text">2.5.4 优化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83-3"><span class="nav-number">3.5.5.</span> <span class="nav-text">2.5.5 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-4"><span class="nav-number">3.5.6.</span> <span class="nav-text">2.5.6小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax%E5%9B%9E%E5%BD%92qa"><span class="nav-number">3.6.</span> <span class="nav-text">2.6 softmax回归Q&amp;A</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preface"><span class="nav-text">0. Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-text">1 线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-text">1.1 线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AE%BE%E5%AE%9A"><span class="nav-text">1.1.1 模型设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A1%E9%87%8F%E4%BC%B0%E8%AE%A1%E8%B4%A8%E9%87%8F"><span class="nav-text">1.1.2 衡量估计质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE"><span class="nav-text">1.1.3 训练数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0"><span class="nav-text">1.1.4 参数学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%A7%A3"><span class="nav-text">1.1.5 显示解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">1.1.6 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-text">1.2 基础优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">1.2.1 梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E6%89%B9%E9%87%8F%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-text">1.2.3 小批量随机梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%89%B9%E9%87%8F%E5%A4%A7%E5%B0%8F"><span class="nav-text">1.2.4 选择批量大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-text">1.2.5 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0"><span class="nav-text">1.3 线性回归的从零开始实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">1.3.1 环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">1.3.2 生成数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="nav-text">1.3.4 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B"><span class="nav-text">1.3.5 定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-text">1.3.6 定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-text">1.3.7 定义优化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83"><span class="nav-text">1.3.8 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">1.3.9 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-api-%E5%AE%9E%E7%8E%B0"><span class="nav-text">1.4 调用 API 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE"><span class="nav-text">1.4.1 生成数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">1.4.2 读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B-1"><span class="nav-text">1.4.3 定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0-1"><span class="nav-text">1.4.4 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-1"><span class="nav-text">1.4.5 定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95-1"><span class="nav-text">1.4.6 定义优化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83-1"><span class="nav-text">1.4.7 训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-text">1.5 小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa"><span class="nav-text">1.6 Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#softmax-%E5%9B%9E%E5%BD%92"><span class="nav-text">2 Softmax 回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-%E5%9B%9E%E5%BD%92%E5%90%AB%E4%B9%89"><span class="nav-text">2.1 Softmax 回归含义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92vs%E5%88%86%E7%B1%BB"><span class="nav-text">2.1.1 回归VS分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%9B%9E%E5%BD%92%E5%88%B0%E5%A4%9A%E7%B1%BB%E5%88%86%E7%B1%BB"><span class="nav-text">2.1.2 从回归到多类分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softmax%E5%92%8C%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1"><span class="nav-text">2.1.3 Softmax和交叉熵损失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-text">2.1.4 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-text">2.2损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">2.3 图片分类数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86-1"><span class="nav-text">2.3.1 读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84"><span class="nav-text">2.3.2 可视化数据集的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E5%90%88%E6%89%80%E6%9C%89%E7%BB%84%E4%BB%B6"><span class="nav-text">2.3.4 整合所有组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-text">2.3.5 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0-softmax%E5%9B%9E%E5%BD%92"><span class="nav-text">2.4 从零实现 Softmax回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0-2"><span class="nav-text">2.4.1 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-softmax-%E6%93%8D%E4%BD%9C"><span class="nav-text">2.4.2 定义 softmax 操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9E%8B-2"><span class="nav-text">2.4.3 定义模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-2"><span class="nav-text">2.4.4 定义损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%B2%BE%E5%BA%A6"><span class="nav-text">2.4.5 分类精度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83-2"><span class="nav-text">2.4.6 训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.5 Softmax 简洁实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0-3"><span class="nav-text">2.5.1 初始化模型参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%AE%A1%E8%A7%86softmax%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.5.2 重新审视Softmax的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-1"><span class="nav-text">2.5.3 损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-text">2.5.4 优化算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83-3"><span class="nav-text">2.5.5 训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="nav-text">2.5.6小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax%E5%9B%9E%E5%BD%92qa"><span class="nav-text">2.6 softmax回归Q&amp;A</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
