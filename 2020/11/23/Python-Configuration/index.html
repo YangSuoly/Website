@@ -32,7 +32,7 @@
 <meta property="og:description" content="1 Show channel conda config --show显示所有的 conda 的config 信息，conda config --show channels显示所有 channel 信息 123456&gt;&gt;&gt; conda config --show channelschannels:  - https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;an">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-23T05:40:29.000Z">
-<meta property="article:modified_time" content="2023-07-03T08:34:28.849Z">
+<meta property="article:modified_time" content="2023-07-03T08:53:53.924Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Anaconda">
@@ -244,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-07-03 16:34:28" itemprop="dateModified" datetime="2023-07-03T16:34:28+08:00">2023-07-03</time>
+                <time title="Modified: 2023-07-03 16:53:53" itemprop="dateModified" datetime="2023-07-03T16:53:53+08:00">2023-07-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3k</span>
+              <span>3.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -348,9 +348,9 @@ from config</p>
 environment</h3>
 <ul>
 <li><p>创建虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name forecast python=3.8 -y</span><br></pre></td></tr></table></figure></li>
-<li><p>激活虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda actiavte d2l</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> create</span></span><br><span class="line">conda create --name forecast python=3.8 -y</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> actiavte</span></span><br><span class="line">conda actiavte d2l</span><br></pre></td></tr></table></figure></li>
+<li><p>在指定位置创建虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> create</span></span><br><span class="line">conda create --prefix=/Users/yangsu/miniconda3/envs/forecast python=3.8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> activate</span></span><br><span class="line">conda activate /Users/yangsu/miniconda3/envs/forecast</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="remove-environment">5.2.2 Remove environment</h3>
 <ul>
