@@ -32,7 +32,7 @@
 <meta property="og:description" content="1. Introduction 本笔记是 DataWhale 2023年 09 月 简单学点大模型 项目的学习笔记。原项目地址：Clike here。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-11T01:48:59.000Z">
-<meta property="article:modified_time" content="2023-09-11T05:51:23.558Z">
+<meta property="article:modified_time" content="2023-09-11T06:11:16.841Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="LM">
 <meta name="twitter:card" content="summary">
@@ -237,7 +237,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-09-11 09:48:59 / Modified: 13:51:23" itemprop="dateCreated datePublished" datetime="2023-09-11T09:48:59+08:00">2023-09-11</time>
+              <time title="Created: 2023-09-11 09:48:59 / Modified: 14:11:16" itemprop="dateCreated datePublished" datetime="2023-09-11T09:48:59+08:00">2023-09-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -405,8 +405,11 @@ class="math inline">\(T ≠
 <p>对于非自回归的条件生成，更一般地，我们可以通过指定某个前缀序列 <span
 class="math inline">\(x_1:i\)</span>（称为提示）并采样其余的 <span
 class="math inline">\(x_{i+1:L}\)</span>（称为补全）来进行条件生成。例如，生成
-<span class="math inline">\(T=0\)</span> 的产生的：</p>
-<p>如果我们将温度改为 <span
+<span class="math inline">\(T=0\)</span> 的产生的： <span
+class="math display">\[
+\underbrace{the, mouse, ate}_{prompt} \xrightarrow{T=0} \underbrace{the,
+cheese}_{completion}
+\]</span> 如果我们将温度改为 <span
 class="math inline">\(T=1\)</span>，我们可以得到更多的多样性（演示），例如，"its
 house" 和 "my
 homework"。我们将很快看到，条件生成解锁了语言模型通过简单地更改提示就能解决各种任务的能力。</p>
@@ -529,7 +532,8 @@ et al. (2003)</a> 在2003年首次提出了神经语言模型，其中 <span
 class="math inline">\(p(x_{i}∣x_{i−(n−1):i−1})\)</span> 由神经网络给出：
 <span class="math display">\[
 p(cheese∣ate,the)=some-neural-network(ate,the,cheese)。
-\]</span> 注意，上下文长度仍然受到n的限制，但现在对更大的 <span
+\]</span> 注意，上下文长度仍然受到 <span
+class="math inline">\(n\)</span> 的限制，但现在对更大的 <span
 class="math inline">\(n\)</span>
 值估计神经语言模型在统计上是可行的。</p>
 <p>然而，主要的挑战是训练神经网络在计算上要昂贵得多。他们仅在1400万个词上训练了一个模型，并显示出它在相同数据量上优于
@@ -641,8 +645,9 @@ class="math inline">\(n=∞\)</span>），但这些模型难以训练。</li>
 </tr>
 </tbody>
 </table>
-<p>新的出现。规模带来了什么不同之处？尽管很多技术细节是相同的，令人惊讶的是，“仅仅扩大规模”就能产生新的出现行为，从而带来定性上不同的能力和定性上不同的社会影响。</p>
-<p>附注：在技术层面上，我们专注于自回归语言模型，但许多思想也适用于掩码语言模型，如BERT和RoBERTa。</p>
+<p>尽管很多技术细节是相同的，令人惊讶的是，“仅仅扩大规模”就能产生新的出现行为，从而带来定性上不同的能力和定性上不同的社会影响。</p>
+<p>附注：在技术层面上，我们专注于自回归语言模型，但许多思想也适用于掩码语言模型，如
+<code>BERT</code> 和 <code>RoBERTa</code>。</p>
 <h3 id="能力">1.3.1能力</h3>
 <p>迄2018年为止，语言模型主要作为较大系统的组成部分使用（例如语音识别或机器翻译），但如今语言模型越来越具备作为独立系统的能力，这在过去是难以想象的。</p>
 <p>回顾一下，语言模型具备条件生成的能力：在给定提示的情况下生成完成的文本：
