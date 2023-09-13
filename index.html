@@ -210,6 +210,338 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2023/09/12/Large-lm-3-Shortcomings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/YangSu.jpg">
+      <meta itemprop="name" content="YangSu">
+      <meta itemprop="description" content="A blog for recording learning notes...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="独孤诗人的学习驿站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/12/Large-lm-3-Shortcomings/" class="post-title-link" itemprop="url">Large-lm-3-Shortcomings</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-09-12 18:01:47" itemprop="dateCreated datePublished" datetime="2023-09-12T18:01:47+08:00">2023-09-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-09-13 17:14:57" itemprop="dateModified" datetime="2023-09-13T17:14:57+08:00">2023-09-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Categories/DataWhale/" itemprop="url" rel="index"><span itemprop="name">DataWhale</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Categories/DataWhale/Large-LM/" itemprop="url" rel="index"><span itemprop="name">Large LM</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="大模型的有害性">3. 大模型的有害性</h1>
+<h2 id="introduction">3.1 Introduction</h2>
+<p>本次内容主要探讨大型语言模型的有害性（危害），常见的几种危害包括:</p>
+<ul>
+<li>性能差异</li>
+<li>社会偏见和刻板印象</li>
+<li>有害信息</li>
+<li>虚假信息</li>
+</ul>
+<p>另外在之后的课程中会讲述其他更多层面的危害性：</p>
+<ul>
+<li>安全和隐私风险</li>
+<li>版权和法律保护</li>
+<li>环境影响</li>
+<li>权力集中</li>
+</ul>
+<p>本节将主要专注于将专注于 <code>LLM</code>
+的危害相关的相对具体但是级别较低的一些关注点，主要集中于以下两个点：</p>
+<ul>
+<li><strong>性能差异相关的危害</strong>。对于特定任务（e.g.,
+question-answer），性能差异意味着模型在某些群体中表现更好，在其他群体中表现更差。
+<ul>
+<li>自动语音识别 <code>ASR</code>
+系统在黑人说话者的识别性能要差于白人说话者（<a
+target="_blank" rel="noopener" href="https://www.pnas.org/content/117/14/7684">Koenecke e t al.,
+2020</a>）。</li>
+</ul></li>
+<li><strong>社会偏见和刻板印象相关的危害</strong>。
+<ul>
+<li>社会偏见：将某个概念（例如科学）与某些群体相对其他群体（例如男女性）进行系统关联。</li>
+<li>刻板印象：一种特定且普遍存在的社会偏见形式，其中的关联是被广泛持有、过度简化并且一般固定的。</li>
+</ul></li>
+<li><strong>有害信息和虚假信息</strong>
+<ul>
+<li>生成有毒的内容，恶意行为者可以利用它们来扩大自己的信息传播；</li>
+<li>检测虚假信息，从而帮助进行内容审核。</li>
+</ul></li>
+</ul>
+<h2 id="性能差异">3.2 性能差异</h2>
+<p>在美国，受保护的属性是指那些不可作为决策基础的人口特征，包括</p>
+<ul>
+<li>种族；</li>
+<li>性别；</li>
+<li>性取向；</li>
+<li>宗教；</li>
+<li>年龄；</li>
+<li>国籍；</li>
+<li>残障状况；</li>
+<li>体貌；</li>
+<li>社会经济状况等。</li>
+</ul>
+<h2 id="社会偏见">3.3 社会偏见</h2>
+<p>大模型通过使用大规模预训练数据进行训练，因此数据的偏见可能会导致
+<code>LLM</code> 性能和社会偏见危害。</p>
+<h3 id="名字偏见">3.3.1 名字偏见</h3>
+<p>这里我们首先将大模型在 <code>SQuAD</code>
+数据进行训练，然后设计一个新的任务进行测试。</p>
+<ul>
+<li>动机：测试模型在涉及人名的文本中的理解和行为方式。</li>
+<li>原始任务：<a
+target="_blank" rel="noopener" href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD - Stanford
+Question Answering Datasets</a> (Rajpurkar et al., 2016)</li>
+<li>修改后的任务：使用 <code>SQuAD</code>
+数据构建额外的测试例子，将之前的测试答案中的两个名字进行交换。最终测试模型的回答正确性。</li>
+<li>指标：翻转表示交换名称会改变模型输出的名称对的百分比。</li>
+</ul>
+<p>结果：</p>
+<ul>
+<li>模型通常会预测与他们所知名人物相关的名称，符合他们所擅长的领域。</li>
+<li>对于不太知名的人，效果会很快减弱。</li>
+<li>当交换名称时，模型通常不会改变它们的预测结果。</li>
+</ul>
+<h3 id="刻板印象">3.3.2 刻板印象</h3>
+<ul>
+<li>动机：评估模型在涉及刻板印象的文本中的行为方式</li>
+<li>任务：比较模型对具有刻板印象和反刻板印象关联的句子的概率</li>
+<li>指标：刻板印象得分是模型偏好刻板印象示例的比例。作者表示，得分为0.5是理想的。</li>
+</ul>
+<p>结果：</p>
+<ul>
+<li>所有模型都显示出对刻板印象数据的系统偏好。</li>
+<li>较大的模型往往具有较高的刻板印象得分。</li>
+</ul>
+<h2 id="toxicity">3.4 Toxicity</h2>
+<h3 id="definition">3.4.1 Definition</h3>
+<p>有毒性指的是伤害涉及到的是人，即
+“粗鲁、不尊重或不合理的行为，可能使某人想要离开一场对话”。如：</p>
+<ul>
+<li><em>I bet China would be happy to help Puerto Rico rebuild in
+exchange for a nice military base.</em> [toxicity: 0]
+(我打赌中国会愿意帮助波多黎各重建，换取一个漂亮的军事基地)</li>
+<li><em>The ignorance and bigotry comes from your post!</em> [toxicity:
+80%] (无知和偏见来自你的帖子！)</li>
+</ul>
+<p>有毒性方面可能对两类人带来伤害：</p>
+<ul>
+<li>基于语言模型系统的用户。聊天机器人可能会回复有毒的响应，或者自动完成系统可能会提出有毒的建议。</li>
+<li>用户生成内容的接收者。用户可能会在社交媒体上发布有毒内容，无论他们是否有恶意。</li>
+</ul>
+<h3 id="perspective-api">3.4.2 Perspective API</h3>
+<p><code>Google</code> 的 <code>Jigsaw</code>
+部门（专注于用技术解决社会问题，如极端主义）在 2017
+年开发了一项广受欢迎的有关毒性分类的专有服务——Perspective
+API。这是一个机器学习模型，可以为每个输入分配一个介于 <code>0</code> 和
+<code>1</code> 之间的毒性分数。</p>
+<p>实例：</p>
+<ul>
+<li>“hello”（毒性：低）</li>
+<li>“You suck”（毒性：95.89%）</li>
+</ul>
+<p>但并非总是有效：</p>
+<ul>
+<li>“You’re like Hitler.”（毒性：低）</li>
+<li>“I hope you lose your right arm.”（毒性：低）</li>
+<li>“I read The Idiot by Fyodor Dostoevsky
+yesterday.”（毒性：86.06%）</li>
+<li>“That is f—— good.”（毒性：85.50%）。</li>
+</ul>
+<p>总的来说，虽然Perspective
+API是机器学习和自然语言处理社区广泛使用的一个起点，但是使用时需要持有适度的怀疑态度。因为该模型标注的一致性很低，不能捕获标注者的身份或更广泛的语言或社会环境。它可能会对某些人群产生偏见，因为身份词（如“gay”）的出现与毒性有关，这是因为他们受到的有毒评论过多。</p>
+<h2 id="虚假信息">3.5 虚假信息</h2>
+<ul>
+<li><p>误导性信息（Misinformation）：不论意图如何，被误导性地呈现为真实的错误信息。</p></li>
+<li><p>虚假信息（Disinformation）：有意为之地呈现错误或误导性信息以欺骗某一特定受众，其中存在对抗性质。</p></li>
+</ul>
+<p><strong>注</strong>：误导性和虚假信息并非一定可被验证；有时，它会引起人们的疑虑或将举证责任转移给听众。此外，一些并非真实的内容并不被视为误导性或虚假信息，如完全虚构的小说。</p>
+<p>目前，我们尚不了解是否有由语言模型驱动的严重虚假信息战役。关键问题是：语言模型能否生成新颖，通顺的文本，传达特定信息，并且针对目标人群（在线超定向）？</p>
+<p>GPT-3论文已经表明，生成的新闻文章与真实文章几乎无法区分。这意味着语言模型可以是新颖和通顺的，但它们是否具有说服力？</p>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/40F27F0661B839FA47375F538C19FA59/S2052263020000378a.pdf/all-the-news-thats-fit-to-fabricate-ai-generated-text-as-a-tool-of-media-misinformation.pdf">Kreps
+et al. (2020)</a>
+在2020年生成的关于朝鲜扣押船只的文章（使用经过微调的GPT-2），用户研究参与者发现这些故事具有可信度。用户发现针对他们政治信仰量身定制的故事更具有可信度（在线超定向有效）。增加模型大小（在GPT-2内）只产生了边际效益。</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2009.06807.pdf">McGuffie &amp;
+Newhouse (2020)</a>
+在2020年指出，GPT-2需要微调，GPT-3只需要提示（更快适应/控制）。GPT-3具有深厚的极端社区知识（例如，QAnon，瓦格纳组，原子武器师）。GPT-3可以表现得像一个QAnon信徒。他们指出GPT-3可能在网络激进化中的作用（创建群体身份，传播影响思想和感情的叙事）。结论：我们应该非常担心（GPT-3可以产生具有意识形态一致性，互动性，规范性的环境）。风险缓解：针对大型语言模型的保护措施，提升数字素养，检测模型。</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1905.12616.pdf">Zellers et al.
+(2020)</a>
+在2020年训练Grover（一个GPT-2大小的模型）在RealNews上生成假新闻。模型：按照不同的顺序生成（领域，日期，作者，标题，正文）。当前的检测器：73%的准确性。对Grover进行微调以检测假新闻，准确性为92%。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://cset.georgetown.edu/wp-content/uploads/CSET-Truth-Lies-and-Automation.pdf">Buchanan
+et al. (2021)</a>
+在2021年强调人类与GPT-3共同生成虚假信息的有效性，技术娴熟的政府（如中国和俄罗斯）可能部署这样的系统。风险缓解：专注于假账户而不是内容。</p></li>
+</ul>
+<h2 id="内容审查">3.6 内容审查</h2>
+<p>我们已经讨论过语言模型生成有害内容的问题，但如果它们能生成此类内容，也可能被用于检测有害内容。</p>
+<p>Facebook（或Meta）长期以来一直在打击有害内容，最近开始利用语言模型自动检测这类内容。例如，RoBERTa已经被使用了几年。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Large-LM/202309131700845.png" /></p>
+<p>"少量样本学习器"（Few-Shot
+Learner）是Meta最新强大的内容审查模型。该模型在大量原始文本和历史数据上进行训练，将任务简化为蕴涵（entailment)。例如：</p>
+<ul>
+<li>𝖨 𝗅𝗈𝗏𝖾 𝗒𝗈𝗎𝗋 𝖾𝗍𝗁𝗇𝗂𝖼 𝗀𝗋𝗈𝗎𝗉. 𝖩𝖪. 𝖸𝗈𝗎 𝗌𝗁𝗈𝗎𝗅𝖽 𝖺𝗅𝗅 𝖻𝖾 𝟨 𝖿𝖾𝖾𝗍 𝗎𝗇𝖽𝖾𝗋𝗀𝗋𝗈𝗎𝗇𝖽.
+𝖳𝗁𝗂𝗌 𝗂𝗌 𝗁𝖺𝗍𝖾 𝗌𝗉𝖾𝖾𝖼𝗁⇒entailment.
+(我爱你的族群。开玩笑。你们都应该埋在六英尺地下。这是仇恨言论。⇒
+蕴涵)</li>
+</ul>
+<p>以下是一些微妙言论的实例，这些言论被正确地判定为有害内容：</p>
+<ul>
+<li>Discouraging COVID vaccines: <em>Vaccine or DNA changer?</em></li>
+<li>Inciting violence: <em>Does that guy need all of his
+teeth?</em></li>
+</ul>
+<h2 id="reference">3.7 Reference</h2>
+<p>Risk of Foundation Models</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2108.07258.pdf">Bommasani et al.,
+2021</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.1145/3442188.3445922">Bender and
+Gebru et al., 2020</a></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://aclanthology.org/2020.acl-main.485.pdf">Blodgett
+et al., 2020</a></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://aclanthology.org/2021.acl-long.81.pdf">Blodgett
+et al., 2021</a></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.04359.pdf">Weidinger et al.,
+2021</a></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.11446.pdf">Scaling Language
+Models: Methods, Analysis&amp;Insights from Training
+Gopher</a>. <em>Jack W. Rae et al.</em> 2021. Introduces the Gopher
+model from DeepMind. Has extensive analysis on biases and
+toxicity.</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.04359.pdf">Ethical and social
+risks of harm from Language Models</a>. <em>Laura Weidinge et al</em>.
+2021. Taxonomy of harms from DeepMind.</p></li>
+</ul>
+<p>Performance disparities:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1608.08868.pdf">Demographic Dialectal
+Variation in Social Media: A Case Study of African-American
+English</a>. <em>Su Lin Blodgett, L. Green, Brendan T. O’Connor</em>.
+EMNLP, 2016.</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.00061.pdf">Racial Disparity in
+Natural Language Processing: A Case Study of Social Media
+African-American English</a>. <em>Su Lin Blodgett, Brendan T.
+O’Connor</em>. FATML, 2017.</li>
+</ul>
+<p>Content moderation:</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://journals.sagepub.com/doi/pdf/10.1177/2053951719897945">Algorithmic
+content moderation: technical and political challenges in the automation
+of platform governance</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.1145/3274301">The Internet’s
+Hidden Rules: An Empirical Study of Reddit Norm Violations at Micro,
+Meso, and Macro Scales</a></li>
+</ul>
+<p>Toxicity:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2009.11462.pdf">RealToxicityPrompts:
+Evaluating Neural Toxic Degeneration in Language Models</a>. <em>Samuel
+Gehman et al</em>. Findings of EMNLP, 2020.</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2109.07445.pdf">Challenges in
+Detoxifying Language Models</a>. <em>Johannes Welbl et al.</em> EMNLP
+2021.</li>
+</ul>
+<p>Disinformation:</p>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/40F27F0661B839FA47375F538C19FA59/S2052263020000378a.pdf/all-the-news-thats-fit-to-fabricate-ai-generated-text-as-a-tool-of-media-misinformation.pdf">All
+the News That’s Fit to Fabricate: AI-Generated Text as a Tool of Media
+Misinformation</a>. <em>Sarah Kreps et al.</em> Journal of Experimental
+Political Science, 2020.</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1908.09203.pdf">Release Strategies
+and the Social Impacts of Language Models</a>. <em>Irene Solaiman et
+al.</em>. 2019.</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2009.06807.pdf">The Radicalization
+Risks of GPT-3 and Advanced Neural Language Models</a>. <em>Kris
+McGuffie, Alex Newhouse</em>. 2020.</li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1905.12616.pdf">Defending Against
+Neural Fake News</a>. <em>Rowan Zellers et al.</em>. NeurIPS 2019.
+Trained <strong>Grover</strong> to generate and detect fake news.</li>
+<li><a
+target="_blank" rel="noopener" href="https://cset.georgetown.edu/wp-content/uploads/CSET-Truth-Lies-and-Automation.pdf">Truth,
+Lies, and Automation</a>. <em>Ben Buchanan, Andrew Lohn, Micah Musser,
+Katerina Sedova.</em> CSET report, 2021.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2023/09/12/Large-lm-2-Capacity/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -363,14 +695,14 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>16k</span>
+              <span>14k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>14 mins.</span>
+              <span>12 mins.</span>
             </span>
 
         </div>
@@ -382,11 +714,20 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h1>
-<p>本笔记是 <code>DataWhale</code> 2023年 <code>09</code> 月 <code>简单学点大模型</code> 项目的学习笔记。原项目地址：<a target="_blank" rel="noopener" href="https://github.com/datawhalechina/so-large-lm">Clike here</a>。</p>
-<h2 id="11-语言模型-language-model-lm"><a class="markdownIt-Anchor" href="#11-语言模型-language-model-lm"></a> 1.1 语言模型 (Language Model, LM)</h2>
-<h3 id="111-定义"><a class="markdownIt-Anchor" href="#111-定义"></a> 1.1.1 定义</h3>
-<p>语言模型是对令牌序列 <code>token</code> 的概率分布。假设有一个令牌集的词汇表 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span></span></span></span>。语言模型 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span> 为每个令牌序列 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>L</mi></msub><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">x_{1},...,x_{L} \in V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span></span></span></span>分配一个概率（0和1之间）：</p>
+          <h1 id="introduction">1. Introduction</h1>
+<p>本笔记是 <code>DataWhale</code> 2023年 <code>09</code> 月
+<code>简单学点大模型</code> 项目的学习笔记。原项目地址：<a
+target="_blank" rel="noopener" href="https://github.com/datawhalechina/so-large-lm">Clike
+here</a>。</p>
+<h2 id="语言模型-language-model-lm">1.1 语言模型 (Language Model,
+LM)</h2>
+<h3 id="定义">1.1.1 定义</h3>
+<p>语言模型是对令牌序列 <code>token</code>
+的概率分布。假设有一个令牌集的词汇表 <span
+class="math inline">\(V\)</span>。语言模型 <span
+class="math inline">\(p\)</span> 为每个令牌序列 <span
+class="math inline">\(x_{1},...,x_{L} \in
+V\)</span>分配一个概率（0和1之间）：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/09/11/Large-lm-1-Introduction/#more" rel="contents">
@@ -470,14 +811,14 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>27k</span>
+              <span>26k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>24 mins.</span>
+              <span>23 mins.</span>
             </span>
 
         </div>
@@ -489,13 +830,19 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-preface"><a class="markdownIt-Anchor" href="#0-preface"></a> 0. Preface</h1>
+          <h1 id="preface">0. Preface</h1>
 <blockquote>
-<p>Most folks are as happy as they make up their minds to be.<br />
-— <cite>Abraham Lincoln</cite></p>
+<p>Most folks are as happy as they make up their minds to be. —
+<cite>Abraham Lincoln</cite></p>
 </blockquote>
-<p>本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第三篇—— 多层感知机。</p>
-<p>本文是学习李沐老师 B 站视频教程 <a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">动手学深度学习 PyTorch版</a> 所记录的笔记。主要使用 <code>Obsidian</code> 软件并借助插件 <code>Meida extended</code> 插件，在 markdown 文件中生成时间戳，可以在后期温习笔记时，方便地定位到原视频所在位置。</p>
+<p>本系列博文是 DataWhale 社区 2023年
+3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第三篇——
+多层感知机。</p>
+<p>本文是学习李沐老师 B 站视频教程 <a
+target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">动手学深度学习
+PyTorch版</a> 所记录的笔记。主要使用 <code>Obsidian</code>
+软件并借助插件 <code>Meida extended</code> 插件，在 markdown
+文件中生成时间戳，可以在后期温习笔记时，方便地定位到原视频所在位置。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/03/21/dive-into-DL-3-MLP/#more" rel="contents">
@@ -579,14 +926,14 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>37k</span>
+              <span>34k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>33 mins.</span>
+              <span>31 mins.</span>
             </span>
 
         </div>
@@ -598,9 +945,15 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-preface"><a class="markdownIt-Anchor" href="#0-preface"></a> 0. Preface</h1>
-<p>本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第二篇—— 线性回归和Softmax回归。</p>
-<p>本文是学习李沐老师 B 站视频教程 <a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">动手学深度学习 PyTorch版</a> 所记录的笔记。主要使用 <code>Obsidian</code> 软件并借助插件 <code>Meida extended</code> 插件，在 markdown 文件中生成时间戳，可以在后期温习笔记时，方便地定位到原视频所在位置。</p>
+          <h1 id="preface">0. Preface</h1>
+<p>本系列博文是 DataWhale 社区 2023年
+3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第二篇——
+线性回归和Softmax回归。</p>
+<p>本文是学习李沐老师 B 站视频教程 <a
+target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">动手学深度学习
+PyTorch版</a> 所记录的笔记。主要使用 <code>Obsidian</code>
+软件并借助插件 <code>Meida extended</code> 插件，在 markdown
+文件中生成时间戳，可以在后期温习笔记时，方便地定位到原视频所在位置。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/03/21/dive-into-DL-2-Linear/#more" rel="contents">
@@ -684,14 +1037,14 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>30k</span>
+              <span>29k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>28 mins.</span>
+              <span>26 mins.</span>
             </span>
 
         </div>
@@ -703,9 +1056,15 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-preface"><a class="markdownIt-Anchor" href="#0-preface"></a> 0. Preface</h1>
-<p>本系列博文是 DataWhale 社区 2023年 3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第一篇—— 初识深度学习和预备知识整理。</p>
-<p>本文是学习李沐老师 B 站视频教程 <a target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">动手学深度学习 PyTorch版</a> 所记录的笔记。主要使用 <code>Obsidian</code> 软件并借助插件 <code>Meida extended</code> 插件，在 markdown 文件中生成时间戳，可以在后期温习笔记时，方便地定位到原视频所在位置。</p>
+          <h1 id="preface">0. Preface</h1>
+<p>本系列博文是 DataWhale 社区 2023年
+3月《动手学深度学习（Pytorch）》组队学习活动的笔记，本篇为系列笔记的第一篇——
+初识深度学习和预备知识整理。</p>
+<p>本文是学习李沐老师 B 站视频教程 <a
+target="_blank" rel="noopener" href="https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358497">动手学深度学习
+PyTorch版</a> 所记录的笔记。主要使用 <code>Obsidian</code>
+软件并借助插件 <code>Meida extended</code> 插件，在 markdown
+文件中生成时间戳，可以在后期温习笔记时，方便地定位到原视频所在位置。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/03/19/dive-into-DL-1-introduction/#more" rel="contents">
@@ -802,7 +1161,17 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文是《摄影入门：拍出美照超简单》书本的学习笔记，文字部分借助 <code>obsidian</code> + <code>Annotator</code> 插件（<code>Annotator</code> 介绍见 <a target="_blank" rel="noopener" href="https://github.com/elias-sundqvist/obsidian-annotator">obsidian-annotator</a>)，实现 <code>pdf</code> 文档标注及文字实时提取功能，能够将所有标注的文字提取到 <code>markdown</code> 文件中。图片部分借助 <code>Image auto upload plugin</code> 插件 （见 <a target="_blank" rel="noopener" href="https://github.com/renmu123/obsidian-image-auto-upload-plugin">Link</a> ）和 <code>PicGo</code> 实现图片自动上传到 <code>GitHub</code> 图床。然后借助 <code>python</code> 实现简单的文本内容提取，就可以得到纯净的笔记内容。</p>
+          <p>本文是《摄影入门：拍出美照超简单》书本的学习笔记，文字部分借助
+<code>obsidian</code> + <code>Annotator</code>
+插件（<code>Annotator</code> 介绍见 <a
+target="_blank" rel="noopener" href="https://github.com/elias-sundqvist/obsidian-annotator">obsidian-annotator</a>)，实现
+<code>pdf</code> 文档标注及文字实时提取功能，能够将所有标注的文字提取到
+<code>markdown</code> 文件中。图片部分借助
+<code>Image auto upload plugin</code> 插件 （见 <a
+target="_blank" rel="noopener" href="https://github.com/renmu123/obsidian-image-auto-upload-plugin">Link</a>
+）和 <code>PicGo</code> 实现图片自动上传到 <code>GitHub</code>
+图床。然后借助 <code>python</code>
+实现简单的文本内容提取，就可以得到纯净的笔记内容。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/20/Photography-is-simple/#more" rel="contents">
@@ -905,8 +1274,16 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-introduction"><a class="markdownIt-Anchor" href="#0-introduction"></a> 0. Introduction</h1>
-<p>本文是学习B站视频教程<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411L7EG/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1">【英语口语】连读教程 | 连音、变音、发音 | 逐字逐句讲解（中美外教教学）</a>所记录的笔记，借助插件 <a target="_blank" rel="noopener" href="https://gitee.com/fireworks99/bilibiliNoteExport">bilibiliNoteExport</a> 将B站的学习笔记导出成PDF，随后将其导出成 Word，将文中的图片提炼出来。然后拷贝B站的文字笔记到<code>Markdown</code> 文件（无法将图片复制出来），再通过编程的方式将提炼出来的图片与 <code>Markdown</code> 文件的图片进行关联，最终得到笔记的全部内容。</p>
+          <h1 id="introduction">0. Introduction</h1>
+<p>本文是学习B站视频教程<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411L7EG/?p=1&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1">【英语口语】连读教程
+| 连音、变音、发音 |
+逐字逐句讲解（中美外教教学）</a>所记录的笔记，借助插件 <a
+target="_blank" rel="noopener" href="https://gitee.com/fireworks99/bilibiliNoteExport">bilibiliNoteExport</a>
+将B站的学习笔记导出成PDF，随后将其导出成
+Word，将文中的图片提炼出来。然后拷贝B站的文字笔记到<code>Markdown</code>
+文件（无法将图片复制出来），再通过编程的方式将提炼出来的图片与
+<code>Markdown</code> 文件的图片进行关联，最终得到笔记的全部内容。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/15/English-Speaking/#more" rel="contents">
@@ -1009,7 +1386,14 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文是学习B站视频教程<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pv411H78e/?note=open&amp;p=1&amp;t=375&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1">从零开始手把手教你学摄影</a>所记录的笔记，借助插件 <a target="_blank" rel="noopener" href="https://gitee.com/fireworks99/bilibiliNoteExport">bilibiliNoteExport</a> 将B站的学习笔记导出成PDF，随后将其导出成 Word，将文中的图片提炼出来。然后拷贝B站的文字笔记到<code>Markdown</code> 文件（无法将图片复制出来），再通过编程的方式将提炼出来的图片与 <code>Markdown</code> 文件的图片进行关联，最终得到笔记的全部内容。</p>
+          <p>本文是学习B站视频教程<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1pv411H78e/?note=open&amp;p=1&amp;t=375&amp;vd_source=ed04dacb9e3f8845a9f0fa7b8130e4f1">从零开始手把手教你学摄影</a>所记录的笔记，借助插件
+<a
+target="_blank" rel="noopener" href="https://gitee.com/fireworks99/bilibiliNoteExport">bilibiliNoteExport</a>
+将B站的学习笔记导出成PDF，随后将其导出成
+Word，将文中的图片提炼出来。然后拷贝B站的文字笔记到<code>Markdown</code>
+文件（无法将图片复制出来），再通过编程的方式将提炼出来的图片与
+<code>Markdown</code> 文件的图片进行关联，最终得到笔记的全部内容。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/11/Photography/#more" rel="contents">
@@ -1093,7 +1477,7 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3.3k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -1112,117 +1496,15 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-introduction"><a class="markdownIt-Anchor" href="#0-introduction"></a> 0. Introduction</h1>
-<p>This is a learning notes for <em>English Grammar in Use</em>, Cambridge University Press. Let study together in the winter. Everyone can download the Ebook from the following link：</p>
-<p><a id="download" href="https://pan.baidu.com/s/1_m559V-Ho6L3lvOhKBugNw?pwd=bkgh" target="_blank"><i class="fa fa-download"></i><span> Download Now </span> </a></p>
+          <h1 id="introduction">0. Introduction</h1>
+<p>This is a learning notes for <em>English Grammar in Use</em>,
+Cambridge University Press. Let study together in the winter. Everyone
+can download the Ebook from the following link：</p>
+<p><a id="download" href="https://pan.baidu.com/s/1_m559V-Ho6L3lvOhKBugNw?pwd=bkgh" target="_blank"><i class="fa fa-download"></i><span>
+Download Now </span> </a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/08/Grammar-in-use-1/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2022/03/15/Tianchi-nlp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/YangSu.jpg">
-      <meta itemprop="name" content="YangSu">
-      <meta itemprop="description" content="A blog for recording learning notes...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="独孤诗人的学习驿站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/15/Tianchi-nlp/" class="post-title-link" itemprop="url">Tianchi-nlp</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-03-15 23:08:41" itemprop="dateCreated datePublished" datetime="2022-03-15T23:08:41+08:00">2022-03-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-26 22:38:09" itemprop="dateModified" datetime="2022-03-26T22:38:09+08:00">2022-03-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/DataWhale/" itemprop="url" rel="index"><span itemprop="name">DataWhale</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/DataWhale/TianChi/" itemprop="url" rel="index"><span itemprop="name">TianChi</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>28k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>25 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1 Introduction</h1>
-<h2 id="11-大赛概况"><a class="markdownIt-Anchor" href="#11-大赛概况"></a> 1.1 大赛概况</h2>
-<p>受疫情催化影响，近一年内全球电商及在线零售行业进入高速发展期。作为线上交易场景的重要购买入口，搜索行为背后是强烈的购买意愿，电商搜索质量的高低将直接决定最终的成交结果，因此在AI时代，如何通过构建智能搜索能力提升线上GMV转化成为了众多电商开发者的重要研究课题。<strong>本次比赛由阿里云天池平台和问天引擎联合举办，诚邀社会各界开发者参与竞赛，共建AI未来</strong>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/15/Tianchi-nlp/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1321,7 +1603,7 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.14165.pdf">GPT-3
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
