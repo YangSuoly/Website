@@ -24,30 +24,20 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Statement: This series of post records the personal notes and experiences of learning the BiliBili video tutorial &quot;Pytorch 入门学习&quot;, most of code and pictures are from the courseware PyTorch-Course. All">
+  <meta name="description" content="4. 大模型的数据 在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。 4.1 大预言模型背后的数据 为了训练大型语言模型，通常会使&quot;原始文本&quot;尽可能多地涵盖广泛的领域、类型、语言。  Common Crawl 一个非营利组织，它对网络进行爬取，并提供免费给公众的快照。由于其便利性，它已经成为许多模型如 T5、GPT-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pytorch-1-Introduction">
-<meta property="og:url" content="http://yangsuoly.com/2021/08/03/Pytorch-1-Introduction/index.html">
+<meta property="og:title" content="Large-lm-4-Data-and-Law">
+<meta property="og:url" content="http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="Statement: This series of post records the personal notes and experiences of learning the BiliBili video tutorial &quot;Pytorch 入门学习&quot;, most of code and pictures are from the courseware PyTorch-Course. All">
+<meta property="og:description" content="4. 大模型的数据 在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。 4.1 大预言模型背后的数据 为了训练大型语言模型，通常会使&quot;原始文本&quot;尽可能多地涵盖广泛的领域、类型、语言。  Common Crawl 一个非营利组织，它对网络进行爬取，并提供免费给公众的快照。由于其便利性，它已经成为许多模型如 T5、GPT-">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi7GEn.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi7VAI.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi7U3T.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi7agU.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi7e4P.md.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi7luQ.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/03/fi764x.png">
-<meta property="article:published_time" content="2021-08-03T10:28:34.000Z">
-<meta property="article:modified_time" content="2021-08-05T06:15:55.369Z">
+<meta property="article:published_time" content="2023-09-13T09:35:49.000Z">
+<meta property="article:modified_time" content="2023-09-13T11:51:24.388Z">
 <meta property="article:author" content="YangSu">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="Pytorch">
-<meta property="article:tag" content="Deep learning">
+<meta property="article:tag" content="LM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/03/fi7GEn.png">
 
-<link rel="canonical" href="http://yangsuoly.com/2021/08/03/Pytorch-1-Introduction/">
+<link rel="canonical" href="http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/">
 
 
 <script id="page-configurations">
@@ -60,7 +50,7 @@
   };
 </script>
 
-  <title>Pytorch-1-Introduction | 独孤诗人的学习驿站</title>
+  <title>Large-lm-4-Data-and-Law | 独孤诗人的学习驿站</title>
   
 
 
@@ -223,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2021/08/03/Pytorch-1-Introduction/">
+    <link itemprop="mainEntityOfPage" href="http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/YangSu.jpg">
@@ -236,7 +226,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pytorch-1-Introduction
+          Large-lm-4-Data-and-Law
         </h1>
 
         <div class="post-meta">
@@ -245,31 +235,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-08-03 18:28:34" itemprop="dateCreated datePublished" datetime="2021-08-03T18:28:34+08:00">2021-08-03</time>
+              <time title="Created: 2023-09-13 17:35:49 / Modified: 19:51:24" itemprop="dateCreated datePublished" datetime="2023-09-13T17:35:49+08:00">2023-09-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-05 14:15:55" itemprop="dateModified" datetime="2021-08-05T14:15:55+08:00">2021-08-05</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a>
+                  <a href="/Categories/DataWhale/" itemprop="url" rel="index"><span itemprop="name">DataWhale</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Notes/Python-module/" itemprop="url" rel="index"><span itemprop="name">Python module</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Categories/Notes/Python-module/Pytorch/" itemprop="url" rel="index"><span itemprop="name">Pytorch</span></a>
+                  <a href="/Categories/DataWhale/Large-LM/" itemprop="url" rel="index"><span itemprop="name">Large LM</span></a>
                 </span>
             </span>
 
@@ -286,14 +266,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3.2k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
+              <span>4 mins.</span>
             </span>
 
         </div>
@@ -305,149 +285,186 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Statement: This series of post records the personal notes and
-experiences of learning the <a
-target="_blank" rel="noopener" href="https://www.bilibili.com/">BiliBili</a> video tutorial <a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12741177Cu?p=1">"Pytorch
-入门学习"</a>, most of code and pictures are from the courseware <a
-target="_blank" rel="noopener" href="https://github.com/ZeweiChu/PyTorch-Course">PyTorch-Course</a>.
-All posted content is for personal study only, do not use for other
-purposes. If there is infringement, please contact
-<code>e-mail:yangsuoly@qq.com</code> to delete. <a id="more"></a></p>
-<h1 id="introduction-to-deep-learning-models">1. Introduction to deep
-learning models</h1>
-<h2 id="definition">1.1 Definition</h2>
-<p><strong>Q</strong>: What is machine learning?<br />
-<strong>A</strong>: Study of algorithms that: - Improve their
-<em>performance</em> P - At some <em>task</em> T - With
-<em>experience</em> E</p>
-<p><strong>Conclusion</strong>: Modeling, Inference, learning <img
-src="https://z3.ax1x.com/2021/08/03/fi7u38.png" /></p>
+        <h1 id="大模型的数据">4. 大模型的数据</h1>
+<p>在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。</p>
+<h2 id="大预言模型背后的数据">4.1 大预言模型背后的数据</h2>
+<p>为了训练大型语言模型，通常会使"原始文本"尽可能多地涵盖广泛的领域、类型、语言。</p>
 <ul>
-<li>Modeling: define score function</li>
-<li>Inference: solve argmax</li>
-<li>Learning: choose w</li>
-</ul>
-<p><span class="math display">\[ \text{classify} (x, w) =
-\mathop{\text{argmax}}\limits_{y} \  \text{score} (x, y, w)\]</span></p>
-<p><strong>Q</strong>: What is deep learning? <strong>A</strong>: <img
-src="https://z3.ax1x.com/2021/08/03/fi7KgS.md.png" /></p>
-<p><strong>Q</strong>: What is neural network? <strong>A</strong>: <img
-src="https://z3.ax1x.com/2021/08/03/fi7Mjg.png" /></p>
-<h2 id="activation-function">1.2 Activation function</h2>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7GEn.png" /></p>
-<h3 id="commonly-used-activation-functions">1.2.1 Commonly used
-activation functions:</h3>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/blob/master/en">Common
+Crawl</a></p>
+<p>一个非营利组织，它对网络进行爬取，并提供免费给公众的快照。由于其便利性，它已经成为许多模型如
+T5、GPT-3 和 Gopher 的标准数据源。例如，Common Crawl
+在2021年4月的快照就有 320TB 的数据，这比谷歌的索引小了好几个数量级。</p>
+<p>尽管网络数据丰富，但存在一些局限性 <a
+target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.1145/3442188.3445922">(Bender et
+al., 2021)</a>：</p>
 <ul>
-<li><p><span class="math inline">\(sigmoid\)</span>: <span
-class="math display">\[
-\sigma(x) = \frac{1}{1+e^{-x}}
-\]</span></p></li>
-<li><p><span class="math inline">\(tanh\)</span>: <span
-class="math display">\[
-tanh(x) = 2 \sigma(2x) - 1
-\]</span></p></li>
-<li><p><span class="math inline">\(ReLU\)</span>: <span
-class="math display">\[
-ReLU(x) = max(0, x)
-\]</span></p></li>
-<li><p><span class="math inline">\(Softmax\)</span>: <span
-class="math display">\[
-z_i \rightarrow \frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}}
-\]</span></p></li>
+<li><p>全球性失衡；</p></li>
+<li><p>发达国家用户为主；</p></li>
+<li><p><code>GPT-2</code> 的训练数据基于
+Reddit，美国Reddit用户中有67%是男性，64%的年龄在18到29岁之间
+（皮尤互联网研究调查，2016）。</p></li>
+<li><p>维基百科的编者中只有8.8-15%是女性。</p></li>
+<li><p>网络上的骚扰可能会让某些人群（如跨性别者、神经发育不同的人）产生排斥感。</p></li>
+<li><p>过滤"不良词汇"可能进一步边缘化某些人群（如LGBT+）。</p></li>
+</ul></li>
 </ul>
-<h3 id="code-implementation">1.2.2 Code implementation</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">x = torch.linspace(-<span class="number">5</span>, <span class="number">5</span>, <span class="number">200</span>)</span><br><span class="line">x = Variable(x)</span><br><span class="line">x_np = x.data.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># four activation function</span></span><br><span class="line">y_relu = F.relu(x).data.numpy()</span><br><span class="line">y_sigmoid = torch.sigmoid(x).data.numpy()</span><br><span class="line">y_tanh = F.tanh(x).data.numpy()</span><br><span class="line">y_softplus = F.softplus(x).data.numpy()</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>, figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plt.subplot(<span class="number">221</span>)</span><br><span class="line">plt.plot(x_np, y_relu, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;relu&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1</span>, <span class="number">5</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">222</span>)</span><br><span class="line">plt.plot(x_np, y_sigmoid, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;sigmoid&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">223</span>)</span><br><span class="line">plt.plot(x_np, y_tanh, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;tanh&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">1.2</span>, <span class="number">1.2</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">224</span>)</span><br><span class="line">plt.plot(x_np, y_softplus, c=<span class="string">&#x27;red&#x27;</span>, label=<span class="string">&#x27;softplus&#x27;</span>)</span><br><span class="line">plt.ylim((-<span class="number">0.2</span>, <span class="number">6</span>))</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>Result:</p>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7VAI.png" /></p>
-<h2 id="examples-of-nn">1.3 examples of NN</h2>
+<p>因此，我们的结论是：理解和记录用于训练大型语言模型的数据集的组成是至关重要的。</p>
+<h3 id="webtext-and-openwebtext-dataset">4.1.1 WebText and OpenWebText
+dataset</h3>
+<p>创建WebText的过程包括：抓取至少获得3个赞的所有外链，过滤掉维基百科以便在基于维基百科的基准测试中进行评估，最终得到了40GB的文本。</p>
+<p><a
+target="_blank" rel="noopener" href="https://skylion007.github.io/OpenWebTextCorpus/">OpenWebText数据集</a>
+在理念上复制了WebText的构建方法，目的是尽可能地模拟和复现WebText的数据特性和结构。这样，研究者就可以利用
+<code>OpenWebText</code> 来进行一些原本需要<code>WebText</code>
+数据集的实验和研究。</p>
 <ul>
-<li><p>Standard feedforward NN <img
-src="https://z3.ax1x.com/2021/08/03/fi71Bj.png" /></p></li>
-<li><p>Convolutional NN <img
-src="https://z3.ax1x.com/2021/08/03/fi7JNq.png" /></p></li>
-<li><p>Recurrent NN <img
-src="https://z3.ax1x.com/2021/08/03/fi7ZNt.png" /></p></li>
-<li><p>Seq2Seq with Attention <img
-src="https://z3.ax1x.com/2021/08/03/fi7Y40.png" />
-<strong>Reference</strong>: <a
-target="_blank" rel="noopener" href="https://arxiv.org/abs/1508.04025">Effective Approaches to
-Attention-based Neural Machine Translation</a></p></li>
+<li>OpenWebText 从 <a
+target="_blank" rel="noopener" href="https://files.pushshift.io/reddit/submissions/">Reddit提交的数据集</a>
+中提取所有URL，使用Facebook的 <a
+target="_blank" rel="noopener" href="https://github.com/facebookresearch/fastText">fastText</a>
+过滤掉非英语内容，删除近乎重复的内容，最终得到了38GB的文本。</li>
 </ul>
-<h1 id="introduction-to-pytorch">2. Introduction to PyTorch</h1>
-<h2 id="framework-for-deep-learning">2.1 Framework for deep
-learning</h2>
-<p><img src="https://z3.ax1x.com/2021/08/03/fi7U3T.png" /></p>
-<p>Difference between PyTorch and Tensorflow: - PyTorch: 动态计算图
-Dynamic Computation Graph - Tensorflow: 静态计算图 Static Computation
-Graph</p>
-<p>PyTorch 代码通俗易懂，非常接近 Python
-原生代码，不会让人感觉是完全在学习一门新的语言。拥有 Facebook
-支持，社区活跃。</p>
-<p><strong>Q</strong>: What does the PyTorch do? <strong>A</strong>:
-<img src="https://z3.ax1x.com/2021/08/03/fi7agU.png" /></p>
-<h2 id="some-interesting-project-with-pytorch">2.2. Some interesting
-project with PyTorch</h2>
+<h3 id="colossal-clean-crawled-corpusc4">4.1.2 Colossal Clean Crawled
+Corpus（C4）</h3>
+<p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/datasets/catalog/c4">C4语料库</a>
+被用来训练 <code>T5</code> 模型。这个语料库从2019年4月的 Common Crawl
+快照（1.4万亿个标记）开始，通过数据清洗之后，最终得到了
+<code>806GB</code> 的文本（1560亿个标记）。</p>
+<p><a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2104.08758.pdf">Dodge等人</a>在2021年对C4数据集进行了深入分析。分析主要涉及以下几个方面：</p>
 <ul>
-<li><p>ResNet <img src="https://z3.ax1x.com/2021/08/03/fi7e4P.md.png" />
-Image classification: <a
-target="_blank" rel="noopener" href="https://github.com/floydhub/imagenet">ResNet</a></p></li>
-<li><p>Object Detection <img
-src="https://z3.ax1x.com/2021/08/03/fi7n9f.md.png" /> Project address:
-<a target="_blank" rel="noopener" href="https://github.com/amdegroot/ssd.pytorch">Here</a></p></li>
-<li><p>Image Style Transfer <img
-src="https://z3.ax1x.com/2021/08/03/fi7Db9.md.png" /> Project address:
-<a
-target="_blank" rel="noopener" href="https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer">Here</a></p></li>
-<li><p>CycleGAN <img src="https://z3.ax1x.com/2021/08/03/fi7luQ.png" />
-Project address: <a
-target="_blank" rel="noopener" href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">Here</a></p></li>
-<li><p>Image Captioning <img
-src="https://z3.ax1x.com/2021/08/03/fi7sER.md.png" /> Project address:
-<a
-target="_blank" rel="noopener" href="https://github.com/ruotianluo/ImageCaptioning.pytorch">Here</a></p></li>
-<li><p>Sentiment Analysis <img
-src="https://z3.ax1x.com/2021/08/03/fi7dvF.png" /> Project address: <a
-target="_blank" rel="noopener" href="https://github.com/bentrevett/pytorch-sentiment-analysis">Here</a></p></li>
-<li><p>Question Answering <img
-src="https://z3.ax1x.com/2021/08/03/fi7yU1.png" /> Project address: <a
-target="_blank" rel="noopener" href="https://github.com/allenai/document-qa">Here</a></p></li>
-<li><p>Translation: OpenNMT-py <img
-src="https://z3.ax1x.com/2021/08/03/fi7BDJ.png" /> Project address: <a
-target="_blank" rel="noopener" href="https://github.com/OpenNMT/OpenNMT-py">Here</a></p></li>
-<li><p>ChatBot <img src="https://z3.ax1x.com/2021/08/03/fi764x.png" />
-Project address: <a
-target="_blank" rel="noopener" href="https://github.com/czs0x55aa/pytorch-chatbot">Here</a></p></li>
-<li><p>Deep Reinforcement Learning</p>
-<p>Project address: <a
-target="_blank" rel="noopener" href="https://github.com/jingweiz/pytorch-rl">Project 1</a>, <a
-target="_blank" rel="noopener" href="https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html">Project
-2</a></p></li>
+<li>元数据：来源，话语数据。</li>
+<li>包含的数据：由机器或人类创作的，社会偏见，数据污染。</li>
+<li>排除的数据：医疗或健康数据，人口身份。</li>
 </ul>
-<h2 id="how-to-learn-pytorch">2.3 How to learn PyTorch</h2>
-<ul>
-<li>Basics of deep learning;</li>
-<li>Pytorch official <a
-target="_blank" rel="noopener" href="https://pytorch.org/tutorials/">tutorial</a>;</li>
-<li>Learn tutorials on GitHub and various blogs;</li>
-<li>Documentation and <a
-target="_blank" rel="noopener" href="https://discuss.pytorch.org/">BBS</a></li>
-<li>Re-creat the open source PyTorch project;</li>
-<li>Read papers about deep learning model and implement them;</li>
-<li>Create your own model.</li>
-</ul>
-<h1 id="note-content">3. Note content</h1>
+<h3 id="benchmark的数据污染问题">4.1.3 Benchmark的数据污染问题</h3>
+<p>一般而言，在机器学习中，保证训练数据和测试数据的分离（我们称之为数据卫生）相对容易。但对于大型语言模型，训练数据和基准数据都源自互联网，要事先保证它们的完全分离就显得有些困难。</p>
+<p>以 <a target="_blank" rel="noopener" href="https://huggingface.co/datasets/xsum">XSum摘要</a>
+数据集为例，输入的是一段关于一个前阿森纳门将的介绍，而输出则是这位门将被任命为技术主管的新闻，细节如下面的例子。这就存在两种类型的污染。</p>
 <ol type="1">
-<li>Pytorch framework with autograd introduction, simple forward neural
-networks;</li>
-<li>Word vector;</li>
-<li>Image classification, CNN, Transfer learning;</li>
-<li>Language Model, Sentiment Classification, RNN, LSTM, GRU;</li>
-<li>Translation Model, Seq2Seq, Attention;</li>
-<li>Reading Comprehension, EIMo, BERT, GPT-2;</li>
-<li>ChatBot;</li>
-<li>GAN, Face generation, Style Transfer.</li>
+<li><p>输入和输出污染，即输入和输出都出现在训练数据中，其比例在 <span
+class="math inline">\(1.87\%\)</span> 至 <span
+class="math inline">\(24.88\%\)</span> 之间。</p></li>
+<li><p>输入在训练数据中出现，比如来自维基百科的QNLI数据集，这种污染的比例在
+<span class="math inline">\(1.8\%\)</span> 至<span
+class="math inline">\(53.6\%\)</span> 之间。</p></li>
 </ol>
+<p>例如：</p>
+<ul>
+<li><strong>Input</strong>: <em>The 48-year-old former Arsenal
+goalkeeper played for the Royals for four years. He was appointed youth
+academy director in 2000 and has been director of football since 2003. A
+West Brom statement said: “He played a key role in the Championship club
+twice winning promotion to the Premier League in 2006 and 2012.</em>
+<strong>Output</strong>: <em>West Brom have appointed Nicky Hammond as
+technical director, ending his 20-year association with
+Reading.</em></li>
+</ul>
+<p>此外，我们还要注意，这种数据污染并不是由于数据集的托管方式导致的，因为数据集通常会以JSON文件的形式存储，而不是网页。</p>
+<h3 id="gpt-3-的数据集">4.1.4 GPT-3 的数据集</h3>
+<p><img
+src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Large-LM/202309131909711.png" /></p>
+<p>GPT-3的数据集主要源自 Common Crawl，而 Common Crawl
+又类似于一个参考数据集——WebText。</p>
+<p>GPT-3 通过训练一个二元分类器来预测 WebText 与 Common Crawl
+的区别。如果预测文档更接近
+WebText，那么这个文档就有更大的概率被保留。在处理数据时，GPT-3
+采用了模糊去重的方法（检测13-gram重叠，如果在少于10个训练文档中出现，则移除窗口或文档），并从基准数据集中移除了数据。此外，GPT-3
+也扩大了数据来源的多样性（包括 WebText2、Books1、Books2
+以及维基百科)。在训练过程中，Common Crawl 被降采样，它在数据集中占
+82%，但只贡献了 60% 的数据。</p>
+<h3 id="the-pile数据集">4.1.5 The Pile数据集</h3>
+<p>然而，GPT-3也暗示了我们除了网络爬虫之外，也许还可以寻找其他更高质量的数据来源。EleutherAI（一个致力于构建开放语言模型的非营利组织）进一步推动了这个想法。他们发布了一种语言模型的数据集，名为The
+Pile，其核心理念是从较小的高质量数据源（如学术和专业资源）中获取数据。</p>
+<p>该数据集包含了 825GB
+的英文文本，由22个高质量数据集组成。当用这个数据集训练 GPT-2
+Pile（1.5B参数）并与用GPT-3数据集训练的GPT-3（175B参数）进行比较时，研究者们发现，The
+Pile包含了大量GPT-3数据集未能很好覆盖的信息。他们还分析了贬损内容、性别/宗教偏见等问题，结果与以前的研究大致相同。</p>
+<h2 id="数据集文档">4.2 数据集文档</h2>
+<p>在本文中，我们将深入探讨数据的一般原则，暂时不讨论语言模型数据集的具体内容。长期以来，人们都明白文档记录的重要性，然而在机器学习领域，这个过程往往被处理得较为随意。<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/1803.09010.pdf">Gebru et al.
+(2018)</a>在2018年发表的论文深刻影响了这一领域，他们提出了围绕文档的社区规范。<a
+target="_blank" rel="noopener" href="https://aclanthology.org/Q18-1041.pdf">Bender &amp; Friedman
+(2018)</a>
+在2018年的论文《数据声明》也提出了一个更适用于语言数据集的框架，这两个工作都在强调透明度。</p>
+<p>数据文档的主要目的有两个：</p>
+<ul>
+<li>让数据集的创建者有机会反思他们的决策，以及在创建数据集过程中可能产生的潜在危害，比如社会偏见；</li>
+<li>让数据集的使用者了解何时可以使用数据集，何时不应使用数据集。</li>
+</ul>
+<p>在整个数据集的生命周期中，我们需要考虑很多问题，比如：</p>
+<ul>
+<li>创建动机：谁是数据集的创建者，数据集的创建是由谁资助的；</li>
+<li>组成部分：数据集中的实例代表什么，是否有缺失信息，是否包含机密数据等；</li>
+<li>数据收集：每个实例的数据是如何获取的，谁参与了数据收集，他们是如何获得报酬的，以及是否进行了道德审查等；</li>
+<li>预处理、清理和标记：这些工作是否已经完成，是否有相应的软件可供使用；</li>
+<li>数据使用：数据集是否已经被用于某些任务，是否有不适合使用该数据集的任务；</li>
+<li>分发阶段：数据集将如何分发，是否有第三方对数据施加了知识产权或其他的限制；</li>
+<li>维护阶段：谁会负责维护数据集，数据集是否会更新。</li>
+</ul>
+<p>专门针对自然语言处理（NLP）数据集的工作，比如数据声明，还涵盖了其他方面，例如策划理念，语言多样性，说话人和注释者的人口统计学信息等。</p>
+<h1 id="大模型法律">5. 大模型法律</h1>
+<h2 id="简介">5.1 简介</h2>
+<p>在这个教程中，我们将探讨法律对大型语言模型的开发和部署有何规定。我们将会按照以下的步骤进行讨论：</p>
+<ol type="1">
+<li><p>新技术与现有法律的关系</p></li>
+<li><p>互联网的独特挑战</p></li>
+<li><p>法律与道德的区别</p></li>
+<li><p>法律的管辖权问题</p></li>
+<li><p>法律的类型</p></li>
+<li><p>大型语言模型</p></li>
+<li><p>数据</p></li>
+<li><p>应用</p></li>
+</ol>
+<h2 id="版权法">5.2 版权法</h2>
+<p>大型语言模型或任何机器学习模型，都是基于数据进行训练的，而这些数据是人类劳动的结果（例如，作者，程序员，摄影师等）。除了创作者外，其他人可以对这些创作（例如，书籍，代码，照片等）进行何种使用，属于知识产权法的范畴。</p>
+<ul>
+<li>知识产权法</li>
+</ul>
+<p>动机是鼓励创建各种类型的知识产品。如果任何人都可以利用你的辛勤劳动并从中获利，人们就会对创造或分享失去动力。知识产权包括：版权，专利，商标，商业秘密。</p>
+<ul>
+<li>许可</li>
+</ul>
+<p>许可（来自合同法）是由许可人授予许可使用者的。实际上，“许可就是承诺不起诉”。创作共享许可，允许免费分发版权作品。</p>
+<ul>
+<li><p>公平使用（第107条）</p>
+<p>自1840年代以来，公平使用一直是普通法。决定是否适用公平使用的四个因素是：</p>
+<ol type="1">
+<li>使用的目的和性质（教育用途优于商业用途，转型用途优于复制）；</li>
+<li>版权作品的性质（虚构作品优于事实作品，创新性的程度）；</li>
+<li>使用的原作部分的数量和实质性；和</li>
+<li>使用对原作市场（或潜在市场）的影响。</li>
+</ol></li>
+</ul>
+<h2 id="公平学习与机器学习">5.3 公平学习与机器学习</h2>
+<p>公平学习主张机器学习属于公平使用。机器学习系统的数据使用是变革性的，它不会改变作品，但会改变目的。</p>
+<ul>
+<li><p>将机器学习视为公平的论据：训练数据的广泛访问会为社会创造更好的系统。如果不允许使用，那么大部分作品无法用来产生新的价值。</p></li>
+<li><p>将机器学习视为不公平的论据：机器学习系统不会产生创意的“最终产品”，而只是赚钱。生成模型（例如，语言模型）可以与创意专业人士竞争。</p></li>
+</ul>
+<p>在版权法下，很难分离可保护的（例如，表达）和不可保护的（例如，想法）。</p>
+<h2 id="隐私法律教程">5.4 隐私法律教程</h2>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Clearview_AI">Clearview
+AI</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/California_Privacy_Rights_Act">伊利诺伊州生物识别信息隐私法（2008）</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/California_Consumer_Privacy_Act">加利福尼亚消费者隐私法案（2018）</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/California_Privacy_Rights_Act">加利福尼亚隐私权法案（2020）</a></p></li>
+</ul>
+<h2 id="法律条例">5.5 法律条例</h2>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR（欧盟一般数据保护条例）</a></p></li>
+<li><p>加利福尼亚的机器人披露法案：</p>
+<p>如果使用机器人与人进行通信，而不披露它是一个机器人，这是违法的。限制：只适用于激励销售或影响选举投票的情况。限制：只适用于每月在美国有1000万访问者的公开网站。</p></li>
+</ul>
+<h2 id="总结">5.6 总结</h2>
+<p>在我们训练大型语言模型时，必须面对版权和公平使用的问题。由于网络爬取的未筛选性质，你必须诉诸公平使用（从每个人那里获得许可证将非常困难）。模型的生成性可能会对争论公平使用提出挑战（可以与人类竞争）。在什么水平上进行调控（语言模型还是下游应用）是有意义的？这个领域正在迅速发展，需要深入的法律和人工智能专业知识才能做出明智的决定！</p>
 
     </div>
 
@@ -477,7 +494,7 @@ networks;</li>
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://yangsuoly.com/2021/08/03/Pytorch-1-Introduction/" title="Pytorch-1-Introduction">http://yangsuoly.com/2021/08/03/Pytorch-1-Introduction/</a>
+    <a href="http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/" title="Large-lm-4-Data-and-Law">http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/</a>
   </li>
 </ul>
 </div>
@@ -486,9 +503,7 @@ networks;</li>
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/Tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
-              <a href="/Tags/Pytorch/" rel="tag"><i class="fa fa-tag"></i> Pytorch</a>
-              <a href="/Tags/Deep-learning/" rel="tag"><i class="fa fa-tag"></i> Deep learning</a>
+              <a href="/Tags/LM/" rel="tag"><i class="fa fa-tag"></i> LM</a>
           </div>
 
         
@@ -497,13 +512,10 @@ networks;</li>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/06/19/DataAnalysis-Modeling/" rel="prev" title="DataAnalysis-Modeling">
-      <i class="fa fa-chevron-left"></i> DataAnalysis-Modeling
+    <a href="/2023/09/12/Large-lm-3-Shortcomings/" rel="prev" title="Large-lm-3-Shortcomings">
+      <i class="fa fa-chevron-left"></i> Large-lm-3-Shortcomings
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/08/04/Pytorch-2-Autogradient/" rel="next" title="Pytorch-2-Autogradient">
-      Pytorch-2-Autogradient <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -566,11 +578,9 @@ networks;</li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-to-deep-learning-models"><span class="nav-text">1. Introduction to deep
-learning models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition"><span class="nav-text">1.1 Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activation-function"><span class="nav-text">1.2 Activation function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#commonly-used-activation-functions"><span class="nav-text">1.2.1 Commonly used
-activation functions:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-implementation"><span class="nav-text">1.2.2 Code implementation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#examples-of-nn"><span class="nav-text">1.3 examples of NN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-to-pytorch"><span class="nav-text">2. Introduction to PyTorch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#framework-for-deep-learning"><span class="nav-text">2.1 Framework for deep
-learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some-interesting-project-with-pytorch"><span class="nav-text">2.2. Some interesting
-project with PyTorch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-learn-pytorch"><span class="nav-text">2.3 How to learn PyTorch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#note-content"><span class="nav-text">3. Note content</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-text">4. 大模型的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E9%A2%84%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-text">4.1 大预言模型背后的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webtext-and-openwebtext-dataset"><span class="nav-text">4.1.1 WebText and OpenWebText
+dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#colossal-clean-crawled-corpusc4"><span class="nav-text">4.1.2 Colossal Clean Crawled
+Corpus（C4）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#benchmark%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B1%A1%E6%9F%93%E9%97%AE%E9%A2%98"><span class="nav-text">4.1.3 Benchmark的数据污染问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gpt-3-%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">4.1.4 GPT-3 的数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-pile%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">4.1.5 The Pile数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%96%87%E6%A1%A3"><span class="nav-text">4.2 数据集文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%B3%95%E5%BE%8B"><span class="nav-text">5. 大模型法律</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">5.1 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9D%83%E6%B3%95"><span class="nav-text">5.2 版权法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%B9%B3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-text">5.3 公平学习与机器学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E7%A7%81%E6%B3%95%E5%BE%8B%E6%95%99%E7%A8%8B"><span class="nav-text">5.4 隐私法律教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%95%E5%BE%8B%E6%9D%A1%E4%BE%8B"><span class="nav-text">5.5 法律条例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">5.6 总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -815,7 +825,7 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://yangsuoly.com/2021/08/03/Pytorch-1-Introduction/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/',]
       });
       });
   </script>
