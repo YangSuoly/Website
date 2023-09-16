@@ -24,15 +24,15 @@
     var CONFIG = {"hostname":"yangsuoly.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="4. 大模型的数据 在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。 4.1 大语言模型背后的数据 为了训练大型语言模型，通常会使&quot;原始文本&quot;尽可能多地涵盖广泛的领域、类型、语言。  Common Crawl 一个非营利组织，它对网络进行爬取，并提供免费给公众的快照。由于其便利性，它已经成为许多模型如 T5、GPT-">
+  <meta name="description" content="4. 大模型的数据 在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Large-lm-4-Data-and-Law">
 <meta property="og:url" content="http://yangsuoly.com/2023/09/13/Large-lm-4-Data-and-Law/index.html">
 <meta property="og:site_name" content="独孤诗人的学习驿站">
-<meta property="og:description" content="4. 大模型的数据 在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。 4.1 大语言模型背后的数据 为了训练大型语言模型，通常会使&quot;原始文本&quot;尽可能多地涵盖广泛的领域、类型、语言。  Common Crawl 一个非营利组织，它对网络进行爬取，并提供免费给公众的快照。由于其便利性，它已经成为许多模型如 T5、GPT-">
+<meta property="og:description" content="4. 大模型的数据 在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-13T09:35:49.000Z">
-<meta property="article:modified_time" content="2023-09-14T02:21:45.973Z">
+<meta property="article:modified_time" content="2023-09-16T04:48:31.179Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="LM">
 <meta name="twitter:card" content="summary">
@@ -243,7 +243,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-09-14 10:21:45" itemprop="dateModified" datetime="2023-09-14T10:21:45+08:00">2023-09-14</time>
+                <time title="Modified: 2023-09-16 12:48:31" itemprop="dateModified" datetime="2023-09-16T12:48:31+08:00">2023-09-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -293,6 +293,7 @@
       
         <h1 id="大模型的数据">4. 大模型的数据</h1>
 <p>在之前的内容，我们讨论了大型语言模型的行为（能力和损害），本节将开始讨论模型的构建。我们知道，任何机器学习方法的起点都是训练数据。</p>
+<a id="more"></a>
 <h2 id="大语言模型背后的数据">4.1 大语言模型背后的数据</h2>
 <p>为了训练大型语言模型，通常会使"原始文本"尽可能多地涵盖广泛的领域、类型、语言。</p>
 <ul>
@@ -521,7 +522,10 @@ target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/General_Data_
     <a href="/2023/09/12/Large-lm-3-Shortcomings/" rel="prev" title="Large-lm-3-Shortcomings">
       <i class="fa fa-chevron-left"></i> Large-lm-3-Shortcomings
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/16/Large-lm-5-Framework/" rel="next" title="Large-lm-5-Framework">
+      Large-lm-5-Framework <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -602,7 +606,7 @@ Corpus（C4）</span></a></li><li class="nav-item nav-level-3"><a class="nav-lin
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
