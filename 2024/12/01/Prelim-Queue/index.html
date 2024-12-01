@@ -32,10 +32,10 @@
 <meta property="og:description" content="This blog is the learning notes for preparing the preliminary exams of Queue theory, referring to Fundamentals of queueing theory  Shortle, J. F., Thompson, J. M., Gross, D., &amp; Harris, C. M. (2018">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-01T03:30:10.000Z">
-<meta property="article:modified_time" content="2024-12-01T04:20:20.589Z">
+<meta property="article:modified_time" content="2024-12-01T04:46:05.975Z">
 <meta property="article:author" content="YangSu">
-<meta property="article:tag" content="Queue">
 <meta property="article:tag" content="OR">
+<meta property="article:tag" content="Queue">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yangsuoly.com/2024/12/01/Prelim-Queue/">
@@ -238,7 +238,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-12-01 11:30:10 / Modified: 12:20:20" itemprop="dateCreated datePublished" datetime="2024-12-01T11:30:10+08:00">2024-12-01</time>
+              <time title="Created: 2024-12-01 11:30:10 / Modified: 12:46:05" itemprop="dateCreated datePublished" datetime="2024-12-01T11:30:10+08:00">2024-12-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -356,8 +356,9 @@ regarding the possible size of the queue .</p>
 <p>Ultimately, the issue generally comes down to a trade-off between
 better customer service and the expense of providing more service
 capability, that is, determining the increase i ninvestment of service
-for a corresponding decrease in customer delay ## 1.2 Characteristics of
-Queueing System</p>
+for a corresponding decrease in customer delay</p>
+<h2 id="characteristics-of-queueing-system">1.2 Characteristics of
+Queueing System</h2>
 <p>A quantitative evaluation of a queueing system requires a
 mathematical characterization of the underlying processes. In many
 cases, six basic characteristics provide an adequate description of the
@@ -369,8 +370,9 @@ customers<br />
 channels<br />
 4. 排队规则 System capacity<br />
 5. 系统容量 Queue discipline<br />
-6. 服务阶段的数量 Number of service stages ### 1.2.1 Arrival Pattern of
-Customers</p>
+6. 服务阶段的数量 Number of service stages</p>
+<h3 id="arrival-pattern-of-customers">1.2.1 Arrival Pattern of
+Customers</h3>
 <p>A common arrival process is the Poisson pro-cess, which will be
 described in Section 2.2</p>
 <p>An arrivalpattern that does not change with time (i.e., the
@@ -383,19 +385,20 @@ customer is said to have balked. - <em>中途退出</em> （Reneged)</p>
 decide to leave. Inthis case, the customer is said to have reneged -
 <em>换队</em> (jockey)</p>
 <p>In the event that there are two or moreparallel waiting lines,
-customers may switch from one to another, that is, jockey forposition ##
-1.2.2 Service Patterns</p>
+customers may switch from one to another, that is, jockey
+forposition</p>
+<h2 id="service-patterns">1.2.2 Service Patterns</h2>
 <p>One generally thinks of one customer beingserved at a time by a given
 server, but there are many situations where customersmay be served
 simultaneously by the same server - <em>状态相依服务</em>
 (state-dependent service)</p>
 <p>The situation in which service depends on the number ofcustomers
-waiting is referred to as state-dependent service ### 1.2.3 Number of
-Servers</p>
+waiting is referred to as state-dependent service</p>
+<h3 id="number-of-servers">1.2.3 Number of Servers</h3>
 <p>Thus, when specifying the number ofparallel servers, we typically
 assume that the servers are fed by a single line. Also,it is generally
-assumed that the servers operate independently of each other. ### 1.2.4
-Queue Discipline</p>
+assumed that the servers operate independently of each other.</p>
+<h3 id="queue-discipline">1.2.4 Queue Discipline</h3>
 <p>Queue discipline refers to the manner in which customers are selected
 for servicewhen a queue has formed. 常见的排队规则： - <em>FCFS</em> :
 first come first served 先到先服务 - <em>LCFS</em> : last come first
@@ -411,12 +414,12 @@ andnonpreemptive. - 非抢占情形
 - 该顾客可以从被抢占的时刻继续接受服务； - 重新开始接受服务</p>
 <h3 id="system-capacity">1.2.5 System Capacity</h3>
 <p>These are referred to as finite queueingsituations; that is, there is
-a finite limit to the maximum system size. ### 1.2.6 Stages of
-Service</p>
+a finite limit to the maximum system size.</p>
+<h3 id="stages-of-service">1.2.6 Stages of Service</h3>
 <p>Recycling is commonin manufacturing processes, where quality control
 inspections are performed aftercertain stages, and parts that do not
-meet quality standards are sent back for repro-cessing. ### 1.2.7
-Notation</p>
+meet quality standards are sent back for repro-cessing.</p>
+<h3 id="notation">1.2.7 Notation</h3>
 <p>As shorthand for describing queueing processes, a notation has
 evolved, due for themost part to Kendall (1953), which is now rather
 standard throughout the queueingliterature A queueing process described
@@ -439,8 +442,8 @@ alt="Pasted image 20241010194614" />
 <span class="math inline">\(M/D/2/\infty/\text{FCFS}\)</span> 和 <span
 class="math inline">\(M/D/2\)</span> 表达的含义相同。</p>
 <p>Rather, M is used, standing for the Markovian or memoryless
-propertyof the exponential (described in Section 2.1) ### 1.2.8 Model
-Selection</p>
+propertyof the exponential (described in Section 2.1)</p>
+<h3 id="model-selection">1.2.8 Model Selection</h3>
 <p>If customers choose a checkout counter on a purely random basis
 (withoutregard to the queue length in front of each counter) and never
 switch lines (nojockeying), then we have c independent single-server
@@ -448,8 +451,8 @@ models.</p>
 <p>As jockeying is rather easy to accomplish in supermarkets, the
 c-servermodel with one queue may be more appropriate and realistic than
 c independentsingle-server models, which one might have been tempted to
-choose initially prior togiving much thought to the process. ### 1.3 The
-Experience of Waiting</p>
+choose initially prior togiving much thought to the process.</p>
+<h3 id="the-experience-of-waiting">1.3 The Experience of Waiting</h3>
 <p>This section summarizes several principles, proposed by Maister
 (1984),related to the experience or psychology of waiting. 1. Unoccupied
 time feels longer than occupied time. 2. Pre-process wait feels longer
@@ -483,14 +486,18 @@ W\)</span> 被定义为无穷极限； 2. 定理要求 <span
 class="math inline">\(\lambda\)</span> 和 <span
 class="math inline">\(W\)</span>
 有极限存在，这就排除了当时间无限增长时系统的指标无界的情况； 3.
-定理没有要求必须存在一个队列，但要求存在一个系统，顾客可以到达和离开该系统。
-### 1.4.1 Geometric Illustration of Little's Law</p>
+定理没有要求必须存在一个队列，但要求存在一个系统，顾客可以到达和离开该系统。</p>
+<h3 id="geometric-illustration-of-littles-law">1.4.1 Geometric
+Illustration of Little's Law</h3>
 <p>We now give a geometric “proof” of Little’s law. This is not a
 rigorous proof, butrather a rough argument showing the main ideas behind
-Little’s law. # 2. Review of Stochastic Processes</p>
+Little’s law.</p>
+<h1 id="review-of-stochastic-processes">2. Review of Stochastic
+Processes</h1>
 <p>This chapter provides an overview of key concepts in stochastic
-processes usedthroughout this text ## 2.1 The Exponential
-Distribution</p>
+processes usedthroughout this text</p>
+<h2 id="the-exponential-distribution">2.1 The Exponential
+Distribution</h2>
 <p>In queueing theory, the exponential distribution is often used to
 model the time until aparticular event occurs</p>
 <p>We will see (Section 2.2) that the exponential distribution isclosely
@@ -531,7 +538,8 @@ Pr\{ T_i = \min \{T_1, \cdots ,T_n\}\} = \frac{\lambda_i}{\lambda_1 +
 \]</span></p>
 <p>Theorem 2.5 Let T1,...,Tn be independent exponential random variables
 withrates λ1,...,λn, and let T = min{T1,...,Tn}. Then the event {Ti = T}
-isindependent of T ## 2.2 The Poisson Process</p>
+isindependent of T</p>
+<h2 id="the-poisson-process">2.2 The Poisson Process</h2>
 <p>The Poisson process is a common process for modeling arrivals to a
 queueing system.Intuitively, the process can be thought of describing
 events that occur “randomly” intime. - <em>Stochastic process</em>
@@ -579,8 +587,9 @@ process is thatthe outcomes of random observations of a stochastic
 process X(t) have the sameprobabilities as if the scans were taken at
 Poisson-selected points</p>
 <p>Theorem 2.10 (Splitting)</p>
-<p>Theorem 2.11 (Superposition) ### 2.2.1 Generalizations of the Poisson
-Process</p>
+<p>Theorem 2.11 (Superposition)</p>
+<h3 id="generalizations-of-the-poisson-process">2.2.1 Generalizations of
+the Poisson Process</h3>
 <p>The first generalization considered is a nonhomogeneous Poisson
 process (NHPP).A NHPP can be thought of as a Poisson process where the
 arrival rate λ is replaced bya time-dependent function λ(t)</p>
@@ -705,8 +714,9 @@ the basic laws of probability</p>
 equation)</li>
 </ul>
 <p>This is the matrix equivalent of thewell-known Chapman Kolmogorov
-(CK) equations for this Markov process ### 2.3.1 Properties of Markov
-Chains</p>
+(CK) equations for this Markov process</p>
+<h3 id="properties-of-markov-chains">2.3.1 Properties of Markov
+Chains</h3>
 <p>State <span class="math inline">\(j\)</span> is accessiblefrom state
 <span class="math inline">\(i (i \to j)\)</span> if there exists an n ≥
 0 such that <span class="math inline">\(p^{(n)}_{ij} &gt; 0\)</span>.
@@ -827,8 +837,8 @@ occurs</p>
 <p>The chain is irreducible and positive recurrent, so it has a unique
 solution tothe stationary equations.</p>
 <p>Theorem 2.14 An irreducible, aperiodic chain is positive recurrent if
-there exists anonnegative solution of the system ### 2.3.3
-Ergodicity</p>
+there exists anonnegative solution of the system</p>
+<h3 id="ergodicity">2.3.3 Ergodicity</h3>
 <p>Closely associated with the concepts of limiting and stationary
 distributions is theidea of ergodicity, which has to do with the
 information contained in one infinitelylong sample path of a process</p>
@@ -855,8 +865,9 @@ time average</p>
 <p>We now discuss the link between a limiting distribution, a stationary
 distribution, and ergodicity. Consider a DTMC that is irreducible and
 positive recurrent. Such a chain has a unique stationary distribution
-{<span class="math inline">\(π_i\)</span>} by Theorem 2.13 ## 2.4
-Continuous Time Markov Chains</p>
+{<span class="math inline">\(π_i\)</span>} by Theorem 2.13</p>
+<h2 id="continuous-time-markov-chains">2.4 Continuous Time Markov
+Chains</h2>
 <h3 id="embedded-markov-chains">2.4.1 Embedded Markov Chains</h3>
 <p>A (time-homogeneous) continuous-time Markov chain (CTMC) is a
 stochastic pro-<br />
@@ -892,8 +903,9 @@ looking at the state of the systemonly at certain selected times
 event is an arrival with probability λ/(λ+μ) and a service completion
 with probability μ/(λ+μ).</p>
 <p>More generally, there are some continuous-time processes that arenot
-CTMCs but still have embedded discrete-time Markov chains. ### 2.4.2
-Chapman-Kolmogoroc Equations</p>
+CTMCs but still have embedded discrete-time Markov chains.</p>
+<h3 id="chapman-kolmogoroc-equations">2.4.2 Chapman-Kolmogoroc
+Equations</h3>
 <p>For a DTMC, we were able to determine the n-step transition
 probabilities via theChapman–Kolmogorov equations.</p>
 <p>Theorem 2.15 Let <span class="math inline">\(p_i(t)\)</span> be the
@@ -929,14 +941,17 @@ a unique solution to the <strong>定理 2.16</strong>
 \]</span> 其中，<span class="math inline">\(0\)</span> 是零向量。</p>
 <p>Compared to a discrete-time chain (Theorem 2.13), aperiodicity is not
 required forthe limiting distribution to exist in a continuous-time
-Markov chain # 3. Simple Markovian Queueing Models</p>
+Markov chain</p>
+<h1 id="simple-markovian-queueing-models">3. Simple Markovian Queueing
+Models</h1>
 <p>Recall that a birth death process is a specific type
 ofcontinuous-time Markov chain whose structure leads to a
 straightforward solutionfor the steady-state probabilities {<span
 class="math inline">\(p_n\)</span>}</p>
 <p>Webegin with the general theory of birth death process. Then we apply
 these results toobtain measures of effectiveness for the queueing
-systems given above ## 3.1 Birth-Death Processes</p>
+systems given above</p>
+<h2 id="birth-death-processes">3.1 Birth-Death Processes</h2>
 <p>A birth death process consists of a set of states {0, 1, 2, . . . },
 typically denoting the“population" of some system <img
 src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Prelim/202412011132776.png"
@@ -1030,8 +1045,8 @@ the conditionthat ρ &lt; 1, or equivalently, λ &lt; μ .</p>
 <p>Finally, we note that for some models, it is relatively easy to find
 a closed expression for <span class="math inline">\(P(z)\)</span>, but
 quite difficult to find its series expansion to obtain the {<span
-class="math inline">\(p_n\)</span>} ### 3.2.4 Measures of
-Effectiveness</p>
+class="math inline">\(p_n\)</span>}</p>
+<h3 id="measures-of-effectiveness">3.2.4 Measures of Effectiveness</h3>
 <p>The steady-state probability distribution for the system size allows
 us to calculatethe system’s measures of effectiveness. -
 <em>系统中平均顾客数</em> <span class="math inline">\(L\)</span>
@@ -1158,8 +1173,8 @@ f(W_s) = (\mu-\lambda) e^{-(\mu-\lambda)t}
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/Tags/Queue/" rel="tag"><i class="fa fa-tag"></i> Queue</a>
               <a href="/Tags/OR/" rel="tag"><i class="fa fa-tag"></i> OR</a>
+              <a href="/Tags/Queue/" rel="tag"><i class="fa fa-tag"></i> Queue</a>
           </div>
 
         
@@ -1238,8 +1253,18 @@ f(W_s) = (\mu-\lambda) e^{-(\mu-\lambda)t}
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#measures-of-system-performance"><span class="nav-text">1.1 Measures of System
-Performance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#system-capacity"><span class="nav-text">1.2.5 System Capacity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#littles-law"><span class="nav-text">1.4 Little&#39;s Law</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discrete-time-markov-chains"><span class="nav-text">2.3 Discrete-Time Markov
-Chains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#long-run-behavior"><span class="nav-text">2.3.2 Long-Run Behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#embedded-markov-chains"><span class="nav-text">2.4.1 Embedded Markov Chains</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#embedded-markov-chains-1"><span class="nav-text">2.4.1 Embedded Markov Chains</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#long-run-behavior-1"><span class="nav-text">2.4.3 Long-Run Behavior</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#single-server-queues-mm1"><span class="nav-text">3.2 Single Server Queues (\(M&#x2F;M&#x2F;1\))</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E6%97%B6%E9%97%B4%E7%9A%84%E5%88%86%E5%B8%83"><span class="nav-text">3.2.5 等待时间的分布</span></a></li></ol></li></ol></li></ol></div>
+Performance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#characteristics-of-queueing-system"><span class="nav-text">1.2 Characteristics of
+Queueing System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#arrival-pattern-of-customers"><span class="nav-text">1.2.1 Arrival Pattern of
+Customers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-patterns"><span class="nav-text">1.2.2 Service Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#number-of-servers"><span class="nav-text">1.2.3 Number of Servers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#queue-discipline"><span class="nav-text">1.2.4 Queue Discipline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#system-capacity"><span class="nav-text">1.2.5 System Capacity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stages-of-service"><span class="nav-text">1.2.6 Stages of Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notation"><span class="nav-text">1.2.7 Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-selection"><span class="nav-text">1.2.8 Model Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-experience-of-waiting"><span class="nav-text">1.3 The Experience of Waiting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#littles-law"><span class="nav-text">1.4 Little&#39;s Law</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#geometric-illustration-of-littles-law"><span class="nav-text">1.4.1 Geometric
+Illustration of Little&#39;s Law</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#review-of-stochastic-processes"><span class="nav-text">2. Review of Stochastic
+Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-exponential-distribution"><span class="nav-text">2.1 The Exponential
+Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-poisson-process"><span class="nav-text">2.2 The Poisson Process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#generalizations-of-the-poisson-process"><span class="nav-text">2.2.1 Generalizations of
+the Poisson Process</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discrete-time-markov-chains"><span class="nav-text">2.3 Discrete-Time Markov
+Chains</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#properties-of-markov-chains"><span class="nav-text">2.3.1 Properties of Markov
+Chains</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#long-run-behavior"><span class="nav-text">2.3.2 Long-Run Behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ergodicity"><span class="nav-text">2.3.3 Ergodicity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continuous-time-markov-chains"><span class="nav-text">2.4 Continuous Time Markov
+Chains</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#embedded-markov-chains"><span class="nav-text">2.4.1 Embedded Markov Chains</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#embedded-markov-chains-1"><span class="nav-text">2.4.1 Embedded Markov Chains</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chapman-kolmogoroc-equations"><span class="nav-text">2.4.2 Chapman-Kolmogoroc
+Equations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#long-run-behavior-1"><span class="nav-text">2.4.3 Long-Run Behavior</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#simple-markovian-queueing-models"><span class="nav-text">3. Simple Markovian Queueing
+Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#birth-death-processes"><span class="nav-text">3.1 Birth-Death Processes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#single-server-queues-mm1"><span class="nav-text">3.2 Single Server Queues (\(M&#x2F;M&#x2F;1\))</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#measures-of-effectiveness"><span class="nav-text">3.2.4 Measures of Effectiveness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E6%97%B6%E9%97%B4%E7%9A%84%E5%88%86%E5%B8%83"><span class="nav-text">3.2.5 等待时间的分布</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

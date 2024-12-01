@@ -32,7 +32,7 @@
 <meta property="og:description" content="This blog is the learning notes for preparing the preliminary exams of Queue theory, referring to Introduction to operations research  Hillier, F. S., &amp; Lieberman, G. J. (2015). Introduction to op">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-01T02:20:28.000Z">
-<meta property="article:modified_time" content="2024-12-01T04:14:58.841Z">
+<meta property="article:modified_time" content="2024-12-01T04:45:14.981Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="OR">
 <meta name="twitter:card" content="summary">
@@ -237,7 +237,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-12-01 10:20:28 / Modified: 12:14:58" itemprop="dateCreated datePublished" datetime="2024-12-01T10:20:28+08:00">2024-12-01</time>
+              <time title="Created: 2024-12-01 10:20:28 / Modified: 12:45:14" itemprop="dateCreated datePublished" datetime="2024-12-01T10:20:28+08:00">2024-12-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -344,10 +344,13 @@ the examples in the book</p>
 calledInteractive Operations Research Tutorial, or IOR Tutorial for
 short.</p>
 <p>After many years, LINDO (and its companion modeling language LINGO)
-continuesto be a popular OR software package # 2. Overview of the
-Operations Research Modeling Approach</p>
+continuesto be a popular OR software package</p>
+<h1 id="overview-of-the-operations-research-modeling-approach">2.
+Overview of the Operations Research Modeling Approach</h1>
 <p>One way of summarizing the usual (overlapping) phases of an OR study
-is the following: ## 2.1 Defining the Problem and Gathering Data</p>
+is the following:</p>
+<h2 id="defining-the-problem-and-gathering-data">2.1 Defining the
+Problem and Gathering Data</h2>
 <p>It is difficult to extract a “right”answer from the “wrong”
 problem!</p>
 <p>Frequently, the report to management will identify a number of
@@ -359,8 +362,9 @@ benefits)</p>
 problem defini-tion.</p>
 <p>A number of studies of U.S. corporations have found that management
 tends toadopt the goal of satisfactory profits, combined with other
-objectives, instead of focusingon long-run profit maximization. ## 2.2
-Formulating a Mathematical Model</p>
+objectives, instead of focusingon long-run profit maximization.</p>
+<h2 id="formulating-a-mathematical-model">2.2 Formulating a Mathematical
+Model</h2>
 <p>Mathematical models are also idealized representations, but they are
 expressed in termsof mathematical symbols and expressions
 <strong>要素</strong>： - decision variables - objective function -
@@ -384,8 +388,9 @@ elaborate models that more nearly reflectthe complexity of the real
 problem.</p>
 <p>If there are multiple objectives, their respective measures commonly
 are thentransformed and combined into a composite measure, called the
-overall measure of performance ## 2.3 Deriving Solutions from the
-Model</p>
+overall measure of performance</p>
+<h2 id="deriving-solutions-from-the-model">2.3 Deriving Solutions from
+the Model</h2>
 <p>A common theme in OR is the search for an optimal, or best,
 solution.</p>
 <p>However, if the model is well for-mulated and tested, the resulting
@@ -417,8 +422,8 @@ analysis to determinewhich parameters of the model are most critical
 (the “sensitive parameters”) in determin-ing the solution</p>
 <p>Identifying the sensitive parameters is important, because this
 identifies the parameterswhose value must be assigned with special care
-to avoid distorting the output of the model. ## 2.4 Testing the
-Model</p>
+to avoid distorting the output of the model.</p>
+<h2 id="testing-the-model">2.4 Testing the Model</h2>
 <p>Eventually, after a long succession of improved models, theOR team
 concludes that the current model now is giving reasonably valid results.
 Althoughsome minor flaws undoubtedly remain hidden in the model (and may
@@ -431,8 +436,9 @@ are dimensionally consistent in the units used - 回溯检验</p>
 <p>A more systematic approach to testing the model is to use a
 retrospective test.</p>
 <p>On the other hand, a disadvantage of retrospective testing is that it
-uses the same datathat guided the formulation of the model. ## 2.5
-preparing to Apply the Model</p>
+uses the same datathat guided the formulation of the model.</p>
+<h2 id="preparing-to-apply-the-model">2.5 preparing to Apply the
+Model</h2>
 <p>an interactive computer-based system called a decision support system
 isinstalled to help managers use data and models to support (rather than
 replace) their decisionmaking as needed</p>
@@ -449,8 +455,9 @@ possible (i.e., optimal) way</p>
 <p>The adjective linear means that all the mathematical functions in
 this model are required to be linear functions</p>
 <p>The word programming does not refer here to computer
-programming;rather, it is essentially a synonym for planning # 4.
-Solving Linear Programming Problems: The Simplex Method</p>
+programming;rather, it is essentially a synonym for planning</p>
+<h1 id="solving-linear-programming-problems-the-simplex-method">4.
+Solving Linear Programming Problems: The Simplex Method</h1>
 <p>标准形式的线性规划问题： 1. <em>Maximization</em> 目标函数最大化 2.
 所有约束条件以 <span class="math inline">\(\leq\)</span> 连接 3.
 <em>Non-negativity</em> 所有变量取值为非负的形式； 4. 所有约束右端项
@@ -536,8 +543,8 @@ alt="Pasted image 20241013164051" />
 src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Prelim/202412011120507.png"
 alt="Pasted image 20241013163500" /> <img
 src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Prelim/202412011120508.png"
-alt="Pasted image 20241013164104" /> # 5. Theory of the Simple
-Method</p>
+alt="Pasted image 20241013164104" /></p>
+<h1 id="theory-of-the-simple-method">5. Theory of the Simple Method</h1>
 <h2 id="foundations-of-the-simplex-method">5.1 Foundations of the
 Simplex Method</h2>
 <p>A corner-point feasible (CPF) solution is a feasible solution that
@@ -549,8 +556,9 @@ solutio</p>
 只有有限个 CPF 解 3. 如果一个 CPF 解没有相邻 CPF 解比它更优（以 <span
 class="math inline">\(Z\)</span> 来衡量），那么就不存在任何更好的 CPF
 解。这样，假定这个问题至少有一个最优解（由问题具有可行解和一个有界的可行鱼来保证），这个
-CPF 解就是最优解（性质一）。 ## 5.2 The Simplex Method in Matrix
-Form</p>
+CPF 解就是最优解（性质一）。</p>
+<h2 id="the-simplex-method-in-matrix-form">5.2 The Simplex Method in
+Matrix Form</h2>
 <p>Using matrices, the standard form can be given by: <span
 class="math display">\[
 \max Z = cX
@@ -621,8 +629,10 @@ alt="Pasted image 20241013203651" /></p>
 associated with it another linear pro-gramming problem called the
 dual.</p>
 <p>The relationships between the dual problem and theoriginal problem
-(called the primal) prove to be extremely useful in a variety of ways ##
-6.1 The Essence of Duality Theory</p>
+(called the primal) prove to be extremely useful in a variety of
+ways</p>
+<h2 id="the-essence-of-duality-theory">6.1 The Essence of Duality
+Theory</h2>
 <p>Given our standard form for the primal problem at the left (perhaps
 after conversion fromanother form), its dual problem has the form shown
 to the right. <img
@@ -688,7 +698,9 @@ variablesin Table 6.7, the variables in the primal basic solution and
 the complementarydual basic solution satisfy the complementary slackness
 relationship shown inTable 6.8. Furthermore, this relationship is a
 symmetric one, so that these twobasic solutions are complementary to
-each other. ## 6.4 Adapting to Other Primal Forms</p>
+each other.</p>
+<h2 id="adapting-to-other-primal-forms">6.4 Adapting to Other Primal
+Forms</h2>
 <ul>
 <li>Sensible-odd-bizarre (大部分、小部分、极个别方法)</li>
 </ul>
@@ -710,9 +722,13 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Prelim/202412011120519.png"
 alt="Pasted image 20241014125018" />
 <figcaption aria-hidden="true">Pasted image 20241014125018</figcaption>
 </figure>
-<p><img
+<figure>
+<img
 src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Prelim/202412011120520.png"
-alt="Pasted image 20241014132130" /> # 13 nonlinear Programming</p>
+alt="Pasted image 20241014132130" />
+<figcaption aria-hidden="true">Pasted image 20241014132130</figcaption>
+</figure>
+<h1 id="nonlinear-programming">13 nonlinear Programming</h1>
 <p>Types of Nonliear Programming Problems - Unconstrained optimization -
 Minimize <span class="math inline">\(f(x)\)</span> for all values of
 <span class="math inline">\(x = (x_1 , x_2, \cdots, x_n )\)</span> - No
@@ -777,7 +793,10 @@ x_2 \leq 15
 0\)</span></p>
 <ol type="1">
 <li>Use the KKT conditions for this problem to derive an optimal
-solution. ### Solution for 5a Let <span class="math display">\[
+solution.</li>
+</ol>
+<h3 id="solution-for-5a">Solution for 5a</h3>
+<p>Let <span class="math display">\[
 \begin{align*}
 F(x) &amp;= f(x) -\alpha g(x_1) - \beta g(x_2)\\
 &amp;=24 x_1 - x_1^2 + 10 x_2 -x_2^2 -\alpha(x_1 -10) -\beta(x_2-15)
@@ -806,8 +825,7 @@ x_2 = 5\\
 \end{align*}
 \]</span> Thus, the optimal maximum results is <span
 class="math inline">\(f(x) = 24\times 10 - 10^2 + 10\times 5 - 5^2 =
-165\)</span></li>
-</ol>
+165\)</span></p>
 
     </div>
 
@@ -924,9 +942,18 @@ class="math inline">\(f(x) = 24\times 10 - 10^2 + 10\times 5 - 5^2 =
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-to-linear-programming"><span class="nav-text">3. Introduction to Linear
-Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#foundations-of-the-simplex-method"><span class="nav-text">5.1 Foundations of the
-Simplex Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-revised-simplex-method"><span class="nav-text">5.4 The Revised Simplex Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#duality-theory"><span class="nav-text">6. Duality theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#prime-dual-relationship"><span class="nav-text">6.3 Prime-Dual Relationship</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sensitive-analysis"><span class="nav-text">6.7 Sensitive Analysis</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#overview-of-the-operations-research-modeling-approach"><span class="nav-text">2.
+Overview of the Operations Research Modeling Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#defining-the-problem-and-gathering-data"><span class="nav-text">2.1 Defining the
+Problem and Gathering Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#formulating-a-mathematical-model"><span class="nav-text">2.2 Formulating a Mathematical
+Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deriving-solutions-from-the-model"><span class="nav-text">2.3 Deriving Solutions from
+the Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#testing-the-model"><span class="nav-text">2.4 Testing the Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#preparing-to-apply-the-model"><span class="nav-text">2.5 preparing to Apply the
+Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction-to-linear-programming"><span class="nav-text">3. Introduction to Linear
+Programming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solving-linear-programming-problems-the-simplex-method"><span class="nav-text">4.
+Solving Linear Programming Problems: The Simplex Method</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#theory-of-the-simple-method"><span class="nav-text">5. Theory of the Simple Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#foundations-of-the-simplex-method"><span class="nav-text">5.1 Foundations of the
+Simplex Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-simplex-method-in-matrix-form"><span class="nav-text">5.2 The Simplex Method in
+Matrix Form</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-revised-simplex-method"><span class="nav-text">5.4 The Revised Simplex Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#duality-theory"><span class="nav-text">6. Duality theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-essence-of-duality-theory"><span class="nav-text">6.1 The Essence of Duality
+Theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prime-dual-relationship"><span class="nav-text">6.3 Prime-Dual Relationship</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adapting-to-other-primal-forms"><span class="nav-text">6.4 Adapting to Other Primal
+Forms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sensitive-analysis"><span class="nav-text">6.7 Sensitive Analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nonlinear-programming"><span class="nav-text">13 nonlinear Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#solution-for-5a"><span class="nav-text">Solution for 5a</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

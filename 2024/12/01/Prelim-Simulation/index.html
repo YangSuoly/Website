@@ -32,7 +32,7 @@
 <meta property="og:description" content="This blog is the learning notes for preparing the preliminary exams of Queue theory, referring to Simulation modeling and analysis  Law, A. M., Kelton, W. D., &amp; Kelton, W. D. (2014). Simulation mo">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-01T02:25:04.000Z">
-<meta property="article:modified_time" content="2024-12-01T04:15:31.493Z">
+<meta property="article:modified_time" content="2024-12-01T04:46:52.748Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="Simulation">
 <meta name="twitter:card" content="summary">
@@ -237,7 +237,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-12-01 10:25:04 / Modified: 12:15:31" itemprop="dateCreated datePublished" datetime="2024-12-01T10:25:04+08:00">2024-12-01</time>
+              <time title="Created: 2024-12-01 10:25:04 / Modified: 12:46:52" itemprop="dateCreated datePublished" datetime="2024-12-01T10:25:04+08:00">2024-12-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -366,7 +366,9 @@ complicated one</p>
 <p>Perspectives on the historical evolution of simulation modeling may
 be found in Nance and Sargent (2002).</p>
 <p>All of the computer code shown in this chapter can be downloaded from
-www.mhhe.com/law. ## 1.2 Systems, Models, and Simulation</p>
+www.mhhe.com/law.</p>
+<h2 id="systems-models-and-simulation">1.2 Systems, Models, and
+Simulation</h2>
 <p><em>系统分类</em>： -
 离散系统：状态变量在一些离散时间点上瞬时变化的系统； -
 连续系统：状态变量随时间变化而变化的系统。</p>
@@ -391,8 +393,8 @@ Stochastic Simulation Models) - <em>连续的</em>与<em>离散</em>仿真模型
 (Continuous vs. Discrete Simulation Models).</p>
 <p><em>The disadvantage of simulation</em>: Stochastic simulation models
 produce output that is itself random, and must therefore be treated as
-only an estimate of the true characteristics of the model; ## 1.3
-Discrete Event Simulation</p>
+only an estimate of the true characteristics of the model;</p>
+<h2 id="discrete-event-simulation">1.3 Discrete Event Simulation</h2>
 <p>Discrete-event simulation concerns the modeling of a system as it
 evolves over time by a representation in which the state variables
 change instantaneously at separate points in time.</p>
@@ -440,8 +442,9 @@ served), denoted by q(n),</p>
 time during the simulation [from time 0 to time T(n)]</p>
 <p>To recap, the three measures of performance are the average delay in
 queue dˆ(n), the time-average number of customers in queue qˆ (n), and
-the proportion of time the server is busy uˆ (n). ## 1.5 Simulation of
-An Inventory System</p>
+the proportion of time the server is busy uˆ (n).</p>
+<h2 id="simulation-of-an-inventory-system">1.5 Simulation of An
+Inventory System</h2>
 <h2
 id="paralleldistributed-simulation-and-the-high-level-architecture">1.6
 Parallel/Distributed Simulation and The High Level Architecture</h2>
@@ -466,14 +469,19 @@ widespread appeal are the following.</p>
 accurately described by a mathematical model that can be evaluated
 analytically</p>
 <p>Simulation is not without its drawbacks. Some disadvantages are as
-follows # 2. Chapter 2 Modeling Complex Systems</p>
+follows</p>
+<h1 id="chapter-2-modeling-complex-systems">2. Chapter 2 Modeling
+Complex Systems</h1>
 <p>Most real-world systems, however, are quite complex, and coding them
-without supporting software can be a diffi cult and time-consuming task
-## 2.2 List Processing in Simulation</p>
+without supporting software can be a diffi cult and time-consuming
+task</p>
+<h2 id="list-processing-in-simulation">2.2 List Processing in
+Simulation</h2>
 <p>two approaches to storing lists of records in a computer—sequential
 and linked allocation <em>存储记录表的两种方式</em>： - 顺序分配
-(Sequential allocation) - 链式分配 (Linked allocation) # 3. Simulation
-Software ## 3.1 Introduction</p>
+(Sequential allocation) - 链式分配 (Linked allocation)</p>
+<h1 id="simulation-software">3. Simulation Software</h1>
+<h2 id="introduction">3.1 Introduction</h2>
 <p>several features needed in programming most discrete-event simulation
 models, including: several features needed in programming most
 discrete-event simulation models, including: •</p>
@@ -491,19 +499,24 @@ records to, or deleting records from a list
 reporting the results (搜集输出统计信息并生成结果报告)； - Detecting
 error conditions (探测错误发生的条件)。</p>
 <p>Section 3.5 gives brief descriptions of Arena, ExtendSim, and Simio,
-which are popular general-purpose simulation packages ## 3.3
-Classification of Simulation Software</p>
+which are popular general-purpose simulation packages</p>
+<h2 id="classification-of-simulation-software">3.3 Classification of
+Simulation Software</h2>
 <p>There are two main types of simulation packages for discrete-event
 simulation, namely, general-purpose simulation software and
 application-oriented simulation software.</p>
 <p>e used the event-scheduling approach to discrete-event simulation
-modeling # 4. Review of Basic Probability and Statistics ## 4.1
-Introduction</p>
+modeling</p>
+<h1 id="review-of-basic-probability-and-statistics">4. Review of Basic
+Probability and Statistics</h1>
+<h2 id="introduction-1">4.1 Introduction</h2>
 <p>The use of probability and statistics is such an integral part of a
 simulation study</p>
 <p>In this chapter we establish statistical notation used throughout the
 book and review some basic probability and statistics particularly
-relevant to simulation. ## 4.2 Random Variables and Their Properties</p>
+relevant to simulation.</p>
+<h2 id="random-variables-and-their-properties">4.2 Random Variables and
+Their Properties</h2>
 <p><strong>Notations</strong>: - Sample space <span
 class="math inline">\(S\)</span>: The set of all possible outcomes of an
 experiment - Random variable: a function (or rule) that assigns a real
@@ -650,7 +663,9 @@ class="math display">\[
 \rho_j=\frac{C_{i, i+j}}{\sqrt{\sigma_i^2
 \sigma_{i+j}^2}}=\frac{C_j}{\sigma^2}=\frac{C_j}{C_0} \quad \text { for
 } j=0,1,2, \ldots
-\]</span> ## 4.4 Estimation of Means, Variances, and Correlations</p>
+\]</span></p>
+<h2 id="estimation-of-means-variances-and-correlations">4.4 Estimation
+of Means, Variances, and Correlations</h2>
 <p>our primary objec-tive is to estimate m; For IID random variables -
 Sample mean <span class="math display">\[
 \bar{X}(n)=\frac{\sum\limits_{i=1}^nX_i}{n}
@@ -681,8 +696,9 @@ variance</p>
 </ul>
 <p>covariance-stationary stochastic process</p>
 <p>there are two sources of error: the bias in S 2(n) as an estimator of
-s2 and the negligence of the correlation terms ## 4.5 Confidence
-Intervals and Hypothesis Tests for the Mean</p>
+s2 and the negligence of the correlation terms</p>
+<h2 id="confidence-intervals-and-hypothesis-tests-for-the-mean">4.5
+Confidence Intervals and Hypothesis Tests for the Mean</h2>
 <p>standard normal random variable; - <em>Standard normal random
 variable</em>: <span class="math display">\[
 \Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^z e^\frac{-y^2
@@ -730,11 +746,13 @@ detail required by a simulation model
 在模型中不要有比解决关注的问题所必须的更多细节，前提是模型必须足够详细保证其是可信的；
 - 模型的详细程度应该与可用数据的类型相一致； -
 在实际的所有仿真研究中，时间和经费约束是确定模型详细程度的主要因素； -
-如果要研究的因素过多，则使用一个“粗”仿真模型或者一个解析模型来识别哪些因素对于系统性能有重大影响。
-## 5.3 Verification of Simulation Computer Programs</p>
+如果要研究的因素过多，则使用一个“粗”仿真模型或者一个解析模型来识别哪些因素对于系统性能有重大影响。</p>
+<h2 id="verification-of-simulation-computer-programs">5.3 Verification
+of Simulation Computer Programs</h2>
 <p>In this section we discuss eight techniques that can be used to debug
-the computer program of a simulation model ## 5.4 Techniques for
-Increasing Model Validity and Credibility</p>
+the computer program of a simulation model</p>
+<h2 id="techniques-for-increasing-model-validity-and-credibility">5.4
+Techniques for Increasing Model Validity and Credibility</h2>
 <p>Collect High-Quality Information and Data on the System Collect
 High-Quality Information and Data on the System: - Conversations with
 subject-matter experts - Observations of the system - Existing theory -
@@ -761,8 +779,9 @@ href="Prelim-Simulation#6.2%20Useful%20Probability%20Distributions">Sec
 一个理论分布形式，例如指数分布或者泊松分布，并进行假设检验以确定你和的优良度。</p>
 <p>Two drawbacks of approach 1 are that the simulation can only
 reproduce what has happened historically and that there is seldom enough
-data to make all the de-sired simulation runs. ## 6.2 Useful Probability
-Distributions</p>
+data to make all the de-sired simulation runs.</p>
+<h2 id="useful-probability-distributions">6.2 Useful Probability
+Distributions</h2>
 <h3 id="parameterization-of-continuous-distributions">6.2.1
 Parameterization of Continuous Distributions</h3>
 <p>However, if the parameters are defi ned correctly, they can be
@@ -814,8 +833,9 @@ latter case is called grouped data or data in the form of a histogram.)
 <em>直方图形式数据</em> ）</p>
 <p>s is also the way we would like a con-tinuous distribution</p>
 <p>The random values generated from this distribution, however, will
-still be bounded both below (by a0) and above (by ak); ## 6.3 Techniques
-for Assessing Sample Independence</p>
+still be bounded both below (by a0) and above (by ak);</p>
+<h2 id="techniques-for-assessing-sample-independence">6.3 Techniques for
+Assessing Sample Independence</h2>
 <p>前文讨论的很多统计方法都有一个重要的假设， 那就是观测值 <span
 class="math inline">\(X_1, X_2, \cdots, X_n\)</span>
 是某个基本分布的独立的（或随机的）样本。例如最大似然估计（Seeing sec
@@ -848,8 +868,9 @@ X_i=X_j\)</span>）。对于离散数据来说，这个要求一般是不满足�
 about the distributions of the <span
 class="math inline">\(X_i\)</span>’s) statistical tests that can be used
 to test formally whether <span class="math inline">\(X_1, X_2, \cdots,
-X_n\)</span> are independent. ## 6.4 Activity 1: Hypothesizing Families
-of Distributions</p>
+X_n\)</span> are independent.</p>
+<h2 id="activity-1-hypothesizing-families-of-distributions">6.4 Activity
+1: Hypothesizing Families of Distributions</h2>
 <p>The fi rst step in selecting a particular input distribution is to
 decide what general families
 选择特定输入分布的第一步就是要决定哪些类常用分布形状上与其相似，而不考虑这些类别的具体参数值。</p>
@@ -870,12 +891,14 @@ class="math inline">\(\beta\)</span></p>
 class="math inline">\(\tau\)</span> plays the same role that the
 coefficient of variation does for a continuous distribution.</p>
 <p>The skewness <span class="math inline">\(\nu\)</span> is a measure of
-the symmetry of a distribution. ### 6.4.2 Histograms</p>
+the symmetry of a distribution.</p>
+<h3 id="histograms">6.4.2 Histograms</h3>
 <p>The quantile summary [see, for example, Tukey (1970)] is a synopsis
 of the sample that is useful for determining whether the underlying
 probability density function or probability mass function is symmetric
-or skewed to the right or to the left ## 6.5 Activity II: Estimation of
-Parameters</p>
+or skewed to the right or to the left</p>
+<h2 id="activity-ii-estimation-of-parameters">6.5 Activity II:
+Estimation of Parameters</h2>
 <ul>
 <li>Estimating the parameters from the data</li>
 </ul>
@@ -934,9 +957,11 @@ et al. (2013), Chapter 12]; see Cheng (2006) and Efron and Tibshirani
 (1993, 2001)] - 基于随机效用模型的快速方法 (Quick method based on a
 random-effects model) [Ankenman and Nelson (2012)]</p>
 <p>Unfortunately, most of these methods are reasonably complicated and
-make assumptions that may not always be satisfi ed in practice ## 6.6
+make assumptions that may not always be satisfi ed in practice</p>
+<h2
+id="activity-iii-determining-how-representative-the-fitted-distributions-are">6.6
 Activity III: Determining How Representative The Fitted Distributions
-Are</p>
+Are</h2>
 <p>After determining one or more probability distributions that might fi
 t our observed data in Activities I and II, we must now closely examine
 these distributions to see how well they represent the true underlying
@@ -950,8 +975,8 @@ plot）</p>
 of a histo-gram of the data with the mass function pˆ ( x) of a fi tted
 distribution</p>
 <p>quantile–quantile ( Q–Q) plot</p>
-<p>probability–probability (P–P) plot ### 6.6.2 Goodness-of-Fit
-Tests</p>
+<p>probability–probability (P–P) plot</p>
+<h3 id="goodness-of-fit-tests">6.6.2 Goodness-of-Fit Tests</h3>
 <p>A goodness-of-fit test is a statistical hypothesis test (see [[#4.5
 Confidence Intervals and Hypothesis Tests for the Mean|Sec. 4.5]]) that
 is used to assess formally whether the observations <span
@@ -982,8 +1007,11 @@ class="math inline">\(n\)</span>（在所有参数都已知的情况下）都是
 检验强；参见，例如，Stephens（1974）。</p>
 <p>Nevertheless, K-S tests do have some drawbacks, at least at present.
 Most seri-ously, their range of applicability is more limited than that
-for chi-square tests. ## 6.10 Specifying Multivariate Distributions
-Correlations, and Stochastic Processes</p>
+for chi-square tests.</p>
+<h2
+id="specifying-multivariate-distributions-correlations-and-stochastic-processes">6.10
+Specifying Multivariate Distributions Correlations, and Stochastic
+Processes</h2>
 <p>So far in this chapter we have considered only the specifi cation and
 estimation of the distribution of a single, univariate random variable
 at a time
@@ -1004,19 +1032,24 @@ distribution family involved (normal, lognormal, Johnson, or Bézier)
 determined the correlation between pairs of the component random
 variables in the vector, as well as their marginal distributions;</p>
 <p>We may want to allow for pos-sible correlation between various pairs
-of input random variables to our simulation model, ### 6.10.3 Specifying
-Stochastic Process</p>
+of input random variables to our simulation model,</p>
+<h3 id="specifying-stochastic-process">6.10.3 Specifying Stochastic
+Process</h3>
 <p>there are situations in which a sequence of input random vari-ables
 on the same phenomenon are appropriately modeled as being draws from the
 same (marginal) distribution, yet might exhibit some autocorrelation
 between themselves within the sequence 平稳随机过程： - AR 和 ARMA 过程
 - 伽马过程 - ARTA 过程 - VARTA 过程</p>
 <p>Standard autoregressive (AR) or autoregressive moving-average (ARMA)
-models, ## 6.11 Selecting a Distribution in the Absence of Data</p>
+models,</p>
+<h2 id="selecting-a-distribution-in-the-absence-of-data">6.11 Selecting
+a Distribution in the Absence of Data</h2>
 <p>In some simulation studies it may not be possible to collect data on
 the random variables of interest, so the techniques of Secs. 6.4 through
 6.6 are not applicable to the problem of selecting corresponding
-probability distributions. ## 6.12 Models of Arrival Processes</p>
+probability distributions.</p>
+<h2 id="models-of-arrival-processes">6.12 Models of Arrival
+Processes</h2>
 <p>We call the stochastic process {N(t), t $ 0} an arrival process
 since, - Arrival process</p>
 <h3 id="poisson-processes">6.12.1 Poisson Processes</h3>
@@ -1087,7 +1120,8 @@ t\)</span> 在 <span class="math inline">\([t, t+s]\)</span>
 <p>T H E O R E M 6 . 3 . If {N(t), t $ 0} is a nonstationary Poisson
 process with continuous expectation function L(t), then</p>
 <p>it does require somewhat arbitrary judgment about the boundaries and
-widths of the constant-rate time intervals ### 6.12.3 Batch Arrivals</p>
+widths of the constant-rate time intervals</p>
+<h3 id="batch-arrivals">6.12.3 Batch Arrivals</h3>
 <p>For some real-world systems, customers arrive in batches, or groups,
 so that property 1 of the Poisson process and of the nonstationary
 Poisson process is violated</p>
@@ -1098,8 +1132,9 @@ class="math inline">\(t\)</span></p>
 individual customers to arrive by time <span
 class="math inline">\(t\)</span>, and if <span
 class="math inline">\(B_i\)</span> is the number of customers in the
-<span class="math inline">\(i\)</span>th batch, ## 6.13 Assessing the
-Homogeneity of Different Data Sets</p>
+<span class="math inline">\(i\)</span>th batch,</p>
+<h2 id="assessing-the-homogeneity-of-different-data-sets">6.13 Assessing
+the Homogeneity of Different Data Sets</h2>
 <p>有时分析人员对一个随机现象独立地收集了 <span
 class="math inline">\(k\)</span>
 组观测值，他想知道这些数据集是否同质从而能合并。</p>
@@ -1108,8 +1143,9 @@ phenomenon in-dependently and would like to know whether these data sets
 are homogeneous and thus can be merged 本节讨论同质性的克鲁斯卡-沃尔斯
 (Kruskal-Wallis)
 假设检验。由于对数据的分布不做假设，这是非参数化检验。</p>
-<p>we discuss the Kruskal-Wallis hypothe-sis test for homogeneity. # 7.
-Random-Number Generators ## 7.1 Introduction</p>
+<p>we discuss the Kruskal-Wallis hypothe-sis test for homogeneity.</p>
+<h1 id="random-number-generators">7. Random-Number Generators</h1>
+<h2 id="introduction-2">7.1 Introduction</h2>
 <p>A simulation of any system or process in which there are inherently
 random components requires a method of generating or obtaining numbers
 that are random, in some sense.</p>
@@ -1165,8 +1201,10 @@ streams in some way, especially those generators included in modern
 simulation packages, satisfying point 4</p>
 <p>Unfortunately, there are also some generators that fail to satisfy
 the uniformity and independence criteria of point 1 above, which are
-absolutely necessary if one hopes to obtain correct simulation results.
-## 7.2 Linear Congruential Generators</p>
+absolutely necessary if one hopes to obtain correct simulation
+results.</p>
+<h2 id="linear-congruential-generators">7.2 Linear Congruential
+Generators</h2>
 <p>Many random-number generators in use today are linear congruential
 generators (LCGs), introduced by Lehmer (1951). 整数 <span
 class="math inline">\(Z_1, Z_2, \cdots\)</span>
@@ -1239,12 +1277,13 @@ facilities for separate streams, and portability (see Sec. 7.2.2).
 在上述定理中的条件 1，我们知道 <span
 class="math inline">\(c&gt;0\)</span> （称为混合 <code>LCG</code>）与
 <span class="math inline">\(c=0\)</span>（称为乘
-<code>LCG</code>）将会有不同的表现。 ### 7.2.1 Mixed Generators</p>
+<code>LCG</code>）将会有不同的表现。</p>
+<h3 id="mixed-generators">7.2.1 Mixed Generators</h3>
 <p>most computers and compilers have 32-bit words, the leftmost bit
 being a sign bit, so b 5 31 and m 5 231 . 2.1 billion</p>
 <p>choosing m 5 2b does allow us to avoid explicit division by m on most
-computers by taking advantage of integer overfl ow ### 7.2.2
-Multiplicative generators</p>
+computers by taking advantage of integer overfl ow</p>
+<h3 id="multiplicative-generators">7.2.2 Multiplicative generators</h3>
 <p>#乘法发生器 #乘LCG</p>
 <p>Multiplicative LCGs are advantageous in that the addition of <span
 class="math inline">\(c\)</span> is not needed, but they cannot have
@@ -1340,8 +1379,8 @@ for sample sizes that are much smaller than the period of the generator
 <h2 id="other-kinds-of-generators">7.3 Other Kinds of Generators</h2>
 <p>Although LCGs are probably the most widely used and best understood
 kind of random-number generator, there are many alternative types.
-开发其他类型发生器的主要目的是要得到更长的周期和更好的统计特性。 ###
-7.3.1 More General Congruences</p>
+开发其他类型发生器的主要目的是要得到更长的周期和更好的统计特性。</p>
+<h3 id="more-general-congruences">7.3.1 More General Congruences</h3>
 <p>LCGs can be thought of as a special case of generators defined
 by:</p>
 <p><span class="math display">\[
@@ -1356,7 +1395,8 @@ class="math inline">\(Z_j\)</span>'s.</p>
 generator</p>
 <p>A different choice of the function g is to maintain linearity but to
 use earlier Zj’s; this gives rise to generators called multiple
-recursive generators (MRGs) ### 7.3.2 Composite Generators</p>
+recursive generators (MRGs)</p>
+<h3 id="composite-generators">7.3.2 Composite Generators</h3>
 <p>Several researchers have developed methods that take two or more
 separate genera-tors and combine them in some way to generate the fi nal
 random numbers.
@@ -1366,8 +1406,9 @@ the cost of obtaining each <span class="math inline">\(U_i\)</span> is
 more than that of using one of the simple generators alone.</p>
 <p>Wichmann and Hill (1982) proposed the following idea for combining
 three generators, again striving for long period, portability, speed,
-and usability on small computers ### 7,3,3 Feedback Shift Register
-Generators</p>
+and usability on small computers</p>
+<h3 id="feedback-shift-register-generators">7,3,3 Feedback Shift
+Register Generators</h3>
 <ul>
 <li>线性反馈移位寄存器 (Linear feedback shift register, LFSR)</li>
 </ul>
@@ -1386,7 +1427,9 @@ class="math inline">\(A\)</span>, a TGFSR generator can have a maximum
 period of <span class="math inline">\(2^{ql}-1\)</span> as compared with
 <span class="math inline">\(2^{q}-1\)</span> for a GFSR generator (both
 require <span class="math inline">\(ql\)</span> bits to store the state
-of the generator). ## 7.4 Testing Random Number Generators</p>
+of the generator).</p>
+<h2 id="testing-random-number-generators">7.4 Testing Random Number
+Generators</h2>
 <p>As we have seen in Secs. 7.1 through 7.3, all random-number
 generators currently used in computer simulation are actually completely
 deterministic. Thus, we can only hope that the <span
@@ -1394,7 +1437,8 @@ class="math inline">\(U_i\)</span>’s generated appear as if they were
 IID <span class="math inline">\(U(0, 1)\)</span> random variates</p>
 <p>Before such a generator is actually used in a simulation, we strongly
 recommend that one identify exactly what kind of generator it is and
-what its nu-merical parameters are. ### 7.4.1Empirical Tests</p>
+what its nu-merical parameters are.</p>
+<h3 id="empirical-tests">7.4.1Empirical Tests</h3>
 <p>Perhaps the most direct way to test a generator is to use it to
 generate some <span class="math inline">\(U_i’\)</span>s, which are then
 examined statistically to see how closely they resemble IID <span
@@ -1444,12 +1488,14 @@ at its structure and defining constant</p>
 global; i.e., a genera-tor’s behavior over its entire cycle is
 examined.</p>
 <p>global tests have a natural appeal but do not generally indicate how
-well a specifi c segment of a cycle will behave ### 7.4.3 Some General
-Observations on Testing</p>
+well a specifi c segment of a cycle will behave</p>
+<h3 id="some-general-observations-on-testing">7.4.3 Some General
+Observations on Testing</h3>
 <p>One piece of advice that is often offered, however, is that a
 random-number generator should be tested in a way that is consistent
-with its intended use. # 8. Generating Random Variables ## 8.1
-Introduction</p>
+with its intended use.</p>
+<h1 id="generating-random-variables">8. Generating Random Variables</h1>
+<h2 id="introduction-3">8.1 Introduction</h2>
 <p>A simulation that has any random aspects at all must involve
 sampling, or generat-ing, random variates from probability
 distributions.</p>
@@ -1489,13 +1535,14 @@ random variates used in the simulation of the system(s) under study, and
 this synchronization is more easily accomplished for certain types of
 random-variate generation algorithms</p>
 <p>generat-ing correlated random variates and generating realizations of
-both stationary and non-stationary arrival processes ## 8.2 General
-Approaches to Generating Random Variates</p>
+both stationary and non-stationary arrival processes</p>
+<h2 id="general-approaches-to-generating-random-variates">8.2 General
+Approaches to Generating Random Variates</h2>
 <p>There are many techniques for generating random variates, and the
 particular algorithm used must, of course, depend on the distribution
 from which we wish to generate; however, nearly all these techniques can
-be classifi ed according to their theoretical basis ### 8.2.1 Inverse
-Transform</p>
+be classifi ed according to their theoretical basis</p>
+<h3 id="inverse-transform">8.2.1 Inverse Transform</h3>
 <p>Then an algorithm for generating a random variate <span
 class="math inline">\(X\)</span> having distribution function <span
 class="math inline">\(F\)</span> is as follows (recall that , <span
@@ -1564,14 +1611,16 @@ class="math inline">\(F^{-1}(U)\)</span>，由于无法以闭合形式写出所�
 <p>Despite these possible drawbacks, there are some important advantages
 in using the inverse-transform method.</p>
 <p>Then an algorithm for generating an X having dis-tribution function
-F* is as follows: ### 8.2.2 Composition</p>
+F* is as follows:</p>
+<h3 id="composition">8.2.2 Composition</h3>
 <p>The composition technique applies when the distribution function
 <span class="math inline">\(F\)</span> from which we wish to generate
 can be expressed as a convex combination of other distribution functions
 <span class="math inline">\(F_1, F_2, \cdots\)</span>. We would hope to
 be able to sample from the <span class="math inline">\(F_j\)</span>’s
 more easily than from the original <span
-class="math inline">\(F\)</span> ### 8.2.3 Convolution</p>
+class="math inline">\(F\)</span></p>
+<h3 id="convolution">8.2.3 Convolution</h3>
 <p>For several important distributions, the desired random variable
 <span class="math inline">\(X\)</span> can be expressed as a sum of
 other random variables that are IID and can be generated more readily
@@ -1584,14 +1633,16 @@ class="math inline">\(X\)</span> 的 <em>分布函数</em>
 可以表示为其他分布函数的 <em>（加权）和</em></p>
 <p>Convolution is really an example of a more general idea, that of
 transforming some intermediate random variates into a fi nal variate
-that has the desired distribu-tion; ### 8.2.4 Acceptance-Rejection</p>
+that has the desired distribu-tion;</p>
+<h3 id="acceptance-rejection">8.2.4 Acceptance-Rejection</h3>
 <p>前面三种方法（反变换法、组合法和卷积法）都是直接方法，即直接面对所要求的分布或随机变量。而可用于
 <em>直接方法无效或者效率不佳</em> 的情形的方法： - <em>舍取法</em>
 另外两种方法： - 均匀比法 - 特性法</p>
 <p>The principle of acceptance-rejection is quite general, and looking
 at the above algorithm in a slightly different way clarifi es how it can
-be extended to generation ## 8.3 Generating Continuous Random
-Variates</p>
+be extended to generation</p>
+<h2 id="generating-continuous-random-variates">8.3 Generating Continuous
+Random Variates</h2>
 <p>In this section we discuss particular algorithms for generating
 random variates from several commonly occurring continuous
 distributions;</p>
@@ -1623,7 +1674,9 @@ produced by a linear congruential generator (see Sec. 7.2), 极坐标法
 trigono-metric calculations and was described in Marsaglia and Bray
 (1964), has become known as the polar method 7. Lognormal</p>
 <p>8.3.7 Lognormal 8. Beta</p>
-<p>8.3.8 Beta ## 8.4 Generating Discrete Random Variates</p>
+<p>8.3.8 Beta</p>
+<h2 id="generating-discrete-random-variates">8.4 Generating Discrete
+Random Variates</h2>
 <p>discusses particular algorithms for generating random variates from
 various discrete distributions that might be useful in a simulation
 study</p>
@@ -1639,8 +1692,11 @@ Binomial 7. Poisson</p>
 <p>Although the alias method is limited to discrete random variables
 with a fi nite range, it can be used indirectly for discrete
 distributions with an infi nite range, such as the geometric, negative
-binomial, or Poisson ## 8.5 Generating Random Vectors, Correlated Random
-Variates, and Stochastic Processes</p>
+binomial, or Poisson</p>
+<h2
+id="generating-random-vectors-correlated-random-variates-and-stochastic-processes">8.5
+Generating Random Vectors, Correlated Random Variates, and Stochastic
+Processes</h2>
 <p>So far in this chapter we have really considered generation of only a
 single random variate at a time from various univariate distributions
 本章到目前为止，实际考虑的只是从各种 <em>单变量</em>
@@ -1693,11 +1749,12 @@ Processes</h2>
 </ol>
 <h1 id="output-data-analysis-for-a-single-system">9. Output Data
 Analysis for a Single System</h1>
-<h2 id="introduction">9.1 Introduction</h2>
+<h2 id="introduction-4">9.1 Introduction</h2>
 <p>As a matter of fact, a common mode of operation is to make a single
 simulation run of somewhat arbitrary length and then to treat the
-resulting simulation estimates as the “true” model characteristics. ##
-9.2 Transient and Steady-state Behavior of a Stochastic Process</p>
+resulting simulation estimates as the “true” model characteristics.</p>
+<h2 id="transient-and-steady-state-behavior-of-a-stochastic-process">9.2
+Transient and Steady-state Behavior of a Stochastic Process</h2>
 <p>For fixed <span class="math inline">\(y\)</span> and <span
 class="math inline">\(I\)</span>, the probabilities <span
 class="math inline">\(F_1(y|I), F_2(y|I ), \cdots\)</span> are just a
@@ -1738,8 +1795,9 @@ Y1, Y2, . . . does not have a steady-state distribution, and that there
 is no appropriate cycle defi -nition such that the corresponding process
 Y1C, Y2C, . . . has a steady-state distribu-tion</p>
 <p>In these cases, however, there will typically be a fi xed amount of
-data describing how input parameters change over time ## 9.4 Statistical
-Analysis for Terminating Simulations</p>
+data describing how input parameters change over time</p>
+<h2 id="statistical-analysis-for-terminating-simulations">9.4
+Statistical Analysis for Terminating Simulations</h2>
 <p>Suppose that we make <span class="math inline">\(n\)</span>
 independent replications of a terminating simulation, where each
 replication is terminated by the event <span
@@ -1868,23 +1926,57 @@ the <span class="math inline">\(X_j\)</span>’s</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-simulation-modeling"><span class="nav-text">1 Basic Simulation Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-nature-of-simulation"><span class="nav-text">1.1 The Nature of Simulation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simulation-of-a-single-server-queueing-system"><span class="nav-text">1.4 Simulation of
-a Single-server Queueing System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paralleldistributed-simulation-and-the-high-level-architecture"><span class="nav-text">1.6
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-simulation-modeling"><span class="nav-text">1 Basic Simulation Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-nature-of-simulation"><span class="nav-text">1.1 The Nature of Simulation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#systems-models-and-simulation"><span class="nav-text">1.2 Systems, Models, and
+Simulation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discrete-event-simulation"><span class="nav-text">1.3 Discrete Event Simulation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simulation-of-a-single-server-queueing-system"><span class="nav-text">1.4 Simulation of
+a Single-server Queueing System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simulation-of-an-inventory-system"><span class="nav-text">1.5 Simulation of An
+Inventory System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paralleldistributed-simulation-and-the-high-level-architecture"><span class="nav-text">1.6
 Parallel&#x2F;Distributed Simulation and The High Level Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#steps-in-a-sound-simulation-study"><span class="nav-text">1.7 Steps in a Sound
 Simulation Study</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#advantages-disadvantages-and-pitfalls-of-simulation"><span class="nav-text">1.8
-Advantages, Disadvantages and Pitfalls of Simulation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simulation-output-data-and-stochastic-process"><span class="nav-text">4.3 Simulation
-Output Data and Stochastic Process</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#building-valid-credible-and-appropriately-detailed-simulation-models"><span class="nav-text">5.
+Advantages, Disadvantages and Pitfalls of Simulation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-modeling-complex-systems"><span class="nav-text">2. Chapter 2 Modeling
+Complex Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#list-processing-in-simulation"><span class="nav-text">2.2 List Processing in
+Simulation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#simulation-software"><span class="nav-text">3. Simulation Software</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">3.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#classification-of-simulation-software"><span class="nav-text">3.3 Classification of
+Simulation Software</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#review-of-basic-probability-and-statistics"><span class="nav-text">4. Review of Basic
+Probability and Statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-1"><span class="nav-text">4.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variables-and-their-properties"><span class="nav-text">4.2 Random Variables and
+Their Properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simulation-output-data-and-stochastic-process"><span class="nav-text">4.3 Simulation
+Output Data and Stochastic Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#estimation-of-means-variances-and-correlations"><span class="nav-text">4.4 Estimation
+of Means, Variances, and Correlations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#confidence-intervals-and-hypothesis-tests-for-the-mean"><span class="nav-text">4.5
+Confidence Intervals and Hypothesis Tests for the Mean</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#building-valid-credible-and-appropriately-detailed-simulation-models"><span class="nav-text">5.
 Building Valid, Credible, and Appropriately Detailed Simulation
 Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-and-definitions"><span class="nav-text">5.1 Introduction and
 Definitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#guidelines-for-determining-the-level-of-model-detail"><span class="nav-text">5.2
-Guidelines for Determining the Level of Model Detail</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selecting-input-probability-distributions"><span class="nav-text">6. Selecting Input
-Probability Distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introductions"><span class="nav-text">6.1 Introductions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parameterization-of-continuous-distributions"><span class="nav-text">6.2.1
-Parameterization of Continuous Distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continuous-distributions"><span class="nav-text">6.2.2 Continuous Distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-distribution"><span class="nav-text">6.2.3 Discrete Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#empirical-distribution"><span class="nav-text">6.2.4 Empirical Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#summary-statistics"><span class="nav-text">6.4.1 Summary Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#specifying-arbitrary-marginal-distributions-and-correlations"><span class="nav-text">6.10.2
-Specifying Arbitrary Marginal Distributions and Correlations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-processes"><span class="nav-text">6.12.1 Poisson Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonstationary-poisson-processes"><span class="nav-text">6.12.2 Nonstationary Poisson
-Processes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other-kinds-of-generators"><span class="nav-text">7.3 Other Kinds of Generators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#theoretical-tests"><span class="nav-text">7.4.2 Theoretical Tests</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-arrival-processes"><span class="nav-text">8.6 Generating Arrival
+Guidelines for Determining the Level of Model Detail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#verification-of-simulation-computer-programs"><span class="nav-text">5.3 Verification
+of Simulation Computer Programs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#techniques-for-increasing-model-validity-and-credibility"><span class="nav-text">5.4
+Techniques for Increasing Model Validity and Credibility</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selecting-input-probability-distributions"><span class="nav-text">6. Selecting Input
+Probability Distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introductions"><span class="nav-text">6.1 Introductions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useful-probability-distributions"><span class="nav-text">6.2 Useful Probability
+Distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parameterization-of-continuous-distributions"><span class="nav-text">6.2.1
+Parameterization of Continuous Distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#continuous-distributions"><span class="nav-text">6.2.2 Continuous Distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-distribution"><span class="nav-text">6.2.3 Discrete Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#empirical-distribution"><span class="nav-text">6.2.4 Empirical Distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#techniques-for-assessing-sample-independence"><span class="nav-text">6.3 Techniques for
+Assessing Sample Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activity-1-hypothesizing-families-of-distributions"><span class="nav-text">6.4 Activity
+1: Hypothesizing Families of Distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#summary-statistics"><span class="nav-text">6.4.1 Summary Statistics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#histograms"><span class="nav-text">6.4.2 Histograms</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activity-ii-estimation-of-parameters"><span class="nav-text">6.5 Activity II:
+Estimation of Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#activity-iii-determining-how-representative-the-fitted-distributions-are"><span class="nav-text">6.6
+Activity III: Determining How Representative The Fitted Distributions
+Are</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#goodness-of-fit-tests"><span class="nav-text">6.6.2 Goodness-of-Fit Tests</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#specifying-multivariate-distributions-correlations-and-stochastic-processes"><span class="nav-text">6.10
+Specifying Multivariate Distributions Correlations, and Stochastic
+Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#specifying-arbitrary-marginal-distributions-and-correlations"><span class="nav-text">6.10.2
+Specifying Arbitrary Marginal Distributions and Correlations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#specifying-stochastic-process"><span class="nav-text">6.10.3 Specifying Stochastic
+Process</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selecting-a-distribution-in-the-absence-of-data"><span class="nav-text">6.11 Selecting
+a Distribution in the Absence of Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#models-of-arrival-processes"><span class="nav-text">6.12 Models of Arrival
+Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#poisson-processes"><span class="nav-text">6.12.1 Poisson Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonstationary-poisson-processes"><span class="nav-text">6.12.2 Nonstationary Poisson
+Processes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batch-arrivals"><span class="nav-text">6.12.3 Batch Arrivals</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assessing-the-homogeneity-of-different-data-sets"><span class="nav-text">6.13 Assessing
+the Homogeneity of Different Data Sets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#random-number-generators"><span class="nav-text">7. Random-Number Generators</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-2"><span class="nav-text">7.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-congruential-generators"><span class="nav-text">7.2 Linear Congruential
+Generators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mixed-generators"><span class="nav-text">7.2.1 Mixed Generators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiplicative-generators"><span class="nav-text">7.2.2 Multiplicative generators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other-kinds-of-generators"><span class="nav-text">7.3 Other Kinds of Generators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#more-general-congruences"><span class="nav-text">7.3.1 More General Congruences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#composite-generators"><span class="nav-text">7.3.2 Composite Generators</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#feedback-shift-register-generators"><span class="nav-text">7,3,3 Feedback Shift
+Register Generators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#testing-random-number-generators"><span class="nav-text">7.4 Testing Random Number
+Generators</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#empirical-tests"><span class="nav-text">7.4.1Empirical Tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#theoretical-tests"><span class="nav-text">7.4.2 Theoretical Tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some-general-observations-on-testing"><span class="nav-text">7.4.3 Some General
+Observations on Testing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generating-random-variables"><span class="nav-text">8. Generating Random Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-3"><span class="nav-text">8.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#general-approaches-to-generating-random-variates"><span class="nav-text">8.2 General
+Approaches to Generating Random Variates</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inverse-transform"><span class="nav-text">8.2.1 Inverse Transform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#composition"><span class="nav-text">8.2.2 Composition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convolution"><span class="nav-text">8.2.3 Convolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acceptance-rejection"><span class="nav-text">8.2.4 Acceptance-Rejection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-continuous-random-variates"><span class="nav-text">8.3 Generating Continuous
+Random Variates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-discrete-random-variates"><span class="nav-text">8.4 Generating Discrete
+Random Variates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-random-vectors-correlated-random-variates-and-stochastic-processes"><span class="nav-text">8.5
+Generating Random Vectors, Correlated Random Variates, and Stochastic
+Processes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generating-arrival-processes"><span class="nav-text">8.6 Generating Arrival
 Processes</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#output-data-analysis-for-a-single-system"><span class="nav-text">9. Output Data
-Analysis for a Single System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-text">9.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#types-of-simulations-with-regard-to-output-analysis"><span class="nav-text">9.3 Types
-of Simulations with Regard to Output Analysis</span></a></li></ol></li></ol></li></ol></div>
+Analysis for a Single System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-4"><span class="nav-text">9.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transient-and-steady-state-behavior-of-a-stochastic-process"><span class="nav-text">9.2
+Transient and Steady-state Behavior of a Stochastic Process</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#types-of-simulations-with-regard-to-output-analysis"><span class="nav-text">9.3 Types
+of Simulations with Regard to Output Analysis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#statistical-analysis-for-terminating-simulations"><span class="nav-text">9.4
+Statistical Analysis for Terminating Simulations</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
