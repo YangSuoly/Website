@@ -32,7 +32,7 @@
 <meta property="og:description" content="This blog is the learning notes for preparing the preliminary exams of Queue theory, referring to Fundamentals of supply chain theory.  Snyder, L. V., &amp; Shen, Z. J. M. (2019). Fundamentals of supp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-01T03:30:22.000Z">
-<meta property="article:modified_time" content="2024-12-01T04:15:09.521Z">
+<meta property="article:modified_time" content="2024-12-01T04:41:46.520Z">
 <meta property="article:author" content="YangSu">
 <meta property="article:tag" content="OR">
 <meta property="article:tag" content="SCM">
@@ -238,7 +238,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-12-01 11:30:22 / Modified: 12:15:09" itemprop="dateCreated datePublished" datetime="2024-12-01T11:30:22+08:00">2024-12-01</time>
+              <time title="Created: 2024-12-01 11:30:22 / Modified: 12:41:46" itemprop="dateCreated datePublished" datetime="2024-12-01T11:30:22+08:00">2024-12-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -358,8 +358,9 @@ nodes.</p>
 aspect of thesupply chain, but such a model is impossible both because
 of the difficulties in modelingsome aspects of the supply chain
 mathematically and because the resulting model wouldbe too large and
-complex to solve ## 1.3 Levels of Decision-making in Supply Chain
-Management</p>
+complex to solve</p>
+<h2 id="levels-of-decision-making-in-supply-chain-management">1.3 Levels
+of Decision-making in Supply Chain Management</h2>
 <p>It is convenient to think about three levels of supply chain
 management decisions: strategic,tactical, and operational. Three level
 of supply chain management decisions: - strategic - tactical -
@@ -418,7 +419,8 @@ that is, no trend is present. As a result, these techniques are best
 used for mature products with a large amount of historical data</p>
 <p>On the other hand, regression analysis and double and triple
 exponential smoothing canaccount for a trend or other pattern in the
-data. ### 2.2.1 Moving Average</p>
+data.</p>
+<h3 id="moving-average">2.2.1 Moving Average</h3>
 <p>The moving average method calculates the average amount of demand
 over a given intervalof time and uses this average to predict the future
 demand. The definition of Moving Average: <span class="math display">\[
@@ -430,7 +432,8 @@ random error term.</p>
 demand in p*</p>
 <p>That is, the forecast is simply the arithmetic mean of the previous N
 observations. This isknown as a simple moving average forecast of order
-N. ### 2.2.2 Exponential Smoothing</p>
+N.</p>
+<h3 id="exponential-smoothing">2.2.2 Exponential Smoothing</h3>
 <p>Exponential smoothing is a technique that uses a weighted average of
 all past data as thebasis for the forecast. <strong>Assumption</strong>:
 - <em>Single exponential smoothing</em>: the demand process is
@@ -471,7 +474,8 @@ slope as</p>
 periods 1 and <span class="math inline">\(N + 1\)</span>, and the
 per-period increase between periods 2 and <span class="math inline">\(N
 + 2\)</span>, and so on; and then we take the average over those <span
-class="math inline">\(N\)</span> values. ### 2.2.3 Linear Regression</p>
+class="math inline">\(N\)</span> values.</p>
+<h3 id="linear-regression">2.2.3 Linear Regression</h3>
 <p>Historical data can also be used to forecast demands by determining a
 cause–effect rela-tionship between some independent variables and the
 demand</p>
@@ -480,7 +484,9 @@ dependent variable, Y , is alinear combination of the independent
 variables.</p>
 <p>To build a regression model, we need historical data
 points—observations of both theindependent variable(s) and the dependent
-variable. ## 2.3 Forecast Accuracy ### 2.3.1 MAD, MSE and MAPE</p>
+variable.</p>
+<h2 id="forecast-accuracy">2.3 Forecast Accuracy</h2>
+<h3 id="mad-mse-and-mape">2.3.1 MAD, MSE and MAPE</h3>
 <p>Measurements: - MAD: Mean Absolute Deviation - MSE: Mean Squared
 Error - MAPE: Mean Absolute Percentage Error</p>
 <p><span class="math display">\[
@@ -496,15 +502,17 @@ forecasting method is unbiased: It does not produce forecasts that
 aresystematically either too low or too high.</p>
 <p>MAD is sometimes preferred to MSE in real applicationsbecause it
 avoids the calculation of squaring, though modern spreadsheet and
-statisticspackages can compute either performance measure easily. ## 2.4
-Machine Learning in Demand Forecasting ### 2.4.1 Introduction</p>
+statisticspackages can compute either performance measure easily.</p>
+<h2 id="machine-learning-in-demand-forecasting">2.4 Machine Learning in
+Demand Forecasting</h2>
+<h3 id="introduction-2">2.4.1 Introduction</h3>
 <p>The huge volume of data generated every day, the high velocityof data
 creation, and the large variety of sources all make today’s business
 informationenvironment different than it was only a decade ago.</p>
 <p>Compared with classical forecastingmethods such as the time series
 methods discussed in Section 2.2, machine learning modelsoften
-significantly increase prediction accuracy. ## 2.4.2 Machine
-Learning</p>
+significantly increase prediction accuracy.</p>
+<h2 id="machine-learning">2.4.2 Machine Learning</h2>
 <p>machine learning (ML) refers to a set of algorithms that can learn
 from andmake predictions about data</p>
 <p>Both techniques fall into the overall field of data science, which
@@ -550,13 +558,14 @@ right and wrong answers.</p>
 learning, with great successesnot only in classification and prediction
 problems such as image processing and demandforecasting, but also, when
 coupled with reinforcement learning (RL), in solving decisionproblems
-such as those in board games ## 2.5 Demand Modeling Techniques</p>
+such as those in board games</p>
+<h2 id="demand-modeling-techniques">2.5 Demand Modeling Techniques</h2>
 <p>they need tounderstand the life cycles and demand dynamics of their
 products</p>
 <p>It turns outthat classical forecasting techniques did not work well
 with the company’s highly variable,short-life-cycle products, so the
-firm introduced products at the wrong times in the wrongquantities. ##
-2.6 Bass Diffusion Model</p>
+firm introduced products at the wrong times in the wrongquantities.</p>
+<h2 id="bass-diffusion-model">2.6 Bass Diffusion Model</h2>
 <p>The sales patterns of new products typically go through three phases:
 rapid growth, maturity,and decline</p>
 <p>The premise of the Bass model is that customers can be classified
@@ -567,8 +576,8 @@ effort to forecast the demand</p>
 forecast: how many customers will eventually adoptthe new product, and
 when they will adopt</p>
 <p>Knowing the timing of adoptions is importantas it can guide the firm
-to smartly utilize resources in marketing the new product. ### 2.6.1 The
-Model</p>
+to smartly utilize resources in marketing the new product.</p>
+<h3 id="the-model">2.6.1 The Model</h3>
 <p>It assumes that <span class="math inline">\(P(t)\)</span>, the
 probability that a given buyer makes an initial purchase at time <span
 class="math inline">\(t\)</span> given that she has not yet made a
@@ -591,10 +600,10 @@ proportional to the number of customers who have already adopted by time
 <p>Our preference would be to have a closed-form expressionfor D(t).
 Fortunately, this is possible:</p>
 <p>In summary, by varying the values of p and q, we can represent
-manydifferent patterns of demand diffusion ### 2.6.2 Discrete Time
-Version</p>
-<p>A discrete-time version of the Bass model is available. ### 2.6.3
-Parameter Estimation</p>
+manydifferent patterns of demand diffusion</p>
+<h3 id="discrete-time-version">2.6.2 Discrete Time Version</h3>
+<p>A discrete-time version of the Bass model is available.</p>
+<h3 id="parameter-estimation">2.6.3 Parameter Estimation</h3>
 <p>The Bass model is heavily driven by the parameters <span
 class="math inline">\(m\)</span>, <span
 class="math inline">\(p\)</span>, and <span
@@ -608,9 +617,11 @@ or the Delphi method</p>
 <p>The parameters <span class="math inline">\(p\)</span> and <span
 class="math inline">\(q\)</span> tend to be relatively consistent
 withina given industry, so these can often be estimated from the
-diffusion patterns of similarproducts. ### 2.6.4 Extensions</p>
-<p>The original model has also been extendedin a number of ways. ## 2.7
-Learning Indicator Approach</p>
+diffusion patterns of similarproducts.</p>
+<h3 id="extensions">2.6.4 Extensions</h3>
+<p>The original model has also been extendedin a number of ways.</p>
+<h2 id="learning-indicator-approach">2.7 Learning Indicator
+Approach</h2>
 <p>Product life cycles are becoming shorter and shorter, so it is
 difficult to obtain enoughhistorical data to forecast demands
 accurately. - Solution: leading indicators</p>
@@ -624,8 +635,10 @@ the products within a clustershare similar attributes.</p>
 lag provides enough time so that supply chain planning for the products
 in the clustercan take place based on the forecasts provided by the
 leading indicator. Of course, correctlyidentifying the leading indicator
-is critical. ## 2.8 Discrete Choice Models ### 2.8.1 Introduction to
-Discrete Choice</p>
+is critical.</p>
+<h2 id="discrete-choice-models">2.8 Discrete Choice Models</h2>
+<h3 id="introduction-to-discrete-choice">2.8.1 Introduction to Discrete
+Choice</h3>
 <p>In economics, discrete choice models involve choices between two or
 more discrete alterna-tives</p>
 <p>The idea behind discrete choice models is to build a statistical
@@ -643,13 +656,17 @@ must be mutually exclusive, exhaustive, and finite.</p>
 <p>Discrete choice models usuallyassume that the decision-maker is a
 utility maximizer. That is, he will choose alternative iif and only if
 <span class="math inline">\(U_{ni} &gt; U_{nj}\)</span> for all <span
-class="math inline">\(j ∈I, j \neq i\)</span> ### 2.8.2 The Multinomial
-Logit Model</p>
+class="math inline">\(j ∈I, j \neq i\)</span></p>
+<h3 id="the-multinomial-logit-model">2.8.2 The Multinomial Logit
+Model</h3>
 <p>Next we derive the multinomial logit model. (Refer to McFadden (1974)
 or Train (2009)for further details of the derivation.) “Multinomial”
 means that there are multiple optionsfrom which the decision-maker
-chooses # 3. Deterministic Inventory Models ## 3.1 Introduction to
-Inventory Modeling</p>
+chooses</p>
+<h1 id="deterministic-inventory-models">3. Deterministic Inventory
+Models</h1>
+<h2 id="introduction-to-inventory-modeling">3.1 Introduction to
+Inventory Modeling</h2>
 <p>These are all reasons that firms plan to hold inventory. In addition,
 firms may holdunplanned inventory—for example, inventory of products
 that have become obsolete soonerthan expected</p>
@@ -682,8 +699,10 @@ inventory level plus items on order</p>
 best-known mathematical inventory model (Section 3.2), and some of its
 extensions; and thena periodic-review model</p>
 <p>The models discussed in this chapter are sometimes known as economic
-lot size problems. ## 3.2 Continuous Review: The Economic Order Quantity
-Problem ### 3.2.1 Problem Statement</p>
+lot size problems.</p>
+<h2 id="continuous-review-the-economic-order-quantity-problem">3.2
+Continuous Review: The Economic Order Quantity Problem</h2>
+<h3 id="problem-statement">3.2.1 Problem Statement</h3>
 <p>The economic order quantity (EOQ) problem is one of the oldest and
 most fundamentalinventory models; it was first introduced by Harris
 (1913). The goal is to determine theoptimal amount to order each time an
@@ -755,8 +774,9 @@ pooling (LMRP) in Section 12.2</p>
 <p>make some statements about how the solution changes asthe parameters
 change:</p>
 <p>Remember that the EOQ only reflects costs, not revenues; the
-increased cost of large λwould be outweighed by the increased revenue
-### 3.2.4 Sensitivity Analysis</p>
+increased cost of large λwould be outweighed by the increased
+revenue</p>
+<h3 id="sensitivity-analysis">3.2.4 Sensitivity Analysis</h3>
 <p>Suppose the firm did not want to order <span
 class="math inline">\(Q^∗\)</span> exactly. For example, it might need
 to order in multiples of <span class="math inline">\(10 (Q =
@@ -770,7 +790,8 @@ class="math inline">\(Q&gt;0\)</span>: <span class="math display">\[
 \]</span></p>
 <p>Theorem 3.2 ignores the per-unit cost c. If we include the annual
 cost cλin the numeratorand denominator of (3.8), then the percentage
-increase in cost would be even smaller ### 3.2.5 Order Lead Times</p>
+increase in cost would be even smaller</p>
+<h3 id="order-lead-times">3.2.5 Order Lead Times</h3>
 <p>What if the lead time was positive—say, L years? Theoptimal solution
 doesn’t change—we just place our order L years before it’s needed.</p>
 <p>It’s generally more convenient to express this in terms ofthe reorder
@@ -779,7 +800,8 @@ point (<span class="math inline">\(r\)</span>). So how do we compute
 of product demanded during the lead time, or <span
 class="math display">\[
 r = \lambda L
-\]</span> ## 3.3 Power-of-two Policies</p>
+\]</span></p>
+<h2 id="power-of-two-policies">3.3 Power-of-two Policies</h2>
 <p>In this section, we discusspower-of-two policies, in which the order
 interval is required to be a power-of-two multipleof some base
 period.</p>
@@ -791,7 +813,8 @@ determine exactly how much more expensive apower-of-two policy is than
 the optimal policy</p>
 <p>he problem of finding optimalorder intervals in this setting is one
 version of a problem known as the one warehouse,multiretailer (OWMR)
-problem ### 3.3.2 Error Bound</p>
+problem</p>
+<h3 id="error-bound">3.3.2 Error Bound</h3>
 <p>Theorem 3.3</p>
 <p><strong>Theorem 3.3</strong> If <span class="math inline">\(\hat
 T\)</span> is the optimal power-of-two order interval and <span
@@ -812,8 +835,8 @@ Discounts</h2>
 <p>It is common for suppliers to offer discounts based on the quantity
 ordered</p>
 <p>The specificstructure for the discounts can take many forms, but two
-types are most common: all-unitsdiscounts and incremental discount ###
-3.4.1 All-Units Discounts</p>
+types are most common: all-unitsdiscounts and incremental discount</p>
+<h3 id="all-units-discounts">3.4.1 All-Units Discounts</h3>
 <p>We can no longer ignore the purchase cost as we did in (3.3). In
 fact, not only do we needto include the purchase cost itself, but we
 must also account for the fact that the holdingcost typically depends on
@@ -826,7 +849,8 @@ class="math display">\[
 g_j(Q) = c_j \lambda + \frac{K\lambda}{Q} + \frac{ic_jQ}{2}
 \]</span> Its minimizer is given by: <span class="math display">\[
 Q_j^* = \sqrt{ \frac{2K\lambda}{ic_j}}
-\]</span> ### 3.4.2 Incremental Discounts</p>
+\]</span></p>
+<h3 id="incremental-discounts">3.4.2 Incremental Discounts</h3>
 <p>We now turn our attention to incremental discounts. The total cost
 function for region <span class="math inline">\(j\)</span> is given by
 <span class="math display">\[
@@ -852,7 +876,9 @@ Q^* = \sqrt{ \frac{2(K + \bar c_j)\lambda}{i c_j}}
 \]</span> with cost <span class="math display">\[
 g_j(Q^*) = c_j \lambda +  \frac{i \bar c_j}{2} + \sqrt{ 2(K + \bar
 c_j)\lambda i c_j}
-\]</span> ### 3.4.3 Modified All-Units Discounts</p>
+\]</span></p>
+<h3 id="modified-all-units-discounts">3.4.3 Modified All-Units
+Discounts</h3>
 <p>All-units discounts are somewhat problematic because, for order
 quantities Q just to theleft of breakpoint j, it is cheaper to order bj
 than to order Q</p>
@@ -862,8 +888,9 @@ structure.</p>
 carload discount struc-ture, in which the bj are equally spaced and cj
 is the same for all j.</p>
 <p>Unfortunately, modified all-units discount structures are much more
-difficult to analyzethan the discount structures discussed above. ## 3.5
-The EOQ with Planned Backorders</p>
+difficult to analyzethan the discount structures discussed above.</p>
+<h2 id="the-eoq-with-planned-backorders">3.5 The EOQ with Planned
+Backorders</h2>
 <p>In this section, we discuss avariant of the EOQ problem in which
 backorders are allowed. Let <span class="math inline">\(p\)</span> be
 the backorder penalty per item per year, and let <span
@@ -909,7 +936,9 @@ quantity, <span class="math inline">\(x^∗\)</span> approaches 0, and the
 optimal cost approaches the EOQ optimal cost.</p>
 <p>As we continue to increase the number of backorders, the marginal
 savingsin holding cost decreases and the marginal increase in backorder
-cost increases ## 3.6 The Economic Production Quantity Model</p>
+cost increases</p>
+<h2 id="the-economic-production-quantity-model">3.6 The Economic
+Production Quantity Model</h2>
 <p>In a manufacturing environment, the amount of time required to
 produce a batch of itemsusually depends on how large the batch
 is—producing more items requires more time.</p>
@@ -941,9 +970,11 @@ class="math inline">\(\frac{h(1-\rho)Q}{2}\)</span></li>
 <li>Total annual cost <span class="math display">\[
 g(Q) = \frac{K\lambda}{Q} + \frac{h(1-\rho)Q}{2}
 \]</span> We could find the Q that minimizes this cost function by
-differentiating, as we did for theEOQ, ## 3.7 Periodic Review: The
-Wagner-Whitin Model ### 3.7.1 Problem Statement</li>
+differentiating, as we did for theEOQ,</li>
 </ul>
+<h2 id="periodic-review-the-wagner-whitin-model">3.7 Periodic Review:
+The Wagner-Whitin Model</h2>
+<h3 id="problem-statement-1">3.7.1 Problem Statement</h3>
 <p>We now shift our attention to a periodic-review model known as the
 Wagner–Whitinmodel</p>
 <p>he Wagner–Whitin modelassumes that the demand is deterministic, there
@@ -954,22 +985,26 @@ demand to changeover time—to be different in each period</p>
 (DEL) model or the uncapacitated lot-sizing (ULS) model.</p>
 <p>We first formulate this model as a mixed-integer optimization problem
 (MIP). We willthen discuss a dynamic programming (DP) algorithm for
-solving it. ### 3.7.2 MIP Formulation</p>
+solving it.</p>
+<h3 id="mip-formulation">3.7.2 MIP Formulation</h3>
 <p>Constraints (3.34)are the inventory-balance constraints: They say
 that the ending inventory in period t isequal to the starting inventory,
 plus the new units ordered, minus the demand.</p>
 <p>This problem can be interpreted as a simple supply chain network
 design problem</p>
 <p>It can be solved as an MIP, but it ismore common to solve it using DP
-or as a shortest path problem, as we discuss in the nextsection ###
-3.7.3 Dynamic Programming Algorithm</p>
+or as a shortest path problem, as we discuss in the nextsection</p>
+<h3 id="dynamic-programming-algorithm">3.7.3 Dynamic Programming
+Algorithm</h3>
 <p>Theorem 3.7 Every optimal solution to the Wagner–Whitin model has the
 ZIO property;that is, it is optimal to place orders only in time periods
 in which the initial inventory iszero</p>
 <p>Despite the efficiency of this algorithm, a number of heuristicshave
 been introduced and are still popular in practice. These include
-Silver–Meal, partperiod balancing, least unit cost, and other heuristics
-# 4. Stochastic Inventory Models: Periodic Review</p>
+Silver–Meal, partperiod balancing, least unit cost, and other
+heuristics</p>
+<h1 id="stochastic-inventory-models-periodic-review">4. Stochastic
+Inventory Models: Periodic Review</h1>
 <p>In this chapter and the next, we will consider inventory models in
 which the demand isstochastic</p>
 <p>A key concept in these chapters will be that of a policy. A policy is
@@ -999,7 +1034,8 @@ expected demand. - <em>Safety stock</em> is extra inventory that’s kept
 on hand to buffer against uncertainty.</p>
 <p>We’ll see later that the cycle stock depends on the mean of the
 demand distribution, whilethe safety stock depends on the standard
-deviation. ## 4.2 Demand Processes</p>
+deviation.</p>
+<h2 id="demand-processes">4.2 Demand Processes</h2>
 <p>In real life, customers tend to arrive at a retailer at random,
 discrete points in time.</p>
 <p>One way to model these demands is using a Poisson process, which
@@ -1013,21 +1049,23 @@ random variable willsometimes have negative realizations, even though
 the demands that we aim to model arenonnegative</p>
 <p>This suggeststhat the normal distribution is appropriate as a model
 for the demand only if <span class="math inline">\(μ \gg σ\)</span> —
-say,if <span class="math inline">\(μ &gt; 4σ\)</span>. ## 4.3 Periodic
-Review With Zero Fixed Costs: Base-stock Policies</p>
+say,if <span class="math inline">\(μ &gt; 4σ\)</span>.</p>
+<h2 id="periodic-review-with-zero-fixed-costs-base-stock-policies">4.3
+Periodic Review With Zero Fixed Costs: Base-stock Policies</h2>
 <p>For the remainder of this chapter, we focus on periodic-review
 models</p>
 <p>We will model the time value of money by discounting future periods
 using a discountfactor <span class="math inline">\(\gamma \in
 (0,1]\)</span></p>
 <p>For the single-period and finite-horizonproblems, our objective will
-be to minimize the total expected discounted cost over thehorizon ###
-4.3.1 Base-Stock Policies</p>
+be to minimize the total expected discounted cost over thehorizon</p>
+<h3 id="base-stock-policies">4.3.1 Base-Stock Policies</h3>
 <p>A base-stock policy works as follows: In each time period, we observe
 the current inventory position and then place an order whose size is
 sufficient to bring the inventory position up to <span
-class="math inline">\(S\)</span> ### 4.3.2 Single Period: The Newsvendor
-Problem</p>
+class="math inline">\(S\)</span></p>
+<h3 id="single-period-the-newsvendor-problem">4.3.2 Single Period: The
+Newsvendor Problem</h3>
 <p>Single-period models are most often applied to perishable products,
 whichinclude (as you might expect) products such as eggs and flowers
 that may spoil, but alsoproducts that lose their value after a certain
@@ -1190,7 +1228,8 @@ where it is</p>
 estimate μand what we might call a moving standard deviation to
 estimateσ in period t</p>
 <p>4.3.2.8 Discrete Demand Distributions Suppose now that D is discrete.
-In thiscase, (4.3) becomes ### 4.3.3 Finite Horizon</p>
+In thiscase, (4.3) becomes</p>
+<h3 id="finite-horizon">4.3.3 Finite Horizon</h3>
 <p>Now consider a multiple-period problem consisting of a finite number
 of periods, T.Suppose we are at the beginning of period t Let <span
 class="math inline">\(\theta_t(x)\)</span> be the optimal expected cost
@@ -1214,8 +1253,8 @@ target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/205pG6pGNTwsBZaK
 Policy）最优性的证明</a></p>
 <p>First consider what happens at the end of the time horizon.
 Presumably, on-handunits and backorders must be treated differently now
-that the horizon has ended than theywould be during the horizon ###
-4.3.4 Infinite Horizon</p>
+that the horizon has ended than theywould be during the horizon</p>
+<h3 id="infinite-horizon">4.3.4 Infinite Horizon</h3>
 <p>This problem is sometimes referred to as the infinite-horizon
 newsvendormodel.</p>
 <p>An alternate objective is to minimizethe expected cost per period.
@@ -1267,7 +1306,8 @@ provenuntil Scarf’s (1960) paper</p>
 single-period, finite-horizon, and infinite-horizon cases separately</p>
 <p>Actually, the single-period case is not nearly as useful for the
 <span class="math inline">\(K &gt; 0\)</span> caseas it is for the <span
-class="math inline">\(K = 0\)</span> case ### 4.4.2 Single Period</p>
+class="math inline">\(K = 0\)</span> case</p>
+<h3 id="single-period">4.4.2 Single Period</h3>
 <p>For given <span class="math inline">\(s\)</span> and <span
 class="math inline">\(S\)</span>, theordering rule is: If <span
 class="math inline">\(x ≤ s\)</span>, order <span
@@ -1286,7 +1326,8 @@ g(x),  &amp; \text{if } x&gt; s
 <span class="math inline">\(S\)</span> is actually quite easy (Karlin
 1958b): We already knowfrom Theorem 4.1 that <span
 class="math inline">\(F−1(p/(h + p))\)</span> minimizes <span
-class="math inline">\(g(S)\)</span>, ### 4.4.3 Finite horizon</p>
+class="math inline">\(g(S)\)</span>,</p>
+<h3 id="finite-horizon-1">4.4.3 Finite horizon</h3>
 <p>The finite-horizon model with nonzero fixed costs can be solved using
 a straightforwardmodification of the DP model for the zero-fixed-cost
 case from Section 4.3.3.</p>
@@ -1330,8 +1371,8 @@ class="math inline">\(x \leq s_t\)</span>, we have <span
 class="math inline">\(y_t(x) = S_t\)</span>, and for <span
 class="math inline">\(x &gt; s_t\)</span>, we have <span
 class="math inline">\(y_t(x) = x\)</span>. In other words, these curves
-each depict an <span class="math inline">\((s,S)\)</span> policy. ###
-4.4.4 infinite Horizon</p>
+each depict an <span class="math inline">\((s,S)\)</span> policy.</p>
+<h3 id="infinite-horizon-1">4.4.4 infinite Horizon</h3>
 <p>Recall that the infinite-horizon model with no fixed costs (Section
 4.3.4) is as simple asthe single-period model (Section 4.3.2).</p>
 <p>nfortunately, this is not true in the fixed-costcase. The
@@ -1342,8 +1383,9 @@ class="math inline">\(N(t)\)</span> that counts the number of
 “renewals”that have occurred by time <span
 class="math inline">\(t\)</span>, where the amount of time between the
 <span class="math inline">\((n −1)st\)</span> renewal and the nth
-renewals is a random variable <span class="math inline">\(X_n\)</span>
-## 4.5 Policy Optimility</p>
+renewals is a random variable <span
+class="math inline">\(X_n\)</span></p>
+<h2 id="policy-optimility">4.5 Policy Optimility</h2>
 <p>Now that we know how to find the optimal <span
 class="math inline">\(S\)</span> for a base-stock policy (Section 4.3)
 and the optimal <span class="math inline">\(s\)</span> and <span
@@ -1368,8 +1410,9 @@ class="math inline">\(x\)</span>, can be calculated recursively as:
 \]</span></p>
 <p>Our goal throughout this section will be to use the structure of
 (4.81) toshow that the optimal actions follow the policies we have
-conjectured are optimal ### 4.5.1 Zero Fixed Costs: Base-Stock
-Policies</p>
+conjectured are optimal</p>
+<h3 id="zero-fixed-costs-base-stock-policies">4.5.1 Zero Fixed Costs:
+Base-Stock Policies</h3>
 <p>We first consider the case in which K = 0 and prove that—regardless
 of the horizonlength—a base-stock policy is always optimal
 <strong>Single Period</strong>:</p>
@@ -1407,13 +1450,14 @@ problem with no fixedcosts. <strong>Finite Horizon</strong>:</p>
 base-stock policy is optimal, for the single-period problem</p>
 <h3 id="nonzero-fixed-costs-s-s-policies">4.5.2 Nonzero Fixed Costs:
 <span class="math inline">\((s, S)\)</span> Policies</h3>
-<p>We now allow K 6= 0 and prove that an (s,S) policy is optimal. ## 4.6
-Lost Salse</p>
+<p>We now allow K 6= 0 and prove that an (s,S) policy is optimal.</p>
+<h2 id="lost-salse">4.6 Lost Salse</h2>
 <p>Throughout this chapter, we have assumed that unmet demands are
 backordered.</p>
 <p>we assume instead that they are lost. The distinction is only
-important when T &gt; 1.(When T = 1, unmet demands can only be lost.)
-### 4.6.1 Zero Lead Time</p>
+important when T &gt; 1.(When T = 1, unmet demands can only be
+lost.)</p>
+<h3 id="zero-lead-time">4.6.1 Zero Lead Time</h3>
 <p>First consider the case in whichK = 0. In the finite-horizon model,
 the DP recursion (4.36) changes only slightly <span
 class="math display">\[
@@ -1423,9 +1467,11 @@ E_D[\theta_{t+1} (y-D)]^+\right\}
 class="math inline">\(y −D\)</span> to reflect the fact that the
 inventory level cannot become <em>negative</em>.</p>
 <p>A base-stock policy is still optimal for the infinite-horizon model.
-Under the average-cost criterion (γ = 1) with lost sales, # 5.
-Stochastic Inventory Models: Continuous Review ## 5.1 <span
-class="math inline">\((r, Q)\)</span> Policies</p>
+Under the average-cost criterion (γ = 1) with lost sales,</p>
+<h1 id="stochastic-inventory-models-continuous-review">5. Stochastic
+Inventory Models: Continuous Review</h1>
+<h2 id="r-q-policies">5.1 <span class="math inline">\((r, Q)\)</span>
+Policies</h2>
 <p>In this chapter, we consider a setting similar to the economic order
 quantity (EOQ) model(Section 3.2) but with stochastic demand.</p>
 <p>The inventory position is monitored continuously, and orders may be
@@ -1457,9 +1503,10 @@ class="math inline">\(r\)</span> (the <em>reorder point</em>)</p>
 <p>Our goal is to determine the optimal r and Q to minimize the expected
 costper year.</p>
 <p>since in either case theinventory position may fall strictly below
-the reorder point before a replenishment order isplaced. ## 5.2 Exact
+the reorder point before a replenishment order isplaced.</p>
+<h2 id="exact-r-q-problem-with-continuous-demand-distribution">5.2 Exact
 <span class="math inline">\((r, Q)\)</span> Problem With Continuous
-Demand Distribution</p>
+Demand Distribution</h2>
 <p>we introduce an exact model for systems with continuous demand
 distribu-tions. We first formulate the expected cost function and then
 derive optimality conditionsfor it <strong>The usual costs</strong>: -
@@ -1534,7 +1581,8 @@ optimality conditionsfor <span class="math inline">\(r\)</span> and
 <span class="math inline">\(Q\)</span> by first fixing <span
 class="math inline">\(Q\)</span> and finding the optimal corresponding
 <span class="math inline">\(r\)</span>, and then optimizingover <span
-class="math inline">\(Q\)</span> ### 5.2.2 Optimality Conditions</p>
+class="math inline">\(Q\)</span></p>
+<h3 id="optimality-conditions">5.2.2 Optimality Conditions</h3>
 <p>Lemma 5.2 For any <span class="math inline">\(Q &gt; 0, r =
 r(Q)\)</span> if and only if <strong>Lemma</strong> For any <span
 class="math inline">\(Q &gt; 0, r = r(Q)\)</span> if and only if <span
@@ -1547,9 +1595,12 @@ class="math inline">\((r,Q)\)</span> minimize <span
 class="math inline">\(g(r,Q)\)</span> if and only if: <span
 class="math display">\[
 g(r, Q) = g(r +Q) = g(r)
-\]</span> ## 5.3 Approximations for <span class="math inline">\((r,
-Q)\)</span> Problem With Continuous Distribution ### 5.3.1
-Expected-Inventory-Level Approximation</p>
+\]</span></p>
+<h2 id="approximations-for-r-q-problem-with-continuous-distribution">5.3
+Approximations for <span class="math inline">\((r, Q)\)</span> Problem
+With Continuous Distribution</h2>
+<h3 id="expected-inventory-level-approximation">5.3.1
+Expected-Inventory-Level Approximation</h3>
 <p>The first approximation we discuss is probably the best known and
 most widely coveredapproximation to find r and Q.</p>
 <p>We call this the expected-inventory-level (EIL) approximation,for
@@ -1568,29 +1619,38 @@ src="https://cdn.jsdelivr.net/gh/YangSuoly/Images/Prelim/202412011140220.png"
 alt="Pasted image 20241009154836" />
 <figcaption aria-hidden="true">Pasted image 20241009154836</figcaption>
 </figure>
-<p>The costs: - The expected on-hand inventory when the order arrives:
-<span class="math display">\[
+<p>The costs: - The expected on-hand inventory when the order
+arrives:</p>
+<p><span class="math display">\[
     s = r -\lambda L
-\]</span> - The average inventory level: <span class="math display">\[
-    s+\frac{Q}{2} = r -\lambda L +\frac{Q}{2}
-  \]</span> 1. By <em>SA1</em>, the <em>expected holding cost</em> per
-year is: <span class="math display">\[
+\]</span></p>
+<ul>
+<li><p>The average inventory level:</p>
+<p><span class="math display">\[
+  s+\frac{Q}{2} = r -\lambda L +\frac{Q}{2}
+\]</span></p></li>
+</ul>
+<ol type="1">
+<li>By <em>SA1</em>, the <em>expected holding cost</em> per year is:
+<span class="math display">\[
 h\left( r -\lambda L +\frac{Q}{2}\right)
 \]</span> <em>Note</em>: this expression is only approximate, since that
 we are calculating the expected holding cost as <span
 class="math inline">\(h \cdot \mathbb{E}[IL]^+\)</span> (provided that
-<span class="math inline">\(\mathbb{E}[IL]&gt;0\)</span>).</p>
+<span class="math inline">\(\mathbb{E}[IL]&gt;0\)</span>).</li>
+</ol>
 <p>That is why we refer to this as the “expected-inventory-level”
 approximation. The problem is more difficult without SA1 because of the
 nonlinearity introduced by the <span
 class="math inline">\([·]^+\)</span> operator. 2. <em>Fixed cost</em> :
 <span class="math inline">\(\frac{K\lambda}{Q}\)</span> - <em>Stockout
-cost</em> : <span class="math display">\[
+cost</em> :</p>
+<p><span class="math display">\[
 \mathbb{E}[(D-r)^+] = \int_r^\infty (d-r) f(d)\operatorname dd = n(r)
 \]</span></p>
-<p>where <span class="math inline">\(n(r)\)</span> is the loss function
-for the lead-time demand distribution The expected number of stockout
-per year is <span class="math display">\[
+<pre><code>where $n(r)$ is the loss function for the lead-time demand distribution</code></pre>
+<p>The expected number of stockout per year is <span
+class="math display">\[
 \frac{n(r)}{\mathbb{E}[T]} = \frac{\lambda n(r)}{Q}
 \]</span> 3. then by <em>SA2</em>, the <em>expected stockout cost</em>
 per year is simply: <span class="math display">\[
@@ -1602,18 +1662,19 @@ class="math display">\[
 g(r, Q) = h\left( r -\lambda L +\frac{Q}{2}\right) + \frac{K\lambda}{Q}
 + \frac{p \lambda n(r)}{Q}
 \]</span> <strong>Solution</strong>: - For <span
-class="math inline">\(Q\)</span> : $$ <span
-class="math display">\[\begin{align}
-    \frac{\partial g}{\partial Q} =\frac{h}{2}-\frac{K
-\lambda}{Q^2}-\frac{p \lambda n(r)}{Q^2} &amp; =0 \\
-    \Longleftrightarrow \quad \frac{1}{Q^2}[K \lambda+p \lambda
-n(r)]=\frac{h}{2} \\
-    \Longleftrightarrow\quad Q^2=\frac{2[K \lambda+p \lambda n(r)]}{h}
-\\
-    Q=\sqrt{\frac{2 \lambda[K+p n(r)]}{h}} \\
-    
-    \end{align}\]</span> $$ - For <span class="math inline">\(r\)</span>
-:</p>
+class="math inline">\(Q\)</span> :</p>
+<pre><code>$$
+\begin&#123;align&#125;
+\frac&#123;\partial g&#125;&#123;\partial Q&#125; =\frac&#123;h&#125;&#123;2&#125;-\frac&#123;K \lambda&#125;&#123;Q^2&#125;-\frac&#123;p \lambda n(r)&#125;&#123;Q^2&#125; &amp; =0 \\
+\Longleftrightarrow \quad \frac&#123;1&#125;&#123;Q^2&#125;[K \lambda+p \lambda n(r)]=\frac&#123;h&#125;&#123;2&#125; \\
+\Longleftrightarrow\quad Q^2=\frac&#123;2[K \lambda+p \lambda n(r)]&#125;&#123;h&#125; \\
+Q=\sqrt&#123;\frac&#123;2 \lambda[K+p n(r)]&#125;&#123;h&#125;&#125; \\
+
+\end&#123;align&#125;
+$$</code></pre>
+<ul>
+<li>For <span class="math inline">\(r\)</span> :</li>
+</ul>
 <p><span class="math display">\[
 \begin{align}
 \frac{\partial g}{\partial r}=h+\frac{p \lambda n^{\prime}(r)}{Q}=0 \\
@@ -1626,16 +1687,21 @@ cannot be solvedin closed form.</p>
 <p>The approach given in Algorithm 5.1 first sets Q equal to the EOQ
 quantity,i.e., ignoring the demand randomness.</p>
 <p>One major limitation of (r,Q) policies as formulated aboveis that p
-is very hard to estimate ### 5.3.2 EOQB Approximation</p>
+is very hard to estimate</p>
+<h3 id="eoqb-approximation">5.3.2 EOQB Approximation</h3>
 <p>There are important connections between the EOQ problem with planned
-backorders ### 5.3.3 EOQ + SS Approximation</p>
+backorders</p>
+<h3 id="eoq-ss-approximation">5.3.3 EOQ + SS Approximation</h3>
 <p>Another common approximation for r and Q is to convert the
 inventory-cost parametersinto a service level and then to use the
 approach described in Section 5.3.1.3 for type-1service level
-constraints ## 5.4 Exact <span class="math inline">\((r, Q)\)</span>
-Problem With Continuous Distribution: Properties of Optimal <span
+constraints</p>
+<h2
+id="exact-r-q-problem-with-continuous-distribution-properties-of-optimal-r-and-q">5.4
+Exact <span class="math inline">\((r, Q)\)</span> Problem With
+Continuous Distribution: Properties of Optimal <span
 class="math inline">\(r\)</span> and <span
-class="math inline">\(Q\)</span></p>
+class="math inline">\(Q\)</span></h2>
 <p>We now return to the exact model from Section 5.2. We have two main
 goals in thissection 1. We will analyze the properties of optimal
 solutions (and their costs) for <span class="math inline">\((r,
@@ -1663,11 +1729,12 @@ G(Q) = \frac{K\lambda + \int_0^{Q}H(y) \operatorname d y}{Q}
 <h1 id="multi-echelon-inventory-models">6. Multi-echelon Inventory
 Models</h1>
 <p>we study inventory optimization models for multiechelon (or
-multistage)systems with shipments made among the stages ## 6.1
-Introduction There are two common ways to interpret the stages or nodes
-in the multiechelon system: 1. Stages represent locations in a supply
-chain network, and links among the stages represent physical shipments
-of goods. 2. Stages represent processes that the product must undergo
+multistage)systems with shipments made among the stages</p>
+<h2 id="introduction-3">6.1 Introduction</h2>
+<p>There are two common ways to interpret the stages or nodes in the
+multiechelon system: 1. Stages represent locations in a supply chain
+network, and links among the stages represent physical shipments of
+goods. 2. Stages represent processes that the product must undergo
 during manufacturing, assembly, and/or distribution.</p>
 <p>the stages in Figure 6.1(a)may represent the following physical
 locations: a supplier in China, a factory inCalifornia, a warehouse in
@@ -1675,7 +1742,9 @@ Chicago, and a retailer in Detroit (respectively).</p>
 <p>For example, the stages in Figure 6.1(a) may represent thefollowing
 processes: manufacturing, assembly, testing, and packaging. These
 fourfunctions may take place in four different locations or all within
-the same building # 8. Facility Location Models ## 8.1 Introduction</p>
+the same building</p>
+<h1 id="facility-location-models">8. Facility Location Models</h1>
+<h2 id="introduction-4">8.1 Introduction</h2>
 <p>One of the major strategic decisions faced by firms is the number and
 locations of factories,warehouses, retailers, or other physical
 facilities</p>
@@ -1713,8 +1782,10 @@ facility location problems or have subproblems that resemble them</p>
 location model, theuncapacitated fixed-charge location problem
 (UFLP)</p>
 <p>we discuss cover-ing models (including the p-center, set covering,
-and maximal covering problems) ## 8.2 The Uncapacitated fixed-charge
-Location Problem ### 8.2.1 Problem Statement</p>
+and maximal covering problems)</p>
+<h2 id="the-uncapacitated-fixed-charge-location-problem">8.2 The
+Uncapacitated fixed-charge Location Problem</h2>
+<h3 id="problem-statement-2">8.2.1 Problem Statement</h3>
 <p>The uncapacitated fixed-charge location problem (UFLP) chooses
 facility locations inorder to minimize the total cost of building the
 facilities and transporting goods fromfacilities to customers.</p>
@@ -1729,7 +1800,8 @@ of building facilities plus the transportationcost to transport product
 from DCs to customers, subject to constraints requiring everycustomer to
 be served by some open DC</p>
 <p>As noted above, the key trade-off in the UFLP is between fixed and
-transportation costs ### 8.2.2 Formulation</p>
+transportation costs</p>
+<h3 id="formulation">8.2.2 Formulation</h3>
 <p>Define the following notations:</p>
 <p><strong>Sets</strong>: - <span class="math inline">\(I\)</span> : set
 of customers - <span class="math inline">\(J\)</span>: set of potential
@@ -1785,8 +1857,8 @@ LP bound than the other.</p>
 usingbranch-and-bound</p>
 <p>Therefore, a number of other optimal approaches were developed. Two
 ofthese—Lagrangian relaxation and a dual-ascent method called DUALOC—are
-discussedin Sections 8.2.3 and 8.2.4, respectivel ### 8.2.3 Lagrangian
-Relation</p>
+discussedin Sections 8.2.3 and 8.2.4, respectivel</p>
+<h3 id="lagrangian-relation">8.2.3 Lagrangian Relation</h3>
 <p>One of the methods that has proven to be most effective forthe UFLP
 and other location problems is Lagrangian relaxation, a standard
 technique forinteger programming</p>
@@ -1797,13 +1869,16 @@ theconstraints</p>
 <p>When the upper and lower bounds are close (say, within1%), we know
 that the feasible solution we have found is close to optima</p>
 <p>We relax constraints (8.4), removing them from the problem andadding
-a penalty term to the objective function: <span class="math display">\[
+a penalty term to the objective function:</p>
+<p><span class="math display">\[
 \sum\limits_{j \in J} \lambda_i (1-y_{ij})
-\]</span> The <span class="math inline">\(\lambda_i\)</span> are called
+\]</span></p>
+<p>The <span class="math inline">\(\lambda_i\)</span> are called
 <em>Lagrange multipliers</em>.</p>
 <p>For now, assume λ is fixed. Relaxing constraints (8.4) gives us the
 following problem,known as the Lagrangian subproblem: The <em>Lagrangian
-subproblem</em> : <span class="math display">\[
+subproblem</em> :</p>
+<p><span class="math display">\[
 \begin{align}
 \min  &amp;\sum\limits_{j\in J} f_j x_j + \sum\limits_{i\in I}
 \sum\limits_{j\in J} h_i c_{ij} y_{ij} +\sum\limits_{j \in J} \lambda_i
@@ -1812,7 +1887,9 @@ subproblem</em> : <span class="math display">\[
 \sum\limits_{j\in J} (h_i c_{ij} -\lambda_i) y_{ij} +\sum\limits_{j \in
 J} \lambda_i
 \end{align}
-\]</span> subject to <span class="math display">\[
+\]</span></p>
+<p>subject to</p>
+<p><span class="math display">\[
 \begin{align}
 y_{ij} &amp;\leq x_j &amp;\forall i \in I, \forall j \in J \\
 x_j &amp;\in\{0, 1\} &amp;\forall j \in J \\
@@ -1825,7 +1902,8 @@ don’t need to use an IP solver or any sort of complicated algorithm.</p>
 solutions, since the solutionsto (UFLP-LRλ) will generally be infeasible
 for (UFLP). Instead, the point is to generategood (i.e., high) lower
 bounds in order to prove that a feasible solution we’ve foundsome other
-way is good. ### 8.2.4 The DUALOC Algorithm</p>
+way is good.</p>
+<h3 id="the-dualoc-algorithm">8.2.4 The DUALOC Algorithm</h3>
 <h2 id="other-minisum-models">8.3 Other Minisum Models</h2>
 <p>The UFLP is an example of a minisum location problem. Minisum models
 are so calledbecause their objective is to minimize a sum of the costs
@@ -1836,11 +1914,13 @@ located close to their assigned facilities</p>
 <p>minisum models are more commonlyapplied in the private sector, in
 which profits and costs are the dominant concerns, andcovering models
 are most commonly applied in the public sector, in which service,
-fairness,and equity are more important ### 8.3.1 The Capacitated
-Fixed-Charge Location Problem</p>
+fairness,and equity are more important</p>
+<h3 id="the-capacitated-fixed-charge-location-problem">8.3.1 The
+Capacitated Fixed-Charge Location Problem</h3>
 <p>The UFLP can be easilymodified to account for capacity restrictions;
 the resulting problem (not surprisingly) iscalled the capacitated
-fixed-charge location problem, or CFLP. ## 8.4 Covering Models</p>
+fixed-charge location problem, or CFLP.</p>
+<h2 id="covering-models">8.4 Covering Models</h2>
 <p>fire departments should have the objective of arriving to afire
 within 4 minutes of receiving a call</p>
 <p>ince the optimal solutions to those problems may assign some
@@ -2004,13 +2084,41 @@ facilities.</p>
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-evolution-of-supply-chain-theory"><span class="nav-text">1.1 The Evolution of
-Supply Chain Theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#definiton-and-scope"><span class="nav-text">1.2 Definiton and Scope</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forecasting-and-demad-modeling"><span class="nav-text">2. Forecasting and Demad
-Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-1"><span class="nav-text">2.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cost-function"><span class="nav-text">3.2.2 Cost Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimal-solution"><span class="nav-text">3.2.3 Optimal Solution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-eoq-with-quantity-discounts"><span class="nav-text">3.4 The EOQ With Quantity
-Discounts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#periodic-review-with-nonzero-fixed-costs-s-s-polices"><span class="nav-text">4.4
+Supply Chain Theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#definiton-and-scope"><span class="nav-text">1.2 Definiton and Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#levels-of-decision-making-in-supply-chain-management"><span class="nav-text">1.3 Levels
+of Decision-making in Supply Chain Management</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forecasting-and-demad-modeling"><span class="nav-text">2. Forecasting and Demad
+Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-1"><span class="nav-text">2.1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#moving-average"><span class="nav-text">2.2.1 Moving Average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exponential-smoothing"><span class="nav-text">2.2.2 Exponential Smoothing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linear-regression"><span class="nav-text">2.2.3 Linear Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forecast-accuracy"><span class="nav-text">2.3 Forecast Accuracy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mad-mse-and-mape"><span class="nav-text">2.3.1 MAD, MSE and MAPE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#machine-learning-in-demand-forecasting"><span class="nav-text">2.4 Machine Learning in
+Demand Forecasting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-2"><span class="nav-text">2.4.1 Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#machine-learning"><span class="nav-text">2.4.2 Machine Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demand-modeling-techniques"><span class="nav-text">2.5 Demand Modeling Techniques</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bass-diffusion-model"><span class="nav-text">2.6 Bass Diffusion Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-model"><span class="nav-text">2.6.1 The Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-time-version"><span class="nav-text">2.6.2 Discrete Time Version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameter-estimation"><span class="nav-text">2.6.3 Parameter Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extensions"><span class="nav-text">2.6.4 Extensions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#learning-indicator-approach"><span class="nav-text">2.7 Learning Indicator
+Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discrete-choice-models"><span class="nav-text">2.8 Discrete Choice Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction-to-discrete-choice"><span class="nav-text">2.8.1 Introduction to Discrete
+Choice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-multinomial-logit-model"><span class="nav-text">2.8.2 The Multinomial Logit
+Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#deterministic-inventory-models"><span class="nav-text">3. Deterministic Inventory
+Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-inventory-modeling"><span class="nav-text">3.1 Introduction to
+Inventory Modeling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#continuous-review-the-economic-order-quantity-problem"><span class="nav-text">3.2
+Continuous Review: The Economic Order Quantity Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-statement"><span class="nav-text">3.2.1 Problem Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cost-function"><span class="nav-text">3.2.2 Cost Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimal-solution"><span class="nav-text">3.2.3 Optimal Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sensitivity-analysis"><span class="nav-text">3.2.4 Sensitivity Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#order-lead-times"><span class="nav-text">3.2.5 Order Lead Times</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#power-of-two-policies"><span class="nav-text">3.3 Power-of-two Policies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#error-bound"><span class="nav-text">3.3.2 Error Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-eoq-with-quantity-discounts"><span class="nav-text">3.4 The EOQ With Quantity
+Discounts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#all-units-discounts"><span class="nav-text">3.4.1 All-Units Discounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#incremental-discounts"><span class="nav-text">3.4.2 Incremental Discounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modified-all-units-discounts"><span class="nav-text">3.4.3 Modified All-Units
+Discounts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-eoq-with-planned-backorders"><span class="nav-text">3.5 The EOQ with Planned
+Backorders</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-economic-production-quantity-model"><span class="nav-text">3.6 The Economic
+Production Quantity Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#periodic-review-the-wagner-whitin-model"><span class="nav-text">3.7 Periodic Review:
+The Wagner-Whitin Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-statement-1"><span class="nav-text">3.7.1 Problem Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mip-formulation"><span class="nav-text">3.7.2 MIP Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-programming-algorithm"><span class="nav-text">3.7.3 Dynamic Programming
+Algorithm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stochastic-inventory-models-periodic-review"><span class="nav-text">4. Stochastic
+Inventory Models: Periodic Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#demand-processes"><span class="nav-text">4.2 Demand Processes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#periodic-review-with-zero-fixed-costs-base-stock-policies"><span class="nav-text">4.3
+Periodic Review With Zero Fixed Costs: Base-stock Policies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#base-stock-policies"><span class="nav-text">4.3.1 Base-Stock Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#single-period-the-newsvendor-problem"><span class="nav-text">4.3.2 Single Period: The
+Newsvendor Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finite-horizon"><span class="nav-text">4.3.3 Finite Horizon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#infinite-horizon"><span class="nav-text">4.3.4 Infinite Horizon</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#periodic-review-with-nonzero-fixed-costs-s-s-polices"><span class="nav-text">4.4
 Periodic Review With Nonzero Fixed Costs: \((s, S)\) Polices</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ss-policies"><span class="nav-text">4.4.1 \((s,S)\)
-Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonzero-fixed-costs-s-s-policies"><span class="nav-text">4.5.2 Nonzero Fixed Costs:
-\((s, S)\) Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#expected-cost-function"><span class="nav-text">5.2.1 Expected Cost Function</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multi-echelon-inventory-models"><span class="nav-text">6. Multi-echelon Inventory
-Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#other-minisum-models"><span class="nav-text">8.3 Other Minisum Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-set-covering-location-problem"><span class="nav-text">8.4.1 The Set Covering
+Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#single-period"><span class="nav-text">4.4.2 Single Period</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finite-horizon-1"><span class="nav-text">4.4.3 Finite horizon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#infinite-horizon-1"><span class="nav-text">4.4.4 infinite Horizon</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-optimility"><span class="nav-text">4.5 Policy Optimility</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-fixed-costs-base-stock-policies"><span class="nav-text">4.5.1 Zero Fixed Costs:
+Base-Stock Policies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nonzero-fixed-costs-s-s-policies"><span class="nav-text">4.5.2 Nonzero Fixed Costs:
+\((s, S)\) Policies</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lost-salse"><span class="nav-text">4.6 Lost Salse</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-lead-time"><span class="nav-text">4.6.1 Zero Lead Time</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stochastic-inventory-models-continuous-review"><span class="nav-text">5. Stochastic
+Inventory Models: Continuous Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#r-q-policies"><span class="nav-text">5.1 \((r, Q)\)
+Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exact-r-q-problem-with-continuous-demand-distribution"><span class="nav-text">5.2 Exact
+\((r, Q)\) Problem With Continuous
+Demand Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expected-cost-function"><span class="nav-text">5.2.1 Expected Cost Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimality-conditions"><span class="nav-text">5.2.2 Optimality Conditions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#approximations-for-r-q-problem-with-continuous-distribution"><span class="nav-text">5.3
+Approximations for \((r, Q)\) Problem
+With Continuous Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#expected-inventory-level-approximation"><span class="nav-text">5.3.1
+Expected-Inventory-Level Approximation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eoqb-approximation"><span class="nav-text">5.3.2 EOQB Approximation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eoq-ss-approximation"><span class="nav-text">5.3.3 EOQ + SS Approximation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exact-r-q-problem-with-continuous-distribution-properties-of-optimal-r-and-q"><span class="nav-text">5.4
+Exact \((r, Q)\) Problem With
+Continuous Distribution: Properties of Optimal \(r\) and \(Q\)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multi-echelon-inventory-models"><span class="nav-text">6. Multi-echelon Inventory
+Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-3"><span class="nav-text">6.1 Introduction</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#facility-location-models"><span class="nav-text">8. Facility Location Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-4"><span class="nav-text">8.1 Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-uncapacitated-fixed-charge-location-problem"><span class="nav-text">8.2 The
+Uncapacitated fixed-charge Location Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-statement-2"><span class="nav-text">8.2.1 Problem Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#formulation"><span class="nav-text">8.2.2 Formulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lagrangian-relation"><span class="nav-text">8.2.3 Lagrangian Relation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-dualoc-algorithm"><span class="nav-text">8.2.4 The DUALOC Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other-minisum-models"><span class="nav-text">8.3 Other Minisum Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-capacitated-fixed-charge-location-problem"><span class="nav-text">8.3.1 The
+Capacitated Fixed-Charge Location Problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#covering-models"><span class="nav-text">8.4 Covering Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-set-covering-location-problem"><span class="nav-text">8.4.1 The Set Covering
 Location Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-maximal-covering-location-problem"><span class="nav-text">8.4.2 The Maximal
 Covering Location Problem</span></a></li></ol></li></ol></li></ol></div>
       </div>
